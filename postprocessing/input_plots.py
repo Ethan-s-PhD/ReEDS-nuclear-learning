@@ -554,7 +554,7 @@ def plot_existing_unitsize(
                 'ReEDS_generator_database_final_EIA-NEMS.csv',
             )
         )
-        dfunits['reeds_ba'] = dfunits.FIPS.str.strip('p').map(county2zone)
+        dfunits['r'] = dfunits.FIPS.str.strip('p').map(county2zone)
     else:
         dfunits = pd.read_csv(os.path.join(case, 'inputs_case', 'unitdata.csv'))
 
@@ -564,7 +564,7 @@ def plot_existing_unitsize(
         & (dfunits.RetireYear > year)
         & (dfunits.tech.isin(techs))
     ].copy()
-    dfplot['region'] = dfplot.reeds_ba.map(hierarchy[level])
+    dfplot['region'] = dfplot.r.map(hierarchy[level])
 
     ### Set up plot
     regions = hierarchy[level].unique()
