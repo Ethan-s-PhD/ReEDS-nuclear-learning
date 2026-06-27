@@ -363,7 +363,6 @@ def get_src(scen, src):
         df_src.columns = src['columns']
     df_src.replace('Eps',0, inplace=True)
     df_src.replace('Undf',0, inplace=True)
-    df_src = df_src.apply(pd.to_numeric, errors='ignore')
     df_src = df_to_lowercase(df_src)
     return df_src
 

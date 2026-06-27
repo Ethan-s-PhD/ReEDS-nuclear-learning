@@ -374,7 +374,7 @@ def static_report(data_type, data_source, static_presets, report_path, report_fo
         excel_meta.append('Default Config:')
         for vwc in variant_wdg_config:
             excel_meta.append(vwc['name'] + ': ' + str(vwc['val']))
-        pd.Series(excel_meta).to_excel(excel_report, 'meta', index=False, header=False)
+        pd.Series(excel_meta).to_excel(excel_report, sheet_name='meta', index=False, header=False)
     if 'html' in report_format:
         with open(this_dir_path + '/templates/index.html', 'r') as template_file:
             template_string=template_file.read()
@@ -445,9 +445,9 @@ def static_report(data_type, data_source, static_presets, report_path, report_fo
                 sheet_name = re.sub(r"[\\/*\[\]:?]", '-', sheet_name) #replace disallowed sheet name characters with dash
                 sheet_name = sheet_name[:31] #excel sheet names can only be 31 characters long
                 if download_full_source:
-                    GL['df_source'].to_excel(excel_report, sheet_name, index=False)
+                    GL['df_source'].to_excel(excel_report, sheet_name=sheet_name, index=False)
                 else:
-                    GL['df_plots'].to_excel(excel_report, sheet_name, index=False)
+                    GL['df_plots'].to_excel(excel_report, sheet_name=sheet_name, index=False)
             if 'csv' in report_format:
                 sheet_name = static_preset['sheet_name'] if 'sheet_name' in static_preset else str(sec_i) + '_' + name
                 sheet_name = re.sub(r'[\\/:"*?<>|]', '-', sheet_name) #replace disallowed sheet name characters with dash
