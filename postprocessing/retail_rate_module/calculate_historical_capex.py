@@ -109,7 +109,7 @@ def get_earliest_cap_costs(inputs_case):
     cost_cap_rsc = (
         rsc_dat.loc[~rsc_dat.i.isin(cost_cap_earliest['i'])]
         .pivot_table(
-            values='sc_cat',
+            values='Value',
             columns='sc_cat',
             index=['r', 'i', 'rscbin']
         )
