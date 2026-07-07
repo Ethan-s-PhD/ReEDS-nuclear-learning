@@ -561,8 +561,8 @@ def vizit_report(data_type, data_source, vizit_data, output_dir, auto_open):
                 style_config['Colorscale (region)'] = 'Reds'
             if 'sync_axes' not in v['preset']['config'] or v['preset']['config']['sync_axes'] == 'Yes':
                 if v['preset']['config']['chart_type'] == 'Area Map':
-                    style_config['Colorscale Min (region)'] = v['data'][trace_config['z']].min()
-                    style_config['Colorscale Max (region)'] = v['data'][trace_config['z']].max()
+                    style_config['Colorscale Min (region)'] = float(v['data'][trace_config['z']].min())
+                    style_config['Colorscale Max (region)'] = float(v['data'][trace_config['z']].max())
                 else:
                     val_col = trace_config['y']
                     if v['preset']['config']['chart_type'] in STACKEDTYPES and 'series' in v['preset']['config']:
@@ -580,8 +580,8 @@ def vizit_report(data_type, data_source, vizit_data, output_dir, auto_open):
                     else:
                         y_min = v['data'][val_col].min() if v['data'][val_col].min() < 0 else 0
                         y_max = v['data'][val_col].max() if v['data'][val_col].max() > 0 else 0
-                    style_config['Y Min'] = y_min
-                    style_config['Y Max'] = y_max
+                    style_config['Y Min'] = float(y_min)
+                    style_config['Y Max'] = float(y_max)
             dashboard = {'title': v['preset']['name'], 'charts':[{'traces':[trace_config], 'style':style_config}]}
             vizit_config['dashboards'].append(dashboard)
         #Add the data itself (even if we're downloading the full source, so we can make charts with the full data)
