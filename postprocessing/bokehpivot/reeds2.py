@@ -276,9 +276,9 @@ def pre_avgprice(dfs, **kw):
         df_load_nat = df_load_nat.to_frame()
         full_yrs = list(range(int(df['year'].min()), int(df['year'].max()) + 1))
         df_load_nat = df_load_nat.reindex(full_yrs)
-        df_load_nat = df_load_nat.interpolate(method='ffill')
+        df_load_nat = df_load_nat.ffill()
 
-        df_natavgprice = pd.merge(left=df, right=df_load_nat, how='left',on=['year'], sort=False)
+        df_natavgprice = pd.merge(left=df, right=df_load_nat.reset_index(), how='left',on=['year'], sort=False)
         df_natavgprice['Average cost ($/MWh)'] = df_natavgprice['Cost (Bil $)'] * 1e9 / df_natavgprice['q']
 
         return df_natavgprice
