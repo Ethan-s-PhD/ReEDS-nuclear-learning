@@ -456,7 +456,7 @@ def process_reeds_data(topwdg, custom_sorts, custom_colors, result_dfs):
                 df[c] = df[c].astype(str)
 
     #categorize columns
-    cols['discrete'] = [x for x in cols['all'] if df[x].dtype == object]
+    cols['discrete'] = [x for x in cols['all'] if pd.api.types.is_object_dtype(df[x]) or pd.api.types.is_string_dtype(df[x])]
     cols['continuous'] = [x for x in cols['all'] if x not in cols['discrete']]
     cols['y-axis'] = [x for x in cols['continuous'] if not (x in reeds.columns_meta and 'y-allow' in reeds.columns_meta[x] and reeds.columns_meta[x]['y-allow'] is False)]
     cols['x-axis'] = [x for x in cols['all'] if x not in cols['y-axis']]
@@ -617,6 +617,6 @@ def update_reeds_presets(attr, old, new):
 
 def df_to_lowercase(df):
     for col in df:
-        if df[col].dtype == object:
+        if pd.api.types.is_object_dtype(df[col]) or pd.api.types.is_string_dtype(df[col]):
             df[col] = df[col].str.lower()
     return df

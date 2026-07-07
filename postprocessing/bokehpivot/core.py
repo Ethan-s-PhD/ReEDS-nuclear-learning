@@ -766,7 +766,7 @@ def get_df_csv(data_source):
     df_source = pd.concat(dfs,sort=False,ignore_index=True)
     cols = {}
     cols['all'] = df_source.columns.values.tolist()
-    cols['discrete'] = [x for x in cols['all'] if df_source[x].dtype == object]
+    cols['discrete'] = [x for x in cols['all'] if pd.api.types.is_object_dtype(df_source[x]) or pd.api.types.is_string_dtype(df_source[x])]
     cols['continuous'] = [x for x in cols['all'] if x not in cols['discrete']]
     cols['x-axis'] = cols['all']
     cols['y-axis'] = cols['continuous']
@@ -1636,7 +1636,7 @@ def create_maps(df, wdg, cols):
     breakpoints = []
     x_axis = df.iloc[:,-2]
     y_axis = df.iloc[:,-1]
-    if y_axis.dtype == object:
+    if pd.api.types.is_object_dtype(y_axis) or pd.api.types.is_string_dtype(y_axis):
         logger.info('***Error, your y-axis is a string.')
         return (maps, breakpoints) #empty list
     if wdg['chart_type'].value == 'Area Map':
