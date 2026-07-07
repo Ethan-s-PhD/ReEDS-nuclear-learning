@@ -4032,7 +4032,7 @@ def plot_stressperiod_days(case, repcolor='k', sharey=False, figsize=(10,5)):
     ])
     dfrep = pd.Series(
         index=timeindex,
-        data=timeindex.map(lambda x: x.isin(rep_hours)).astype(int),
+        data=timeindex.isin(rep_hours).astype(int),
     )
     ### Want a dict of dataframes with 8760 index, columns for 'rep' + RA years,
     ### and keys for solve years
@@ -4072,7 +4072,7 @@ def plot_stressperiod_days(case, repcolor='k', sharey=False, figsize=(10,5)):
             ])
             dictout[y] = pd.Series(
                 index=timeindex,
-                data=timeindex.map(lambda x: x.isin(yearhours)).astype(int),
+                data=timeindex.isin(yearhours).astype(int),
             )
         dfplot[t] = pd.concat(dictout, axis=1)
 
