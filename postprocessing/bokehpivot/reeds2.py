@@ -47,8 +47,8 @@ def add_cooling_water(df, **kw):
     df_tech_ctt_wst['tech'] = df_tech_ctt_wst['tech'].str.lower()
     df = pd.merge(left=df, right=df_tech_ctt_wst, how='left', on=['tech'], sort=False)
     #fill na values
-    df['wst'].fillna('other', inplace=True)
-    df['ctt'].fillna('none', inplace=True)
+    df['wst'] = df['wst'].fillna('other')
+    df['ctt'] = df['ctt'].fillna('none')
     return df
 
 def scale_column_filtered(df, **kw):
@@ -518,8 +518,8 @@ def pre_gen_w_load(dfs, **kw):
     dfs['gen_uncurt'] = sum_over_cols(dfs['gen_uncurt'], drop_cols=['rb','vintage'], group_cols=['tech', 'year'])
     #Outer join generation, fill any missing gen with 0, and then fill missing gen_uncurt with gen
     df = pd.merge(left=dfs['gen'], right=dfs['gen_uncurt'], how='outer', on=['tech','year'], sort=False)
-    df['Gen (TWh)'].fillna(0, inplace=True)
-    df['Gen Uncurt (TWh)'].fillna(df['Gen (TWh)'], inplace=True)
+    df['Gen (TWh)'] = df['Gen (TWh)'].fillna(0)
+    df['Gen Uncurt (TWh)'] = df['Gen Uncurt (TWh)'].fillna(df['Gen (TWh)'])
     #Scale generation to TWh
     df[['Gen (TWh)','Gen Uncurt (TWh)']] = df[['Gen (TWh)','Gen Uncurt (TWh)']] * 1e-6
     #Scale Load to TWh
@@ -634,7 +634,7 @@ def pre_val_streams(dfs, **kw):
         #Include all con_name options for each tech,rb,year combo and fill na with zero
         df = df.pivot_table(index=['tech','rb','year'], columns='con_name', values='$').reset_index()
         df = pd.melt(df, id_vars=['tech','rb','year'], var_name='con_name', value_name= '$')
-        df['$'].fillna(0, inplace=True)
+        df['$'] = df['$'].fillna(0)
         #convert value streams from bulk $ as of discount year to annual as of model year
         df = pd.merge(left=df, right=dfs['pvf_onm'], how='left', on=['year'], sort=False)
         df['$'] = df['$'] / dfs['cost_scale'].iloc[0,0] / df['pvfonm']
@@ -643,7 +643,7 @@ def pre_val_streams(dfs, **kw):
         #get requirement prices and quantities and build benchmark value streams
         dfs['p']['p'] = inflate_series(dfs['p']['p'])
         df_bm = pd.merge(left=dfs['q'], right=dfs['p'], how='left', on=['type', 'subtype', 'rb', 'timeslice', 'year'], sort=False)
-        df_bm['p'].fillna(0, inplace=True)
+        df_bm['p'] = df_bm['p'].fillna(0)
         #Add con_name:
         types = ['load','res_marg','oper_res','state_rps','curt_realize','curt_cause'] #the curt ones don't exist, they are just placeholders for the mapping.
         df_bm = df_bm[df_bm['type'].isin(types)].copy()
@@ -818,12 +818,12 @@ def pre_lcoe(dfs, **kw):
     dfs['lcoe']['$/MWh'] = inflate_series(dfs['lcoe']['$/MWh'])
     #Merge with available capacity
     df = pd.merge(left=dfs['lcoe'], right=dfs['avail'], how='left', on=['tech', 'rb', 'year', 'bin'], sort=False)
-    df['available MW'].fillna(0, inplace=True)
+    df['available MW'] = df['available MW'].fillna(0)
     df['available'] = 'no'
     df.loc[df['available MW'] > 0.001, 'available'] = 'yes'
     #Merge with chosen capacity
     df = pd.merge(left=df, right=dfs['inv'], how='left', on=['tech', 'vintage', 'rb', 'year', 'bin'], sort=False)
-    df['chosen MW'].fillna(0, inplace=True)
+    df['chosen MW'] = df['chosen MW'].fillna(0)
     df['chosen'] = 'no'
     df.loc[df['chosen MW'] != 0, 'chosen'] = 'yes'
     #Add icrb column
@@ -962,7 +962,7 @@ def pre_prices(dfs, **kw):
     #Join prices and quantities
     merge_cols = [c for c in ['type', 'subtype', 'rb', 'timeslice', 'year'] if c in dfs['q'].columns]
     df = pd.merge(left=dfs['q'], right=dfs['p'], how='left', on=merge_cols, sort=False)
-    df['p'].fillna(0, inplace=True)
+    df['p'] = df['p'].fillna(0)
     #Calculate $
     df['$'] = df['p'] * df['q']
     df.drop(['p', 'q'], axis='columns',inplace=True)
@@ -1017,7 +1017,7 @@ def pre_ng_price(dfs, **kw):
     dfs['p']['p'] = inflate_series(dfs['p']['p'])
     #Join prices and quantities
     df = pd.merge(left=dfs['q'], right=dfs['p'], how='left', on=['census', 'year'], sort=False)
-    df['p'].fillna(0, inplace=True)
+    df['p'] = df['p'].fillna(0)
     return df
 
 # calculate storage power (GW) and energy (GWh) capacity
