@@ -167,6 +167,9 @@ def pre_systemcost(dfs, **kw):
             val_r = dfs['r'].squeeze(1).values
             ### Get total historical capex in modeled BAs
             df_capex_init = dfs['df_capex_init']
+            ### Cast to float64 since assigning float64 values into a float32 column raises an error
+            if 'inv_investment_capacity_costs' in df:
+                df['inv_investment_capacity_costs'] = df['inv_investment_capacity_costs'].astype(float)
             if 'maintain_ba_index' in kw and kw['maintain_ba_index'] is True:
                 ### Keep data up until the year before the first modeled year
                 historical_capex = df_capex_init.rename(
