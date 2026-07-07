@@ -457,7 +457,7 @@ def static_report(data_type, data_source, static_presets, report_path, report_fo
                     GL['df_plots'].to_csv(output_dir + 'csvs/' + sheet_name + '.csv', index=False)
         except Exception:
             logger.info('***Error in section ' + str(sec_i) + '...\n' + traceback.format_exc())
-            if html_num == 'one':
+            if 'html' in report_format and html_num == 'one':
                 static_plots.append(bl.row(bmw.Div(text='<h2 id="section-' + str(sec_i) + '" style="color:red;text-decoration:underline">' + str(sec_i) + '. ' + name + '. ERROR!</h2>')))
         sec_i += 1
     if 'excel' in report_format:
