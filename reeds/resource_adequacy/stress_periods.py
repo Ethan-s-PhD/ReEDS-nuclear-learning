@@ -222,8 +222,8 @@ def get_annual_neue(case, t, iteration=0):
         rmap = reeds.io.get_rmap(case=case, hierarchy_level=hierarchy_level)
         ### Get NEUE summed over year
         _neue[hierarchy_level,'sum'] = (
-            dfeue.rename(columns=rmap).T.groupby(level=0).sum().sum()
-            / dfload.rename(columns=rmap).T.groupby(level=0).sum().sum()
+            dfeue.rename(columns=rmap).T.groupby(level=0).sum().T.sum()
+            / dfload.rename(columns=rmap).T.groupby(level=0).sum().T.sum()
         ) * 1e6
         ### Get max NEUE hour
         _neue[hierarchy_level,'max'] = (
