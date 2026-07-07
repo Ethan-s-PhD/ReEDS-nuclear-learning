@@ -1718,13 +1718,6 @@ def plot_prmtrade(
     val_r = reeds.io.read_input(case, 'r').squeeze(1).tolist()
     dfba = dfba.loc[val_r].copy()
 
-    endpoints = reeds.plots.df2gdf(
-        reeds.io.assemble_hierarchy(case).set_index('r'),
-        lat='node_lat', lon='node_lon',
-    )
-    dfba['x'] = dfba.index.map(endpoints.centroid.x)
-    dfba['y'] = dfba.index.map(endpoints.centroid.y)
-
     ### Get scaling and layout
     _vmax = dfplot.MW.abs().max() if vmax in [None, 0, 0.] else vmax
     if int(sw.get('GSw_PRM_CapCredit', 1)):
