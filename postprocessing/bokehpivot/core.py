@@ -1235,7 +1235,8 @@ def do_op(df_plots, wdg, cols, sfx):
             df_plots['tempgroup'] = 1
             df_grouped = df_plots.groupby('tempgroup', sort=False)
         #Now do operations with the groups:
-        df_plots = df_grouped.apply(op_with_base, op, col, col_base, y_val).reset_index(drop=True)
+        #groupby columns are excluded from the groups passed to apply, so restore them from the index
+        df_plots = df_grouped.apply(op_with_base, op, col, col_base, y_val).reset_index(groupcols).reset_index(drop=True)
         df_plots = df_plots.replace([np.inf, -np.inf], np.nan)
         #Finally, clean up df_plots, dropping unnecessary columns, rows with the base value, and any rows with NAs for y_vals
         if 'tempgroup' in df_plots:
