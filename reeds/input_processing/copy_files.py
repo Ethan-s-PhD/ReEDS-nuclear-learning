@@ -1315,6 +1315,7 @@ def main(reeds_path, inputs_case):
     )
 
     # Create a maps.gpkg for this run
+    reeds.spatial.validate_proj()
     generate_maps_gpkg(inputs_case)
 
 

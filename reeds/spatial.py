@@ -8,6 +8,22 @@ sys.path.append(str(Path(__file__).parent.parent))
 import reeds
 
 
+def validate_proj():
+    import numpy as np
+    import shapely
+    dftest = (
+        gpd.GeoDataFrame(geometry=[shapely.geometry.Point(-100,40)], crs='EPSG:4326')
+        .to_crs('ESRI:102008')
+    )
+    if np.isinf(dftest.iloc[0,0].x) or np.isinf(dftest.iloc[0,0].y):
+        err = (
+            "Your geospatial packages are messed up. Run the following command with the "
+            "reeds conda environment activated, then restart your run:\n"
+            "    conda install -c conda-forge proj-data"
+        )
+        raise ValueError(err)
+
+
 def assign_to_offshore_zones(unitdata):
     """Map offshore wind units to offshore zones based on lat/lon and zone outlines"""
     ### Get offshore zones
