@@ -5762,8 +5762,6 @@ def plot_capacity_offline(
         drawgrid=True, plot_for=False,
     ):
     """Plot capacity offline and temperature for rep and stress periods"""
-    ### Get temperatures
-    temperatures = reeds.io.get_temperatures(case)
 
     ### Get switches
     sw = reeds.io.get_switches(case)
@@ -5775,19 +5773,26 @@ def plot_capacity_offline(
     bokehcolors.drop(['Electrolyzer','SMR','SMR-CCS','Canadian Imports','Remove','Dropped'], errors='ignore', inplace = True)
     bokehcolors = bokehcolors.squeeze(1)
 
+    ### Get temperatures for model zones
+    temperatures = reeds.io.get_temperatures(case)
+    temperatures_r = (
+        pd.concat({r: temperatures[st] for r, st in hierarchy['st'].items()}, axis=1)
+        .rename_axis('r', axis=1)
+    )
+
     dftemp = pd.concat({
         which: (
-            temperatures.rename(columns=hierarchy[level]).T.groupby(level='r').agg(which)
+            temperatures_r.rename(columns=hierarchy[level]).T.groupby(level='r').agg(which)
             .T.groupby([
-                temperatures.index.year,
-                temperatures.index.month,
-                temperatures.index.day,
+                temperatures_r.index.year,
+                temperatures_r.index.month,
+                temperatures_r.index.day,
             ]).agg(which)
         )
         for which in ['min', 'max']
     }, axis=1)
     dftemp.index = pd.to_datetime(
-        temperatures.index.strftime('%Y-%m-%d').drop_duplicates())
+        temperatures_r.index.strftime('%Y-%m-%d').drop_duplicates())
     ## Include all weather years so we don't interpolate the gap
     dftemp = dftemp.reindex(pd.date_range(dftemp.index[0], dftemp.index[-1], freq='D'))
 
