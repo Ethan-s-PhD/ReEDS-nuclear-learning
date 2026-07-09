@@ -1460,7 +1460,7 @@ def get_available_capacity_weighted_cf(case, level='country'):
     return dfout
 
 
-def get_sitemap(offshore=False, geo=True):
+def get_sitemap(case=None, offshore=False, geo=True):
     """
     Get mapping from sc_point_gid to geographic points and counties.
     """
@@ -1472,6 +1472,12 @@ def get_sitemap(offshore=False, geo=True):
         ['latitude', 'longitude', 'FIPS']
         + (['ba', 'always_radial'] if offshore else [])
     ]
+    if offshore:
+        county2zone = get_county2zone(case)
+        sitemap.loc[sitemap.always_radial, 'ba'] = (
+            sitemap.loc[sitemap.always_radial, 'FIPS'].map(county2zone)
+        )
+        sitemap = sitemap.dropna(subset='ba')
     if geo:
         crs = 'EPSG:5070' if offshore else 'ESRI:102008'
         sitemap = reeds.plots.df2gdf(sitemap, crs=crs)
