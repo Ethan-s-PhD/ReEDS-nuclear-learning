@@ -104,7 +104,7 @@ def identify_min_periods(df, hierarchy, level, prefix=''):
     dfmod.columns = dfmod.columns.map(lambda x: x.split('|')[-1]).map(rmap)
     dfmod = dfmod.T.groupby(level=0).sum().T
     ### Get the mean value by (year,yperiod)
-    dfmean = dfmod.groupby(['year','yperiod']).mean()
+    dfmean = dfmod.groupby(['year','yperiod']).mean().astype(float)
     ### Get the min (year,yperiod) for each column
     forceperiods = set([(c, 'min average', *dfmean[c].nsmallest(1).index[0]) for c in dfmean])
 
@@ -689,7 +689,7 @@ if __name__ == '__main__':
     # reeds_path = reeds.io.reeds_path
     # inputs_case = os.path.join(
     #     reeds_path,'runs',
-    #     'v20260525_repM0_USA_fast','inputs_case','')
+    #     'v20260709_envM0_Simple','inputs_case','')
     # interactive = True
 
     #%% Set up logger

@@ -73,10 +73,10 @@ def interpolate_missing_years(df, forecast_fit, method='linear'):
         .rename(columns={c: pd.Timestamp(str(c)) for c in df.columns})
         ### Add empty columns at year-starts between existing data 
         ### (mean doesn't do anything)
-        .resample('YS', axis=1).mean()
+        .T.resample('YS').mean()
         ### Interpolate linearly to fill the new columns
         ### (interpolate only works on rows, so pivot, interpolate, pivot again)
-        .T.interpolate(method).T
+        .interpolate(method).T
     )
     ### Switch back to integer-year column names
     dfadd = dfinterp.rename(columns={c: c.year for c in dfinterp.columns})
@@ -167,8 +167,8 @@ if __name__ == '__main__':
     inputs_case = os.path.join(args.inputs_case, '')
 
     # #%% Settings for testing
-    # reeds_path = os.path.expanduser('~/github/ReEDS')
-    # inputs_case = os.path.join(reeds_path,'runs','v20220411_prmM0_USA2060','inputs_case')
+    # reeds_path = reeds.io.reeds_path
+    # inputs_case = os.path.join(reeds_path,'runs','v20260709_envM0_github_Everything','inputs_case')
 
     #%% Settings for debugging
     ### Set debug == True to write to a new folder (inputs_case/future/), leaving original files

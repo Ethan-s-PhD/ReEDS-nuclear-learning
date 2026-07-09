@@ -37,7 +37,7 @@ def assign_to_offshore_zones(unitdata):
     dfwind = reeds.plots.df2gdf(dfwind, crs=dfzones.crs)
 
     ## Only keep matches within 100 km since some areas only have radial sites
-    index2offshorezone = dfwind.sjoin_nearest(dfzones, max_distance=1e5)['index_right']
+    index2offshorezone = dfwind.sjoin_nearest(dfzones, max_distance=1e5)['zone']
 
     dfout = unitdata.copy()
     dfout.loc[index2offshorezone.index, 'r'] = index2offshorezone.values
