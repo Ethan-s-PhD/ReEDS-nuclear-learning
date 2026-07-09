@@ -33,7 +33,7 @@ dependencies:
   - myst-parser=5.1 # for building documentation
   - notebook=7.6 # for jupyter notebooks
   - python-pptx=1.0 # for postprocessing/compare_cases.py
-  - sphinx=9.0 # for building documentation
+  - sphinx<9 # for building documentation
   - sphinx_rtd_theme=3.1 # for documentation
   - sphinxcontrib-bibtex=2.7 # for documentation
   ## ^^^
