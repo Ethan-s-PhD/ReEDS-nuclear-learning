@@ -1498,7 +1498,7 @@ systemcost_ba("inv_transmission_intrazone_investment",r,t)$[tmodel_new(t)$Sw_Tra
 systemcost_ba("op_transmission_fom",r,t)$tmodel_new(t) =
 *fixed O&M costs for transmission lines
               sum{(rr,trtype)$routes(r,rr,trtype,t),
-                    transmission_line_fom(r,rr,trtype) * CAPTRAN_ENERGY.l(r,rr,trtype,t) }
+                    transmission_line_fom(r,rr,trtype) * CAPTRAN_ENERGY.l(r,rr,trtype,t) / 2 }
 *fixed O&M costs for LCC AC/DC converters
               + sum{(rr,trtype)$[lcclike(trtype)$routes(r,rr,trtype,t)],
                     cost_acdc_lcc * 2 * trans_fom_frac * CAPTRAN_ENERGY.l(r,rr,trtype,t) }
