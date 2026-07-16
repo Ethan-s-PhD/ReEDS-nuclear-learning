@@ -6055,6 +6055,7 @@ Set
     h_stress(allh)                         "stress timeslices"
     h_t(allh,allt)                         "representative and stress timeslices by model year"
     h_stress_t(allh,allt)                  "stress timeslices by model year"
+    hours_t(allh,allt)                     "rep and stress hour weights by model year"
 * "Seasons" (both seasons and representative days/weks)
     szn(allszn)                            "representative and stress periods"
     szn_rep(allszn)                        "representative periods, or seasons if modeling full year"

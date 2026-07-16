@@ -1837,10 +1837,10 @@ tran_util_ann_rep(r,rr,trtype,t)
 tran_util_ann_stress(r,rr,trtype,t)
     $[tmodel_new(t)
     $routes(r,rr,trtype,t)$tran_cap_prm(r,rr,trtype,t)
-    $sum{allh$h_stress_t(allh,t), hours(allh)}] =
+    $sum{allh$h_stress_t(allh,t), hours_t(allh,t)}] =
     sum{allh$h_stress_t(allh,t),
-        FLOW.l(r,rr,allh,t,trtype) * hours(allh) / tran_cap_prm(r,rr,trtype,t) }
-    / sum{allh$h_stress_t(allh,t), hours(allh) }
+        FLOW.l(r,rr,allh,t,trtype) * hours_t(allh,t) / tran_cap_prm(r,rr,trtype,t) }
+    / sum{allh$h_stress_t(allh,t), hours_t(allh,t) }
 ;
 
 import_h_rep(r,h,t)
@@ -1885,7 +1885,7 @@ net_import_ann_rep(r,t)
 
 net_import_ann_stress(r,t)
     $[tmodel_new(t)] =
-    sum{allh$h_stress_t(allh,t), net_import_h_stress(r,allh,t) * hours(allh) }
+    sum{allh$h_stress_t(allh,t), net_import_h_stress(r,allh,t) * hours_t(allh,t) }
 ;
 
 poi_capacity(r,t)$tmodel_new(t) =
