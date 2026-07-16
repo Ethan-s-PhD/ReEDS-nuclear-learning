@@ -6055,7 +6055,6 @@ Set
     h_stress(allh)                         "stress timeslices"
     h_t(allh,allt)                         "representative and stress timeslices by model year"
     h_stress_t(allh,allt)                  "stress timeslices by model year"
-    hours_t(allh,allt)                     "rep and stress hour weights by model year"
 * "Seasons" (both seasons and representative days/weks)
     szn(allszn)                            "representative and stress periods"
     szn_rep(allszn)                        "representative periods, or seasons if modeling full year"
@@ -6099,6 +6098,7 @@ alias(actualszn,actualsznn,actualsznnn) ;
 Parameter
 * Hour/period weighting
     hours(allh)                            "--hours-- number of hours in each time block"
+    hours_t(allh,allt)                     "--hours-- number of hours in each time block by model year"
     numdays(allszn)                        "--days-- number of days for each season"
     numpartitions(allszn)                  "--days-- number of partitions for each season in timeseries"
     hours_daily(allh)                      "--hours-- number of hours represented by time-slice 'h' during one day"
