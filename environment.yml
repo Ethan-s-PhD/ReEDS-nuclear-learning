@@ -17,6 +17,7 @@ dependencies:
   - pip=26.1
   - pytables=3.11
   - pytest=9.1
+  - pyyaml=6.0
   - requests=2.34
   - scikit-learn=1.9
   - scipy=1.18
