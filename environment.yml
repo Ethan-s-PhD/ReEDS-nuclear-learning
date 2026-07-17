@@ -1,6 +1,7 @@
 name: reeds
 channels:
   - conda-forge
+  - nodefaults
 dependencies:
   - python=3.14
   - bokeh=3.9
