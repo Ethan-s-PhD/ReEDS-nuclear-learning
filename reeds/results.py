@@ -462,7 +462,7 @@ def calc_systemcost(
 
         df.loc[:,op_type_ls] = (
             df.groupby('r')[op_type_ls]
-            .bfill(limit=sys_eval_years-1)
+            .ffill(limit=sys_eval_years-1)
         )
         df = df.fillna(0)
 
