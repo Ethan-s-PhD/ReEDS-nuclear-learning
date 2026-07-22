@@ -387,20 +387,10 @@ def read_banned_tech_file(full_path, filepath, inputs_case, r_county):
         # Apply county-wide bans to regions where all of the counties have banned the tech
         if 'county' in ban_lists.keys():
             ban_counties = ['p' + str(fips).zfill(5) for fips in ban_lists['county']]
-            r_ban_counties_map = (
-                r_county.loc[r_county.county.isin(ban_counties)]
-                .groupby('r')
-                ['county']
-                .apply(list)
-                .apply(sorted)
-            )
-            r_all_counties_map = r_county.county.tolist()
-            county_ban_regions = list(
-                r_ban_counties_map
-                .loc[(r_ban_counties_map.isin(r_all_counties_map))]
-                .index
-            )
-            ban_regions.extend(county_ban_regions)
+            num_counties = r_county.r.value_counts()
+            num_bans = r_county.loc[r_county.county.isin(ban_counties)].r.value_counts()
+            fully_banned = num_counties.loc[num_counties - num_bans == 0].index.tolist()
+            ban_regions.extend(fully_banned)
 
         if tech == 'nuclear':
             nuclear_ban_regions['*r'] = ban_regions
@@ -1340,7 +1330,7 @@ if __name__ == '__main__' and not hasattr(sys, 'ps1'):
 
     # #%% Settings for testing ###
     # reeds_path = reeds.io.reeds_path
-    # inputs_case = os.path.join(reeds_path,'runs','v20260626_envM0_Pacific','inputs_case')
+    # inputs_case = os.path.join(reeds_path,'runs','v20260722_envM0_Pacific','inputs_case')
 
 
     # ---- Set up logger ----
