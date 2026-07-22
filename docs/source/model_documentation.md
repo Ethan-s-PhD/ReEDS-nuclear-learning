@@ -680,6 +680,8 @@ Fossil and nuclear technologies are characterized by the following parameters:
 - Scheduled and forced outage rates (%).
 
 Cost and performance assumptions for all new fossil and nuclear technologies are taken from the ATB {cite}`nrel2024AnnualTechnology2024` with options to use the Conservative, Moderate, or Advanced trajectories.
+The EIA and U.S. natural gas is priced using $/MMBtu derived from HHV convention, and heat rates and fuel prices that come from NLR’s ATB are consistent with the HHV convention.
+We use the HHV convention in ReEDS. 
 Regional variations and adjustments are described below.
 Fixed operation and maintenance costs for coal plants increase over time with the plant's age. Fixed operation and maintenance costs for nuclear plants increase by a fixed amount after 50 years of being online. These escalation factors are taken from the Annual Energy Outlook 2025 {cite}`eiaAnnualEnergyOutlook2025`.
 
@@ -1671,11 +1673,6 @@ For details, see the [Daily Natural Gas Price Adjustments section](#daily-natura
 The switch `GSw_GasPriceAdjMethod` controls the choice of natural gas price adjustments.
 0 = no adjustment, 1 = national wintertime markup, 2 = daily adjustments based on regional temperatures (default: 1)
 ```
-
-### Heating value conventions (HHV versus LHV)
-All fuel-related quantities in ReEDS, including but not limited to heat rates, fuel prices, and calculated generation efficiencies are derived from a higher heating value (HHV) basis.  In some cases, observed heat rates are used.  During combustion, water vapor is formed, and the HHV convention includes the latent heat of vaporization of this water.   On the contrary, LHV (lower heating value), the convention in Europe, excludes the latent heat of vaporization of the water vapor that is formed because in practical applications, this vapor is released to the atmosphere and the extra latent heat energy not captured via condensation.  
-
-The EIA and U.S. natural gas is priced using $/MMBtu derived from HHV convention, and heat rates and fuel prices that come from NLR’s ATB are consistent with the HHV convention.  However, it is important to note that international sources (like IEA), equipment manufacturers and much of the literature concerning hydrogen costs and performance are derived using the LHV convention.  In those cases, it is important that LHV values be converted to HVV values before use in ReEDS.  Otherwise, the LHV heat rate used with a HHV-derived fuel price will underestimate fuel cost. 
 
 
 ## Electricity Demand
