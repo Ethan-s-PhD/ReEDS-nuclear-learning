@@ -1501,7 +1501,7 @@ systemcost_ba("op_transmission_fom",r,t)$tmodel_new(t) =
                     transmission_line_fom(r,rr,trtype) * CAPTRAN_ENERGY.l(r,rr,trtype,t) / 2 }
 *fixed O&M costs for LCC AC/DC converters
               + sum{(rr,trtype)$[lcclike(trtype)$routes(r,rr,trtype,t)],
-                    cost_acdc_lcc * 2 * trans_fom_frac * CAPTRAN_ENERGY.l(r,rr,trtype,t) }
+                    cost_acdc_lcc * trans_fom_frac * CAPTRAN_ENERGY.l(r,rr,trtype,t) }
 *fixed O&M costs for VSC AC/DC converters
               + cost_acdc_vsc * trans_fom_frac * CAP_CONVERTER.l(r,t)
 ;
