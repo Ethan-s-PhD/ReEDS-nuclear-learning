@@ -6578,7 +6578,10 @@ def plot_eue_events(
     for iteration in iterations:
         ## Get events
         fpath = Path(case, 'outputs', f'eue_events_{year}i{iteration}.csv')
-        events = pd.read_csv(fpath, index_col=['level','region','number']).loc[level]
+        events = pd.read_csv(fpath, index_col=['level','region','number'])
+        if events.empty:
+            continue
+        events = events.loc[level]
         events['mean'] = events['sum'] / events['timesteps']
         dictout[iteration] = events
         ## Plot for each region and iteration
@@ -6616,7 +6619,9 @@ def plot_eue_events(
                 if iteration == max(iterations):
                     _ax.set_ylabel(f'EUE {yval} [{units[yval]}]', y=0, ha='left')
                     _ax.set_xlabel(f'EUE {xval} [{units[xval]}]', x=0, ha='left')
-    ## Formatting
+    ## Formatting (stop here if there are no events)
+    if not len(dictout):
+        return f, ax, dictout
     _ax.set_xlim(0, _ax.get_xlim()[1])
     _ax.set_ylim(0, _ax.get_ylim()[1])
     for iteration in iterations:
