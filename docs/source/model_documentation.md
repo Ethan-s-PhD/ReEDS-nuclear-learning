@@ -60,6 +60,7 @@ National Laboratory of the Rockies. ({{ cite_date_last_updated }}). *Model docum
 | GW | gigawatt |
 | GWP | global warming potential |
 | H<sub>2</sub> | hydrogen |
+| HHV | higher heating value |
 | HMI | U.S. Bureau of Reclamation Hydropower Modernization Initiative |
 | HVDC | high-voltage direct current |
 | IGCC | integrated gasification combined cycle |
