@@ -392,3 +392,38 @@ execute_unload 'handoff%ds%reeds_data%ds%reeds_data_%cur_year%.gdx'
 execute_unload "outputs%ds%tc_phaseout_data%ds%emit_for_tc_phaseout_calc_%cur_year%.gdx"
   emit_nat_tc, emit_r_tc
 ;
+
+
+* Endogenous nuclear learning: dump cumulative post-anchor nuclear investment
+* (experience) and the values GAMS actually applied this year. Read back by
+* reeds/core/solve/nuclear_learning.py (read_experience_mw / _read_applied).
+* The output directory is created by nuclear_learning.py, which runs before
+* this year's solve whenever cur_year >= GSw_NuclearLearning_AnchorYear.
+* Uses nuclear_learning_exptech/basetech (b_inputs.gms) rather than nuclear(i),
+* which is destructively re-filtered earlier in this file.
+$ifthene.nucdump %GSw_NuclearLearning%==1
+$ifthene.nucdump2 %cur_year%>=%GSw_NuclearLearning_AnchorYear%
+
+parameter
+    nuc_inv_by_tech(i)      "--MW-- cumulative post-anchor gross investment in nuclear-learning experience techs through the current solve year"
+    nuc_cost_cap_applied(i) "--2004$/MW-- cost_cap actually used for the current solve year for nuclear-learning base techs"
+    nuc_ccmult_applied(i)   "--unitless-- ccmult actually used for the current solve year for nuclear-learning base techs"
+;
+
+* Strictly post-anchor (yeart > anchor), through the current solve year,
+* matching the convention in nuclear_learning.py check item 5.
+nuc_inv_by_tech(i)$nuclear_learning_exptech(i) =
+    sum{(v,r,t)$[valinv(i,v,r,t)
+               $(yeart(t)>%GSw_NuclearLearning_AnchorYear%)
+               $(yeart(t)<=%cur_year%)],
+        INV.l(i,v,r,t) } ;
+
+nuc_cost_cap_applied(i)$nuclear_learning_basetech(i) = cost_cap(i,"%cur_year%") ;
+nuc_ccmult_applied(i)$nuclear_learning_basetech(i)   = ccmult(i,"%cur_year%") ;
+
+execute_unload "outputs%ds%nuclear_learning_data%ds%cumulative_inv_%cur_year%.gdx"
+    nuc_inv_by_tech, nuc_cost_cap_applied, nuc_ccmult_applied
+;
+
+$endif.nucdump2
+$endif.nucdump

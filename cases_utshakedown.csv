@@ -1,0 +1,23 @@
+,Default Value,ut_floor,ut_equal,ut_slack,ut_learn
+ignore,0,,,,
+endyear,2035,,,,
+yearset,2010_2020_2026_2029_2033_2035,,,,
+GSw_Region,st/UT,,,,
+GSw_GasCurve,2,,,,
+GSw_Retire,0,,,,
+GSw_SkipRAyear,2035,,,,
+pras,0,,,,
+GSw_PRM_StressIterateMax,0,,,,
+GSw_PRM_CapCredit,1,,,,
+GSw_HourlyNumClusters,8,,,,
+GSw_HourlyChunkLengthRep,6,,,,
+GSw_HourlyChunkLengthStress,6,,,,
+ivt_suffix,small,,,,
+numhintage,1,,,,
+GSw_Biopower,0,,,,
+GSw_LfillGas,0,,,,
+GSw_OpRes,0,,,,
+GSw_StartCost,0,,,,
+GSw_NuclearCapMandate,1,,2,,
+GSw_NuclearCapMandateScen,ut_shakedown,,,ut_slack,ut_learn
+GSw_NuclearLearning,0,,,,1
