@@ -1,0 +1,37 @@
+{
+  "notebook": "mixed_build_optimizer.ipynb",
+  "generated_utc": "2026-07-31T22:54:59+00:00",
+  "fork_git_head": "518e3237e7b3eb361965a86461fa81f28f3eaae1",
+  "master_seed": 20260715,
+  "stream_prefix": "mixopt/",
+  "switches": {
+    "RHO_BOAK": 0.5,
+    "RHO_BOAK_SWEEP": [
+      0.0,
+      0.5,
+      0.9,
+      1.0
+    ],
+    "X_SPILL_MAX": 0.3,
+    "HIST_CROSS_TECH": false,
+    "COPULA_SET": "moderate",
+    "N_DRAWS_OPT": 2000,
+    "N_SWEEP": 1000,
+    "EPS_FLAG": 0.005,
+    "AUDIT_FRAC": 0.03,
+    "TOL_WIN": 0.001,
+    "SWEEP_SCHED": "McKinsey GEP 2025"
+  },
+  "headline": {
+    "total_draws": 12000,
+    "total_mixed_wins": 0,
+    "win_fraction": 0.0,
+    "closest_margin": -0.00021887413734533734
+  },
+  "exports": {
+    "rho_boak_sweep.csv": "408676c60c568f18",
+    "verdict_by_schedule.csv": "67a32129c3505037",
+    "winning_draws.csv": "59bfb7566521a44f",
+    "xzero_verdict.csv": "a2a4d75065525d4d"
+  }
+}

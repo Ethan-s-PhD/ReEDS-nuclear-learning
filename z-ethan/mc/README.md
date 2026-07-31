@@ -42,3 +42,22 @@ DLLs delay-load from the env's `Library\bin`, which activation puts on `PATH`.
 - `cases_nuclearlearning_mc.csv` (repo root) — the 18-case ReEDS run matrix.
 
 Every written file is round-trip checked by the notebook's QA section (S15).
+
+## Mixed-build stress test
+
+`mixed_build_optimizer.ipynb` answers one question the main notebook assumes away: **could any
+mixed large+SMR build program ever be cheaper than committing to the better single technology?**
+It relaxes the two assumptions that stack the deck against mixing — it allows drawn
+cross-technology spillover (up to 30% each direction, `x_ls`/`x_sl`) and decouples the two
+technologies' 2030 anchor-cost draws (rank correlation `RHO_BOAK`, default 0.5; 1.0 reproduces
+the main notebook's comonotone draw) — then, for every drawn future, a per-draw optimizer
+chooses the SMR share of each build year 2031–2050 (`smr_percentages`, length 20) to minimize
+the discounted financed cost of hitting that future's deployment schedule. The two pure
+strategies are always in the candidate set, so the headline metric is the signed *margin* of the
+best genuinely mixed strategy vs the best pure one (negative = mixing wins).
+
+Run it the same way as the main notebook (same env; ~10–15 min). It is read-only toward the
+ReEDS tree (consumes `US_SCHEDULES.csv` and the financing inputs; writes only to
+`exports/mixed_build/` and `figures/`). Its QA section pins the engine bit-for-bit to the main
+notebook at the "off" settings and reproduces the S13 fragmentation result in the shared limit.
+Cheap test runs: set env vars `MIXOPT_DRAWS` / `MIXOPT_SWEEP_DRAWS` before launching.
