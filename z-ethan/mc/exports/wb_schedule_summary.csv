@@ -1,7 +1,7 @@
-schedule,GW added by 2050,P(smr wins),median m_pct (%),share |m|<2%,"break-even premium @U0=0.5, full-stock ($/kW)",tiny-base U0 exit,agree undiscounted,agree unweighted
-EIA 2026 AEO high,21,0.657,4.728,0.135,1116.979,0.375,0.993,0.875
-Abou-Jaoude mod,36,0.626,3.8,0.131,1062.735,0.375,0.989,0.912
-IAEA high,76,0.641,4.693,0.122,1106.118,0.375,0.987,0.947
-McKinsey GEP 2025,103,0.655,5.017,0.121,1137.918,0.292,0.986,0.934
-COP28 tripling pledge,203,0.692,6.68,0.116,1302.532,0.375,0.982,0.919
-2025 EO,303,0.709,7.798,0.105,1459.419,0.292,0.984,0.928
+schedule,GW added by 2050,P(smr wins),median m_pct (%),share |m|<2%,"break-even premium @U0=0.2, tiny-base ($/kW)",tiny-base U0 exit,full-stock U0 exit,agree undiscounted,agree unweighted
+EIA 2026 AEO high,21,0.879,13.712,0.087,1749.13,0.375,0.208,0.996,0.853
+Abou-Jaoude mod,36,0.868,14.093,0.081,1597.638,0.375,0.208,0.987,0.885
+IAEA high,76,0.885,17.885,0.071,1670.052,0.375,0.125,0.994,0.938
+McKinsey GEP 2025,103,0.884,18.75,0.066,1633.879,0.375,0.125,0.994,0.94
+COP28 tripling pledge,203,0.894,22.35,0.052,1652.763,0.292,0.125,0.996,0.944
+2025 EO,303,0.9,25.023,0.051,1637.096,0.292,0.125,0.995,0.95
