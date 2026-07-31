@@ -217,6 +217,8 @@ eq_interconnection_queues(tg,r,t)         "--MW-- capacity deployment limit base
  eq_CSAPR_Budget(csapr_group,t)           "--metric tons NOx-- CSAPR trading group emissions cannot exceed the budget cap"
  eq_CSAPR_Assurance(st,t)                 "--metric tons NOx-- CSAPR state emissions cannot exceed the assurance cap"
  eq_BatteryMandate(st,t)                  "--MW-- battery storage capacity must be greater than indicated level"
+ eq_nuclear_cap_mandate(t)                "--MW-- total nuclear capacity must be at least the mandated national trajectory"
+ eq_nuclear_cap_mandate_ub(t)             "--MW-- with Sw_NuclearCapMandate=2, total nuclear capacity must also not exceed the mandated trajectory (equality mode)"
  eq_cdr_cap(t)                            "--metric tons CO2-- CO2 removal (DAC and BECCS) can only offset emissions from fossil+CCS and methane leakage"
  eq_caa_max_cf(i,v,r,t)                   "--MWh-- maximum capacity factors for new gas plants (CCs and CTs) under Clean Air Act Section 111 (BSER)"
  eq_caa_rate_standard(st,t)               "--metric tons CO2-- maximum coal emissions per state under Clean Air Act Section 111 (rate-based emissions standard)"
@@ -2839,6 +2841,45 @@ eq_batterymandate(st,t)
 
 *must be greater than the required level
     batterymandate(st,t)
+;
+
+* ---------------------------------------------------------------------------
+
+* Nuclear capacity mandate (GSw_NuclearCapMandate): total nuclear capacity
+* must follow the mandated national trajectory (the US deployment schedules of
+* the nuclear-learning MC notebook, scaled by Sw_NuclearCapMandate_Scale for
+* sub-national runs). This constrains CAPACITY, unlike eq_national_gen which
+* constrains generation share. Not applied before new nuclear can be built
+* (firstyear_nuclear), where a rising trajectory would be infeasible by
+* construction.
+
+eq_nuclear_cap_mandate(t)
+    $[tmodel(t)$nuclear_cap_trajectory(t)$(yeart(t)>=firstyear_nuclear)
+    $Sw_NuclearCapMandate
+    $(not Sw_PCM)]..
+
+    sum{(i,v,r)$[valcap(i,v,r,t)$nuclear(i)], CAP(i,v,r,t) }
+
+    =g=
+
+    nuclear_cap_trajectory(t)
+;
+
+* Equality mode (Sw_NuclearCapMandate=2): also cap capacity at the trajectory,
+* so deployment CONFORMS to the schedule rather than treating it as a floor.
+* Note prescribed builds and lumpy existing capacity can make this infeasible
+* if they exceed the (scaled) trajectory.
+
+eq_nuclear_cap_mandate_ub(t)
+    $[tmodel(t)$nuclear_cap_trajectory(t)$(yeart(t)>=firstyear_nuclear)
+    $(Sw_NuclearCapMandate=2)
+    $(not Sw_PCM)]..
+
+    sum{(i,v,r)$[valcap(i,v,r,t)$nuclear(i)], CAP(i,v,r,t) }
+
+    =l=
+
+    nuclear_cap_trajectory(t)
 ;
 
 * ---------------------------------------------------------------------------

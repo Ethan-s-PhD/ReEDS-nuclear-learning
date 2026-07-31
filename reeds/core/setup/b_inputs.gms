@@ -1481,6 +1481,29 @@ $offempty
 scalar firstyear_battery "--year-- the first year battery technologies can be built, used to enforce storage mandate" ;
 firstyear_battery = smin(i$battery(i),firstyear(i)) ;
 
+* ===========================================================================
+* National nuclear capacity mandate trajectory (GSw_NuclearCapMandate;
+* eq_nuclear_cap_mandate in c_model.gms). Scenario file selected by
+* GSw_NuclearCapMandateScen (the US deployment schedules of the
+* nuclear-learning MC notebook); empty file when the mandate is off.
+* ===========================================================================
+$onempty
+parameter nuclear_cap_trajectory(allt) "--MW-- national nuclear capacity mandate trajectory (existing + new, net-path basis)"
+/
+$offlisting
+$ondelim
+$include inputs_case%ds%nuclear_cap_trajectory.csv
+$offdelim
+$onlisting
+/ ;
+$offempty
+
+* Sub-national runs apply a fraction of the national trajectory
+nuclear_cap_trajectory(allt) = nuclear_cap_trajectory(allt) * Sw_NuclearCapMandate_Scale ;
+
+scalar firstyear_nuclear "--year-- the first year new nuclear can be built, used to enforce the nuclear capacity mandate" ;
+firstyear_nuclear = smin(i$nuclear(i),firstyear(i)) ;
+
 $onempty
 table offshore_cap_req(st,allt) "--MW-- offshore wind capacity requirement by state"
 $offlisting
@@ -6184,6 +6207,22 @@ emit_rate(etype,e,i,v,r,t)$[not valgen(i,v,r,t)] = 0 ;
 *============================================================
 * -- Initial state of parameters that change as model runs --
 *============================================================
+
+
+* ===========================================================================
+* Endogenous nuclear learning (GSw_NuclearLearning) -- sets and override params
+* ===========================================================================
+* nuclear_learning.py writes per-year learned overrides that 3_solve_oneyear.gms
+* re-reads (before the 2_financials.gms include) when GSw_NuclearLearning=1.
+set nuclear_learning_basetech(i) "base nuclear techs subject to endogenous learning" ;
+nuclear_learning_basetech(i)$nuclear(i) = yes ;
+
+set nuclear_learning_exptech(i) "all techs whose builds count as nuclear-learning experience" ;
+nuclear_learning_exptech(i)$nuclear_learning_basetech(i) = yes ;
+
+parameter learning_cost_cap(i,allt) "--2004$/MW-- learned overnight capital cost override for nuclear techs" ;
+parameter learning_ccmult(i,allt)   "--unitless-- learned construction financing multiplier override for nuclear techs" ;
+parameter learning_factor(i,allt)   "--unitless-- OCC learning ratio (learned/BOAK) for nuclear techs" ;
 
 valinv_init(i,v,r,t) = valinv(i,v,r,t) ;
 valcap_init(i,v,r,t) = valcap(i,v,r,t) ;

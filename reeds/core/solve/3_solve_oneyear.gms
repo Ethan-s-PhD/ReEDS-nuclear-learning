@@ -189,6 +189,40 @@ $endif.tcheck
 *** Calculate financial multipliers
 * These are calculated here because the ITC phaseout can influence these parameters,
 * and the timing of the phaseout is not known beforehand.
+* ===========================================================================
+* Endogenous nuclear learning: apply learned OCC and construction financing
+* (written by nuclear_learning.py for this solve year). This MUST precede
+* 2_financials.gms so that cost_cap_fin_mult picks up the learned ccmult.
+* Sequential mode only (see nuclear_learning.py guards). No override is
+* applied before the anchor year.
+* ===========================================================================
+$ifthene.nuclearn %GSw_NuclearLearning%==1
+$ifthene.nucanchor %cur_year%>=%GSw_NuclearLearning_AnchorYear%
+
+* --- Overnight capital cost (OCC) channel ---
+$ifthene.nucocc %GSw_NuclearLearning_OCC%==1
+$gdxin outputs%ds%nuclear_learning_data%ds%nuclear_learning_%cur_year%.gdx
+$loaddcr learning_cost_cap
+$loaddcr learning_factor
+$gdxin
+plant_char0(i,"%cur_year%","capcost")$[nuclear_learning_basetech(i)$learning_cost_cap(i,"%cur_year%")] =
+    learning_cost_cap(i,"%cur_year%") ;
+cost_cap(i,"%cur_year%")$[nuclear_learning_basetech(i)$learning_cost_cap(i,"%cur_year%")] =
+    learning_cost_cap(i,"%cur_year%") ;
+$endif.nucocc
+
+* --- Construction-duration (interest-during-construction) channel ---
+$ifthene.nucdur %GSw_NuclearLearning_Duration%==1
+$gdxin outputs%ds%nuclear_learning_data%ds%nuclear_learning_%cur_year%.gdx
+$loaddcr learning_ccmult
+$gdxin
+ccmult(i,"%cur_year%")$[nuclear_learning_basetech(i)$learning_ccmult(i,"%cur_year%")] =
+    learning_ccmult(i,"%cur_year%") ;
+$endif.nucdur
+
+$endif.nucanchor
+$endif.nuclearn
+
 $include reeds%ds%core%ds%solve%ds%2_financials.gms
 
 

@@ -1196,6 +1196,36 @@ emit_captured_nat(i,t)$tmodel_new(t) = sum{r, emit_captured_irt(i,r,t) } ;
 
 RE_gen_price_nat(t)$tmodel_new(t) = (1/cost_scale) * crf(t) * eq_national_gen.m(t) ;
 
+* ===========================================================================
+* Nuclear capacity mandate prices (GSw_NuclearCapMandate; eq_nuclear_cap_mandate
+* in c_model.gms). The floor marginal is the learning-consistent required
+* subsidy read as a national capacity rental price; in equality mode (=2) the
+* ceiling marginal is also reported and the net price is the sum (ub <= 0).
+* Raw marginals are reported alongside the converted prices so the ITC
+* translation can be audited.
+* VERIFY at the pilot logging audit: the deflation convention for a capacity
+* constraint under sequential solves. Two patterns coexist in this file:
+*   rental basis:     (1/cost_scale) * (1/pvf_onm(t)) * .m   [reserve margin, co2_price]
+*   annualized basis: (1/cost_scale) * crf(t) * .m           [RE_gen_price_nat]
+* Default here is the rental basis; raw .m is reported for the audit.
+* ===========================================================================
+parameter
+  nuclear_cap_price(t)        "--$/MW-yr-- converted marginal on the nuclear capacity mandate floor"
+  nuclear_cap_price_ub(t)     "--$/MW-yr-- converted marginal on the equality-mode ceiling (<=0)"
+  nuclear_cap_price_raw(t)    "--objective $/MW-- raw eq_nuclear_cap_mandate.m"
+  nuclear_cap_price_ub_raw(t) "--objective $/MW-- raw eq_nuclear_cap_mandate_ub.m"
+;
+
+nuclear_cap_price(t)$tmodel_new(t) =
+    (1 / cost_scale) * (1 / pvf_onm(t)) * eq_nuclear_cap_mandate.m(t) ;
+
+nuclear_cap_price_ub(t)$[tmodel_new(t)$(Sw_NuclearCapMandate=2)] =
+    (1 / cost_scale) * (1 / pvf_onm(t)) * eq_nuclear_cap_mandate_ub.m(t) ;
+
+nuclear_cap_price_raw(t)$tmodel_new(t)    = eq_nuclear_cap_mandate.m(t) ;
+nuclear_cap_price_ub_raw(t)$[tmodel_new(t)$(Sw_NuclearCapMandate=2)] = eq_nuclear_cap_mandate_ub.m(t) ;
+
+
 *=========================
 * [i,v,r,t]-level capital expenditures (for retail rate calculations)
 *=========================
