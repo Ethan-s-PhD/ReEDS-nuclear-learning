@@ -1,0 +1,7 @@
+convention,U0,lr_large at U0 (%),break-even U1*,break-even boak_large ($/kW),break-even boak_smr ($/kW),break-even SMR premium ($/kW)
+tiny-base,0.25,5.25,0.72,7048.1,8736.59,1688.48
+tiny-base,0.5,7.5,,,,
+tiny-base,0.75,9.75,,,,
+full-stock,0.25,5.25,0.3,6004.93,6858.87,853.94
+full-stock,0.5,7.5,0.44,6359.9,7497.82,1137.92
+full-stock,0.75,9.75,0.61,6780.83,8255.49,1474.66

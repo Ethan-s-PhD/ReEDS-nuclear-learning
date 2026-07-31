@@ -26,8 +26,9 @@ DLLs delay-load from the env's `Library\bin`, which activation puts on `PATH`.
 | File | What it is |
 |---|---|
 | `mc_cost_trajectories.ipynb` | The notebook (all logic lives here) |
+| `winner_boundary.ipynb` | Downstream analysis of the SMR-vs-large winner: which parameters decide it and where the advantage flips (issue-8 regroup evidence). Reads `exports/mc_perdraw.npz` (written by the MC's S10b cell, gitignored) — run the MC notebook first. Uses plotly for the interactive/3D figures. |
 | `pris_loader.py`, `rds2_2025_units.csv`, `pris_data_spec.md` | IAEA RDS-2 2025 unit-level data + loader (verbatim copies from the reference repo) |
-| `exports/` | Notebook-local outputs: percentile tables per schedule, the 18 selected draws, run metadata |
+| `exports/` | Notebook-local outputs: percentile tables per schedule, the 18 selected draws, run metadata, the per-draw `.npz`, and the winner-analysis tables (`wb_*.csv`) |
 | `figures/` | Paper figures (hindcast check, fragmentation figure, cost fans) |
 
 ## What it writes into the ReEDS fork

@@ -63,3 +63,6 @@ slurm_parallel_runs/
 
 # documentation files 
 docs/build/*
+
+# MC per-draw export (large binary; regenerate by running z-ethan/mc/mc_cost_trajectories.ipynb)
+z-ethan/mc/exports/*.npz

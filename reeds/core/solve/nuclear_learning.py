@@ -38,12 +38,17 @@ See cases.csv for the switch definitions.
 ### --- IMPORTS ---
 ### ===========================================================================
 import os
+import sys
 import math
 import argparse
+from pathlib import Path
 import gdxpds  # noqa: E402  (import before pandas per gdxpds guidance)
 import numpy as np
 import pandas as pd
-import reeds
+# Make the run-dir copy of the reeds package importable when invoked as a script
+# (same stanza as 1_tc_phaseout.py: scripts run with sys.path[0] = this file's dir)
+sys.path.append(str(Path(__file__).parent.parent.parent.parent))
+import reeds  # noqa: E402
 
 # GAMS i-name (lower-case) -> internal parent key used for switch lookups.
 BASE_TECHS = {'nuclear': 'large', 'nuclear-smr': 'smr'}
@@ -393,7 +398,15 @@ def main(cur_year, case):
         # 1 GW of SMRs teaches a large vendor as much as 1 GW of foreign reactors)
         n_other = (exp_mw[other] / unit_mw[parent]) if cross_tech else 0.0
 
-        factor = occ_factor(N, n_other, lr[parent], omega, m, s, c, rho, h_us, h_kv, s_kv)
+        # US historical fleet counts toward LARGE only (design decision 2026-07-31):
+        # the SMR learning-rate range is empirically derived and already embeds any
+        # benefit from prior LWR builds, so crediting the ~140-unit US stock to the
+        # SMR base would double-count it (and contradict the zero domestic cross-tech
+        # spillover convention). Foreign historical stock (h_kv) still enters the SMR
+        # cross-firm channel under the full-stock convention.
+        h_us_parent = h_us if parent == 'large' else 0.0
+
+        factor = occ_factor(N, n_other, lr[parent], omega, m, s, c, rho, h_us_parent, h_kv, s_kv)
         learned_occ = boak[parent] * factor
 
         reeds_default_mo = 12.0 * len(canonical[parent])
