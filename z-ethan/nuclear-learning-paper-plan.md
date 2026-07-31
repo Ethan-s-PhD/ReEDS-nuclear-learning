@@ -21,6 +21,8 @@
 - **Track A — Ethan:** review diff, commit + push `nuclear-learning`; run the **small-scale shortened shakedown runs** (short horizon, reduced spatial resolution; on NLR or local — GAMS required): floor smoke test, equality flip, slack floor, engine smoke test (watch gdxpds 4.0 API), financing cross-check. Outside the paper's run count.
 - **Track B — new MC notebook repository:** build per this plan (scope below). Neither track blocks the other.
 
+**Step 0 build status (2026-07-31, see notes doc §0.1):** the engine's experience dump was found unwired (a port omission at the `d3_data_dump`→`6_data_dump.gms` rename) and fixed; Utah shakedown cases built (`cases_utshakedown.csv`: floor 500 MW @ 2035, equality flip, slack floor, engine smoke — 2032 dropped because `firstyear_nuclear`=2033) and launched (first-run input sync in progress; A6 verification pending); **Track B built** at `z-ethan/mc/mc_cost_trajectories.ipynb` (in-fork per decision, not a separate repo): 6×5,000 per-trajectory MCs, financing replication verified, winner-take-all + 18-case joint-draw exports, `US_SCHEDULES.csv` single-source-of-truth + `cop29`→`cop28` regeneration, fragmentation figure (median split penalty 10%), hindcasts, QA1–QA13 green (QA10 awaits the shakedown run).
+
 **Then:** NLR regroup (issue 8 + ranking functional + non-CAPEX parameter check) → Step 0 pilots with real MC trajectories → issues 5 + 6 → issue 7 + Step 4 budget variant → 2030-anchor documentation.
 
 ## Core idea

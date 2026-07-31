@@ -1,0 +1,13 @@
+,Default Value,eia_p05,eia_p50,eia_p95,aj_p05,aj_p50,aj_p95,iaea_p05,iaea_p50,iaea_p95,mck_p05,mck_p50,mck_p95,cop28_p05,cop28_p50,cop28_p95,eo_p05,eo_p50,eo_p95
+ignore,0,,,,,,,,,,,,,,,,,,
+timetype,seq,,,,,,,,,,,,,,,,,,
+endyear,2050,,,,,,,,,,,,,,,,,,
+GSw_NuclearCapMandate,1,,,,,,,,,,,,,,,,,,
+GSw_NuclearCapMandate_Scale,1,,,,,,,,,,,,,,,,,,
+GSw_NuclearLearning,0,,,,,,,,,,,,,,,,,,
+construction_schedules_suffix,mc,,,,,,,,,,,,,,,,,,
+GSw_NuclearCapMandateScen,,eia_aeo_high,eia_aeo_high,eia_aeo_high,abou_jaoude,abou_jaoude,abou_jaoude,iaea_high,iaea_high,iaea_high,mckinsey,mckinsey,mckinsey,cop28,cop28,cop28,eo2025,eo2025,eo2025
+plantchar_nuclear,,nuclear_mc_eia_p05,nuclear_mc_eia_p50,nuclear_mc_eia_p95,nuclear_mc_aj_p05,nuclear_mc_aj_p50,nuclear_mc_aj_p95,nuclear_mc_iaea_p05,nuclear_mc_iaea_p50,nuclear_mc_iaea_p95,nuclear_mc_mck_p05,nuclear_mc_mck_p50,nuclear_mc_mck_p95,nuclear_mc_cop28_p05,nuclear_mc_cop28_p50,nuclear_mc_cop28_p95,nuclear_mc_eo_p05,nuclear_mc_eo_p50,nuclear_mc_eo_p95
+plantchar_nuclear_smr,,nuclear-smr_mc_eia_p05,nuclear-smr_mc_eia_p50,nuclear-smr_mc_eia_p95,nuclear-smr_mc_aj_p05,nuclear-smr_mc_aj_p50,nuclear-smr_mc_aj_p95,nuclear-smr_mc_iaea_p05,nuclear-smr_mc_iaea_p50,nuclear-smr_mc_iaea_p95,nuclear-smr_mc_mck_p05,nuclear-smr_mc_mck_p50,nuclear-smr_mc_mck_p95,nuclear-smr_mc_cop28_p05,nuclear-smr_mc_cop28_p50,nuclear-smr_mc_cop28_p95,nuclear-smr_mc_eo_p05,nuclear-smr_mc_eo_p50,nuclear-smr_mc_eo_p95
+financials_tech_suffix,,mc_eia_p05,mc_eia_p50,mc_eia_p95,mc_aj_p05,mc_aj_p50,mc_aj_p95,mc_iaea_p05,mc_iaea_p50,mc_iaea_p95,mc_mck_p05,mc_mck_p50,mc_mck_p95,mc_cop28_p05,mc_cop28_p50,mc_cop28_p95,mc_eo_p05,mc_eo_p50,mc_eo_p95
+construction_times_suffix,,mc_eia_p05,mc_eia_p50,mc_eia_p95,mc_aj_p05,mc_aj_p50,mc_aj_p95,mc_iaea_p05,mc_iaea_p50,mc_iaea_p95,mc_mck_p05,mc_mck_p50,mc_mck_p95,mc_cop28_p05,mc_cop28_p50,mc_cop28_p95,mc_eo_p05,mc_eo_p50,mc_eo_p95
