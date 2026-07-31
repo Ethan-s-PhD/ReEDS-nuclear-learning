@@ -352,6 +352,12 @@ def solvestring_sequential(
             'GSw_HourlyWrapLevel',
             'GSw_MGA_CostDelta',
             'GSw_MGA_Direction',
+            ## Nuclear-learning compile-time macros used by 3_solve_oneyear.gms
+            ## (override block) and 6_data_dump.gms (experience dump)
+            'GSw_NuclearLearning',
+            'GSw_NuclearLearning_AnchorYear',
+            'GSw_NuclearLearning_OCC',
+            'GSw_NuclearLearning_Duration',
             'GSw_PVB_Dur',
             'GSw_SkipRAyear',
             'GSw_StateCO2ImportLevel',
