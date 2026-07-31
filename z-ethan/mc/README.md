@@ -48,13 +48,16 @@ Every written file is round-trip checked by the notebook's QA section (S15).
 `mixed_build_optimizer.ipynb` answers one question the main notebook assumes away: **could any
 mixed large+SMR build program ever be cheaper than committing to the better single technology?**
 It relaxes the two assumptions that stack the deck against mixing — it allows drawn
-cross-technology spillover (up to 30% each direction, `x_ls`/`x_sl`) and decouples the two
-technologies' 2030 anchor-cost draws (rank correlation `RHO_BOAK`, default 0.5; 1.0 reproduces
-the main notebook's comonotone draw) — then, for every drawn future, a per-draw optimizer
-chooses the SMR share of each build year 2031–2050 (`smr_percentages`, length 20) to minimize
-the discounted financed cost of hitting that future's deployment schedule. The two pure
+cross-technology spillover (up to 30% each direction, `x_ls`/`x_sl`), and it draws each
+technology's (learning rate, anchor cost) pair **independently**, conditioned on the two
+orderings every real SMR proposal respects: `boak_smr > boak_large` (SMR starts pricier) and
+`lr_smr > lr_large` (SMR learns faster), so the starting-cost gap and the learning-rate gap
+vary freely against each other. Then, for every drawn future (10,000 per schedule), a per-draw
+optimizer chooses the SMR share of each build year 2031–2050 (`smr_percentages`, length 20) to
+minimize the discounted financed cost of hitting that future's deployment schedule. The two pure
 strategies are always in the candidate set, so the headline metric is the signed *margin* of the
-best genuinely mixed strategy vs the best pure one (negative = mixing wins).
+best genuinely mixed strategy vs the best pure one (negative = mixing wins); the S8 maps chart
+the winners and the near-mixed region over the (learning-rate gap, cost gap) plane.
 
 Run it the same way as the main notebook (same env; ~10–15 min). It is read-only toward the
 ReEDS tree (consumes `US_SCHEDULES.csv` and the financing inputs; writes only to
