@@ -1,12 +1,12 @@
 {
   "notebook": "smr100_case_export.ipynb",
-  "generated_utc": "2026-08-01T03:32:47+00:00",
-  "fork_git_head": "e111377c71766b4815c076a8043f45a0eff6e016",
+  "generated_utc": "2026-08-01T03:51:56+00:00",
+  "fork_git_head": "05e3dfc75fd0374da2ac081349351cfa87de75f3",
   "master_seed": 20260715,
   "stream_prefix": "smr100/",
   "design": {
     "deployment": "100% SMR (winner-take-all resolved in favor of SMR; see mc_cost_trajectories.ipynb S10 and mixed_build_optimizer.ipynb)",
-    "draw": "independent per-tech (lr, boak) pairs, rejection-conditioned on boak_smr > boak_large and lr_smr > lr_large; no cross-tech spillover (paper convention)",
+    "draw": "the companion notebook's comonotone 3-latent copula draw, verbatim, on the companion's own seed streams (world/{schedule}) \u2014 identical worlds, asserted in QA-0 when mc_perdraw.npz is present",
     "large_channel": "international spillover only (zero US builds)",
     "ranking": "discounted_schedule_weighted",
     "copula_set": "moderate",
@@ -115,6 +115,6 @@
     "construction_schedules": "construction_schedules_mc.csv"
   },
   "exports": {
-    "selected_draws.csv": "155bdf8f2351ac8c"
+    "selected_draws.csv": "2f3f73db18fa2162"
   }
 }
