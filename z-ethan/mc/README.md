@@ -64,3 +64,17 @@ ReEDS tree (consumes `US_SCHEDULES.csv` and the financing inputs; writes only to
 `exports/mixed_build/` and `figures/`). Its QA section pins the engine bit-for-bit to the main
 notebook at the "off" settings and reproduces the S13 fragmentation result in the shared limit.
 Cheap test runs: set env vars `MIXOPT_DRAWS` / `MIXOPT_SWEEP_DRAWS` before launching.
+
+## The 100%-SMR case export (next-phase inputs)
+
+`smr100_case_export.ipynb` is the production case generator for the ReEDS phase, superseding
+the main notebook's winner-take-all 18-case export: since the SMR program is the cheaper pure
+strategy in 76–89% of futures and mixed optima are negligible, **deployment is assumed 100%
+SMR**. It re-runs the MC (ordered independent draws, 10,000/schedule, no cross-tech spillover —
+paper convention), ranks each schedule's draws by discounted SMR program cost, selects the
+P5/P50/P95 joint draws, and exports 18 cases: `cases_nuclearlearning_smr100.csv` (repo root),
+36 plantchar files (`nuclear{,-smr}_mc_smr100_*`; the large-reactor file is the
+international-spillover-only counterfactual), 18+18 financials/construction-times files, and
+the shared `construction_schedules_mc.csv`. Every written file is round-trip checked (QA-5).
+Launch the phase with `python runreeds.py -b <batch> -c nuclearlearning_smr100`. Cheap test
+runs: env var `SMR100_DRAWS`.
