@@ -43,6 +43,7 @@ foreign_experience.csv,inputs/nuclear_learning/foreign_experience_{GSw_NuclearLe
 historical_stock.csv,inputs/nuclear_learning/historical_stock.csv,int(sw.GSw_NuclearLearning) == 1,ignore,ignore,,,,,0,,,,,,
 inl_duration_curves.csv,inputs/nuclear_learning/inl_duration_curves.csv,int(sw.GSw_NuclearLearning) == 1,ignore,ignore,,,,,0,,,,,,
 nuclear_cap_trajectory.csv,inputs/nuclear_learning/nuclear_cap_trajectory_{GSw_NuclearCapMandateScen}.csv,int(sw.GSw_NuclearCapMandate) != 0,ignore,ignore,,,,,0,,,,,,
+nuclear_cap_mandate_techs.csv,inputs/nuclear_learning/nuclear_cap_mandate_techs_{GSw_NuclearCapMandateTechScen}.csv,int(sw.GSw_NuclearCapMandate) != 0,ignore,ignore,,,,,0,,,,,,
 consume_char.csv,inputs/consume/consume_char_{GSw_H2_Inputs}.csv,int(sw.GSw_H2) != 0,ignore,ignore,,"*i,t,parameter",,0,0,,,,,,
 consumecat.csv,inputs/sets/consumecat.csv,1,ignore,ignore,,,,,,,,set,consumecat,categories for consuming facility characteristics,
 cost_cap_mult.csv,inputs/waterclimate/cost_cap_mult.csv,int(sw.GSw_WaterMain) != 0,ignore,ignore,,,,,0,,,,,,

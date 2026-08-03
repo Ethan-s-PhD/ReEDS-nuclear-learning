@@ -2845,20 +2845,22 @@ eq_batterymandate(st,t)
 
 * ---------------------------------------------------------------------------
 
-* Nuclear capacity mandate (GSw_NuclearCapMandate): total nuclear capacity
-* must follow the mandated national trajectory (the US deployment schedules of
-* the nuclear-learning MC notebook, scaled by Sw_NuclearCapMandate_Scale for
-* sub-national runs). This constrains CAPACITY, unlike eq_national_gen which
-* constrains generation share. Not applied before new nuclear can be built
-* (firstyear_nuclear), where a rising trajectory would be infeasible by
-* construction.
+* Nuclear capacity mandate (GSw_NuclearCapMandate): the capacity of the mandate
+* tech set (nuclear_cap_mandate_i, selected by GSw_NuclearCapMandateTechScen;
+* the whole nuclear group by default) must follow the mandated national
+* trajectory (the US deployment schedules of the nuclear-learning MC notebook,
+* scaled by Sw_NuclearCapMandate_Scale for sub-national runs). This constrains
+* CAPACITY, unlike eq_national_gen which constrains generation share. Not
+* applied before new nuclear can be built (firstyear_nuclear), where a rising
+* trajectory would be infeasible by construction. The trajectory basis must
+* match the tech set (see the switch descriptions in cases.csv).
 
 eq_nuclear_cap_mandate(t)
     $[tmodel(t)$nuclear_cap_trajectory(t)$(yeart(t)>=firstyear_nuclear)
     $Sw_NuclearCapMandate
     $(not Sw_PCM)]..
 
-    sum{(i,v,r)$[valcap(i,v,r,t)$nuclear(i)], CAP(i,v,r,t) }
+    sum{(i,v,r)$[valcap(i,v,r,t)$nuclear_cap_mandate_i(i)], CAP(i,v,r,t) }
 
     =g=
 
@@ -2875,7 +2877,7 @@ eq_nuclear_cap_mandate_ub(t)
     $(Sw_NuclearCapMandate=2)
     $(not Sw_PCM)]..
 
-    sum{(i,v,r)$[valcap(i,v,r,t)$nuclear(i)], CAP(i,v,r,t) }
+    sum{(i,v,r)$[valcap(i,v,r,t)$nuclear_cap_mandate_i(i)], CAP(i,v,r,t) }
 
     =l=
 

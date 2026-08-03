@@ -1501,6 +1501,20 @@ $offempty
 * Sub-national runs apply a fraction of the national trajectory
 nuclear_cap_trajectory(allt) = nuclear_cap_trajectory(allt) * Sw_NuclearCapMandate_Scale ;
 
+* Which technologies' capacity counts toward the mandate
+* (GSw_NuclearCapMandateTechScen; default 'nuclear' = the whole nuclear group,
+* preserving the original behavior). NOTE the trajectory must be on the same
+* basis as this set: total-capacity trajectories pair with the full group;
+* the {scen}_smr additions-basis trajectories pair with the smr-only set.
+$onempty
+set nuclear_cap_mandate_i(i) "techs whose capacity counts toward the nuclear capacity mandate"
+/
+$offlisting
+$include inputs_case%ds%nuclear_cap_mandate_techs.csv
+$onlisting
+/ ;
+$offempty
+
 scalar firstyear_nuclear "--year-- the first year new nuclear can be built, used to enforce the nuclear capacity mandate" ;
 firstyear_nuclear = smin(i$nuclear(i),firstyear(i)) ;
 

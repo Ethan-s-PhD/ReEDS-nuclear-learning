@@ -1,0 +1,4 @@
+*i - techs whose capacity counts toward the nuclear capacity mandate
+* (GSw_NuclearCapMandateTechScen=smr: nuclear-smr only - pair with the
+* {scen}_smr additions-basis trajectories, NOT the total-capacity ones)
+nuclear-smr

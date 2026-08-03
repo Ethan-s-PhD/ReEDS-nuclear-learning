@@ -73,13 +73,27 @@ the main notebook's winner-take-all 18-case export: since pure single-technology
 truly optimal (mixed-build stress test) and the SMR program is the cheaper one in most futures,
 **deployment is assumed 100% SMR**. It re-runs the main notebook's own MC — the identical
 comonotone draw on the identical seed streams (QA-0 asserts the worlds match `mc_perdraw.npz`
-draw-for-draw) — with the whole program feeding SMR learning in every draw, ranks each
-schedule's draws by **discounted SMR program NPV** (financed CAPEX + 30-yr PV of FOM/VOM/fuel
+draw-for-draw) — with the whole program feeding SMR learning in every draw, and measures
+everything on the **discounted SMR program NPV** (financed CAPEX + 30-yr PV of FOM/VOM/fuel
 at CF = ReEDS's own `avail`; convention and validation in `npv_winner_check.ipynb`, adopted
-2026-08-03), selects the P5/P50/P95 joint draws, and exports 18 cases with draw-consistent
-FOM/VOM in the plantchar files: `cases_nuclearlearning_smr100.csv` (repo root),
+2026-08-03). The exported cases are three **designed worlds** per schedule (adopted
+2026-08-03, replacing the earlier P5/P50/P95 draw selection — a scalar-percentile draw mixes
+offsetting parameter extremes; see the notebook's monotonicity section): `lo`/`hi` are
+engine-optimized cost **bounds** over every uncertain input (the interacting six jointly
+enumerated, the certified-monotone dials and the ±2.33-capped `dur_z` pinned,
+coordinate-verified; they land strictly outside all 10k draws) and `mid` is the
+**literature-expected world** (Abou-Jaoude LR 8%/9.5% and m=4, ATB 2024 moderate
+BOAK/FOM/VOM, tiny-base, multiplicative aggregation; lands ~P38–40 of the drawn NPV). The
+18 cases export with case-consistent FOM/VOM in the plantchar files:
+`cases_nuclearlearning_smr100.csv` (repo root),
 36 plantchar files (`nuclear{,-smr}_mc_smr100_*`; the large-reactor file is the
 international-spillover-only counterfactual), 18+18 financials/construction-times files, and
-the shared `construction_schedules_mc.csv`. Every written file is round-trip checked (QA-5).
+the shared `construction_schedules_mc.csv`. The cases mandate **SMR capacity only**: the
+mandate's tech set is switchable (`GSw_NuclearCapMandateTechScen` →
+`inputs/nuclear_learning/nuclear_cap_mandate_techs_{scen}.csv`), and these cases pair the
+`smr` set with `{scen}_smr` **additions-basis** trajectories (cumulative post-2030 builds
+incl. retirement backfill — exactly the notebook's own `cumsum(GW_ADD)`, asserted in QA-5e),
+so the large counterfactual can never fulfill the mandate and is never economic without it.
+Every written file is round-trip checked (QA-5).
 Launch the phase with `python runreeds.py -b <batch> -c nuclearlearning_smr100`. Cheap test
 runs: env var `SMR100_DRAWS`.
