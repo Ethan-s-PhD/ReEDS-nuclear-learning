@@ -27,8 +27,9 @@ DLLs delay-load from the env's `Library\bin`, which activation puts on `PATH`.
 |---|---|
 | `mc_cost_trajectories.ipynb` | The notebook (all logic lives here) |
 | `winner_boundary.ipynb` | Downstream analysis of the SMR-vs-large winner: which parameters decide it and where the advantage flips (issue-8 regroup evidence). Reads `exports/mc_perdraw.npz` (written by the MC's S10b cell, gitignored) — run the MC notebook first. Uses plotly for the interactive/3D figures. |
+| `npv_winner_check.ipynb` | Robustness check: re-ranks every draw on the **full NPV** (financed CAPEX + 30-yr PV of FOM/VOM/fuel, capacity factor = ReEDS's own `avail`, replicated bit-exactly from its raw inputs) instead of CAPEX alone — does the winner change? FOM/VOM ride the draw's cost-dial percentile across the ATB advanced→conservative range (they are not independent sensitivities). Reads `exports/mc_perdraw.npz`; needs `h5py` for the state-temperature h5. |
 | `pris_loader.py`, `rds2_2025_units.csv`, `pris_data_spec.md` | IAEA RDS-2 2025 unit-level data + loader (verbatim copies from the reference repo) |
-| `exports/` | Notebook-local outputs: percentile tables per schedule, the 18 selected draws, run metadata, the per-draw `.npz`, and the winner-analysis tables (`wb_*.csv`) |
+| `exports/` | Notebook-local outputs: percentile tables per schedule, the 18 selected draws, run metadata, the per-draw `.npz`, the winner-analysis tables (`wb_*.csv`), and the NPV-check tables (`npv_*.csv`) |
 | `figures/` | Paper figures (hindcast check, fragmentation figure, cost fans) |
 
 ## What it writes into the ReEDS fork
@@ -73,8 +74,10 @@ truly optimal (mixed-build stress test) and the SMR program is the cheaper one i
 **deployment is assumed 100% SMR**. It re-runs the main notebook's own MC — the identical
 comonotone draw on the identical seed streams (QA-0 asserts the worlds match `mc_perdraw.npz`
 draw-for-draw) — with the whole program feeding SMR learning in every draw, ranks each
-schedule's draws by discounted SMR program cost, selects the P5/P50/P95 joint draws, and
-exports 18 cases: `cases_nuclearlearning_smr100.csv` (repo root),
+schedule's draws by **discounted SMR program NPV** (financed CAPEX + 30-yr PV of FOM/VOM/fuel
+at CF = ReEDS's own `avail`; convention and validation in `npv_winner_check.ipynb`, adopted
+2026-08-03), selects the P5/P50/P95 joint draws, and exports 18 cases with draw-consistent
+FOM/VOM in the plantchar files: `cases_nuclearlearning_smr100.csv` (repo root),
 36 plantchar files (`nuclear{,-smr}_mc_smr100_*`; the large-reactor file is the
 international-spillover-only counterfactual), 18+18 financials/construction-times files, and
 the shared `construction_schedules_mc.csv`. Every written file is round-trip checked (QA-5).

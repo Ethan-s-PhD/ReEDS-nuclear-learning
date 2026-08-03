@@ -1,14 +1,15 @@
 {
   "notebook": "smr100_case_export.ipynb",
-  "generated_utc": "2026-08-01T03:51:56+00:00",
-  "fork_git_head": "05e3dfc75fd0374da2ac081349351cfa87de75f3",
+  "generated_utc": "2026-08-03T17:55:35+00:00",
+  "fork_git_head": "14ee3fd2c2420bb9d109c298d6c8d3f00f4ecbdf",
   "master_seed": 20260715,
   "stream_prefix": "smr100/",
   "design": {
     "deployment": "100% SMR (winner-take-all resolved in favor of SMR; see mc_cost_trajectories.ipynb S10 and mixed_build_optimizer.ipynb)",
     "draw": "the companion notebook's comonotone 3-latent copula draw, verbatim, on the companion's own seed streams (world/{schedule}) \u2014 identical worlds, asserted in QA-0 when mc_perdraw.npz is present",
     "large_channel": "international spillover only (zero US builds)",
-    "ranking": "discounted_schedule_weighted",
+    "ranking": "discounted_schedule_weighted_npv",
+    "non_capex": "FOM/VOM comonotone with the draw cost percentile U1 across ATB 2024 advanced->conservative; CF = ReEDS avail 0.9044; uranium AEO_2026_baseline; 30-yr PV at the system real rate (pvf_onm = 1/crf); adopted 2026-08-03 (see npv_winner_check.ipynb)",
     "copula_set": "moderate",
     "n_draws": 10000
   },
@@ -115,6 +116,6 @@
     "construction_schedules": "construction_schedules_mc.csv"
   },
   "exports": {
-    "selected_draws.csv": "2f3f73db18fa2162"
+    "selected_draws.csv": "9499d876ee3d619e"
   }
 }
