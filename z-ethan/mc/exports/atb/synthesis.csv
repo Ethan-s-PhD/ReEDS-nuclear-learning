@@ -1,0 +1,7 @@
+tech,scenario,verdict,min_misfit_grid_$kW,min_misfit_support_$kW,share_support_<=$250,AJ_deployment_GW,required_GW_central_world
+large,conservative,(b) outside support only,230.7,277.4,0.0,12.0,47.8
+large,moderate,(a) inside MC support,78.9,100.9,0.0143,33.0,191.4
+large,advanced,(a) inside MC support,38.2,79.0,0.0034,199.0,3518.1
+smr,conservative,(a) inside MC support,208.0,220.5,0.0042,12.0,36.6
+smr,moderate,(a) inside MC support,71.9,71.9,0.0064,33.0,131.1
+smr,advanced,(a) inside MC support,213.6,213.6,0.0002,199.0,723.9

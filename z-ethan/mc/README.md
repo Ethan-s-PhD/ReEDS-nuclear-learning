@@ -1,12 +1,20 @@
 # MC cost-trajectory notebook (Track B)
 
 `mc_cost_trajectories.ipynb` is the paper's Monte Carlo engine: for each of the six locked US
-nuclear deployment schedules it simulates 5,000 joint draws of the uncertain learning parameters and
+nuclear deployment schedules it simulates 10,000 joint draws of the uncertain learning parameters and
 produces the overnight-cost (OCC), construction-duration, and financed-capital-cost trajectories
 consistent with that schedule, for both large reactors and SMRs. From each schedule's MC it extracts
 three representative joint draws (P5/P50/P95 of financed CAPEX) and exports them as ready-to-run
 ReEDS cases. See the notebook's opening cell for a full reader's guide; it is written to be readable
 by non-experts.
+
+> **Reading the mc_ 18-case files.** The cases are actual *joint* draws ranked by **program**
+> cost, so a per-tech file is not that tech's own cost percentile: where the winner flips
+> between percentiles (it does in 3 of 6 schedules at p95), the loser tech rides the
+> international-spillover-only channel and its capcost can be *cheaper* in a nominally more
+> expensive case (QA12b in the notebook prints the ordering table). The mc_ family also ranks
+> on financed CAPEX, while the smr100 family ranks on full NPV — the two families' percentile
+> labels are not on a common scale. All ReEDS analysis uses `cases_nuclearlearning_smr100.csv`.
 
 **Spec authority:** `z-ethan/nuclear-learning-paper-plan.md` (v8). Port source (reference only):
 `ReEDS-hybrid-plant/z-ethan/mc_nuclear_smr_learning.ipynb` (v2.4).
@@ -28,6 +36,7 @@ DLLs delay-load from the env's `Library\bin`, which activation puts on `PATH`.
 | `mc_cost_trajectories.ipynb` | The notebook (all logic lives here) |
 | `winner_boundary.ipynb` | Downstream analysis of the SMR-vs-large winner: which parameters decide it and where the advantage flips (issue-8 regroup evidence). Reads `exports/mc_perdraw.npz` (written by the MC's S10b cell, gitignored) — run the MC notebook first. Uses plotly for the interactive/3D figures. |
 | `npv_winner_check.ipynb` | Robustness check: re-ranks every draw on the **full NPV** (financed CAPEX + 30-yr PV of FOM/VOM/fuel, capacity factor = ReEDS's own `avail`, replicated bit-exactly from its raw inputs) instead of CAPEX alone — does the winner change? FOM/VOM ride the draw's cost-dial percentile across the ATB advanced→conservative range (they are not independent sensitivities). Reads `exports/mc_perdraw.npz`; needs `h5py` for the state-temperature h5. |
+| `atb_parameter_space.ipynb` | The RQ2 inversion (Step 2): what learning-parameter worlds reproduce the ATB 2024 nuclear cost trajectories at the Abou-Jaoude deployments, and what deployment the 2050 costs require when deployment is free. Ports the OCC engine verbatim (QA-0 parity vs `exports/mc_perdraw.npz` — run the MC notebook first); OCC-only, no ReEDS runs, no draws. Writes `exports/atb/` and `figures/atb_*.png`. |
 | `pris_loader.py`, `rds2_2025_units.csv`, `pris_data_spec.md` | IAEA RDS-2 2025 unit-level data + loader (verbatim copies from the reference repo) |
 | `exports/` | Notebook-local outputs: percentile tables per schedule, the 18 selected draws, run metadata, the per-draw `.npz`, the winner-analysis tables (`wb_*.csv`), and the NPV-check tables (`npv_*.csv`) |
 | `figures/` | Paper figures (hindcast check, fragmentation figure, cost fans) |
@@ -65,6 +74,24 @@ ReEDS tree (consumes `US_SCHEDULES.csv` and the financing inputs; writes only to
 `exports/mixed_build/` and `figures/`). Its QA section pins the engine bit-for-bit to the main
 notebook at the "off" settings and reproduces the S13 fragmentation result in the shared limit.
 Cheap test runs: set env vars `MIXOPT_DRAWS` / `MIXOPT_SWEEP_DRAWS` before launching.
+
+## The ATB inversion (RQ2 / Step 2)
+
+`atb_parameter_space.ipynb` answers research question 2 without a single ReEDS run: **what
+conditions would make the ATB 2024 nuclear cost projections happen?** The ATB numbers (both
+techs, conservative/moderate/advanced) come from Abou-Jaoude et al., who pair each cost
+trajectory with a deployment projection (12/34/200 GW of new builds by 2050 —
+`z-ethan/abou-jaoude nuclear deployment projections.csv`). Part 1 fixes deployment at the
+paired projection, pins BOAK at the ATB 2030 anchor (the anchor convention makes OCC(2030) ≡
+BOAK, so the fit is on curve shape only), and enumerates ~1.06 M designed worlds per fit over
+(LR × s × u × m × experience base × CES ρ) to map the **feasible set** — every world within
+$250/kW of the ATB trajectory at the 2035–2050 milestones. The LR grid deliberately extends to
+30%, past the MC's sampled support, so "reachable only outside the prior" is a reportable
+outcome, not a blind spot. Part 2 uses the engine's path-memorylessness (OCC(2050) depends on
+deployment only through the cumulative 2050 stock — QA-verified) to chart the **required
+deployment** surface that delivers each ATB 2050 cost when deployment is free. Outputs:
+best-fit/feasible-share/cross-pairing/required-deployment tables in `exports/atb/` (with an
+integrity-hash manifest) and the `figures/atb_*.png` set.
 
 ## The 100%-SMR case export (next-phase inputs)
 

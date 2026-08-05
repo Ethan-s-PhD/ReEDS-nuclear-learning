@@ -66,3 +66,5 @@ docs/build/*
 
 # MC per-draw export (large binary; regenerate by running z-ethan/mc/mc_cost_trajectories.ipynb)
 z-ethan/mc/exports/*.npz
+# ATB inversion per-world misfit export (large binary; regenerate via z-ethan/mc/atb_parameter_space.ipynb)
+z-ethan/mc/exports/atb/*.npz

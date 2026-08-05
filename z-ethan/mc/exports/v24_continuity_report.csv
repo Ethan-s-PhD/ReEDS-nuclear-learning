@@ -1,37 +1,37 @@
 ,,,v2.4,this,rel_diff
-EIA 2026 AEO high,large,P5,4378.0,4419.0,0.009
-EIA 2026 AEO high,large,P50,5981.0,5893.0,-0.015
-EIA 2026 AEO high,large,P95,7359.0,7347.0,-0.002
-EIA 2026 AEO high,smr,P5,3524.0,3396.0,-0.036
-EIA 2026 AEO high,smr,P50,6345.0,5373.0,-0.153
-EIA 2026 AEO high,smr,P95,9031.0,8055.0,-0.108
-Abou-Jaoude mod,large,P5,4143.0,4115.0,-0.007
-Abou-Jaoude mod,large,P50,5808.0,5707.0,-0.017
-Abou-Jaoude mod,large,P95,7270.0,7267.0,-0.0
-Abou-Jaoude mod,smr,P5,3132.0,2959.0,-0.055
-Abou-Jaoude mod,smr,P50,6147.0,4944.0,-0.196
-Abou-Jaoude mod,smr,P95,8769.0,7761.0,-0.115
-IAEA high,large,P5,3604.0,3677.0,0.02
-IAEA high,large,P50,5466.0,5473.0,0.001
-IAEA high,large,P95,7099.0,7123.0,0.003
-IAEA high,smr,P5,2496.0,2426.0,-0.028
-IAEA high,smr,P50,5397.0,4382.0,-0.188
-IAEA high,smr,P95,8366.0,7368.0,-0.119
-McKinsey GEP 2025,large,P5,3383.0,3491.0,0.032
-McKinsey GEP 2025,large,P50,5352.0,5352.0,-0.0
-McKinsey GEP 2025,large,P95,7015.0,7043.0,0.004
-McKinsey GEP 2025,smr,P5,2252.0,2234.0,-0.008
-McKinsey GEP 2025,smr,P50,5193.0,4186.0,-0.194
-McKinsey GEP 2025,smr,P95,8215.0,7198.0,-0.124
-COP28 tripling pledge,large,P5,3037.0,3071.0,0.011
-COP28 tripling pledge,large,P50,5066.0,5039.0,-0.005
-COP28 tripling pledge,large,P95,6801.0,6799.0,-0.0
-COP28 tripling pledge,smr,P5,1973.0,1822.0,-0.077
-COP28 tripling pledge,smr,P50,4733.0,3674.0,-0.224
-COP28 tripling pledge,smr,P95,7712.0,6788.0,-0.12
-2025 EO,large,P5,2929.0,2846.0,-0.028
-2025 EO,large,P50,4850.0,4835.0,-0.003
-2025 EO,large,P95,6775.0,6599.0,-0.026
-2025 EO,smr,P5,1915.0,1641.0,-0.143
-2025 EO,smr,P50,4407.0,3399.0,-0.229
-2025 EO,smr,P95,7744.0,6533.0,-0.156
+EIA 2026 AEO high,large,P5,4378.0,4462.0,0.019
+EIA 2026 AEO high,large,P50,5981.0,5919.0,-0.01
+EIA 2026 AEO high,large,P95,7359.0,7358.0,-0.0
+EIA 2026 AEO high,smr,P5,3524.0,3483.0,-0.012
+EIA 2026 AEO high,smr,P50,6345.0,5466.0,-0.139
+EIA 2026 AEO high,smr,P95,9031.0,8113.0,-0.102
+Abou-Jaoude mod,large,P5,4143.0,4199.0,0.014
+Abou-Jaoude mod,large,P50,5808.0,5762.0,-0.008
+Abou-Jaoude mod,large,P95,7270.0,7291.0,0.003
+Abou-Jaoude mod,smr,P5,3132.0,3083.0,-0.016
+Abou-Jaoude mod,smr,P50,6147.0,5072.0,-0.175
+Abou-Jaoude mod,smr,P95,8769.0,7855.0,-0.104
+IAEA high,large,P5,3604.0,3724.0,0.033
+IAEA high,large,P50,5466.0,5500.0,0.006
+IAEA high,large,P95,7099.0,7141.0,0.006
+IAEA high,smr,P5,2496.0,2480.0,-0.006
+IAEA high,smr,P50,5397.0,4445.0,-0.176
+IAEA high,smr,P95,8366.0,7419.0,-0.113
+McKinsey GEP 2025,large,P5,3383.0,3540.0,0.047
+McKinsey GEP 2025,large,P50,5352.0,5381.0,0.005
+McKinsey GEP 2025,large,P95,7015.0,7064.0,0.007
+McKinsey GEP 2025,smr,P5,2252.0,2287.0,0.016
+McKinsey GEP 2025,smr,P50,5193.0,4250.0,-0.182
+McKinsey GEP 2025,smr,P95,8215.0,7241.0,-0.119
+COP28 tripling pledge,large,P5,3037.0,3122.0,0.028
+COP28 tripling pledge,large,P50,5066.0,5078.0,0.002
+COP28 tripling pledge,large,P95,6801.0,6831.0,0.004
+COP28 tripling pledge,smr,P5,1973.0,1868.0,-0.053
+COP28 tripling pledge,smr,P50,4733.0,3729.0,-0.212
+COP28 tripling pledge,smr,P95,7712.0,6836.0,-0.114
+2025 EO,large,P5,2929.0,2891.0,-0.013
+2025 EO,large,P50,4850.0,4872.0,0.004
+2025 EO,large,P95,6775.0,6631.0,-0.021
+2025 EO,smr,P5,1915.0,1680.0,-0.123
+2025 EO,smr,P50,4407.0,3446.0,-0.218
+2025 EO,smr,P95,7744.0,6570.0,-0.152

@@ -55,8 +55,8 @@ hydUD,2
 hydUND,2
 lfill-gas,500
 egs_nearfield_1*egs_nearfield_10,2
-Nuclear,8
-Nuclear-SMR,8
+Nuclear,6
+Nuclear-SMR,6
 o-g-s,500
 pumped-hydro,3
 pumped-hydro-flex,3

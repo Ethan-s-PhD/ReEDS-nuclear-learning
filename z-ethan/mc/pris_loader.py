@@ -168,6 +168,12 @@ def retirement_schedule(operating, years, lifetime_years=60.0, region=None,
     lifetime_years is the SCENARIO KNOB: pair a shorter life with the IAEA Low
     net path (no/low LTO) and a longer life with the High path (extensive LTO).
     Applying one lifetime to both paths is incoherent — see spec.
+
+    Calibration (2026-08-05): the notebooks pair ~65 yr with Low and ~70 yr with
+    High (life = 65 + 5u) — the uniform lives that reproduce IAEA RDS-1 2025's own
+    stated retirement assumptions against this fleet's vintages (low case: 156 GW
+    of the 2024 fleet retired by 2050; high case: LTO holds retirements to ~81 GW).
+    The earlier 60/80-yr bracket retired 233/4 GW — double the IAEA spread.
     """
     df = operating if region is None else operating[operating["region"] == region]
     df = df.dropna(subset=[vintage_field, "capacity_net_mw"])

@@ -1,6 +1,7 @@
 ,Default Value,smr100_eia_lo,smr100_eia_mid,smr100_eia_hi,smr100_aj_lo,smr100_aj_mid,smr100_aj_hi,smr100_iaea_lo,smr100_iaea_mid,smr100_iaea_hi,smr100_mck_lo,smr100_mck_mid,smr100_mck_hi,smr100_cop28_lo,smr100_cop28_mid,smr100_cop28_hi,smr100_eo_lo,smr100_eo_mid,smr100_eo_hi
 ignore,0,,,,,,,,,,,,,,,,,,
 timetype,seq,,,,,,,,,,,,,,,,,,
+yearset,2010_2015_2020_2023_2026_2029_2031_2032_2033_2034_2035_2038_2041_2044_2047_2050,,,,,,,,,,,,,,,,,,
 endyear,2050,,,,,,,,,,,,,,,,,,
 GSw_NuclearCapMandate,1,,,,,,,,,,,,,,,,,,
 GSw_NuclearCapMandate_Scale,1,,,,,,,,,,,,,,,,,,

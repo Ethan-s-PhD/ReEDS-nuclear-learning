@@ -1,7 +1,7 @@
 {
   "notebook": "mixed_build_optimizer.ipynb",
-  "generated_utc": "2026-08-01T03:04:03+00:00",
-  "fork_git_head": "e111377c71766b4815c076a8043f45a0eff6e016",
+  "generated_utc": "2026-08-05T19:14:50+00:00",
+  "fork_git_head": "dc278f436fb95079915e6c580cea28df835471f7",
   "master_seed": 20260715,
   "stream_prefix": "mixopt/",
   "draw_design": "independent per-tech (lr, boak) pairs, rejection-conditioned on boak_smr > boak_large and lr_smr > lr_large",
@@ -17,13 +17,13 @@
   },
   "headline": {
     "total_draws": 60000,
-    "total_mixed_wins": 6,
-    "win_fraction": 0.0001,
-    "closest_margin": -0.002173509075149904
+    "total_mixed_wins": 7,
+    "win_fraction": 0.00011666666666666667,
+    "closest_margin": -0.0022491993430669988
   },
   "exports": {
-    "verdict_by_schedule.csv": "7f18695af6bd7a7d",
-    "winning_draws.csv": "74ea51076b5bc72c",
-    "xzero_verdict.csv": "f2526bfbbcb71c3f"
+    "verdict_by_schedule.csv": "6d8242b342e9bbcd",
+    "winning_draws.csv": "a1cd1bab4f7c5439",
+    "xzero_verdict.csv": "cb43b8211f93aab7"
   }
 }

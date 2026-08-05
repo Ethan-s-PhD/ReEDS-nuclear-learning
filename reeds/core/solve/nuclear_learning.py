@@ -364,7 +364,10 @@ def main(cur_year, case):
     foreign_cum = read_foreign_cum(case)
     canonical = read_canonical_schedules(case)
     interest_base = read_interest_base(case, cur_year)
-    s_kv = foreign_stock_postanchor(foreign_cum, cur_year, anchor)
+    # One-year completion lag (notebook convention, 2026-08-05): the foreign stock pricing
+    # cur_year is the builds completed through cur_year - 1 — a unit teaches only after it
+    # exists. (US experience is already lagged harder, via cumulative investment at tprev.)
+    s_kv = foreign_stock_postanchor(foreign_cum, cur_year - 1, anchor)
 
     # --- Endogenous experience (cumulative post-anchor investment through tprev) ---
     exp_mw = read_experience_mw(case, tprev, pool_hybrid)

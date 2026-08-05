@@ -6,37 +6,44 @@ Reproduces the theta-weighted foreign experience stock of
 `mc_nuclear_smr_learning.ipynb` (Kim & Verdolini theta vector; IAEA RDS-1 2025
 Low/High regional milestones; gross builds via the retirement identity
 gross = max(0, delta_net + retirements) with the committed pipeline replacing
-the interpolated path through 2034).
+the interpolated path through 2030 — its real visibility horizon; the latest
+RDS-2 construction starts are 2024, so with the 72-month lead it is
+structurally zero afterwards).
 
 Two modes:
 
 EXACT (preferred): pass --rds2 <path to rds2_2025_units.csv> (and optionally
     --pris-loader <dir containing pris_loader.py>, default: the rds2 file's dir).
     Runs the notebook's own logic via pris_loader: PRIS fleet vintage ->
-    retirement schedule under L(u) = 60 + 20u years, bottom-up committed
-    pipeline (construction start + 72 months) replacing 2025-2034, retirement
-    identity afterwards. Validated against the notebook's printed diagnostics.
+    retirement schedule under L(u) = 65 + 5u years (calibrated 2026-08-05 to
+    IAEA RDS-1 2025's stated retirement assumptions: low case 156 GW of the
+    2024 fleet retired by 2050, high case ~81 GW under LTO), bottom-up
+    committed pipeline (construction start + 72 months) replacing 2025-2030,
+    retirement identity afterwards. Validated against the recomputed
+    diagnostics below (TARGET_POSTANCHOR_2050).
 
 CALIBRATED FALLBACK (no --rds2): net-path additions plus (a) the notebook's
     printed per-region committed-pipeline totals spread over 2025-2034
     (replacing the net path there) and (b) a retirement-replacement residual
-    calibrated so the post-anchor 2050 gross-unit totals match the notebook's
-    printed diagnostics exactly at u = 0 / 0.5 / 1 (262 / 282 / 381 units),
+    calibrated so the post-anchor 2050 gross-unit totals match the exact-mode
+    diagnostics at u = 0 / 0.5 / 1 (265 / 376 / 501 units, 2026-08-05 basis),
     allocated across regions in proportion to their historical fleets (the
     retiring stock) and spread uniformly over 2031-2050. This closes the ~35%
     understatement of the plain net-path approximation while introducing no
     numbers that are not in the notebook's executed output.
 
 Output (written next to this script, i.e. inputs/nuclear_learning/):
-  foreign_experience_low.csv   (u = 0.0, IAEA Low envelope, 60-yr fleet life)
+  foreign_experience_low.csv   (u = 0.0, IAEA Low envelope, ~65-yr fleet life)
   foreign_experience_mid.csv   (u = 0.5)
-  foreign_experience_high.csv  (u = 1.0, IAEA High envelope, 80-yr LTO life)
+  foreign_experience_high.csv  (u = 1.0, IAEA High envelope, ~70-yr LTO life)
   historical_stock.csv         (H_US, H_KV from the notebook's PRIS extraction:
                                 units EVER grid-connected, printed in cell 4)
 
-The trajectories store RAW cumulative theta-weighted foreign units by year; the
-engine derives the post-anchor stock S_KV(t) = max(0, cum(t) - cum(anchor)),
-so the trajectories are independent of the chosen anchor year.
+The trajectories store RAW cumulative theta-weighted foreign units by year,
+END-of-year basis; the engine derives the post-anchor stock and applies the
+one-year completion lag at the point of pricing (nuclear_learning.py reads
+cum(t-1) when pricing year t), so the trajectories are independent of both the
+anchor year and the lag convention.
 
 Rerun with:  python inputs/nuclear_learning/_generate_foreign_experience.py
              [--rds2 "D:/nuclear learning/rds2_2025_units.csv"]
@@ -69,30 +76,34 @@ THETA_KV = {
     "SEA": 0.16583333, "OC": 0.18,
 }
 
-# Historical units EVER grid-connected, from the notebook's executed PRIS/RDS-2
-# extraction (cell 4 printed output; RDS-2 2025 edition, data through 31 Dec 2024).
+# Historical units EVER grid-connected (RDS-2 2025 edition, data through 31 Dec 2024),
+# EXCLUDING under-construction units: 5 of them carry PLANNED grid dates (Angra-3 SAM,
+# Rajasthan-7 SA, Kursk 2-1/2-2 + Leningrad 2-3 EEU), which are not completed experience
+# (notebook fix 2026-08-05: SAM 8->7, EEU 97->94, SA 32->31).
 HIST_UNITS = {
-    "CA": 25, "SAM": 8, "WEU": 200, "EEU": 97, "AF": 2, "WA": 7,
-    "SA": 32, "CEA": 152, "SEA": 0, "OC": 0, "US": 135,
+    "CA": 25, "SAM": 7, "WEU": 200, "EEU": 94, "AF": 2, "WA": 7,
+    "SA": 31, "CEA": 152, "SEA": 0, "OC": 0, "US": 135,
 }
 
-# Committed-pipeline totals 2025-2034 (GW) per region, from the notebook's
+# Committed-pipeline totals 2025-2030 (GW) per region, from the notebook's
 # executed output (bottom-up from the 62 under-construction units, construction
-# start + 72 months for the 57 units without planned grid dates).
-PIPELINE_GW_2025_2034 = {
+# start + 72 months for the 57 units without planned grid dates; identical to
+# the old 2025-2034 totals - the pipeline is structurally zero after 2030).
+PIPELINE_GW_2025_2030 = {
     "SAM": 1.4, "WEU": 3.3, "EEU": 6.4, "AF": 4.4, "WA": 5.4, "SA": 8.7, "CEA": 35.0,
 }
 
 # Calibration targets: foreign post-anchor (>2030) gross units by 2050 vs u,
-# from the notebook's executed diagnostic (cell 4: "Foreign post-anchor gross
-# units by 2050 vs deployment draw u"). Non-monotone left end = retirement-
-# replacement builds under short fleet lives on the Low path.
-TARGET_POSTANCHOR_2050 = {0.0: 262.0, 0.5: 282.0, 1.0: 381.0}
+# recomputed 2026-08-05 from rds2_2025_units.csv under the current conventions
+# (PIPE_END = 2030, L(u) = 65 + 5u). Monotone in u: the IAEA-calibrated
+# lifetime spread no longer lets Low-path retirement backfill overtake the
+# High path's net additions.
+TARGET_POSTANCHOR_2050 = {0.0: 264.8, 0.5: 375.8, 1.0: 501.5}
 
 UNIT_FOREIGN_GW = 1.0   # foreign new build treated as ~1 GWe large reactors
 YEARS = np.arange(2020, 2051)
 ANCHOR = 2030
-PIPE_END = 2034
+PIPE_END = 2030   # pipeline's real visibility horizon; structurally zero after 2030
 SCENS = [("low", 0.0), ("mid", 0.5), ("high", 1.0)]
 
 
@@ -106,7 +117,7 @@ def additions_base_gw(region, u):
     """Pipeline (uniform 2025-2034, replacing the net path there) + net-path additions after."""
     net = net_path_gw(region, u)
     gross = np.clip(np.diff(net, prepend=net[0]), 0.0, None)
-    pipe_total = PIPELINE_GW_2025_2034.get(region, 0.0)
+    pipe_total = PIPELINE_GW_2025_2030.get(region, 0.0)
     pipe_mask = (YEARS >= 2025) & (YEARS <= PIPE_END)
     gross[pipe_mask] = pipe_total / pipe_mask.sum()
     return gross
@@ -156,7 +167,7 @@ def trajectories_exact(u, rds2_path, pris_loader_dir):
     additions = {}
     for r in REGION_MILESTONES:
         net = net_path_gw(r, u)
-        ret = pl.retirement_schedule(fleet, years_idx, lifetime_years=60.0 + 20.0 * u,
+        ret = pl.retirement_schedule(fleet, years_idx, lifetime_years=65.0 + 5.0 * u,
                                      region=r).to_numpy()
         dnet = np.diff(net, prepend=net[0])
         gross = np.clip(dnet + ret, 0.0, None)
@@ -172,7 +183,7 @@ def trajectories_exact(u, rds2_path, pris_loader_dir):
     if abs(tot - target) > 0.03 * target:
         raise ValueError(
             f"exact-mode validation failed at u={u}: post-anchor 2050 units {tot:.0f} "
-            f"vs notebook diagnostic {target:.0f} (>3% off — check the RDS-2 extraction)")
+            f"vs recomputed diagnostic {target:.0f} (>3% off — check the RDS-2 extraction)")
     return additions
 
 
@@ -212,13 +223,13 @@ def main():
         print(f"wrote foreign_experience_{scen}.csv "
               f"(mode={'exact' if exact else 'fallback'}; post-anchor theta-wtd units "
               f"by 2050 = {post:.1f}; raw post-anchor = {postanchor_units(adds):.0f} "
-              f"vs notebook {TARGET_POSTANCHOR_2050[u]:.0f})")
+              f"vs target {TARGET_POSTANCHOR_2050[u]:.0f})")
 
     h_kv = sum(THETA_KV[r] * HIST_UNITS[r] for r in REGION_MILESTONES)
     pd.DataFrame({"key": ["H_US", "H_KV"], "value": [float(HIST_UNITS["US"]), round(h_kv, 4)]}) \
         .to_csv(os.path.join(here, "historical_stock.csv"), index=False)
     print(f"wrote historical_stock.csv (H_US = {HIST_UNITS['US']}, H_KV = {h_kv:.2f} "
-          "— units EVER grid-connected, from the notebook's PRIS extraction)")
+          "— units EVER grid-connected excl. under-construction, per the notebook)")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,7 @@
+tech,cost_scenario,conservative,moderate,advanced
+large,conservative,231.0,268.0,292.0
+large,moderate,111.0,79.0,92.0
+large,advanced,100.0,93.0,38.0
+smr,conservative,208.0,164.0,259.0
+smr,moderate,82.0,72.0,56.0
+smr,advanced,336.0,371.0,214.0

@@ -1,315 +1,382 @@
 schedule,draw,direction,U0,U1,conv_full,m_pct_capex,m_pct_npv
-EIA 2026 AEO high,326,large->smr,0.176,0.4176,0,-0.1536,0.4968
-EIA 2026 AEO high,634,large->smr,0.0165,0.543,1,-0.3294,0.1292
-EIA 2026 AEO high,731,large->smr,0.0363,0.5708,0,-0.3196,0.0712
-EIA 2026 AEO high,879,large->smr,0.0379,0.4865,0,-0.0711,0.4221
-EIA 2026 AEO high,909,large->smr,0.1417,0.6762,0,-0.0687,0.1131
-EIA 2026 AEO high,1146,large->smr,0.1472,0.5016,0,-0.4031,0.138
-EIA 2026 AEO high,1479,large->smr,0.03,0.5485,0,-0.1804,0.2113
-EIA 2026 AEO high,1936,large->smr,0.024,0.6711,0,-0.1074,0.0814
-EIA 2026 AEO high,2358,large->smr,0.1545,0.553,1,-0.2655,0.1396
-EIA 2026 AEO high,2395,large->smr,0.0422,0.5688,1,-0.2442,0.1483
-EIA 2026 AEO high,3320,large->smr,0.2342,0.7272,0,-0.0273,0.069
-EIA 2026 AEO high,3735,large->smr,0.3935,0.7264,0,-0.0983,0.023
-EIA 2026 AEO high,4450,large->smr,0.2447,0.6298,1,-0.1331,0.1263
-EIA 2026 AEO high,4733,large->smr,0.0114,0.5614,1,-0.0761,0.2722
-EIA 2026 AEO high,5351,large->smr,0.0945,0.3426,1,-0.8175,0.1157
-EIA 2026 AEO high,5758,large->smr,0.0858,0.575,0,-0.0716,0.2618
-EIA 2026 AEO high,6586,large->smr,0.0273,0.611,1,-0.142,0.147
-EIA 2026 AEO high,6619,large->smr,0.068,0.6012,0,-0.2649,0.0707
-EIA 2026 AEO high,7179,large->smr,0.2597,0.6379,0,-0.1506,0.128
-EIA 2026 AEO high,7337,large->smr,0.0357,0.5187,1,-0.1213,0.306
-EIA 2026 AEO high,7667,large->smr,0.1221,0.6596,0,-0.1425,0.0823
-EIA 2026 AEO high,7750,large->smr,0.8649,0.7055,1,-0.1071,0.0426
-EIA 2026 AEO high,7937,large->smr,0.1174,0.7026,1,-0.0289,0.0951
-EIA 2026 AEO high,8059,large->smr,0.0779,0.5046,1,-0.3453,0.1706
-EIA 2026 AEO high,8189,large->smr,0.1573,0.7016,1,-0.0723,0.0723
-EIA 2026 AEO high,8776,large->smr,0.0404,0.5224,1,-0.3081,0.1651
-EIA 2026 AEO high,9511,large->smr,0.0231,0.5067,0,-0.4835,0.0703
-EIA 2026 AEO high,9666,large->smr,0.1252,0.6176,0,-0.3443,0.008
-EIA 2026 AEO high,9814,large->smr,0.065,0.5719,1,-0.3651,0.0394
-EIA 2026 AEO high,9993,large->smr,0.0759,0.4244,0,-0.6472,0.1094
-EIA 2026 AEO high,305,smr->large,0.3581,0.8712,0,0.0543,-0.0699
-EIA 2026 AEO high,773,smr->large,0.1526,0.8793,1,0.0186,-0.0958
-EIA 2026 AEO high,816,smr->large,0.2619,0.9471,1,0.2044,-0.0428
-EIA 2026 AEO high,1967,smr->large,0.4059,0.9606,0,0.0237,-0.2009
-EIA 2026 AEO high,2088,smr->large,0.0859,0.8569,1,0.0085,-0.076
-EIA 2026 AEO high,3465,smr->large,0.0577,0.8657,1,0.0356,-0.0658
-EIA 2026 AEO high,4561,smr->large,0.0607,0.9684,1,0.033,-0.1852
-EIA 2026 AEO high,4639,smr->large,0.2717,0.9697,0,0.0825,-0.1665
-EIA 2026 AEO high,5121,smr->large,0.1012,0.8922,1,0.007,-0.1198
-EIA 2026 AEO high,6377,smr->large,0.201,0.9818,0,0.1223,-0.1391
-EIA 2026 AEO high,6624,smr->large,0.0118,0.9791,1,0.1089,-0.1364
-EIA 2026 AEO high,7721,smr->large,0.4145,0.9904,0,0.2388,-0.0863
-EIA 2026 AEO high,7749,smr->large,0.4291,0.9956,0,0.211,-0.11
-EIA 2026 AEO high,9275,smr->large,0.1615,0.8684,0,0.0403,-0.0703
-EIA 2026 AEO high,9379,smr->large,0.1118,0.8661,0,0.0881,-0.0299
-EIA 2026 AEO high,9770,smr->large,0.383,0.9823,0,0.1207,-0.1497
-Abou-Jaoude mod,421,large->smr,0.3326,0.7005,1,-0.0946,0.0504
-Abou-Jaoude mod,489,large->smr,0.1687,0.5685,1,-0.1646,0.1854
-Abou-Jaoude mod,609,large->smr,0.0766,0.4891,0,-0.2869,0.2601
-Abou-Jaoude mod,876,large->smr,0.1094,0.5479,0,-0.0634,0.3162
-Abou-Jaoude mod,1197,large->smr,0.0633,0.4749,0,-0.2695,0.3021
-Abou-Jaoude mod,1625,large->smr,0.0044,0.289,0,-0.4489,0.5417
-Abou-Jaoude mod,1755,large->smr,0.3789,0.4474,1,-0.1423,0.4345
-Abou-Jaoude mod,1857,large->smr,0.1381,0.4288,0,-0.4822,0.2386
-Abou-Jaoude mod,2421,large->smr,0.2974,0.6256,0,-0.2294,0.0751
-Abou-Jaoude mod,2668,large->smr,0.2488,0.586,0,-0.362,0.0516
-Abou-Jaoude mod,2736,large->smr,0.1791,0.306,1,-0.0643,0.7604
-Abou-Jaoude mod,2933,large->smr,0.0782,0.6451,1,-0.128,0.104
-Abou-Jaoude mod,3059,large->smr,0.0149,0.5072,1,-0.1155,0.3335
-Abou-Jaoude mod,3190,large->smr,0.0751,0.4938,0,-0.009,0.4541
-Abou-Jaoude mod,3321,large->smr,0.1214,0.7537,1,-0.0594,0.0032
-Abou-Jaoude mod,3346,large->smr,0.1099,0.4044,0,-0.2923,0.4203
-Abou-Jaoude mod,3593,large->smr,0.2873,0.6662,0,-0.216,0.0178
-Abou-Jaoude mod,3732,large->smr,0.0492,0.4203,0,-0.0313,0.58
-Abou-Jaoude mod,3802,large->smr,0.107,0.6035,0,-0.1285,0.1667
-Abou-Jaoude mod,4500,large->smr,0.3628,0.6335,0,-0.0598,0.1936
-Abou-Jaoude mod,4969,large->smr,0.0806,0.5117,0,-0.0999,0.3494
-Abou-Jaoude mod,4999,large->smr,0.2748,0.6039,0,-0.1395,0.1883
-Abou-Jaoude mod,5186,large->smr,0.2076,0.6627,0,-0.1202,0.0937
-Abou-Jaoude mod,5306,large->smr,0.1782,0.4644,0,-0.087,0.479
-Abou-Jaoude mod,5771,large->smr,0.106,0.707,1,-0.0421,0.08
-Abou-Jaoude mod,6195,large->smr,0.2857,0.5829,0,-0.0427,0.2947
-Abou-Jaoude mod,6330,large->smr,0.1265,0.4177,0,-0.172,0.4843
-Abou-Jaoude mod,6442,large->smr,0.027,0.5454,1,-0.0921,0.2833
-Abou-Jaoude mod,6581,large->smr,0.0506,0.5013,0,-0.4034,0.1327
-Abou-Jaoude mod,7015,large->smr,0.0698,0.5165,0,-0.4667,0.0672
-Abou-Jaoude mod,7221,large->smr,0.158,0.3577,1,-0.9358,0.0105
-Abou-Jaoude mod,7433,large->smr,0.0134,0.4764,1,-0.4325,0.1255
-Abou-Jaoude mod,7592,large->smr,0.0516,0.5104,0,-0.2334,0.252
-Abou-Jaoude mod,7611,large->smr,0.147,0.581,0,-0.014,0.2984
-Abou-Jaoude mod,7680,large->smr,0.006,0.6697,1,-0.0965,0.0874
-Abou-Jaoude mod,7717,large->smr,0.1945,0.5454,0,-0.3088,0.1466
-Abou-Jaoude mod,7879,large->smr,0.2228,0.745,0,-0.0452,0.0268
-Abou-Jaoude mod,8316,large->smr,0.1063,0.375,0,-0.2249,0.5474
-Abou-Jaoude mod,8384,large->smr,0.1945,0.5845,1,-0.2625,0.0877
-Abou-Jaoude mod,8825,large->smr,0.0392,0.5149,1,-0.3305,0.1681
-Abou-Jaoude mod,819,smr->large,0.331,0.9498,0,0.2026,-0.0764
-Abou-Jaoude mod,1086,smr->large,0.3168,0.9271,0,0.2254,-0.0197
-Abou-Jaoude mod,1448,smr->large,0.0539,0.8984,1,0.0996,-0.0616
-Abou-Jaoude mod,1451,smr->large,0.3604,0.9194,0,0.1299,-0.0874
-Abou-Jaoude mod,1899,smr->large,0.3897,0.9485,0,0.1873,-0.0806
-Abou-Jaoude mod,2205,smr->large,0.7919,0.9789,1,0.2301,-0.0735
-Abou-Jaoude mod,2280,smr->large,0.4436,0.9394,0,0.1163,-0.1267
-Abou-Jaoude mod,2592,smr->large,0.3584,0.9557,0,0.0678,-0.167
-Abou-Jaoude mod,4760,smr->large,0.0273,0.9601,1,0.1788,-0.0687
-Abou-Jaoude mod,5706,smr->large,0.0866,0.8588,1,0.1188,-0.007
-Abou-Jaoude mod,5974,smr->large,0.1881,0.8589,0,0.077,-0.0379
-Abou-Jaoude mod,6575,smr->large,0.1338,0.9537,1,0.2187,-0.0507
-Abou-Jaoude mod,7294,smr->large,0.1248,0.9473,1,0.1727,-0.0685
-Abou-Jaoude mod,8031,smr->large,0.0192,0.8687,1,0.1273,-0.0051
-Abou-Jaoude mod,8225,smr->large,0.2796,0.8643,0,0.0027,-0.0992
-IAEA high,49,large->smr,0.1578,0.5991,0,-0.0861,0.2379
-IAEA high,204,large->smr,0.1836,0.5046,0,-0.5781,0.0709
-IAEA high,290,large->smr,0.16,0.4424,0,-0.6061,0.169
-IAEA high,602,large->smr,0.1349,0.4306,0,-0.5594,0.2269
-IAEA high,838,large->smr,0.0364,0.3541,1,-0.5087,0.3366
-IAEA high,943,large->smr,0.0104,0.391,0,-0.4482,0.329
-IAEA high,1117,large->smr,0.1133,0.3971,0,-0.8268,0.0786
-IAEA high,1444,large->smr,0.2238,0.5735,0,-0.0889,0.2782
-IAEA high,1530,large->smr,0.0695,0.4047,0,-0.3171,0.4417
-IAEA high,1553,large->smr,0.0369,0.3709,0,-0.4188,0.4202
-IAEA high,1652,large->smr,0.3173,0.6837,1,-0.1238,0.0576
-IAEA high,1654,large->smr,0.0313,0.3993,0,-0.6652,0.1727
-IAEA high,2846,large->smr,0.1473,0.5554,1,-0.2471,0.174
-IAEA high,3007,large->smr,0.2902,0.7548,0,-0.0204,0.043
-IAEA high,3067,large->smr,0.0359,0.3933,0,-0.4935,0.3089
-IAEA high,3092,large->smr,0.1454,0.5108,1,-0.1151,0.3277
-IAEA high,3597,large->smr,0.123,0.624,0,-0.1987,0.1108
-IAEA high,3697,large->smr,0.0092,0.6933,1,-0.0091,0.1278
-IAEA high,3790,large->smr,0.0369,0.5296,0,-0.2952,0.1784
-IAEA high,4172,large->smr,0.0091,0.3704,0,-0.4231,0.3842
-IAEA high,4175,large->smr,0.1945,0.5388,0,-0.1462,0.3038
-IAEA high,4382,large->smr,0.038,0.6627,0,-0.2447,0.0005
-IAEA high,4473,large->smr,0.0878,0.5014,0,-0.2107,0.3092
-IAEA high,4755,large->smr,0.1425,0.5734,0,-0.2583,0.1562
-IAEA high,5617,large->smr,0.0316,0.4173,0,-0.5591,0.2098
-IAEA high,6446,large->smr,0.0777,0.5805,0,-0.3293,0.0808
-IAEA high,7640,large->smr,0.0518,0.4209,0,-0.4917,0.258
-IAEA high,7674,large->smr,0.0388,0.4204,1,-0.4453,0.2388
-IAEA high,7802,large->smr,0.1441,0.641,0,-0.2878,0.0205
-IAEA high,8470,large->smr,0.187,0.5241,0,-0.1373,0.3302
-IAEA high,9520,large->smr,0.0508,0.4073,1,-0.8053,0.003
-IAEA high,9695,large->smr,0.239,0.777,0,-0.0287,0.0026
-IAEA high,9741,large->smr,0.0088,0.4408,0,-0.3531,0.2887
-IAEA high,9894,large->smr,0.0341,0.3884,0,-0.121,0.5802
-IAEA high,9999,large->smr,0.1004,0.5522,0,-0.5124,0.0074
-IAEA high,473,smr->large,0.2313,0.9659,0,0.0438,-0.2125
-IAEA high,633,smr->large,0.322,0.9539,0,0.2927,-0.0072
-IAEA high,1591,smr->large,0.4293,0.9491,0,0.2879,-0.0399
-IAEA high,3130,smr->large,0.0573,0.8772,1,0.1368,-0.0055
-IAEA high,3207,smr->large,0.1466,0.9849,1,0.055,-0.2109
-IAEA high,4194,smr->large,0.324,0.9633,0,0.0413,-0.2067
-IAEA high,4207,smr->large,0.32,0.9149,0,0.2394,-0.0119
-IAEA high,4501,smr->large,0.1013,0.9895,1,0.0887,-0.1797
-IAEA high,5100,smr->large,0.4137,0.959,0,0.2021,-0.0924
-IAEA high,6086,smr->large,0.3552,0.9821,0,0.3129,-0.0397
-IAEA high,6214,smr->large,0.1483,0.9978,1,0.1457,-0.1546
-IAEA high,6282,smr->large,0.0634,0.9557,1,0.0247,-0.1908
-IAEA high,7230,smr->large,0.3109,0.9861,0,0.3198,-0.0298
-IAEA high,7363,smr->large,0.4361,0.9894,1,0.2463,-0.0725
-IAEA high,8108,smr->large,0.4322,0.9695,1,0.2593,-0.031
-IAEA high,8710,smr->large,0.2663,0.8836,0,0.1795,-0.0054
-IAEA high,9298,smr->large,0.1167,0.8743,1,0.0957,-0.0368
-IAEA high,9402,smr->large,0.3057,0.8432,0,0.0715,-0.0232
-IAEA high,9998,smr->large,0.2612,0.9657,0,0.1676,-0.117
-McKinsey GEP 2025,63,large->smr,0.1415,0.4615,0,-0.6441,0.0997
-McKinsey GEP 2025,174,large->smr,0.1573,0.652,0,-0.2442,0.0319
-McKinsey GEP 2025,206,large->smr,0.0768,0.3286,0,-0.0996,0.7386
-McKinsey GEP 2025,751,large->smr,0.1551,0.4785,0,-0.085,0.4591
-McKinsey GEP 2025,779,large->smr,0.2292,0.4141,1,-0.2491,0.4381
-McKinsey GEP 2025,1018,large->smr,0.0998,0.5101,0,-0.2829,0.2433
-McKinsey GEP 2025,1478,large->smr,0.0486,0.3213,1,-0.343,0.5385
-McKinsey GEP 2025,1774,large->smr,0.1158,0.5492,0,-0.4876,0.0336
-McKinsey GEP 2025,1783,large->smr,0.152,0.6086,0,-0.0377,0.25
-McKinsey GEP 2025,1891,large->smr,0.1942,0.5751,0,-0.4521,0.0373
-McKinsey GEP 2025,2293,large->smr,0.0476,0.3172,0,-0.6944,0.3136
-McKinsey GEP 2025,2414,large->smr,0.0956,0.3816,0,-0.3092,0.5052
-McKinsey GEP 2025,2451,large->smr,0.1573,0.7175,0,-0.003,0.109
-McKinsey GEP 2025,2874,large->smr,0.242,0.4229,1,-0.3837,0.3068
-McKinsey GEP 2025,2877,large->smr,0.1096,0.7358,1,-0.0392,0.0503
-McKinsey GEP 2025,2995,large->smr,0.0324,0.4016,0,-0.8213,0.0721
-McKinsey GEP 2025,3049,large->smr,0.1862,0.5675,0,-0.0891,0.2927
-McKinsey GEP 2025,3091,large->smr,0.1919,0.4315,0,-0.4129,0.3575
-McKinsey GEP 2025,3164,large->smr,0.1231,0.3651,0,-0.4304,0.4477
-McKinsey GEP 2025,3363,large->smr,0.1551,0.6973,0,-0.1069,0.0658
-McKinsey GEP 2025,3744,large->smr,0.0303,0.3963,0,-0.32,0.4268
-McKinsey GEP 2025,3992,large->smr,0.038,0.5208,0,-0.2265,0.2455
-McKinsey GEP 2025,4708,large->smr,0.1878,0.518,0,-0.0843,0.4039
-McKinsey GEP 2025,4885,large->smr,0.1665,0.3785,1,-0.6482,0.1973
-McKinsey GEP 2025,5742,large->smr,0.0256,0.3574,0,-0.9595,0.0567
-McKinsey GEP 2025,6007,large->smr,0.074,0.4622,0,-0.3928,0.2359
-McKinsey GEP 2025,6361,large->smr,0.046,0.3338,0,-1.0849,0.0174
-McKinsey GEP 2025,6412,large->smr,0.0301,0.4846,1,-0.2673,0.2555
-McKinsey GEP 2025,6735,large->smr,0.1595,0.416,0,-0.2163,0.5013
-McKinsey GEP 2025,6757,large->smr,0.1174,0.3885,0,-0.5201,0.3313
-McKinsey GEP 2025,7463,large->smr,0.121,0.4829,0,-0.1083,0.4261
-McKinsey GEP 2025,7547,large->smr,0.0801,0.3338,1,-0.2302,0.6092
-McKinsey GEP 2025,7637,large->smr,0.117,0.4084,0,-0.6321,0.1983
-McKinsey GEP 2025,7658,large->smr,0.0628,0.5442,0,-0.4659,0.0523
-McKinsey GEP 2025,7909,large->smr,0.0625,0.3852,0,-0.9402,0.0144
-McKinsey GEP 2025,8652,large->smr,0.1066,0.5008,0,-0.4042,0.1885
-McKinsey GEP 2025,9363,large->smr,0.243,0.6405,0,-0.3286,0.0052
-McKinsey GEP 2025,9415,large->smr,0.1569,0.3621,1,-0.1559,0.5952
-McKinsey GEP 2025,1129,smr->large,0.0908,0.9263,1,0.2473,-0.0024
-McKinsey GEP 2025,1249,smr->large,0.1043,0.992,1,0.0374,-0.2243
-McKinsey GEP 2025,1609,smr->large,0.102,0.9507,1,0.1834,-0.0725
-McKinsey GEP 2025,2150,smr->large,0.2897,0.8998,1,0.0759,-0.0871
-McKinsey GEP 2025,2181,smr->large,0.5164,0.8943,1,0.0263,-0.1215
-McKinsey GEP 2025,4156,smr->large,0.3584,0.986,0,0.0821,-0.2229
-McKinsey GEP 2025,4398,smr->large,0.3038,0.9721,0,0.3105,-0.0363
-McKinsey GEP 2025,4617,smr->large,0.3322,0.986,1,0.304,-0.0272
-McKinsey GEP 2025,6058,smr->large,0.2807,0.9913,1,0.2608,-0.0803
-McKinsey GEP 2025,7278,smr->large,0.3614,0.9757,0,0.2124,-0.1231
-McKinsey GEP 2025,8064,smr->large,0.3177,0.8752,1,0.0089,-0.1007
-McKinsey GEP 2025,9117,smr->large,0.252,0.9077,0,0.1992,-0.0299
-McKinsey GEP 2025,9560,smr->large,0.4062,0.9912,0,0.0122,-0.2949
-COP28 tripling pledge,559,large->smr,0.0064,0.3713,1,-0.2739,0.4732
-COP28 tripling pledge,573,large->smr,0.0731,0.5227,0,-0.5427,0.0575
-COP28 tripling pledge,711,large->smr,0.0712,0.404,0,-0.2718,0.5079
-COP28 tripling pledge,1014,large->smr,0.1541,0.4864,1,-0.137,0.3913
-COP28 tripling pledge,1345,large->smr,0.1051,0.636,0,-0.1226,0.1533
-COP28 tripling pledge,1373,large->smr,0.0046,0.591,1,-0.0009,0.285
-COP28 tripling pledge,2026,large->smr,0.0683,0.4846,0,-0.3072,0.2763
-COP28 tripling pledge,2238,large->smr,0.0988,0.4297,0,-0.42,0.3378
-COP28 tripling pledge,2258,large->smr,0.0366,0.2519,0,-1.1892,0.1578
-COP28 tripling pledge,2262,large->smr,0.0176,0.2669,0,-0.2398,0.7768
-COP28 tripling pledge,2325,large->smr,0.0904,0.6028,1,-0.0672,0.2285
-COP28 tripling pledge,2365,large->smr,0.136,0.5743,0,-0.0411,0.3173
-COP28 tripling pledge,2393,large->smr,0.1533,0.3949,0,-0.5914,0.306
-COP28 tripling pledge,2501,large->smr,0.008,0.4323,0,-0.5828,0.1977
-COP28 tripling pledge,2676,large->smr,0.0507,0.613,0,-0.0544,0.2289
-COP28 tripling pledge,2701,large->smr,0.0316,0.7045,1,-0.1086,0.0465
-COP28 tripling pledge,2990,large->smr,0.1854,0.5872,0,-0.2914,0.1485
-COP28 tripling pledge,3815,large->smr,0.1069,0.3445,0,-0.3396,0.584
-COP28 tripling pledge,3990,large->smr,0.1906,0.7071,0,-0.121,0.047
-COP28 tripling pledge,4022,large->smr,0.2227,0.7775,1,-0.0179,0.004
-COP28 tripling pledge,4317,large->smr,0.1604,0.5171,0,-0.2898,0.2747
-COP28 tripling pledge,4388,large->smr,0.1574,0.5766,0,-0.0796,0.2894
-COP28 tripling pledge,5251,large->smr,0.0085,0.317,0,-0.9046,0.209
-COP28 tripling pledge,5501,large->smr,0.0303,0.3923,1,-0.8096,0.0556
-COP28 tripling pledge,5509,large->smr,0.1231,0.5247,0,-0.1058,0.3784
-COP28 tripling pledge,6680,large->smr,0.0182,0.3165,0,-1.0296,0.1469
-COP28 tripling pledge,7122,large->smr,0.0708,0.293,0,-0.6772,0.4508
-COP28 tripling pledge,7322,large->smr,0.0494,0.5069,0,-0.2492,0.301
-COP28 tripling pledge,7461,large->smr,0.2826,0.6725,1,-0.114,0.0933
-COP28 tripling pledge,7693,large->smr,0.074,0.3732,0,-0.0337,0.7292
-COP28 tripling pledge,7859,large->smr,0.0757,0.3958,0,-0.049,0.6539
-COP28 tripling pledge,7987,large->smr,0.0801,0.4477,0,-0.5802,0.1618
-COP28 tripling pledge,8011,large->smr,0.0361,0.2082,0,-0.3293,0.8906
-COP28 tripling pledge,8374,large->smr,0.0889,0.5539,1,-0.4639,0.0295
-COP28 tripling pledge,8551,large->smr,0.061,0.3931,0,-0.8836,0.0719
-COP28 tripling pledge,8675,large->smr,0.1662,0.4732,0,-0.3442,0.3229
-COP28 tripling pledge,8847,large->smr,0.0111,0.245,0,-0.0132,1.0139
-COP28 tripling pledge,8904,large->smr,0.0024,0.2586,0,-0.0647,0.9365
-COP28 tripling pledge,9428,large->smr,0.0173,0.3115,0,-0.8549,0.2465
-COP28 tripling pledge,9464,large->smr,0.0248,0.3334,1,-0.2065,0.5958
-COP28 tripling pledge,9592,large->smr,0.0643,0.3958,0,-0.1192,0.5981
-COP28 tripling pledge,9615,large->smr,0.1641,0.433,0,-0.6771,0.1506
-COP28 tripling pledge,9796,large->smr,0.2097,0.7363,0,-0.079,0.0341
-COP28 tripling pledge,9930,large->smr,0.0336,0.283,0,-0.2026,0.7675
-COP28 tripling pledge,577,smr->large,0.048,0.8399,1,0.0633,-0.022
-COP28 tripling pledge,1711,smr->large,0.0252,0.8888,1,0.1009,-0.0528
-COP28 tripling pledge,2686,smr->large,0.3504,0.9524,0,0.1185,-0.1797
-COP28 tripling pledge,2939,smr->large,0.1417,0.9621,1,0.2628,-0.0309
-COP28 tripling pledge,3218,smr->large,0.3396,0.8933,1,0.1461,-0.0346
-COP28 tripling pledge,3940,smr->large,0.2966,0.93,0,0.0657,-0.165
-COP28 tripling pledge,6329,smr->large,0.2798,0.8835,0,0.0194,-0.1348
-COP28 tripling pledge,9494,smr->large,0.0639,0.9257,1,0.1166,-0.094
-COP28 tripling pledge,9882,smr->large,0.2742,0.8663,0,0.0482,-0.0848
-2025 EO,280,large->smr,0.0393,0.3205,0,-0.7842,0.3341
-2025 EO,702,large->smr,0.2726,0.6997,0,-0.1498,0.0526
-2025 EO,1154,large->smr,0.0263,0.3198,0,-0.9238,0.2058
-2025 EO,1175,large->smr,0.0612,0.4304,0,-0.2232,0.4647
-2025 EO,1722,large->smr,0.0479,0.3448,0,-0.0907,0.7565
-2025 EO,1862,large->smr,0.1233,0.4736,1,-0.5372,0.1237
-2025 EO,2047,large->smr,0.1679,0.4096,0,-0.0544,0.6739
-2025 EO,2311,large->smr,0.0496,0.434,0,-0.0368,0.5808
-2025 EO,2326,large->smr,0.0585,0.4373,0,-0.6015,0.1811
-2025 EO,2901,large->smr,0.1382,0.3851,0,-0.0728,0.6898
-2025 EO,2992,large->smr,0.0551,0.3093,0,-0.143,0.8297
-2025 EO,3022,large->smr,0.0837,0.4004,0,-0.0166,0.6998
-2025 EO,3603,large->smr,0.186,0.7461,0,-0.0914,0.0063
-2025 EO,3683,large->smr,0.0025,0.6941,1,-0.1407,0.0341
-2025 EO,3878,large->smr,0.1984,0.5088,0,-0.4615,0.2088
-2025 EO,4298,large->smr,0.013,0.3699,1,-0.7128,0.1915
-2025 EO,4954,large->smr,0.1157,0.4959,0,-0.2793,0.3118
-2025 EO,5150,large->smr,0.0549,0.2429,0,-1.5363,0.0074
-2025 EO,5324,large->smr,0.0729,0.5188,0,-0.3157,0.235
-2025 EO,5576,large->smr,0.1516,0.6517,0,-0.2462,0.0498
-2025 EO,6283,large->smr,0.0957,0.4003,0,-0.0155,0.7067
-2025 EO,6287,large->smr,0.2441,0.7341,0,-0.0989,0.0276
-2025 EO,7804,large->smr,0.0153,0.2598,0,-0.7907,0.4403
-2025 EO,7813,large->smr,0.1284,0.5273,0,-0.3824,0.1955
-2025 EO,7890,large->smr,0.1238,0.5163,1,-0.2317,0.27
-2025 EO,7926,large->smr,0.0417,0.296,0,-0.0947,0.8697
-2025 EO,8133,large->smr,0.0941,0.4056,0,-0.6993,0.2274
-2025 EO,8154,large->smr,0.1371,0.569,0,-0.156,0.2555
-2025 EO,8170,large->smr,0.1704,0.5668,1,-0.191,0.212
-2025 EO,8374,large->smr,0.041,0.2992,0,-0.8588,0.3485
-2025 EO,8557,large->smr,0.0826,0.3668,0,-0.1118,0.7279
-2025 EO,8596,large->smr,0.0409,0.2749,0,-0.1164,0.8995
-2025 EO,8695,large->smr,0.0384,0.2013,0,-1.537,0.1115
-2025 EO,8749,large->smr,0.0203,0.5482,1,-0.2924,0.1664
-2025 EO,8790,large->smr,0.116,0.4304,0,-0.4739,0.3304
-2025 EO,8874,large->smr,0.1074,0.3469,0,-0.9581,0.1597
-2025 EO,9322,large->smr,0.0836,0.2499,0,-0.0876,0.9943
-2025 EO,9524,large->smr,0.0256,0.4292,0,-0.823,0.0129
-2025 EO,218,smr->large,0.1218,0.8238,1,0.0121,-0.0376
-2025 EO,568,smr->large,0.0438,0.8857,1,0.1112,-0.0481
-2025 EO,1843,smr->large,0.2277,0.9279,0,0.0604,-0.1663
-2025 EO,2272,smr->large,0.2648,0.8844,0,0.1709,-0.0291
-2025 EO,2604,smr->large,0.0404,0.9473,1,0.2099,-0.0531
-2025 EO,2883,smr->large,0.3305,0.9484,0,0.3122,-0.0361
-2025 EO,4115,smr->large,0.1917,0.8494,0,0.1263,-0.0079
-2025 EO,4369,smr->large,0.2654,0.9992,0,0.3864,-0.0433
-2025 EO,4677,smr->large,0.1794,0.9802,0,0.2006,-0.1215
-2025 EO,5504,smr->large,0.1865,0.9923,1,0.3642,-0.0158
-2025 EO,5944,smr->large,0.2443,0.8265,0,0.0574,-0.0176
-2025 EO,6305,smr->large,0.341,0.9006,0,0.2276,-0.0216
-2025 EO,6343,smr->large,0.3056,0.9826,0,0.2165,-0.1604
-2025 EO,8022,smr->large,0.0878,0.979,1,0.3155,-0.0198
-2025 EO,8395,smr->large,0.1,0.9027,1,0.0953,-0.0866
-2025 EO,8802,smr->large,0.2964,0.9534,0,0.1138,-0.1702
-2025 EO,9044,smr->large,0.0696,0.9274,1,0.0161,-0.173
+EIA 2026 AEO high,636,large->smr,0.1177,0.5064,0,-0.4156,0.1247
+EIA 2026 AEO high,795,large->smr,0.3225,0.563,0,-0.2972,0.1333
+EIA 2026 AEO high,854,large->smr,0.4038,0.3981,1,-0.3435,0.3654
+EIA 2026 AEO high,1090,large->smr,0.1766,0.5188,0,-0.0604,0.3752
+EIA 2026 AEO high,1285,large->smr,0.1487,0.538,0,-0.1241,0.2847
+EIA 2026 AEO high,1415,large->smr,0.2361,0.4384,0,-0.6199,0.1078
+EIA 2026 AEO high,1551,large->smr,0.2093,0.5187,0,-0.3569,0.1401
+EIA 2026 AEO high,1555,large->smr,0.179,0.5704,0,-0.1486,0.2122
+EIA 2026 AEO high,1724,large->smr,0.0716,0.5427,0,-0.2569,0.1688
+EIA 2026 AEO high,1734,large->smr,0.1614,0.6277,0,-0.1788,0.0912
+EIA 2026 AEO high,2368,large->smr,0.0457,0.656,1,-0.1869,0.0386
+EIA 2026 AEO high,2459,large->smr,0.2292,0.4864,1,-0.05,0.4249
+EIA 2026 AEO high,2517,large->smr,0.258,0.5161,0,-0.3472,0.1689
+EIA 2026 AEO high,2828,large->smr,0.2692,0.5111,0,-0.4757,0.0997
+EIA 2026 AEO high,2859,large->smr,0.1354,0.7127,1,-0.0116,0.0976
+EIA 2026 AEO high,2919,large->smr,0.1812,0.4805,0,-0.5887,0.0514
+EIA 2026 AEO high,3016,large->smr,0.0391,0.4866,1,-0.5802,0.0365
+EIA 2026 AEO high,3612,large->smr,0.2175,0.5753,0,-0.0533,0.2826
+EIA 2026 AEO high,3642,large->smr,0.4748,0.6896,0,-0.1829,0.0145
+EIA 2026 AEO high,3674,large->smr,0.5027,0.7142,1,-0.1306,0.0103
+EIA 2026 AEO high,3796,large->smr,0.1064,0.4102,0,-0.0757,0.5377
+EIA 2026 AEO high,4255,large->smr,0.2149,0.4958,0,-0.2003,0.3121
+EIA 2026 AEO high,4291,large->smr,0.076,0.4986,0,-0.1302,0.3388
+EIA 2026 AEO high,4402,large->smr,0.0379,0.5648,1,-0.1785,0.1882
+EIA 2026 AEO high,4412,large->smr,0.0471,0.381,0,-0.2791,0.4298
+EIA 2026 AEO high,4465,large->smr,0.1172,0.4987,0,-0.0271,0.416
+EIA 2026 AEO high,4937,large->smr,0.0254,0.5755,1,-0.1523,0.1912
+EIA 2026 AEO high,5351,large->smr,0.0945,0.3426,1,-0.686,0.2102
+EIA 2026 AEO high,5701,large->smr,0.1698,0.3261,1,-0.5211,0.3737
+EIA 2026 AEO high,5746,large->smr,0.1352,0.5547,0,-0.4418,0.0251
+EIA 2026 AEO high,5758,large->smr,0.0858,0.575,0,-0.2746,0.1033
+EIA 2026 AEO high,5873,large->smr,0.3326,0.4857,0,-0.4124,0.1721
+EIA 2026 AEO high,6028,large->smr,0.3597,0.669,0,-0.192,0.0363
+EIA 2026 AEO high,6360,large->smr,0.2312,0.6113,1,-0.1812,0.1265
+EIA 2026 AEO high,6841,large->smr,0.2904,0.6302,0,-0.2127,0.0716
+EIA 2026 AEO high,7171,large->smr,0.2647,0.6735,0,-0.0025,0.1599
+EIA 2026 AEO high,7608,large->smr,0.0147,0.4937,0,-0.4104,0.123
+EIA 2026 AEO high,7760,large->smr,0.0294,0.5053,0,-0.4204,0.1227
+EIA 2026 AEO high,7776,large->smr,0.1227,0.6037,0,-0.3001,0.0342
+EIA 2026 AEO high,7787,large->smr,0.0076,0.2844,0,-0.0145,0.8444
+EIA 2026 AEO high,7830,large->smr,0.5937,0.58,1,-0.0516,0.2644
+EIA 2026 AEO high,8179,large->smr,0.5139,0.7383,0,-0.0204,0.0619
+EIA 2026 AEO high,8349,large->smr,0.2514,0.5569,0,-0.4135,0.0373
+EIA 2026 AEO high,8419,large->smr,0.3873,0.737,0,-0.0149,0.0635
+EIA 2026 AEO high,8692,large->smr,0.2768,0.7689,0,-0.0016,0.029
+EIA 2026 AEO high,8715,large->smr,0.4082,0.5677,0,-0.2966,0.1218
+EIA 2026 AEO high,8797,large->smr,0.0202,0.43,1,-0.1786,0.4107
+EIA 2026 AEO high,8830,large->smr,0.0829,0.5692,1,-0.0115,0.3088
+EIA 2026 AEO high,9113,large->smr,0.1575,0.5647,0,-0.3414,0.0792
+EIA 2026 AEO high,9305,large->smr,0.234,0.5717,0,-0.1717,0.194
+EIA 2026 AEO high,9422,large->smr,0.0025,0.4527,0,-0.5463,0.1033
+EIA 2026 AEO high,9479,large->smr,0.0438,0.6647,0,-0.1717,0.0395
+EIA 2026 AEO high,9493,large->smr,0.0534,0.5411,1,-0.0918,0.2924
+EIA 2026 AEO high,9606,large->smr,0.1873,0.4624,0,-0.6674,0.041
+EIA 2026 AEO high,117,smr->large,0.4635,0.9055,0,0.0442,-0.1133
+EIA 2026 AEO high,276,smr->large,0.5376,0.9193,0,0.1265,-0.0802
+EIA 2026 AEO high,559,smr->large,0.5582,0.9032,0,0.1718,-0.0212
+EIA 2026 AEO high,979,smr->large,0.5123,0.9642,0,0.2175,-0.0544
+EIA 2026 AEO high,2163,smr->large,0.191,0.8542,1,0.102,-0.0019
+EIA 2026 AEO high,2177,smr->large,0.2901,0.9362,1,0.0917,-0.1061
+EIA 2026 AEO high,2389,smr->large,0.0889,0.8784,0,0.0349,-0.0779
+EIA 2026 AEO high,2730,smr->large,0.2227,0.9724,0,0.1733,-0.08
+EIA 2026 AEO high,3494,smr->large,0.4,0.9984,1,0.1428,-0.1482
+EIA 2026 AEO high,4007,smr->large,0.2371,0.9389,1,0.0732,-0.124
+EIA 2026 AEO high,4224,smr->large,0.3747,0.8155,0,0.0158,-0.0225
+EIA 2026 AEO high,4664,smr->large,0.1861,0.9868,1,0.2137,-0.0752
+EIA 2026 AEO high,5439,smr->large,0.5656,0.897,0,0.1052,-0.0625
+EIA 2026 AEO high,5726,smr->large,0.4292,0.8843,0,0.0776,-0.0673
+EIA 2026 AEO high,6201,smr->large,0.1956,0.9158,1,0.091,-0.0908
+EIA 2026 AEO high,6317,smr->large,0.3627,0.8606,0,0.0955,-0.0214
+EIA 2026 AEO high,6555,smr->large,0.4424,0.8853,0,0.1494,-0.0111
+EIA 2026 AEO high,6604,smr->large,0.2918,0.9143,0,0.0002,-0.1595
+EIA 2026 AEO high,6906,smr->large,0.1929,0.8534,0,0.0759,-0.0195
+EIA 2026 AEO high,7299,smr->large,0.1168,0.8279,1,0.0278,-0.0257
+EIA 2026 AEO high,7803,smr->large,0.4298,0.9119,0,0.0098,-0.1497
+EIA 2026 AEO high,7905,smr->large,0.2864,0.9655,1,0.2166,-0.0457
+EIA 2026 AEO high,8029,smr->large,0.633,0.8707,0,0.0436,-0.0789
+EIA 2026 AEO high,8414,smr->large,0.5014,0.9061,1,0.0622,-0.0996
+EIA 2026 AEO high,8673,smr->large,0.4026,0.9721,1,0.1639,-0.093
+EIA 2026 AEO high,9905,smr->large,0.6915,0.9724,0,0.0213,-0.2309
+EIA 2026 AEO high,9953,smr->large,0.1708,0.8736,1,0.0214,-0.0894
+Abou-Jaoude mod,489,large->smr,0.1687,0.5685,1,-0.0776,0.2495
+Abou-Jaoude mod,609,large->smr,0.0766,0.4891,0,-0.4539,0.1346
+Abou-Jaoude mod,876,large->smr,0.1094,0.5479,0,-0.1339,0.2609
+Abou-Jaoude mod,896,large->smr,0.1661,0.7519,0,-0.0188,0.0357
+Abou-Jaoude mod,1197,large->smr,0.0633,0.4749,0,-0.4836,0.1422
+Abou-Jaoude mod,1218,large->smr,0.006,0.5945,1,-0.1421,0.1681
+Abou-Jaoude mod,1362,large->smr,0.3164,0.6117,0,-0.1429,0.1734
+Abou-Jaoude mod,1625,large->smr,0.0044,0.289,0,-0.2477,0.6809
+Abou-Jaoude mod,1755,large->smr,0.3789,0.4474,1,-0.1585,0.4204
+Abou-Jaoude mod,1805,large->smr,0.2368,0.6045,0,-0.0935,0.2041
+Abou-Jaoude mod,1857,large->smr,0.1381,0.4288,0,-0.5516,0.1809
+Abou-Jaoude mod,1997,large->smr,0.0035,0.5889,1,-0.0804,0.2255
+Abou-Jaoude mod,2304,large->smr,0.0423,0.4397,0,-0.4681,0.2009
+Abou-Jaoude mod,2736,large->smr,0.1791,0.306,1,-0.0391,0.7754
+Abou-Jaoude mod,2807,large->smr,0.1668,0.6257,0,-0.0313,0.2146
+Abou-Jaoude mod,2903,large->smr,0.3106,0.6355,0,-0.2687,0.0335
+Abou-Jaoude mod,3059,large->smr,0.0149,0.5072,1,-0.3474,0.1585
+Abou-Jaoude mod,3190,large->smr,0.0751,0.4938,0,-0.0632,0.4102
+Abou-Jaoude mod,3346,large->smr,0.1099,0.4044,0,-0.6088,0.1856
+Abou-Jaoude mod,3408,large->smr,0.0607,0.5043,0,-0.559,0.0173
+Abou-Jaoude mod,3732,large->smr,0.0492,0.4203,0,-0.2434,0.4216
+Abou-Jaoude mod,3802,large->smr,0.107,0.6035,0,-0.117,0.1727
+Abou-Jaoude mod,4591,large->smr,0.0264,0.7147,1,-0.106,0.0174
+Abou-Jaoude mod,4969,large->smr,0.0806,0.5117,0,-0.1154,0.3345
+Abou-Jaoude mod,5282,large->smr,0.0938,0.613,1,-0.0348,0.2228
+Abou-Jaoude mod,5306,large->smr,0.1782,0.4644,0,-0.4958,0.181
+Abou-Jaoude mod,5364,large->smr,0.2649,0.6091,0,-0.0671,0.2251
+Abou-Jaoude mod,6131,large->smr,0.0995,0.5654,0,-0.4048,0.0281
+Abou-Jaoude mod,6195,large->smr,0.2857,0.5829,0,-0.2146,0.1674
+Abou-Jaoude mod,6330,large->smr,0.1265,0.4177,0,-0.2981,0.3864
+Abou-Jaoude mod,6520,large->smr,0.1033,0.4838,0,-0.3489,0.2331
+Abou-Jaoude mod,6581,large->smr,0.0506,0.5013,0,-0.4081,0.1255
+Abou-Jaoude mod,6747,large->smr,0.1791,0.5645,0,-0.027,0.3272
+Abou-Jaoude mod,6852,large->smr,0.0024,0.6115,1,-0.1665,0.1278
+Abou-Jaoude mod,7015,large->smr,0.0698,0.5165,0,-0.4516,0.0748
+Abou-Jaoude mod,7221,large->smr,0.158,0.3577,1,-0.8137,0.0966
+Abou-Jaoude mod,7433,large->smr,0.0134,0.4764,1,-0.2093,0.2918
+Abou-Jaoude mod,7592,large->smr,0.0516,0.5104,0,-0.3197,0.1858
+Abou-Jaoude mod,7611,large->smr,0.147,0.581,0,-0.1381,0.2046
+Abou-Jaoude mod,7717,large->smr,0.1945,0.5454,0,-0.3971,0.078
+Abou-Jaoude mod,8316,large->smr,0.1063,0.375,0,-0.457,0.3747
+Abou-Jaoude mod,8546,large->smr,0.1827,0.7111,0,-0.0995,0.0379
+Abou-Jaoude mod,9254,large->smr,0.4097,0.6979,0,-0.0037,0.1298
+Abou-Jaoude mod,534,smr->large,0.4534,0.9588,0,0.1352,-0.153
+Abou-Jaoude mod,866,smr->large,0.2667,0.9536,1,0.0522,-0.1772
+Abou-Jaoude mod,943,smr->large,0.2242,0.8497,1,0.0303,-0.0586
+Abou-Jaoude mod,987,smr->large,0.1727,0.9384,1,0.153,-0.0788
+Abou-Jaoude mod,1000,smr->large,0.3489,0.9342,0,0.0544,-0.1561
+Abou-Jaoude mod,1445,smr->large,0.5436,0.929,1,0.0621,-0.1309
+Abou-Jaoude mod,1448,smr->large,0.0539,0.8984,1,0.1425,-0.028
+Abou-Jaoude mod,1740,smr->large,0.038,0.9533,1,0.1066,-0.1175
+Abou-Jaoude mod,2254,smr->large,0.1245,0.8525,1,0.086,-0.0193
+Abou-Jaoude mod,3269,smr->large,0.0944,0.8904,1,0.1089,-0.0492
+Abou-Jaoude mod,5400,smr->large,0.4415,0.889,1,0.1182,-0.0438
+Abou-Jaoude mod,5639,smr->large,0.3527,0.9497,1,0.1514,-0.0852
+Abou-Jaoude mod,5685,smr->large,0.2904,0.9943,1,0.0462,-0.2339
+Abou-Jaoude mod,5897,smr->large,0.0436,0.8371,1,0.0085,-0.0572
+Abou-Jaoude mod,5974,smr->large,0.1881,0.8589,0,0.0153,-0.083
+Abou-Jaoude mod,8152,smr->large,0.3588,0.9843,0,0.0953,-0.1867
+Abou-Jaoude mod,8460,smr->large,0.1553,0.9039,1,0.1851,-0.0128
+Abou-Jaoude mod,8569,smr->large,0.3168,0.8601,0,0.1195,-0.0149
+Abou-Jaoude mod,9580,smr->large,0.182,0.8414,1,0.0711,-0.0179
+Abou-Jaoude mod,9783,smr->large,0.1769,0.8389,1,0.0579,-0.0222
+IAEA high,27,large->smr,0.205,0.7376,0,-0.0085,0.0738
+IAEA high,728,large->smr,0.2015,0.6658,0,-0.0823,0.1303
+IAEA high,790,large->smr,0.1069,0.5227,0,-0.2798,0.2115
+IAEA high,838,large->smr,0.0364,0.3541,1,-0.532,0.3154
+IAEA high,849,large->smr,0.023,0.3515,0,-0.0438,0.7255
+IAEA high,943,large->smr,0.0104,0.391,0,-0.5025,0.2809
+IAEA high,1292,large->smr,0.2175,0.5214,0,-0.3844,0.1881
+IAEA high,1310,large->smr,0.0607,0.4846,0,-0.0542,0.4417
+IAEA high,1461,large->smr,0.114,0.58,0,-0.1295,0.221
+IAEA high,1530,large->smr,0.0695,0.4047,0,-0.9087,0.0087
+IAEA high,1534,large->smr,0.1633,0.6735,1,-0.0773,0.1023
+IAEA high,1553,large->smr,0.0369,0.3709,0,-0.5729,0.299
+IAEA high,1654,large->smr,0.0313,0.3993,0,-0.8209,0.0505
+IAEA high,1987,large->smr,0.192,0.5339,1,-0.2743,0.1805
+IAEA high,2347,large->smr,0.0945,0.6873,0,-0.187,0.0103
+IAEA high,2762,large->smr,0.0513,0.4083,0,-0.0943,0.5509
+IAEA high,2888,large->smr,0.0651,0.6125,0,-0.1963,0.1226
+IAEA high,2993,large->smr,0.0873,0.4528,0,-0.1141,0.4688
+IAEA high,3092,large->smr,0.1454,0.5108,1,-0.1895,0.269
+IAEA high,3364,large->smr,0.2673,0.5808,0,-0.0805,0.2801
+IAEA high,3523,large->smr,0.1907,0.5389,0,-0.544,0.0088
+IAEA high,4055,large->smr,0.1531,0.4532,0,-0.2699,0.369
+IAEA high,4172,large->smr,0.0091,0.3704,0,-0.658,0.205
+IAEA high,4473,large->smr,0.0878,0.5014,0,-0.5977,0.0203
+IAEA high,4626,large->smr,0.1311,0.4202,0,-0.1993,0.4611
+IAEA high,4680,large->smr,0.2477,0.6178,0,-0.2273,0.1001
+IAEA high,4805,large->smr,0.1911,0.453,0,-0.1358,0.4856
+IAEA high,5214,large->smr,0.2648,0.6015,0,-0.1312,0.1988
+IAEA high,5617,large->smr,0.0316,0.4173,0,-0.7932,0.0304
+IAEA high,5656,large->smr,0.0823,0.4539,0,-0.0825,0.4897
+IAEA high,6229,large->smr,0.0239,0.6398,1,-0.0701,0.1656
+IAEA high,6291,large->smr,0.1253,0.5979,0,-0.147,0.1861
+IAEA high,6446,large->smr,0.0777,0.5805,0,-0.3856,0.0341
+IAEA high,6822,large->smr,0.2955,0.6697,0,-0.0693,0.1381
+IAEA high,7640,large->smr,0.0518,0.4209,0,-0.4525,0.2781
+IAEA high,7674,large->smr,0.0388,0.4204,1,-0.503,0.1923
+IAEA high,7921,large->smr,0.1835,0.4494,0,-0.1907,0.4374
+IAEA high,7955,large->smr,0.1943,0.6447,0,-0.1853,0.0897
+IAEA high,8881,large->smr,0.1685,0.4144,0,-0.3725,0.3717
+IAEA high,9205,large->smr,0.1998,0.5985,1,-0.2897,0.074
+IAEA high,9741,large->smr,0.0088,0.4408,0,-0.2427,0.3655
+IAEA high,9849,large->smr,0.1045,0.6177,0,-0.0907,0.1953
+IAEA high,9894,large->smr,0.0341,0.3884,0,-0.2343,0.4893
+IAEA high,174,smr->large,0.3099,0.9776,0,0.1231,-0.161
+IAEA high,658,smr->large,0.4317,0.888,0,0.0894,-0.0791
+IAEA high,1402,smr->large,0.3178,0.9046,0,0.1751,-0.0364
+IAEA high,2464,smr->large,0.4128,0.9274,0,0.2383,-0.027
+IAEA high,2697,smr->large,0.2525,0.9429,0,0.0098,-0.1934
+IAEA high,3543,smr->large,0.05,0.9495,1,0.0875,-0.1321
+IAEA high,3598,smr->large,0.3054,0.8889,0,0.0043,-0.137
+IAEA high,4387,smr->large,0.7858,0.962,1,0.0711,-0.176
+IAEA high,5768,smr->large,0.0894,0.9613,1,0.2668,-0.0074
+IAEA high,6137,smr->large,0.4215,0.9978,0,0.3453,-0.0282
+IAEA high,7037,smr->large,0.6361,0.999,1,0.1636,-0.1448
+IAEA high,7287,smr->large,0.0836,0.9286,1,0.0261,-0.1583
+IAEA high,7967,smr->large,0.5455,0.9929,0,0.1213,-0.1996
+IAEA high,8874,smr->large,0.0997,0.9183,1,0.1586,-0.0471
+IAEA high,9904,smr->large,0.2719,0.8374,0,0.0171,-0.0506
+McKinsey GEP 2025,151,large->smr,0.1402,0.5281,0,-0.3265,0.1942
+McKinsey GEP 2025,225,large->smr,0.1668,0.4855,0,-0.2685,0.3358
+McKinsey GEP 2025,676,large->smr,0.18,0.4637,0,-0.1999,0.4105
+McKinsey GEP 2025,751,large->smr,0.1551,0.4785,0,-0.2763,0.3144
+McKinsey GEP 2025,779,large->smr,0.2292,0.4141,1,-0.3819,0.338
+McKinsey GEP 2025,990,large->smr,0.0278,0.5982,1,-0.234,0.1098
+McKinsey GEP 2025,1018,large->smr,0.0998,0.5101,0,-0.5386,0.0511
+McKinsey GEP 2025,1478,large->smr,0.0486,0.3213,1,-0.3614,0.5203
+McKinsey GEP 2025,2208,large->smr,0.1776,0.397,1,-0.2541,0.4569
+McKinsey GEP 2025,2293,large->smr,0.0476,0.3172,0,-0.7843,0.2407
+McKinsey GEP 2025,2414,large->smr,0.0956,0.3816,0,-0.7289,0.1954
+McKinsey GEP 2025,2473,large->smr,0.1075,0.3506,0,-0.0283,0.7668
+McKinsey GEP 2025,2784,large->smr,0.2261,0.5702,0,-0.436,0.0499
+McKinsey GEP 2025,2837,large->smr,0.0953,0.4947,0,-0.0805,0.4277
+McKinsey GEP 2025,2874,large->smr,0.242,0.4229,1,-0.5882,0.1521
+McKinsey GEP 2025,3164,large->smr,0.1231,0.3651,0,-0.6631,0.2711
+McKinsey GEP 2025,3439,large->smr,0.2002,0.4979,0,-0.3231,0.267
+McKinsey GEP 2025,3689,large->smr,0.077,0.385,1,-0.0799,0.6031
+McKinsey GEP 2025,3744,large->smr,0.0303,0.3963,0,-0.4496,0.3256
+McKinsey GEP 2025,3992,large->smr,0.038,0.5208,0,-0.1121,0.3251
+McKinsey GEP 2025,4434,large->smr,0.2531,0.6485,0,-0.1019,0.1603
+McKinsey GEP 2025,4708,large->smr,0.1878,0.518,0,-0.5208,0.0868
+McKinsey GEP 2025,4885,large->smr,0.1665,0.3785,1,-0.7803,0.0947
+McKinsey GEP 2025,5042,large->smr,0.1498,0.5666,0,-0.3545,0.086
+McKinsey GEP 2025,5543,large->smr,0.079,0.3819,0,-0.3782,0.434
+McKinsey GEP 2025,5742,large->smr,0.0256,0.3574,0,-0.9788,0.0326
+McKinsey GEP 2025,6007,large->smr,0.074,0.4622,0,-0.2903,0.3051
+McKinsey GEP 2025,6153,large->smr,0.1022,0.5197,1,-0.0157,0.4082
+McKinsey GEP 2025,6412,large->smr,0.0301,0.4846,1,-0.0507,0.4144
+McKinsey GEP 2025,6735,large->smr,0.1595,0.416,0,-0.4365,0.3343
+McKinsey GEP 2025,6757,large->smr,0.1174,0.3885,0,-0.8894,0.0579
+McKinsey GEP 2025,6911,large->smr,0.0366,0.6567,1,-0.2232,0.0263
+McKinsey GEP 2025,7463,large->smr,0.121,0.4829,0,-0.1466,0.3921
+McKinsey GEP 2025,7483,large->smr,0.1513,0.6312,1,-0.08,0.1715
+McKinsey GEP 2025,7547,large->smr,0.0801,0.3338,1,-0.4767,0.4254
+McKinsey GEP 2025,7637,large->smr,0.117,0.4084,0,-0.7836,0.0795
+McKinsey GEP 2025,8128,large->smr,0.2109,0.576,1,-0.0054,0.314
+McKinsey GEP 2025,8224,large->smr,0.1806,0.5534,0,-0.0201,0.366
+McKinsey GEP 2025,9242,large->smr,0.0017,0.6235,1,-0.003,0.2457
+McKinsey GEP 2025,9243,large->smr,0.096,0.467,0,-0.2666,0.3249
+McKinsey GEP 2025,9415,large->smr,0.1569,0.3621,1,-0.4819,0.3529
+McKinsey GEP 2025,9442,large->smr,0.0652,0.4413,0,-0.7351,0.0655
+McKinsey GEP 2025,9756,large->smr,0.1512,0.5663,0,-0.3892,0.0742
+McKinsey GEP 2025,9993,large->smr,0.1658,0.6161,0,-0.1648,0.1499
+McKinsey GEP 2025,1122,smr->large,0.3176,0.987,0,0.1652,-0.1435
+McKinsey GEP 2025,1277,smr->large,0.2832,0.9232,1,0.0311,-0.1523
+McKinsey GEP 2025,1487,smr->large,0.0806,0.8967,1,0.0867,-0.0759
+McKinsey GEP 2025,2061,smr->large,0.3353,0.9166,0,0.0687,-0.1303
+McKinsey GEP 2025,3155,smr->large,0.2976,0.8835,0,0.1283,-0.0461
+McKinsey GEP 2025,3320,smr->large,0.072,0.8317,1,0.0303,-0.0324
+McKinsey GEP 2025,4412,smr->large,0.4074,0.9071,0,0.225,-0.0294
+McKinsey GEP 2025,5128,smr->large,0.3301,0.98,1,0.2976,-0.0249
+McKinsey GEP 2025,5160,smr->large,0.1439,0.9594,1,0.2307,-0.0456
+McKinsey GEP 2025,5285,smr->large,0.0444,0.9995,1,0.3045,-0.0415
+McKinsey GEP 2025,5463,smr->large,0.0924,0.9677,1,0.114,-0.1357
+McKinsey GEP 2025,5604,smr->large,0.3825,0.9972,0,0.4152,-0.0116
+McKinsey GEP 2025,5701,smr->large,0.3946,0.8509,0,0.0189,-0.0769
+McKinsey GEP 2025,6118,smr->large,0.356,0.8622,0,0.1474,-0.0012
+McKinsey GEP 2025,7019,smr->large,0.323,0.9833,1,0.2346,-0.0692
+McKinsey GEP 2025,7286,smr->large,0.1499,0.8957,1,0.1332,-0.0367
+McKinsey GEP 2025,7444,smr->large,0.4399,0.8919,0,0.1683,-0.0329
+McKinsey GEP 2025,8187,smr->large,0.1828,0.9166,1,0.181,-0.0308
+McKinsey GEP 2025,8444,smr->large,0.3743,0.9999,0,0.1969,-0.1444
+McKinsey GEP 2025,9081,smr->large,0.1507,0.9835,1,0.3349,-0.0059
+COP28 tripling pledge,8,large->smr,0.0503,0.5337,1,-0.4774,0.0214
+COP28 tripling pledge,243,large->smr,0.0807,0.4757,1,-0.4882,0.1456
+COP28 tripling pledge,366,large->smr,0.2057,0.6546,0,-0.1377,0.1214
+COP28 tripling pledge,559,large->smr,0.0064,0.3713,1,-0.0285,0.6492
+COP28 tripling pledge,642,large->smr,0.2472,0.7644,0,-0.0462,0.0076
+COP28 tripling pledge,711,large->smr,0.0712,0.404,0,-0.436,0.3792
+COP28 tripling pledge,1126,large->smr,0.0665,0.6916,1,-0.1636,0.0245
+COP28 tripling pledge,1887,large->smr,0.1103,0.374,0,-0.129,0.6517
+COP28 tripling pledge,2026,large->smr,0.0683,0.4846,0,-0.5927,0.0614
+COP28 tripling pledge,2171,large->smr,0.1087,0.501,0,-0.6687,0.0127
+COP28 tripling pledge,2212,large->smr,0.0107,0.4471,0,-0.5672,0.1366
+COP28 tripling pledge,2238,large->smr,0.0988,0.4297,0,-0.8069,0.0523
+COP28 tripling pledge,2258,large->smr,0.0366,0.2519,0,-1.2655,0.0885
+COP28 tripling pledge,2262,large->smr,0.0176,0.2669,0,-0.3908,0.6573
+COP28 tripling pledge,2393,large->smr,0.1533,0.3949,0,-0.9098,0.0675
+COP28 tripling pledge,2501,large->smr,0.008,0.4323,0,-0.7875,0.0394
+COP28 tripling pledge,2676,large->smr,0.0507,0.613,0,-0.1269,0.1716
+COP28 tripling pledge,2851,large->smr,0.0258,0.5822,1,-0.0209,0.2996
+COP28 tripling pledge,3682,large->smr,0.1688,0.459,0,-0.006,0.5829
+COP28 tripling pledge,3815,large->smr,0.1069,0.3445,0,-0.4027,0.5248
+COP28 tripling pledge,4301,large->smr,0.1811,0.6257,0,-0.3294,0.0327
+COP28 tripling pledge,5038,large->smr,0.1798,0.5926,0,-0.1395,0.2392
+COP28 tripling pledge,5251,large->smr,0.0085,0.317,0,-0.8564,0.2299
+COP28 tripling pledge,5467,large->smr,0.0458,0.4757,0,-0.6328,0.0463
+COP28 tripling pledge,5545,large->smr,0.1774,0.5655,0,-0.5362,0.0077
+COP28 tripling pledge,6062,large->smr,0.2768,0.6279,1,-0.1811,0.115
+COP28 tripling pledge,6519,large->smr,0.1503,0.3762,0,-0.6733,0.298
+COP28 tripling pledge,6680,large->smr,0.0182,0.3165,0,-1.1998,0.01
+COP28 tripling pledge,6981,large->smr,0.1713,0.5568,0,-0.1202,0.2931
+COP28 tripling pledge,7110,large->smr,0.1886,0.6439,0,-0.1153,0.1593
+COP28 tripling pledge,7122,large->smr,0.0708,0.293,0,-0.4985,0.5625
+COP28 tripling pledge,7195,large->smr,0.1661,0.63,0,-0.2792,0.0487
+COP28 tripling pledge,7322,large->smr,0.0494,0.5069,0,-0.4198,0.171
+COP28 tripling pledge,7693,large->smr,0.074,0.3732,0,-0.1776,0.6156
+COP28 tripling pledge,7859,large->smr,0.0757,0.3958,0,-0.434,0.3688
+COP28 tripling pledge,7987,large->smr,0.0801,0.4477,0,-0.7705,0.0142
+COP28 tripling pledge,8011,large->smr,0.0361,0.2082,0,-0.3049,0.8938
+COP28 tripling pledge,8232,large->smr,0.1832,0.6964,0,-0.1489,0.0369
+COP28 tripling pledge,8359,large->smr,0.1101,0.5613,1,-0.1863,0.2077
+COP28 tripling pledge,9428,large->smr,0.0173,0.3115,0,-1.1745,0.004
+COP28 tripling pledge,9444,large->smr,0.1063,0.361,0,-0.1962,0.637
+COP28 tripling pledge,9464,large->smr,0.0248,0.3334,1,-0.1968,0.5973
+COP28 tripling pledge,9592,large->smr,0.0643,0.3958,0,-0.1773,0.5458
+COP28 tripling pledge,9928,large->smr,0.2401,0.7662,0,-0.0127,0.0284
+COP28 tripling pledge,619,smr->large,0.1889,0.9804,1,0.0249,-0.2387
+COP28 tripling pledge,1745,smr->large,0.0402,0.8591,1,0.0355,-0.0678
+COP28 tripling pledge,2094,smr->large,0.3408,0.9458,0,0.091,-0.1637
+COP28 tripling pledge,2914,smr->large,0.1205,0.9896,1,0.2741,-0.0565
+COP28 tripling pledge,4084,smr->large,0.3035,0.9029,0,0.0286,-0.1509
+COP28 tripling pledge,4913,smr->large,0.199,0.9298,1,0.0421,-0.154
+COP28 tripling pledge,5162,smr->large,0.2747,0.9519,0,0.128,-0.1527
+COP28 tripling pledge,5719,smr->large,0.0727,0.9049,1,0.0696,-0.1071
+COP28 tripling pledge,6223,smr->large,0.4193,0.9083,1,0.2074,-0.014
+COP28 tripling pledge,8004,smr->large,0.06,0.9754,1,0.3047,-0.0085
+COP28 tripling pledge,8745,smr->large,0.2105,0.9418,1,0.2348,-0.0372
+COP28 tripling pledge,9008,smr->large,0.3095,0.881,0,0.1927,-0.0003
+COP28 tripling pledge,9066,smr->large,0.4693,0.9975,1,0.363,-0.0217
+COP28 tripling pledge,9628,smr->large,0.3539,0.8982,0,0.0733,-0.1101
+2025 EO,280,large->smr,0.0393,0.3205,0,-0.8861,0.2466
+2025 EO,919,large->smr,0.0802,0.4023,1,-0.0803,0.57
+2025 EO,1154,large->smr,0.0263,0.3198,0,-1.0636,0.093
+2025 EO,1175,large->smr,0.0612,0.4304,0,-0.1565,0.5022
+2025 EO,1210,large->smr,0.2972,0.755,0,-0.0715,0.0116
+2025 EO,1248,large->smr,0.2213,0.7246,0,-0.1029,0.0402
+2025 EO,1722,large->smr,0.0479,0.3448,0,-0.076,0.7545
+2025 EO,2047,large->smr,0.1679,0.4096,0,-0.5428,0.3216
+2025 EO,2089,large->smr,0.0911,0.6907,1,-0.1347,0.0464
+2025 EO,2132,large->smr,0.1466,0.6923,0,-0.1082,0.0819
+2025 EO,2279,large->smr,0.2492,0.6331,0,-0.3309,0.0389
+2025 EO,2326,large->smr,0.0585,0.4373,0,-0.6078,0.1655
+2025 EO,2874,large->smr,0.2304,0.7137,0,-0.0109,0.119
+2025 EO,2901,large->smr,0.1382,0.3851,0,-0.244,0.5573
+2025 EO,2992,large->smr,0.0551,0.3093,0,-0.2809,0.7182
+2025 EO,3022,large->smr,0.0837,0.4004,0,-0.2405,0.5299
+2025 EO,3274,large->smr,0.288,0.6309,0,-0.3301,0.0479
+2025 EO,3355,large->smr,0.1093,0.5032,1,-0.1492,0.3356
+2025 EO,3691,large->smr,0.0137,0.699,1,-0.0366,0.104
+2025 EO,4356,large->smr,0.2209,0.5414,0,-0.2252,0.2877
+2025 EO,4529,large->smr,0.129,0.4314,0,-0.338,0.4157
+2025 EO,4674,large->smr,0.0463,0.2563,0,-1.2989,0.0949
+2025 EO,4774,large->smr,0.1357,0.5309,0,-0.122,0.3534
+2025 EO,4954,large->smr,0.1157,0.4959,0,-0.6352,0.0497
+2025 EO,5150,large->smr,0.0549,0.2429,0,-1.4529,0.0439
+2025 EO,5288,large->smr,0.1078,0.4605,0,-0.2376,0.4044
+2025 EO,5495,large->smr,0.0657,0.3993,1,-0.1997,0.4883
+2025 EO,6283,large->smr,0.0957,0.4003,0,-0.3308,0.474
+2025 EO,6388,large->smr,0.1505,0.5676,0,-0.3513,0.1149
+2025 EO,6546,large->smr,0.1556,0.5428,0,-0.1482,0.31
+2025 EO,7726,large->smr,0.032,0.3008,0,-0.9185,0.2019
+2025 EO,7804,large->smr,0.0153,0.2598,0,-1.0677,0.2294
+2025 EO,7926,large->smr,0.0417,0.296,0,-0.2006,0.7817
+2025 EO,8374,large->smr,0.041,0.2992,0,-1.21,0.0851
+2025 EO,8557,large->smr,0.0826,0.3668,0,-0.3655,0.537
+2025 EO,8596,large->smr,0.0409,0.2749,0,-0.4825,0.6277
+2025 EO,8790,large->smr,0.116,0.4304,0,-0.864,0.0458
+2025 EO,8874,large->smr,0.1074,0.3469,0,-1.1099,0.0361
+2025 EO,9322,large->smr,0.0836,0.2499,0,-0.1406,0.9417
+2025 EO,9398,large->smr,0.0197,0.5918,1,-0.3312,0.0677
+2025 EO,9524,large->smr,0.0256,0.4292,0,-0.5704,0.185
+2025 EO,9716,large->smr,0.1647,0.6009,1,-0.2029,0.1437
+2025 EO,9733,large->smr,0.149,0.5705,0,-0.4634,0.0454
+2025 EO,162,smr->large,0.0478,0.9924,1,0.1991,-0.1198
+2025 EO,2077,smr->large,0.3854,0.9676,0,0.0187,-0.2762
+2025 EO,3400,smr->large,0.1338,0.9897,1,0.0495,-0.2316
+2025 EO,3796,smr->large,0.3797,0.9553,0,0.1118,-0.1945
+2025 EO,4097,smr->large,0.242,0.8962,0,0.0277,-0.1408
+2025 EO,4228,smr->large,0.0961,0.9964,1,0.3046,-0.0462
+2025 EO,5073,smr->large,0.1782,0.9708,1,0.3003,-0.029
+2025 EO,5793,smr->large,0.2246,0.9939,0,0.2648,-0.1128
+2025 EO,6970,smr->large,0.2045,0.9628,1,0.0863,-0.1794
+2025 EO,7120,smr->large,0.2047,0.9638,0,0.1864,-0.1143
+2025 EO,7781,smr->large,0.2956,0.9986,0,0.2637,-0.1188
+2025 EO,7928,smr->large,0.0697,0.9004,1,0.1398,-0.0453
+2025 EO,8800,smr->large,0.0414,0.9496,1,0.1436,-0.1065
+2025 EO,9673,smr->large,0.3956,0.9045,1,0.131,-0.0669
