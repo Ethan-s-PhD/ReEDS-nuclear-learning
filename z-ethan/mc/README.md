@@ -117,7 +117,7 @@ year-by-year subsidy bracket, and a higher one-sided coverage of the p95 path (t
 the subsidy never exceeds the hi case's — the policy-relevant direction). The engine-optimized `lo`/`hi` corner worlds are retained as an appendix
 **possibility frontier** (`bounds_record.csv`; jointly enumerated, coordinate-verified,
 strictly outside all 10k draws, `dur_z` capped at ±2.33) and as the dual-monotonicity
-**pilot pair** `smr100_aj_{blo|bhi}` in the separate `cases_nuclearlearning_smr100_bounds.csv`
+**pilot pair** `smr100_eo_{blo|bhi}` in the separate `cases_nuclearlearning_smr100_bounds.csv`
 (their input paths pointwise-dominate every draw — QA-4e — so their ReEDS dual trajectories
 must not cross); the **literature-expected world** (Abou-Jaoude LR 8%/9.5% and m=4, ATB 2024
 moderate BOAK/FOM/VOM; ~P38–40 of the drawn NPV) is a zero-run overlay, not a case. The

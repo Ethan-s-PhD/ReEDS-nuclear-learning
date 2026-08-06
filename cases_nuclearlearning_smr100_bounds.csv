@@ -1,4 +1,4 @@
-,Default Value,smr100_aj_blo,smr100_aj_bhi
+,Default Value,smr100_eo_blo,smr100_eo_bhi
 ignore,0,,
 timetype,seq,,
 yearset,2010_2015_2020_2023_2026_2029_2031_2032_2033_2034_2035_2038_2041_2044_2047_2050,,
@@ -8,8 +8,8 @@ GSw_NuclearCapMandate_Scale,1,,
 GSw_NuclearCapMandateTechScen,smr,,
 GSw_NuclearLearning,0,,
 construction_schedules_suffix,mc,,
-GSw_NuclearCapMandateScen,,abou_jaoude_smr,abou_jaoude_smr
-plantchar_nuclear,,nuclear_mc_smr100_aj_blo,nuclear_mc_smr100_aj_bhi
-plantchar_nuclear_smr,,nuclear-smr_mc_smr100_aj_blo,nuclear-smr_mc_smr100_aj_bhi
-financials_tech_suffix,,mc_smr100_aj_blo,mc_smr100_aj_bhi
-construction_times_suffix,,mc_smr100_aj_blo,mc_smr100_aj_bhi
+GSw_NuclearCapMandateScen,,eo2025_smr,eo2025_smr
+plantchar_nuclear,,nuclear_mc_smr100_eo_blo,nuclear_mc_smr100_eo_bhi
+plantchar_nuclear_smr,,nuclear-smr_mc_smr100_eo_blo,nuclear-smr_mc_smr100_eo_bhi
+financials_tech_suffix,,mc_smr100_eo_blo,mc_smr100_eo_bhi
+construction_times_suffix,,mc_smr100_eo_blo,mc_smr100_eo_bhi

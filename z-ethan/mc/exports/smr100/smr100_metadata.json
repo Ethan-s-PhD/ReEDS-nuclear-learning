@@ -1,14 +1,14 @@
 {
   "notebook": "smr100_case_export.ipynb",
-  "generated_utc": "2026-08-06T21:56:35+00:00",
-  "fork_git_head": "ebb9128e576757980d01a70f5b04cc6f0129ac6a",
+  "generated_utc": "2026-08-06T22:15:17+00:00",
+  "fork_git_head": "8e7f5d6642dd0996ebdb3f2b1462d52815d777b6",
   "master_seed": 20260715,
   "stream_prefix": "smr100/",
   "design": {
     "deployment": "100% SMR (winner-take-all resolved in favor of SMR; see mc_cost_trajectories.ipynb S10 and mixed_build_optimizer.ipynb)",
     "draw": "the companion notebook's comonotone 3-latent copula draw, verbatim, on the companion's own seed streams (world/{schedule}) \u2014 identical worlds, asserted in QA-0 when mc_perdraw.npz is present; the MC is the sample space the cases are drawn from",
     "large_channel": "loser channel: international spillover + drawn x_sl fraction of the SMR program (zero US large builds)",
-    "selection": "percentile joint draws (v10, adopted 2026-08-06, reverting the 2026-08-03 designed-cases detour): per schedule, the actual drawn worlds at P5/P50/P95 of the program-NPV ranking (rank = ceil(q*(N-1)); draw indices registered in selected_draws.csv and asserted identical to mc_perdraw.npz). Read as a constrained optimizer over the plausible (drawn) set at the 90% level. The engine-optimized lo/hi bounds are retained as the appendix possibility frontier and as the dual-monotonicity pilot pair (schedule abou_jaoude, cases blo/bhi in the separate bounds cases file; pointwise path-dominance certified in QA-4e); the literature-expected world is a zero-run overlay",
+    "selection": "percentile joint draws (v10, adopted 2026-08-06, reverting the 2026-08-03 designed-cases detour): per schedule, the actual drawn worlds at P5/P50/P95 of the program-NPV ranking (rank = ceil(q*(N-1)); draw indices registered in selected_draws.csv and asserted identical to mc_perdraw.npz). Read as a constrained optimizer over the plausible (drawn) set at the 90% level. The engine-optimized lo/hi bounds are retained as the appendix possibility frontier and as the dual-monotonicity pilot pair (schedule eo2025, ratified 2026-08-06; cases blo/bhi in the separate bounds cases file; built by path-envelope over the bound world + all drawn paths -- the raw NPV bounds are not path-extreme on eo -- dominance certified on the exported arrays in QA-4e); the literature-expected world is a zero-run overlay",
     "selected_draw_indices": {
       "smr100_eia_p05": 2329,
       "smr100_eia_p50": 9573,
@@ -72,15 +72,13 @@
     "smr100_eo_p95"
   ],
   "bounds_pair": [
-    "smr100_aj_blo",
-    "smr100_aj_bhi"
+    "smr100_eo_blo",
+    "smr100_eo_bhi"
   ],
   "reeds_files": {
     "cases_file": "cases_nuclearlearning_smr100.csv",
     "bounds_cases_file": "cases_nuclearlearning_smr100_bounds.csv",
     "plantchar": [
-      "nuclear-smr_mc_smr100_aj_bhi",
-      "nuclear-smr_mc_smr100_aj_blo",
       "nuclear-smr_mc_smr100_aj_p05",
       "nuclear-smr_mc_smr100_aj_p50",
       "nuclear-smr_mc_smr100_aj_p95",
@@ -90,6 +88,8 @@
       "nuclear-smr_mc_smr100_eia_p05",
       "nuclear-smr_mc_smr100_eia_p50",
       "nuclear-smr_mc_smr100_eia_p95",
+      "nuclear-smr_mc_smr100_eo_bhi",
+      "nuclear-smr_mc_smr100_eo_blo",
       "nuclear-smr_mc_smr100_eo_p05",
       "nuclear-smr_mc_smr100_eo_p50",
       "nuclear-smr_mc_smr100_eo_p95",
@@ -99,8 +99,6 @@
       "nuclear-smr_mc_smr100_mck_p05",
       "nuclear-smr_mc_smr100_mck_p50",
       "nuclear-smr_mc_smr100_mck_p95",
-      "nuclear_mc_smr100_aj_bhi",
-      "nuclear_mc_smr100_aj_blo",
       "nuclear_mc_smr100_aj_p05",
       "nuclear_mc_smr100_aj_p50",
       "nuclear_mc_smr100_aj_p95",
@@ -110,6 +108,8 @@
       "nuclear_mc_smr100_eia_p05",
       "nuclear_mc_smr100_eia_p50",
       "nuclear_mc_smr100_eia_p95",
+      "nuclear_mc_smr100_eo_bhi",
+      "nuclear_mc_smr100_eo_blo",
       "nuclear_mc_smr100_eo_p05",
       "nuclear_mc_smr100_eo_p50",
       "nuclear_mc_smr100_eo_p95",
@@ -139,8 +139,8 @@
       "financials_tech_mc_smr100_eo_p05.csv",
       "financials_tech_mc_smr100_eo_p50.csv",
       "financials_tech_mc_smr100_eo_p95.csv",
-      "financials_tech_mc_smr100_aj_blo.csv",
-      "financials_tech_mc_smr100_aj_bhi.csv"
+      "financials_tech_mc_smr100_eo_blo.csv",
+      "financials_tech_mc_smr100_eo_bhi.csv"
     ],
     "construction_times": [
       "construction_times_mc_smr100_eia_p05.csv",
@@ -161,8 +161,8 @@
       "construction_times_mc_smr100_eo_p05.csv",
       "construction_times_mc_smr100_eo_p50.csv",
       "construction_times_mc_smr100_eo_p95.csv",
-      "construction_times_mc_smr100_aj_blo.csv",
-      "construction_times_mc_smr100_aj_bhi.csv"
+      "construction_times_mc_smr100_eo_blo.csv",
+      "construction_times_mc_smr100_eo_bhi.csv"
     ],
     "construction_schedules": "construction_schedules_mc.csv"
   },

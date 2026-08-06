@@ -178,3 +178,16 @@ prints the layered numbers as INFO. The bounds pair still anchors the extremes w
 certainty (possibility frontier, path-dominance certified). All layers live in
 `exports/smr100/band_coverage.csv` (`simult_cov_*`, `cov_below_p95_*`, `cov_above_p05_*`,
 `calibrated_pointwise_q`).
+
+### Ratified (2026-08-06): pilot bounds pair runs on `eo2025`
+
+Chosen over the suggested `aj`: the pilot is most convincing on the largest schedule, where
+ReEDS's response is most stressed. On eo the §10(e) certificate **fired as designed** — the
+raw NPV-bound `bhi` world's financed-CAPEX path dips under a ~1% tail of draws (drawn
+`dur_z` beyond the ±2.33 cap), i.e. the bounds are NPV-extreme but not path-extreme — so
+the pair is built by the plan's fallback, **path-dominance**: the exported SMR occ/dur
+paths are the pointwise envelope of the bound world's path and all 10k drawn paths.
+Diagnostic: occ needed no enveloping (0/27 years, already extreme via the support-endpoint
+anchors); duration needed it in 27/27 years in both directions. QA-4e now certifies
+dominance on the exported arrays. Cases: `smr100_eo_{blo,bhi}` in
+`cases_nuclearlearning_smr100_bounds.csv`; the `aj_{blo,bhi}` files are retired.
