@@ -156,3 +156,25 @@ simultaneous coverage) are the methods-text material.
 
 Lit-world overlay placement: P37.1–P40.2 across schedules (inside the expected P38–40 up to
 rounding). Bounds-pair schedule `aj` pending ratification at the NLR regroup (§8).
+
+### Ratified (2026-08-06, later same day): layered coverage claim
+
+Cases unchanged (P5/P95 joint draws stand). The coverage claim is **layered**:
+90% by construction on **program cost**; the empirical **simultaneous bracket** coverage
+(0.62–0.81) for the year-by-year subsidy bracket; and the **one-sided** coverage — the
+chance the subsidy path never exceeds the hi case's, the direction policy cares about:
+
+| schedule | one-sided below-p95 (fincapex) | one-sided (OCC) |
+|---|---|---|
+| eia   | 0.888 | 0.861 |
+| aj    | 0.877 | 0.891 |
+| iaea  | 0.831 | 0.800 |
+| mck   | 0.851 | 0.881 |
+| cop28 | 0.864 | 0.873 |
+| eo    | 0.916 | 0.899 |
+
+QA-4f now gates on the degenerate-band floor plus the one-sided ≥ two-sided identity, and
+prints the layered numbers as INFO. The bounds pair still anchors the extremes with
+certainty (possibility frontier, path-dominance certified). All layers live in
+`exports/smr100/band_coverage.csv` (`simult_cov_*`, `cov_below_p95_*`, `cov_above_p05_*`,
+`calibrated_pointwise_q`).

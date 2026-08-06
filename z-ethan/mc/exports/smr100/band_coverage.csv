@@ -1,7 +1,7 @@
-schedule,scalar_by_construction,simult_cov_fincapex,simult_cov_occ,calibrated_pointwise_q
-EIA 2026 AEO high,0.9,0.6185,0.6562,2.43
-Abou-Jaoude mod,0.9,0.6357,0.676,2.49
-IAEA high,0.9,0.695,0.6835,2.48
-McKinsey GEP 2025,0.9,0.7457,0.7725,2.52
-COP28 tripling pledge,0.9,0.7121,0.7446,2.54
-2025 EO,0.9,0.8052,0.7869,2.58
+schedule,scalar_by_construction,simult_cov_fincapex,cov_below_p95_fincapex,cov_above_p05_fincapex,simult_cov_occ,cov_below_p95_occ,cov_above_p05_occ,calibrated_pointwise_q
+EIA 2026 AEO high,0.9,0.6185,0.8877,0.7308,0.6562,0.8606,0.7956,2.43
+Abou-Jaoude mod,0.9,0.6357,0.8768,0.7589,0.676,0.8912,0.7848,2.49
+IAEA high,0.9,0.695,0.8309,0.8641,0.6835,0.7998,0.8837,2.48
+McKinsey GEP 2025,0.9,0.7457,0.8508,0.8949,0.7725,0.881,0.8915,2.52
+COP28 tripling pledge,0.9,0.7121,0.8638,0.8483,0.7446,0.8729,0.8717,2.54
+2025 EO,0.9,0.8052,0.9158,0.8894,0.7869,0.8991,0.8878,2.58

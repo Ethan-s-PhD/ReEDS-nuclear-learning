@@ -110,9 +110,11 @@ ranking per schedule (v10, adopted 2026-08-06, reverting the short-lived 2026-08
 designed-cases detour): actual drawn worlds with registered draw indices
 (`exports/smr100/selected_draws.csv`, asserted identical to `mc_perdraw.npz`), read as a
 **constrained optimizer** over the *plausible* (drawn) set at the 90% level rather than the
-priors' support corners. The p05–p95 pair's **empirical simultaneous path coverage** is
-recorded in `exports/smr100/band_coverage.csv` alongside the by-construction 90% scalar
-statement. The engine-optimized `lo`/`hi` corner worlds are retained as an appendix
+priors' support corners. The p05–p95 pair's coverage is a **layered claim**
+(ratified 2026-08-06; all numbers in `exports/smr100/band_coverage.csv`): 90% by
+construction on program cost, ~0.62–0.81 empirical simultaneous coverage for the
+year-by-year subsidy bracket, and a higher one-sided coverage of the p95 path (the chance
+the subsidy never exceeds the hi case's — the policy-relevant direction). The engine-optimized `lo`/`hi` corner worlds are retained as an appendix
 **possibility frontier** (`bounds_record.csv`; jointly enumerated, coordinate-verified,
 strictly outside all 10k draws, `dur_z` capped at ±2.33) and as the dual-monotonicity
 **pilot pair** `smr100_aj_{blo|bhi}` in the separate `cases_nuclearlearning_smr100_bounds.csv`

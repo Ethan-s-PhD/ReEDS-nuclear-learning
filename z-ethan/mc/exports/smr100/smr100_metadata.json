@@ -1,7 +1,7 @@
 {
   "notebook": "smr100_case_export.ipynb",
-  "generated_utc": "2026-08-06T21:28:59+00:00",
-  "fork_git_head": "cfeb00b502797f3a12dc12483b86cd90d48b5445",
+  "generated_utc": "2026-08-06T21:56:35+00:00",
+  "fork_git_head": "ebb9128e576757980d01a70f5b04cc6f0129ac6a",
   "master_seed": 20260715,
   "stream_prefix": "smr100/",
   "design": {
@@ -29,6 +29,7 @@
       "smr100_eo_p50": 9019,
       "smr100_eo_p95": 399
     },
+    "band_coverage_claim": "layered (ratified 2026-08-06): 90% by construction on program cost; simultaneous bracket + one-sided below-p95 (policy direction) reported empirically",
     "band_coverage_simultaneous_fincapex": {
       "EIA 2026 AEO high": 0.6185,
       "Abou-Jaoude mod": 0.6357,
@@ -36,6 +37,14 @@
       "McKinsey GEP 2025": 0.7457,
       "COP28 tripling pledge": 0.7121,
       "2025 EO": 0.8052
+    },
+    "band_coverage_onesided_below_p95_fincapex": {
+      "EIA 2026 AEO high": 0.8877,
+      "Abou-Jaoude mod": 0.8768,
+      "IAEA high": 0.8309,
+      "McKinsey GEP 2025": 0.8508,
+      "COP28 tripling pledge": 0.8638,
+      "2025 EO": 0.9158
     },
     "ranking": "discounted_schedule_weighted_npv",
     "non_capex": "FOM/VOM comonotone with the cost percentile U1 across ATB 2024 advanced->conservative on every exported case (bounds pair included; the literature overlay alone uses ATB-moderate FOM/VOM, zero-run); CF = ReEDS avail 0.9044; uranium AEO_2026_baseline; 30-yr PV at the system real rate (pvf_onm = 1/crf); adopted 2026-08-03 (see npv_winner_check.ipynb)",
@@ -158,9 +167,8 @@
     "construction_schedules": "construction_schedules_mc.csv"
   },
   "exports": {
-    "band_coverage.csv": "d52bbbe4709db6d5",
+    "band_coverage.csv": "2b46049cc715d5e6",
     "bounds_record.csv": "ad22d806ad16eaea",
-    "designed_cases.csv": "ee2c288c4552c072",
     "selected_cases.csv": "385613eadd4dd038",
     "selected_draws.csv": "cb42bef93b499ffe"
   }
