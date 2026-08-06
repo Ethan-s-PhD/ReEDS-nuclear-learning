@@ -10,8 +10,9 @@ by non-experts.
 
 > **Reading the mc_ 18-case files.** The cases are actual *joint* draws ranked by **program**
 > cost, so a per-tech file is not that tech's own cost percentile: where the winner flips
-> between percentiles (it does in 3 of 6 schedules at p95), the loser tech rides the
-> international-spillover-only channel and its capcost can be *cheaper* in a nominally more
+> between percentiles (it does in 3 of 6 schedules at p95), the loser tech rides the loser
+> channel (international spillover plus the drawn cross-tech fraction x of the winner's
+> program, S5 Step 5′) and its capcost can be *cheaper* in a nominally more
 > expensive case (QA12b in the notebook prints the ordering table). The mc_ family also ranks
 > on financed CAPEX, while the smr100 family ranks on full NPV — the two families' percentile
 > labels are not on a common scale. All ReEDS analysis uses `cases_nuclearlearning_smr100.csv`.
@@ -57,8 +58,9 @@ Every written file is round-trip checked by the notebook's QA section (S15).
 
 `mixed_build_optimizer.ipynb` answers one question the main notebook assumes away: **could any
 mixed large+SMR build program ever be cheaper than committing to the better single technology?**
-It relaxes the two assumptions that stack the deck against mixing — it allows drawn
-cross-technology spillover (up to 30% each direction, `x_ls`/`x_sl`), and it draws each
+It relaxes the assumptions that stack the deck against mixing: it pioneered the drawn
+cross-technology spillover (up to 30% each direction, `x_ls`/`x_sl` — since adopted into the
+main engine, 2026-08-06), and it draws each
 technology's (learning rate, anchor cost) pair **independently**, conditioned on the two
 orderings every real SMR proposal respects: `boak_smr > boak_large` (SMR starts pricier) and
 `lr_smr > lr_large` (SMR learns faster), so the starting-cost gap and the learning-rate gap
@@ -103,24 +105,30 @@ comonotone draw on the identical seed streams (QA-0 asserts the worlds match `mc
 draw-for-draw) — with the whole program feeding SMR learning in every draw, and measures
 everything on the **discounted SMR program NPV** (financed CAPEX + 30-yr PV of FOM/VOM/fuel
 at CF = ReEDS's own `avail`; convention and validation in `npv_winner_check.ipynb`, adopted
-2026-08-03). The exported cases are three **designed worlds** per schedule (adopted
-2026-08-03, replacing the earlier P5/P50/P95 draw selection — a scalar-percentile draw mixes
-offsetting parameter extremes; see the notebook's monotonicity section): `lo`/`hi` are
-engine-optimized cost **bounds** over every uncertain input (the interacting six jointly
-enumerated, the certified-monotone dials and the ±2.33-capped `dur_z` pinned,
-coordinate-verified; they land strictly outside all 10k draws) and `mid` is the
-**literature-expected world** (Abou-Jaoude LR 8%/9.5% and m=4, ATB 2024 moderate
-BOAK/FOM/VOM, tiny-base, multiplicative aggregation; lands ~P38–40 of the drawn NPV). The
-18 cases export with case-consistent FOM/VOM in the plantchar files:
+2026-08-03). The exported cases are the **P5/P50/P95 percentile joint draws** of that
+ranking per schedule (v10, adopted 2026-08-06, reverting the short-lived 2026-08-03
+designed-cases detour): actual drawn worlds with registered draw indices
+(`exports/smr100/selected_draws.csv`, asserted identical to `mc_perdraw.npz`), read as a
+**constrained optimizer** over the *plausible* (drawn) set at the 90% level rather than the
+priors' support corners. The p05–p95 pair's **empirical simultaneous path coverage** is
+recorded in `exports/smr100/band_coverage.csv` alongside the by-construction 90% scalar
+statement. The engine-optimized `lo`/`hi` corner worlds are retained as an appendix
+**possibility frontier** (`bounds_record.csv`; jointly enumerated, coordinate-verified,
+strictly outside all 10k draws, `dur_z` capped at ±2.33) and as the dual-monotonicity
+**pilot pair** `smr100_aj_{blo|bhi}` in the separate `cases_nuclearlearning_smr100_bounds.csv`
+(their input paths pointwise-dominate every draw — QA-4e — so their ReEDS dual trajectories
+must not cross); the **literature-expected world** (Abou-Jaoude LR 8%/9.5% and m=4, ATB 2024
+moderate BOAK/FOM/VOM; ~P38–40 of the drawn NPV) is a zero-run overlay, not a case. The
+18 production cases export with U1-comonotone FOM/VOM in the plantchar files:
 `cases_nuclearlearning_smr100.csv` (repo root),
-36 plantchar files (`nuclear{,-smr}_mc_smr100_*`; the large-reactor file is the
-international-spillover-only counterfactual), 18+18 financials/construction-times files, and
+36+4 plantchar files (`nuclear{,-smr}_mc_smr100_*`; the large-reactor file is the loser-channel
+counterfactual — international spillover plus x × the SMR program), 20+20 financials/construction-times files, and
 the shared `construction_schedules_mc.csv`. The cases mandate **SMR capacity only**: the
 mandate's tech set is switchable (`GSw_NuclearCapMandateTechScen` →
 `inputs/nuclear_learning/nuclear_cap_mandate_techs_{scen}.csv`), and these cases pair the
 `smr` set with `{scen}_smr` **additions-basis** trajectories (cumulative post-2030 builds
 incl. retirement backfill — exactly the notebook's own `cumsum(GW_ADD)`, asserted in QA-5e),
 so the large counterfactual can never fulfill the mandate and is never economic without it.
-Every written file is round-trip checked (QA-5).
+Every written file is round-trip checked (QA-5, both cases files).
 Launch the phase with `python runreeds.py -b <batch> -c nuclearlearning_smr100`. Cheap test
 runs: env var `SMR100_DRAWS`.
