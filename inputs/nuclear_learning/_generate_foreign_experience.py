@@ -100,7 +100,24 @@ PIPELINE_GW_2025_2030 = {
 # High path's net additions.
 TARGET_POSTANCHOR_2050 = {0.0: 264.8, 0.5: 375.8, 1.0: 501.5}
 
-UNIT_FOREIGN_GW = 1.0   # foreign new build treated as ~1 GWe large reactors
+UNIT_FOREIGN_GW = 1.0   # foreign large new build treated as ~1 GWe reactors
+UNIT_FOREIGN_SMR_GW = 0.3   # foreign SMR unit size (domestic SMR convention)
+
+# Tech split of foreign new capacity (2026-08-06): IAEA RDS-1 2025 — "Small modular
+# reactors (SMRs) are estimated to account for 24% of the 676 GW(e) new capacity added by
+# 2050 in the high case and for 5% of the 320 GW(e) new capacity added in the low case" —
+# applied uniformly across regions/years, interpolated in u like the lifetime rule.
+# ANALYSIS GROUNDWORK ONLY: the engine (nuclear_learning.py) consumes the unsplit
+# foreign_units_cum column — international experience sits in the cross-firm channel,
+# which does not distinguish designs. The per-tech columns feed the notebooks' S14
+# own-routing sensitivity and the design-lineage methods work.
+SMR_FRAC_LO, SMR_FRAC_HI = 0.05, 0.24
+
+
+def smr_frac(u):
+    return SMR_FRAC_LO + u * (SMR_FRAC_HI - SMR_FRAC_LO)
+
+
 YEARS = np.arange(2020, 2051)
 ANCHOR = 2030
 PIPE_END = 2030   # pipeline's real visibility horizon; structurally zero after 2030
@@ -217,7 +234,16 @@ def main():
         else:
             adds = trajectories_fallback(u)
         cum = theta_weighted_cum(adds)
-        df = pd.DataFrame({"t": YEARS, "foreign_units_cum": np.round(cum, 4)})
+        # Tech split: the share is uniform across regions/years at fixed u, so the split
+        # cumulative stocks are scalar multiples of the unsplit one — SMR units convert at
+        # the 0.3-GW domestic unit size (units, not GW, drive learning).
+        f = smr_frac(u)
+        df = pd.DataFrame({
+            "t": YEARS,
+            "foreign_units_cum": np.round(cum, 4),
+            "foreign_units_cum_large": np.round(cum * (1.0 - f), 4),
+            "foreign_units_cum_smr": np.round(cum * f * (UNIT_FOREIGN_GW / UNIT_FOREIGN_SMR_GW), 4),
+        })
         df.to_csv(os.path.join(here, f"foreign_experience_{scen}.csv"), index=False)
         post = cum[-1] - cum[YEARS == ANCHOR][0]
         print(f"wrote foreign_experience_{scen}.csv "

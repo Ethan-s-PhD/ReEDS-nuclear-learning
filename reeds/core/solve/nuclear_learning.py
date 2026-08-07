@@ -117,12 +117,18 @@ def read_historical_stock(case):
 
 
 def read_foreign_cum(case):
-    """{year: raw cumulative theta-weighted foreign units} or {} if absent."""
+    """{year: raw cumulative theta-weighted foreign units} or {} if absent.
+
+    The engine consumes only the UNSPLIT stock (foreign_units_cum, 1-GW basis): international
+    experience enters the cross-firm channel, which does not distinguish designs. The file's
+    per-tech columns (foreign_units_cum_{large,smr}, IAEA RDS-1 SMR share) are analysis
+    groundwork for the notebooks' own-routing sensitivity, not engine inputs.
+    """
     try:
         fx = pd.read_csv(os.path.join(case, 'inputs_case', 'foreign_experience.csv'))
-        return dict(zip(fx['t'].astype(int), fx['foreign_units_cum'].astype(float)))
     except FileNotFoundError:
         return {}
+    return dict(zip(fx['t'].astype(int), fx['foreign_units_cum'].astype(float)))
 
 
 def foreign_stock_postanchor(foreign_cum, year, anchor_year):
@@ -177,16 +183,28 @@ def read_experience_mw(case, tprev, pool_hybrid):
 #%% ===========================================================================
 ### --- LEARNING ENGINE (ported from mc_nuclear_smr_learning.ipynb) ---
 ### ===========================================================================
-def occ_factor(N, N_other, lr, omega, m, s, c, rho, h_us, h_kv, s_kv):
+def occ_factor(N, N_other, lr, omega, m, s, c, rho, h_us, h_kv, s_kv, x):
     """OCC / BOAK multiplier for one deterministic draw (occ_paths_ces port).
 
-    N        : post-anchor cumulative own-tech units
-    N_other  : other-tech units entering the cross-firm channel (0 unless CrossTech)
+    N          : post-anchor cumulative own-tech units
+    N_other    : the OTHER technology's post-anchor own unit count (0 unless CrossTech);
+                 enters the cross-firm channel scaled by x
+    h_kv       : theta-weighted historical foreign stock (all large LWRs; unsplit —
+                 not-own-design experience for both technologies alike)
+    s_kv       : theta-weighted post-anchor foreign stock (unsplit, 1-GW basis)
+    x          : incoming cross-technology spillover fraction
+
+    International experience enters the CROSS-FIRM channel at weight s*theta, unsplit
+    across technologies: the Kim & Verdolini flows are normalized to the domestic
+    inter-firm citation baseline (their eq. (5); self-citations excluded), so theta
+    prices the extra national border on top of the firm wall — omega once for the firm
+    wall, theta once for the border. The notebooks' S14 own-routing sensitivity is a
+    deliberate structural upper bound, not an engine path.
     """
     o0 = N_BOAK_UNITS + c * h_us / m
     a0 = (m - 1.0) * o0 + s * c * h_kv
     o = o0 + N / m
-    a = (m - 1.0) * o0 + (m - 1.0) / m * N + s * (c * h_kv + s_kv) + N_other
+    a = a0 + (m - 1.0) / m * N + s * s_kv + x * N_other   # foreign stock non-rival: never /m
     b1 = math.log2(1.0 - lr)
     b2 = math.log2(1.0 - omega * lr)
     if abs(rho) < CES_EPS:
@@ -265,17 +283,18 @@ def self_test(inl):
     omega, m = 1.0 / 3.0, 5.0
     # (a) anchor: zero experience -> factor == 1 (both conventions)
     for c in (0, 1):
-        f = occ_factor(0.0, 0.0, 0.08, omega, m, 0.0, c, 0.0, 140.0, 44.0, 0.0)
+        f = occ_factor(0.0, 0.0, 0.08, omega, m, 0.0, c, 0.0, 140.0, 44.0, 0.0, 0.15)
         assert abs(f - 1.0) < 1e-9, f'anchor check failed (c={c}): {f}'
     # (b) s=0, c=0 -> re-anchored generalized eq. (12): [(1-LR)(1-wLR)]^log2(1+N/2m)
     for N in (4.0, 40.0):
-        f = occ_factor(N, 0.0, 0.08, omega, m, 0.0, 0, 0.0, 140.0, 44.0, 0.0)
+        f = occ_factor(N, 0.0, 0.08, omega, m, 0.0, 0, 0.0, 140.0, 44.0, 0.0, 0.0)
         analytic = ((1 - 0.08) * (1 - omega * 0.08)) ** math.log2(1 + N / (2 * m))
         assert abs(f - analytic) < 1e-9, f'eq.(12) identity failed: {f} vs {analytic}'
-    # (c) autarky (s=0, c=0, no cross-tech): CES sweep is exactly flat across rho
-    base = occ_factor(40.0, 0.0, 0.08, omega, m, 0.0, 0, 0.0, 140.0, 44.0, 0.0)
-    for rho in (-2.0, -1.0, 0.0, 1.0):
-        f = occ_factor(40.0, 0.0, 0.08, omega, m, 0.0, 0, rho, 140.0, 44.0, 0.0)
+    # (c) autarky (s=0, c=0, no cross-tech): CES sweep is exactly flat across the
+    #     supported rho set (symmetric {-1, 0, 1} since 2026-08-06)
+    base = occ_factor(40.0, 0.0, 0.08, omega, m, 0.0, 0, 0.0, 140.0, 44.0, 0.0, 0.0)
+    for rho in (-1.0, 0.0, 1.0):
+        f = occ_factor(40.0, 0.0, 0.08, omega, m, 0.0, 0, rho, 140.0, 44.0, 0.0, 0.0)
         assert abs(f - base) < 1e-9, f'autarky flatness failed (rho={rho}): {f} vs {base}'
     # (d) INL curve anchors
     mod = inl['moderate'].to_numpy(float)
@@ -284,14 +303,26 @@ def self_test(inl):
     assert mod[1] == 88 and opt[1] == 70, 'INL next-build (series 2) anchors wrong'
     assert (np.diff(mod) <= 0).all() and (np.diff(opt) <= 0).all(), 'INL not monotone'
     # (e) notebook worked example (derivation Step 7): m=5, LR=8%, s=0.4, tiny base,
-    #     N=20, S_KV=15 -> OCC/BOAK = 0.876 * 0.950 = 0.832
-    f = occ_factor(20.0, 0.0, 0.08, omega, m, 0.4, 0, 0.0, 135.0, 84.27, 15.0)
-    assert abs(f - 0.83219) < 1e-4, f'worked example failed: {f} vs 0.83219'
-    # (f) notebook Step 8 CES extension of the worked example: cost decreasing in rho
-    #     when the cross channel grows faster than the own channel
-    for rho, expect in ((1.0, 0.8220), (0.0, 0.8322), (-1.0, 0.8374)):
-        f = occ_factor(20.0, 0.0, 0.08, omega, m, 0.4, 0, rho, 135.0, 84.27, 15.0)
+    #     N=20, unsplit S_KV=18, no other-tech program
+    #     -> OCC/BOAK = 0.876 * 0.948 = 0.831 (O-ratio 3.0, A-ratio 3.9)
+    f = occ_factor(20.0, 0.0, 0.08, omega, m, 0.4, 0, 0.0, 135.0, 83.5, 18.0, 0.15)
+    assert abs(f - 0.83092) < 1e-4, f'worked example failed: {f} vs 0.83092'
+    # (e') pre-2026-08-06 continuity regression (the old worked example, S_KV=15): the
+    #      reverted single path must still be bit-compatible with the original engine
+    f = occ_factor(20.0, 0.0, 0.08, omega, m, 0.4, 0, 0.0, 135.0, 83.5, 15.0, 0.0)
+    assert abs(f - 0.83219) < 1e-4, f'continuity worked example failed: {f} vs 0.83219'
+    # (e'') cross-tech term: x=0.15 of 10 other-tech units joins the cross-firm stock
+    f = occ_factor(20.0, 10.0, 0.08, omega, m, 0.4, 0, 0.0, 135.0, 83.5, 18.0, 0.15)
+    assert abs(f - 0.82939) < 1e-4, f'cross-tech worked example failed: {f} vs 0.82939'
+    # (f) notebook Step 8 CES extension of the worked example. The cross-firm channel grows
+    #     faster than the own channel (A-ratio 3.9 vs O-ratio 3.0), so complements (rho<0)
+    #     track the slower own stock: cost DECREASES in rho.
+    for rho, expect in ((1.0, 0.81881), (0.0, 0.83092), (-1.0, 0.83713)):
+        f = occ_factor(20.0, 0.0, 0.08, omega, m, 0.4, 0, rho, 135.0, 83.5, 18.0, 0.15)
         assert abs(f - expect) < 1e-3, f'CES worked example failed (rho={rho}): {f} vs {expect}'
+    for rho, expect in ((1.0, 0.8220), (0.0, 0.8322), (-1.0, 0.8374)):
+        f = occ_factor(20.0, 0.0, 0.08, omega, m, 0.4, 0, rho, 135.0, 83.5, 15.0, 0.0)
+        assert abs(f - expect) < 1e-3, f'continuity CES example failed (rho={rho}): {f} vs {expect}'
     # (g) duration model: next build (series 2) at lam=0.5 = (70+88)/2 = 79 months;
     #     SMR floor binds at NOAK; series advances at 2 own units per vendor
     d, ser = duration_months(0.0, 5.0, inl, 0.5, 55.0 / 82.0, 43.0, 72.0, 'absolute', False)
@@ -344,6 +375,7 @@ def main(cur_year, case):
     s = float(sw['GSw_NuclearLearning_Spillover'])
     c = int(sw['GSw_NuclearLearning_Convention'])
     rho = float(sw['GSw_NuclearLearning_CES_rho'])
+    x_ct = float(sw.get('GSw_NuclearLearning_CrossTech_x', 0.15))
     lam = float(sw['GSw_NuclearLearning_Dur_Lambda'])
     dur_mode = str(sw.get('GSw_NuclearLearning_DurAnchorMode', 'absolute')).strip().lower()
 
@@ -396,20 +428,22 @@ def main(cur_year, case):
     for itech, parent in BASE_TECHS.items():
         N = n_units[parent]
         other = 'smr' if parent == 'large' else 'large'
-        # CrossTech: the other technology's builds enter this tech's cross-firm
-        # channel expressed in THIS tech's unit-equivalents (capacity-consistent:
-        # 1 GW of SMRs teaches a large vendor as much as 1 GW of foreign reactors)
-        n_other = (exp_mw[other] / unit_mw[parent]) if cross_tech else 0.0
 
         # US historical fleet counts toward LARGE only (design decision 2026-07-31):
         # the SMR learning-rate range is empirically derived and already embeds any
         # benefit from prior LWR builds, so crediting the ~140-unit US stock to the
-        # SMR base would double-count it (and contradict the zero domestic cross-tech
-        # spillover convention). Foreign historical stock (h_kv) still enters the SMR
-        # cross-firm channel under the full-stock convention.
+        # SMR base would double-count it. The foreign stock (historical h_kv and
+        # projected s_kv) is not-own-design experience for both technologies alike
+        # and enters the cross-firm channel unsplit.
         h_us_parent = h_us if parent == 'large' else 0.0
 
-        factor = occ_factor(N, n_other, lr[parent], omega, m, s, c, rho, h_us_parent, h_kv, s_kv)
+        # CrossTech (2026-08-06 convention): the other technology's builds enter this
+        # tech's cross-firm channel as the OTHER tech's own unit count, scaled by the
+        # x_ct fraction — unit-consistent with the MC notebooks (a 300-MW SMR is one
+        # unit of SMR experience, whatever technology is listening).
+        n_other = (exp_mw[other] / unit_mw[other]) if cross_tech else 0.0
+        factor = occ_factor(N, n_other, lr[parent], omega, m, s, c, rho, h_us_parent,
+                            h_kv, s_kv, x_ct)
         learned_occ = boak[parent] * factor
 
         reeds_default_mo = 12.0 * len(canonical[parent])
