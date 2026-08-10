@@ -15,7 +15,7 @@ Output files are in MW of total national nuclear capacity (existing + new,
 net-path basis) with a GAMS-comment header, since b_inputs.gms $includes them
 directly into nuclear_cap_trajectory(allt).
 
-Each schedule is written on two bases:
+Each schedule is written on three bases:
 - nuclear_cap_trajectory_{scen}.csv      -- total national nuclear capacity
   (existing + new); pair with GSw_NuclearCapMandateTechScen=nuclear.
 - nuclear_cap_trajectory_{scen}_smr.csv  -- SMR-ONLY ADDITIONS: cumulative
@@ -23,6 +23,13 @@ Each schedule is written on two bases:
   (80-yr) retirement backfill of the existing large fleet, from the same PRIS
   unit data and identical arithmetic as GW_ADD in the Track B notebooks (which
   round-trip-check these files); pair with GSw_NuclearCapMandateTechScen=smr.
+- nuclear_cap_trajectory_{scen}_large.csv -- LARGE-ONLY, FLEET-INCLUSIVE:
+  the existing fleet's 80-yr-license path PLUS the same cumulative post-2030
+  gross additions as the _smr basis; pair with
+  GSw_NuclearCapMandateTechScen=large. The additions basis cannot be reused
+  here because eq_nuclear_cap_mandate counts ALL vintages of the mandate
+  techs: the existing ~97 GW large fleet would absorb an additions-only floor
+  and force no builds for roughly the first decade.
 
 Rerun with:  python inputs/nuclear_learning/_generate_cap_trajectories.py
 (the _smr variants need pandas + z-ethan/mc/pris_loader.py on the repo tree)
@@ -32,6 +39,7 @@ import os
 import sys
 
 OFFSET_GW = 3.0   # schedule base year lists 100 for the actual 97 GW 2024 fleet
+US_GW_2024 = 100.0 - OFFSET_GW   # existing large fleet in the base year (PRIS basis)
 US_LICENSE_LIFE = 80.0   # license-based retirement of the existing fleet (as the notebooks)
 ANCHOR = 2030            # no mandated additions at or before the anchor year
 
@@ -74,20 +82,36 @@ def main():
         print(f"wrote nuclear_cap_trajectory_{scen}.csv "
               f"(2050 = {idx[-1] - OFFSET_GW:.1f} GW national)")
 
-        # SMR-only additions basis: schedule net increments + retirement backfill,
-        # zero through the anchor year, cumulative (== cumsum(GW_ADD) in the notebooks)
+        # Cumulative additions series (== cumsum(GW_ADD) in the notebooks):
+        # schedule net increments + retirement backfill, zero through the anchor year
         cap = [v - OFFSET_GW for v in idx]
-        cum, lines_smr = 0.0, ["*t,MW"]
+        cum, cum_add, cum_ret = 0.0, [], []
         for j, y in enumerate(years):
             dnet = cap[j] - cap[j - 1] if j else 0.0
             flow = max(0.0, dnet + us_ret[j]) if y > ANCHOR else 0.0
             cum += flow
-            lines_smr.append(f"{y},{round(cum * 1000.0, 1)}")
+            cum_add.append(cum)
+            cum_ret.append(us_ret[j] + (cum_ret[-1] if j else 0.0))
+
+        # SMR-only additions basis
+        lines_smr = ["*t,MW"] + [f"{y},{round(c * 1000.0, 1)}"
+                                 for y, c in zip(years, cum_add)]
         path = os.path.join(here, f"nuclear_cap_trajectory_{scen}_smr.csv")
         with open(path, "w", newline="\n") as f:
             f.write("\n".join(lines_smr) + "\n")
         print(f"wrote nuclear_cap_trajectory_{scen}_smr.csv "
               f"(2050 = {cum:.1f} GW of cumulative SMR additions)")
+
+        # Large-only, FLEET-INCLUSIVE basis: existing 80-yr-license fleet path
+        # + the same additions (the mandate counts all vintages of the tech set)
+        lines_large = ["*t,MW"] + [
+            f"{y},{round((US_GW_2024 - r + c) * 1000.0, 1)}"
+            for y, r, c in zip(years, cum_ret, cum_add)]
+        path = os.path.join(here, f"nuclear_cap_trajectory_{scen}_large.csv")
+        with open(path, "w", newline="\n") as f:
+            f.write("\n".join(lines_large) + "\n")
+        print(f"wrote nuclear_cap_trajectory_{scen}_large.csv "
+              f"(2050 = {US_GW_2024 - cum_ret[-1] + cum:.1f} GW large fleet+additions)")
 
 
 if __name__ == "__main__":

@@ -68,3 +68,5 @@ docs/build/*
 z-ethan/mc/exports/*.npz
 # ATB inversion per-world misfit export (large binary; regenerate via z-ethan/mc/atb_parameter_space.ipynb)
 z-ethan/mc/exports/atb/*.npz
+# tech-comparison per-draw exports (large binaries; regenerate via z-ethan/mc/tech_comparison.ipynb)
+z-ethan/mc/exports/tech_comparison/perdraw/

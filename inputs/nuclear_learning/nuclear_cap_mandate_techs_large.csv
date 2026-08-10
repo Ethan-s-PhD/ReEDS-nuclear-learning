@@ -1,0 +1,7 @@
+*i - techs whose capacity counts toward the nuclear capacity mandate
+* (GSw_NuclearCapMandateTechScen=large: large nuclear only - pair with the
+* {scen}_large FLEET-INCLUSIVE trajectories (existing 80-yr-license fleet path
+* + post-2030 additions), NOT the additions-basis _smr files:
+* eq_nuclear_cap_mandate counts ALL vintages, so the existing ~97 GW fleet
+* would absorb an additions-basis floor and force no builds for ~a decade)
+nuclear

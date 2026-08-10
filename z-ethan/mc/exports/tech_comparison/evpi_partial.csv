@@ -1,0 +1,133 @@
+cell,schedule,parameter,partial_EVPI_pct
+k100,EIA 2026 AEO high,boak_gap,0.15395136301012177
+k100,EIA 2026 AEO high,lr_gap,0.16449565249728657
+k100,EIA 2026 AEO high,conv_full,0.0
+k100,Abou-Jaoude mod,boak_gap,0.0
+k100,Abou-Jaoude mod,lr_gap,0.15733552853610847
+k100,Abou-Jaoude mod,conv_full,0.0
+k100,IAEA high,boak_gap,1.2189691731432926e-14
+k100,IAEA high,lr_gap,0.1923631015355198
+k100,IAEA high,conv_full,0.0
+k100,McKinsey GEP 2025,boak_gap,0.0
+k100,McKinsey GEP 2025,lr_gap,0.20596124299541035
+k100,McKinsey GEP 2025,conv_full,0.0
+k100,COP28 tripling pledge,boak_gap,0.0
+k100,COP28 tripling pledge,lr_gap,0.23318649102609315
+k100,COP28 tripling pledge,conv_full,0.0
+k100,2025 EO,boak_gap,0.0
+k100,2025 EO,lr_gap,0.21481518419017734
+k100,2025 EO,conv_full,0.0
+k075,EIA 2026 AEO high,boak_gap,1.2192733078930555
+k075,EIA 2026 AEO high,lr_gap,0.0
+k075,EIA 2026 AEO high,conv_full,0.0
+k075,Abou-Jaoude mod,boak_gap,0.7199532541538789
+k075,Abou-Jaoude mod,lr_gap,0.0
+k075,Abou-Jaoude mod,conv_full,0.0
+k075,IAEA high,boak_gap,0.4521940583977158
+k075,IAEA high,lr_gap,0.0
+k075,IAEA high,conv_full,0.0
+k075,McKinsey GEP 2025,boak_gap,0.41040261486273577
+k075,McKinsey GEP 2025,lr_gap,0.0
+k075,McKinsey GEP 2025,conv_full,0.0
+k075,COP28 tripling pledge,boak_gap,0.06256785796046153
+k075,COP28 tripling pledge,lr_gap,0.0
+k075,COP28 tripling pledge,conv_full,0.0
+k075,2025 EO,boak_gap,0.0
+k075,2025 EO,lr_gap,0.0
+k075,2025 EO,conv_full,0.0
+k050,EIA 2026 AEO high,boak_gap,2.1989189357335426
+k050,EIA 2026 AEO high,lr_gap,0.06388172564881923
+k050,EIA 2026 AEO high,conv_full,0.0
+k050,Abou-Jaoude mod,boak_gap,1.5861809549863521
+k050,Abou-Jaoude mod,lr_gap,0.0
+k050,Abou-Jaoude mod,conv_full,0.0
+k050,IAEA high,boak_gap,0.9896490479944821
+k050,IAEA high,lr_gap,0.0
+k050,IAEA high,conv_full,0.0
+k050,McKinsey GEP 2025,boak_gap,0.8840606387880092
+k050,McKinsey GEP 2025,lr_gap,0.0
+k050,McKinsey GEP 2025,conv_full,0.0
+k050,COP28 tripling pledge,boak_gap,0.6737901645016356
+k050,COP28 tripling pledge,lr_gap,0.0
+k050,COP28 tripling pledge,conv_full,0.0
+k050,2025 EO,boak_gap,0.39932200105193455
+k050,2025 EO,lr_gap,0.0
+k050,2025 EO,conv_full,0.0
+k025,EIA 2026 AEO high,boak_gap,3.2491318836936265
+k025,EIA 2026 AEO high,lr_gap,0.31374758936669417
+k025,EIA 2026 AEO high,conv_full,1.928036365308633e-14
+k025,Abou-Jaoude mod,boak_gap,2.4080761460402336
+k025,Abou-Jaoude mod,lr_gap,0.08319033656277583
+k025,Abou-Jaoude mod,conv_full,0.0
+k025,IAEA high,boak_gap,1.8050198942330185
+k025,IAEA high,lr_gap,0.0
+k025,IAEA high,conv_full,1.2293371118966997e-14
+k025,McKinsey GEP 2025,boak_gap,1.6707413530560071
+k025,McKinsey GEP 2025,lr_gap,0.0
+k025,McKinsey GEP 2025,conv_full,0.0
+k025,COP28 tripling pledge,boak_gap,1.0049689402523485
+k025,COP28 tripling pledge,lr_gap,0.0
+k025,COP28 tripling pledge,conv_full,0.0
+k025,2025 EO,boak_gap,0.780266160857007
+k025,2025 EO,lr_gap,1.513589433929197e-14
+k025,2025 EO,conv_full,1.513589433929197e-14
+k000,EIA 2026 AEO high,boak_gap,4.195503659973184
+k000,EIA 2026 AEO high,lr_gap,0.4886716705236117
+k000,EIA 2026 AEO high,conv_full,0.0
+k000,Abou-Jaoude mod,boak_gap,3.2395395476245823
+k000,Abou-Jaoude mod,lr_gap,0.2673711055968906
+k000,Abou-Jaoude mod,conv_full,1.4520114008413494e-14
+k000,IAEA high,boak_gap,2.2997425514859327
+k000,IAEA high,lr_gap,0.06581698664489888
+k000,IAEA high,conv_full,0.0
+k000,McKinsey GEP 2025,boak_gap,2.120087264237334
+k000,McKinsey GEP 2025,lr_gap,0.0
+k000,McKinsey GEP 2025,conv_full,0.0
+k000,COP28 tripling pledge,boak_gap,1.5903345218966338
+k000,COP28 tripling pledge,lr_gap,0.0
+k000,COP28 tripling pledge,conv_full,0.0
+k000,2025 EO,boak_gap,1.2063523308311892
+k000,2025 EO,lr_gap,0.0
+k000,2025 EO,conv_full,0.0
+probe_lr0_boak1,EIA 2026 AEO high,boak_gap,0.0
+probe_lr0_boak1,EIA 2026 AEO high,lr_gap,0.0
+probe_lr0_boak1,EIA 2026 AEO high,conv_full,0.0
+probe_lr0_boak1,Abou-Jaoude mod,boak_gap,0.0
+probe_lr0_boak1,Abou-Jaoude mod,lr_gap,0.0
+probe_lr0_boak1,Abou-Jaoude mod,conv_full,1.5235062809156446e-14
+probe_lr0_boak1,IAEA high,boak_gap,0.0
+probe_lr0_boak1,IAEA high,lr_gap,0.0
+probe_lr0_boak1,IAEA high,conv_full,0.0
+probe_lr0_boak1,McKinsey GEP 2025,boak_gap,0.0
+probe_lr0_boak1,McKinsey GEP 2025,lr_gap,0.0
+probe_lr0_boak1,McKinsey GEP 2025,conv_full,0.0
+probe_lr0_boak1,COP28 tripling pledge,boak_gap,0.0
+probe_lr0_boak1,COP28 tripling pledge,lr_gap,0.0
+probe_lr0_boak1,COP28 tripling pledge,conv_full,1.1623264691193052e-14
+probe_lr0_boak1,2025 EO,boak_gap,0.0
+probe_lr0_boak1,2025 EO,lr_gap,0.0
+probe_lr0_boak1,2025 EO,conv_full,0.0
+probe_lr1_boak0,EIA 2026 AEO high,boak_gap,5.60518001931942
+probe_lr1_boak0,EIA 2026 AEO high,lr_gap,1.3674923472846308
+probe_lr1_boak0,EIA 2026 AEO high,conv_full,0.0406785451618259
+probe_lr1_boak0,Abou-Jaoude mod,boak_gap,5.4949137662336245
+probe_lr1_boak0,Abou-Jaoude mod,lr_gap,1.8822967937182766
+probe_lr1_boak0,Abou-Jaoude mod,conv_full,0.4400073039137634
+probe_lr1_boak0,IAEA high,boak_gap,4.817109905795129
+probe_lr1_boak0,IAEA high,lr_gap,1.6435428296326855
+probe_lr1_boak0,IAEA high,conv_full,0.0
+probe_lr1_boak0,McKinsey GEP 2025,boak_gap,4.59749024398524
+probe_lr1_boak0,McKinsey GEP 2025,lr_gap,1.6229627202835906
+probe_lr1_boak0,McKinsey GEP 2025,conv_full,0.0
+probe_lr1_boak0,COP28 tripling pledge,boak_gap,4.0307039672154525
+probe_lr1_boak0,COP28 tripling pledge,lr_gap,1.6173615622862059
+probe_lr1_boak0,COP28 tripling pledge,conv_full,0.0
+probe_lr1_boak0,2025 EO,boak_gap,3.546802936710855
+probe_lr1_boak0,2025 EO,lr_gap,1.546974970846943
+probe_lr1_boak0,2025 EO,conv_full,0.0
+pooled_diagonal,EIA 2026 AEO high,kappa,0.0
+pooled_diagonal,Abou-Jaoude mod,kappa,0.0
+pooled_diagonal,IAEA high,kappa,0.0
+pooled_diagonal,McKinsey GEP 2025,kappa,0.0
+pooled_diagonal,COP28 tripling pledge,kappa,0.0
+pooled_diagonal,2025 EO,kappa,0.0

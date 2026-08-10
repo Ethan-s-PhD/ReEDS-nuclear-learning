@@ -7,6 +7,7 @@ GSw_NuclearCapMandate,1,,
 GSw_NuclearCapMandate_Scale,1,,
 GSw_NuclearCapMandateTechScen,smr,,
 GSw_NuclearLearning,0,,
+incentives_suffix,obbba_nonuclearitc,,
 construction_schedules_suffix,mc,,
 GSw_NuclearCapMandateScen,,eo2025_smr,eo2025_smr
 plantchar_nuclear,,nuclear_mc_smr100_eo_blo,nuclear_mc_smr100_eo_bhi

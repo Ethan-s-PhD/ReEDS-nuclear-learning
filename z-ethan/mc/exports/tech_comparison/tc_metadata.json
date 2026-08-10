@@ -1,0 +1,112 @@
+{
+  "notebook": "tech_comparison.ipynb",
+  "generated_utc": "2026-08-07T19:21:39+00:00",
+  "fork_git_head": "afba700d147d756d7428eeeab1e4ff8c73cbb193",
+  "master_seed": 20260715,
+  "stream_prefix": "tccomp/",
+  "kappa_grid": {
+    "sweep": [
+      1.0,
+      0.75,
+      0.5,
+      0.25,
+      0.0
+    ],
+    "anchors": [
+      1.0,
+      0.5,
+      0.0
+    ],
+    "split_probes": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        1.0,
+        0.0
+      ]
+    ],
+    "cross_cross_rule": "r*max(kappa_lr, kappa_boak), r = -0.3"
+  },
+  "kappa1_cell": "companion mc_perdraw.npz draws via U0/U1 dial identities (QA-C/E pins)",
+  "orderings": "A1 boak_smr>boak_large, A2 lr_smr>lr_large, rejection on transformed values",
+  "switches": {
+    "N_DRAWS_TC": 10000,
+    "RHO_WITHIN": -0.3,
+    "OB_MULT": 1.5,
+    "NEGLR_LO": -0.15,
+    "PHI_GRID": [
+      0.0,
+      0.3,
+      0.5
+    ],
+    "ITC_GRID": [
+      0.0,
+      0.3
+    ],
+    "FLEX_GRID": [
+      0.0,
+      25.0,
+      50.0
+    ],
+    "COST_OBJ_DEFAULT": "npv",
+    "C2_THRESH_PCT": 5.0,
+    "C5_THRESH_PCT": 1.0,
+    "CF": 0.9043773037981618,
+    "pvf": 14.76372768960898,
+    "pert_lr_mode": "range midpoint (documented judgment)",
+    "pert_boak_mode": {
+      "large": 5750.0,
+      "smr": 8000.0
+    }
+  },
+  "draw_log": {
+    "cells": 28,
+    "min_n": 10000,
+    "max_n": 10000,
+    "below_10k": []
+  },
+  "claims": {
+    "C1": {
+      "supported": true,
+      "numbers": "min P(SMR) = 0.509 at (probe_lr1_boak0, EIA 2026 AEO high); CI lo 0.499"
+    },
+    "C2": {
+      "supported": false,
+      "numbers": "max P95 |m| | large wins = 30.83% at (probe_lr1_boak0, EIA 2026 AEO high) - tail reported, characterization dropped there"
+    },
+    "C3": {
+      "supported": false,
+      "numbers": "beaten in 1 pairs, e.g. {('probe_lr1_boak0', 'EIA 2026 AEO high'): 'pure_large'}"
+    },
+    "C4": {
+      "supported": false,
+      "numbers": "SSD holds in 1/42 (cell, schedule) pairs; FSD in 0; CVaR95 comparison favors SMR in 29/42"
+    },
+    "C5": {
+      "supported": false,
+      "numbers": "max PI option value = 5.882% of expected program cost at (probe_lr1_boak0, EIA 2026 AEO high) (threshold 1.0%) - noisy-signal tier now owed"
+    },
+    "C6": {
+      "supported": false,
+      "numbers": "breaking cells: OB x1.5@ob@k100 (minP=0.002, C3=False); OB x1.5@ob@k050 (minP=0.126, C3=False); OB x1.5@ob@k000 (minP=0.229, C3=False); NEGLR sym -15%@neglr_sym@k100 (minP=0.454, C3=False)"
+    },
+    "C7": {
+      "supported": true,
+      "numbers": "outside the orthant P(SMR) spans 0.503..0.858; A2 off = modularity premise fails; stated in methods as bounding all claims"
+    }
+  },
+  "streams_used": 106,
+  "exports": {
+    "adaptive_value.csv": "84d8b6fcb29af629",
+    "claims_ledger.csv": "81fec47c506d68b6",
+    "dominance_tests.csv": "04d1888c10e2586e",
+    "evpi_partial.csv": "673effb83ad7c85f",
+    "evpi_total.csv": "a2a79eac486fb7c9",
+    "exante_ranking.csv": "ea3d19fb9902faed",
+    "large_win_margins.csv": "57d7824b0c140fc9",
+    "robustness_map.csv": "0de723416169ba4b",
+    "stress_survival.csv": "d7fc3c0906b6d4e1"
+  }
+}

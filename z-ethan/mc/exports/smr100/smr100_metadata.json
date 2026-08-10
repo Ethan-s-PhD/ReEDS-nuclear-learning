@@ -1,7 +1,7 @@
 {
   "notebook": "smr100_case_export.ipynb",
-  "generated_utc": "2026-08-06T22:15:17+00:00",
-  "fork_git_head": "8e7f5d6642dd0996ebdb3f2b1462d52815d777b6",
+  "generated_utc": "2026-08-10T20:24:34+00:00",
+  "fork_git_head": "afba700d147d756d7428eeeab1e4ff8c73cbb193",
   "master_seed": 20260715,
   "stream_prefix": "smr100/",
   "design": {
@@ -29,6 +29,15 @@
       "smr100_eo_p50": 9019,
       "smr100_eo_p95": 399
     },
+    "selected_draw_indices_large": {
+      "large100_eia_p50": 4588,
+      "large100_aj_p50": 6297,
+      "large100_iaea_p50": 5712,
+      "large100_mck_p50": 7176,
+      "large100_cop28_p50": 8155,
+      "large100_eo_p50": 9427
+    },
+    "large100_comparators": "6 traditional-build mid cases (large100_{tok}_p50, one per schedule, adopted 2026-08-10): the drawn world at P50 of the PURE-LARGE program-NPV ranking over the identical 10k worlds (rank_large; QA-pinned to tech_comparison's k100 R_npv_large when present, QA-6). Roles swapped: large receives the entire program, SMR rides the loser channel (intl spillover + drawn x_ls). Mandate: per-case GSw_NuclearCapMandateTechScen=large with the {scen}_large FLEET-INCLUSIVE trajectories (existing 80-yr fleet path + program additions; the mandate counts all vintages, so an additions basis would be absorbed by the existing fleet). Conditional what-ifs, not winner claims.",
     "band_coverage_claim": "layered (ratified 2026-08-06): 90% by construction on program cost; simultaneous bracket + one-sided below-p95 (policy direction) reported empirically",
     "band_coverage_simultaneous_fincapex": {
       "EIA 2026 AEO high": 0.6185,
@@ -48,6 +57,8 @@
     },
     "ranking": "discounted_schedule_weighted_npv",
     "non_capex": "FOM/VOM comonotone with the cost percentile U1 across ATB 2024 advanced->conservative on every exported case (bounds pair included; the literature overlay alone uses ATB-moderate FOM/VOM, zero-run); CF = ReEDS avail 0.9044; uranium AEO_2026_baseline; 30-yr PV at the system real rate (pvf_onm = 1/crf); adopted 2026-08-03 (see npv_winner_check.ipynb)",
+    "incentives": "obbba_nonuclearitc (adopted 2026-08-10): OBBBA with the 8 NUCLEAR rows' ITC zeroed (itc_frac, energy-community bonus, tax-equity penalty; nuclear has no PTC anywhere) -- the no-nuclear-ITC baseline, so the mandate dual reads directly as the TOTAL required ITC and the Track B ITC round-trip does not double-count (fin_mult == noITC for nuclear in every year); all other technologies' OBBBA treatment unchanged (QA-7)",
+    "equality_flip": "smr100_eia_p50_eq (adopted 2026-08-10): the EIA mid case with GSw_NuclearCapMandate=2 (equality: floor + ceiling) instead of the floor preset, sharing every input file with smr100_eia_p50 via the cases-matrix file_case pointer (QA-8) -- the issue-6 confirmation instrument for errors or unforeseen effects",
     "copula_set": "moderate",
     "n_draws": 10000
   },
@@ -71,6 +82,17 @@
     "smr100_eo_p50",
     "smr100_eo_p95"
   ],
+  "cases_large": [
+    "large100_eia_p50",
+    "large100_aj_p50",
+    "large100_iaea_p50",
+    "large100_mck_p50",
+    "large100_cop28_p50",
+    "large100_eo_p50"
+  ],
+  "flip_copies": [
+    "smr100_eia_p50_eq"
+  ],
   "bounds_pair": [
     "smr100_eo_blo",
     "smr100_eo_bhi"
@@ -79,6 +101,12 @@
     "cases_file": "cases_nuclearlearning_smr100.csv",
     "bounds_cases_file": "cases_nuclearlearning_smr100_bounds.csv",
     "plantchar": [
+      "nuclear-smr_mc_large100_aj_p50",
+      "nuclear-smr_mc_large100_cop28_p50",
+      "nuclear-smr_mc_large100_eia_p50",
+      "nuclear-smr_mc_large100_eo_p50",
+      "nuclear-smr_mc_large100_iaea_p50",
+      "nuclear-smr_mc_large100_mck_p50",
       "nuclear-smr_mc_smr100_aj_p05",
       "nuclear-smr_mc_smr100_aj_p50",
       "nuclear-smr_mc_smr100_aj_p95",
@@ -99,6 +127,12 @@
       "nuclear-smr_mc_smr100_mck_p05",
       "nuclear-smr_mc_smr100_mck_p50",
       "nuclear-smr_mc_smr100_mck_p95",
+      "nuclear_mc_large100_aj_p50",
+      "nuclear_mc_large100_cop28_p50",
+      "nuclear_mc_large100_eia_p50",
+      "nuclear_mc_large100_eo_p50",
+      "nuclear_mc_large100_iaea_p50",
+      "nuclear_mc_large100_mck_p50",
       "nuclear_mc_smr100_aj_p05",
       "nuclear_mc_smr100_aj_p50",
       "nuclear_mc_smr100_aj_p95",
@@ -139,6 +173,12 @@
       "financials_tech_mc_smr100_eo_p05.csv",
       "financials_tech_mc_smr100_eo_p50.csv",
       "financials_tech_mc_smr100_eo_p95.csv",
+      "financials_tech_mc_large100_eia_p50.csv",
+      "financials_tech_mc_large100_aj_p50.csv",
+      "financials_tech_mc_large100_iaea_p50.csv",
+      "financials_tech_mc_large100_mck_p50.csv",
+      "financials_tech_mc_large100_cop28_p50.csv",
+      "financials_tech_mc_large100_eo_p50.csv",
       "financials_tech_mc_smr100_eo_blo.csv",
       "financials_tech_mc_smr100_eo_bhi.csv"
     ],
@@ -161,6 +201,12 @@
       "construction_times_mc_smr100_eo_p05.csv",
       "construction_times_mc_smr100_eo_p50.csv",
       "construction_times_mc_smr100_eo_p95.csv",
+      "construction_times_mc_large100_eia_p50.csv",
+      "construction_times_mc_large100_aj_p50.csv",
+      "construction_times_mc_large100_iaea_p50.csv",
+      "construction_times_mc_large100_mck_p50.csv",
+      "construction_times_mc_large100_cop28_p50.csv",
+      "construction_times_mc_large100_eo_p50.csv",
       "construction_times_mc_smr100_eo_blo.csv",
       "construction_times_mc_smr100_eo_bhi.csv"
     ],
@@ -170,6 +216,8 @@
     "band_coverage.csv": "2b46049cc715d5e6",
     "bounds_record.csv": "ad22d806ad16eaea",
     "selected_cases.csv": "385613eadd4dd038",
-    "selected_draws.csv": "cb42bef93b499ffe"
+    "selected_cases_large.csv": "09bb5c5200443186",
+    "selected_draws.csv": "cb42bef93b499ffe",
+    "selected_draws_large.csv": "462a3fd83f09b672"
   }
 }
