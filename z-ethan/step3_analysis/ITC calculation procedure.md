@@ -45,8 +45,10 @@ Step 6 — Calculate the ITC rate.
 - The code source is reeds/financials.py, lines 683-694: fin_mult(m) = CCmult / (1 − tax) × [1 − tax × (1 − m/2) × PV_dep − m] × Degradation_Adj.
 - fin_mult is a linear function of m. So the solution is: m_t = S_t / (OCC × |d fin_mult / d m|), with |d fin_mult / d m| = CCmult / (1 − tax) × (1 − tax × PV_dep / 2) × Degradation_Adj.
 - Note: |d fin_mult / d m| is larger than fin_mult_noITC. One dollar of credit gives more than one dollar of support, because of the tax grossup. The depreciation basis decreases by half of the credit, and this decreases the support a little.
-- The rate m_t is the monetized fraction. The statutory rate is i_t = m_t / (1 − itc_tax_equity_penalty). Read the penalty from the incentives input file.
-- Report the statutory rate i_t. Compare only statutory rates with the law (48E, OBBBA).
+- The rate m_t is the monetized fraction. The statutory rate applies two corrections: i_t = m_t / (1 − itc_tax_equity_penalty) × CCmult_t. Read the penalty from the incentives input file. Read CCmult_t from the replicated construction-schedule arithmetic.
+- The ×CCmult_t factor corrects the credit timing. ReEDS applies a credit inside fin_mult, where a credit dollar also cancels construction-period interest. A real 48E credit pays at placed-in-service, after that interest has accrued. So the statutory rate must be CCmult_t times larger to deliver S_t.
+- Also report the uncorrected companion rate i_model = m_t / (1 − itc_tax_equity_penalty). It is the rate under a progress-expenditure election (the old Section 46 QPE design, credit cash during construction), and it is the model-consistent rate for Step 9's feed-back test.
+- Report the statutory rate i_t as the headline. Compare only statutory rates with the law (48E, OBBBA).
 - Use the same dollar year for S_t and OCC. The rate has no units, so the dollar year cancels.
 - If i_t is more than 100%, an ITC alone cannot supply S_t in that year. An operating subsidy must supply the remainder. Report this as a result.
 
@@ -59,7 +61,7 @@ Step 7 — Assign solve years to build years.
 Step 8 — Calculate the fiscal outputs.
 
 - This procedure makes two different fiscal quantities. Keep the two names separate in all outputs.
-- ITC outlay: B_t = i_t × (sum of the capex bases of all nuclear builds in year t). All builds receive the credit, not only the marginal build. B_t is the cost of the ITC instrument.
+- ITC outlay: B_t = i_t × (sum of the capex bases of all nuclear builds in year t), with the statutory rate i_t. All builds receive the credit, not only the marginal build. B_t is the face value of the ITC instrument. The QPE-counterfactual outlay is B_t / CCmult_t.
 - Rental transfer: R_t = dual × mandated capacity in year t. R_t is the implicit transfer of the mandate itself. R_t pays all mandated capacity across vintages. B_t and R_t measure different objects, and their values differ.
 - Transfer inside one year: for each build, calculate the payment minus the required support of that build. Get the required support from the replicated regional cost data. A build with required support less than S_t is inframarginal. The transfer share is the sum of the excess payments divided by B_t.
 - Note: the required support per build uses regional cost data only. It does not include regional differences in market value. Result P7 shows that these value differences are small in the regions that build. State this approximation in the output.
@@ -71,7 +73,7 @@ Step 9 — Do the checks.
 - Make sure that the range of implied rates is narrow (Step 5).
 - Examine the shape of the rate schedule. If learning decreases the costs of later builds, the rates must decrease across years.
 - Compare the statutory rates with real credit values (48E, OBBBA).
-- Final test: run the model with the ITC schedule and without the mandate. Compare the deployment with the mandated deployment. Two cautions apply. First, at exactly i_t the model is indifferent between build and no build. Add a small amount to i_t to make the builds strictly optimal. Second, with endogenous learning on, the problem is not convex. The ITC can then fail to reproduce the deployment. This possible failure is a pre-registered finding, not an error.
+- Final test: run the model with the ITC schedule and without the mandate. Compare the deployment with the mandated deployment. Feed the model-consistent rate i_model into ReEDS, not the statutory rate i_t: ReEDS applies the credit inside fin_mult, so the statutory rate would oversubsidize by CCmult_t inside the model. Two further cautions apply. First, at exactly the required rate the model is indifferent between build and no build. Add a small amount to i_model to make the builds strictly optimal. Second, with endogenous learning on, the problem is not convex. The ITC can then fail to reproduce the deployment. This possible failure is a pre-registered finding, not an error.
 
 Companion value. For each build year, also calculate the discounted sum of the converted duals over the build's full evaluation window (30 years). This value is the support that an investor with full foresight requires. This value does not control the sequential model. Report both values. The difference between the two values is an effect of the myopic solve, and it is a result for the paper.
 
