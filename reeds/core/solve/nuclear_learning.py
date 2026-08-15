@@ -376,6 +376,14 @@ def main(cur_year, case):
     c = int(sw['GSw_NuclearLearning_Convention'])
     rho = float(sw['GSw_NuclearLearning_CES_rho'])
     x_ct = float(sw.get('GSw_NuclearLearning_CrossTech_x', 0.15))
+    # Directional cross-tech fractions (itc_feedback spec section 4): x_ls scales large
+    # builds entering the SMR channel, x_sl scales SMR builds entering the large channel
+    # (mc notebooks: X_IN_COL = {"large": "x_sl", "smr": "x_ls"}). A negative value (the
+    # cases.csv default -1) inherits the symmetric x, so existing cases are unchanged.
+    x_ls = float(sw.get('GSw_NuclearLearning_CrossTech_x_ls', -1.0))
+    x_sl = float(sw.get('GSw_NuclearLearning_CrossTech_x_sl', -1.0))
+    x_in = {'smr': x_ls if x_ls >= 0.0 else x_ct,
+            'large': x_sl if x_sl >= 0.0 else x_ct}
     lam = float(sw['GSw_NuclearLearning_Dur_Lambda'])
     dur_mode = str(sw.get('GSw_NuclearLearning_DurAnchorMode', 'absolute')).strip().lower()
 
@@ -443,7 +451,7 @@ def main(cur_year, case):
         # unit of SMR experience, whatever technology is listening).
         n_other = (exp_mw[other] / unit_mw[other]) if cross_tech else 0.0
         factor = occ_factor(N, n_other, lr[parent], omega, m, s, c, rho, h_us_parent,
-                            h_kv, s_kv, x_ct)
+                            h_kv, s_kv, x_in[parent])
         learned_occ = boak[parent] * factor
 
         reeds_default_mo = 12.0 * len(canonical[parent])

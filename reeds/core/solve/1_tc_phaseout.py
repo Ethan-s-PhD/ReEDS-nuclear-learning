@@ -199,6 +199,16 @@ def calc_tc_phaseout_mult(year, case, use_historical=use_historical):
         tc_phaseout_mult = const_times[['i']].drop_duplicates().copy()
         tc_phaseout_mult['tc_phaseout_mult'] = 1.0
 
+    # Nuclear-only phaseout exemption (GSw_TCPhaseout_NuclearExempt=1, itc_feedback spec
+    # section 2): force the multiplier to 1.0 for Nuclear/Nuclear-SMR so the fed-back
+    # nuclear ITC schedules are not zeroed by the IRA phaseout. Applied AFTER the
+    # covered-year averaging so no cross-year mean can dilute the exemption. Matches the
+    # concrete tech names, not the NUCLEAR group label (the frame is post-expansion).
+    # All other technologies keep their computed multipliers.
+    if int(sw.get('GSw_TCPhaseout_NuclearExempt', 0)) == 1:
+        nuclear_rows = tc_phaseout_mult['i'].str.lower().isin(['nuclear', 'nuclear-smr'])
+        tc_phaseout_mult.loc[nuclear_rows, 'tc_phaseout_mult'] = 1.0
+
     # Round for GAMS
     tc_phaseout_mult['tc_phaseout_mult'] = np.round(tc_phaseout_mult['tc_phaseout_mult'], 3)
     tc_phaseout_mult['t'] = year

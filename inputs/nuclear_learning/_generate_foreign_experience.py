@@ -47,6 +47,18 @@ anchor year and the lag convention.
 
 Rerun with:  python inputs/nuclear_learning/_generate_foreign_experience.py
              [--rds2 "D:/nuclear learning/rds2_2025_units.csv"]
+
+ARBITRARY-u MODE (itc_feedback spec section 5): pass --u <value> --tag <name> to emit a
+single foreign_experience_{tag}.csv at an arbitrary u in [0, 1]. Requires --rds2 (exact
+mode only - the fallback's residual calibration is defined only at u = 0/0.5/1). The
+validation target at off-grid u is the piecewise-linear interpolation of
+TARGET_POSTANCHOR_2050 over u = 0/0.5/1, checked at a looser 5% tolerance (the true
+retirement-identity curve is smooth and mildly convex in u, so the chord is close but
+not exact). historical_stock.csv is not rewritten in this mode. Used to generate the
+six foreign_experience_fb_{sched}_p50.csv files at the exact p50 draw u values:
+
+  python inputs/nuclear_learning/_generate_foreign_experience.py \
+      --u <u_p50> --tag fb_{sched}_p50 --rds2 z-ethan/mc/rds2_2025_units.csv
 """
 import argparse
 import os
@@ -173,6 +185,18 @@ def trajectories_fallback(u):
     return additions
 
 
+def target_postanchor(u):
+    """Validation target for the post-anchor 2050 gross-unit total.
+
+    Exact at the calibration grid u = 0/0.5/1; piecewise-linear interpolation of the
+    grid values elsewhere (the retirement identity is smooth and mildly convex in u,
+    so the chord approximates it closely). Returns (target, tolerance_fraction)."""
+    if u in TARGET_POSTANCHOR_2050:
+        return TARGET_POSTANCHOR_2050[u], 0.03
+    us = sorted(TARGET_POSTANCHOR_2050)
+    return float(np.interp(u, us, [TARGET_POSTANCHOR_2050[k] for k in us])), 0.05
+
+
 def trajectories_exact(u, rds2_path, pris_loader_dir):
     """The notebook's own logic (cell 4) via pris_loader + the RDS-2 unit table."""
     sys.path.insert(0, pris_loader_dir)
@@ -194,13 +218,14 @@ def trajectories_exact(u, rds2_path, pris_loader_dir):
         pipe_mask = (YEARS >= 2025) & (YEARS <= PIPE_END)
         gross[pipe_mask] = [pipe.get(int(y), 0.0) for y in YEARS[pipe_mask]]
         additions[r] = gross
-    # Validate against the notebook's printed diagnostic
+    # Validate against the notebook's printed diagnostic (interpolated at off-grid u)
     tot = postanchor_units(additions)
-    target = TARGET_POSTANCHOR_2050[u]
-    if abs(tot - target) > 0.03 * target:
+    target, tol = target_postanchor(u)
+    if abs(tot - target) > tol * target:
         raise ValueError(
             f"exact-mode validation failed at u={u}: post-anchor 2050 units {tot:.0f} "
-            f"vs recomputed diagnostic {target:.0f} (>3% off — check the RDS-2 extraction)")
+            f"vs {'recomputed' if u in TARGET_POSTANCHOR_2050 else 'interpolated'} "
+            f"diagnostic {target:.0f} (>{tol:.0%} off — check the RDS-2 extraction)")
     return additions
 
 
@@ -217,17 +242,35 @@ def main():
                    help="path to rds2_2025_units.csv for exact mode (see pris_data_spec.md)")
     p.add_argument("--pris-loader", default=None,
                    help="dir containing pris_loader.py (default: the rds2 file's directory)")
+    p.add_argument("--u", type=float, default=None,
+                   help="arbitrary-u mode: emit a single trajectory at this u in [0, 1] "
+                        "(requires --tag and --rds2; see module docstring)")
+    p.add_argument("--tag", default=None,
+                   help="output name for arbitrary-u mode: foreign_experience_{tag}.csv")
     args = p.parse_args()
 
     here = os.path.dirname(os.path.abspath(__file__))
     exact = args.rds2 is not None
+
+    if args.u is not None or args.tag is not None:
+        if args.u is None or args.tag is None:
+            p.error("--u and --tag must be given together")
+        if not exact:
+            p.error("--u requires --rds2 (exact mode): the fallback's residual "
+                    "calibration is defined only at u = 0/0.5/1")
+        if not (0.0 <= args.u <= 1.0):
+            p.error(f"--u must be in [0, 1], got {args.u}")
+        scens = [(args.tag, args.u)]
+    else:
+        scens = SCENS
+
     if not exact:
         print("NOTE: no --rds2 given; using the CALIBRATED FALLBACK (net path + printed "
               "pipeline totals + retirement-replacement residual calibrated to the "
               "notebook's printed 2050 diagnostics). For the exact retirement identity, "
               "provide rds2_2025_units.csv.")
 
-    for scen, u in SCENS:
+    for scen, u in scens:
         if exact:
             adds = trajectories_exact(u, args.rds2,
                                       args.pris_loader or os.path.dirname(args.rds2))
@@ -247,15 +290,18 @@ def main():
         df.to_csv(os.path.join(here, f"foreign_experience_{scen}.csv"), index=False)
         post = cum[-1] - cum[YEARS == ANCHOR][0]
         print(f"wrote foreign_experience_{scen}.csv "
-              f"(mode={'exact' if exact else 'fallback'}; post-anchor theta-wtd units "
-              f"by 2050 = {post:.1f}; raw post-anchor = {postanchor_units(adds):.0f} "
-              f"vs target {TARGET_POSTANCHOR_2050[u]:.0f})")
+              f"(u={u}; mode={'exact' if exact else 'fallback'}; post-anchor theta-wtd "
+              f"units by 2050 = {post:.1f}; raw post-anchor = {postanchor_units(adds):.0f} "
+              f"vs target {target_postanchor(u)[0]:.0f})")
 
-    h_kv = sum(THETA_KV[r] * HIST_UNITS[r] for r in REGION_MILESTONES)
-    pd.DataFrame({"key": ["H_US", "H_KV"], "value": [float(HIST_UNITS["US"]), round(h_kv, 4)]}) \
-        .to_csv(os.path.join(here, "historical_stock.csv"), index=False)
-    print(f"wrote historical_stock.csv (H_US = {HIST_UNITS['US']}, H_KV = {h_kv:.2f} "
-          "— units EVER grid-connected excl. under-construction, per the notebook)")
+    # historical_stock.csv holds u-independent constants; only the default full run
+    # rewrites it, so arbitrary-u invocations stay purely additive.
+    if args.u is None:
+        h_kv = sum(THETA_KV[r] * HIST_UNITS[r] for r in REGION_MILESTONES)
+        pd.DataFrame({"key": ["H_US", "H_KV"], "value": [float(HIST_UNITS["US"]), round(h_kv, 4)]}) \
+            .to_csv(os.path.join(here, "historical_stock.csv"), index=False)
+        print(f"wrote historical_stock.csv (H_US = {HIST_UNITS['US']}, H_KV = {h_kv:.2f} "
+              "— units EVER grid-connected excl. under-construction, per the notebook)")
 
 
 if __name__ == "__main__":

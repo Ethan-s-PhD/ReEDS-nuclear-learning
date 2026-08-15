@@ -403,6 +403,32 @@ def calc_financial_inputs(inputs_case):
         .reset_index(drop=True)
     )
 
+    # Half-basis (Section 50(c)(3)) restoration for nuclear (itc_feedback spec section 3):
+    # techs whose incentives rows carry itc_frac > 0 with itc_energy_comm_bonus == 0 are
+    # excluded from e_df above (import_and_mod_incentives leaves a raw 0 untransformed),
+    # so GAMS defaults the factor to 0 and the m/2 depreciation-basis reduction vanishes
+    # from 2_financials.gms:25 - a more generous credit than the financials.py
+    # linearization that the required-ITC inversion used. For NUCLEAR techs only, emit
+    # explicit rows with the stored value 1.0 (no bonus, full half-basis reduction) for
+    # every model zone, which makes GAMS reproduce the Python mirror exactly. Techs that
+    # already have bonus rows in e_df are skipped (their existing path wins); non-nuclear
+    # technologies are untouched, so previous runs process byte-identically.
+    nuclear_uniform_itc = incentive_df.loc[
+        (incentive_df['itc_frac'] > 0)
+        & (incentive_df['itc_energy_comm_bonus'] == 0)
+        & (incentive_df['i'].isin(scen_settings.tech_groups['NUCLEAR']))
+        & ~incentive_df['i'].isin(e_df['i']),
+        'i'
+    ].drop_duplicates()
+    if len(nuclear_uniform_itc) > 0:
+        nuclear_halfbasis = pd.merge(
+            nuclear_uniform_itc.to_frame().assign(_key=1),
+            pd.Series(sorted(pd.unique(county2zone)), name='r').to_frame().assign(_key=1),
+            on='_key'
+        ).drop(columns='_key')
+        nuclear_halfbasis['itc_energy_comm_bonus'] = 1.0
+        e_df = pd.concat([e_df, nuclear_halfbasis], ignore_index=True)
+
     #%% Write the scenario-specific output files
     
     # Write out the components of the financial multiplier
