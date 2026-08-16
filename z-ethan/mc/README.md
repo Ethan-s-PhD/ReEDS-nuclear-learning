@@ -17,7 +17,7 @@ by non-experts.
 > on financed CAPEX, while the smr100 family ranks on full NPV — the two families' percentile
 > labels are not on a common scale. All ReEDS analysis uses `cases_nuclearlearning_smr100.csv`.
 
-**Spec authority:** `z-ethan/paper plan.md` (v10.10). Port source (reference only):
+**Spec authority:** `z-ethan/paper plan.md` (current version in its header). Port source (reference only):
 `ReEDS-hybrid-plant/z-ethan/mc_nuclear_smr_learning.ipynb` (v2.4).
 
 ## How to run

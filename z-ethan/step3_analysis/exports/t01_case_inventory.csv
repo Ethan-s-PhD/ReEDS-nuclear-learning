@@ -24,3 +24,15 @@ large100_mck_p50,mck,200.0,p50,floor,nuclear,fleet-inclusive,12,2026,197.0,10,2,
 large100_cop28_p50,cop28,300.0,p50,floor,nuclear,fleet-inclusive,12,2026,297.0,10,2,1716778172416.0
 large100_eo_p50,eo,400.0,p50,floor,nuclear,fleet-inclusive,12,2026,397.0,10,2,1721154535424.0
 smr100_eia_p50_eq,eia,117.3,p50,eq,nuclear-smr,additions,5,2038,20.7,5,0,1631946932224.0
+large100_eia_p05,eia,117.3,p05,floor,nuclear,fleet-inclusive,12,2026,114.3,6,2,1624517246976.0
+large100_eia_p95,eia,117.3,p95,floor,nuclear,fleet-inclusive,12,2026,114.3,6,2,1646395654144.0
+large100_aj_p05,aj,134.0,p05,floor,nuclear,fleet-inclusive,12,2026,130.0,10,2,1636240850944.0
+large100_aj_p95,aj,134.0,p95,floor,nuclear,fleet-inclusive,12,2026,130.0,10,2,1698841493504.0
+large100_iaea_p05,iaea,172.3,p05,floor,nuclear,fleet-inclusive,12,2026,169.3,10,2,1608292761600.0
+large100_iaea_p95,iaea,172.3,p95,floor,nuclear,fleet-inclusive,12,2026,169.3,10,2,1691967160320.0
+large100_mck_p05,mck,200.0,p05,floor,nuclear,fleet-inclusive,12,2026,197.0,10,2,1604910841856.0
+large100_mck_p95,mck,200.0,p95,floor,nuclear,fleet-inclusive,12,2026,197.0,10,2,1736463351808.0
+large100_cop28_p05,cop28,300.0,p05,floor,nuclear,fleet-inclusive,12,2026,297.0,10,2,1587267895296.0
+large100_cop28_p95,cop28,300.0,p95,floor,nuclear,fleet-inclusive,12,2026,297.0,10,2,1830356254720.0
+large100_eo_p05,eo,400.0,p05,floor,nuclear,fleet-inclusive,12,2026,397.0,10,2,1569041678336.0
+large100_eo_p95,eo,400.0,p95,floor,nuclear,fleet-inclusive,12,2026,397.0,10,2,1905145020416.0

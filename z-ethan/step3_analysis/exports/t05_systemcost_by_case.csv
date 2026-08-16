@@ -1,4 +1,113 @@
 case,bucket,t,B2024
+large100_aj_p05,FOM,2010,56.87815
+large100_aj_p05,FOM,2015,63.04602
+large100_aj_p05,FOM,2020,67.71823
+large100_aj_p05,FOM,2023,68.81928
+large100_aj_p05,FOM,2026,78.03571
+large100_aj_p05,FOM,2029,84.72392
+large100_aj_p05,FOM,2031,87.790665
+large100_aj_p05,FOM,2032,87.966606
+large100_aj_p05,FOM,2033,90.06851
+large100_aj_p05,FOM,2034,92.29942
+large100_aj_p05,FOM,2035,94.92853
+large100_aj_p05,FOM,2038,99.438225
+large100_aj_p05,FOM,2041,102.34425
+large100_aj_p05,FOM,2044,106.428444
+large100_aj_p05,FOM,2047,109.09679
+large100_aj_p05,FOM,2050,110.60802
+large100_aj_p05,VOM + other op,2010,14.101312
+large100_aj_p05,VOM + other op,2015,12.542799
+large100_aj_p05,VOM + other op,2020,10.091411
+large100_aj_p05,VOM + other op,2023,9.515403
+large100_aj_p05,VOM + other op,2026,9.162918
+large100_aj_p05,VOM + other op,2029,9.279206
+large100_aj_p05,VOM + other op,2031,14.300976
+large100_aj_p05,VOM + other op,2032,18.936148
+large100_aj_p05,VOM + other op,2033,18.757843
+large100_aj_p05,VOM + other op,2034,18.845661
+large100_aj_p05,VOM + other op,2035,18.813377
+large100_aj_p05,VOM + other op,2038,19.827782
+large100_aj_p05,VOM + other op,2041,19.418766
+large100_aj_p05,VOM + other op,2044,11.322678
+large100_aj_p05,VOM + other op,2047,11.661261
+large100_aj_p05,VOM + other op,2050,11.703974
+large100_aj_p05,converter + H2 capex,2010,1.0145994
+large100_aj_p05,converter + H2 capex,2023,2.074321
+large100_aj_p05,converter + H2 capex,2029,0.30869892
+large100_aj_p05,converter + H2 capex,2031,1.5102711
+large100_aj_p05,converter + H2 capex,2032,0.0046182964
+large100_aj_p05,converter + H2 capex,2033,5.107063
+large100_aj_p05,converter + H2 capex,2034,1.915585
+large100_aj_p05,converter + H2 capex,2035,0.6670571
+large100_aj_p05,converter + H2 capex,2038,0.9260086
+large100_aj_p05,converter + H2 capex,2041,5.694143
+large100_aj_p05,converter + H2 capex,2044,0.66676974
+large100_aj_p05,converter + H2 capex,2047,0.074283995
+large100_aj_p05,converter + H2 capex,2050,0.26775414
+large100_aj_p05,fuel,2010,159.90926
+large100_aj_p05,fuel,2015,87.87588
+large100_aj_p05,fuel,2020,53.633945
+large100_aj_p05,fuel,2023,52.695786
+large100_aj_p05,fuel,2026,60.476
+large100_aj_p05,fuel,2029,55.8874
+large100_aj_p05,fuel,2031,67.15733
+large100_aj_p05,fuel,2032,71.891365
+large100_aj_p05,fuel,2033,70.78369
+large100_aj_p05,fuel,2034,70.91119
+large100_aj_p05,fuel,2035,68.202286
+large100_aj_p05,fuel,2038,71.157906
+large100_aj_p05,fuel,2041,71.697655
+large100_aj_p05,fuel,2044,65.936356
+large100_aj_p05,fuel,2047,62.813618
+large100_aj_p05,fuel,2050,61.831608
+large100_aj_p05,generation capex,2010,105.247925
+large100_aj_p05,generation capex,2015,381.4723
+large100_aj_p05,generation capex,2020,289.35855
+large100_aj_p05,generation capex,2023,218.52766
+large100_aj_p05,generation capex,2026,570.9603
+large100_aj_p05,generation capex,2029,503.45935
+large100_aj_p05,generation capex,2031,259.84772
+large100_aj_p05,generation capex,2032,358.05365
+large100_aj_p05,generation capex,2033,81.70645
+large100_aj_p05,generation capex,2034,97.714645
+large100_aj_p05,generation capex,2035,140.72066
+large100_aj_p05,generation capex,2038,289.24847
+large100_aj_p05,generation capex,2041,358.63
+large100_aj_p05,generation capex,2044,257.273
+large100_aj_p05,generation capex,2047,287.59766
+large100_aj_p05,generation capex,2050,284.136
+large100_aj_p05,policy credits (neg.),2010,-0.7221878
+large100_aj_p05,policy credits (neg.),2015,-16.97388
+large100_aj_p05,policy credits (neg.),2020,-18.319025
+large100_aj_p05,policy credits (neg.),2023,-19.357693
+large100_aj_p05,policy credits (neg.),2026,-101.05191
+large100_aj_p05,policy credits (neg.),2029,-84.16498
+large100_aj_p05,policy credits (neg.),2031,-48.781662
+large100_aj_p05,policy credits (neg.),2032,-53.074642
+large100_aj_p05,policy credits (neg.),2033,-45.90634
+large100_aj_p05,policy credits (neg.),2034,-46.36123
+large100_aj_p05,policy credits (neg.),2035,-46.157993
+large100_aj_p05,policy credits (neg.),2038,-39.84923
+large100_aj_p05,policy credits (neg.),2041,-26.252089
+large100_aj_p05,policy credits (neg.),2044,-1.4496764
+large100_aj_p05,policy credits (neg.),2047,-1.277875
+large100_aj_p05,policy credits (neg.),2050,-0.32698163
+large100_aj_p05,transmission capex,2010,4.231005
+large100_aj_p05,transmission capex,2015,16.194809
+large100_aj_p05,transmission capex,2020,15.90399
+large100_aj_p05,transmission capex,2023,9.9209585
+large100_aj_p05,transmission capex,2026,30.337795
+large100_aj_p05,transmission capex,2029,23.95772
+large100_aj_p05,transmission capex,2031,9.977815
+large100_aj_p05,transmission capex,2032,8.226014
+large100_aj_p05,transmission capex,2033,32.10255
+large100_aj_p05,transmission capex,2034,19.804098
+large100_aj_p05,transmission capex,2035,19.01699
+large100_aj_p05,transmission capex,2038,27.130121
+large100_aj_p05,transmission capex,2041,56.51166
+large100_aj_p05,transmission capex,2044,24.970467
+large100_aj_p05,transmission capex,2047,23.177845
+large100_aj_p05,transmission capex,2050,21.967434
 large100_aj_p50,FOM,2010,56.87815
 large100_aj_p50,FOM,2015,63.04602
 large100_aj_p50,FOM,2020,67.71823
@@ -108,6 +217,223 @@ large100_aj_p50,transmission capex,2041,59.36385
 large100_aj_p50,transmission capex,2044,25.772005
 large100_aj_p50,transmission capex,2047,22.923576
 large100_aj_p50,transmission capex,2050,20.980234
+large100_aj_p95,FOM,2010,56.87815
+large100_aj_p95,FOM,2015,63.04602
+large100_aj_p95,FOM,2020,67.71823
+large100_aj_p95,FOM,2023,68.81928
+large100_aj_p95,FOM,2026,78.061386
+large100_aj_p95,FOM,2029,84.74679
+large100_aj_p95,FOM,2031,87.87548
+large100_aj_p95,FOM,2032,88.081894
+large100_aj_p95,FOM,2033,90.20072
+large100_aj_p95,FOM,2034,92.4831
+large100_aj_p95,FOM,2035,95.135
+large100_aj_p95,FOM,2038,99.89942
+large100_aj_p95,FOM,2041,103.15517
+large100_aj_p95,FOM,2044,107.66443
+large100_aj_p95,FOM,2047,111.000984
+large100_aj_p95,FOM,2050,113.432274
+large100_aj_p95,VOM + other op,2010,14.101312
+large100_aj_p95,VOM + other op,2015,12.542799
+large100_aj_p95,VOM + other op,2020,10.091411
+large100_aj_p95,VOM + other op,2023,9.515403
+large100_aj_p95,VOM + other op,2026,9.166902
+large100_aj_p95,VOM + other op,2029,9.286119
+large100_aj_p95,VOM + other op,2031,14.346633
+large100_aj_p95,VOM + other op,2032,18.961723
+large100_aj_p95,VOM + other op,2033,18.77794
+large100_aj_p95,VOM + other op,2034,18.859795
+large100_aj_p95,VOM + other op,2035,18.846344
+large100_aj_p95,VOM + other op,2038,19.899654
+large100_aj_p95,VOM + other op,2041,19.542076
+large100_aj_p95,VOM + other op,2044,11.559048
+large100_aj_p95,VOM + other op,2047,11.973591
+large100_aj_p95,VOM + other op,2050,12.151163
+large100_aj_p95,converter + H2 capex,2010,0.9677622
+large100_aj_p95,converter + H2 capex,2023,2.05389
+large100_aj_p95,converter + H2 capex,2029,0.30869892
+large100_aj_p95,converter + H2 capex,2031,1.663151
+large100_aj_p95,converter + H2 capex,2032,0.004338159
+large100_aj_p95,converter + H2 capex,2033,5.0178003
+large100_aj_p95,converter + H2 capex,2034,2.0246427
+large100_aj_p95,converter + H2 capex,2035,0.65253264
+large100_aj_p95,converter + H2 capex,2038,0.9173214
+large100_aj_p95,converter + H2 capex,2041,5.7149296
+large100_aj_p95,converter + H2 capex,2044,0.46235076
+large100_aj_p95,converter + H2 capex,2047,0.25956002
+large100_aj_p95,converter + H2 capex,2050,0.16174631
+large100_aj_p95,fuel,2010,159.90926
+large100_aj_p95,fuel,2015,87.87588
+large100_aj_p95,fuel,2020,53.633945
+large100_aj_p95,fuel,2023,52.695786
+large100_aj_p95,fuel,2026,60.476
+large100_aj_p95,fuel,2029,55.8874
+large100_aj_p95,fuel,2031,67.19015
+large100_aj_p95,fuel,2032,71.908264
+large100_aj_p95,fuel,2033,70.7855
+large100_aj_p95,fuel,2034,70.80409
+large100_aj_p95,fuel,2035,68.14756
+large100_aj_p95,fuel,2038,71.14341
+large100_aj_p95,fuel,2041,71.489105
+large100_aj_p95,fuel,2044,65.73783
+large100_aj_p95,fuel,2047,62.36933
+large100_aj_p95,fuel,2050,61.61822
+large100_aj_p95,generation capex,2010,105.247925
+large100_aj_p95,generation capex,2015,381.4723
+large100_aj_p95,generation capex,2020,289.35855
+large100_aj_p95,generation capex,2023,218.52766
+large100_aj_p95,generation capex,2026,570.9603
+large100_aj_p95,generation capex,2029,503.45935
+large100_aj_p95,generation capex,2031,262.023
+large100_aj_p95,generation capex,2032,360.14764
+large100_aj_p95,generation capex,2033,83.31279
+large100_aj_p95,generation capex,2034,100.23468
+large100_aj_p95,generation capex,2035,142.0715
+large100_aj_p95,generation capex,2038,301.8193
+large100_aj_p95,generation capex,2041,374.71402
+large100_aj_p95,generation capex,2044,279.97095
+large100_aj_p95,generation capex,2047,328.39722
+large100_aj_p95,generation capex,2050,345.81314
+large100_aj_p95,policy credits (neg.),2010,-0.7221878
+large100_aj_p95,policy credits (neg.),2015,-16.97388
+large100_aj_p95,policy credits (neg.),2020,-18.319025
+large100_aj_p95,policy credits (neg.),2023,-19.357693
+large100_aj_p95,policy credits (neg.),2026,-101.05191
+large100_aj_p95,policy credits (neg.),2029,-84.16498
+large100_aj_p95,policy credits (neg.),2031,-48.843124
+large100_aj_p95,policy credits (neg.),2032,-53.058334
+large100_aj_p95,policy credits (neg.),2033,-45.919983
+large100_aj_p95,policy credits (neg.),2034,-46.394333
+large100_aj_p95,policy credits (neg.),2035,-46.168625
+large100_aj_p95,policy credits (neg.),2038,-39.91333
+large100_aj_p95,policy credits (neg.),2041,-26.374693
+large100_aj_p95,policy credits (neg.),2044,-1.7816975
+large100_aj_p95,policy credits (neg.),2047,-1.6338775
+large100_aj_p95,policy credits (neg.),2050,-0.48434418
+large100_aj_p95,transmission capex,2010,4.231005
+large100_aj_p95,transmission capex,2015,16.194809
+large100_aj_p95,transmission capex,2020,15.90399
+large100_aj_p95,transmission capex,2023,9.9209585
+large100_aj_p95,transmission capex,2026,30.337795
+large100_aj_p95,transmission capex,2029,23.95772
+large100_aj_p95,transmission capex,2031,9.969153
+large100_aj_p95,transmission capex,2032,8.192989
+large100_aj_p95,transmission capex,2033,32.139618
+large100_aj_p95,transmission capex,2034,20.154728
+large100_aj_p95,transmission capex,2035,18.824543
+large100_aj_p95,transmission capex,2038,28.313965
+large100_aj_p95,transmission capex,2041,62.226486
+large100_aj_p95,transmission capex,2044,29.332825
+large100_aj_p95,transmission capex,2047,26.016888
+large100_aj_p95,transmission capex,2050,20.930323
+large100_cop28_p05,FOM,2010,56.87815
+large100_cop28_p05,FOM,2015,63.04602
+large100_cop28_p05,FOM,2020,67.71823
+large100_cop28_p05,FOM,2023,68.81928
+large100_cop28_p05,FOM,2026,78.033424
+large100_cop28_p05,FOM,2029,84.72577
+large100_cop28_p05,FOM,2031,88.32507
+large100_cop28_p05,FOM,2032,88.72805
+large100_cop28_p05,FOM,2033,91.12304
+large100_cop28_p05,FOM,2034,93.84732
+large100_cop28_p05,FOM,2035,96.87999
+large100_cop28_p05,FOM,2038,101.58903
+large100_cop28_p05,FOM,2041,105.6265
+large100_cop28_p05,FOM,2044,112.30645
+large100_cop28_p05,FOM,2047,117.65138
+large100_cop28_p05,FOM,2050,121.86746
+large100_cop28_p05,VOM + other op,2010,14.101312
+large100_cop28_p05,VOM + other op,2015,12.542799
+large100_cop28_p05,VOM + other op,2020,10.091411
+large100_cop28_p05,VOM + other op,2023,9.515403
+large100_cop28_p05,VOM + other op,2026,9.162669
+large100_cop28_p05,VOM + other op,2029,9.278774
+large100_cop28_p05,VOM + other op,2031,14.340218
+large100_cop28_p05,VOM + other op,2032,18.650137
+large100_cop28_p05,VOM + other op,2033,18.368263
+large100_cop28_p05,VOM + other op,2034,18.437748
+large100_cop28_p05,VOM + other op,2035,18.40274
+large100_cop28_p05,VOM + other op,2038,19.409256
+large100_cop28_p05,VOM + other op,2041,18.943989
+large100_cop28_p05,VOM + other op,2044,11.059778
+large100_cop28_p05,VOM + other op,2047,11.322087
+large100_cop28_p05,VOM + other op,2050,11.406548
+large100_cop28_p05,converter + H2 capex,2010,1.0145994
+large100_cop28_p05,converter + H2 capex,2023,2.0583737
+large100_cop28_p05,converter + H2 capex,2029,0.30869892
+large100_cop28_p05,converter + H2 capex,2031,1.3253491
+large100_cop28_p05,converter + H2 capex,2032,0.0038167264
+large100_cop28_p05,converter + H2 capex,2033,4.412429
+large100_cop28_p05,converter + H2 capex,2034,1.4113209
+large100_cop28_p05,converter + H2 capex,2035,1.4530228
+large100_cop28_p05,converter + H2 capex,2038,0.66152525
+large100_cop28_p05,converter + H2 capex,2041,4.930731
+large100_cop28_p05,converter + H2 capex,2044,0.64337504
+large100_cop28_p05,converter + H2 capex,2047,0.34865022
+large100_cop28_p05,fuel,2010,159.90926
+large100_cop28_p05,fuel,2015,87.87588
+large100_cop28_p05,fuel,2020,53.633945
+large100_cop28_p05,fuel,2023,52.695786
+large100_cop28_p05,fuel,2026,60.476
+large100_cop28_p05,fuel,2029,55.8874
+large100_cop28_p05,fuel,2031,66.24508
+large100_cop28_p05,fuel,2032,69.78566
+large100_cop28_p05,fuel,2033,68.777245
+large100_cop28_p05,fuel,2034,68.0299
+large100_cop28_p05,fuel,2035,64.99507
+large100_cop28_p05,fuel,2038,67.94907
+large100_cop28_p05,fuel,2041,66.77002
+large100_cop28_p05,fuel,2044,58.162018
+large100_cop28_p05,fuel,2047,52.050846
+large100_cop28_p05,fuel,2050,49.162045
+large100_cop28_p05,generation capex,2010,105.247925
+large100_cop28_p05,generation capex,2015,381.4723
+large100_cop28_p05,generation capex,2020,289.35855
+large100_cop28_p05,generation capex,2023,218.52766
+large100_cop28_p05,generation capex,2026,570.9603
+large100_cop28_p05,generation capex,2029,503.45935
+large100_cop28_p05,generation capex,2031,299.5151
+large100_cop28_p05,generation capex,2032,381.6715
+large100_cop28_p05,generation capex,2033,106.17627
+large100_cop28_p05,generation capex,2034,126.85405
+large100_cop28_p05,generation capex,2035,158.55606
+large100_cop28_p05,generation capex,2038,293.4883
+large100_cop28_p05,generation capex,2041,409.28558
+large100_cop28_p05,generation capex,2044,351.1565
+large100_cop28_p05,generation capex,2047,371.58267
+large100_cop28_p05,generation capex,2050,351.99542
+large100_cop28_p05,policy credits (neg.),2010,-0.7221878
+large100_cop28_p05,policy credits (neg.),2015,-16.97388
+large100_cop28_p05,policy credits (neg.),2020,-18.319025
+large100_cop28_p05,policy credits (neg.),2023,-19.357693
+large100_cop28_p05,policy credits (neg.),2026,-101.05191
+large100_cop28_p05,policy credits (neg.),2029,-84.16498
+large100_cop28_p05,policy credits (neg.),2031,-48.867302
+large100_cop28_p05,policy credits (neg.),2032,-50.92915
+large100_cop28_p05,policy credits (neg.),2033,-44.89566
+large100_cop28_p05,policy credits (neg.),2034,-45.151684
+large100_cop28_p05,policy credits (neg.),2035,-44.95318
+large100_cop28_p05,policy credits (neg.),2038,-38.722015
+large100_cop28_p05,policy credits (neg.),2041,-25.097723
+large100_cop28_p05,policy credits (neg.),2044,-1.3238841
+large100_cop28_p05,policy credits (neg.),2047,-1.1299821
+large100_cop28_p05,policy credits (neg.),2050,1.3978246e-05
+large100_cop28_p05,transmission capex,2010,4.231005
+large100_cop28_p05,transmission capex,2015,16.194809
+large100_cop28_p05,transmission capex,2020,15.90399
+large100_cop28_p05,transmission capex,2023,9.9209585
+large100_cop28_p05,transmission capex,2026,30.337795
+large100_cop28_p05,transmission capex,2029,23.95772
+large100_cop28_p05,transmission capex,2031,9.511922
+large100_cop28_p05,transmission capex,2032,7.576083
+large100_cop28_p05,transmission capex,2033,27.827896
+large100_cop28_p05,transmission capex,2034,16.757008
+large100_cop28_p05,transmission capex,2035,18.724945
+large100_cop28_p05,transmission capex,2038,23.649239
+large100_cop28_p05,transmission capex,2041,47.481842
+large100_cop28_p05,transmission capex,2044,14.045568
+large100_cop28_p05,transmission capex,2047,12.873121
+large100_cop28_p05,transmission capex,2050,19.389355
 large100_cop28_p50,FOM,2010,56.87815
 large100_cop28_p50,FOM,2015,63.04602
 large100_cop28_p50,FOM,2020,67.71823
@@ -216,6 +542,224 @@ large100_cop28_p50,transmission capex,2041,47.661873
 large100_cop28_p50,transmission capex,2044,16.119774
 large100_cop28_p50,transmission capex,2047,14.7910185
 large100_cop28_p50,transmission capex,2050,20.219107
+large100_cop28_p95,FOM,2010,56.87815
+large100_cop28_p95,FOM,2015,63.04602
+large100_cop28_p95,FOM,2020,67.71823
+large100_cop28_p95,FOM,2023,68.81928
+large100_cop28_p95,FOM,2026,78.06289
+large100_cop28_p95,FOM,2029,84.771614
+large100_cop28_p95,FOM,2031,88.994385
+large100_cop28_p95,FOM,2032,89.93174
+large100_cop28_p95,FOM,2033,92.85748
+large100_cop28_p95,FOM,2034,96.15144
+large100_cop28_p95,FOM,2035,99.756386
+large100_cop28_p95,FOM,2038,105.23802
+large100_cop28_p95,FOM,2041,110.841545
+large100_cop28_p95,FOM,2044,121.35996
+large100_cop28_p95,FOM,2047,130.4855
+large100_cop28_p95,FOM,2050,138.54846
+large100_cop28_p95,VOM + other op,2010,14.101312
+large100_cop28_p95,VOM + other op,2015,12.542799
+large100_cop28_p95,VOM + other op,2020,10.091411
+large100_cop28_p95,VOM + other op,2023,9.515403
+large100_cop28_p95,VOM + other op,2026,9.1671505
+large100_cop28_p95,VOM + other op,2029,9.286552
+large100_cop28_p95,VOM + other op,2031,14.413916
+large100_cop28_p95,VOM + other op,2032,18.827934
+large100_cop28_p95,VOM + other op,2033,18.627121
+large100_cop28_p95,VOM + other op,2034,18.800154
+large100_cop28_p95,VOM + other op,2035,18.834816
+large100_cop28_p95,VOM + other op,2038,20.065678
+large100_cop28_p95,VOM + other op,2041,19.925352
+large100_cop28_p95,VOM + other op,2044,12.470642
+large100_cop28_p95,VOM + other op,2047,13.298451
+large100_cop28_p95,VOM + other op,2050,14.013665
+large100_cop28_p95,converter + H2 capex,2010,1.0145994
+large100_cop28_p95,converter + H2 capex,2023,2.027908
+large100_cop28_p95,converter + H2 capex,2029,0.30869892
+large100_cop28_p95,converter + H2 capex,2031,1.4793941
+large100_cop28_p95,converter + H2 capex,2032,0.005066692
+large100_cop28_p95,converter + H2 capex,2033,4.023276
+large100_cop28_p95,converter + H2 capex,2034,1.6993388
+large100_cop28_p95,converter + H2 capex,2035,1.5636567
+large100_cop28_p95,converter + H2 capex,2038,1.0677899
+large100_cop28_p95,converter + H2 capex,2041,5.0122366
+large100_cop28_p95,converter + H2 capex,2044,0.4246095
+large100_cop28_p95,converter + H2 capex,2047,0.09464881
+large100_cop28_p95,converter + H2 capex,2050,0.02153527
+large100_cop28_p95,fuel,2010,159.90926
+large100_cop28_p95,fuel,2015,87.87588
+large100_cop28_p95,fuel,2020,53.633945
+large100_cop28_p95,fuel,2023,52.695786
+large100_cop28_p95,fuel,2026,60.476
+large100_cop28_p95,fuel,2029,55.8874
+large100_cop28_p95,fuel,2031,66.20873
+large100_cop28_p95,fuel,2032,69.799164
+large100_cop28_p95,fuel,2033,68.86822
+large100_cop28_p95,fuel,2034,68.08403
+large100_cop28_p95,fuel,2035,64.91715
+large100_cop28_p95,fuel,2038,67.92196
+large100_cop28_p95,fuel,2041,67.17636
+large100_cop28_p95,fuel,2044,58.078793
+large100_cop28_p95,fuel,2047,51.775845
+large100_cop28_p95,fuel,2050,49.186443
+large100_cop28_p95,generation capex,2010,105.247925
+large100_cop28_p95,generation capex,2015,381.4723
+large100_cop28_p95,generation capex,2020,289.35855
+large100_cop28_p95,generation capex,2023,218.52766
+large100_cop28_p95,generation capex,2026,570.9603
+large100_cop28_p95,generation capex,2029,503.45935
+large100_cop28_p95,generation capex,2031,330.2376
+large100_cop28_p95,generation capex,2032,409.77704
+large100_cop28_p95,generation capex,2033,137.91458
+large100_cop28_p95,generation capex,2034,159.36755
+large100_cop28_p95,generation capex,2035,192.80118
+large100_cop28_p95,generation capex,2038,338.40536
+large100_cop28_p95,generation capex,2041,503.45816
+large100_cop28_p95,generation capex,2044,578.5709
+large100_cop28_p95,generation capex,2047,577.0765
+large100_cop28_p95,generation capex,2050,559.21826
+large100_cop28_p95,policy credits (neg.),2010,-0.7221878
+large100_cop28_p95,policy credits (neg.),2015,-16.97388
+large100_cop28_p95,policy credits (neg.),2020,-18.319025
+large100_cop28_p95,policy credits (neg.),2023,-19.357693
+large100_cop28_p95,policy credits (neg.),2026,-101.05191
+large100_cop28_p95,policy credits (neg.),2029,-84.16498
+large100_cop28_p95,policy credits (neg.),2031,-49.17929
+large100_cop28_p95,policy credits (neg.),2032,-50.33809
+large100_cop28_p95,policy credits (neg.),2033,-44.94597
+large100_cop28_p95,policy credits (neg.),2034,-45.305004
+large100_cop28_p95,policy credits (neg.),2035,-44.976295
+large100_cop28_p95,policy credits (neg.),2038,-39.007755
+large100_cop28_p95,policy credits (neg.),2041,-25.322144
+large100_cop28_p95,policy credits (neg.),2044,-1.5529933
+large100_cop28_p95,policy credits (neg.),2047,-1.5802469
+large100_cop28_p95,policy credits (neg.),2050,-0.27641043
+large100_cop28_p95,transmission capex,2010,4.231005
+large100_cop28_p95,transmission capex,2015,16.194809
+large100_cop28_p95,transmission capex,2020,15.90399
+large100_cop28_p95,transmission capex,2023,9.9209585
+large100_cop28_p95,transmission capex,2026,30.337795
+large100_cop28_p95,transmission capex,2029,23.95772
+large100_cop28_p95,transmission capex,2031,9.630524
+large100_cop28_p95,transmission capex,2032,7.6686397
+large100_cop28_p95,transmission capex,2033,28.242706
+large100_cop28_p95,transmission capex,2034,16.314745
+large100_cop28_p95,transmission capex,2035,19.995052
+large100_cop28_p95,transmission capex,2038,25.59417
+large100_cop28_p95,transmission capex,2041,48.423
+large100_cop28_p95,transmission capex,2044,18.508247
+large100_cop28_p95,transmission capex,2047,15.335028
+large100_cop28_p95,transmission capex,2050,18.93324
+large100_eia_p05,FOM,2010,56.87815
+large100_eia_p05,FOM,2015,63.04602
+large100_eia_p05,FOM,2020,67.71823
+large100_eia_p05,FOM,2023,68.81928
+large100_eia_p05,FOM,2026,78.035446
+large100_eia_p05,FOM,2029,84.72347
+large100_eia_p05,FOM,2031,87.76276
+large100_eia_p05,FOM,2032,87.91121
+large100_eia_p05,FOM,2033,89.95664
+large100_eia_p05,FOM,2034,92.1796
+large100_eia_p05,FOM,2035,94.777664
+large100_eia_p05,FOM,2038,99.619774
+large100_eia_p05,FOM,2041,102.84627
+large100_eia_p05,FOM,2044,106.53261
+large100_eia_p05,FOM,2047,108.71051
+large100_eia_p05,FOM,2050,109.77306
+large100_eia_p05,VOM + other op,2010,14.101312
+large100_eia_p05,VOM + other op,2015,12.542799
+large100_eia_p05,VOM + other op,2020,10.091411
+large100_eia_p05,VOM + other op,2023,9.515403
+large100_eia_p05,VOM + other op,2026,9.162918
+large100_eia_p05,VOM + other op,2029,9.279206
+large100_eia_p05,VOM + other op,2031,14.339762
+large100_eia_p05,VOM + other op,2032,18.96382
+large100_eia_p05,VOM + other op,2033,18.807259
+large100_eia_p05,VOM + other op,2034,18.893951
+large100_eia_p05,VOM + other op,2035,18.883291
+large100_eia_p05,VOM + other op,2038,19.895153
+large100_eia_p05,VOM + other op,2041,19.416666
+large100_eia_p05,VOM + other op,2044,11.456177
+large100_eia_p05,VOM + other op,2047,11.860111
+large100_eia_p05,VOM + other op,2050,11.89257
+large100_eia_p05,converter + H2 capex,2010,1.008618
+large100_eia_p05,converter + H2 capex,2023,2.0682065
+large100_eia_p05,converter + H2 capex,2029,0.30869892
+large100_eia_p05,converter + H2 capex,2031,1.5989252
+large100_eia_p05,converter + H2 capex,2032,0.0044784565
+large100_eia_p05,converter + H2 capex,2033,5.0971894
+large100_eia_p05,converter + H2 capex,2034,1.8821845
+large100_eia_p05,converter + H2 capex,2035,0.67065847
+large100_eia_p05,converter + H2 capex,2038,0.95734537
+large100_eia_p05,converter + H2 capex,2041,5.5402756
+large100_eia_p05,converter + H2 capex,2044,0.59397423
+large100_eia_p05,converter + H2 capex,2047,0.72026885
+large100_eia_p05,converter + H2 capex,2050,0.4159898
+large100_eia_p05,fuel,2010,159.90926
+large100_eia_p05,fuel,2015,87.87588
+large100_eia_p05,fuel,2020,53.633945
+large100_eia_p05,fuel,2023,52.695786
+large100_eia_p05,fuel,2026,60.476
+large100_eia_p05,fuel,2029,55.8874
+large100_eia_p05,fuel,2031,67.247734
+large100_eia_p05,fuel,2032,72.09274
+large100_eia_p05,fuel,2033,71.09328
+large100_eia_p05,fuel,2034,71.13425
+large100_eia_p05,fuel,2035,68.526146
+large100_eia_p05,fuel,2038,71.35376
+large100_eia_p05,fuel,2041,71.12217
+large100_eia_p05,fuel,2044,66.07471
+large100_eia_p05,fuel,2047,63.31563
+large100_eia_p05,fuel,2050,62.232147
+large100_eia_p05,generation capex,2010,105.247925
+large100_eia_p05,generation capex,2015,381.4723
+large100_eia_p05,generation capex,2020,289.35855
+large100_eia_p05,generation capex,2023,218.52766
+large100_eia_p05,generation capex,2026,570.9603
+large100_eia_p05,generation capex,2029,503.45935
+large100_eia_p05,generation capex,2031,257.5111
+large100_eia_p05,generation capex,2032,356.18866
+large100_eia_p05,generation capex,2033,77.63902
+large100_eia_p05,generation capex,2034,97.220085
+large100_eia_p05,generation capex,2035,138.31259
+large100_eia_p05,generation capex,2038,317.37213
+large100_eia_p05,generation capex,2041,372.99442
+large100_eia_p05,generation capex,2044,229.2031
+large100_eia_p05,generation capex,2047,254.71898
+large100_eia_p05,generation capex,2050,257.03094
+large100_eia_p05,policy credits (neg.),2010,-0.7221878
+large100_eia_p05,policy credits (neg.),2015,-16.97388
+large100_eia_p05,policy credits (neg.),2020,-18.319025
+large100_eia_p05,policy credits (neg.),2023,-19.357693
+large100_eia_p05,policy credits (neg.),2026,-101.05191
+large100_eia_p05,policy credits (neg.),2029,-84.16498
+large100_eia_p05,policy credits (neg.),2031,-48.858627
+large100_eia_p05,policy credits (neg.),2032,-53.18383
+large100_eia_p05,policy credits (neg.),2033,-46.02495
+large100_eia_p05,policy credits (neg.),2034,-46.41461
+large100_eia_p05,policy credits (neg.),2035,-46.379757
+large100_eia_p05,policy credits (neg.),2038,-39.943493
+large100_eia_p05,policy credits (neg.),2041,-26.231756
+large100_eia_p05,policy credits (neg.),2044,-1.6527749
+large100_eia_p05,policy credits (neg.),2047,-1.4580532
+large100_eia_p05,policy credits (neg.),2050,-0.4614105
+large100_eia_p05,transmission capex,2010,4.231005
+large100_eia_p05,transmission capex,2015,16.194809
+large100_eia_p05,transmission capex,2020,15.90399
+large100_eia_p05,transmission capex,2023,9.9209585
+large100_eia_p05,transmission capex,2026,30.337795
+large100_eia_p05,transmission capex,2029,23.95772
+large100_eia_p05,transmission capex,2031,9.998252
+large100_eia_p05,transmission capex,2032,8.27403
+large100_eia_p05,transmission capex,2033,32.306675
+large100_eia_p05,transmission capex,2034,19.695427
+large100_eia_p05,transmission capex,2035,19.220045
+large100_eia_p05,transmission capex,2038,24.25587
+large100_eia_p05,transmission capex,2041,53.737885
+large100_eia_p05,transmission capex,2044,29.154217
+large100_eia_p05,transmission capex,2047,29.96613
+large100_eia_p05,transmission capex,2050,26.513903
 large100_eia_p50,FOM,2010,56.87815
 large100_eia_p50,FOM,2015,63.04602
 large100_eia_p50,FOM,2020,67.71823
@@ -325,6 +869,224 @@ large100_eia_p50,transmission capex,2041,55.512516
 large100_eia_p50,transmission capex,2044,29.534859
 large100_eia_p50,transmission capex,2047,30.211582
 large100_eia_p50,transmission capex,2050,26.944199
+large100_eia_p95,FOM,2010,56.87815
+large100_eia_p95,FOM,2015,63.04602
+large100_eia_p95,FOM,2020,67.71823
+large100_eia_p95,FOM,2023,68.81928
+large100_eia_p95,FOM,2026,78.06138
+large100_eia_p95,FOM,2029,84.74676
+large100_eia_p95,FOM,2031,87.8231
+large100_eia_p95,FOM,2032,87.97181
+large100_eia_p95,FOM,2033,90.017265
+large100_eia_p95,FOM,2034,92.239876
+large100_eia_p95,FOM,2035,94.84038
+large100_eia_p95,FOM,2038,100.47055
+large100_eia_p95,FOM,2041,104.13066
+large100_eia_p95,FOM,2044,107.914474
+large100_eia_p95,FOM,2047,110.11126
+large100_eia_p95,FOM,2050,111.32151
+large100_eia_p95,VOM + other op,2010,14.101312
+large100_eia_p95,VOM + other op,2015,12.542799
+large100_eia_p95,VOM + other op,2020,10.091411
+large100_eia_p95,VOM + other op,2023,9.515403
+large100_eia_p95,VOM + other op,2026,9.166902
+large100_eia_p95,VOM + other op,2029,9.286119
+large100_eia_p95,VOM + other op,2031,14.352232
+large100_eia_p95,VOM + other op,2032,18.975847
+large100_eia_p95,VOM + other op,2033,18.819323
+large100_eia_p95,VOM + other op,2034,18.904274
+large100_eia_p95,VOM + other op,2035,18.892357
+large100_eia_p95,VOM + other op,2038,20.036583
+large100_eia_p95,VOM + other op,2041,19.704845
+large100_eia_p95,VOM + other op,2044,11.665858
+large100_eia_p95,VOM + other op,2047,12.076635
+large100_eia_p95,VOM + other op,2050,12.189241
+large100_eia_p95,converter + H2 capex,2010,1.0145994
+large100_eia_p95,converter + H2 capex,2023,2.094176
+large100_eia_p95,converter + H2 capex,2029,0.30869892
+large100_eia_p95,converter + H2 capex,2031,1.662972
+large100_eia_p95,converter + H2 capex,2032,0.004723498
+large100_eia_p95,converter + H2 capex,2033,5.093378
+large100_eia_p95,converter + H2 capex,2034,1.8807153
+large100_eia_p95,converter + H2 capex,2035,0.67572975
+large100_eia_p95,converter + H2 capex,2038,0.98498094
+large100_eia_p95,converter + H2 capex,2041,5.664548
+large100_eia_p95,converter + H2 capex,2044,0.40608802
+large100_eia_p95,converter + H2 capex,2047,0.40577516
+large100_eia_p95,converter + H2 capex,2050,0.374769
+large100_eia_p95,fuel,2010,159.90926
+large100_eia_p95,fuel,2015,87.87588
+large100_eia_p95,fuel,2020,53.633945
+large100_eia_p95,fuel,2023,52.695786
+large100_eia_p95,fuel,2026,60.476
+large100_eia_p95,fuel,2029,55.8874
+large100_eia_p95,fuel,2031,67.24477
+large100_eia_p95,fuel,2032,72.09497
+large100_eia_p95,fuel,2033,71.0866
+large100_eia_p95,fuel,2034,71.133644
+large100_eia_p95,fuel,2035,68.50893
+large100_eia_p95,fuel,2038,71.29389
+large100_eia_p95,fuel,2041,71.183174
+large100_eia_p95,fuel,2044,65.88251
+large100_eia_p95,fuel,2047,63.190304
+large100_eia_p95,fuel,2050,62.192482
+large100_eia_p95,generation capex,2010,105.247925
+large100_eia_p95,generation capex,2015,381.4723
+large100_eia_p95,generation capex,2020,289.35855
+large100_eia_p95,generation capex,2023,218.52766
+large100_eia_p95,generation capex,2026,570.9603
+large100_eia_p95,generation capex,2029,503.45935
+large100_eia_p95,generation capex,2031,258.39017
+large100_eia_p95,generation capex,2032,356.14392
+large100_eia_p95,generation capex,2033,77.70221
+large100_eia_p95,generation capex,2034,97.243126
+large100_eia_p95,generation capex,2035,138.38551
+large100_eia_p95,generation capex,2038,360.67935
+large100_eia_p95,generation capex,2041,396.99908
+large100_eia_p95,generation capex,2044,236.24709
+large100_eia_p95,generation capex,2047,256.4983
+large100_eia_p95,generation capex,2050,269.81454
+large100_eia_p95,policy credits (neg.),2010,-0.7221878
+large100_eia_p95,policy credits (neg.),2015,-16.97388
+large100_eia_p95,policy credits (neg.),2020,-18.319025
+large100_eia_p95,policy credits (neg.),2023,-19.357693
+large100_eia_p95,policy credits (neg.),2026,-101.05191
+large100_eia_p95,policy credits (neg.),2029,-84.16498
+large100_eia_p95,policy credits (neg.),2031,-48.85788
+large100_eia_p95,policy credits (neg.),2032,-53.179443
+large100_eia_p95,policy credits (neg.),2033,-46.030346
+large100_eia_p95,policy credits (neg.),2034,-46.461727
+large100_eia_p95,policy credits (neg.),2035,-46.375004
+large100_eia_p95,policy credits (neg.),2038,-40.05748
+large100_eia_p95,policy credits (neg.),2041,-26.519049
+large100_eia_p95,policy credits (neg.),2044,-1.8035454
+large100_eia_p95,policy credits (neg.),2047,-1.6177012
+large100_eia_p95,policy credits (neg.),2050,-0.49691415
+large100_eia_p95,transmission capex,2010,4.231005
+large100_eia_p95,transmission capex,2015,16.194809
+large100_eia_p95,transmission capex,2020,15.90399
+large100_eia_p95,transmission capex,2023,9.9209585
+large100_eia_p95,transmission capex,2026,30.337795
+large100_eia_p95,transmission capex,2029,23.95772
+large100_eia_p95,transmission capex,2031,10.008562
+large100_eia_p95,transmission capex,2032,8.259186
+large100_eia_p95,transmission capex,2033,32.30041
+large100_eia_p95,transmission capex,2034,19.70909
+large100_eia_p95,transmission capex,2035,19.216633
+large100_eia_p95,transmission capex,2038,26.190811
+large100_eia_p95,transmission capex,2041,59.65262
+large100_eia_p95,transmission capex,2044,29.03646
+large100_eia_p95,transmission capex,2047,29.6041
+large100_eia_p95,transmission capex,2050,26.03798
+large100_eo_p05,FOM,2010,56.87815
+large100_eo_p05,FOM,2015,63.04602
+large100_eo_p05,FOM,2020,67.71823
+large100_eo_p05,FOM,2023,68.81928
+large100_eo_p05,FOM,2026,78.03686
+large100_eo_p05,FOM,2029,84.7038
+large100_eo_p05,FOM,2031,88.713295
+large100_eo_p05,FOM,2032,89.341606
+large100_eo_p05,FOM,2033,91.95689
+large100_eo_p05,FOM,2034,94.98117
+large100_eo_p05,FOM,2035,98.41376
+large100_eo_p05,FOM,2038,104.95875
+large100_eo_p05,FOM,2041,110.64977
+large100_eo_p05,FOM,2044,118.94039
+large100_eo_p05,FOM,2047,126.39625
+large100_eo_p05,FOM,2050,132.79388
+large100_eo_p05,VOM + other op,2010,14.101312
+large100_eo_p05,VOM + other op,2015,12.542799
+large100_eo_p05,VOM + other op,2020,10.091411
+large100_eo_p05,VOM + other op,2023,9.515403
+large100_eo_p05,VOM + other op,2026,9.163167
+large100_eo_p05,VOM + other op,2029,9.279638
+large100_eo_p05,VOM + other op,2031,14.334015
+large100_eo_p05,VOM + other op,2032,18.47454
+large100_eo_p05,VOM + other op,2033,18.239117
+large100_eo_p05,VOM + other op,2034,18.323673
+large100_eo_p05,VOM + other op,2035,18.297802
+large100_eo_p05,VOM + other op,2038,19.285362
+large100_eo_p05,VOM + other op,2041,18.980194
+large100_eo_p05,VOM + other op,2044,11.14515
+large100_eo_p05,VOM + other op,2047,11.559679
+large100_eo_p05,VOM + other op,2050,11.813488
+large100_eo_p05,converter + H2 capex,2010,1.0145994
+large100_eo_p05,converter + H2 capex,2023,1.9524174
+large100_eo_p05,converter + H2 capex,2029,0.30869892
+large100_eo_p05,converter + H2 capex,2031,1.3233916
+large100_eo_p05,converter + H2 capex,2032,0.003384308
+large100_eo_p05,converter + H2 capex,2033,4.025102
+large100_eo_p05,converter + H2 capex,2034,1.3758152
+large100_eo_p05,converter + H2 capex,2035,1.5336363
+large100_eo_p05,converter + H2 capex,2038,1.1317029
+large100_eo_p05,converter + H2 capex,2041,4.101215
+large100_eo_p05,converter + H2 capex,2044,0.34362942
+large100_eo_p05,converter + H2 capex,2047,0.22789337
+large100_eo_p05,converter + H2 capex,2050,0.00012170575
+large100_eo_p05,fuel,2010,159.90926
+large100_eo_p05,fuel,2015,87.87588
+large100_eo_p05,fuel,2020,53.633945
+large100_eo_p05,fuel,2023,52.695786
+large100_eo_p05,fuel,2026,60.476
+large100_eo_p05,fuel,2029,55.8874
+large100_eo_p05,fuel,2031,65.79595
+large100_eo_p05,fuel,2032,68.83299
+large100_eo_p05,fuel,2033,67.83954
+large100_eo_p05,fuel,2034,66.84685
+large100_eo_p05,fuel,2035,63.194714
+large100_eo_p05,fuel,2038,64.132355
+large100_eo_p05,fuel,2041,61.52884
+large100_eo_p05,fuel,2044,52.150787
+large100_eo_p05,fuel,2047,45.113808
+large100_eo_p05,fuel,2050,40.984753
+large100_eo_p05,generation capex,2010,105.247925
+large100_eo_p05,generation capex,2015,381.4723
+large100_eo_p05,generation capex,2020,289.35855
+large100_eo_p05,generation capex,2023,218.52766
+large100_eo_p05,generation capex,2026,570.9603
+large100_eo_p05,generation capex,2029,503.45935
+large100_eo_p05,generation capex,2031,323.87738
+large100_eo_p05,generation capex,2032,387.64117
+large100_eo_p05,generation capex,2033,112.05165
+large100_eo_p05,generation capex,2034,134.51413
+large100_eo_p05,generation capex,2035,170.42781
+large100_eo_p05,generation capex,2038,348.6948
+large100_eo_p05,generation capex,2041,442.05875
+large100_eo_p05,generation capex,2044,361.45813
+large100_eo_p05,generation capex,2047,389.9588
+large100_eo_p05,generation capex,2050,373.0453
+large100_eo_p05,policy credits (neg.),2010,-0.7221878
+large100_eo_p05,policy credits (neg.),2015,-16.97388
+large100_eo_p05,policy credits (neg.),2020,-18.319025
+large100_eo_p05,policy credits (neg.),2023,-19.357693
+large100_eo_p05,policy credits (neg.),2026,-101.05191
+large100_eo_p05,policy credits (neg.),2029,-84.16498
+large100_eo_p05,policy credits (neg.),2031,-48.657135
+large100_eo_p05,policy credits (neg.),2032,-50.069824
+large100_eo_p05,policy credits (neg.),2033,-44.34791
+large100_eo_p05,policy credits (neg.),2034,-44.630833
+large100_eo_p05,policy credits (neg.),2035,-44.529793
+large100_eo_p05,policy credits (neg.),2038,-38.20642
+large100_eo_p05,policy credits (neg.),2041,-24.60293
+large100_eo_p05,policy credits (neg.),2044,-1.3108381
+large100_eo_p05,policy credits (neg.),2047,-1.1316036
+large100_eo_p05,policy credits (neg.),2050,-0.01962976
+large100_eo_p05,transmission capex,2010,4.231005
+large100_eo_p05,transmission capex,2015,16.194809
+large100_eo_p05,transmission capex,2020,15.90399
+large100_eo_p05,transmission capex,2023,9.9209585
+large100_eo_p05,transmission capex,2026,30.337795
+large100_eo_p05,transmission capex,2029,23.95772
+large100_eo_p05,transmission capex,2031,9.400619
+large100_eo_p05,transmission capex,2032,7.3831797
+large100_eo_p05,transmission capex,2033,26.31621
+large100_eo_p05,transmission capex,2034,15.007603
+large100_eo_p05,transmission capex,2035,18.240677
+large100_eo_p05,transmission capex,2038,17.50251
+large100_eo_p05,transmission capex,2041,38.484104
+large100_eo_p05,transmission capex,2044,13.173143
+large100_eo_p05,transmission capex,2047,12.39356
+large100_eo_p05,transmission capex,2050,18.610563
 large100_eo_p50,FOM,2010,56.87815
 large100_eo_p50,FOM,2015,63.04602
 large100_eo_p50,FOM,2020,67.71823
@@ -433,6 +1195,223 @@ large100_eo_p50,transmission capex,2041,41.012123
 large100_eo_p50,transmission capex,2044,13.13085
 large100_eo_p50,transmission capex,2047,11.820772
 large100_eo_p50,transmission capex,2050,17.939938
+large100_eo_p95,FOM,2010,56.87815
+large100_eo_p95,FOM,2015,63.04602
+large100_eo_p95,FOM,2020,67.71823
+large100_eo_p95,FOM,2023,68.81928
+large100_eo_p95,FOM,2026,78.05964
+large100_eo_p95,FOM,2029,84.755646
+large100_eo_p95,FOM,2031,89.4227
+large100_eo_p95,FOM,2032,90.67568
+large100_eo_p95,FOM,2033,93.932655
+large100_eo_p95,FOM,2034,97.55713
+large100_eo_p95,FOM,2035,101.580536
+large100_eo_p95,FOM,2038,109.94605
+large100_eo_p95,FOM,2041,118.15171
+large100_eo_p95,FOM,2044,129.97339
+large100_eo_p95,FOM,2047,141.14899
+large100_eo_p95,FOM,2050,151.41371
+large100_eo_p95,VOM + other op,2010,14.101312
+large100_eo_p95,VOM + other op,2015,12.542799
+large100_eo_p95,VOM + other op,2020,10.091411
+large100_eo_p95,VOM + other op,2023,9.515403
+large100_eo_p95,VOM + other op,2026,9.166653
+large100_eo_p95,VOM + other op,2029,9.285687
+large100_eo_p95,VOM + other op,2031,14.499218
+large100_eo_p95,VOM + other op,2032,18.81686
+large100_eo_p95,VOM + other op,2033,18.66236
+large100_eo_p95,VOM + other op,2034,18.869226
+large100_eo_p95,VOM + other op,2035,18.932484
+large100_eo_p95,VOM + other op,2038,20.330845
+large100_eo_p95,VOM + other op,2041,20.447678
+large100_eo_p95,VOM + other op,2044,12.912665
+large100_eo_p95,VOM + other op,2047,13.920386
+large100_eo_p95,VOM + other op,2050,14.846262
+large100_eo_p95,converter + H2 capex,2010,1.0145994
+large100_eo_p95,converter + H2 capex,2023,2.074321
+large100_eo_p95,converter + H2 capex,2029,0.30869892
+large100_eo_p95,converter + H2 capex,2031,1.5223708
+large100_eo_p95,converter + H2 capex,2032,0.002134375
+large100_eo_p95,converter + H2 capex,2033,4.0096383
+large100_eo_p95,converter + H2 capex,2034,1.0453738
+large100_eo_p95,converter + H2 capex,2035,2.0381196
+large100_eo_p95,converter + H2 capex,2038,0.58006257
+large100_eo_p95,converter + H2 capex,2041,4.1614
+large100_eo_p95,converter + H2 capex,2044,0.53499436
+large100_eo_p95,converter + H2 capex,2047,0.0755464
+large100_eo_p95,fuel,2010,159.90926
+large100_eo_p95,fuel,2015,87.87588
+large100_eo_p95,fuel,2020,53.633945
+large100_eo_p95,fuel,2023,52.695786
+large100_eo_p95,fuel,2026,60.476
+large100_eo_p95,fuel,2029,55.8874
+large100_eo_p95,fuel,2031,65.78708
+large100_eo_p95,fuel,2032,69.026276
+large100_eo_p95,fuel,2033,67.88858
+large100_eo_p95,fuel,2034,67.026535
+large100_eo_p95,fuel,2035,63.313835
+large100_eo_p95,fuel,2038,64.69887
+large100_eo_p95,fuel,2041,62.319862
+large100_eo_p95,fuel,2044,52.33102
+large100_eo_p95,fuel,2047,45.278225
+large100_eo_p95,fuel,2050,41.497936
+large100_eo_p95,generation capex,2010,105.247925
+large100_eo_p95,generation capex,2015,381.4723
+large100_eo_p95,generation capex,2020,289.35855
+large100_eo_p95,generation capex,2023,218.52766
+large100_eo_p95,generation capex,2026,570.9603
+large100_eo_p95,generation capex,2029,503.45935
+large100_eo_p95,generation capex,2031,362.8471
+large100_eo_p95,generation capex,2032,434.54553
+large100_eo_p95,generation capex,2033,162.79367
+large100_eo_p95,generation capex,2034,181.77454
+large100_eo_p95,generation capex,2035,218.36601
+large100_eo_p95,generation capex,2038,495.77753
+large100_eo_p95,generation capex,2041,645.5879
+large100_eo_p95,generation capex,2044,693.7035
+large100_eo_p95,generation capex,2047,713.99457
+large100_eo_p95,generation capex,2050,707.52216
+large100_eo_p95,policy credits (neg.),2010,-0.7221878
+large100_eo_p95,policy credits (neg.),2015,-16.97388
+large100_eo_p95,policy credits (neg.),2020,-18.319025
+large100_eo_p95,policy credits (neg.),2023,-19.357693
+large100_eo_p95,policy credits (neg.),2026,-101.05191
+large100_eo_p95,policy credits (neg.),2029,-84.16498
+large100_eo_p95,policy credits (neg.),2031,-49.59357
+large100_eo_p95,policy credits (neg.),2032,-49.664085
+large100_eo_p95,policy credits (neg.),2033,-44.84921
+large100_eo_p95,policy credits (neg.),2034,-45.082306
+large100_eo_p95,policy credits (neg.),2035,-44.94791
+large100_eo_p95,policy credits (neg.),2038,-38.836136
+large100_eo_p95,policy credits (neg.),2041,-25.237038
+large100_eo_p95,policy credits (neg.),2044,-1.5064154
+large100_eo_p95,policy credits (neg.),2047,-1.3760415
+large100_eo_p95,policy credits (neg.),2050,-0.0380483
+large100_eo_p95,transmission capex,2010,4.231005
+large100_eo_p95,transmission capex,2015,16.194809
+large100_eo_p95,transmission capex,2020,15.90399
+large100_eo_p95,transmission capex,2023,9.9209585
+large100_eo_p95,transmission capex,2026,30.337795
+large100_eo_p95,transmission capex,2029,23.95772
+large100_eo_p95,transmission capex,2031,9.528702
+large100_eo_p95,transmission capex,2032,7.4026446
+large100_eo_p95,transmission capex,2033,26.990095
+large100_eo_p95,transmission capex,2034,14.303414
+large100_eo_p95,transmission capex,2035,19.337582
+large100_eo_p95,transmission capex,2038,18.614914
+large100_eo_p95,transmission capex,2041,40.550106
+large100_eo_p95,transmission capex,2044,13.94424
+large100_eo_p95,transmission capex,2047,14.922009
+large100_eo_p95,transmission capex,2050,16.680973
+large100_iaea_p05,FOM,2010,56.87815
+large100_iaea_p05,FOM,2015,63.04602
+large100_iaea_p05,FOM,2020,67.71823
+large100_iaea_p05,FOM,2023,68.81928
+large100_iaea_p05,FOM,2026,78.03578
+large100_iaea_p05,FOM,2029,84.72406
+large100_iaea_p05,FOM,2031,88.02155
+large100_iaea_p05,FOM,2032,88.28803
+large100_iaea_p05,FOM,2033,90.606636
+large100_iaea_p05,FOM,2034,93.120056
+large100_iaea_p05,FOM,2035,95.87353
+large100_iaea_p05,FOM,2038,100.78844
+large100_iaea_p05,FOM,2041,103.9784
+large100_iaea_p05,FOM,2044,108.35362
+large100_iaea_p05,FOM,2047,111.21124
+large100_iaea_p05,FOM,2050,112.74438
+large100_iaea_p05,VOM + other op,2010,14.101312
+large100_iaea_p05,VOM + other op,2015,12.542799
+large100_iaea_p05,VOM + other op,2020,10.091411
+large100_iaea_p05,VOM + other op,2023,9.515403
+large100_iaea_p05,VOM + other op,2026,9.162918
+large100_iaea_p05,VOM + other op,2029,9.279206
+large100_iaea_p05,VOM + other op,2031,14.355757
+large100_iaea_p05,VOM + other op,2032,18.773666
+large100_iaea_p05,VOM + other op,2033,18.535389
+large100_iaea_p05,VOM + other op,2034,18.588917
+large100_iaea_p05,VOM + other op,2035,18.554192
+large100_iaea_p05,VOM + other op,2038,19.56179
+large100_iaea_p05,VOM + other op,2041,19.180973
+large100_iaea_p05,VOM + other op,2044,11.328499
+large100_iaea_p05,VOM + other op,2047,11.623296
+large100_iaea_p05,VOM + other op,2050,11.758457
+large100_iaea_p05,converter + H2 capex,2010,1.0145994
+large100_iaea_p05,converter + H2 capex,2023,2.074321
+large100_iaea_p05,converter + H2 capex,2029,0.30869892
+large100_iaea_p05,converter + H2 capex,2031,1.3843951
+large100_iaea_p05,converter + H2 capex,2032,0.0047569196
+large100_iaea_p05,converter + H2 capex,2033,4.682553
+large100_iaea_p05,converter + H2 capex,2034,1.9341843
+large100_iaea_p05,converter + H2 capex,2035,0.7546157
+large100_iaea_p05,converter + H2 capex,2038,1.1960623
+large100_iaea_p05,converter + H2 capex,2041,5.170125
+large100_iaea_p05,converter + H2 capex,2044,0.7926176
+large100_iaea_p05,converter + H2 capex,2047,0.38312182
+large100_iaea_p05,converter + H2 capex,2050,0.12347193
+large100_iaea_p05,fuel,2010,159.90926
+large100_iaea_p05,fuel,2015,87.87588
+large100_iaea_p05,fuel,2020,53.633945
+large100_iaea_p05,fuel,2023,52.695786
+large100_iaea_p05,fuel,2026,60.476
+large100_iaea_p05,fuel,2029,55.8874
+large100_iaea_p05,fuel,2031,66.788055
+large100_iaea_p05,fuel,2032,70.92033
+large100_iaea_p05,fuel,2033,69.64412
+large100_iaea_p05,fuel,2034,69.12845
+large100_iaea_p05,fuel,2035,66.60324
+large100_iaea_p05,fuel,2038,69.22886
+large100_iaea_p05,fuel,2041,69.70218
+large100_iaea_p05,fuel,2044,63.948338
+large100_iaea_p05,fuel,2047,60.785755
+large100_iaea_p05,fuel,2050,60.224136
+large100_iaea_p05,generation capex,2010,105.247925
+large100_iaea_p05,generation capex,2015,381.4723
+large100_iaea_p05,generation capex,2020,289.35855
+large100_iaea_p05,generation capex,2023,218.52766
+large100_iaea_p05,generation capex,2026,570.9603
+large100_iaea_p05,generation capex,2029,503.45935
+large100_iaea_p05,generation capex,2031,278.2444
+large100_iaea_p05,generation capex,2032,369.96262
+large100_iaea_p05,generation capex,2033,98.74616
+large100_iaea_p05,generation capex,2034,113.505806
+large100_iaea_p05,generation capex,2035,147.5731
+large100_iaea_p05,generation capex,2038,303.53516
+large100_iaea_p05,generation capex,2041,372.91998
+large100_iaea_p05,generation capex,2044,264.9555
+large100_iaea_p05,generation capex,2047,282.65454
+large100_iaea_p05,generation capex,2050,274.69647
+large100_iaea_p05,policy credits (neg.),2010,-0.7221878
+large100_iaea_p05,policy credits (neg.),2015,-16.97388
+large100_iaea_p05,policy credits (neg.),2020,-18.319025
+large100_iaea_p05,policy credits (neg.),2023,-19.357693
+large100_iaea_p05,policy credits (neg.),2026,-101.05191
+large100_iaea_p05,policy credits (neg.),2029,-84.16498
+large100_iaea_p05,policy credits (neg.),2031,-48.800323
+large100_iaea_p05,policy credits (neg.),2032,-51.839302
+large100_iaea_p05,policy credits (neg.),2033,-45.33131
+large100_iaea_p05,policy credits (neg.),2034,-45.60789
+large100_iaea_p05,policy credits (neg.),2035,-45.35399
+large100_iaea_p05,policy credits (neg.),2038,-39.02017
+large100_iaea_p05,policy credits (neg.),2041,-25.376198
+large100_iaea_p05,policy credits (neg.),2044,-1.2682166
+large100_iaea_p05,policy credits (neg.),2047,-1.1003879
+large100_iaea_p05,policy credits (neg.),2050,-0.27487472
+large100_iaea_p05,transmission capex,2010,4.231005
+large100_iaea_p05,transmission capex,2015,16.194809
+large100_iaea_p05,transmission capex,2020,15.90399
+large100_iaea_p05,transmission capex,2023,9.9209585
+large100_iaea_p05,transmission capex,2026,30.337795
+large100_iaea_p05,transmission capex,2029,23.95772
+large100_iaea_p05,transmission capex,2031,9.7123575
+large100_iaea_p05,transmission capex,2032,7.904231
+large100_iaea_p05,transmission capex,2033,29.48552
+large100_iaea_p05,transmission capex,2034,20.180256
+large100_iaea_p05,transmission capex,2035,18.797188
+large100_iaea_p05,transmission capex,2038,24.516739
+large100_iaea_p05,transmission capex,2041,49.1103
+large100_iaea_p05,transmission capex,2044,21.093151
+large100_iaea_p05,transmission capex,2047,21.48516
+large100_iaea_p05,transmission capex,2050,18.329432
 large100_iaea_p50,FOM,2010,56.87815
 large100_iaea_p50,FOM,2015,63.04602
 large100_iaea_p50,FOM,2020,67.71823
@@ -542,6 +1521,224 @@ large100_iaea_p50,transmission capex,2041,49.934486
 large100_iaea_p50,transmission capex,2044,21.968842
 large100_iaea_p50,transmission capex,2047,20.407377
 large100_iaea_p50,transmission capex,2050,18.698292
+large100_iaea_p95,FOM,2010,56.87815
+large100_iaea_p95,FOM,2015,63.04602
+large100_iaea_p95,FOM,2020,67.71823
+large100_iaea_p95,FOM,2023,68.81928
+large100_iaea_p95,FOM,2026,78.06014
+large100_iaea_p95,FOM,2029,84.75652
+large100_iaea_p95,FOM,2031,88.32543
+large100_iaea_p95,FOM,2032,88.857216
+large100_iaea_p95,FOM,2033,91.38889
+large100_iaea_p95,FOM,2034,94.12482
+large100_iaea_p95,FOM,2035,97.07872
+large100_iaea_p95,FOM,2038,102.78934
+large100_iaea_p95,FOM,2041,106.72643
+large100_iaea_p95,FOM,2044,111.98053
+large100_iaea_p95,FOM,2047,115.493195
+large100_iaea_p95,FOM,2050,118.05379
+large100_iaea_p95,VOM + other op,2010,14.101312
+large100_iaea_p95,VOM + other op,2015,12.542799
+large100_iaea_p95,VOM + other op,2020,10.091411
+large100_iaea_p95,VOM + other op,2023,9.515403
+large100_iaea_p95,VOM + other op,2026,9.166653
+large100_iaea_p95,VOM + other op,2029,9.285687
+large100_iaea_p95,VOM + other op,2031,14.383995
+large100_iaea_p95,VOM + other op,2032,18.963015
+large100_iaea_p95,VOM + other op,2033,18.76263
+large100_iaea_p95,VOM + other op,2034,18.849243
+large100_iaea_p95,VOM + other op,2035,18.9028
+large100_iaea_p95,VOM + other op,2038,20.080612
+large100_iaea_p95,VOM + other op,2041,19.874052
+large100_iaea_p95,VOM + other op,2044,12.037552
+large100_iaea_p95,VOM + other op,2047,12.549385
+large100_iaea_p95,VOM + other op,2050,12.671869
+large100_iaea_p95,converter + H2 capex,2010,1.0145994
+large100_iaea_p95,converter + H2 capex,2023,2.074321
+large100_iaea_p95,converter + H2 capex,2029,0.30869892
+large100_iaea_p95,converter + H2 capex,2031,1.5763888
+large100_iaea_p95,converter + H2 capex,2032,0.0042602625
+large100_iaea_p95,converter + H2 capex,2033,4.445452
+large100_iaea_p95,converter + H2 capex,2034,1.8645266
+large100_iaea_p95,converter + H2 capex,2035,1.2059989
+large100_iaea_p95,converter + H2 capex,2038,1.2313219
+large100_iaea_p95,converter + H2 capex,2041,5.4161663
+large100_iaea_p95,converter + H2 capex,2044,0.16999729
+large100_iaea_p95,converter + H2 capex,2047,0.12890796
+large100_iaea_p95,converter + H2 capex,2050,0.10753351
+large100_iaea_p95,fuel,2010,159.90926
+large100_iaea_p95,fuel,2015,87.87588
+large100_iaea_p95,fuel,2020,53.633945
+large100_iaea_p95,fuel,2023,52.695786
+large100_iaea_p95,fuel,2026,60.476
+large100_iaea_p95,fuel,2029,55.8874
+large100_iaea_p95,fuel,2031,66.753746
+large100_iaea_p95,fuel,2032,70.880936
+large100_iaea_p95,fuel,2033,69.60928
+large100_iaea_p95,fuel,2034,69.135155
+large100_iaea_p95,fuel,2035,66.70475
+large100_iaea_p95,fuel,2038,69.21716
+large100_iaea_p95,fuel,2041,69.82491
+large100_iaea_p95,fuel,2044,63.751137
+large100_iaea_p95,fuel,2047,60.667988
+large100_iaea_p95,fuel,2050,60.073483
+large100_iaea_p95,generation capex,2010,105.247925
+large100_iaea_p95,generation capex,2015,381.4723
+large100_iaea_p95,generation capex,2020,289.35855
+large100_iaea_p95,generation capex,2023,218.52766
+large100_iaea_p95,generation capex,2026,570.9603
+large100_iaea_p95,generation capex,2029,503.45935
+large100_iaea_p95,generation capex,2031,292.57
+large100_iaea_p95,generation capex,2032,387.1499
+large100_iaea_p95,generation capex,2033,112.15872
+large100_iaea_p95,generation capex,2034,129.5696
+large100_iaea_p95,generation capex,2035,161.53235
+large100_iaea_p95,generation capex,2038,357.11127
+large100_iaea_p95,generation capex,2041,417.0404
+large100_iaea_p95,generation capex,2044,324.06006
+large100_iaea_p95,generation capex,2047,343.91483
+large100_iaea_p95,generation capex,2050,345.97705
+large100_iaea_p95,policy credits (neg.),2010,-0.7221878
+large100_iaea_p95,policy credits (neg.),2015,-16.97388
+large100_iaea_p95,policy credits (neg.),2020,-18.319025
+large100_iaea_p95,policy credits (neg.),2023,-19.357693
+large100_iaea_p95,policy credits (neg.),2026,-101.05191
+large100_iaea_p95,policy credits (neg.),2029,-84.16498
+large100_iaea_p95,policy credits (neg.),2031,-49.121468
+large100_iaea_p95,policy credits (neg.),2032,-51.907284
+large100_iaea_p95,policy credits (neg.),2033,-45.610447
+large100_iaea_p95,policy credits (neg.),2034,-46.065903
+large100_iaea_p95,policy credits (neg.),2035,-45.816757
+large100_iaea_p95,policy credits (neg.),2038,-39.719124
+large100_iaea_p95,policy credits (neg.),2041,-26.164568
+large100_iaea_p95,policy credits (neg.),2044,-1.8216066
+large100_iaea_p95,policy credits (neg.),2047,-1.6327969
+large100_iaea_p95,policy credits (neg.),2050,-0.40721855
+large100_iaea_p95,transmission capex,2010,4.231005
+large100_iaea_p95,transmission capex,2015,16.194809
+large100_iaea_p95,transmission capex,2020,15.90399
+large100_iaea_p95,transmission capex,2023,9.9209585
+large100_iaea_p95,transmission capex,2026,30.337795
+large100_iaea_p95,transmission capex,2029,23.95772
+large100_iaea_p95,transmission capex,2031,9.754541
+large100_iaea_p95,transmission capex,2032,8.024286
+large100_iaea_p95,transmission capex,2033,29.9844
+large100_iaea_p95,transmission capex,2034,19.887218
+large100_iaea_p95,transmission capex,2035,18.768793
+large100_iaea_p95,transmission capex,2038,25.99139
+large100_iaea_p95,transmission capex,2041,55.47383
+large100_iaea_p95,transmission capex,2044,25.291796
+large100_iaea_p95,transmission capex,2047,20.697903
+large100_iaea_p95,transmission capex,2050,18.492817
+large100_mck_p05,FOM,2010,56.87815
+large100_mck_p05,FOM,2015,63.04602
+large100_mck_p05,FOM,2020,67.71823
+large100_mck_p05,FOM,2023,68.81928
+large100_mck_p05,FOM,2026,78.03654
+large100_mck_p05,FOM,2029,84.70324
+large100_mck_p05,FOM,2031,88.04134
+large100_mck_p05,FOM,2032,88.32018
+large100_mck_p05,FOM,2033,90.65241
+large100_mck_p05,FOM,2034,93.175385
+large100_mck_p05,FOM,2035,95.96277
+large100_mck_p05,FOM,2038,100.90937
+large100_mck_p05,FOM,2041,104.38987
+large100_mck_p05,FOM,2044,109.45054
+large100_mck_p05,FOM,2047,112.91254
+large100_mck_p05,FOM,2050,115.121254
+large100_mck_p05,VOM + other op,2010,14.101312
+large100_mck_p05,VOM + other op,2015,12.542799
+large100_mck_p05,VOM + other op,2020,10.091411
+large100_mck_p05,VOM + other op,2023,9.515403
+large100_mck_p05,VOM + other op,2026,9.163167
+large100_mck_p05,VOM + other op,2029,9.279638
+large100_mck_p05,VOM + other op,2031,14.355421
+large100_mck_p05,VOM + other op,2032,18.776894
+large100_mck_p05,VOM + other op,2033,18.53944
+large100_mck_p05,VOM + other op,2034,18.590845
+large100_mck_p05,VOM + other op,2035,18.556858
+large100_mck_p05,VOM + other op,2038,19.570618
+large100_mck_p05,VOM + other op,2041,19.179873
+large100_mck_p05,VOM + other op,2044,11.345358
+large100_mck_p05,VOM + other op,2047,11.653322
+large100_mck_p05,VOM + other op,2050,11.827869
+large100_mck_p05,converter + H2 capex,2010,1.0145994
+large100_mck_p05,converter + H2 capex,2023,2.074321
+large100_mck_p05,converter + H2 capex,2029,0.30869892
+large100_mck_p05,converter + H2 capex,2031,1.3938193
+large100_mck_p05,converter + H2 capex,2032,0.0047576055
+large100_mck_p05,converter + H2 capex,2033,4.6551213
+large100_mck_p05,converter + H2 capex,2034,1.9236686
+large100_mck_p05,converter + H2 capex,2035,0.7691431
+large100_mck_p05,converter + H2 capex,2038,1.1953644
+large100_mck_p05,converter + H2 capex,2041,5.185728
+large100_mck_p05,converter + H2 capex,2044,0.70136416
+large100_mck_p05,converter + H2 capex,2047,0.43630865
+large100_mck_p05,converter + H2 capex,2050,0.00417081
+large100_mck_p05,fuel,2010,159.90926
+large100_mck_p05,fuel,2015,87.87588
+large100_mck_p05,fuel,2020,53.633945
+large100_mck_p05,fuel,2023,52.695786
+large100_mck_p05,fuel,2026,60.476
+large100_mck_p05,fuel,2029,55.8874
+large100_mck_p05,fuel,2031,66.768036
+large100_mck_p05,fuel,2032,70.89289
+large100_mck_p05,fuel,2033,69.60203
+large100_mck_p05,fuel,2034,69.09501
+large100_mck_p05,fuel,2035,66.47895
+large100_mck_p05,fuel,2038,69.13284
+large100_mck_p05,fuel,2041,69.20355
+large100_mck_p05,fuel,2044,62.70363
+large100_mck_p05,fuel,2047,59.127125
+large100_mck_p05,fuel,2050,57.96652
+large100_mck_p05,generation capex,2010,105.247925
+large100_mck_p05,generation capex,2015,381.4723
+large100_mck_p05,generation capex,2020,289.35855
+large100_mck_p05,generation capex,2023,218.52766
+large100_mck_p05,generation capex,2026,570.9603
+large100_mck_p05,generation capex,2029,503.45935
+large100_mck_p05,generation capex,2031,279.3676
+large100_mck_p05,generation capex,2032,370.57657
+large100_mck_p05,generation capex,2033,99.42572
+large100_mck_p05,generation capex,2034,114.82387
+large100_mck_p05,generation capex,2035,149.74634
+large100_mck_p05,generation capex,2038,304.84735
+large100_mck_p05,generation capex,2041,384.44336
+large100_mck_p05,generation capex,2044,282.81674
+large100_mck_p05,generation capex,2047,294.77487
+large100_mck_p05,generation capex,2050,287.26892
+large100_mck_p05,policy credits (neg.),2010,-0.7221878
+large100_mck_p05,policy credits (neg.),2015,-16.97388
+large100_mck_p05,policy credits (neg.),2020,-18.319025
+large100_mck_p05,policy credits (neg.),2023,-19.357693
+large100_mck_p05,policy credits (neg.),2026,-101.05191
+large100_mck_p05,policy credits (neg.),2029,-84.16498
+large100_mck_p05,policy credits (neg.),2031,-48.811707
+large100_mck_p05,policy credits (neg.),2032,-51.806465
+large100_mck_p05,policy credits (neg.),2033,-45.353493
+large100_mck_p05,policy credits (neg.),2034,-45.611366
+large100_mck_p05,policy credits (neg.),2035,-45.35272
+large100_mck_p05,policy credits (neg.),2038,-39.014748
+large100_mck_p05,policy credits (neg.),2041,-25.373653
+large100_mck_p05,policy credits (neg.),2044,-1.2605203
+large100_mck_p05,policy credits (neg.),2047,-1.0725312
+large100_mck_p05,policy credits (neg.),2050,-0.2717892
+large100_mck_p05,transmission capex,2010,4.231005
+large100_mck_p05,transmission capex,2015,16.194809
+large100_mck_p05,transmission capex,2020,15.90399
+large100_mck_p05,transmission capex,2023,9.9209585
+large100_mck_p05,transmission capex,2026,30.337795
+large100_mck_p05,transmission capex,2029,23.95772
+large100_mck_p05,transmission capex,2031,9.712926
+large100_mck_p05,transmission capex,2032,7.895817
+large100_mck_p05,transmission capex,2033,29.40253
+large100_mck_p05,transmission capex,2034,20.080147
+large100_mck_p05,transmission capex,2035,18.81647
+large100_mck_p05,transmission capex,2038,24.337355
+large100_mck_p05,transmission capex,2041,48.733437
+large100_mck_p05,transmission capex,2044,19.160618
+large100_mck_p05,transmission capex,2047,18.798023
+large100_mck_p05,transmission capex,2050,18.287485
 large100_mck_p50,FOM,2010,56.87815
 large100_mck_p50,FOM,2015,63.04602
 large100_mck_p50,FOM,2020,67.71823
@@ -651,6 +1848,115 @@ large100_mck_p50,transmission capex,2041,49.38942
 large100_mck_p50,transmission capex,2044,20.076279
 large100_mck_p50,transmission capex,2047,18.72193
 large100_mck_p50,transmission capex,2050,17.551523
+large100_mck_p95,FOM,2010,56.87815
+large100_mck_p95,FOM,2015,63.04602
+large100_mck_p95,FOM,2020,67.71823
+large100_mck_p95,FOM,2023,68.81928
+large100_mck_p95,FOM,2026,78.063324
+large100_mck_p95,FOM,2029,84.77236
+large100_mck_p95,FOM,2031,88.37107
+large100_mck_p95,FOM,2032,88.92815
+large100_mck_p95,FOM,2033,91.50297
+large100_mck_p95,FOM,2034,94.26818
+large100_mck_p95,FOM,2035,97.2942
+large100_mck_p95,FOM,2038,103.09142
+large100_mck_p95,FOM,2041,107.58204
+large100_mck_p95,FOM,2044,114.1944
+large100_mck_p95,FOM,2047,119.06788
+large100_mck_p95,FOM,2050,122.847885
+large100_mck_p95,VOM + other op,2010,14.101312
+large100_mck_p95,VOM + other op,2015,12.542799
+large100_mck_p95,VOM + other op,2020,10.091411
+large100_mck_p95,VOM + other op,2023,9.515403
+large100_mck_p95,VOM + other op,2026,9.1671505
+large100_mck_p95,VOM + other op,2029,9.286552
+large100_mck_p95,VOM + other op,2031,14.380011
+large100_mck_p95,VOM + other op,2032,18.90971
+large100_mck_p95,VOM + other op,2033,18.716682
+large100_mck_p95,VOM + other op,2034,18.813734
+large100_mck_p95,VOM + other op,2035,18.863756
+large100_mck_p95,VOM + other op,2038,20.072319
+large100_mck_p95,VOM + other op,2041,19.885284
+large100_mck_p95,VOM + other op,2044,12.180997
+large100_mck_p95,VOM + other op,2047,12.705992
+large100_mck_p95,VOM + other op,2050,12.998195
+large100_mck_p95,converter + H2 capex,2010,1.0145994
+large100_mck_p95,converter + H2 capex,2023,2.074321
+large100_mck_p95,converter + H2 capex,2029,0.30869892
+large100_mck_p95,converter + H2 capex,2031,1.5032573
+large100_mck_p95,converter + H2 capex,2032,0.0044139223
+large100_mck_p95,converter + H2 capex,2033,4.4196343
+large100_mck_p95,converter + H2 capex,2034,1.9068019
+large100_mck_p95,converter + H2 capex,2035,1.2219626
+large100_mck_p95,converter + H2 capex,2038,1.1801991
+large100_mck_p95,converter + H2 capex,2041,5.436104
+large100_mck_p95,converter + H2 capex,2044,0.21733344
+large100_mck_p95,converter + H2 capex,2047,0.120394506
+large100_mck_p95,converter + H2 capex,2050,0.0823639
+large100_mck_p95,fuel,2010,159.90926
+large100_mck_p95,fuel,2015,87.87588
+large100_mck_p95,fuel,2020,53.633945
+large100_mck_p95,fuel,2023,52.695786
+large100_mck_p95,fuel,2026,60.476
+large100_mck_p95,fuel,2029,55.8874
+large100_mck_p95,fuel,2031,66.74166
+large100_mck_p95,fuel,2032,70.8419
+large100_mck_p95,fuel,2033,69.561966
+large100_mck_p95,fuel,2034,69.11953
+large100_mck_p95,fuel,2035,66.57633
+large100_mck_p95,fuel,2038,69.19289
+large100_mck_p95,fuel,2041,69.38773
+large100_mck_p95,fuel,2044,62.39271
+large100_mck_p95,fuel,2047,58.757633
+large100_mck_p95,fuel,2050,57.91009
+large100_mck_p95,generation capex,2010,105.247925
+large100_mck_p95,generation capex,2015,381.4723
+large100_mck_p95,generation capex,2020,289.35855
+large100_mck_p95,generation capex,2023,218.52766
+large100_mck_p95,generation capex,2026,570.9603
+large100_mck_p95,generation capex,2029,503.45935
+large100_mck_p95,generation capex,2031,291.27985
+large100_mck_p95,generation capex,2032,384.67517
+large100_mck_p95,generation capex,2033,111.354004
+large100_mck_p95,generation capex,2034,127.9808
+large100_mck_p95,generation capex,2035,163.52664
+large100_mck_p95,generation capex,2038,354.10455
+large100_mck_p95,generation capex,2041,444.56674
+large100_mck_p95,generation capex,2044,386.35162
+large100_mck_p95,generation capex,2047,404.54874
+large100_mck_p95,generation capex,2050,410.4807
+large100_mck_p95,policy credits (neg.),2010,-0.7221878
+large100_mck_p95,policy credits (neg.),2015,-16.97388
+large100_mck_p95,policy credits (neg.),2020,-18.319025
+large100_mck_p95,policy credits (neg.),2023,-19.357693
+large100_mck_p95,policy credits (neg.),2026,-101.05191
+large100_mck_p95,policy credits (neg.),2029,-84.16498
+large100_mck_p95,policy credits (neg.),2031,-49.074615
+large100_mck_p95,policy credits (neg.),2032,-51.540092
+large100_mck_p95,policy credits (neg.),2033,-45.519928
+large100_mck_p95,policy credits (neg.),2034,-45.837635
+large100_mck_p95,policy credits (neg.),2035,-45.638557
+large100_mck_p95,policy credits (neg.),2038,-39.544796
+large100_mck_p95,policy credits (neg.),2041,-25.933178
+large100_mck_p95,policy credits (neg.),2044,-1.7392691
+large100_mck_p95,policy credits (neg.),2047,-1.6158655
+large100_mck_p95,policy credits (neg.),2050,-0.38755086
+large100_mck_p95,transmission capex,2010,4.231005
+large100_mck_p95,transmission capex,2015,16.194809
+large100_mck_p95,transmission capex,2020,15.90399
+large100_mck_p95,transmission capex,2023,9.9209585
+large100_mck_p95,transmission capex,2026,30.337795
+large100_mck_p95,transmission capex,2029,23.95772
+large100_mck_p95,transmission capex,2031,9.729439
+large100_mck_p95,transmission capex,2032,8.041961
+large100_mck_p95,transmission capex,2033,29.775972
+large100_mck_p95,transmission capex,2034,20.019207
+large100_mck_p95,transmission capex,2035,18.874174
+large100_mck_p95,transmission capex,2038,25.366898
+large100_mck_p95,transmission capex,2041,53.89121
+large100_mck_p95,transmission capex,2044,24.104654
+large100_mck_p95,transmission capex,2047,19.13229
+large100_mck_p95,transmission capex,2050,17.282349
 smr100_aj_p05,FOM,2010,56.87815
 smr100_aj_p05,FOM,2015,63.04602
 smr100_aj_p05,FOM,2020,67.71823
