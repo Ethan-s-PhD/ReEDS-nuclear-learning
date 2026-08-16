@@ -1,7 +1,0 @@
-tech,scenario,lr,eff_industry_rate,s,u,m,base,ces_rho,misfit_$kW,lr_in_MC_support
-large,conservative,0.2,0.2533,0.05,0.0,8,tiny,-1.0,231.9,False
-large,moderate,0.135,0.1739,0.05,0.45,4,tiny,1.0,78.9,False
-large,advanced,0.13,0.1677,0.35,1.0,4,tiny,1.0,38.2,False
-smr,conservative,0.175,0.2231,1.0,1.0,6,full,-1.0,208.0,False
-smr,moderate,0.13,0.1677,0.7,1.0,5,tiny,1.0,71.9,True
-smr,advanced,0.125,0.1615,0.85,0.8,4,tiny,1.0,213.6,True

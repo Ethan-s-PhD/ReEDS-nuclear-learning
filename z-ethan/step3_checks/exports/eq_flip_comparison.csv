@@ -1,3 +1,0 @@
-dataset,max_abs_diff,max_rel_diff,worst_at
-cap,3.6328125,0.0004378519661258906,"('wind-ons_9', 2050)"
-gen_ann,600696.0,0.02775319293141365,"('wind-ofs_10', 2041)"
