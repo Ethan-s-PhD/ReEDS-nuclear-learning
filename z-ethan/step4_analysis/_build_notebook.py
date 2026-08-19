@@ -57,7 +57,6 @@ Run on the **playground-env** kernel. Requires drive D (freshness check only).""
 code("""from pathlib import Path
 
 import h5py
-import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -76,7 +75,8 @@ CHECKS3 = REPO / "z-ethan" / "step3_checks" / "exports"
 CHECKS4 = REPO / "z-ethan" / "step4_checks" / "exports"
 S3ANALYSIS = REPO / "z-ethan" / "step3_analysis" / "exports"
 
-H5_DIR4 = Path("D:/ReEDS files/nuclear-learning/step4 runs")
+# all run outputs consolidated into one flat folder (drive reorganized 2026-08-18)
+H5_DIR4 = Path("D:/ReEDS files/nuclear-learning/All runs so far")
 
 # ---- case matrices ----------------------------------------------------------------
 cases4 = pd.read_csv(REPO / "cases_nuclearlearning_step4.csv", index_col=0)
@@ -121,31 +121,24 @@ ALL_PATHS = BASE_CASES + SENS_CASES
 print(f"paths: {len(ALL_PATHS)} = 18 base + 108 sensitivity")
 """)
 
-code("""# ---- house figure style (same tokens as step3_analysis) ---------------------------
-INK, MUTED, FAINT, GRID_C, EDGE_C, SURFACE = ("#0b0b0b", "#52514e", "#898781",
-                                              "#e1e0d9", "#c3c2b7", "#fcfcfb")
-mpl.rcParams.update({
-    "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "savefig.facecolor": SURFACE,
-    "axes.edgecolor": EDGE_C, "axes.labelcolor": MUTED, "text.color": INK,
-    "xtick.color": FAINT, "ytick.color": FAINT, "axes.grid": True, "grid.color": GRID_C,
-    "grid.linewidth": 0.6, "axes.spines.top": False, "axes.spines.right": False,
-    "axes.titlecolor": INK, "font.size": 9, "axes.titlesize": 10, "figure.dpi": 110,
-    "legend.frameon": False,
-})
-_ramp = mpl.cm.viridis(np.linspace(0.02, 0.72, len(SCHEDULES)))
-SCHED_C = {s: mpl.colors.to_hex(c) for s, c in zip(SCHEDULES, _ramp)}
-PCT_STYLE = {"p05": dict(lw=1.2, alpha=0.55, ls="-"),
-             "p50": dict(lw=2.2, alpha=1.00, ls="-"),
-             "p95": dict(lw=1.6, alpha=0.85, ls="--")}
-# Okabe-Ito hues for the six market arms (colorblind-safe; base stays ink-grey).
-SENS_C = {"gaslo": "#56b4e9", "gashi": "#0072b2", "demhi": "#e69f00",
-          "relo": "#009e73", "rehi": "#d55e00", "translim": "#cc79a7"}
-BASE_C = "#4a4945"
+code("""# ---- house figure style: z-ethan/plotstyle.py is the normative standard -----------
+import sys
+
+sys.path.insert(0, str(HERE.parent))
+import plotstyle as ps
+
+ps.apply()
+COL = ps.COL
+INK, MUTED, FAINT, GRID_C, EDGE_C, SURFACE = (ps.INK, ps.MUTED, ps.FAINT,
+                                              ps.GRID_C, ps.EDGE_C, ps.SURFACE)
+assert SCHEDULES == ps.SCHED_ORDER, "schedule tokens diverged from plotstyle.SCHED_ORDER"
+SCHED_C = dict(ps.SCHED_C)
+PCT_STYLE = dict(ps.PCT_STYLE)
+SENS_C = dict(ps.SENS_C)
+BASE_C = ps.BASE_C
 
 def savefig(fig, name):
-    p = FIGURES / name
-    fig.savefig(p, dpi=150, bbox_inches="tight")
-    print(f"wrote {p.relative_to(HERE)}")
+    return ps.savefig(fig, FIGURES / name)
 """)
 
 md("""## R0 — Data assembly and freshness
@@ -235,6 +228,10 @@ print(s01[s01.sens != 'base'].groupby('sens')['d_n_binding']
       .agg(['mean', 'min', 'max']).round(2))
 """)
 
+md("""**Figure g01 — binding mandated years per case and market world.** Each cell
+counts the mandated years whose dual exceeds $1/MW-yr (the QA binding
+convention).""")
+
 code("""# ---- g01: binding-year-count heatmap (case x arm) ---------------------------------
 CASE_ORDER = [(tok, p) for tok in SCHEDULES for p in PCTS]
 M = np.full((len(CASE_ORDER), len(ARMS)), np.nan)
@@ -245,19 +242,18 @@ for i, (tok, p) in enumerate(CASE_ORDER):
             M[i, j] = row.n_binding.iloc[0]
 
 fig, ax = plt.subplots(figsize=(7.2, 8.2))
-im = ax.imshow(M, cmap="cividis", aspect="auto", vmin=0)
+im = ax.imshow(M, cmap=ps.CMAP_SEQ, aspect="auto", vmin=0)
 for i in range(M.shape[0]):
     for j in range(M.shape[1]):
         v = M[i, j]
         ax.text(j, i, "-" if np.isnan(v) else f"{int(v)}", ha="center", va="center",
-                fontsize=8, color="#ffffff" if v < np.nanmax(M) * 0.55 else "#0b0b0b")
+                fontsize=8, color="white" if v < np.nanmax(M) * 0.55 else INK)
 ax.set_xticks(range(len(ARMS)))
 ax.set_xticklabels(["base"] + [SENS_META[s]["label"] for s in SENS],
                    rotation=30, ha="right")
 ax.set_yticks(range(len(CASE_ORDER)))
 ax.set_yticklabels([f"{tok} {p}" for tok, p in CASE_ORDER])
 ax.grid(False)
-ax.set_title("Binding mandated years per case and market world (count of years with dual > $1/MW-yr)")
 fig.colorbar(im, ax=ax, shrink=0.6, label="binding years")
 savefig(fig, "g01_binding_heatmap.png")
 plt.show()
@@ -318,7 +314,13 @@ b02 = s02[s02.sens == "base"].set_index("case")
 for c in BASE_CASES:
     assert abs(b02.loc[c, "end_over_peak"] - t04.loc[c, "end_over_peak"]) < 1e-9, c
     assert b02.loc[c, "peak_year"] == t04.loc[c, "peak_year"], c
-print("base shape metrics reproduce step3_analysis t04 exactly (18 cases)")
+    fh_b = b02.loc[c, "first_year_below_half_peak"]
+    fh_t = t04.loc[c, "first_year_below_half_peak"]
+    assert pd.isna(fh_b) == pd.isna(fh_t), c
+    assert pd.isna(fh_b) or float(fh_b) == float(fh_t), c
+    assert int(b02.loc[c, "n_zero_dual_mandated_years"]) == \\
+        int(t04.loc[c, "n_zero_dual_mandated_years"]), c
+print("base shape metrics reproduce step3_analysis t04 exactly (18 cases, all four metrics)")
 
 base_m = s02[s02.sens == "base"].set_index(["schedule", "pct"])
 s02["base_class"] = [base_m.loc[(r.schedule, r.pct), "shape_class"] for r in s02.itertuples()]
@@ -349,6 +351,11 @@ print(brk.groupby(["base_class", "shape_class"])["case"].count() if len(brk)
       else "none")
 """)
 
+md("""**Figure g02 (Fig 6 panel a) — bridge-shape survival matrix.** Each cell shows
+the 2050 dual as a fraction of the peak dual; the glyph after the number is the
+shape class (the key is annotated inside the figure, since it decodes the cell
+text).""")
+
 code("""# ---- g02: survival matrix (Fig 6 panel a) -----------------------------------------
 M = np.full((len(CASE_ORDER), len(ARMS)), np.nan)
 CLS = np.empty((len(CASE_ORDER), len(ARMS)), dtype=object)
@@ -361,7 +368,7 @@ for i, (tok, p) in enumerate(CASE_ORDER):
                 M[i, j] = row.end_over_peak.iloc[0]
 
 fig, ax = plt.subplots(figsize=(7.6, 8.4))
-im = ax.imshow(M, cmap="magma_r", aspect="auto", vmin=0.0, vmax=1.0)
+im = ax.imshow(M, cmap=ps.CMAP_SEQ, aspect="auto", vmin=0.0, vmax=1.0)
 GLYPH = {"decays": "\\u2193", "declines": "~", "flat": "\\u2014", "unbound": ""}
 for i in range(M.shape[0]):
     for j in range(M.shape[1]):
@@ -369,20 +376,27 @@ for i in range(M.shape[0]):
             ax.text(j, i, "0", ha="center", va="center", fontsize=8, color=MUTED)
             continue
         v = M[i, j]
+        # cividis: low values are dark blue (white text), high values light yellow (ink).
         ax.text(j, i, f"{v:.2f}{GLYPH[CLS[i, j]]}", ha="center", va="center",
-                fontsize=7.5, color="#ffffff" if v > 0.55 else "#0b0b0b")
+                fontsize=7.5, color="white" if v < 0.55 else INK)
+# glyph key must live in the saved figure — it decodes the cell text.
+ax.text(0.0, 1.01, "\\u2193 falls below half peak    ~ declines    \\u2014 flat    "
+        "0 = mandate unbound", transform=ax.transAxes,
+        fontsize=8, color=MUTED, ha="left", va="bottom")
 ax.set_xticks(range(len(ARMS)))
 ax.set_xticklabels(["base"] + [SENS_META[s]["label"] for s in SENS],
                    rotation=30, ha="right")
 ax.set_yticks(range(len(CASE_ORDER)))
 ax.set_yticklabels([f"{tok} {p}" for tok, p in CASE_ORDER])
 ax.grid(False)
-ax.set_title("Bridge-shape survival matrix: 2050 dual / peak dual\\n"
-             "(\\u2193 falls below half peak; ~ declines; \\u2014 flat; 0 = mandate unbound)")
 fig.colorbar(im, ax=ax, shrink=0.6, label="end-of-horizon dual / peak dual")
 savefig(fig, "g02_shape_survival_matrix.png")
 plt.show()
 """)
+
+md("""**Figure g03 (Fig 6 panel b) — dual trajectories across market worlds at the
+ladder ends (eia, eo).** Homogeneous 2x3 schedule-by-percentile grid: short
+categorical panel labels only, no panel letters (house convention).""")
 
 code("""# ---- g03: dual-band overlays for the ladder ends (Fig 6 panel b) ------------------
 fig, axes = plt.subplots(2, 3, figsize=(11.5, 6.4), sharex=True)
@@ -403,9 +417,12 @@ for row_i, tok in enumerate(["eia", "eo"]):
             ax.set_ylabel("mandate dual (2024$/kW-yr)")
         if row_i == 1:
             ax.set_xlabel("year")
-axes[0, 0].legend(fontsize=7, ncol=2)
-fig.suptitle("Dual trajectories across market worlds — ladder ends (eia, eo)", y=1.02)
-fig.tight_layout()
+# figure-level legend below the grid: an in-axes legend occluded the start of
+# the low-gas trace in the eia p05 panel (2026-08-17 audit)
+h03, l03 = axes[0, 0].get_legend_handles_labels()
+fig.legend(h03, l03, loc="lower center", ncol=4, fontsize=7,
+           bbox_to_anchor=(0.5, -0.03))
+fig.tight_layout(rect=(0, 0.04, 1, 1))
 savefig(fig, "g03_dual_overlays.png")
 plt.show()
 """)
@@ -479,6 +496,10 @@ print(sub[sub.pairwise_swaps_vs_base != ''][
     .to_string(index=False))
 """)
 
+md("""**Figure g04 — ambition-ladder subsidy ordering across market worlds.** Rank
+of each schedule by mean binding dual (1 = cheapest), one panel per percentile;
+panel labels are the percentile tokens.""")
+
 code("""# ---- g04: bump chart of schedule ranks --------------------------------------------
 fig, axes = plt.subplots(1, 3, figsize=(11.5, 4.2), sharey=True)
 for ax, p in zip(axes, PCTS):
@@ -492,14 +513,17 @@ for ax, p in zip(axes, PCTS):
                 lw=1.6, label=SCHED_LABEL[tok])
     ax.set_xticks(range(len(ARMS)))
     ax.set_xticklabels(["base"] + [SENS_META[s]["label"] for s in SENS],
-                       rotation=40, ha="right", fontsize=7)
+                       rotation=30, ha="right", fontsize=7)
     ax.set_title(p)
     ax.invert_yaxis()
     ax.set_yticks(range(1, 7))
 axes[0].set_ylabel("rank by mean binding dual (1 = cheapest)")
-axes[0].legend(fontsize=6.5, loc="lower left")
-fig.suptitle("Ambition-ladder subsidy ordering across market worlds", y=1.03)
-fig.tight_layout()
+# figure-level legend below: the in-axes legend sat on the flat rank-6 line
+# in the p05 panel (2026-08-17 audit)
+h04, l04 = axes[0].get_legend_handles_labels()
+fig.legend(h04, l04, loc="lower center", ncol=3, fontsize=6.5,
+           bbox_to_anchor=(0.5, -0.05))
+fig.tight_layout(rect=(0, 0.03, 1, 1))
 savefig(fig, "g04_ranking_bump.png")
 plt.show()
 """)
@@ -513,7 +537,7 @@ ratio as a companion column. An empty intersection cross-references R1.
 **No per-sensitivity ITC-rate recompute** (decision 2026-08-15): the nuclear
 financing inputs of every sensitivity case are byte-identical to its base case
 (step4_checks B1), so for a given case-year the S8 translation chain
-(fin_mult inversion → monetized m → statutory i) is a fixed linear map in the
+(fin_mult inversion → monetized m → i_model) is a fixed linear map in the
 dual — required-rate shifts follow the dual ratios below up to binding-year-set
 changes, which R1 reports. Levels are the weakest layer of the invariant and
 M5 makes no rate claim. All level readouts are national; `translim` regional
@@ -543,7 +567,14 @@ if len(empty):
     print(f"\\nempty binding-year intersection (see R1): {list(empty.case)}")
 """)
 
+md("""**Figure g05 — subsidy-level shift by market world.** One dot per case: the
+mean binding dual relative to base over the shared binding years; the marker
+shape encodes the percentile and the ink bar marks the arm median (legend
+in-figure). Dotted line = no shift.""")
+
 code("""# ---- g05: level-ratio dot plot ----------------------------------------------------
+from matplotlib.lines import Line2D
+
 fig, ax = plt.subplots(figsize=(8.6, 4.6))
 rng = np.random.default_rng(20260715)
 for j, s in enumerate(SENS):
@@ -557,10 +588,13 @@ for j, s in enumerate(SENS):
     ax.plot([j - 0.25, j + 0.25], [med, med], color=INK, lw=1.4)
 ax.axhline(1.0, color=MUTED, lw=0.8, ls=":")
 ax.set_xticks(range(len(SENS)))
-ax.set_xticklabels([SENS_META[s]["label"] for s in SENS], rotation=20, ha="right")
+ax.set_xticklabels([SENS_META[s]["label"] for s in SENS], rotation=30, ha="right")
 ax.set_ylabel("mean binding dual / base (shared binding years)")
-ax.set_title("Subsidy-level shift by market world "
-             "(marker: v = p05, o = p50, ^ = p95; bar = median)")
+# marker key must live in the saved figure — it decodes the dot shapes.
+handles = ([Line2D([], [], marker=m, ls="", color=MUTED, label=p)
+            for p, m in [("p05", "v"), ("p50", "o"), ("p95", "^")]]
+           + [Line2D([], [], color=INK, lw=1.4, label="arm median")])
+ax.legend(handles=handles, fontsize=7, ncol=4, loc="best")
 savefig(fig, "g05_level_ratios.png")
 plt.show()
 """)
