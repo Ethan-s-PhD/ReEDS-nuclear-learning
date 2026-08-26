@@ -232,19 +232,51 @@ From the weights we track, after each observation:
 - the updated probability that the world is a no-decay world (C1);
 - the weighted 10th/50th/90th percentiles of the 2050 total bill, stored at
   the snapshot years 2035, 2040, 2045, 2050;
-- for every cap X on the stage-2 grid, the updated probability that the bill
-  exceeds X.
+- for every cap X on the cap grid, two updated probabilities that the 2050
+  bill exceeds X. The **costs-only** version uses the cost readings alone
+  (the original pre-registered information set; kept as a reference). The
+  **spend-aware** version — the standard since the 2026-08-25 amendment
+  (Ethan; logged in `status.md`) — also lets the observer read the
+  government's own outlay ledger, every year: each candidate world's total
+  is scored as the spend observed so far plus that world's remaining
+  payments. Spend enters additively only — it is never used to tell worlds
+  apart, because in-model payments are exact shadow prices and would
+  identify the world instantly. Once actual spend reaches the cap, no
+  candidate total can stay below it, so the alarm fires by construction (an
+  explicit ledger backstop guards the numerical clip edge). The ledger is
+  read every calendar year — the bill arithmetic accrues annually — so
+  spend at detection can overshoot the cap by at most one year's payment.
 
 Samples per schedule and noise level: 300 no-decay worlds and 300 decay
 worlds (the working sample), plus 300 untouched decay worlds whose only job
 is to verify the alarm's false-alarm rate (gate H1). Seed 20260821.""")
 
-code("""MULT = np.round(np.arange(1.0, 2.51, 0.05), 2)
+code("""# Cap grid: extended below the 1.0x floor on 2026-08-25 (amendment, see
+# status.md) down to wherever the starting probability of exceedance stays
+# at or under PRIOR_CEIL (~the cap at the 25th-percentile bill).
+MULT = np.round(np.arange(0.45, 2.51, 0.05), 2)
+PRIOR_CEIL = 0.755
 EXCEED = {ab: (B2050[ab][:, None] > (MULT * P50BILL[ab])[None, :]).astype(float)
           for ab in SCHEDULES}
 BILL_ORDER = {ab: np.argsort(B2050[ab]) for ab in SCHEDULES}
 PRIOR_Q = {ab: np.percentile(B2050[ab], [10, 50, 90]) for ab in SCHEDULES}
 SNAP_YEARS = [2035, 2040, 2045, 2050]
+
+# the annual ledger (2026-08-25 amendment): per annual year, each world's
+# remaining bill after that year, pre-sorted for the composite-total lookup
+ANNUAL_YEARS = np.arange(2031, 2051)
+CUMU = {ab: np.cumsum(N_UNITS[ab]) for ab in SCHEDULES}
+OBS_J = {ab: np.searchsorted(OBSCAL[ab], ANNUAL_YEARS, side="right")
+         for ab in SCHEDULES}
+FUT_ORDER, FUT_SORTED = {}, {}
+for ab in SCHEDULES:
+    fo, fs = [], []
+    for i_ in range(len(ANNUAL_YEARS)):
+        f_ = B2050[ab] - BILLS_T[ab][:, i_]
+        o_ = np.argsort(f_)
+        fo.append(o_)
+        fs.append(f_[o_])
+    FUT_ORDER[ab], FUT_SORTED[ab] = fo, fs
 
 N_S = 300
 SAMP, HOLDW, IS_BAD_S = {}, {}, {}
@@ -265,7 +297,7 @@ def wquant(bills_sorted, w_sorted, qs=(0.1, 0.5, 0.9)):
     return bills_sorted[np.searchsorted(cw, qs)]
 
 def weighted_sweep(ab, lv, worlds, m_data=0.0, m_obs=0.0,
-                   want_bills=False, want_ex=False):
+                   want_bills=False, want_ex=False, want_ex_spend=False):
     sig, tau = lv
     L0 = LOGOCC[ab]                          # (10000, K)
     n = N_UNITS[ab]
@@ -275,10 +307,14 @@ def weighted_sweep(ab, lv, worlds, m_data=0.0, m_obs=0.0,
     order = BILL_ORDER[ab]
     bills_sorted = B2050[ab][order]
     E = EXCEED[ab]
+    Xv = MULT * P50BILL[ab]
     snap_j = [int((OBSCAL[ab] <= T).sum()) for T in SNAP_YEARS]  # obs count by snapshot
     nW = len(worlds)
+    nY = len(ANNUAL_YEARS)
     post = np.empty((nW, R, K), dtype=np.float32)
     ex = np.empty((nW, R, K, len(MULT)), dtype=np.float32) if want_ex else None
+    ex1 = (np.empty((nW, R, nY, len(MULT)), dtype=np.float32)
+           if want_ex_spend else None)
     qs = np.empty((nW, R, len(SNAP_YEARS), 3), dtype=np.float32) if want_bills else None
     shift = np.log1p(m_data) - np.log1p(m_obs)
     for i, w in enumerate(worlds):
@@ -294,6 +330,28 @@ def weighted_sweep(ab, lv, worlds, m_data=0.0, m_obs=0.0,
         post[i] = np.clip((bad @ Wf).reshape(K, R) / tw, 1e-9, 1 - 1e-9).T
         if want_ex:
             ex[i] = ((E.T @ Wf).reshape(len(MULT), K, R) / tw).transpose(2, 1, 0)
+        if want_ex_spend:
+            # spend-aware exceedance, read at every annual year: the weighted
+            # share of worlds whose remaining bill exceeds X minus the truth
+            # world's observed sunk spend. Cost weights are held from the
+            # last observation year; spend enters additively only.
+            Bw = BILLS_T[ab][w]
+            for yi_ in range(nY):
+                j = int(OBS_J[ab][yi_])
+                if j == 0:
+                    Wo = np.ones((10000, R))
+                    twy = np.full(R, 10000.0)
+                else:
+                    Wo = W[:, j - 1, :]
+                    twy = tw[j - 1]
+                Ws = Wo[FUT_ORDER[ab][yi_]]
+                tail = np.concatenate(
+                    [np.flip(np.cumsum(np.flip(Ws, axis=0), axis=0), axis=0),
+                     np.zeros((1, R))], axis=0)
+                pos = np.searchsorted(FUT_SORTED[ab][yi_], Xv - Bw[yi_],
+                                      side="right")
+                ex1[i, :, yi_, :] = np.clip((tail[pos] / twy).T,
+                                            1e-9, 1 - 1e-9)
         if want_bills:
             for si, j in enumerate(snap_j):
                 if j == 0:
@@ -301,13 +359,15 @@ def weighted_sweep(ab, lv, worlds, m_data=0.0, m_obs=0.0,
                 else:
                     for r_ in range(R):
                         qs[i, r_, si] = wquant(bills_sorted, W[order, j - 1, r_])
-    return dict(post=post, ex=ex, qs=qs)
+    return dict(post=post, ex=ex, ex_spend=ex1, qs=qs)
 
 RES3, RESH3 = {}, {}
 for ab in SCHEDULES:
     for lv in LEVELS:
-        RES3[(ab, lv)] = weighted_sweep(ab, lv, SAMP[ab], want_bills=True, want_ex=True)
-        RESH3[(ab, lv)] = weighted_sweep(ab, lv, HOLDW[ab])
+        RES3[(ab, lv)] = weighted_sweep(ab, lv, SAMP[ab], want_bills=True,
+                                        want_ex=True, want_ex_spend=True)
+        RESH3[(ab, lv)] = weighted_sweep(ab, lv, HOLDW[ab],
+                                         want_ex_spend=True)
         print(f"swept {ab} {SIGN[lv]}")
 """)
 
@@ -457,69 +517,173 @@ print("band: weighted 10th-90th pct, median over 10 noise histories; "
       "dashed: true bill; dotted: 1.5x cap")
 """)
 
-md("""## B18 — cap exceedance with noisy data
+md("""## B18 — cap exceedance with noisy data (spend-aware standard)
 
-Same rule as stage-2 B11, on the same cap grid (1.0 to 2.5 times the
-middle-world bill): the alarm bar for the event "the 2050 bill will exceed X"
-is calibrated on the sampled histories of worlds that do *not* exceed X, and
-detection years are reported for the histories of worlds that truly do. Rows
-need at least 30 worlds on each side of the cap. Every row carries the
-starting probability of exceeding X.""")
+**Amendment (2026-08-25, Ethan; logged in `status.md`).** The exceedance
+observer is now spend-aware: besides the noisy unit costs, it reads the
+government's own outlay ledger (the cumulative subsidy paid so far — the
+government's own checkbook, observed exactly), every calendar year. Each
+candidate world's total bill is scored as the observed sunk spend plus that
+world's remaining payments. Three consequences, all by construction:
+
+- once actual spend reaches the cap, no candidate total can stay below it,
+  so every truly exceeding world is flagged by 2050 at the latest (the
+  ledger backstop; `share_detected` is 1 by construction);
+- the backstop cannot fire on a world that never exceeds the cap (its spend
+  never gets there), so it adds zero false alarms — the alarm bar keeps the
+  stage-2 conformal calibration on the sampled non-exceeding histories, and
+  is now also verified on the held-out sample (`fpr_holdout`);
+- spend at detection can overshoot the cap by at most one year's payment
+  accrual, because the ledger is read annually.
+
+Spend enters the update additively only — never to tell worlds apart —
+because in-model payments are exact shadow prices and would identify the
+world instantly (the perfectly-informed-government wrinkle, stated in
+`methods.md`). The cap grid is extended below 1.0 times the middle-world
+bill, down to the cap whose starting probability of exceedance reaches
+about 75% (the 25th-percentile bill). Rows still need at least 30 worlds on
+each side. Every row carries the starting probability of exceeding X, plus
+the pre-amendment costs-only observer's share detected and median year as
+reference columns.""")
 
 code("""DET2_150 = {}
 rows = []
 for ab in SCHEDULES:
     tr = B2050[ab][SAMP[ab]]
-    yrs = OBSCAL[ab]
+    bills_s = BILLS_T[ab][SAMP[ab]]             # (600, 20) annual sunk spend
+    trh = B2050[ab][HOLDW[ab]]
     for lv in LEVELS:
-        ex = RES3[(ab, lv)]["ex"]               # (600, R, K, 31)
+        ex0 = RES3[(ab, lv)]["ex"]              # costs-only, (600, R, K, nM)
+        ex1 = RES3[(ab, lv)]["ex_spend"]        # spend-aware, (600, R, 20, nM)
+        exh = RESH3[(ab, lv)]["ex_spend"]       # holdout,     (300, R, 20, nM)
         for k, m in enumerate(MULT):
             Xab = float(m * P50BILL[ab])
+            prior = float(EXCEED[ab][:, k].mean())
             is_ex = tr > Xab
-            if is_ex.sum() < 30 or (~is_ex).sum() < 30:
+            if prior > PRIOR_CEIL or is_ex.sum() < 30 or (~is_ex).sum() < 30:
                 continue
-            maxg = ex[~is_ex][:, :, :, k].max(axis=2).ravel()
-            c = conformal_bar(maxg)
-            pe = ex[is_ex][:, :, :, k]
-            hit = pe > c
-            fired = hit.any(axis=2)
-            firstj = hit.argmax(axis=2)
-            years = yrs[firstj]
-            got = years[fired]
+            # spend-aware alarm (the standard): conformal bar on the sampled
+            # non-exceeding histories, plus the annual ledger backstop
+            c = conformal_bar(ex1[~is_ex][:, :, :, k].max(axis=2).ravel())
+            B_ex = bills_s[is_ex]               # (nex, 20)
+            hit = (ex1[is_ex][:, :, :, k] > c) | (B_ex[:, None, :] > Xab)
+            fired = hit.any(axis=2)             # all True by construction
+            firsty = 2031 + hit.argmax(axis=2)  # (nex, R), annual grid
+            nex = int(is_ex.sum())
+            paid = B_ex[np.arange(nex)[:, None], firsty - 2031]
+            tot = np.repeat(tr[is_ex][:, None], R, axis=1)
+            uj = np.searchsorted(OBSCAL[ab], firsty, side="right") - 1
+            units = np.where(uj >= 0, CUMU[ab][np.clip(uj, 0, None)], 0.0)
+            goodh = trh <= Xab
+            fprh = (float((exh[goodh][:, :, :, k] > c).any(axis=2).mean())
+                    if goodh.sum() >= 30 else None)
+            # costs-only reference (the pre-amendment observer)
+            bar0 = conformal_bar(ex0[~is_ex][:, :, :, k].max(axis=2).ravel())
+            hit0 = ex0[is_ex][:, :, :, k] > bar0
+            f0 = hit0.any(axis=2)
+            y0 = OBSCAL[ab][hit0.argmax(axis=2)][f0]
             if m == 1.5:
                 DET2_150[(ab, lv)] = dict(worlds=SAMP[ab][is_ex], fired=fired,
-                                          firstj=firstj)
+                                          firsty=firsty)
+            pq = lambda q: round(float(np.percentile(paid[fired], q)), 1)
             rows.append(dict(
                 schedule=ab, sigma=lv[0], tau=lv[1], mult=m, X_2024B=round(Xab, 1),
-                prior_exceed=round(float(EXCEED[ab][:, k].mean()), 3),
-                n_exceed_worlds=int(is_ex.sum()),
+                prior_exceed=round(prior, 3), n_exceed_worlds=nex,
                 share_detected=round(float(fired.mean()), 3),
-                median_det_year=int(np.median(got)) if fired.any() else None,
-                share_det_by_2045=round(float((fired & (years <= 2045)).mean()), 3)))
+                median_det_year=float(np.median(firsty[fired])),
+                q25_det_year=float(np.percentile(firsty[fired], 25)),
+                q75_det_year=float(np.percentile(firsty[fired], 75)),
+                median_units_at_det=float(np.median(units[fired])),
+                paid_at_det_p05_2024B=pq(5), paid_at_det_p25_2024B=pq(25),
+                paid_at_det_p50_2024B=pq(50), paid_at_det_p75_2024B=pq(75),
+                paid_at_det_p95_2024B=pq(95),
+                median_share_paid=round(float(np.median((paid / tot)[fired])), 3),
+                fpr_holdout=None if fprh is None else round(fprh, 3),
+                costsonly_share_detected=round(float(f0.mean()), 3),
+                costsonly_median_det_year=int(np.median(y0)) if f0.any() else None))
 b17 = pd.DataFrame(rows)
 b17.to_csv(EXPORTS / "b17_exceedance_noisy.csv", index=False)
-head = b17[b17["mult"].isin([1.25, 1.5, 2.0]) & (b17["sigma"] == 0.30)]
+head = b17[b17["mult"].isin([1.0, 1.5, 2.0]) & (b17["sigma"] == 0.30)]
 print("headline rows (middle noise level):")
 print(head.to_string(index=False))
+print("\\nspend-aware p95 paid / cap, worst point per schedule (mid noise):")
+mid = b17[b17["sigma"] == 0.30]
+for ab in SCHEDULES:
+    d_ = mid[mid["schedule"] == ab]
+    print(f"  {ab}: {(d_['paid_at_det_p95_2024B'] / d_['X_2024B']).max():.2f}")
 """)
 
-code("""# ---- d12: detection year vs cap, by noise level ----------------------------------
-fig, axes = plt.subplots(2, 3, figsize=(ps.W1 * 1.9, 5.0), sharey=True)
+code("""# ---- d12: detection year vs cap (spend-aware standard; middle noise) --------------
+# Year on the x-axis, cap on the y-axis; median + interquartile band across
+# exceeding worlds and noise histories; faint labels carry the starting
+# probability at selected caps. Restyled 2026-08-25 (amendment).
+from matplotlib.lines import Line2D
+from matplotlib.patches import Patch
+
+b17m = b17[b17["sigma"] == 0.30]
+fig, axes = plt.subplots(2, 3, figsize=(ps.W3, 6.2), sharey=True, sharex=True)
 for ax, ab in zip(axes.ravel(), SCHEDULES):
-    for lv, ls in zip(LEVELS, [":", "-", "--"]):
-        d = b17[(b17["schedule"] == ab) & (b17["sigma"] == lv[0])
-                & b17["median_det_year"].notna()]
-        if len(d):
-            ax.plot(d["mult"], d["median_det_year"], ls=ls,
-                    color=ps.SCHED_C[ab], lw=1.4,
-                    label=f"s{lv[0]}/t{lv[1]}")
+    d = b17m[b17m["schedule"] == ab].sort_values("mult")
+    col = ps.SCHED_C[ab]
+    ax.fill_betweenx(d["mult"], d["q25_det_year"], d["q75_det_year"],
+                     color=col, alpha=0.25, lw=0)
+    ax.plot(d["median_det_year"], d["mult"], color=col, lw=2.0)
+    for m_ in (float(d["mult"].min()), 1.0, 1.5, 2.0):
+        rr = d[np.isclose(d["mult"], m_)]
+        if len(rr):
+            ax.annotate(f"prior {rr['prior_exceed'].iloc[0]:.0%}", (0.99, m_),
+                        xycoords=ax.get_yaxis_transform(), fontsize=6.5,
+                        color=ps.FAINT, ha="right", va="center")
     ax.set_title(ab)
-    ax.legend(fontsize=6, title="noise")
-axes[1, 1].set_xlabel("cap X, as a multiple of the middle-world bill")
-axes[0, 0].set_ylabel("median detection year")
-axes[1, 0].set_ylabel("median detection year")
-fig.tight_layout()
+    ax.set_xlim(2031, 2051)
+    ax.set_xticks([2032, 2035, 2038, 2041, 2044, 2047, 2050])
+for ax in axes[:, 0]:
+    ax.set_ylabel("cap (multiple of the\\nmiddle-world bill)")
+for ax in axes[1, :]:
+    ax.set_xlabel("detection year (worlds whose bill exceeds the cap)")
+handles = [Line2D([], [], color=ps.MUTED, lw=2.0, label="median"),
+           Patch(facecolor=ps.MUTED, alpha=0.25, label="interquartile range")]
+fig.tight_layout(rect=(0, 0.05, 1, 1))
+fig.legend(handles=handles, loc="lower center", ncol=2, fontsize=7.5,
+           frameon=False)
 ps.savefig(fig, FIGURES / "d12_exceedance_by_cap_noisy.png")
+plt.show()
+""")
+
+code("""# ---- d13: PV committed at detection vs cap (2024$B axes; middle noise) ------------
+# Both axes in dollars; light band p05-p95, dark band interquartile, dotted
+# diagonal spend = cap (a hard bound up to one year's accrual). New figure,
+# 2026-08-25 amendment.
+fig, axes = plt.subplots(2, 3, figsize=(ps.W3, 6.2))
+for ax, ab in zip(axes.ravel(), SCHEDULES):
+    d = b17m[b17m["schedule"] == ab].sort_values("mult")
+    col = ps.SCHED_C[ab]
+    ax.fill_betweenx(d["X_2024B"], d["paid_at_det_p05_2024B"],
+                     d["paid_at_det_p95_2024B"], color=col, alpha=0.13, lw=0)
+    ax.fill_betweenx(d["X_2024B"], d["paid_at_det_p25_2024B"],
+                     d["paid_at_det_p75_2024B"], color=col, alpha=0.25, lw=0)
+    ax.plot(d["paid_at_det_p50_2024B"], d["X_2024B"], color=col, lw=2.0)
+    ax.plot(d["X_2024B"], d["X_2024B"], color=ps.FAINT, lw=1.0, ls=":")
+    for m_ in (float(d["mult"].min()), 1.0, 1.5, 2.0):
+        rr = d[np.isclose(d["mult"], m_)]
+        if len(rr):
+            ax.annotate(f"prior {rr['prior_exceed'].iloc[0]:.0%}",
+                        (0.99, rr["X_2024B"].iloc[0]),
+                        xycoords=ax.get_yaxis_transform(), fontsize=6.5,
+                        color=ps.FAINT, ha="right", va="center")
+    ax.set_title(ab)
+for ax in axes[:, 0]:
+    ax.set_ylabel("spending cap (2024$B)")
+for ax in axes[1, :]:
+    ax.set_xlabel("PV committed at detection (2024$B)")
+handles = [Line2D([], [], color=ps.MUTED, lw=2.0, label="median"),
+           Patch(facecolor=ps.MUTED, alpha=0.25, label="interquartile range"),
+           Patch(facecolor=ps.MUTED, alpha=0.13, label="p05–p95 range"),
+           Line2D([], [], color=ps.FAINT, lw=1.0, ls=":", label="spend = cap")]
+fig.tight_layout(rect=(0, 0.05, 1, 1))
+fig.legend(handles=handles, loc="lower center", ncol=4, fontsize=7.5,
+           frameon=False)
+ps.savefig(fig, FIGURES / "d13_paid_by_cap_noisy.png")
 plt.show()
 """)
 
@@ -554,8 +718,7 @@ for ab in SCHEDULES:
                 c1_median_share_paid=round(float(np.median(paid[fired] / totm[fired])), 3))
         if (ab, lv) in DET2_150:
             d2 = DET2_150[(ab, lv)]
-            we, f2, fj2 = d2["worlds"], d2["fired"], d2["firstj"]
-            dy2 = yrs[fj2]
+            we, f2, dy2 = d2["worlds"], d2["fired"], d2["firsty"]
             widx2 = np.repeat(we[:, None], R, axis=1)
             paid2 = BILLS_T[ab][widx2, dy2 - 2031]
             tot2 = np.repeat(B2050[ab][we][:, None], R, axis=1)
@@ -665,7 +828,7 @@ code("""stage3_tables = [f"b{i}" for i in range(14, 21)]
 manifest = sorted(p.name for p in EXPORTS.glob("b*.csv")
                   if p.name.split("_")[0] in stage3_tables) \\
     + sorted(p.name for p in FIGURES.glob("d*.png")
-             if p.name.split("_")[0] in ["d09", "d10", "d11", "d12"])
+             if p.name.split("_")[0] in ["d09", "d10", "d11", "d12", "d13"])
 print("outputs written by this notebook:")
 for m_ in manifest:
     print(" ", m_)

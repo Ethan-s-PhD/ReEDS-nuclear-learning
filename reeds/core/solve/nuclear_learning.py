@@ -54,6 +54,12 @@ import reeds  # noqa: E402
 BASE_TECHS = {'nuclear': 'large', 'nuclear-smr': 'smr'}
 # ReEDS default construction schedule column and duration (months) per parent.
 CANONICAL_SCH = {'large': '6', 'smr': '3B'}
+# The anchor's INCLUSIVE Wright index (BOAK = 2OAK convention): one completed FOAK plus
+# the BOAK itself -- NOT a completed-unit count (the convention embeds exactly one completed
+# build per vendor). With the entering-year stock, o(t) below is the inclusive index of the
+# unit currently being built, so the ratio prices every unit at its own curve position;
+# adjudicated 2026-08-24 (a base of 1 would over-credit one full doubling -- see the S5
+# Step 4 worked check in mc_cost_trajectories.ipynb).
 N_BOAK_UNITS = 2.0        # per-vendor units at the anchor (BOAK = 2OAK convention)
 CES_EPS = 1e-8
 
@@ -201,7 +207,7 @@ def occ_factor(N, N_other, lr, omega, m, s, c, rho, h_us, h_kv, s_kv, x):
     wall, theta once for the border. The notebooks' S14 own-routing sensitivity is a
     deliberate structural upper bound, not an engine path.
     """
-    o0 = N_BOAK_UNITS + c * h_us / m
+    o0 = N_BOAK_UNITS + c * h_us / m      # anchor's inclusive Wright index (see note at top)
     a0 = (m - 1.0) * o0 + s * c * h_kv
     o = o0 + N / m
     a = a0 + (m - 1.0) / m * N + s * s_kv + x * N_other   # foreign stock non-rival: never /m

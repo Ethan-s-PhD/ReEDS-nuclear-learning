@@ -84,8 +84,9 @@ main_cells = [
 
     **Purpose.** This notebook assembles the main-text display items of the paper
     ("The learning-consistent required subsidy", outline: `z-ethan/paper_outline.md`):
-    six figures and Table 1. The Table 2 slot is a freed reserve (2026-08-19: the
-    Monte Carlo variables table moved to the SI as ST10, in the appendix notebook).
+    seven figures and Table 1 — all eight display items. (The Table 2 slot was freed
+    2026-08-19 when the Monte Carlo variables table moved to the SI as ST10; the last
+    open slot was consumed 2026-08-26 by Figure 5, the cost-of-detection figure.)
     Every panel is the already-generated, checked artifact from the analysis
     notebooks. This notebook does not redraw any of them. Each item carries a
     **source block** that names the notebook and cell that made each panel.
@@ -125,7 +126,8 @@ main_cells = [
     path can match an ATB trajectory year by year; the paper therefore scores
     only the **2050 endpoint** — the 2050 cost, and the builds required to
     reach it (Ethan, 08-21/08-24). Panels (a, b): the cost–deployment plane —
-    for each amount of cumulative building by 2050, the 2050 overnight cost
+    for each amount of post-2030 building completed through 2049 (the stock
+    that prices 2050, per the engine's one-year lag), the 2050 overnight cost
     that the defensible worlds deliver (fan across support-restricted grid
     worlds), with the ATB 2050 target as a black dot at its paired
     Abou-Jaoude deployment; large reactors (a), SMR (b). Panels (c, d):
@@ -148,8 +150,10 @@ main_cells = [
     Abou-Jaoude's own parameters and experience basis, it reproduces his
     published SMR OCC tables within report rounding (max error \$500/kW).
     Reaching an ATB 2050 cost at its paired deployment takes a firm-level
-    learning rate of 12.5–18% at the central discrete world (tiny base,
-    spillover-dependent; T5) against the source study's own 9.5% — the gap
+    learning rate of 13–19.5% at the central discrete world (tiny base,
+    spillover-dependent; T5, scored on the through-2049 stock that prices
+    2050 — the 08-24 registration fix) against the source study's own 9.5% —
+    the gap
     is the expected anchor-convention premium, and it puts the large targets
     at or above the top of large's sampled support (3–12%). On the
     support-restricted grid the feasible shares are 1.1–7.6% for the large
@@ -292,24 +296,45 @@ main_cells = [
     md(r"""
     ## Figure 3 — Why all priced cases commit to a 100%-SMR program, now
 
+    Recomposed 2026-08-26 (Ethan): a 2×2 of single-panel sources. The
+    winning-margin fans (old 3b) moved to the SI as SF5a, the McKinsey
+    financed-capex paths (old 3c) left the paper (Fig 2's fans and the
+    fragmentation histogram carry that story), and the SF8 switch bound was
+    promoted to panel (d). Same day, second recomposition (Ethan): panels c/d
+    swapped from the κ-profile insets to the **optimism-bias sweep** curves
+    from `ob_sweep.ipynb` — the κ profiles keep their SI homes (SF7/SF8). The
+    four panels are the complete commitment case: choose SMR, don't split,
+    don't wait — and here is exactly how much cost optimism that case
+    tolerates.
+
     **What this shows.** Before pricing any schedule, we must choose which
-    technology carries the program. Panel (a): the probability that SMR is the
-    cheaper program carrier, across schedules and across the κ dependence grid
-    (κ is glossed above; each grid cell is a different assumption about how the
-    two technologies' uncertainties move together). Panel (b): the winning
-    margin m across the same grid (m > 0 means SMR wins). Panels (c, d): the
-    cost of hedging instead of committing — the financed-capex paths of the
-    three program strategies under the McKinsey schedule (c) and the extra
-    cost of splitting the program 50/50 ("fragmentation penalty", d).
-    Panel (e): the cost of committing **now** instead of waiting — the
-    expected value of perfect information (EVPI: the most a decision-maker
-    would pay to know the drawn world before committing), across the same
-    dependence grid.
+    technology carries the program — and whether to commit at all. Panel (a):
+    the probability that SMR is the cheaper program carrier, across schedules
+    and across the κ dependence grid (κ is glossed above; each grid cell is a
+    different assumption about how the two technologies' uncertainties move
+    together). Panel (b): the cost of hedging instead of committing — the
+    extra cost of splitting the program 50/50 between the technologies
+    ("fragmentation penalty"), under the McKinsey schedule. Panels (c) and
+    (d): the cost of committing **now**, as a function of how optimistic the
+    SMR cost estimates might be. The x-axis is the SMR optimism multiplier m
+    — the factor by which the drawn 2030 SMR anchor cost would understate the
+    truth (m = 1 is the elicitation at face value; the T9 stress point is
+    m = 1.5). Panel (c) sweeps the expected value of perfect information
+    (EVPI: the most a decision-maker would pay to know the drawn world before
+    committing); panel (d) sweeps the escape-hatch bound — the most that one
+    perfect-information technology switch in 2036 could recover. Both show
+    the worst schedule per dependence anchor, with the pre-registered 1%
+    "low value" threshold marked.
 
     **How to read it.** In panel (a), values above 0.5 mean SMR is the majority
-    winner in that cell. In panel (d), the distribution sits almost entirely
+    winner in that cell. In panel (b), the distribution sits almost entirely
     above zero: splitting the program is not a free hedge, because it splits
-    the learning.
+    the learning. Panels (c) and (d) share axes and units, and both are
+    perfect-information upper bounds — the true value of waiting, or of
+    keeping a switch option, is smaller still. Their hump shape is generic:
+    information is valuable only while the winner is genuinely contested, so
+    the curves rise as optimism pushes the choice into the contested band and
+    fall again once large is the near-certain winner.
 
     **Key results.** SMR is the cheaper carrier with probability 0.82–0.89 under
     the tightest coupling, and stays the majority winner in every primary κ
@@ -320,36 +345,45 @@ main_cells = [
     program cost. A per-draw optimizer over mixed programs beats the pure
     programs in only 10 of 60,000 draws, and by at most 0.51%.
 
-    Committing now, rather than waiting to learn which world we are in,
-    forfeits little (panel e): EVPI is 0.57–0.66% of expected program cost at
-    κ = 1, rising to 2.3–4.6% fully decoupled and up to about 6.0% at the
-    decoupled-anchor probe (learning rates stay fully coupled, but each
-    technology draws its 2030 starting cost independently — not κ = 0, which
-    decouples both). A perfect-information switch of technology in 2036
-    recovers at most 0.12–0.66% at κ = 1. These are perfect-information
-    upper bounds; no noisy-signal tier was built.
+    At the elicited costs (m = 1), committing now forfeits little in coherent
+    worlds: EVPI is 0.57–0.66% of expected program cost at κ = 1 (rising to
+    2.3–4.6% fully decoupled and about 6.0% at the decoupled-anchor probe —
+    the full κ profile is SF7), and one perfect-information 2036 switch
+    recovers at most 0.12–0.66% at κ = 1 (5.88% at the probe — a
+    pre-registered failure case, reported as such; SF8). The sweep prices the
+    optimism sensitivity of that comfort: at κ = 1 the value of waiting
+    crosses the 1% threshold at m ≈ 1.02, EVPI peaks at 5.3% of program cost
+    at m = 1.25, and the switch bound peaks at 3.0% at m = 1.10, before both
+    decay as large becomes the near-certain winner. These are
+    perfect-information upper bounds; no noisy-signal tier was built.
 
     **Fair-warning results, stated with equal prominence.** When large wins in
-    decoupled worlds, its margins can reach about 30%. And a stress test that
-    inflates SMR costs by 1.5× (an optimism-bias stress) breaks the claim.
-    The commitment is majority-optimal, not certain.
+    decoupled worlds, its margins can reach about 30% (the margin
+    distributions are SF5a). And the optimism-bias stress does not merely
+    break the majority claim — the sweep behind panels c/d localizes the
+    flip: the majority inverts at m* = 1.10 at κ = 1 (1.15–1.16 at
+    κ = 0.5/0), so a ~10% SMR anchor error flips the winner in coherent
+    worlds (the full flip curves, including the majority and fragmentation
+    panels, are SF8a). Only the no-split claim is optimism-proof: the split
+    penalty rises with m. The commitment is majority-optimal, not certain.
     """),
     code(r"""
     P.compose(
-        [[MC_FIG / "tc_robustness_map.png"],
-         [MC_FIG / "fragmentation_penalty.png"],
-         [MC_FIG / "tc_evpi_inset.png"]],
+        [[MC_FIG / "tc_robustness_prob.png", MC_FIG / "fragmentation_hist.png"],
+         [MC_FIG / "obs_evpi_vs_m.png", MC_FIG / "obs_bound_vs_m.png"]],
         "Fig3_technology_choice.png",
-        letters="",  # all sources carry their final letters (a,b / c,d / e)
-        center=True,  # the EVPI inset row is narrower; do not leave a corner blank
+        letters="",  # all four single-panel sources carry their final baked letters (a-d)
+        center=True,  # the inset row is narrower; do not leave a corner blank
     )
     P.source_ref(
-        (MC_FIG / "tc_robustness_map.png", "mc/tech_comparison.ipynb", "cell 18",
+        (MC_FIG / "tc_robustness_prob.png", "mc/tech_comparison.ipynb", "cell T5b (added 2026-08-26)",
          "`mc/exports/mc_perdraw.npz` + the κ-grid per-draw exports; table: `mc/exports/tech_comparison/robustness_map.csv`"),
-        (MC_FIG / "fragmentation_penalty.png", "mc/mc_cost_trajectories.ipynb", "cell 40",
+        (MC_FIG / "fragmentation_hist.png", "mc/mc_cost_trajectories.ipynb", "cell 40 (standalone emission added 2026-08-26)",
          "in-memory MC worlds for the McKinsey schedule (the fragmentation experiment)"),
-        (MC_FIG / "tc_evpi_inset.png", "mc/tech_comparison.ipynb", "cell T8b (added 2026-08-21)",
-         "`mc/exports/tech_comparison/evpi_total.csv` (the full total+partial figure stays in the SI, SF7)"),
+        (MC_FIG / "obs_evpi_vs_m.png", "mc/ob_sweep.ipynb", "cell S4b (added 2026-08-26; replaced the T8b κ-profile inset same day)",
+         "`mc/exports/ob_sweep/sweep_metrics.csv` + `flip_boundaries.csv` (the κ-profile total+partial figure stays in the SI, SF7)"),
+        (MC_FIG / "obs_bound_vs_m.png", "mc/ob_sweep.ipynb", "cell S4b (added 2026-08-26; replaced the T7b κ-profile inset same day)",
+         "`mc/exports/ob_sweep/sweep_metrics.csv` + `flip_boundaries.csv` (the κ-profile C5-threshold version stays in the SI, SF8)"),
     )
 
     rm = pd.read_csv(MC_EXP / "tech_comparison" / "robustness_map.csv")
@@ -364,16 +398,20 @@ main_cells = [
     grid (kappa = how strongly the two technologies' cost uncertainties move together). SMR
     is the majority winner in every primary cell; the minimum is 0.509 at the
     decoupled-anchor probe (learning rates coupled, 2030 starting costs drawn independently
-    — unlike kappa = 0, which decouples both). (b) The winning
-    margin m across the same grid (m > 0 = SMR wins; median and quantile fans).
-    (c) Financed capex of the three program strategies under the McKinsey schedule
-    (medians, P5-P95 bands). (d) Fragmentation penalty: the extra program cost of the
-    50/50 split, median 16.7% — splitting the program splits the learning. (e) Expected
-    value of perfect information: committing now instead of waiting forfeits 0.57-0.66% of
-    expected program cost in coherent (kappa = 1) worlds, up to ~6.0% at the
-    decoupled-anchor probe — a perfect-information upper bound. The commitment
-    is majority-optimal, not certain: large can win by ~30% in decoupled worlds, and a
-    1.5x SMR optimism-bias stress breaks the claim.
+    — unlike kappa = 0, which decouples both). (b) Fragmentation penalty: the extra program
+    cost of a 50/50 split under the McKinsey schedule, median 16.7% — splitting the program
+    splits the learning. (c, d) The cost of committing now, against the SMR optimism
+    multiplier m (the factor by which the drawn 2030 SMR anchor cost would understate the
+    truth; worst schedule per dependence anchor, 1% threshold marked). (c) Expected value
+    of perfect information: 0.57-0.66% of expected program cost at kappa = 1 at the
+    elicited costs (m = 1), crossing 1% at m ~ 1.02 and peaking at 5.3% at m = 1.25 —
+    information is worth most where optimism makes the winner genuinely contested. (d) The
+    2036 switch bound: at most 0.12-0.66% at kappa = 1 at m = 1, peaking at 3.0% at
+    m = 1.10. Panels c and d are perfect-information upper bounds; the kappa profiles,
+    including the decoupled-anchor probe (~6.0% EVPI, 5.88% switch bound), are SF7/SF8.
+    The commitment is majority-optimal, not certain: large can win by ~30% in decoupled
+    worlds (margin distributions: SF5a), and the majority itself inverts at m* = 1.10 at
+    kappa = 1 (1.15-1.16 decoupled; full flip curves: SF8a).
     ''')
     """),
 
@@ -381,17 +419,20 @@ main_cells = [
     md(r"""
     ## Figure 4 — The required subsidy is a bridge — in cheap worlds
 
+    Recomposed 2026-08-26 (Ethan): the normalized-decay panel (old 4b,
+    `f07`) moved to the SI as SF32 — the decay-class finding is carried by
+    the S3 text and quantified in Methods, and the freed weight went to the
+    new Figure 5 (the cost of detection).
+
     **What this shows.** The paper's central object: the mandate's shadow
     price — the yearly rental price, per kW of mandated capacity, that makes
-    each schedule worth building (see glossary). Panel (a): the shadow price
+    each schedule worth building (see glossary): the shadow price
     over time for each schedule, in cheap (P5), median (P50), and expensive
     (P95) cost worlds, with the large-reactor comparator overlaid at P50.
-    Panel (b): the same shadow prices divided by their own peak, so every
-    case starts at 1 and we can compare shapes.
 
     **How to read it.** A "bridge" subsidy should decay: high at first, near
-    zero once the fleet has walked down the learning curve. Panel (b) tests
-    exactly that.
+    zero once the fleet has walked down the learning curve. The normalized
+    decay curves that test that shape directly are SF32.
 
     **Key results.**
     - The shadow price is monotone in the cost world: expensive worlds need
@@ -402,24 +443,21 @@ main_cells = [
     - In cheap worlds the bridge comes down: end-of-horizon shadow prices are
       3–19% of peak. Median worlds are mixed. **In P95 worlds the subsidy does
       not come down: 66–84% of peak in 2050, and no P95 case falls below half
-      its peak by 2050.** Under slow learning the subsidy is not a bridge but
-      a standing commitment. We give this adverse result the same prominence
-      as the decay result.
+      its peak by 2050** (normalized decay curves: SF32). Under slow learning
+      the subsidy is not a bridge but a standing commitment. We give this
+      adverse result the same prominence as the decay result.
     - The cross-section of the mean binding shadow price against schedule
       ambition moved to the SI in the 08-20 restructure (SF-ambition, `f06`).
     """),
     code(r"""
     P.compose(
-        [[S3_FIG / "f04_dual_fans.png"],
-         [S3_FIG / "f07_dual_shape_normalized.png"]],
+        [[S3_FIG / "f04_dual_fans.png"]],
         "Fig4_shadow_price.png",
-        center=True,  # row widths differ; do not leave a blank corner
+        letters="",  # single panel: no letter stamp
     )
     P.source_ref(
         (S3_FIG / "f04_dual_fans.png", "step3_analysis/step3_analysis.ipynb", "cell 18",
          "`step3_checks/exports/duals_by_year.csv` (+ step4 checks for the large100 overlay)"),
-        (S3_FIG / "f07_dual_shape_normalized.png", "step3_analysis/step3_analysis.ipynb", "cell 26",
-         "same shadow prices, normalized by each case's peak"),
     )
 
     t03 = pd.read_csv(S3_EXP / "t03_dual_summary.csv")
@@ -437,24 +475,132 @@ main_cells = [
           f"p95 cases below half-peak by 2050: {n_below} of {len(p95)}")
 
     P.caption("Fig 4", f'''
-    The required subsidy and its bridge shape. (a) The mandate's shadow price — the yearly
-    rental price per kW of mandated capacity (2024$) — by solve year, for each schedule in
-    cheap (P5), median (P50), and expensive (P95) cost worlds; large-reactor P50 comparators
-    overlaid. Shadow prices rise with the cost world in every year, with no crossings,
-    peaking at {pk['peak_dual_2024_kWyr']:.0f} $/kW-yr ({pk['case']}, {int(pk['peak_year'])}).
-    (b) Shadow prices normalized by their own peak: cheap worlds decay to 3-19% of peak; no
-    P95 case reaches half its peak by 2050 — under slow learning the subsidy is a standing
-    commitment, not a bridge.
+    The required subsidy. The mandate's shadow price — the yearly rental price per kW of
+    mandated capacity (2024$) — by solve year, for each schedule in cheap (P5), median
+    (P50), and expensive (P95) cost worlds; large-reactor P50 comparators overlaid.
+    Shadow prices rise with the cost world in every year, with no crossings, peaking at
+    {pk['peak_dual_2024_kWyr']:.0f} $/kW-yr ({pk['case']}, {int(pk['peak_year'])}). In
+    cheap worlds the shadow price decays to 3-19% of its peak by 2050; no P95 case
+    reaches half its peak — under slow learning the subsidy is a standing commitment,
+    not a bridge (normalized decay curves: SF32).
     ''')
     """),
 
     # ---------------------------------------------------------------- Fig 5
     md(r"""
-    ## Figure 5 — Required tax-credit rates and the cost of voluntary delivery
+    ## Figure 5 — What a failing bridge costs before the alarm
+
+    New main figure 2026-08-26 (Ethan) — the last of the paper's eight
+    display slots. It shows the bridge-detection result (S3-3) as money:
+    how much subsidy is committed before a spending cap flags a world whose
+    total bill will exceed that cap.
+
+    **What this shows.** The observer watches noisy realized project costs
+    and the government's own outlay ledger — the subsidy already paid,
+    which the paying government knows exactly, read every year (the
+    spend-aware standard, a 2026-08-25 amendment to the pre-registered
+    stage-3 design). Each candidate cost world's total bill is scored as
+    the sunk spend plus that world's remaining payments; the alarm fires
+    when the weighted share of candidate worlds whose total stays under the
+    cap falls below a conformal bar set to a 5% false-alarm budget. One
+    panel per schedule. The y-axis is the spending cap (2024\$B), over a
+    grid from the cap that only 25% of prior worlds stay under, up to
+    1.75–2.2 times the middle-world bill; the x-axis is the present value
+    committed at detection. Bands span the exceeding worlds and observation
+    histories at the middle noise level (30% per-project scatter plus a
+    shared 10% yearly shock): light = p05–p95, dark = interquartile, line =
+    median. The dotted diagonal is spend = cap.
+
+    **How to read it.** Under the spend-aware standard, every world that
+    truly exceeds the cap is detected — at the latest in the year spend
+    crosses the cap — and a world that never exceeds the cap never spends
+    up to it, so the ledger backstop adds no false alarms. The question the
+    figure answers is therefore not *whether* the alarm fires but *how much
+    is committed first*: the gap between the light band's right edge and
+    the diagonal is the observer's margin over the worst case.
+
+    **Key results** (computed in the cell below from `b17`/`b18`):
+    - Median committed spend at detection sits far below the cap — 4 to 15
+      times below at a cap of 1.5x the middle-world bill, where it is
+      4.0 (EIA) to 32.2 (EO) B2024\$ — 5–24% of the failing world's total
+      bill.
+    - The p95 committed spend stays at or below the cap at every cap on
+      every schedule (the one-year-accrual bound; the ledger is read
+      annually).
+    - The held-out false-alarm rate stays within the 7.5% gate at every
+      cap.
+
+    **Carried caveats (mandatory).** The observer knows the model's own
+    ensemble and the noise model — an upper bound on real detectability.
+    The ledger it reads is the perfectly-informed floor payment stream
+    (shadow price times capacity); under a real instrument, outlays would
+    track costs rather than the exact model prices, so the ledger enters
+    the update additively only (never to tell worlds apart). Framed as
+    information, never as a recommendation.
+    """),
+    code(r"""
+    P.compose(
+        [[BD_FIG / "d13_paid_by_cap_noisy.png"]],
+        "Fig5_cost_of_detection.png",
+        letters="",  # single panel: no letter stamp
+    )
+    P.source_ref(
+        (BD_FIG / "d13_paid_by_cap_noisy.png", "bridge_detection/bridge_detection_stage3.ipynb",
+         "figure cells", "`b17_exceedance_noisy.csv` (spend-aware standard, 2026-08-25 amendment; "
+         "spec: `bridge_detection/methods.md` section 6)"),
+    )
+
+    b17 = pd.read_csv(BD_EXP / "b17_exceedance_noisy.csv")
+    mid = b17[(b17["sigma"] == 0.3) & (b17["tau"] == 0.1)]
+    m15 = mid[mid["mult"] == 1.5].set_index("schedule")
+    print("median paid at the 1.5x cap (2024$B): "
+          + ", ".join(f"{s} {m15.loc[s, 'paid_at_det_p50_2024B']:.1f}" for s in m15.index))
+    sh_lo, sh_hi = m15["median_share_paid"].min(), m15["median_share_paid"].max()
+    print(f"median share of the failing world's bill paid at detection (1.5x cap): "
+          f"{sh_lo:.2f}-{sh_hi:.2f}")
+    worst = (mid["paid_at_det_p95_2024B"] / mid["X_2024B"]).groupby(mid["schedule"]).max()
+    print("p95 paid / cap, per-schedule worst point over the grid: "
+          + ", ".join(f"{s} {v:.2f}" for s, v in worst.items()))
+    fpr_max = mid["fpr_holdout"].max()
+    print(f"held-out false-alarm rate: max {fpr_max:.3f} (gate 0.075); "
+          f"share of exceeding worlds detected: {mid['share_detected'].min():.1f} "
+          f"everywhere (by construction)")
+
+    b18 = pd.read_csv(BD_EXP / "b18_cost_of_waiting_noisy.csv")
+    m18d = b18[(b18["sigma"] == 0.3) & (b18["tau"] == 0.1)].set_index("schedule")
+    pd_lo = m18d["c2_150_median_paid_at_det_2024B"].min()
+    pd_hi = m18d["c2_150_median_paid_at_det_2024B"].max()
+    assert float(m18d["c2_150_share_never_detected"].max()) == 0.0
+
+    P.caption("Fig 5", f'''
+    The cost of learning that the bridge is failing. Present value of subsidy committed
+    when a spending cap flags a world whose total bill will exceed the cap, against the
+    cap itself (both in 2024$B), one panel per schedule; light band p05-p95, dark band
+    interquartile, line median, across exceeding worlds and observation histories at the
+    middle noise level (30% per-project scatter + a shared 10% industry-wide yearly
+    shock); dotted diagonal: spend = cap. The observer holds a conformal 5% false-alarm
+    budget over the model's own cost-world ensemble and also reads the outlay ledger
+    every year, so detection is guaranteed no later than the year spend crosses the cap:
+    the p95 committed spend stays at or below the cap everywhere (per-schedule worst
+    points {worst.min():.2f}-{worst.max():.2f}x), and the median runs far below it — at
+    a cap of 1.5x the middle-world bill, a median of
+    {pd_lo:.1f}-{pd_hi:.1f} B$ ({sh_lo*100:.0f}-{sh_hi*100:.0f}% of the failing world's
+    total bill) is committed before the alarm. Held-out false alarms stay within the
+    budget (max {fpr_max:.3f} against the 0.075 gate). The observer knows the ensemble
+    and the noise model — an upper bound on real detectability; information, not a
+    recommendation.
+    ''')
+    """),
+
+    # ---------------------------------------------------------------- Fig 6
+    md(r"""
+    ## Figure 6 — Required tax-credit rates and the cost of voluntary delivery
 
     Recomposed 2026-08-24 (team review, option B): the f16 menu panel moved
     to SF31 and the closed-loop delivery panel to SF23 — delivery validates
-    the funding claim, it is not a standalone finding. Fig 5 is now three
+    the funding claim, it is not a standalone finding. Renumbered from
+    Fig 5 to Fig 6 on 2026-08-26, when the cost-of-detection figure took
+    the Fig 5 slot. The figure is three
     panels, all on the voluntary instruments only, and panels (b) and (c)
     are linear. Panel (c) — the rate–deployment cliff — was promoted the
     same day (an explicit one-exhibit reversal of the delivery-to-SI
@@ -536,7 +682,7 @@ main_cells = [
     P.compose(
         [[S3_FIG / "f13_required_itc.png"],
          [S3_FIG / "f17_itc_vs_ambition.png", ITCFBM_FIG / "j06_new_nuclear_cliff.png"]],
-        "Fig5_required_itc_and_menu.png",
+        "Fig6_required_itc_and_menu.png",
         letters="abc",
         center=True,  # row widths differ; do not leave a blank corner
     )
@@ -571,7 +717,7 @@ main_cells = [
           f"(haircut x{hair:.3f} + oversubsidy {ov_lo:.0f}-{ov_hi:.0f}%); "
           f"cash grant {m18['cash_grant'].iloc[0]:.2f}x")
 
-    P.caption("Fig 5", f'''
+    P.caption("Fig 6", f'''
     Required ITC rates and the cost of voluntary delivery. (a) The required
     investment-tax-credit rate by
     solve year on the model credit convention (fin_mult inversion + 10% monetization haircut;
@@ -608,9 +754,9 @@ main_cells = [
     ''')
     """),
 
-    # ---------------------------------------------------------------- Fig 6
+    # ---------------------------------------------------------------- Fig 7
     md(r"""
-    ## Figure 6 — Robustness across market worlds
+    ## Figure 7 — Robustness across market worlds
 
     **What this shows.** Do the headline results depend on our base market
     assumptions? We re-ran 18 cases under six market sensitivities (gas price
@@ -649,7 +795,7 @@ main_cells = [
     P.compose(
         [[S4_FIG / "g02_shape_survival_matrix.png", S4_FIG / "g03_dual_overlays.png"],
          [S3_FIG / "f15_large_band.png"]],
-        "Fig6_robustness.png",
+        "Fig7_robustness.png",
     )
     P.source_ref(
         (S4_FIG / "g02_shape_survival_matrix.png", "step4_analysis/step4_analysis.ipynb", "cell 11",
@@ -672,7 +818,7 @@ main_cells = [
     t15 = pd.read_csv(S3_EXP / "t15_large_ratio.csv")
     print(t15.groupby("pct")["ratio_large_over_smr"].agg(["min", "max"]).round(2).to_string())
 
-    P.caption("Fig 6", f'''
+    P.caption("Fig 7", f'''
     Robustness across market worlds (108 sensitivity runs: 18 cases x six market arms).
     (a) Bridge-shape survival matrix: the shape survives in {n_surv} of
     {len(surv)} cells — the expensive-world non-decay is generic. (b) Shadow-price overlays
@@ -786,15 +932,16 @@ main_cells = [
 
     # ------------------------------------------------- Table 2: freed reserve
     md(r"""
-    ## Table 2 — freed reserve slot
+    ## Table 2 — slot consumed by Figure 5
 
-    The Monte Carlo variables table held this slot until 2026-08-19. It
-    moved to the SI as ST10 (appendix notebook): it is methods detail,
-    not a result, and the move frees the eighth display slot. Candidate
-    to refill the slot, decided at draft: the fiscal comparison (t12, now
-    ST7b). The other former candidate — promoting the closed-loop delivery
-    panel — is moot since 2026-08-24: the panel moved the other way, into
-    the SI (SF23a).
+    The Monte Carlo variables table held this slot until 2026-08-19, when
+    it moved to the SI as ST10 (appendix notebook): it is methods detail,
+    not a result. The freed eighth display slot went to Figure 5 — the
+    cost-of-detection figure — on 2026-08-26 (Ethan). All eight display
+    items are now used; the former refill candidates (the t12 fiscal
+    comparison, now ST7b, and the closed-loop delivery panel, in the SI as
+    SF23 since 2026-08-24) stay in the SI, and any further main-text
+    exhibit must displace one.
     """),
 ]
 
@@ -1016,7 +1163,7 @@ appx_cells = [
     | SN5 | Validation registries (pilot forensics; output checks) | `z-ethan/step3_checks/`, `z-ethan/step4_checks/` (summaries in ST8 below) |
     | SN6 | The endogenous-learning feed-back check: arm design (fbA/fbB/fbC/fbK/fbR), verdicts, and the minus-probe minimality bracket | `z-ethan/itcfb_analysis/itcfb_analysis.ipynb` + `z-ethan/itcfbm_analysis/itcfbm_analysis.ipynb` (tables in ST9 below) |
     | SN7 | The ATB basis mapping: the QA replication pin (max error $500/kW), the anchor-convention premium, the experience-basis comparison, and the deployment-space reading | `mc/mc_cost_trajectories.ipynb` (QA4) + `mc/atb_parameter_space.ipynb` (cell `atb-26-a27_qa`) |
-    | SN8 | Bridge-failure detection: the ensemble observer, the bill attachment, the noise model, the conformal false-alarm calibration, and the bias experiment | `z-ethan/bridge_detection/methods.md` + `status.md` (tables in ST11, figures in SF25–27 below) |
+    | SN8 | Bridge-failure detection: the ensemble observer, the bill attachment, the noise model, the conformal false-alarm calibration, the bias experiment, and the spend-aware exceedance amendment (2026-08-25; methods.md section 6) | `z-ethan/bridge_detection/methods.md` + `status.md` (tables in ST11, figures in SF25–27 below; the committed-spend figure is main-text Fig 5) |
     """),
 
     # ---------------------------------------------------------------- SF1-3
@@ -1117,6 +1264,35 @@ appx_cells = [
     )
     """),
     md(r"""
+    ## SF5a — The winning margin across the dependence grid
+
+    **What this shows.** The pure-program winning margin m (m > 0 means SMR
+    wins) along the κ diagonal, per schedule: medians with P25–P75 fans.
+    This panel was Fig 3b until the 2026-08-26 recomposition; the main text
+    keeps the probability panel (Fig 3a), and this page keeps the sizes.
+
+    **Key results.** Median margins run 5.5–18.5% in SMR's favor and are
+    nearly flat in κ; the fans widen as the draws decouple. The lower fan
+    edge crossing zero is the same ambiguity SF5 localizes in the gap plane
+    — and when large wins in decoupled worlds, its margins (P95 of |m| among
+    large-win draws) reach ~29% on the diagonal
+    (per-cell detail: `large_win_margins.csv`).
+    """),
+    code(r"""
+    P.show_panel(MC_FIG / "tc_margin_fans.png")
+    P.source_ref(
+        (MC_FIG / "tc_margin_fans.png", "mc/tech_comparison.ipynb", "cell T5c (added 2026-08-26)",
+         "`mc/exports/tech_comparison/robustness_map.csv` (margin percentile columns); large-win detail: `large_win_margins.csv`"),
+    )
+    P.caption("SF5a", '''
+    The pure-program winning margin m along the dependence diagonal (m > 0 = SMR wins;
+    medians with P25-P75 fans per schedule). Median margins are 5.5-18.5% in SMR's favor and
+    nearly flat in kappa; the fans widen as draws decouple, and large's winning margins in
+    decoupled worlds reach ~29% (P95 of the large-win draws). Until 2026-08-26 this panel
+    was Fig 3b.
+    ''')
+    """),
+    md(r"""
     ## SF6 — Mixed builds: does any split beat the pure programs?
 
     **What this shows.** A per-draw optimizer searches all mixed strategies
@@ -1162,9 +1338,10 @@ appx_cells = [
     concentrates in the learning-rate gap under tight coupling and flips to
     the starting-cost gap when decoupled.
     These are upper bounds: no realistic noisy-signal tier is modeled.
-    (The total-EVPI panel also appears in the main text as Fig 3e, exported
-    separately as `tc_evpi_inset.png`; this page keeps the full
-    total + partial detail.)
+    (Until 2026-08-26 the total-EVPI panel also appeared as main-text Fig 3c;
+    that slot now carries the optimism-sweep EVPI curve from `ob_sweep.ipynb`,
+    and this page keeps the full total + partial κ detail. The standalone
+    `tc_evpi_inset.png` is retired from the paper.)
     """),
     code(r"""
     P.show_panel(MC_FIG / "tc_evpi.png")
@@ -1184,6 +1361,11 @@ appx_cells = [
     see the glossary; a pre-registered failure case, reported as such). Early
     commitment forfeits little in coherent worlds — worlds where the two
     technologies' uncertainties move together.
+    (Until 2026-08-26 the bound panel, stripped of the C5 threshold rule, also
+    appeared as main-text Fig 3d; that slot now carries the optimism-sweep
+    bound curve from `ob_sweep.ipynb`, and this page keeps the κ profile, the
+    threshold, and the table. The standalone `tc_adaptive_bound_inset.png` is
+    retired from the paper.)
     """),
     code(r"""
     P.show_panel(MC_FIG / "tc_adaptive_bound.png")
@@ -1192,6 +1374,43 @@ appx_cells = [
          "per-draw program costs with a 2036 switch; table: `mc/exports/tech_comparison/adaptive_value.csv`"),
     )
     P.table(MC_EXP / "tech_comparison" / "adaptive_value.csv", round_=4)
+    """),
+    md(r"""
+    ## SF8a — Optimism-bias flip curves (all four claims)
+
+    **What this shows.** The full optimism-multiplier sweep behind the main
+    text's Fig 3c/d: every S2 headline claim against the SMR optimism
+    multiplier m (the factor by which the drawn 2030 SMR anchor cost would
+    understate the truth), at the three stress anchors κ = 1, 0.5, 0. Panel
+    (a) the majority claim, (b) the fragmentation penalty, (c) EVPI, (d) the
+    2036 switch bound. Common random numbers across m; the m = 1.5 points
+    reproduce the published `stress_survival.csv` stress rows bit-for-bit.
+
+    **Key results.** The majority inverts at m* = 1.10 at κ = 1 (1.15 at
+    κ = 0.5, 1.16 at κ = 0) — a ~10–16% SMR anchor error flips the winner.
+    The information values are hump-shaped (worth most where the winner is
+    contested): EVPI peaks at 5.3% of program cost at m = 1.25 (κ = 1) and
+    9.8% at m = 1.45 (κ = 0); the switch bound peaks at 3.0% (κ = 1) to 6.9%
+    (κ = 0) near m = 1.10–1.15. The fragmentation claim never flips on
+    [1, 2]: the median 50/50-split penalty stays above +5.9% and rises with
+    m — hedging never becomes a free source of information. Boundary table:
+    `mc/exports/ob_sweep/flip_boundaries.csv`.
+    """),
+    code(r"""
+    P.show_panel(MC_FIG / "obs_flip_curves.png")
+    P.source_ref(
+        (MC_FIG / "obs_flip_curves.png", "mc/ob_sweep.ipynb", "cell S4",
+         "`mc/exports/ob_sweep/sweep_metrics.csv` + `flip_boundaries.csv` (engine ported verbatim from tech_comparison; QA-pinned to `stress_survival.csv`)"),
+    )
+    P.table(MC_EXP / "ob_sweep" / "flip_boundaries.csv", round_=3)
+    P.caption("SF8a", '''
+    Optimism-bias flip curves for the four commitment claims, against the SMR anchor
+    multiplier m at kappa = 1, 0.5, 0. (a) min-over-schedules P(SMR wins), majority flips
+    at m* = 1.10/1.15/1.16; (b) the 50/50-split penalty rises with m (no flip); (c) EVPI
+    and (d) the 2036 switch bound are hump-shaped, peaking where the winner is contested
+    and decaying once large is near-certain. m = 1.5 reproduces the published stress rows
+    bit-for-bit.
+    ''')
     """),
 
     # --------------------------------------------------------------- SF9-14
@@ -1233,8 +1452,8 @@ appx_cells = [
     **What this shows.** The yearly fiscal flow of the rental-transfer
     benchmark: dual × mandated capacity, by year and case. This is the flow
     whose present value appears in the fiscal-comparison table (ST7b).
-    (Figure 4's panel b became the instrument menu on 2026-08-18, so this
-    page now ships the rental-transfer exhibit.)
+    (The 2026-08-18 instrument-menu recomposition moved this exhibit off
+    the main figures, so this page now ships it.)
     """),
     code(r"""
     P.show_panel(S3_FIG / "f12_rental_transfer.png")
@@ -1382,8 +1601,10 @@ appx_cells = [
     with the ATB's own paired deployments marked. Read this as a basis
     mapping between the source's experience convention and ours (SN7): under
     our 2030 anchor convention — which discards pre-2030 experience — the
-    ATB pairings correspond to about 2–3.4× more required deployment at the
-    source study's own parameters. The two conventions serve different
+    ATB pairings correspond to about 2.1–3.7× more required deployment at the
+    source study's own parameters (both sides on the through-2049 stock that
+    prices 2050 — the 08-24 registration basis). The two conventions serve
+    different
     modeling goals; the mapping explains the difference, it does not
     adjudicate it. SF16: which dial values the endpoint-feasible worlds
     require (dial marginals on the one-sided 2050 basis, matching Fig 1;
@@ -1466,7 +1687,7 @@ appx_cells = [
     md(r"""
     ## SF20 — Binding-year shifts across market worlds
 
-    **What this shows.** The step4 sensitivity detail behind Figure 6: which
+    **What this shows.** The step4 sensitivity detail behind Figure 7: which
     mandated years bind, per case and market world. A high gas-price world
     removes up to six binding years (gas competes less, nuclear needs less
     help) — but never restores decay in an expensive world.
@@ -1519,7 +1740,8 @@ appx_cells = [
     ## SF23 — Closed-loop delivery: summary and trajectories
 
     **What this shows.** The closed-loop validation of the funding claim
-    (SN6). Until 2026-08-24 the summary panel was main-text Fig 5c; the team
+    (SN6). Until 2026-08-24 the summary panel sat in the main required-ITC
+    figure (now Fig 6); the team
     demoted it to the SI — it validates the ITC translation, it is not a
     standalone finding. The computed ITC schedule replaces the mandate as an
     actual incentives input, and the model re-solves with draw-calibrated
@@ -1564,15 +1786,15 @@ appx_cells = [
     ''')
     """),
     md(r"""
-    ## SF24 — The deployment-vs-rate demand curve (detail behind Fig 5c)
+    ## SF24 — The deployment-vs-rate demand curve (detail behind Fig 6c)
 
     **What this shows.** The as-exported view behind the main-text cliff
-    panel (Fig 5c, promoted 2026-08-24): 2050 capacity against the
-    **monetized** credit rate (Fig 5c converts to the statutory model
+    panel (Fig 6c, promoted 2026-08-24): 2050 capacity against the
+    **monetized** credit rate (Fig 6c converts to the statutory model
     convention), showing both technologies and total nuclear rather than
     new nuclear only. The large-reactor series is flat at 94.11 GW at every
     rate — the credit never moves it (the zero-substitution result) — which
-    is the fact that lets Fig 5c plot new nuclear as SMR alone. The response
+    is the fact that lets Fig 6c plot new nuclear as SMR alone. The response
     is strongly convex: zero SMR at a flat 30% credit, 9.8 GW at 50%,
     against 27–381 GW at the schedule-derived rates; the minus probe (ST9)
     locates the delivery boundary within five rate points below the headline
@@ -1585,10 +1807,10 @@ appx_cells = [
          "figure cells", "`q06_rate_deployment.csv` (flat-rate fbR arm + schedule-rate runs)"),
     )
     P.caption("SF24", '''
-    The deployment-vs-rate response on the monetized basis (the detail behind Fig 5c):
+    The deployment-vs-rate response on the monetized basis (the detail behind Fig 6c):
     2050 capacity by technology and in total, under flat credit rates and at the
     schedule-derived rates. The large-reactor series is flat at 94.11 GW at every rate
-    (the zero-substitution result), so Fig 5c's new-nuclear axis equals the SMR series.
+    (the zero-substitution result), so Fig 6c's new-nuclear axis equals the SMR series.
     Zero SMR at a flat 30% credit, 9.8 GW at 50%, against 27-381 GW at the schedule
     rates; the minus probe (ST9) brackets the delivery boundary within five rate points
     below the headline.
@@ -1644,25 +1866,41 @@ appx_cells = [
     md(r"""
     ## SF27 — Detection year vs the spending cap
 
-    **What this shows.** The design-relevant gradient (S3-3): a cumulative-
-    spend cap is a far more noise-robust trigger than the decay-shape
-    criterion — 5–13% of adverse worlds never flagged by 2050, against
-    20–50% for the shape rule — and moving from low to high observation
-    noise roughly quadruples the spend committed before detection (EO
-    schedule: 32→139 B$). That difference is the dollar value of cost
-    surveillance. Framed as information, never as a recommendation.
+    **What this shows.** Detection under the cap criterion on the
+    spend-aware standard (2026-08-25 amendment; spec:
+    `bridge_detection/methods.md` section 6). The observer scores each
+    candidate world's total bill as the observed sunk spend plus that
+    world's remaining payments, and reads the outlay ledger every year, so
+    every world whose bill truly exceeds the cap is flagged — at the latest
+    in the year spend crosses the cap — and the ledger backstop adds no
+    false alarms. Each panel plots the detection year (median and
+    interquartile band, middle noise level) against the cap, over the
+    extended grid: from the cap that only 25% of prior worlds stay under
+    (per-schedule floors at 0.5–0.75x the middle-world bill) up to
+    1.75–2.2x. Detection-year medians run 2032–2041 across the whole grid;
+    the held-out false-alarm rate stays within the 7.5% gate everywhere
+    (max 0.069). The money view of the same result is main-text Fig 5;
+    moving from low to high observation noise raises the median spend
+    committed at a 1.5x cap roughly fourfold (EO schedule: 17.5→70.6 B$) —
+    the dollar value of cost surveillance. Framed as information, never as
+    a recommendation.
     """),
     code(r"""
     P.show_panel(BD_FIG / "d12_exceedance_by_cap_noisy.png")
     P.source_ref(
         (BD_FIG / "d12_exceedance_by_cap_noisy.png", "bridge_detection/bridge_detection_stage3.ipynb",
-         "figure cells", "`b17_exceedance_noisy.csv` / `b18_cost_of_waiting_noisy.csv`"),
+         "figure cells", "`b17_exceedance_noisy.csv` / `b18_cost_of_waiting_noisy.csv` "
+         "(spend-aware standard, 2026-08-25 amendment)"),
     )
     P.caption("SF27", '''
-    Detection by cumulative-spend cap under noise: the cap rule leaves 5-13% of adverse
-    worlds never flagged by 2050 (against 20-50% for the decay-shape rule), and low-to-high
-    observation noise roughly quadruples the spend committed before detection (EO 32->139
-    B$) — the dollar value of cost surveillance. Information, not a recommendation.
+    Detection year against the cumulative-spend cap under the spend-aware standard
+    (median and interquartile band, middle noise level): every truly exceeding world is
+    detected, no later than the year spend crosses the cap, so the informative outputs
+    are the detection year and the spend committed before the alarm (main-text Fig 5).
+    Medians run 2032-2041 across the extended cap grid; held-out false alarms stay
+    within the 7.5% gate (max 0.069). Low-to-high observation noise raises the median
+    spend committed at a 1.5x cap roughly fourfold (EO 17.5->70.6 B$) — the dollar value
+    of cost surveillance. Information, not a recommendation.
     ''')
     """),
 
@@ -1777,7 +2015,8 @@ appx_cells = [
     md(r"""
     ## SF31 — The full subsidy instrument menu
 
-    **What this shows.** The full instrument menu that main-text panel 5b
+    **What this shows.** The full instrument menu that the main required-ITC
+    figure's menu panel (now Fig 6b)
     summarized until 2026-08-24 (team review, option B: the main panel keeps
     only the voluntary instruments; this page keeps the complete menu as the
     SI anchor for the S3-2 coercion caveat). Each column is one case
@@ -1814,6 +2053,31 @@ appx_cells = [
     undercuts the floor only by coercion — its shortfall lands on early-vintage capital
     — and is the expensive end where a pre-existing fleet collects rent; the commitment
     bound assumes foresighted investors under a credible multi-decade schedule.
+    ''')
+    """),
+    md(r"""
+    ## SF32 — Normalized shadow-price decay curves
+
+    **What this shows.** Each case's shadow price divided by its own peak,
+    so every case starts at 1 and shapes compare directly. Main-text Fig 4b
+    until 2026-08-26, when the freed display slot went to the
+    cost-of-detection figure (Fig 5); the decay-class numbers stay quoted
+    in the S3 text and the Fig 4 caption. In cheap worlds the curves decay to
+    3–19% of peak by 2050; median worlds are mixed; no P95 case reaches
+    half its peak — under slow learning the subsidy is a standing
+    commitment, not a bridge.
+    """),
+    code(r"""
+    P.show_panel(S3_FIG / "f07_dual_shape_normalized.png")
+    P.source_ref(
+        (S3_FIG / "f07_dual_shape_normalized.png", "step3_analysis/step3_analysis.ipynb",
+         "cell 26", "same shadow prices as Fig 4, normalized by each case's peak"),
+    )
+    P.caption("SF32", '''
+    Shadow prices normalized by their own peak (main-text Fig 4b until 2026-08-26):
+    cheap worlds decay to 3-19% of peak by 2050; median worlds are mixed; no P95 case
+    reaches half its peak — under slow learning the subsidy is a standing commitment,
+    not a bridge.
     ''')
     """),
 
@@ -1956,24 +2220,33 @@ appx_cells = [
     md(r"""
     ### ST11 — Bridge-failure detection tables
 
-    The three consolidated detection tables (SN8; cited from S3-3): detection
-    years under the calibrated 5%-false-alarm rule — perfect observation
-    (b09) and the three noise levels (b15); the cost of waiting, with the
-    noise gradient and the never-detected shares (b18); and the bias
-    experiment (b19: an observer who mistakes a 30% systematic overrun for an
-    expensive world false-alarms on 23–35% of benign worlds; an observer who
-    knows the bias loses nothing).
+    The consolidated detection tables (SN8; cited from S3-3 and Fig 5):
+    detection years under the calibrated 5%-false-alarm rule — perfect
+    observation (b09) and the three noise levels (b15); the cost of waiting
+    with the noise gradient (b18; under the spend-aware standard the cap
+    criterion's never-detected share is zero by construction, so its
+    columns carry the paid-at-detection medians); the bias experiment (b19:
+    an observer who mistakes a 30% systematic overrun for an expensive
+    world false-alarms on 23–35% of benign worlds; an observer who knows
+    the bias loses nothing); and the full cap-grid exceedance table behind
+    Fig 5 and SF27 (b17: detection-year quartiles, completed US units at
+    detection, paid-at-detection percentiles p05–p95, the held-out
+    false-alarm rate, and the pre-amendment costs-only observer as
+    reference columns).
     """),
     code(r"""
     P.table(BD_EXP / "b09_detection_calibrated.csv", "ST11a_detection_calibrated.csv", round_=3)
     P.table(BD_EXP / "b15_detection_noisy.csv", "ST11b_detection_noisy.csv", round_=3)
     P.table(BD_EXP / "b18_cost_of_waiting_noisy.csv", "ST11c_cost_of_waiting.csv", round_=3)
     P.table(BD_EXP / "b19_bias_experiment.csv", "ST11d_bias_experiment.csv", round_=3)
+    P.table(BD_EXP / "b17_exceedance_noisy.csv", "ST11e_exceedance_noisy.csv", round_=3)
     P.caption("ST11", '''
     Bridge-failure detection tables: calibrated detection years under perfect observation
-    (b09) and three noise levels (b15), the cost of waiting with never-detected shares and
-    the noise gradient (b18), and the bias experiment (b19). Observer design, noise model,
-    and calibration in SN8.
+    (b09) and three noise levels (b15), the cost of waiting with the noise gradient (b18),
+    the bias experiment (b19), and the cap-grid exceedance table on the spend-aware
+    standard (b17: detection-year quartiles, units and paid-at-detection percentiles,
+    held-out false-alarm rate, costs-only reference columns; behind Fig 5 and SF27).
+    Observer design, noise model, and calibration in SN8.
     ''')
     """),
 
