@@ -106,6 +106,21 @@ SCHED_C = {
     "mck": "#26828e", "cop28": "#20a386", "eo": "#4ec36b",
 }
 
+# Paper-facing names (2026-09-03 de-jargon pass for the coauthor review): one
+# short name per schedule code, one label per cost-world percentile, one name
+# per priced program. Every figure that labels a schedule, a percentile world
+# or a program uses these, so the same word means the same thing on every
+# panel. The internal codes (eia/aj/.., p05/p50/p95, smr100/large100) stay in
+# file names, column names and case names only - never in saved pixels.
+SCHED_SHORT = {"eia": "EIA AEO high", "aj": "Abou-Jaoude", "iaea": "IAEA high",
+               "mck": "McKinsey", "cop28": "COP28", "eo": "2025 EO"}
+SCHED_GW = {"eia": 117, "aj": 134, "iaea": 172, "mck": 200, "cop28": 300, "eo": 400}
+SCHED_LABEL = {k: f"{SCHED_SHORT[k]} ({SCHED_GW[k]} GW)" for k in SCHED_ORDER}
+PCT_LABEL = {"p05": "cheap world (P5)", "p50": "median world (P50)",
+             "p95": "expensive world (P95)"}
+PCT_SHORT = {"p05": "P5", "p50": "P50", "p95": "P95"}
+PROGRAM_LABEL = {"smr100": "SMR program", "large100": "large-reactor program"}
+
 # Percentile weight inside a schedule hue: p05 light, p50 solid, p95 dashed.
 PCT_STYLE = {
     "p05": dict(lw=1.2, alpha=0.55, ls="-"),

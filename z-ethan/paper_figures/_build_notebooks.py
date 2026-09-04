@@ -35,7 +35,7 @@ import pandas as pd
 import paperlib as P
 from paperlib import (MC_FIG, MC_EXP, S3_FIG, S3_EXP, S4_FIG, S4_EXP, S3C_EXP,
                       S4C_EXP, ITCFB_FIG, ITCFB_EXP, ITCFBM_FIG, ITCFBM_EXP,
-                      BD_FIG, BD_EXP)
+                      BD_FIG, BD_EXP, IC_FIG, IC_EXP, RD_FIG, RD_EXP, MT_FIG, MT_EXP)
 
 pd.set_option("display.max_columns", 40)
 pd.set_option("display.width", 160)
@@ -72,6 +72,8 @@ The same word always has the same meaning in this notebook.
 | **Decoupled-anchor probe** | One cell of the dependence grid: the two technologies' learning rates stay fully coupled, but each technology draws its anchor cost independently. This differs from κ = 0, which decouples both. It is the hardest cell for SMR, because a large program can draw a cheap start against an expensive SMR one. |
 | **EVPI (expected value of perfect information)** | The most that knowing the true cost world in advance could be worth, as a share of expected program cost. |
 | **LP / reduced cost** | ReEDS solves a linear program (LP) — a cost-minimization with linear rules. A builder's "reduced cost" is its cost disadvantage at the optimum; zero means it is competitive at the margin. |
+| **Credit path** | A declared dollars-per-kW credit for each build year (the rate-design analysis's object). "Schedule" always means a deployment schedule in this notebook, never a credit path. |
+| **Demonstration window** | The build years through 2035, in which grant-type federal cost share to first units (the ARDP model) is the assumed vehicle for support above the statutory rate cap; after the window the instrument is the capped credit alone. |
 """
 
 # ============================================================================
@@ -111,7 +113,12 @@ main_cells = [
     subsidy behaves like a bridge (it decays as the fleet learns) in cheap
     worlds, but not in expensive ones. Translated into the US tax credit,
     median worlds need 2.0–2.5 times the current base credit, and the uniform
-    percentage credit costs 1.17–1.25 times the floor.
+    percentage credit costs 1.17–1.25 times the floor. Most cost worlds need
+    above-cap support in at least one year after the demonstration window, so
+    a statutory-capped credit alone buys only the cheap tail of the cost
+    distribution; and observation flags a failing world early but never
+    calibrates the required credit scale — it tells the government when to
+    stop paying, not how much to pay.
     """),
     md(GLOSSARY),
     code(SETUP),
@@ -125,23 +132,36 @@ main_cells = [
     anchor convention discards pre-2030 experience by design, so no engine
     path can match an ATB trajectory year by year; the paper therefore scores
     only the **2050 endpoint** — the 2050 cost, and the builds required to
-    reach it (Ethan, 08-21/08-24). Panels (a, b): the cost–deployment plane —
-    for each amount of post-2030 building completed through 2049 (the stock
-    that prices 2050, per the engine's one-year lag), the 2050 overnight cost
-    that the defensible worlds deliver (fan across support-restricted grid
-    worlds), with the ATB 2050 target as a black dot at its paired
-    Abou-Jaoude deployment; large reactors (a), SMR (b). Panels (c, d):
-    endpoint feasibility maps — the shortfall of the 2050 cost against each
-    target over learning rate × spillover, with a contour bounding the worlds
-    that reach the target within \$250/kW. Both halves split tiny-base
-    (learning clock restarts) vs full-stock (legacy fleet credited) rows.
+    reach it (Ethan, 08-21/08-24). Two stacked blocks (08-28, Ethan: the
+    endpoint maps left the figure — their spillover axis carried little —
+    and the share content moved onto these panels): the cost–deployment
+    plane for large reactors (a, top) and SMR (b, bottom) — for each amount
+    of post-2030 building completed through 2049 (the stock that prices
+    2050, per the engine's one-year lag), the 2050 overnight cost that the
+    defensible worlds deliver (fan across support-restricted grid worlds,
+    every dial varying jointly; dashed lines bound the lowest and highest
+    supported world), with the ATB 2050 target marked by its ±\$125 bar at
+    its paired Abou-Jaoude deployment (the separate target dot was removed
+    08-29 — the bar is the marker). Each block splits fresh-start (legacy fleet
+    excluded) vs legacy-fleet-credited rows — the paper-facing labels since
+    08-29; the internal stratum names (tiny-base / full-stock) stay in
+    code and SI only.
 
-    **How to read it.** In (a, b), a dot below the fan means fewer than 5% of
+    **How to read it.** A target bar below the fan means fewer than 5% of
     defensible worlds reach that cost at that amount of building; reading
     right along the target's dotted line shows how much building would put
-    the target inside the fan. In (c, d), feasibility is **one-sided**:
-    a world counts when it reaches the target or beats it (overshoot is
-    success, not misfit). Each scenario is scored at its own paired
+    the target inside the fan. Two reads at the paired deployment (third
+    spec, 08-29): the black bar spans the target ±\$125/kW — one rounding
+    half-step of the ATB's nearest-\$250 reporting, so a cost inside the
+    bar meets the projection at its published precision — labeled with the
+    share of that stratum's supported worlds inside the band; the red
+    dimension bracket to its left spans the lowest supported cost to the
+    upper tolerance bound (target + \$125/kW) and is labeled with the share
+    at or below that bound — the paper's **one-sided** feasibility
+    criterion (overshoot is success, not misfit), so the bracket label is
+    the S1 share for that stratum. The bracket is omitted where that share
+    is zero (the large legacy-fleet-credited rows); sub-1% labels keep one
+    decimal. Each scenario is scored at its own paired
     deployment — conservative 12, moderate 33, advanced 199 GW — so
     cross-scenario comparisons reflect the ATB's pairing structure, not the
     targets alone.
@@ -150,42 +170,45 @@ main_cells = [
     Abou-Jaoude's own parameters and experience basis, it reproduces his
     published SMR OCC tables within report rounding (max error \$500/kW).
     Reaching an ATB 2050 cost at its paired deployment takes a firm-level
-    learning rate of 13–19.5% at the central discrete world (tiny base,
+    learning rate of 13–19.5% at the central discrete world (fresh-start basis,
     spillover-dependent; T5, scored on the through-2049 stock that prices
     2050 — the 08-24 registration fix) against the source study's own 9.5% —
     the gap
     is the expected anchor-convention premium, and it puts the large targets
-    at or above the top of large's sampled support (3–12%). On the
-    support-restricted grid the feasible shares are 1.1–7.6% for the large
-    targets and 12.5–31.9% for SMR — the cheaper scenarios owe their wider
-    reach to the much larger deployments the ATB pairs them with. Under
-    full-stock accounting no large target is reachable at all: zero feasible
+    at or above the top of large's sampled support (3–12%); the T5 solve
+    carries no tolerance (it requires exactly reaching the published
+    target), so those spans are criterion-invariant. On the
+    support-restricted grid the feasible shares (\$125 criterion, reported
+    split by experience accounting since 08-29 — the 50/50 pooled ranges
+    are retired) are 16.3–33.4% for SMR and 0.2–11.4% for large under
+    fresh-start accounting, and 3.8–21.5% / zero with the legacy fleet
+    credited. For SMR the cheaper scenarios owe their wider reach to the
+    much larger deployments the ATB pairs them with; large runs the other
+    way — its conservative target is the most reachable. When the
+    legacy fleet is credited no large target is reachable at all: zero feasible
     worlds in all three scenarios, and no learning rate up to 30% closes the
     gap at the paired deployment — every large trajectory presumes
-    fresh-start accounting (the empty-contour full-stock rows in c). The
+    fresh-start accounting (the large legacy-fleet-credited rows, where the target
+    sits below the dashed floor and the bracket is omitted, third spec). The
     differences from the source are designed basis conventions (anchor
     convention, experience basis; SN7), not disagreements. This inversion
     uses about 0.79 million sampled worlds per target and zero ReEDS runs.
     """),
     code(r"""
     P.compose(
-        [[MC_FIG / "atb_cost_deployment_plane_large.png", MC_FIG / "atb_cost_deployment_plane_smr.png"],
-         [MC_FIG / "atb_endpoint_feasible_maps_large.png", MC_FIG / "atb_endpoint_feasible_maps_smr.png"]],
+        [[MC_FIG / "atb_cost_deployment_plane_large.png"],
+         [MC_FIG / "atb_cost_deployment_plane_smr.png"]],
         "Fig1_atb_placement.png",
-        letters="",  # all four sources carry their letters (a/b plane, c/d maps)
+        letters="",  # both sources carry their letters (a = large, b = smr); stacked a over b (08-28)
         center=True,
     )
     P.source_ref(
         (MC_FIG / "atb_cost_deployment_plane_large.png", "mc/atb_parameter_space.ipynb",
-         "cell F8 (2050-endpoint reframing, 08-24)",
-         "the closed-form 2050 evaluator over the support-restricted Part-2 grid"),
+         "cell F8 (2050-endpoint reframing 08-24; envelope + share labels + stacking, 08-28)",
+         "the closed-form 2050 evaluator over the support-restricted Part-2 grid; "
+         "bracket labels = `mc/exports/atb/endpoint_feasible_share.csv` stratum shares, recomputed in-cell"),
         (MC_FIG / "atb_cost_deployment_plane_smr.png", "mc/atb_parameter_space.ipynb",
          "cell F8", "same evaluator, SMR"),
-        (MC_FIG / "atb_endpoint_feasible_maps_large.png", "mc/atb_parameter_space.ipynb",
-         "cell F9 (one-sided criterion, 08-24)",
-         "2050 shortfall per world at the paired deployment; shares: `mc/exports/atb/endpoint_feasible_share.csv`"),
-        (MC_FIG / "atb_endpoint_feasible_maps_smr.png", "mc/atb_parameter_space.ipynb",
-         "cell F9", "same shortfalls, SMR"),
     )
 
     es = pd.read_csv(MC_EXP / "atb" / "endpoint_feasible_share.csv")
@@ -198,29 +221,37 @@ main_cells = [
           f"(tiny base, central world): {lr_lo:.3f}-{lr_hi:.3f}")
     lg, sm = es[es["tech"] == "large"], es[es["tech"] == "smr"]
     assert float(lg["share_support_full"].max()) == 0.0    # the full-stock large claim
-    print(f"support-restricted feasible shares (one-sided): "
-          f"large {100*lg['share_support'].min():.1f}-{100*lg['share_support'].max():.1f}%, "
-          f"smr {100*sm['share_support'].min():.1f}-{100*sm['share_support'].max():.1f}%; "
-          f"large full-stock: 0 in all three scenarios")
+    print(f"support-restricted feasible shares (one-sided, $125 criterion; split by "
+          f"experience accounting): fresh start smr "
+          f"{100*sm['share_support_tiny'].min():.1f}-{100*sm['share_support_tiny'].max():.1f}%, "
+          f"large {100*lg['share_support_tiny'].min():.1f}-{100*lg['share_support_tiny'].max():.1f}%; "
+          f"legacy credited smr "
+          f"{100*sm['share_support_full'].min():.1f}-{100*sm['share_support_full'].max():.1f}%, "
+          f"large: 0 in all three scenarios")
 
-    P.caption("Fig 1", f'''
+    P.caption("Fig 1", '''
     Where the ATB 2050 nuclear costs sit in learning space (endpoint basis: the 2030 anchor
     convention discards pre-2030 experience by design, so only the 2050 cost and the builds
-    that reach it are scored). (a, b) The cost-deployment plane for large reactors (a) and
-    SMR (b): the 2050 overnight cost delivered across support-restricted learning worlds
-    (P5-P95 and P25-P75 fans, median line) as a function of cumulative new build, tiny-base
-    vs full-stock experience accounting; black dots mark each ATB 2050 target at its paired
-    deployment. (c, d) Endpoint feasibility maps: the 2050 shortfall against each target
-    over learning rate x spillover, with the $250/kW reach contour; feasibility is
-    one-sided (overshoot is success). Reaching a target at its paired deployment takes a
-    firm-level rate of {100*lr_lo:.3g}-{100*lr_hi:.3g}% at the central world against the
-    source's own 9.5%; feasible shares on the sampled support are
-    {100*lg['share_support'].min():.1f}-{100*lg['share_support'].max():.1f}% (large) and
-    {100*sm['share_support'].min():.1f}-{100*sm['share_support'].max():.1f}% (SMR), and
-    under full-stock accounting no large target is reachable at any learning rate up to
-    30%. The engine reproduces the ATB source's published tables under its own parameters
-    and experience basis (max error $500/kW); the differences are designed basis
-    conventions. ~0.79M sampled worlds per target; no ReEDS runs.
+    that reach it are scored). The cost-deployment plane for large reactors (a) and SMR
+    (b): the 2050 overnight cost delivered across the sampled learning worlds restricted
+    to each technology's learning-rate support, every other input varying jointly (P5-P95
+    and P25-P75 fans, median line; dashed lines bound the lowest and highest supported
+    world), as a function of cumulative new build, split by experience accounting
+    (fresh-start vs legacy-fleet-credited rows). Dotted crosshairs locate each ATB 2050 target
+    at its paired deployment - conservative 12, moderate 33, advanced 199 GW - so
+    cross-scenario comparisons reflect the ATB's pairing structure, not the targets
+    alone. At each paired
+    deployment the black bar spans the target +-$125/kW - one rounding half-step of the
+    ATB's nearest-$250 reporting, so costs inside the bar meet the projection at its
+    published precision - labeled with the share of that stratum's supported worlds
+    inside the band; the red bracket to its left spans the lowest supported cost to the
+    upper tolerance bound (target + $125/kW), labeled with the share at or below that
+    bound - the paper's one-sided feasibility criterion (overshoot is success). The
+    bracket is omitted where that share is zero: in the large legacy-fleet-credited
+    rows the target sits below the lowest supported world and no world reaches it. The engine
+    reproduces the ATB source's published tables under its own parameters and experience
+    basis (max error $500/kW); the differences are designed basis conventions. ~0.79M
+    sampled worlds per target; no ReEDS runs.
     ''')
     """),
 
@@ -296,94 +327,97 @@ main_cells = [
     md(r"""
     ## Figure 3 — Why all priced cases commit to a 100%-SMR program, now
 
-    Recomposed 2026-08-26 (Ethan): a 2×2 of single-panel sources. The
-    winning-margin fans (old 3b) moved to the SI as SF5a, the McKinsey
-    financed-capex paths (old 3c) left the paper (Fig 2's fans and the
-    fragmentation histogram carry that story), and the SF8 switch bound was
-    promoted to panel (d). Same day, second recomposition (Ethan): panels c/d
-    swapped from the κ-profile insets to the **optimism-bias sweep** curves
-    from `ob_sweep.ipynb` — the κ profiles keep their SI homes (SF7/SF8). The
-    four panels are the complete commitment case: choose SMR, don't split,
-    don't wait — and here is exactly how much cost optimism that case
-    tolerates.
+    Recomposed 2026-08-26 (Ethan): a 2×2 of single-panel sources; second
+    recomposition the same day swapped panels c/d to the optimism-bias sweep
+    curves. Third recomposition 2026-08-31 (Ethan, S2 drafting): the 2×2 now
+    pairs the two questions with the two stress axes — the **winner** (left
+    column) and the **value of waiting** (right column), each at baseline
+    against κ (top row) and under optimism stress against m (bottom row).
+    Panel (b) is a new combined panel (total EVPI + 2036 switch bound vs κ,
+    `tech_comparison.ipynb` cell t8c); the fragmentation histogram moved to
+    the SI mixing page (SF6), the majority flip curve joined the paper as
+    panel (c), and the standalone bound sweep left the paper (its curve stays
+    on the SI flip-curve page, SF8). The four panels are the complete
+    commitment case: choose SMR, don't wait — and here is exactly how much
+    cost optimism that case tolerates.
 
     **What this shows.** Before pricing any schedule, we must choose which
-    technology carries the program — and whether to commit at all. Panel (a):
-    the probability that SMR is the cheaper program carrier, across schedules
-    and across the κ dependence grid (κ is glossed above; each grid cell is a
-    different assumption about how the two technologies' uncertainties move
-    together). Panel (b): the cost of hedging instead of committing — the
-    extra cost of splitting the program 50/50 between the technologies
-    ("fragmentation penalty"), under the McKinsey schedule. Panels (c) and
-    (d): the cost of committing **now**, as a function of how optimistic the
-    SMR cost estimates might be. The x-axis is the SMR optimism multiplier m
-    — the factor by which the drawn 2030 SMR anchor cost would understate the
-    truth (m = 1 is the elicitation at face value; the T9 stress point is
-    m = 1.5). Panel (c) sweeps the expected value of perfect information
-    (EVPI: the most a decision-maker would pay to know the drawn world before
-    committing); panel (d) sweeps the escape-hatch bound — the most that one
-    perfect-information technology switch in 2036 could recover. Both show
-    the worst schedule per dependence anchor, with the pre-registered 1%
-    "low value" threshold marked.
+    technology carries the program — and whether to commit at all. Left
+    column, the winner. Panel (a): the probability that SMR is the cheaper
+    program carrier, across schedules and across the κ dependence grid (κ is
+    glossed above; each grid cell is a different assumption about how the two
+    technologies' uncertainties move together). Panel (c): how much SMR cost
+    optimism it takes to flip that majority — the minimum over schedules of
+    P(SMR wins), against the SMR optimism multiplier m (the factor by which
+    the drawn 2030 SMR anchor cost would understate the truth; m = 1 is the
+    elicitation at face value, the T9 stress point is m = 1.5). Right column,
+    the value of waiting. Panel (b), at face-value costs: the expected value
+    of perfect information (EVPI: the most a decision-maker would pay to know
+    the drawn world before committing; solid) and the escape-hatch bound —
+    the most that one perfect-information technology switch in 2036 could
+    recover (dashed), per schedule, against κ. Panel (d): EVPI under optimism
+    stress — the maximum over schedules per dependence anchor, with the
+    pre-registered 1% "low value" threshold marked.
 
     **How to read it.** In panel (a), values above 0.5 mean SMR is the majority
-    winner in that cell. In panel (b), the distribution sits almost entirely
-    above zero: splitting the program is not a free hedge, because it splits
-    the learning. Panels (c) and (d) share axes and units, and both are
-    perfect-information upper bounds — the true value of waiting, or of
-    keeping a switch option, is smaller still. Their hump shape is generic:
-    information is valuable only while the winner is genuinely contested, so
-    the curves rise as optimism pushes the choice into the contested band and
-    fall again once large is the near-certain winner.
+    winner in that cell. In panel (b), both curve families stay below ~0.7%
+    of program cost in coherent (κ = 1) worlds and rise as the draws
+    decouple: committing now forfeits little where the technologies'
+    uncertainties move together. In panel (c), the dots mark the interpolated
+    flip points m* where the majority inverts. In panel (d), the hump shape
+    is generic: information is valuable only while the winner is genuinely
+    contested, so the curve rises as optimism pushes the choice into the
+    contested band and falls again once large is the near-certain winner.
+    Panels (b) and (d) are perfect-information upper bounds — the true value
+    of waiting, or of keeping a switch option, is smaller still.
 
     **Key results.** SMR is the cheaper carrier with probability 0.82–0.89 under
     the tightest coupling, and stays the majority winner in every primary κ
     cell. The worst cell gives 0.509. That cell is the decoupled-anchor probe
     (see the glossary): the learning rates stay coupled, but each technology
     draws its starting cost independently — not the κ = 0 cell, which
-    decouples both. Splitting 50/50 costs a median 16.7% of
-    program cost. A per-draw optimizer over mixed programs beats the pure
-    programs in only 10 of 60,000 draws, and by at most 0.51%.
+    decouples both.
 
     At the elicited costs (m = 1), committing now forfeits little in coherent
-    worlds: EVPI is 0.57–0.66% of expected program cost at κ = 1 (rising to
-    2.3–4.6% fully decoupled and about 6.0% at the decoupled-anchor probe —
-    the full κ profile is SF7), and one perfect-information 2036 switch
-    recovers at most 0.12–0.66% at κ = 1 (5.88% at the probe — a
-    pre-registered failure case, reported as such; SF8). The sweep prices the
-    optimism sensitivity of that comfort: at κ = 1 the value of waiting
-    crosses the 1% threshold at m ≈ 1.02, EVPI peaks at 5.3% of program cost
-    at m = 1.25, and the switch bound peaks at 3.0% at m = 1.10, before both
-    decay as large becomes the near-certain winner. These are
-    perfect-information upper bounds; no noisy-signal tier was built.
+    worlds: EVPI is 0.57–0.66% of expected program cost at κ = 1, rising to
+    2.3–4.6% fully decoupled (about 6.0% at the decoupled-anchor probe — the
+    partial decomposition and the probe cells are SF7), and one
+    perfect-information 2036 switch recovers at most 0.12–0.66% at κ = 1,
+    rising to 0.86–4.6% at κ = 0 (5.88% at the probe — a pre-registered
+    failure case, reported as such; SF7). The sweep prices the optimism
+    sensitivity of that comfort: at κ = 1 the value of waiting crosses the 1%
+    threshold at m ≈ 1.02 and EVPI peaks at 5.3% of program cost at m = 1.25
+    (9.8% at m = 1.45 fully decoupled), before decaying as large becomes the
+    near-certain winner. These are perfect-information upper bounds; no
+    noisy-signal tier was built.
 
     **Fair-warning results, stated with equal prominence.** When large wins in
     decoupled worlds, its margins can reach about 30% (the margin
-    distributions are SF5a). And the optimism-bias stress does not merely
-    break the majority claim — the sweep behind panels c/d localizes the
-    flip: the majority inverts at m* = 1.10 at κ = 1 (1.15–1.16 at
-    κ = 0.5/0), so a ~10% SMR anchor error flips the winner in coherent
-    worlds (the full flip curves, including the majority and fragmentation
-    panels, are SF8a). Only the no-split claim is optimism-proof: the split
-    penalty rises with m. The commitment is majority-optimal, not certain.
+    distributions are SF5a). Panel (c) localizes the optimism flip: the
+    majority inverts at m* = 1.10 at κ = 1 (1.15–1.16 at κ = 0.5/0), so a
+    ~10% SMR anchor error flips the winner in coherent worlds; per-schedule
+    flip points span 1.10–1.25 at κ = 1 and 1.16–1.49 at κ = 0 (full curves
+    and the boundary table: SF8). Only the no-split claim is optimism-proof:
+    the 50/50-split penalty (median 16.7%, now on the SI mixing page SF6)
+    rises with m. The commitment is majority-optimal, not certain.
     """),
     code(r"""
     P.compose(
-        [[MC_FIG / "tc_robustness_prob.png", MC_FIG / "fragmentation_hist.png"],
-         [MC_FIG / "obs_evpi_vs_m.png", MC_FIG / "obs_bound_vs_m.png"]],
+        [[MC_FIG / "tc_robustness_prob.png", MC_FIG / "tc_value_of_waiting.png"],
+         [MC_FIG / "obs_majority_vs_m.png", MC_FIG / "obs_evpi_vs_m.png"]],
         "Fig3_technology_choice.png",
         letters="",  # all four single-panel sources carry their final baked letters (a-d)
-        center=True,  # the inset row is narrower; do not leave a corner blank
+        center=True,  # panel sizes differ slightly; do not leave a corner blank
     )
     P.source_ref(
         (MC_FIG / "tc_robustness_prob.png", "mc/tech_comparison.ipynb", "cell T5b (added 2026-08-26)",
          "`mc/exports/mc_perdraw.npz` + the κ-grid per-draw exports; table: `mc/exports/tech_comparison/robustness_map.csv`"),
-        (MC_FIG / "fragmentation_hist.png", "mc/mc_cost_trajectories.ipynb", "cell 40 (standalone emission added 2026-08-26)",
-         "in-memory MC worlds for the McKinsey schedule (the fragmentation experiment)"),
-        (MC_FIG / "obs_evpi_vs_m.png", "mc/ob_sweep.ipynb", "cell S4b (added 2026-08-26; replaced the T8b κ-profile inset same day)",
-         "`mc/exports/ob_sweep/sweep_metrics.csv` + `flip_boundaries.csv` (the κ-profile total+partial figure stays in the SI, SF7)"),
-        (MC_FIG / "obs_bound_vs_m.png", "mc/ob_sweep.ipynb", "cell S4b (added 2026-08-26; replaced the T7b κ-profile inset same day)",
-         "`mc/exports/ob_sweep/sweep_metrics.csv` + `flip_boundaries.csv` (the κ-profile C5-threshold version stays in the SI, SF8)"),
+        (MC_FIG / "tc_value_of_waiting.png", "mc/tech_comparison.ipynb", "cell t8c (added 2026-08-31)",
+         "`mc/exports/tech_comparison/evpi_total.csv` + `adaptive_value.csv` (diagonal κ cells; the probe cells and the partial decomposition stay in the SI, SF7)"),
+        (MC_FIG / "obs_majority_vs_m.png", "mc/ob_sweep.ipynb", "cell S4b (added 2026-08-31; S4's majority panel at paper size)",
+         "`mc/exports/ob_sweep/sweep_metrics.csv` + `flip_boundaries.csv` (full flip curves for all four claims stay in the SI, SF8)"),
+        (MC_FIG / "obs_evpi_vs_m.png", "mc/ob_sweep.ipynb", "cell S4b (added 2026-08-26; re-lettered c → d in the 2026-08-31 recomposition)",
+         "`mc/exports/ob_sweep/sweep_metrics.csv` + `flip_boundaries.csv`"),
     )
 
     rm = pd.read_csv(MC_EXP / "tech_comparison" / "robustness_map.csv")
@@ -392,26 +426,38 @@ main_cells = [
           f"(incl. probes), comonotone range {prim[prim['kappa_lr'] == 1.0]['P_smr'].min():.2f}"
           f"-{prim[prim['kappa_lr'] == 1.0]['P_smr'].max():.2f}")
 
+    ev = pd.read_csv(MC_EXP / "tech_comparison" / "evpi_total.csv")
+    ad = pd.read_csv(MC_EXP / "tech_comparison" / "adaptive_value.csv")
+    for name, df, col in [("EVPI", ev, "EVPI_pct"), ("2036 switch bound", ad, "bound_pct")]:
+        d = df[df["cell"].str.fullmatch(r"k\d{3}")]
+        for cell in ("k100", "k000"):
+            v = d[d["cell"] == cell][col]
+            print(f"panel b, {name} at {cell}: {v.min():.2f}-{v.max():.2f}% of expected program cost")
+
     P.caption("Fig 3", '''
     The technology choice, and the cost of committing now. (a) Probability that a 100%-SMR
     program is cheaper than a 100%-large program, across schedules and across the dependence
     grid (kappa = how strongly the two technologies' cost uncertainties move together). SMR
     is the majority winner in every primary cell; the minimum is 0.509 at the
     decoupled-anchor probe (learning rates coupled, 2030 starting costs drawn independently
-    — unlike kappa = 0, which decouples both). (b) Fragmentation penalty: the extra program
-    cost of a 50/50 split under the McKinsey schedule, median 16.7% — splitting the program
-    splits the learning. (c, d) The cost of committing now, against the SMR optimism
-    multiplier m (the factor by which the drawn 2030 SMR anchor cost would understate the
-    truth; worst schedule per dependence anchor, 1% threshold marked). (c) Expected value
-    of perfect information: 0.57-0.66% of expected program cost at kappa = 1 at the
-    elicited costs (m = 1), crossing 1% at m ~ 1.02 and peaking at 5.3% at m = 1.25 —
-    information is worth most where optimism makes the winner genuinely contested. (d) The
-    2036 switch bound: at most 0.12-0.66% at kappa = 1 at m = 1, peaking at 3.0% at
-    m = 1.10. Panels c and d are perfect-information upper bounds; the kappa profiles,
-    including the decoupled-anchor probe (~6.0% EVPI, 5.88% switch bound), are SF7/SF8.
-    The commitment is majority-optimal, not certain: large can win by ~30% in decoupled
-    worlds (margin distributions: SF5a), and the majority itself inverts at m* = 1.10 at
-    kappa = 1 (1.15-1.16 decoupled; full flip curves: SF8a).
+    — unlike kappa = 0, which decouples both). (b) The value of waiting at face-value
+    costs, per schedule against kappa: total EVPI (solid; the most a decision-maker would
+    pay to know the drawn world before committing) and the 2036 switch bound (dashed; the
+    most one perfect-information technology switch in 2036 could recover). EVPI is
+    0.57-0.66% of expected program cost at kappa = 1, rising to 2.3-4.6% at kappa = 0;
+    the switch bound is 0.12-0.66%, rising to 0.86-4.6% (probe cells and the partial
+    decomposition: SF7). (c, d) The same two questions under optimism stress, against the
+    SMR optimism multiplier m (the factor by which the drawn 2030 SMR anchor cost would
+    understate the truth). (c) Minimum over schedules of P(SMR wins): the majority inverts
+    at m* = 1.10 at kappa = 1 and 1.15-1.16 decoupled; per-schedule flip points span
+    1.10-1.25 at kappa = 1 and 1.16-1.49 at kappa = 0 (full curves and the boundary
+    table: SF8). (d) EVPI against m (maximum over schedules, 1% threshold marked):
+    crossing 1% at m ~ 1.02 and peaking at 5.3% of program cost at m = 1.25 at kappa = 1
+    (9.8% at m = 1.45, kappa = 0) — information is worth most where optimism makes the
+    winner genuinely contested. Panels b and d are perfect-information upper bounds. The
+    commitment is majority-optimal, not certain: large can win by ~30% in decoupled worlds
+    (margin distributions: SF5a), and splitting the program 50/50 costs a median 16.7%
+    (fragmentation histogram: SF6).
     ''')
     """),
 
@@ -488,14 +534,21 @@ main_cells = [
 
     # ---------------------------------------------------------------- Fig 5
     md(r"""
-    ## Figure 5 — What a failing bridge costs before the alarm
+    ## Figure 5 — What observation buys, and what it cannot
 
-    New main figure 2026-08-26 (Ethan) — the last of the paper's eight
-    display slots. It shows the bridge-detection result (S3-3) as money:
-    how much subsidy is committed before a spending cap flags a world whose
-    total bill will exceed that cap.
+    New main figure 2026-08-26 (Ethan). **Recomposed 2026-09-02 (Ethan,
+    outline fourteenth pass): the detection panel cannot stand alone** —
+    presented by itself it invites the inference that observation can steer
+    the policy level, and the cost-of-information analysis
+    (`z-ethan/rate_design/`, Part A, audited and verdicted INCLUDE) shows it
+    cannot. The figure is now two panels. Panel (a): the bridge-detection
+    result (S3-3) as money — how much subsidy is committed before a
+    spending cap flags a world whose total bill will exceed that cap.
+    Panel (b): the calibration limit — the same completed-unit observations
+    never pin down the required credit scale. The pair reads: observation
+    tells the government when to stop paying, not how much to pay.
 
-    **What this shows.** The observer watches noisy realized project costs
+    **What panel (a) shows.** The observer watches noisy realized project costs
     and the government's own outlay ledger — the subsidy already paid,
     which the paying government knows exactly, read every year (the
     spend-aware standard, a 2026-08-25 amendment to the pre-registered
@@ -505,23 +558,52 @@ main_cells = [
     cap falls below a conformal bar set to a 5% false-alarm budget. One
     panel per schedule. The y-axis is the spending cap (2024\$B), over a
     grid from the cap that only 25% of prior worlds stay under, up to
-    1.75–2.2 times the middle-world bill; the x-axis is the present value
+    1.75–2.2 times the median-world (P50) bill; the x-axis is the present value
     committed at detection. Bands span the exceeding worlds and observation
     histories at the middle noise level (30% per-project scatter plus a
     shared 10% yearly shock): light = p05–p95, dark = interquartile, line =
     median. The dotted diagonal is spend = cap.
 
-    **How to read it.** Under the spend-aware standard, every world that
+    **How to read panel (a).** Under the spend-aware standard, every world that
     truly exceeds the cap is detected — at the latest in the year spend
     crosses the cap — and a world that never exceeds the cap never spends
     up to it, so the ledger backstop adds no false alarms. The question the
-    figure answers is therefore not *whether* the alarm fires but *how much
+    panel answers is therefore not *whether* the alarm fires but *how much
     is committed first*: the gap between the light band's right edge and
     the diagonal is the observer's margin over the worst case.
 
-    **Key results** (computed in the cell below from `b17`/`b18`):
+    **What panel (b) shows.** An observer with the model's own cost-world
+    ensemble updates on the same noisy completed-unit costs and tracks the
+    90% confidence interval on the support level the program needs. The
+    y-axis is that interval's width in **statutory ITC points**: the
+    credit-scale interval (the multiple of the reference credit path that
+    covers the per-world requirement) converted at the reference path's
+    outlay-weighted average rate — an exact one-constant-per-schedule
+    conversion, so the registered design tolerance is five points in every
+    panel (dashed). A width of 40 means the government cannot tell a
+    45% credit from an 85% one. One panel per schedule on its own linear
+    spend axis (2024\$B; one column per schedule, top row), three declared
+    noise levels, the pre-observation prior at zero spend.
+    No schedule approaches the target at any noise level; the final
+    mid-noise widths are 24–39 points. Only aj and eo even plateau by 2050
+    under the registered ≤5%-per-observation labeling rule; the other four
+    are still declining at the horizon, so their curves say "not within the
+    program horizon", not "never". The bottom row shows the learning-rate
+    interval on the same spend axes (points, no target): it narrows
+    steadily, from 11.7 to 4.3–9.3 points — the coarse quantity is learned
+    while the design quantity is not (the same grid in scale units: SF39).
+    The learning-rate width is set by the shared yearly shock: a 10%
+    industry-wide shock over ten observation years and about five
+    doublings bounds the slope estimate at roughly 4–5 points (the OLS
+    limit), and more units per year do not help — only more years and
+    more doublings do. Disclosures carried: the
+    light-noise robustness read sits where the effective sample thins (a
+    bias against the finding); the v1 sweep is the frozen input (restated,
+    not recomputed; audit record in `rate_design/status.md`).
+
+    **Key results** (computed in the cell below from `b17`/`b18` and `u30`):
     - Median committed spend at detection sits far below the cap — 4 to 15
-      times below at a cap of 1.5x the middle-world bill, where it is
+      times below at a cap of 1.5x the median-world (P50) bill, where it is
       4.0 (EIA) to 32.2 (EO) B2024\$ — 5–24% of the failing world's total
       bill.
     - The p95 committed spend stays at or below the cap at every cap on
@@ -529,6 +611,12 @@ main_cells = [
       annually).
     - The held-out false-alarm rate stays within the 7.5% gate at every
       cap.
+    - The required-credit interval never reaches the five-point design
+      target: after the whole program it is still 24–39 statutory points
+      wide at mid noise (14–25 light, 36–52 heavy; 87–151 before any
+      unit completes), 4.8–7.7x the target, and only aj/eo plateau
+      (2.9%/1.6% decline per observation at the horizon). The
+      learning-rate CI narrows from 11.7 to 4.3–9.3 points (SF39/ST16).
 
     **Carried caveats (mandatory).** The observer knows the model's own
     ensemble and the noise model — an upper bound on real detectability.
@@ -540,14 +628,23 @@ main_cells = [
     """),
     code(r"""
     P.compose(
-        [[BD_FIG / "d13_paid_by_cap_noisy.png"]],
+        [[BD_FIG / "d13_paid_by_cap_noisy.png"],
+         [RD_FIG / "w37_ci_rate_points_paper.png"]],
         "Fig5_cost_of_detection.png",
-        letters="",  # single panel: no letter stamp
+        letters="ab",
+        center=True,
     )
     P.source_ref(
         (BD_FIG / "d13_paid_by_cap_noisy.png", "bridge_detection/bridge_detection_stage3.ipynb",
          "figure cells", "`b17_exceedance_noisy.csv` (spend-aware standard, 2026-08-25 amendment; "
          "spec: `bridge_detection/methods.md` section 6)"),
+        (RD_FIG / "w37_ci_rate_points_paper.png", "rate_design/rate_design_v2.ipynb",
+         "S7 w37 cell (the w36/w20 grid with the credit-scale row re-denominated in "
+         "statutory rate points; Ethan's reading review 2026-09-02)",
+         "`u32_ci_rate_points.csv` (= u10 widths x the reference path's outlay-weighted "
+         "average rate) + `u30_part_a_restated.csv` (the frozen v1 sweep restated with every "
+         "audit repair; registration: `rate_design/methods.md` v2/v2.1, verdict INCLUDE in "
+         "`u91_verdict.csv`)"),
     )
 
     b17 = pd.read_csv(BD_EXP / "b17_exceedance_noisy.csv")
@@ -572,89 +669,148 @@ main_cells = [
     pd_hi = m18d["c2_150_median_paid_at_det_2024B"].max()
     assert float(m18d["c2_150_share_never_detected"].max()) == 0.0
 
+    u30 = pd.read_csv(RD_EXP / "u30_part_a_restated.csv").set_index("schedule")
+    assert not u30["crosses_band5"].any()
+    ratio_lo, ratio_hi = u30["final_over_tgt"].min(), u30["final_over_tgt"].max()
+    plateau = "/".join(u30.index[u30["label"] == "asymptote"])
+    lr0 = u30["prior_lr_w_pts"].max()
+    lr_lo, lr_hi = u30["final_lr_w_pts"].min(), u30["final_lr_w_pts"].max()
+    print(f"credit-scale CI never crosses the design target (0/6 schedules, all noise "
+          f"levels); final mid-noise width {ratio_lo:.1f}-{ratio_hi:.1f}x the target; "
+          f"plateau label: {plateau} only")
+    print(f"learning-rate CI narrows {lr0:.1f} -> {lr_lo:.1f}-{lr_hi:.1f} points (5-95)")
+
+    u32 = pd.read_csv(RD_EXP / "u32_ci_rate_points.csv")
+    fin32 = u32[u32["k"] == u32.groupby(["schedule", "sigma"])["k"].transform("max")]
+    def _rng(sig):
+        f = fin32[fin32["sigma"] == sig]["width_pts"]
+        return f.min(), f.max()
+    pm_lo, pm_hi = _rng(0.30); pl_lo, pl_hi = _rng(0.15); ph_lo, ph_hi = _rng(0.50)
+    pri32 = u32[(u32["k"] == 0) & (u32["sigma"] == 0.30)]["width_pts"]
+    assert pm_hi < 60 and pm_lo > 5, (pm_lo, pm_hi)
+    print(f"required-credit 90% interval width, statutory points: prior {pri32.min():.0f}-{pri32.max():.0f}; "
+          f"final mid {pm_lo:.0f}-{pm_hi:.0f}, light {pl_lo:.0f}-{pl_hi:.0f}, heavy {ph_lo:.0f}-{ph_hi:.0f}; target 5")
+
     P.caption("Fig 5", f'''
-    The cost of learning that the bridge is failing. Present value of subsidy committed
-    when a spending cap flags a world whose total bill will exceed the cap, against the
-    cap itself (both in 2024$B), one panel per schedule; light band p05-p95, dark band
-    interquartile, line median, across exceeding worlds and observation histories at the
-    middle noise level (30% per-project scatter + a shared 10% industry-wide yearly
-    shock); dotted diagonal: spend = cap. The observer holds a conformal 5% false-alarm
-    budget over the model's own cost-world ensemble and also reads the outlay ledger
-    every year, so detection is guaranteed no later than the year spend crosses the cap:
-    the p95 committed spend stays at or below the cap everywhere (per-schedule worst
-    points {worst.min():.2f}-{worst.max():.2f}x), and the median runs far below it — at
-    a cap of 1.5x the middle-world bill, a median of
-    {pd_lo:.1f}-{pd_hi:.1f} B$ ({sh_lo*100:.0f}-{sh_hi*100:.0f}% of the failing world's
-    total bill) is committed before the alarm. Held-out false alarms stay within the
-    budget (max {fpr_max:.3f} against the 0.075 gate). The observer knows the ensemble
-    and the noise model — an upper bound on real detectability; information, not a
-    recommendation.
+    What observation buys, and what it cannot. (a) The cost of learning that the bridge
+    is failing: present value of subsidy committed when a spending cap flags a world
+    whose total bill will exceed the cap, against the cap itself (both in 2024$B), one
+    panel per schedule; light band p05-p95, dark band interquartile, line median, across
+    exceeding worlds and observation histories at the middle noise level (30%
+    per-project scatter + a shared 10% industry-wide yearly shock); dotted diagonal:
+    spend = cap. The observer holds a conformal 5% false-alarm budget over the model's
+    own cost-world ensemble and also reads the outlay ledger every year, so detection is
+    guaranteed no later than the year spend crosses the cap: the p95 committed spend
+    stays at or below the cap everywhere (per-schedule worst points
+    {worst.min():.2f}-{worst.max():.2f}x), and the median runs far below it — at a cap
+    of 1.5x the median-world (P50) bill, a median of {pd_lo:.1f}-{pd_hi:.1f} B$
+    ({sh_lo*100:.0f}-{sh_hi*100:.0f}% of the failing world's total bill) is committed
+    before the alarm. Held-out false alarms stay within the budget (max {fpr_max:.3f}
+    against the 0.075 gate). (b) The calibration limit: how well the same observations
+    pin down the support level the program needs. Width of the 90% confidence interval
+    on the average statutory rate the credit path must carry (the credit-scale interval
+    converted at the reference path's outlay-weighted average rate; top row) and on the
+    SMR learning rate (bottom row, points), against cumulative committed spend (2024$B),
+    one column per schedule, three noise levels (thick with markers = middle); the point
+    at zero spend is the range before any unit completes; dashed line = the registered
+    design tolerance of five statutory points (top row only). No schedule approaches the target at any noise level: after the whole
+    program the interval is still {pm_lo:.0f}-{pm_hi:.0f} points wide at the middle
+    noise level ({pl_lo:.0f}-{pl_hi:.0f} light, {ph_lo:.0f}-{ph_hi:.0f} heavy;
+    {pri32.min():.0f}-{pri32.max():.0f} before observation), {ratio_lo:.1f}-{ratio_hi:.1f}x
+    the target, and only {plateau} plateau by 2050 under the registered rule (the others
+    are still declining at the horizon) — while the learning-rate interval narrows from
+    {lr0:.1f} to {lr_lo:.1f}-{lr_hi:.1f} points: the coarse quantity is learned, the
+    design quantity is not (audit grid in scale units: SF39). Together: observation tells the government when to stop
+    paying, not how much to pay. Both observers know the ensemble and the noise model —
+    upper bounds on real learnability; information, not a recommendation.
     ''')
     """),
 
     # ---------------------------------------------------------------- Fig 6
     md(r"""
-    ## Figure 6 — Required tax-credit rates and the cost of voluntary delivery
+    ## Figure 6 — The statutory wall: what caps can and cannot buy
 
-    Recomposed 2026-08-24 (team review, option B): the f16 menu panel moved
-    to SF31 and the closed-loop delivery panel to SF23 — delivery validates
-    the funding claim, it is not a standalone finding. Renumbered from
-    Fig 5 to Fig 6 on 2026-08-26, when the cost-of-detection figure took
-    the Fig 5 slot. The figure is three
-    panels, all on the voluntary instruments only, and panels (b) and (c)
-    are linear. Panel (c) — the rate–deployment cliff — was promoted the
-    same day (an explicit one-exhibit reversal of the delivery-to-SI
-    demotion: the cliff is a rate result, not a validation exhibit; the
-    validation exhibits stay in SF23).
+    Recomposed 2026-08-24 (option B), renumbered 2026-08-26, panel (a)
+    swapped + menu reframing 2026-08-31 (plan v10.42/v10.43).
+    **Recomposed again 2026-09-02 (Ethan, outline fourteenth pass):** the
+    budget menu (k02) is superseded by the statutory-cap feasibility mask
+    and moves to SF35 (ST13 stays its table); the uniform-ITC-vs-ambition
+    panel (f17) moves to SF36 — the instrument premium over the floor is
+    modest in practice (1.17–1.25x at p50), so that panel re-plots the
+    Fig 4 bill shape in rate units. Panels (a) and (b) now come from the
+    zero-run declining-credit analysis (`z-ethan/rate_design/` v2.1; three
+    fresh-context audits adjudicated; Part B verdict INCLUDE AS REPAIRED
+    in `u91_verdict.csv`). Panel (c) — the rate–deployment cliff — is
+    unchanged.
 
     **What this shows.** The shadow price is a model price. This figure
-    translates it into the actual US policy instrument, prices the
-    translation, and shows what under-paying it buys. Panel (a): the
-    required investment tax
-    credit (ITC) rate, by year and case,
-    on the **model credit convention** (i_model: the fin_mult inversion plus
-    the 10% monetization haircut; the placed-in-service overnight-cost-only
-    conversion i_pis = i_model x ccmult is exported per year). The shaded band
-    marks the current 48E credit range (30–50%); the line at 100% marks where
-    an ITC alone cannot deliver. Panel (b): the **cost of buying the same
-    deployment voluntarily** — the uniform percentage credit's net-of-tax
-    present-value cost as a multiple of the minimum-cost floor (a flat
-    dollar-per-MW payment at commissioning with frictionless monetization),
-    by schedule, ordered by 2050 ambition (f17). Panel (c): the
-    **rate–deployment cliff** (j06) — new-nuclear 2050 capacity against the
-    credit rate on the same basis as panel (a), combining the flat-credit
-    anchors, the 24-run minus-probe ladders, and the headline schedule
-    points; new nuclear equals SMR capacity exactly because large-reactor
-    additions are credit-invariant in every run (the zero-substitution
-    result).
+    translates it into statutory credit terms and shows where the
+    translation hits a wall. Panels (a) and (b) are the legended paper
+    variants (w34/w35, emitted 2026-09-02 after Ethan's legend review —
+    the analysis originals w30/w32 explained their encodings in notebook
+    markdown, which a composed figure does not carry). Panel (a):
+    **per-world required statutory rates** — for each schedule and build
+    year, the credit rate on the world's own build cost that just covers
+    its cushioned requirement, fanned across the 10,000 cost worlds
+    (median solid; interquartile and p5–p95 bands; thin dotted lines =
+    the ±20% certificate-band medians; grey dashed = the reference credit
+    path, the model-certified headline; the grey band on aj/mck/eo = the
+    run-certified minimal-rate bracket, one to five rate points below the
+    reference — the delivery-minimal rate lies inside it). The horizontal
+    red lines are the statutory ceilings: dotted 0.50 (today's stackable
+    maximum: 30% base + 10% energy community + 10% domestic content) and
+    dash-dot 0.60 (the registered outer bound). Red triangles mark the
+    three censored cells (cop28 2050, eo 2047/2050): the source rates
+    there exceed 100% of basis, so the drawn values are lower bounds.
+    The full legend is in the figure.
+    Panel (b): the **credit-feasibility mask and the demonstration tier**
+    — left, the share of worlds above the cap by build year (solid 60%,
+    dotted 50%; the vertical dashed line is the demonstration-window edge,
+    2035); right, the demonstration funding requirement in 2024\$B (the
+    fixed-basis PV of above-cap need inside the window; median solid, p95
+    faint; eia not applicable — its first build year is 2038, so the
+    window contains no eia year). Panel (c): the **rate–deployment cliff**
+    (j06) — new-nuclear 2050 capacity against the credit rate, combining
+    the flat-credit anchors, the 24-run minus-probe ladders, and the
+    headline schedule points; new nuclear equals SMR capacity exactly
+    because large-reactor additions are credit-invariant in every run
+    (the zero-substitution result).
 
-    **How to read it.** In panel (a), rates are per-region requirements; the
-    headline is the maximum building region. Where a line sits above the 48E
-    band, current law is not enough. Where it crosses 100%, no credit
-    percentage can close the gap. In panel (b), distance above 1.0 is money
-    the instrument wastes relative to the floor: the solid line is the floor,
-    the dotted line is the floor with only the 10% monetization haircut
-    applied (x1.111), markers are the median (P50) cost world, and whiskers
-    span P5–P95. In panel (c), the shaded band is the same 48E range as in
-    panel (a): the entire current-law range sits in the flat tail of the
+    **How to read it.** In panel (a), wherever a fan sits above a ceiling
+    line, that share of worlds cannot be served by a statutory credit at
+    that cap in that year. Before 2035 the demonstration window absorbs
+    the excess as grant cost share; after it, above-cap need means the
+    capped credit alone fails that world. In panel (b), the post-window
+    share above the cap is the not-credit-feasible share — the mask's key
+    output. In panel (c), the shaded band is the current 48E credit range
+    (30–50%): the entire current-law range sits in the flat tail of the
     response, and the cliff starts a few points past its right edge.
 
-    **Key results.** Median-world required rates average 0.59–0.74 across
-    schedules — 2.0–2.5 times the current base credit. Expensive worlds need
-    2.7–3.1 times; on the headline convention only 5 of 329 rated case-years
-    exceed 100% (the i_pis conversion exceeds 100% in 82). The uniform
-    percentage credit costs 1.17–1.25x the floor in every case — the ~10%
-    monetization haircut plus a 5–13% uniform-rate oversubsidy, two frictions
-    and nothing else — and the premium does not grow with ambition, cost
-    world, or technology; the unleveraged cash grant sits at 1.04x. The
-    mandate and commitment-bound benchmarks are context, not results
-    (demotion ruling 08-20 — the paper reports the floor and the ITC): the
-    full menu with the mandate's cut-hold band (0.23–0.90x the floor for the
-    SMR program, 0.83–5.65x for the large-reactor arm where the pre-existing
-    fleet's rent of 141–675 B$ PV dominates) is SF31. The mandate prices the
-    same deployment by coercion: the shortfall against the builders'
-    requirement lands on early-vintage capital, a first-cohort transfer
-    rather than a repeatable voluntary price.
+    **Key results** (computed in the cell below from `u50`/`u51`/`u52`).
+    Most cost worlds need above-cap support in at least one post-window
+    year, in every schedule: the post-window infeasible share is
+    ~0.27–0.90 at the 60% cap and ~0.56–1.00 at the 50% statutory
+    maximum, quoted ONLY as cap x certificate-band ranges. The
+    demonstration tier is priced: base-case medians at the 60% cap run
+    \$0.85B (aj) to \$23.5B (eo), p95 \$114B (base band; the band values
+    are larger — ST14). The message: a statutory-capped credit alone
+    reaches only the cheap tail of the cost distribution, and observation
+    cannot rescue this by fine-tuning (Fig 5b).
+
+    **Mandatory framings (from the adjudicated audit record — never quote
+    past them).** The mask is a range table, never a single number (the
+    ±20% certificate band moves the shares); it is presented at both caps
+    because the cap choice moves the eia/aj shares 20–23 points
+    (registered kill KB2 fired — a cap-sensitivity table, not a
+    single-cap exhibit). cop28's demonstration framing is killed
+    (registered kill KB1: its above-cap need persists past the window at
+    the low band end — its gap is a band range with no early-concentration
+    story). eia is N/A for the demonstration framing (empty window), not
+    satisfied by it. The p95 fan edge is clamp-pinned in 31 of 55
+    schedule-year cells (there the drawn p95 is the top anchor's own
+    rate, not a distribution quantile); the outlay calibration carries a
+    ±5% systematic. Paper text is written from the `u91` dispositions,
+    never from exhibit markdown.
 
     **The cliff (panel c) and the delivery validation (SI).** The response
     to the rate is a cliff, not a slope: zero SMR at a flat 30% credit,
@@ -662,95 +818,106 @@ main_cells = [
     against 27–381 GW at the schedule rates. The 24-run minus probe brackets
     the delivery-minimal rate within five points below the headline, and
     below the boundary the learning feed-back amplifies the shortfall
-    instead of cushioning it (solid fbC curves under the dashed fbB curves
-    on the low side, over them at the headline). The closed-loop delivery
-    validation stays in the SI: the credit alone reproduces the mandated
-    deployment in 5 of 6 median worlds (EIA partial: a delayed start under
-    myopic lagged costs, recovering past its trajectory by 2050) and
-    over-delivers (1.3–2.7x), never under (SF23, ST9, SN6).
-
-    The two legal rate-level inputs are resolved (2026-08-20, open item 7):
-    the monetization haircut defaults to 10% (bank tax-equity partnership)
-    with an exact x0.947 conversion to the 5% best-transfer-market variant,
-    and depreciation is 15-year MACRS throughout (hypothetical-policy
-    convention; no current-law conversion reported). The haircut range moves
-    every rate in panel (a) by an exact factor; nothing changes the shape.
-    Per-case ranges: step3 t20 export; legal detail:
-    `ITC calculation procedure.md`.
+    instead of cushioning it. The closed-loop delivery validation stays in
+    the SI: the credit alone reproduces the mandated deployment in 5 of 6
+    median worlds (EIA partial: a delayed start under myopic lagged costs,
+    recovering past its trajectory by 2050) and over-delivers (1.3–2.7x),
+    never under (SF23, ST9, SN6). The budget menu and the
+    uniform-ITC-vs-floor panel live on as SF35/SF36 with their tables
+    (ST13, ST6); the required-rate-by-solve-year detail is SF33/ST6.
     """),
     code(r"""
     P.compose(
-        [[S3_FIG / "f13_required_itc.png"],
-         [S3_FIG / "f17_itc_vs_ambition.png", ITCFBM_FIG / "j06_new_nuclear_cliff.png"]],
+        [[RD_FIG / "w34_rate_fans_paper.png"],
+         [RD_FIG / "w35_mask_gap_paper.png", ITCFBM_FIG / "j06_new_nuclear_cliff.png"]],
         "Fig6_required_itc_and_menu.png",
         letters="abc",
         center=True,  # row widths differ; do not leave a blank corner
     )
     P.source_ref(
-        (S3_FIG / "f13_required_itc.png", "step3_analysis/step3_analysis.ipynb", "cell 40",
-         "`step3_analysis/exports/t09_required_itc.csv` (model convention, regenerated 2026-08-18)"),
-        (S3_FIG / "f17_itc_vs_ambition.png", "step3_analysis/step3_analysis.ipynb", "cell f17cd001",
-         "`t18_instrument_menu.csv` (voluntary instruments only; option B panel, 2026-08-24)"),
+        (RD_FIG / "w34_rate_fans_paper.png", "rate_design/rate_design_v2.ipynb",
+         "S7 paper-variant cell (legended twin of the w30 audit artifact)",
+         "`u50_requirement_fans.csv` (certificate: 18 exact anchors G1 + stage-2 +-20% band + "
+         "r03 cushion; registration: `rate_design/methods.md` v2/v2.1)"),
+        (RD_FIG / "w35_mask_gap_paper.png", "rate_design/rate_design_v2.ipynb",
+         "S7 paper-variant cell (legended twin of the w32 audit artifact)",
+         "`u51_feasibility_mask.csv` + `u52_demonstration_gap.csv` (kills KB1/KB2 adjudicated; "
+         "verdicts + dispositions in `u91_verdict.csv`)"),
         (ITCFBM_FIG / "j06_new_nuclear_cliff.png", "itcfbm_analysis/itcfbm_analysis.ipynb",
          "cell j06cd001", "`r04_rate_deployment.csv` (statutory basis, new nuclear only; "
          "promoted 2026-08-24)"),
     )
 
-    t09 = pd.read_csv(S3_EXP / "t09_required_itc.csv")
-    r = t09[t09["status"] == "rate"]
-    smr_r = r[r["case"].str.startswith("smr100")]
-    p50 = smr_r[smr_r["case"].str.endswith("p50")].groupby("case")["i_model_headline"].mean()
-    print(f"p50 required rate (model convention), schedule averages: {p50.min():.2f}-{p50.max():.2f} "
-          f"(= {p50.min()/0.30:.1f}x-{p50.max()/0.30:.1f}x the 30% base 48E credit)")
-    ded = r[~r["case"].str.endswith("_eq")]
-    n100 = int((ded["i_model_headline"] > 1.0).sum())
-    n100p = int((ded["i_pis_headline"] > 1.0).sum())
-    print(f"case-years over 100%: {n100} of {len(ded)} on the model convention; "
-          f"{n100p} on the placed-in-service OCC-only conversion")
+    u50 = pd.read_csv(RD_EXP / "u50_requirement_fans.csv")
+    br = u50[(u50["band"] == "base") & (u50["quantity"] == "rate")]
+    cen = br[br["censored"] == True]  # noqa: E712 — literal bool column
+    cen_txt = ", ".join(f"{r.schedule} {int(r.year)}" for r in cen.itertuples())
+    n_clamp, n_cells = int((br["p95_clamp_pinned"] == True).sum()), len(br)  # noqa: E712
+    assert len(cen) == 3 and n_cells == 55
+    print(f"censored cells (source rates exceed 100% of basis; drawn values are lower "
+          f"bounds): {cen_txt}")
+    print(f"p95 clamp-pinned cells: {n_clamp}/{n_cells}")
 
-    t18 = pd.read_csv(S3_EXP / "t18_instrument_menu.csv")
-    m18 = t18[~t18["case"].str.endswith("_eq")]
-    hair = float(m18["dpmw_haircut"].iloc[0])
-    ov_lo = (m18["uniform_itc"].min() / hair - 1) * 100
-    ov_hi = (m18["uniform_itc"].max() / hair - 1) * 100
-    print(f"uniform ITC vs floor: {m18['uniform_itc'].min():.2f}-{m18['uniform_itc'].max():.2f}x "
-          f"(haircut x{hair:.3f} + oversubsidy {ov_lo:.0f}-{ov_hi:.0f}%); "
-          f"cash grant {m18['cash_grant'].iloc[0]:.2f}x")
+    u51 = pd.read_csv(RD_EXP / "u51_feasibility_mask.csv")
+    pw = u51[(u51["kind"] == "per_world") & (u51["window"] == "w2035")]
+    r60 = pw[pw["cap"] == 0.6]["share_not_credit_feasible"]
+    r50 = pw[pw["cap"] == 0.5]["share_not_credit_feasible"]
+    print(f"post-window infeasible share (quoted ONLY as cap x band ranges): "
+          f"60% cap {r60.min():.2f}-{r60.max():.2f}; 50% cap {r50.min():.2f}-{r50.max():.2f}")
+
+    u52 = pd.read_csv(RD_EXP / "u52_demonstration_gap.csv")
+    g = u52[(u52["band"] == "base") & (u52["cap"] == 0.6)
+            & (u52["window"] == "w2035") & (u52["window_applicable"] == True)]  # noqa: E712
+    gk = g[g["schedule"] != "cop28"]  # cop28's demonstration framing is killed (KB1)
+    gmin, gmax = gk["gap_p50_B"].min(), gk["gap_p50_B"].max()
+    gcop = float(g[g["schedule"] == "cop28"]["gap_p50_B"].iloc[0])
+    g95 = g["gap_p95_B"].max()
+    print(f"demonstration gap medians (base band, 60% cap, window <= 2035): "
+          + ", ".join(f"{r.schedule} {r.gap_p50_B:.1f}" for r in g.itertuples())
+          + f" B$; p95 max {g95:.0f} B$ (base band; band ends larger -> ST14)")
 
     P.caption("Fig 6", f'''
-    Required ITC rates and the cost of voluntary delivery. (a) The required
-    investment-tax-credit rate by
-    solve year on the model credit convention (fin_mult inversion + 10% monetization haircut;
-    the placed-in-service overnight-cost-only conversion is exported per year), P50 lines with
-    P5-P95 whiskers; band = current 48E range (30-50%), line = 100%. Median-world schedule
-    averages run {p50.min():.2f}-{p50.max():.2f} ({p50.min()/0.30:.1f}-{p50.max()/0.30:.1f}x
-    the base credit); {n100} of {len(ded)} rated case-years exceed 100% ({n100p} on the
-    placed-in-service conversion). (b) The net-of-tax present-value cost of a uniform
-    percentage credit, as a multiple of the minimum-cost floor — a flat dollar-per-MW
-    payment at commissioning with frictionless monetization — by mandate schedule,
-    ordered by 2050 ambition; markers = median (P50) cost world, whiskers = P5-P95
-    range. The credit costs
-    {m18['uniform_itc'].min():.2f}-{m18['uniform_itc'].max():.2f}x the floor in every
-    case: the ~10% monetization haircut (dotted line, x{hair:.2f}) plus a
-    {ov_lo:.0f}-{ov_hi:.0f}% oversubsidy from paying one flat rate where required rates
-    differ across regions and years; an unleveraged cash grant (grey line) prices at
-    {m18['cash_grant'].iloc[0]:.2f}x. The premium does not grow with ambition, cost
-    world, or technology. Rates are final: 10% haircut headline (x0.947 at the 5%
-    best-transfer variant); 15-year MACRS convention throughout. (c) New-nuclear
-    deployment against the credit rate, on the same rate basis as (a); shaded band =
-    the 48E range. New nuclear equals SMR capacity: large-reactor additions are
-    credit-invariant in every run (the zero-substitution result), so all points share
-    the no-credit baseline. Black squares: flat credits — zero at 30%, 9.8 GW at 50%;
-    the entire current-law range buys almost nothing. Colored curves: the minus-probe
-    ladders (headline-0.15 ... -0.01, then the headline) with draw-calibrated
-    endogenous learning (solid) and learning frozen (faint dashed); single dots mark
-    headline-only worlds. The response is a cliff, not a slope: five rate points below
-    the headline, delivery fails in every world, and below the boundary learning
-    amplifies the shortfall while above it learning amplifies delivery. A
-    capacity-standard mandate can price the same deployment below the floor only by
-    coercion — its shortfall lands on early-vintage capital, a first-cohort transfer
-    rather than a repeatable voluntary price (SF31); closed-loop delivery validation:
-    SF23 and ST9.
+    The statutory wall: what caps can and cannot buy. (a) Required statutory credit
+    rate on each world's own build cost, per schedule and build year, fanned across
+    the 10,000 cost worlds (median solid; interquartile and p5-p95 bands; thin dotted
+    = the +-20% certificate-band medians; grey dashed = the reference credit path,
+    the model-certified headline; grey band on aj/mck/eo = the run-certified
+    minimal-rate bracket, one to five rate points below the reference); dotted red
+    horizontal line = the 0.50 stackable statutory maximum (30% base + 10% energy
+    community + 10% domestic content), dash-dot = the 0.60 registered outer bound.
+    Red triangles mark the three censored cells ({cen_txt}):
+    their source rates exceed 100% of basis, so the drawn values are lower bounds; the
+    p95 fan edge is clamp-pinned in {n_clamp} of {n_cells} schedule-year cells (the
+    drawn p95 is then the top anchor's own rate, not a distribution quantile).
+    (b) Left: share of worlds above the cap by build year (solid 60%, dotted 50%;
+    vertical dashed line = the demonstration-window edge, 2035 — inside the window,
+    grant-type federal cost share to first units is the assumed vehicle for above-cap
+    need). Right: the demonstration funding requirement — the fixed-basis present
+    value of above-cap need inside the window (median solid, p95 faint; eia not
+    applicable: its first build year is 2038, so the window contains no eia year).
+    Post-window, the share above the cap is the not-credit-feasible share:
+    {r60.min():.2f}-{r60.max():.2f} at the 60% cap and {r50.min():.2f}-{r50.max():.2f}
+    at the 50% cap, across schedules and the +-20% certificate band — quoted only as
+    ranges. The cap choice alone moves the eia/aj shares 20-23 points (the mask is a
+    cap-sensitivity table), and cop28's above-cap need persists past the window at the
+    low band end, so its demonstration framing is withdrawn (its median,
+    {gcop:.1f} B$, is quoted only as a band range). Where the framing stands, the
+    demonstration-gap medians at the 60% cap run {gmin:.2f}-{gmax:.1f} B$ (base band;
+    p95 to {g95:.0f} B$, larger at the band ends — ST14); the outlay calibration
+    carries a +-5% systematic. A statutory-capped credit alone reaches only the cheap
+    tail of the cost distribution, in every schedule — and observation cannot rescue
+    this by fine-tuning the scale (Fig 5b). (c) New-nuclear deployment against the
+    credit rate, on the model credit convention; shaded band = the 48E range (30-50%).
+    New nuclear equals SMR capacity: large-reactor additions are credit-invariant in
+    every run (the zero-substitution result). Black squares: flat credits — zero at
+    30%, 9.8 GW at 50%; the entire current-law range buys almost nothing. Colored
+    curves: the minus-probe ladders (headline-0.15 ... -0.01, then the headline) with
+    draw-calibrated endogenous learning (solid) and learning frozen (faint dashed).
+    The response is a cliff, not a slope: five rate points below the headline,
+    delivery fails in every world, and below the boundary learning amplifies the
+    shortfall while above it learning amplifies delivery. The budget menu and the
+    uniform-ITC-vs-floor comparison live in SF35/SF36 (tables ST13/ST6); required-rate
+    detail by solve year: SF33.
     ''')
     """),
 
@@ -759,13 +926,17 @@ main_cells = [
     ## Figure 7 — Robustness across market worlds
 
     **What this shows.** Do the headline results depend on our base market
-    assumptions? We re-ran 18 cases under six market sensitivities (gas price
-    high/low, high-electrification demand, renewable costs cheap/dear, and a
-    transmission-limited world): 108 runs, all output checks green. Panel (a):
-    for every case × market world, does the bridge shape survive? Panel (b):
-    the shadow-price paths for the ladder's end schedules, overlaid across
-    market worlds. Panel (c): the large-reactor comparator against the SMR
-    program, by cost-world percentile.
+    assumptions? We re-ran the 18 SMR percentile cases under six market
+    worlds (gas price high/low, high-electrification demand, renewable costs
+    cheap/dear, and a transmission-limited world): 108 runs, all output checks
+    green. Panel (a): for every case × market world, does the bridge shape
+    survive? Panel (b): the shadow-price paths for the smallest and largest
+    schedules, overlaid across market worlds. Panel (c): the large-reactor
+    comparator against the SMR program, by cost-world percentile (base market
+    world only). The two threshold results of S3 — the statutory wall and the
+    spending-cap alarm — are transferred to the same six alternative market
+    worlds in `market_transfer/` (ST18, SF40–SF41); the caption carries the
+    six-world envelopes, the base ranges stay in the Fig 6b and Fig 5a captions.
 
     **How to read it.** Panel (a) is pass/fail: a cell "survives" when the case
     keeps its decay class **or** its end-over-peak ratio moves by at most 0.15
@@ -780,12 +951,19 @@ main_cells = [
     - The bridge shape survives in **108 of 108** cells, and no market world
       unbinds a mandate. The expensive-world non-decay is generic, not a
       base-world artifact.
-    - The ambition ladder's fiscal ordering survives (Kendall τ ≥ 0.867 in
+    - The fiscal ordering of the six schedules survives (Kendall τ ≥ 0.867 in
       every cell against base, mean 0.993).
     - Only the level moves, and it moves as economics predicts: the median
-      shadow price is −27% under high gas prices, +18% under low, −8% under
-      high demand, +9%/−10% under cheap/dear renewables, −5%
-      transmission-limited.
+      shadow price moves −27% to +18% across the six market worlds (the
+      six-number list is in SF22/ST17).
+    - The level shift passes straight into the required tax-credit rate (the
+      conversion is linear in the shadow price for a fixed case-year), so the
+      statutory wall of S3-4 is a base-market-world number — across the six
+      alternative worlds the 0.60-ceiling share runs from none of the cost
+      worlds to all of them (the band-qualified high-gas and low-gas statements
+      are in the SF40 caption; ST18). The spending-cap alarm's
+      committed spend moves with the bill scale; its share of the failing
+      world's bill barely moves (ST18, SF41).
     - The large-reactor premium is not a constant. Large needs 1.4–3.5× the
       SMR shadow price in cheap worlds, 1.23–1.36× at the median — but at P95
       the two technologies reach parity (0.95–1.02×): in expensive worlds both
@@ -801,7 +979,7 @@ main_cells = [
         (S4_FIG / "g02_shape_survival_matrix.png", "step4_analysis/step4_analysis.ipynb", "cell 11",
          "`step4_analysis/exports/s02_shape_survival.csv`"),
         (S4_FIG / "g03_dual_overlays.png", "step4_analysis/step4_analysis.ipynb", "cell 12",
-         "step3+step4 checks `duals_by_year.csv` (eia/eo x p05/p50/p95 x 7 arms)"),
+         "step3+step4 checks `duals_by_year.csv` (eia/eo x p05/p50/p95 x base + six market worlds)"),
         (S3_FIG / "f15_large_band.png", "step3_analysis/step3_analysis.ipynb", "cell 23",
          "combined duals, large100 vs smr100 shared binding years; table: `t15_large_ratio.csv`"),
     )
@@ -818,14 +996,51 @@ main_cells = [
     t15 = pd.read_csv(S3_EXP / "t15_large_ratio.csv")
     print(t15.groupby("pct")["ratio_large_over_smr"].agg(["min", "max"]).round(2).to_string())
 
+    # the market-world transfer of the S3 threshold results (market_transfer, v04/v06)
+    v04 = pd.read_csv(MT_EXP / "v04_mask_range_table.csv")
+    v04 = v04[v04["window"] == "w2035"]
+    assert set(v04["world"]) == {"base", "gaslo", "gashi", "demhi", "relo", "rehi", "translim"}
+    env = (v04[v04["world"] != "base"].groupby("cap")
+           .agg(base_lo=("base_lo", "min"), base_hi=("base_hi", "max"), lo=("lo", "min"), hi=("hi", "max"),
+                mid_lo=("mid", "min"), mid_hi=("mid", "max")))
+    assert set(env.index) == {0.5, 0.6}
+    # the base ranges must equal the S3-4 / rate_design ones (u91 mask-range 0.27-0.90 at 0.60)
+    assert abs(env.loc[0.6, "base_lo"] - 0.265) < 5e-4 and abs(env.loc[0.6, "base_hi"] - 0.9045) < 5e-4
+    v06 = pd.read_csv(MT_EXP / "v06_detection_summary.csv")
+    own = v06[v06["normalization"] == "own_p50"]
+    assert len(own) == 6 and (own["n_worlds_clean"] >= 1).all()
+    n_excl = int((own["n_worlds_in_grid"] - own["n_worlds_clean"]).sum())
+    _wname = {"gaslo": "low gas", "gashi": "high gas", "demhi": "high demand", "relo": "cheap renewables",
+              "rehi": "dear renewables", "translim": "transmission-limited"}
+    excl = sorted({f"{_wname[w]}/{ab}" for ab, ws in zip(own["schedule"], own["worlds_excluded"].fillna(""))
+                   for w in ws.split(";") if w})
+    e60, e50 = env.loc[0.6], env.loc[0.5]
+    print(f"wall envelope 0.60: base {e60['base_lo']:.2f}-{e60['base_hi']:.2f}, "
+          f"worlds {e60['lo']:.2f}-{e60['hi']:.2f}; 0.50: base {e50['base_lo']:.2f}-"
+          f"{e50['base_hi']:.2f}, worlds {e50['lo']:.2f}-{e50['hi']:.2f}")
+
     P.caption("Fig 7", f'''
-    Robustness across market worlds (108 sensitivity runs: 18 cases x six market arms).
-    (a) Bridge-shape survival matrix: the shape survives in {n_surv} of
+    Robustness across market worlds (108 sensitivity runs: the 18 SMR percentile cases x six
+    market worlds). (a) Bridge-shape survival matrix: the shape survives in {n_surv} of
     {len(surv)} cells — the expensive-world non-decay is generic. (b) Shadow-price overlays
-    for the ladder's end schedules across market worlds: only the level moves, in the
-    direction economics predicts (median -27% to +18%). (c) Large-reactor vs SMR shadow
-    prices by percentile: the large premium is 1.4-3.5x in cheap worlds and 1.23-1.36x at
-    the median, but the two technologies reach parity (0.95-1.02x) in expensive worlds.
+    for the smallest and largest schedules across market worlds: only the level moves, in
+    the direction economics predicts (median -27% to +18%). (c) Large-reactor vs SMR shadow
+    prices by percentile, base market world: the large premium is 1.4-3.5x in cheap worlds
+    and 1.23-1.36x at the median, but the two technologies reach parity (0.95-1.02x) in
+    expensive worlds. Transfer of the S3 threshold results
+    (ST18; SF40-SF41), quoted over the six alternative market worlds with the base ranges in
+    the Fig 6b and Fig 5a captions: the share of cost worlds needing an above-ceiling credit
+    rate in a post-window build year (build years after 2035) spans {e60['lo']:.2f}-{e60['hi']:.2f}
+    at the 0.60 ceiling (band centre {e60['mid_lo']:.2f}-{e60['mid_hi']:.2f}) and {e50['lo']:.2f}-{e50['hi']:.2f}
+    at 0.50 (band centre {e50['mid_lo']:.2f}-{e50['mid_hi']:.2f}); the median spend committed
+    before the spending-cap alarm (1.5x the world's own median-world (P50) bill, middle noise)
+    spans {own['worlds_paid_p50_B_min'].min():.1f}-{own['worlds_paid_p50_B_max'].max():.1f} B$
+    ({own['worlds_share_paid_min'].min():.0%}-{own['worlds_share_paid_max'].max():.0%} of the
+    failing world's bill; starting probability of exceedance
+    {own['worlds_prior_min'].min():.2f}-{own['worlds_prior_max'].max():.2f}), excluding the
+    {n_excl} world-schedule cells whose bill interpolation fails its +/-20% test
+    ({", ".join(excl) if excl else "none"}; range-only, ST18). Ranges are min-max over
+    schedules, certificate-band ends, and worlds; SMR program throughout.
     ''')
     """),
 
@@ -1036,7 +1251,8 @@ _ST10_CODE = code(r"""
          "independent",
          "Abou-Jaoude's 4 vendors to the current 7+ US vendors"),
         ("Experience-base convention", "c",
-         "tiny-base or full-stock, probability 1/2 each",
+         "fresh start (tiny base) or legacy fleet credited (full stock), "
+         "probability 1/2 each",
          "independent",
          "structural (model-form) uncertainty; US large-reactor history "
          "counts for large only"),
@@ -1149,9 +1365,9 @@ appx_cells = [
 
     # ------------------------------------------------------------- SN notes
     md(r"""
-    ## Supplementary Notes (SN1–SN8) — pointers
+    ## Supplementary Notes (SN1–SN10) — pointers
 
-    The eight supplementary notes are text, not display items. They are
+    The ten supplementary notes are text, not display items. They are
     drafted from these sources:
 
     | Note | Content | Source of record |
@@ -1163,7 +1379,9 @@ appx_cells = [
     | SN5 | Validation registries (pilot forensics; output checks) | `z-ethan/step3_checks/`, `z-ethan/step4_checks/` (summaries in ST8 below) |
     | SN6 | The endogenous-learning feed-back check: arm design (fbA/fbB/fbC/fbK/fbR), verdicts, and the minus-probe minimality bracket | `z-ethan/itcfb_analysis/itcfb_analysis.ipynb` + `z-ethan/itcfbm_analysis/itcfbm_analysis.ipynb` (tables in ST9 below) |
     | SN7 | The ATB basis mapping: the QA replication pin (max error $500/kW), the anchor-convention premium, the experience-basis comparison, and the deployment-space reading | `mc/mc_cost_trajectories.ipynb` (QA4) + `mc/atb_parameter_space.ipynb` (cell `atb-26-a27_qa`) |
-    | SN8 | Bridge-failure detection: the ensemble observer, the bill attachment, the noise model, the conformal false-alarm calibration, the bias experiment, and the spend-aware exceedance amendment (2026-08-25; methods.md section 6) | `z-ethan/bridge_detection/methods.md` + `status.md` (tables in ST11, figures in SF25–27 below; the committed-spend figure is main-text Fig 5) |
+    | SN8 | Bridge-failure detection: the ensemble observer, the bill attachment, the noise model, the conformal false-alarm calibration, the bias experiment, and the spend-aware exceedance amendment (2026-08-25; methods.md section 6) | `z-ethan/bridge_detection/methods.md` + `status.md` (tables in ST11, figures in SF25–27 below; the committed-spend figure is main-text Fig 5a) |
+    | SN9 | The declining-credit requirement analysis (zero-run), the cost-of-information limit, and the registered batch (new 2026-09-02; reallocated 2026-09-04 to 66 runs = 48 ITC-arm + 12 p25/p75 anchors + 6 horizon, reserve retired): the per-world requirement machinery and its certificate chain, the feasibility mask with its kill dispositions, the demonstration-gap accounting, the dollar-menu certificate scope, the exposure/allocation-cap argument, the Part A restatement, the batch gates + claim ladder, and the anchor-densification registration (GA1/GA2, the out-of-sample test of the three-anchor interpolation) | `z-ethan/rate_design/methods.md` (v2 + v2.1 + v2.2) + `status.md` (adjudications) + `exports/u91_verdict.csv` (tables in ST14–ST16, figures in SF34/SF37/SF38/SF39 below; the fans/mask are main-text Fig 6a/6b, the calibration limit is Fig 5b) |
+    | SN10 | The market-world transfer (new 2026-09-02): the required credit rate re-derived on every step4 sensitivity output file (the t09 chain; gate G0a reproduces t09 exactly), the exact shadow-price-ratio x region-set-factor decomposition, the statutory mask per market world (gate G0b reproduces u50/u51), the paired per-world re-run of the spending-cap alarm (common random numbers; gates G-CRN, G-H1w), and the KT1-KT5 kill rules | `z-ethan/market_transfer/methods.md` (v1–v1.4) + `status.md` (review rounds) + `exports/v09_verdict.csv` (tables in ST18, figures SF40-SF41; the envelopes in the Fig 7 caption) |
     """),
 
     # ---------------------------------------------------------------- SF1-3
@@ -1293,22 +1511,28 @@ appx_cells = [
     ''')
     """),
     md(r"""
-    ## SF6 — Mixed builds: does any split beat the pure programs?
+    ## SF6 — Mixing the program: the mixed-build search and the fragmentation penalty
 
     **What this shows.** A per-draw optimizer searches all mixed strategies
     (splitting the program between the technologies in any share). Maps show
-    where in parameter space a mix would win and by how much.
+    where in parameter space a mix would win and by how much. Panel (f) — the
+    fragmentation histogram, main-text Fig 3b until the 2026-08-31
+    recomposition — shows the cost of the simplest hedge: a 50/50 split under
+    the McKinsey schedule.
 
     **Key result.** Mixes beat the best pure program in 10 of 60,000 draws, by
-    at most 0.51%. Fragmentation costs (split learning) dominate hedging value
-    almost everywhere.
+    at most 0.51%. Splitting 50/50 costs a median 16.7% of program cost.
+    Fragmentation costs (split learning) dominate hedging value almost
+    everywhere.
     """),
     code(r"""
     P.compose(
         [[MC_FIG / "mixed_build_advantage.png"],
-         [MC_FIG / "mixed_build_margin_map.png", MC_FIG / "mixed_build_parameter_space.png"]],
+         [MC_FIG / "mixed_build_margin_map.png", MC_FIG / "mixed_build_parameter_space.png"],
+         [MC_FIG / "fragmentation_hist.png"]],
         "SF6_mixed_build.png",
-        letters=["", "", "e"],  # first two sources carry a,b / c,d themselves
+        letters=["", "", "e", ""],  # sources 1/2 carry a,b / c,d; the histogram carries f
+        center=True,  # the single-panel histogram row is narrower than the map row
     )
     P.source_ref(
         (MC_FIG / "mixed_build_advantage.png", "mc/mixed_build_optimizer.ipynb", "cell 28",
@@ -1317,66 +1541,66 @@ appx_cells = [
          "same optimizer output"),
         (MC_FIG / "mixed_build_parameter_space.png", "mc/mixed_build_optimizer.ipynb", "cell 31",
          "same optimizer output"),
+        (MC_FIG / "fragmentation_hist.png", "mc/mc_cost_trajectories.ipynb",
+         "cell 40 (standalone emission 2026-08-26; re-lettered b → f 2026-08-31 when it moved here from Fig 3b)",
+         "in-memory MC worlds for the McKinsey schedule (the fragmentation experiment; stdout + figure only — no CSV export)"),
     )
     P.caption("SF6", '''
-    Mixed-build optimizer results: where any split of the program between the two
-    technologies would beat the best pure program, and by how much. Mixes win in 10 of
-    60,000 draws, by at most 0.51%: splitting the program splits the learning.
+    Mixing the program. (a-e) Mixed-build optimizer results: where any split of the
+    program between the two technologies would beat the best pure program, and by how
+    much. Mixes win in 10 of 60,000 draws, by at most 0.51%. (f) The fragmentation
+    penalty: the extra program cost of a 50/50 split under the McKinsey schedule (median
+    16.7%, P50/P90 marked) — splitting the program splits the learning. Panel f was
+    main-text Fig 3b until 2026-08-31.
     ''')
     """),
     md(r"""
-    ## SF7 — The value of perfect information (EVPI)
+    ## SF7 — The value of information at baseline: EVPI and the 2036 switch bound
 
     **What this shows.** What would it be worth to know the true cost world
-    before committing the program? Total EVPI and its decomposition (which
-    uncertainty carries the value), by dependence cell.
+    before committing the program — and how much of that value could one later
+    technology switch recover? The full detail behind main-text Fig 3b: total
+    EVPI and its decomposition (which uncertainty carries the value) by
+    dependence cell, and the 2036 switch bound with the pre-registered 1%
+    threshold (the C5 claim). (Merged 2026-08-31: the switch-bound page was
+    SF8 until the third Fig 3 recomposition; the two measures are baseline
+    value-of-information κ profiles and the S2 text cites them together, so
+    they share one page. SF8 is now the optimism-bias flip-curve page.)
 
     **Key results.** EVPI is 0.57–0.66% of expected program cost under the
     tightest coupling, rising to 2.3–4.6% fully decoupled (up to about 6.0% at
     the decoupled-anchor probe — the cell where learning stays coupled and the
     starting costs are drawn independently; see the glossary). The value
     concentrates in the learning-rate gap under tight coupling and flips to
-    the starting-cost gap when decoupled.
-    These are upper bounds: no realistic noisy-signal tier is modeled.
-    (Until 2026-08-26 the total-EVPI panel also appeared as main-text Fig 3c;
-    that slot now carries the optimism-sweep EVPI curve from `ob_sweep.ipynb`,
-    and this page keeps the full total + partial κ detail. The standalone
-    `tc_evpi_inset.png` is retired from the paper.)
+    the starting-cost gap when decoupled. The 2036 switch — commit now, but
+    allow one perfect-information switch of technology — recovers at most
+    0.12–0.66% under tight coupling, rising to 0.86–4.6% fully decoupled
+    (maximum 5.88% at the decoupled-anchor probe; a pre-registered failure
+    case, reported as such). Early commitment forfeits little in coherent
+    worlds — worlds where the two technologies' uncertainties move together.
+    These are perfect-information upper bounds: no realistic noisy-signal tier
+    is modeled.
+    (History: until 2026-08-26 the total-EVPI and bound panels appeared as
+    main-text Fig 3c/d; since 2026-08-31 the two κ profiles are combined as
+    main-text Fig 3b, and this page keeps the partial decomposition, the probe
+    cells, the C5-threshold view, and both tables. The standalone
+    `tc_evpi_inset.png` and `tc_adaptive_bound_inset.png` are retired from the
+    paper.)
     """),
     code(r"""
     P.show_panel(MC_FIG / "tc_evpi.png")
+    P.show_panel(MC_FIG / "tc_adaptive_bound.png")
     P.source_ref(
         (MC_FIG / "tc_evpi.png", "mc/tech_comparison.ipynb", "cell 27",
          "per-draw program costs; tables: `mc/exports/tech_comparison/evpi_total.csv`, `evpi_partial.csv`"),
-    )
-    P.table(MC_EXP / "tech_comparison" / "evpi_total.csv", round_=4)
-    """),
-    md(r"""
-    ## SF8 — The 2036 switch bound (adaptive commitment)
-
-    **What this shows.** A cheaper form of information value: commit now, but
-    allow one perfect-information switch of technology in 2036. The recoverable
-    value is at most 0.12–0.66% of program cost under tight coupling (maximum
-    5.88% at the decoupled-anchor probe — the independent-starting-cost cell,
-    see the glossary; a pre-registered failure case, reported as such). Early
-    commitment forfeits little in coherent worlds — worlds where the two
-    technologies' uncertainties move together.
-    (Until 2026-08-26 the bound panel, stripped of the C5 threshold rule, also
-    appeared as main-text Fig 3d; that slot now carries the optimism-sweep
-    bound curve from `ob_sweep.ipynb`, and this page keeps the κ profile, the
-    threshold, and the table. The standalone `tc_adaptive_bound_inset.png` is
-    retired from the paper.)
-    """),
-    code(r"""
-    P.show_panel(MC_FIG / "tc_adaptive_bound.png")
-    P.source_ref(
         (MC_FIG / "tc_adaptive_bound.png", "mc/tech_comparison.ipynb", "cell 25",
          "per-draw program costs with a 2036 switch; table: `mc/exports/tech_comparison/adaptive_value.csv`"),
     )
+    P.table(MC_EXP / "tech_comparison" / "evpi_total.csv", round_=4)
     P.table(MC_EXP / "tech_comparison" / "adaptive_value.csv", round_=4)
     """),
     md(r"""
-    ## SF8a — Optimism-bias flip curves (all four claims)
+    ## SF8 — Optimism-bias flip curves (all four claims)
 
     **What this shows.** The full optimism-multiplier sweep behind the main
     text's Fig 3c/d: every S2 headline claim against the SMR optimism
@@ -1385,6 +1609,9 @@ appx_cells = [
     (a) the majority claim, (b) the fragmentation penalty, (c) EVPI, (d) the
     2036 switch bound. Common random numbers across m; the m = 1.5 points
     reproduce the published `stress_survival.csv` stress rows bit-for-bit.
+    (Renumbered 2026-08-31: this page was SF8a while SF8 held the switch-bound
+    κ profile, which now shares SF7. Main Fig 3c/d are this sweep's majority
+    and EVPI panels at paper size.)
 
     **Key results.** The majority inverts at m* = 1.10 at κ = 1 (1.15 at
     κ = 0.5, 1.16 at κ = 0) — a ~10–16% SMR anchor error flips the winner.
@@ -1403,13 +1630,14 @@ appx_cells = [
          "`mc/exports/ob_sweep/sweep_metrics.csv` + `flip_boundaries.csv` (engine ported verbatim from tech_comparison; QA-pinned to `stress_survival.csv`)"),
     )
     P.table(MC_EXP / "ob_sweep" / "flip_boundaries.csv", round_=3)
-    P.caption("SF8a", '''
+    P.caption("SF8", '''
     Optimism-bias flip curves for the four commitment claims, against the SMR anchor
     multiplier m at kappa = 1, 0.5, 0. (a) min-over-schedules P(SMR wins), majority flips
     at m* = 1.10/1.15/1.16; (b) the 50/50-split penalty rises with m (no flip); (c) EVPI
     and (d) the 2036 switch bound are hump-shaped, peaking where the winner is contested
     and decaying once large is near-certain. m = 1.5 reproduces the published stress rows
-    bit-for-bit.
+    bit-for-bit. Main Fig 3c/d are panels a and c at paper size; until 2026-08-31 this
+    page was numbered SF8a.
     ''')
     """),
 
@@ -1876,7 +2104,7 @@ appx_cells = [
     false alarms. Each panel plots the detection year (median and
     interquartile band, middle noise level) against the cap, over the
     extended grid: from the cap that only 25% of prior worlds stay under
-    (per-schedule floors at 0.5–0.75x the middle-world bill) up to
+    (per-schedule floors at 0.5–0.75x the median-world (P50) bill) up to
     1.75–2.2x. Detection-year medians run 2032–2041 across the whole grid;
     the held-out false-alarm rate stays within the 7.5% gate everywhere
     (max 0.069). The money view of the same result is main-text Fig 5;
@@ -2080,10 +2308,358 @@ appx_cells = [
     not a bridge.
     ''')
     """),
+    md(r"""
+    ## SF33 — Required ITC rate by solve year
+
+    **What this shows.** The required investment-tax-credit rate by solve
+    year and case, on the model credit convention (the fin_mult inversion
+    plus the 10% monetization haircut), P50 lines with P5–P95 whiskers;
+    the shaded band marks the current 48E credit range (30–50%) and the
+    line at 100% marks where an ITC alone cannot deliver. Main-text
+    Fig 6a until 2026-08-31 (plan v10.42), when the slot went to the
+    instrument comparison's achievable-share-vs-budget curves; these rate
+    schedules are the thresholds behind that comparison, and the full
+    rate table is ST6.
+    """),
+    code(r"""
+    P.show_panel(S3_FIG / "f13_required_itc.png")
+    P.source_ref(
+        (S3_FIG / "f13_required_itc.png", "step3_analysis/step3_analysis.ipynb", "cell 40",
+         "`step3_analysis/exports/t09_required_itc.csv` (model convention, regenerated 2026-08-18)"),
+    )
+    t09 = pd.read_csv(S3_EXP / "t09_required_itc.csv")
+    r = t09[t09["status"] == "rate"]
+    smr_r = r[r["case"].str.startswith("smr100")]
+    p50 = smr_r[smr_r["case"].str.endswith("p50")].groupby("case")["i_model_headline"].mean()
+    ded = r[~r["case"].str.endswith("_eq")]
+    n100 = int((ded["i_model_headline"] > 1.0).sum())
+    n100p = int((ded["i_pis_headline"] > 1.0).sum())
+    P.caption("SF33", f'''
+    The required ITC rate by solve year on the model credit convention (main-text
+    Fig 6a until 2026-08-31): median-world schedule averages run
+    {p50.min():.2f}-{p50.max():.2f} ({p50.min()/0.30:.1f}-{p50.max()/0.30:.1f}x the
+    base 48E credit); expensive worlds need 2.7-3.1x; {n100} of {len(ded)} rated
+    case-years exceed 100% on the headline convention ({n100p} on the
+    placed-in-service conversion). Rates are max-building-region sufficiency rates;
+    regional minima run ~15% lower (ST6). These schedules are the per-world delivery
+    thresholds behind the Fig 6a comparison.
+    ''')
+    """),
+    md(r"""
+    ## SF34 — The certified dollar menu
+
+    **What this shows** (new 2026-09-02; `z-ethan/rate_design/` Part B).
+    The share of cost worlds a uniformly scaled credit path delivers
+    (offline criterion) against its present-value credit outlay at the
+    statutory worst-case bound (2024\$B), one curve per schedule. The
+    thick segment is the run-certified zone — aj/mck/eo only, at scales
+    within one rate point of the headline, one model world per schedule,
+    earned by uniform rate-point decrements (the decrement-vs-scale family
+    gap, up to ~1.8 rate points, is disclosed in the source); dots mark
+    the closed-loop full-headline delivery points (eia open = partial —
+    delayed start, recovers). The legend states each schedule's
+    outlay-vs-bill wedge (1.8–2.6x): the statutory outlay axis is not the
+    shadow-price bill axis, and the wedge is never folded into a gain.
+    Delivery below the certified zone is extrapolation-within-family; the
+    uncapped credit has no every-world outlay bound (delivering rates
+    induce 1.15–1.85x take-up in the certified runs), so budget-cap
+    readings ride an allocation cap — a design argument, not a result.
+    """),
+    code(r"""
+    P.show_panel(RD_FIG / "w33_dollar_menu.png")
+    P.source_ref(
+        (RD_FIG / "w33_dollar_menu.png", "rate_design/rate_design_v2.ipynb", "Part B cells",
+         "`u53_dollar_menu.csv` + `u54_exposure_summary.csv` (certified-zone re-scope per the "
+         "adjudicated audit; verdicts in `u91_verdict.csv`)"),
+    )
+    P.caption("SF34", '''
+    The certified dollar menu: delivered share of cost worlds vs present-value credit
+    outlay at the statutory worst-case bound, per schedule. Thick = run-certified
+    (aj/mck/eo, scales within one rate point of the headline, one world each,
+    decrement-earned; family gap up to ~1.8 rate points disclosed); dots = closed-loop
+    full-headline delivery points (eia open = partial); legend states each schedule's
+    1.8-2.6x outlay-vs-bill wedge, never folded into a gain. Below the certified zone
+    the curves are extrapolation-within-family; outlay caps assume allocation-capped
+    credits (uncapped delivering rates induce 1.15-1.85x take-up). Tables: ST14.
+    ''')
+    """),
+    md(r"""
+    ## SF35 — The budget menu (main-text Fig 6a until 2026-09-02)
+
+    **What this shows.** The budget menu: for each schedule, against the
+    budget cap (multiples of the middle world's published bill, the
+    detection analysis's cap grid), the share of cost worlds the
+    affordable credit delivers and the affordable credit itself as the
+    average statutory rate (right axis; the \$/kW conversion is ST13). The
+    credit's outlay must stay inside the cap in every world (the hard
+    rule; the cap is a chosen setting). The two instrument readings —
+    realized-cost percentage ITC vs fixed-basis \$/kW credit — are drawn
+    separately and visually overlap: the matched-rule equivalence that
+    emptied the instrument-form horse race (plan v10.43). Demoted from
+    main-text Fig 6a on 2026-09-02 (outline fourteenth pass): the mask
+    supersedes it — the menu says what a cap affords, the mask says the
+    affordable credit hits the statutory rate wall in most worlds
+    regardless.
+    """),
+    code(r"""
+    P.show_panel(IC_FIG / "k02_budget_menu.png")
+    P.source_ref(
+        (IC_FIG / "k02_budget_menu.png",
+         "instrument_comparison/instrument_comparison.ipynb", "figure cell",
+         "`instrument_comparison/exports/s02_budget_sweep.csv` + `s03_headline_table.csv` "
+         "(gates G0-G5 green; main Fig 6a 2026-08-31 -> 2026-09-02)"),
+    )
+    s03c = pd.read_csv(IC_EXP / "s03_headline_table.csv")
+    h15 = s03c[s03c["mult"] == 1.5]
+    rate_lo, rate_hi = h15["menu_rate_avg_stat"].min(), h15["menu_rate_avg_stat"].max()
+    kw_lo, kw_hi = h15["menu_credit_avg_kW"].min(), h15["menu_credit_avg_kW"].max()
+    sh_lo, sh_hi = h15["share_flat"].min() * 100, h15["share_flat"].max() * 100
+    gap_lo, gap_hi = h15["matched_rule_gap"].min() * 100, h15["matched_rule_gap"].max() * 100
+    tol_hi = h15["tolerance_value_pts"].max() * 100
+    P.caption("SF35", f'''
+    The budget menu (main-text Fig 6a until 2026-09-02): against the budget cap
+    (multiples of the middle world's published bill), the affordable credit under the
+    hard-cap rule — outlay inside the cap in every cost world; the cap is a chosen
+    setting — as the average statutory rate (dotted, right axis; $/kW conversion in
+    ST13), and the share of cost worlds that credit delivers (solid, +-20%
+    interpolation band). At the 1.5x cap the menu reads {rate_lo:.2f}-{rate_hi:.2f}
+    average statutory rate (~${kw_lo:,.0f}-{kw_hi:,.0f}/kW), delivering
+    {sh_lo:.0f}-{sh_hi:.0f}% of worlds. The two instrument readings coincide to within
+    {gap_lo:+.1f}/{gap_hi:+.1f} points at the 1.5x cap (the matched-rule equivalence);
+    a 5%-exceedance tolerance would raise only the realized-cost form's delivery (up
+    to {tol_hi:.0f} points; ST13) — a property of the budget rule, not the instrument.
+    ''')
+    """),
+    md(r"""
+    ## SF36 — Uniform ITC vs ambition (main-text Fig 6b until 2026-09-02)
+
+    **What this shows.** The net-of-tax present-value cost of a uniform
+    percentage credit, as a multiple of the minimum-cost floor (a flat
+    dollar-per-MW payment at commissioning with frictionless
+    monetization), by schedule, ordered by 2050 ambition. Demoted from
+    main-text Fig 6b on 2026-09-02 (outline fourteenth pass): the
+    instrument premium over the floor is modest in practice — 1.17–1.25x
+    at p50, the ~10% monetization haircut plus the 5–13% uniform-rate
+    oversubsidy — so the panel largely re-plots the Fig 4 bill shape in
+    rate units; the level finding (0.59–0.74 statutory, 2.0–2.5x base
+    48E) stays in the S3-4 topic sentence and ST6. The two legal
+    rate-level inputs are resolved (2026-08-20, open item 7): the haircut
+    defaults to 10% (x0.947 to the 5% best-transfer variant) and
+    depreciation is 15-year MACRS throughout.
+    """),
+    code(r"""
+    P.show_panel(S3_FIG / "f17_itc_vs_ambition.png")
+    P.source_ref(
+        (S3_FIG / "f17_itc_vs_ambition.png", "step3_analysis/step3_analysis.ipynb",
+         "cell f17cd001", "`t18_instrument_menu.csv` (voluntary instruments only; "
+         "main Fig 6b 2026-08-24 -> 2026-09-02)"),
+    )
+    t18 = pd.read_csv(S3_EXP / "t18_instrument_menu.csv")
+    m18 = t18[~t18["case"].str.endswith("_eq")]
+    hair = float(m18["dpmw_haircut"].iloc[0])
+    ov_lo = (m18["uniform_itc"].min() / hair - 1) * 100
+    ov_hi = (m18["uniform_itc"].max() / hair - 1) * 100
+    P.caption("SF36", f'''
+    The uniform percentage credit vs the floor, by schedule ordered by 2050 ambition
+    (main-text Fig 6b until 2026-09-02): the credit costs
+    {m18['uniform_itc'].min():.2f}-{m18['uniform_itc'].max():.2f}x the floor in every
+    case — the ~10% monetization haircut (dotted line, x{hair:.2f}) plus a
+    {ov_lo:.0f}-{ov_hi:.0f}% oversubsidy from paying one flat rate where required
+    rates differ across regions and years; an unleveraged cash grant prices at
+    {m18['cash_grant'].iloc[0]:.2f}x. Markers = median (P50) cost world, whiskers =
+    P5-P95. The premium does not grow with ambition, cost world, or technology; rates
+    are final (10% haircut headline, x0.947 at the 5% best-transfer variant; 15-year
+    MACRS throughout). Full menu incl. the coerced benchmarks: SF31; rate detail:
+    SF33/ST6.
+    ''')
+    """),
+    md(r"""
+    ## SF37 — The plateau test on the credit-scale interval
+
+    **What this shows** (new 2026-09-02; behind the Fig 5b plateau
+    labels). The mid-noise credit-scale confidence width against
+    cumulative mandate spend (2024\$B), log scale, one line per schedule,
+    with each schedule's label under the registered rule: "asymptote" only
+    where the mean decline over the last three observations is at most 5%
+    per observation (aj 2.9%, eo 1.6%); the rest are "still declining" at
+    the horizon (7.5–14.3% per observation), so their verdict is "not
+    within the program horizon", not "never". The dotted lines at the
+    bottom are the per-schedule design targets — an order of magnitude
+    below where any curve ends.
+    """),
+    code(r"""
+    P.show_panel(RD_FIG / "w21_asymptote.png")
+    P.source_ref(
+        (RD_FIG / "w21_asymptote.png", "rate_design/rate_design_v2.ipynb", "Part A cells",
+         "`u30_part_a_restated.csv` (decline_pct_per_obs_last3 column; the <=5%/observation "
+         "labeling rule is registered in `rate_design/methods.md` v2)"),
+    )
+    P.caption("SF37", '''
+    The plateau test behind the Fig 5b labels: mid-noise credit-scale confidence width
+    vs cumulative mandate spend (log scale). "Asymptote" is earned only where the mean
+    decline over the last three observations is at most 5% per observation (aj 2.9%,
+    eo 1.6%); the other four schedules are still declining at the horizon (7.5-14.3%
+    per observation), so their verdict is "not within the program horizon", not
+    "never". Dotted lines: the per-schedule design targets. Tables: ST16.
+    ''')
+    """),
+    md(r"""
+    ## SF38 — The dollar requirement fans (\$/kW)
+
+    **What this shows** (new 2026-09-02; the companion unit behind
+    main-text Fig 6a). The cushioned per-world dollar requirement in
+    \$/kW, per schedule and build year — the same fans as Fig 6a in the
+    unit the demonstration-gap accounting consumes. Encodings match the
+    Fig 6a legend: median solid, interquartile and p5–p95 bands, thin
+    dotted = the ±20% certificate-band medians, grey dashed = the
+    reference credit path. The per-cell above-top and below-bottom clamp
+    shares are exported with the table (ST14); the rate-unit grid at full
+    size IS main-text Fig 6a (the legended w34 variant).
+    """),
+    code(r"""
+    P.show_panel(RD_FIG / "w31_dollar_fans.png")
+    P.source_ref(
+        (RD_FIG / "w31_dollar_fans.png", "rate_design/rate_design_v2.ipynb", "Part B cells",
+         "`u50_requirement_fans.csv` (need_kw rows; the demonstration-gap input; the rate-unit "
+         "grid is main-text Fig 6a, the legended w34 paper variant)"),
+    )
+    P.caption("SF38", '''
+    The dollar requirement fans: the cushioned per-world requirement in $/kW, per
+    schedule and build year — the Fig 6a fans in the unit the demonstration-gap
+    accounting consumes (encodings as in the Fig 6a legend: median solid,
+    interquartile and p5-p95 bands, thin dotted = +-20%-band medians, grey dashed =
+    the reference credit path). Per-cell clamp shares and the band fans: ST14.
+    ''')
+    """),
+    md(r"""
+    ## SF39 — The calibration limit, full audit grid
+
+    **What this shows** (new 2026-09-02; the Fig 5b source before Ethan's
+    reading review re-denominated the main-text panel). The legended twin
+    of the frozen w20 audit artifact: top row, the 5–95 confidence width on
+    the required credit scale in scale units (multiples of the reference
+    credit path; the dashed line is each schedule's registered band-5
+    target, 0.068–0.078); bottom row, the width of the learning-rate
+    interval in points; both against cumulative committed spend (2024\$B),
+    one column per schedule, three noise levels; shading would mark
+    observation years where the mid-noise 10th-percentile effective sample
+    falls below 100 worlds (it never does). Fig 5b is this grid with the
+    top row times the reference path's outlay-weighted average rate (u32);
+    the learning-rate row is unchanged.
+    """),
+    code(r"""
+    P.show_panel(RD_FIG / "w36_ci_curves_paper.png")
+    P.source_ref(
+        (RD_FIG / "w36_ci_curves_paper.png", "rate_design/rate_design_v2.ipynb",
+         "S7 paper-variant cell (legended twin of the w20 audit artifact)",
+         "`u10_ci_curves.csv` + `u12_ess.csv` (frozen v1 sweep) summarized in "
+         "`u30_part_a_restated.csv`; registration: `rate_design/methods.md` v2/v2.1"),
+    )
+    P.caption("SF39", '''
+    The calibration limit, full audit grid behind Fig 5b: top row, the 5-95 confidence
+    width on the required credit scale (multiples of the reference credit path; dashed =
+    each schedule's registered band-5 target); bottom row, the width of the learning-rate
+    interval (points); both vs cumulative committed spend (2024$B), one column per
+    schedule, three noise levels (thick = middle). No top-row curve reaches its target at
+    any noise level; every bottom-row curve narrows steadily. Fig 5b re-denominates the
+    top row in statutory points and keeps the learning-rate row (u32). Tables: ST16.
+    ''')
+    """),
+
+    # -------------------------------------------------------------- SF40-41
+    md(r"""
+    ## SF40 — The statutory wall in every market world
+
+    **What this shows.** The S3-4 feasibility mask — the share of cost worlds
+    whose required uniform credit rate exceeds a statutory ceiling (0.50 or
+    0.60) in at least one build year after the demonstration window (build
+    years after 2035) — recomputed in each of the six alternative market
+    worlds of Figure 7. The required rate is re-derived exactly on every
+    sensitivity output file: the conversion is linear in the shadow price for
+    a fixed case-year, so what moves it is the shadow price itself, which
+    regions build (the headline is a maximum over building regions; that
+    factor moves 6.7% of paired case-years' rates by more than 5%, the worst
+    by 28%), and which years still bind (56 of the 990 sensitivity case-years
+    change status against base, ST18a; censored cells per world in ST18f). Each
+    bar spans the ±20% certificate band — the stage-2 predict-the-middle
+    error of the bill interpolation, carried onto the rates by convention;
+    the thick grey bar is the base market world. In the high-gas world the
+    four smaller schedules' 0.60-ceiling shares fall to 0.00–0.45 across the
+    band (0.16–0.22 at the band centre); in the low-gas world the band-high
+    share reaches 1.00 in every schedule at 0.50 and in four of six at 0.60
+    (0.47–1.00 across the band). The registered kill rules and the
+    disclosures are in `market_transfer/exports/v09_verdict.csv` (SN10).
+    """),
+    code(r"""
+    v04 = pd.read_csv(MT_EXP / "v04_mask_range_table.csv")
+    v04 = v04[v04["window"] == "w2035"]
+    g6 = v04[(v04["world"] == "gashi") & (v04["cap"] == 0.6)].set_index("schedule")
+    assert (g6.loc[["eia", "aj", "iaea", "mck"], "lo"] == 0).all() and g6.loc[["eia", "aj", "iaea", "mck"], "hi"].max() <= 0.45
+    l5 = v04[(v04["world"] == "gaslo") & (v04["cap"] == 0.5)]
+    l6 = v04[(v04["world"] == "gaslo") & (v04["cap"] == 0.6)]
+    assert int((l5["hi"] >= 0.9999).sum()) == 6 and int((l6["hi"] >= 0.9999).sum()) == 4 and l6["lo"].min() >= 0.47
+    v00 = pd.read_csv(MT_EXP / "v00_status_flips.csv")
+    assert len(v00) == 56, len(v00)
+    P.show_panel(MT_FIG / "x01_mask_ranges.png")
+    P.source_ref(
+        (MT_FIG / "x01_mask_ranges.png", "market_transfer/market_transfer.ipynb", "Part 2 mask cell",
+         "`market_transfer/exports/v03_feasibility_mask_perworld.csv` + `v04_mask_range_table.csv`; "
+         "rates from `v01_required_itc_perworld.csv` (the t09 chain on 126 output files)"),
+    )
+    P.caption("SF40", '''
+    The statutory wall across market worlds: share of cost worlds needing an above-ceiling
+    credit rate in a post-window build year (build years after 2035), per schedule, at the
+    0.50 (left) and 0.60 (right) ceilings; each bar spans the +/-20% certificate band with a
+    black tick at the band centre (the x1.0 rates), thick grey = base market world, colours =
+    the six alternative market worlds of Fig 7. In the
+    high-gas world the four smaller schedules' 0.60-ceiling shares fall to 0.00-0.45 across the
+    band (0.16-0.22 at the band centre); in the low-gas world the band-high share reaches 1.00
+    in every schedule at 0.50 and in four of six at 0.60 (0.47-1.00 across the band). SMR
+    program. Tables: ST18.
+    ''')
+    """),
+    md(r"""
+    ## SF41 — The spending-cap alarm in every market world
+
+    **What this shows.** The S3-3 detection analysis re-run per market world
+    with that world's shadow-price paths and an identical seed, so every
+    noise history pairs with its base counterpart: the spend committed
+    (present value) before the alarm at a cap of 1.5× the world's own
+    median-world (P50) bill, at the middle noise level, per schedule (dot =
+    median across exceeding worlds and noise histories; thick bar =
+    interquartile; thin = 5–95%; red tick = the cap). The cost observations
+    that drive the alarm are engine outputs and do not change; the market
+    world enters through the bill scale and through the set of worlds that
+    exceed the cap (starting probability of exceedance 0.13–0.44 across the
+    six alternative worlds against 0.15–0.32 in base). Cells marked × and *
+    are range-only: their three-anchor bill interpolation fails the ±20%
+    predict-the-middle test (in the high-gas world the cheap-world shadow
+    price reaches zero mid-horizon, a floor kink a straight line cannot fit),
+    so they are shown but excluded from the numeric envelope.
+    """),
+    code(r"""
+    P.show_panel(MT_FIG / "x03_paid_at_detection_perworld.png")
+    P.source_ref(
+        (MT_FIG / "x03_paid_at_detection_perworld.png", "market_transfer/market_transfer.ipynb",
+         "Part 3 detection cell",
+         "`bridge_detection/exports/b17_exceedance_noisy_{world}.csv` (stage-3 variants) summarized in "
+         "`market_transfer/exports/v05_detection_perworld.csv` + `v06_detection_summary.csv`"),
+    )
+    P.caption("SF41", '''
+    The spending-cap alarm across market worlds: spend committed (present value, 2024$B)
+    before the alarm at 1.5x the world's own median-world (P50) bill (middle noise), per
+    schedule and market world; dot = median, thick bar = interquartile, thin bar = 5-95%
+    range, red tick = the cap; x (drawn at that cell's median) and * = range-only cells whose
+    bill interpolation fails its +/-20% test (high gas: aj, cop28, eo; iaea in the high-demand,
+    dear-renewables, and transmission-limited worlds), excluded from the numeric envelope. Paired noise histories
+    (same seed). The fixed-dollar companion (the base world's cap in 2024$) is in ST18. SMR
+    program.
+    ''')
+    """),
 
     # ---------------------------------------------------------------- ST1-8
     md(r"""
-    ## Supplementary tables (ST1–ST11)
+    ## Supplementary tables (ST1–ST18)
 
     Each table below is loaded from its checked export, displayed, and
     re-exported to this notebook's `exports/` folder (Nature Energy ships
@@ -2247,6 +2823,197 @@ appx_cells = [
     standard (b17: detection-year quartiles, units and paid-at-detection percentiles,
     held-out false-alarm rate, costs-only reference columns; behind Fig 5 and SF27).
     Observer design, noise model, and calibration in SN8.
+    ''')
+    """),
+    md(r"""
+    ### ST13 — The budget-menu sweep
+
+    The tables behind Fig 6a (new 2026-08-31, plan v10.42; menu reframing
+    v10.43; cited from S3-4): per schedule and budget cap, the affordable
+    credit under the hard-cap rule in both policy units (average statutory
+    ITC fraction and average dollars per kilowatt), the delivered share
+    under both instrument readings — fixed-basis and realized-cost ITC,
+    whose gap is the matched-rule equivalence check — with the ±20%
+    interpolation band, plus the 95%-of-worlds quantile variant of the
+    realized-cost form and its exceedance probability (s02); the
+    1.25/1.5/2.0x cap headline rows with the matched-rule gap and the
+    tolerance value (s03). Estimator design, gates G0–G5, and the
+    v1→v2→v3 log: `instrument_comparison/methods.md`.
+    """),
+    code(r"""
+    P.table(IC_EXP / "s02_budget_sweep.csv", "ST13a_budget_sweep.csv", round_=4)
+    P.table(IC_EXP / "s03_headline_table.csv", "ST13b_headline_table.csv", round_=4)
+    P.caption("ST13", '''
+    The budget-menu sweep (behind Fig 6a): per schedule and cap, the affordable credit
+    under the hard-cap rule (outlay inside the cap in every world) as an average
+    statutory rate and average dollars per kilowatt, the delivered share under both
+    instrument readings with the +-20% interpolation band, and the realized-cost
+    form's 95%-of-worlds quantile variant with its exceedance probability (s02);
+    headline rows at the 1.25/1.5/2.0x caps with the matched-rule gap (the
+    equivalence check: -10.6 to +2.2 points over the whole grid, mostly within +-3)
+    and the tolerance value (the 95% relaxation helps only the realized-cost form —
+    a property of the budget rule, not of the instrument) (s03). Gates G0-G5 green;
+    design and the v1-v2-v3 log in instrument_comparison/methods.md.
+    ''')
+    """),
+    md(r"""
+    ### ST14 — Declining-credit zero-run tables
+
+    The tables behind Fig 6a/6b and SF34/SF38 (new 2026-09-02; SN9; cited
+    from S3-4): the requirement fans with per-cell censor and clamp
+    columns (u50); the feasibility mask per year and per world, at both
+    caps and all three certificate-band points — the only quotable form is
+    the cap x band range (u51); the demonstration-gap fans per cap x band
+    x window, with the window-applicability flag (eia N/A) (u52); the
+    dollar-menu zone table (u53); and the exposure/wedge summary (u54).
+    Registration and kill dispositions (KB1/KB2/KB3): `rate_design/methods.md`
+    v2/v2.1 + `u91_verdict.csv`.
+    """),
+    code(r"""
+    P.table(RD_EXP / "u50_requirement_fans.csv", "ST14a_requirement_fans.csv", round_=4)
+    P.table(RD_EXP / "u51_feasibility_mask.csv", "ST14b_feasibility_mask.csv", round_=4)
+    P.table(RD_EXP / "u52_demonstration_gap.csv", "ST14c_demonstration_gap.csv", round_=3)
+    P.table(RD_EXP / "u53_dollar_menu.csv", "ST14d_dollar_menu.csv", round_=4)
+    P.table(RD_EXP / "u54_exposure_summary.csv", "ST14e_exposure_summary.csv", round_=3)
+    P.caption("ST14", '''
+    Declining-credit zero-run tables (behind Fig 6a/6b, SF34, SF38): requirement fans
+    with censor/clamp columns (u50); the feasibility mask per year and per world at
+    both caps and all three certificate-band points — quotable only as cap x band
+    ranges (u51); demonstration-gap fans per cap x band x window with the
+    window-applicability flag (u52); the dollar-menu zone table (u53); the
+    exposure/wedge summary (u54). Kill dispositions KB1/KB2/KB3 and the certificate
+    chain: rate_design/methods.md v2/v2.1 + u91_verdict.csv (SN9).
+    ''')
+    """),
+    md(r"""
+    ### ST15 — The registered 66-run batch and the capture decomposition
+
+    **Conditional tables (new 2026-09-02; reallocated 2026-09-04, v2.2; SN9).**
+    The batch spec and the capture machinery behind the outline's `[BATCH]`
+    items: the contour schedules in \$/kW (u70), the capture decomposition
+    with the holdout-drop columns — kill K1 fired, so the quotable capture
+    is the holdout-scored value with the worst split drop as its error bar,
+    with the quantile-family capture as companion (u71); the no-2050
+    sensitivity that gate GX1 adjudicates (u73); the ITC-arm + horizon
+    batch spec (u80: 27 envelope + 7 boundary-depth + 14 hybrid + 6
+    horizon, no reserve) and the per-run offered credit paths (u81); the
+    p25/p75 anchor-densification spec (u82: 12 mandate-arm runs selected by
+    the frozen smr100 quantile rule, gates GA1/GA2). **Nothing in these
+    tables is paper-quotable until the batch returns and the registered
+    gates (GE1/GE2/GH1/GH2/GX1/GA1/GA2) are adjudicated**; the claim ladder
+    in `rate_design/methods.md` v2.1/v2.2 cannot be re-argued after outcomes.
+    """),
+    code(r"""
+    P.table(RD_EXP / "u70_contour_schedules_kw.csv", "ST15a_contour_schedules_kw.csv", round_=1)
+    P.table(RD_EXP / "u71_capture_decomposition.csv", "ST15b_capture_decomposition.csv", round_=4)
+    P.table(RD_EXP / "u73_no2050_sensitivity.csv", "ST15c_no2050_sensitivity.csv", round_=4)
+    P.table(RD_EXP / "u80_batch_spec.csv", "ST15d_batch_spec.csv", round_=4)
+    P.table(RD_EXP / "u81_run_schedules.csv", "ST15e_run_schedules.csv", round_=1)
+    P.table(RD_EXP / "u82_anchor_spec.csv", "ST15f_anchor_spec.csv", round_=4)
+    P.table(RD_EXP / "u84_anchor_predictions.csv", "ST15g_anchor_predictions.csv", round_=4)
+    _u80 = pd.read_csv(RD_EXP / "u80_batch_spec.csv")
+    _u82 = pd.read_csv(RD_EXP / "u82_anchor_spec.csv")
+    _bn = _u80["block"].value_counts().to_dict()
+    assert (_u80["block"] == "reserve").sum() == 0 and len(_u82) == 12, (_bn, len(_u82))
+    _live80 = _u80[_u80["block"].isin(["envelope", "boundary", "hybrid"])]
+    P.caption("ST15", f'''
+    The registered {len(_u80) + len(_u82)}-run batch and the capture decomposition
+    (conditional — nothing here is quotable until the batch returns and gates
+    GE1/GE2/GH1/GH2/GX1/GA1/GA2 are adjudicated): contour schedules in $/kW (u70); the
+    capture decomposition with holdout drops — kill K1 fired, so any quotable capture is
+    the holdout-scored value with its worst split drop as the error bar, quantile family
+    as companion (u71); the no-2050 sensitivity behind gate GX1 (u73); the ITC-arm +
+    horizon spec — {_bn["envelope"]} envelope + {_bn["boundary"]} boundary-depth +
+    {_bn["hybrid"]} hybrid (caps 0.60 and 0.50) + {_bn["horizon"]} horizon, no reserve,
+    every offered rate <= {_live80["max_rate_on_world"].max():.3f} on its run world (u80);
+    per-run offered credit paths with credit/demonstration tier splits (u81); the
+    {len(_u82)} p25/p75 anchor-densification runs selected by the frozen smr100 quantile
+    rule (u82) with the three-anchor map's pre-run predictions of their rates, needs
+    and bills — the GA2/GA3 out-of-sample test (u84). Registration:
+    rate_design/methods.md v2/v2.1/v2.2/v2.2.1 (SN9).
+    ''')
+    """),
+    md(r"""
+    ### ST16 — Cost-of-information tables
+
+    The tables behind Fig 5b and SF37 (new 2026-09-02; SN9; cited from
+    S3-3): per schedule, the design target, the final credit-scale CI
+    width and its ratio to the target (4.8–7.7x), the plateau label under
+    the ≤5%-per-observation rule, the learning-rate CI narrowing
+    (11.7 → 4.3–9.3 points), and the effective-sample columns (u30); the
+    mid-noise width-vs-committed-spend path per observation (u31); and the
+    Fig 5b series itself — the credit-rate interval width in statutory
+    points and the learning-rate interval width in points at every
+    observation, all three noise levels, with the per-schedule conversion
+    constant (u32).
+    """),
+    code(r"""
+    P.table(RD_EXP / "u30_part_a_restated.csv", "ST16a_part_a_restated.csv", round_=3)
+    P.table(RD_EXP / "u31_part_a_slopes.csv", "ST16b_part_a_slopes.csv", round_=4)
+    P.table(RD_EXP / "u32_ci_rate_points.csv", "ST16c_ci_rate_points.csv", round_=2)
+    P.caption("ST16", '''
+    Cost-of-information tables (behind Fig 5b, SF37 and SF39): per schedule, the design
+    target, final credit-scale CI width and its ratio to the target, the plateau label
+    under the <=5%-per-observation rule, the learning-rate CI narrowing, and the
+    effective-sample columns (u30); the mid-noise width-vs-committed-spend path (u31);
+    the Fig 5b series (credit-rate width in statutory points, learning-rate width in
+    points) at all three noise levels, with the per-schedule conversion constant (u32).
+    The v1 sweep is the frozen input, restated with every audit repair; registration
+    and dispositions: rate_design/methods.md v2/v2.1 + u91_verdict.csv (SN9).
+    ''')
+    """),
+    md(r"""
+    ### ST17 — Market-world sensitivity tables
+
+    The step4 tables behind Fig 7a/7b and SF20–SF22 (cited from S4-a/b/c):
+    binding-year shifts per case and market world (s01); the shape-survival
+    matrix with its components (s02); the ranking preservation per
+    sensitivity × percentile cell with Kendall τ and the raw orderings (s03);
+    the level ratios — like-for-like over shared binding years, with the
+    own-years companion (s04); and the prior-signed mechanism check (s05).
+    """),
+    code(r"""
+    P.table(S4_EXP / "s01_binding_shifts.csv", "ST17a_binding_shifts.csv")
+    P.table(S4_EXP / "s02_shape_survival.csv", "ST17b_shape_survival.csv", round_=3)
+    P.table(S4_EXP / "s03_ranking_preservation.csv", "ST17c_ranking_preservation.csv", round_=3)
+    P.table(S4_EXP / "s04_level_ratios.csv", "ST17d_level_ratios.csv", round_=3)
+    P.table(S4_EXP / "s05_mechanism_color.csv", "ST17e_mechanism_color.csv", round_=3)
+    P.caption("ST17", '''
+    Market-world sensitivity tables (behind Fig 7a/7b and SF20-SF22): binding-year shifts
+    (s01); the shape-survival matrix with its components - decay class and end-over-peak
+    ratio vs base (s02); ranking preservation with Kendall tau and the raw orderings per
+    sensitivity x percentile cell (s03); level ratios, like-for-like over shared binding
+    years with the own-years companion (s04); the prior-signed mechanism check (s05). The
+    18 SMR percentile cases x six market worlds = 108 runs; SMR program.
+    ''')
+    """),
+    md(r"""
+    ### ST18 — Market-world transfer tables
+
+    The tables behind SF40, SF41 and the Fig 7 caption (new 2026-09-02;
+    SN10; cited from S4-d/S4-e): the required credit rate on every sensitivity
+    output file with its ratio companion and region-set factor (v01); the
+    per-world mask ranges (v04); the spending-cap alarm's headline cell per
+    world under both cap normalizations (v05) and its cross-world summary
+    (v06); the region-set summary (v07); and the gate, kill, and quoting
+    dispositions (v09).
+    """),
+    code(r"""
+    P.table(MT_EXP / "v01_required_itc_perworld.csv", "ST18a_required_itc_perworld.csv", round_=4)
+    P.table(MT_EXP / "v04_mask_range_table.csv", "ST18b_mask_range_table.csv", round_=4)
+    P.table(MT_EXP / "v05_detection_perworld.csv", "ST18c_detection_perworld.csv", round_=3)
+    P.table(MT_EXP / "v06_detection_summary.csv", "ST18d_detection_summary.csv", round_=3)
+    P.table(MT_EXP / "v07_regionset_summary.csv", "ST18e_regionset_summary.csv", round_=4)
+    P.table(MT_EXP / "v09_verdict.csv", "ST18f_verdict.csv")
+    P.caption("ST18", '''
+    Market-world transfer tables (behind SF40, SF41 and the Fig 7 caption): the required
+    credit rate per case-year on all 126 output files with the shadow-price ratio companion
+    and the region-set factor (v01); the statutory-mask ranges per world, schedule, ceiling
+    and window — band ends and band centre — with the base range and overlap flag (v04); the
+    spending-cap alarm's headline cell per world under the own-median-world (P50)-bill and
+    fixed-dollar cap readings (v05) and its cross-world summary with min, median, and max
+    across worlds (v06); the region-set summary (v07); gates, kills, and quoting
+    dispositions (v09). Registration: market_transfer/methods.md (SN10). SMR program.
     ''')
     """),
 

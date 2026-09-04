@@ -556,8 +556,7 @@ j06 = pd.read_csv(EXPORTS / "r04_rate_deployment.csv")
 assert j06["large_2050_GW"].nunique() == 1          # large never moves with the credit
 j06["new_GW"] = j06["smr_2050_GW"]                  # so new nuclear = SMR exactly
 j06["i_stat"] = j06["m_monetized"] / (1 - PEN)      # statutory rate, model convention
-J06_LAB = {"eia": "EIA AEO high", "aj": "Abou-Jaoude", "iaea": "IAEA high",
-           "mck": "McKinsey", "cop28": "COP28", "eo": "EO 2025"}
+J06_LAB = dict(ps.SCHED_SHORT)                     # paper-facing schedule names (09-03)
 
 fig, ax = plt.subplots(figsize=(6.4, 4.2))
 ax.axvspan(0.30, 0.50, color=ps.NEUTRAL, alpha=0.55, zorder=1)
@@ -567,7 +566,7 @@ ax.text(0.40, 220, "48E range\\n30–50%", fontsize=7.5, color=MUTED,
 flat = j06[j06["kind"] == "flat-anchor"].sort_values("i_stat")
 assert [round(v, 2) for v in flat["i_stat"]] == [0.0, 0.30, 0.50]
 ax.plot(flat["i_stat"], flat["new_GW"], marker="s", ms=5, lw=1.6, color=INK,
-        zorder=4, label="flat credit (eia world)")
+        zorder=4, label="flat credit, all years (EIA AEO high world)")
 
 for w in WORLDS:                                    # the three minus-probe ladder worlds
     fbc = j06[j06["kind"].isin(["schedule-fbCm", "schedule-fbC"])
@@ -581,10 +580,10 @@ for w in WORLDS:                                    # the three minus-probe ladd
 for w in ["eia", "iaea", "cop28"]:                  # headline-only worlds
     pt = j06[(j06["kind"] == "schedule-fbC") & (j06["world"] == w)]
     ax.scatter(pt["i_stat"], pt["new_GW"], marker="o", s=30, color=SCHED_C[w],
-               zorder=5, label=J06_LAB[w] + " (headline only)")
-ax.plot([], [], color=MUTED, lw=1.8, marker="o", ms=5, label="with learning (fbC)")
-ax.plot([], [], color=MUTED, lw=1.1, ls="--", alpha=0.6, label="no learning (fbB)")
-ax.set_xlabel("ITC rate (model convention; same basis as Fig 5a)")
+               zorder=5, label=J06_LAB[w] + " (single run)")
+ax.plot([], [], color=MUTED, lw=1.8, marker="o", ms=5, label="with learning")
+ax.plot([], [], color=MUTED, lw=1.1, ls="--", alpha=0.6, label="no learning")
+ax.set_xlabel("tax credit rate (same basis as panel a)")
 ax.set_ylabel("new nuclear 2050 capacity (GW)")
 ax.set_xlim(-0.02, 0.79)
 ax.legend(fontsize=7, ncol=2, loc="upper left", handletextpad=0.5,

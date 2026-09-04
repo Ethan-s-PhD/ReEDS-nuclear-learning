@@ -4,8 +4,22 @@ Same convention as _build_notebook.py (stage 1): the notebook is the deliverable
 this builder exists so the notebook can be regenerated and diffed as plain python.
 Run with the playground-env python. Stage 1 must have been executed first (this
 notebook reads the stage-1 exports b01/b04).
+
+Market-world variant (2026-09-02, `z-ethan/market_transfer/`): with the
+environment variable BD_SENS set to one of the step4 market worlds (gaslo,
+gashi, demhi, relo, rehi, translim) the builder emits
+bridge_detection_stage2_{sens}.ipynb — the same notebook with the 18 smr100
+shadow-price paths taken from that world's runs (step4_checks exports), the
+cap unit P50BILL computed in-world, gate G1 reported as N/A (t08 holds base
+bills only), and every stage-2 output suffixed _{sens}. With BD_SENS unset the
+emission is unchanged. The patch table lives at the bottom of this file.
 """
+import os
+import re
+
 import nbformat as nbf
+
+SENS = os.environ.get("BD_SENS", "").strip()
 
 nb = nbf.v4.new_notebook()
 nb.metadata = {
@@ -874,7 +888,114 @@ for m_ in manifest:
     print(" ", m_)
 """)
 
+
+
+# ---- market-world patch table (applied only when BD_SENS is set) ------------------
+def _apply_sens_patches(cells, sens):
+    """Rewrite the cell sources for one step4 market world. Each textual patch
+    must hit exactly one cell; the export/figure names of this stage (b06-b13,
+    d04-d08) gain the _{sens} suffix; stage-1 reads (b01, b04) stay bare."""
+    sfx = f"_{sens}"
+
+    def sub_once(old, new):
+        hits = [c for c in cells if old in c.source]
+        assert len(hits) == 1, (old[:70], len(hits))
+        hits[0].source = hits[0].source.replace(old, new)
+
+    sub_once('pd.set_option("display.width", 220)\n',
+             'pd.set_option("display.width", 220)\n'
+             f'SENS = "{sens}"          # step4 market world (BD_SENS)\n'
+             f'SFX = "{sfx}"\n')
+    sub_once(
+        'duals3 = pd.read_csv(CHECKS3 / "duals_by_year.csv")\n'
+        'duals4 = pd.read_csv(CHECKS4 / "duals_by_year.csv")\n'
+        'large_cases = [f"large100_{ab}_{p}" for ab in SCHEDULES for p in ["p05", "p95"]]\n'
+        'DUALS = pd.concat([duals3, duals4[duals4["case"].isin(large_cases)]],\n'
+        '                  ignore_index=True)\n',
+        '# market world SENS: the 18 smr100 percentile cases re-solved under this\n'
+        "# world's market switches (step4 batch). Base case names are restored so\n"
+        '# every downstream key is unchanged; the mandate columns are asserted\n'
+        '# byte-identical to base, so only the shadow prices differ.\n'
+        'duals3 = pd.read_csv(CHECKS3 / "duals_by_year.csv")\n'
+        'duals4 = pd.read_csv(CHECKS4 / "duals_by_year.csv")\n'
+        'DUALS = duals4[duals4["case"].str.endswith(SFX)].copy()\n'
+        'DUALS["case"] = DUALS["case"].str[:-len(SFX)]\n'
+        'assert DUALS["case"].nunique() == 18, DUALS["case"].nunique()\n'
+        '_chk = DUALS.merge(duals3, on=["case", "t"], suffixes=("", "_base"))\n'
+        'assert len(_chk) == len(DUALS), "solve-year grid differs from base"\n'
+        'assert np.array_equal(_chk["mandate_MW"].to_numpy(),\n'
+        '                      _chk["mandate_MW_base"].to_numpy()), "mandate differs"\n'
+        'DUALS = DUALS.reset_index(drop=True)\n')
+    sub_once(
+        't08 = pd.read_csv(S3ANALYSIS / "t08_rental_transfer.csv")\n'
+        'missing = set(t08["case"]) - set(DUALS["case"])\n'
+        'assert not missing, missing\n'
+        'g1_fail = []\n'
+        'for _, r in t08.iterrows():\n'
+        '    pv = anchor_bill(r["case"], 2050)\n'
+        '    if abs(pv - r["PV_rental_transfer_2024B"]) > 0.051:\n'
+        '        g1_fail.append((r["case"], round(pv, 2), r["PV_rental_transfer_2024B"]))\n'
+        'assert not g1_fail, g1_fail\n'
+        'G1 = True\n'
+        'print(f"G1 PASS: recomputed B(2050) matches published t08 for all {len(t08)} cases")\n',
+        't08 = pd.read_csv(S3ANALYSIS / "t08_rental_transfer.csv")\n'
+        '# G1 is N/A in a market world: t08 holds base-world bills only. The soft\n'
+        '# check reports the in-world / published-base bill ratio over the 18 cases.\n'
+        '_ratio = [anchor_bill(r["case"], 2050) / r["PV_rental_transfer_2024B"]\n'
+        '          for _, r in t08.iterrows() if r["case"] in DCASE]\n'
+        'assert len(_ratio) == 18, len(_ratio)\n'
+        'G1 = True            # N/A under SENS (carried as text into b13)\n'
+        'G1_RATIO = (float(min(_ratio)), float(max(_ratio)))\n'
+        'print(f"G1 N/A ({SENS}): in-world bill / published base bill ranges "\n'
+        '      f"{G1_RATIO[0]:.3f}-{G1_RATIO[1]:.3f} over the 18 smr100 cases")\n')
+    sub_once(
+        'T08 = t08.set_index("case")\n'
+        'P50BILL = {ab: float(T08.loc[f"smr100_{ab}_p50", "PV_rental_transfer_2024B"])\n'
+        '           for ab in SCHEDULES}\n'
+        'print("p50 anchor bills (2024 $B):", P50BILL)\n',
+        '# the cap unit is the in-world middle-world bill (t08 is base-world only)\n'
+        'P50BILL = {ab: anchor_bill(f"smr100_{ab}_p50") for ab in SCHEDULES}\n'
+        'print(f"p50 anchor bills in world {SENS} (2024 $B):", P50BILL)\n')
+    sub_once(
+        '                    **{f"bad_{ab}": BAD[ab] for ab in SCHEDULES})\n',
+        '                    **{f"bad_{ab}": BAD[ab] for ab in SCHEDULES},\n'
+        '                    **{f"p50bill_{ab}": P50BILL[ab] for ab in SCHEDULES})\n')
+    sub_once(
+        '    dict(metric="g1_t08_reproduced", value=G1),\n',
+        '    dict(metric="g1_t08_reproduced",\n'
+        '         value=f"N/A ({SENS}); in-world/base bill ratio "\n'
+        '               f"{G1_RATIO[0]:.3f}-{G1_RATIO[1]:.3f}"),\n')
+    sub_once('manifest = sorted(p.name for p in EXPORTS.glob("b*.csv")\n',
+             'manifest = sorted(p.name for p in EXPORTS.glob(f"b*{SFX}.csv")\n')
+    sub_once('    + sorted(p.name for p in FIGURES.glob("d0*.png") if p.name[:3] >= "d04")\n',
+             '    + sorted(p.name for p in FIGURES.glob(f"d0*{SFX}.png") if p.name[:3] >= "d04")\n')
+
+    pat = re.compile(r'(EXPORTS|FIGURES) / "(b(?:0[6-9]|1[0-3])|d0[4-8])_([a-z0-9_]+)\.(csv|npz|png)"')
+    n_hits = 0
+    for c in cells:
+        if c.cell_type != "code":
+            continue
+        c.source, k = pat.subn(r'\1 / f"\2_\3{SFX}.\4"', c.source)
+        n_hits += k
+    assert n_hits == 14, n_hits   # b06-b13 (b07 twice: csv + npz) + d04-d08
+
+    cells.insert(0, nbf.v4.new_markdown_cell(
+        f"# Market-world variant: `{sens}`\n\n"
+        "This notebook is the stage-2 analysis re-run with the 18 smr100 "
+        f"shadow-price paths from the `{sens}` market world of the step4 batch "
+        "(see `z-ethan/market_transfer/methods.md`). The mandate, the cost "
+        "ensemble, the observer, and every random draw are identical to the "
+        "base notebook; only the bills change. Gate G1 (bills reproduce the "
+        "published base table t08) is not applicable here and is reported as a "
+        f"ratio. Every output of this notebook carries the suffix `_{sens}`."))
+
+
+if SENS:
+    assert SENS in ["gaslo", "gashi", "demhi", "relo", "rehi", "translim"], SENS
+    _apply_sens_patches(C, SENS)
+    out = f"bridge_detection_stage2_{SENS}.ipynb"
+else:
+    out = "bridge_detection_stage2.ipynb"
 nb["cells"] = C
-out = "bridge_detection_stage2.ipynb"
 nbf.write(nb, out)
 print(f"wrote {out} with {len(C)} cells")

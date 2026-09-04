@@ -88,7 +88,7 @@ SCHED_GW = {"eia": 117.3, "aj": 134.0, "iaea": 172.3, "mck": 200.0,
             "cop28": 300.0, "eo": 400.0}
 SCHED_LABEL = {"eia": "EIA AEO high (117 GW)", "aj": "Abou-Jaoude (134 GW)",
                "iaea": "IAEA high (172 GW)", "mck": "McKinsey (200 GW)",
-               "cop28": "COP28 (300 GW)", "eo": "EO 2025 (400 GW)"}
+               "cop28": "COP28 (300 GW)", "eo": "2025 EO (400 GW)"}
 PCTS = ["p05", "p50", "p95"]
 SENS = ["gaslo", "gashi", "demhi", "relo", "rehi", "translim"]
 
@@ -381,15 +381,15 @@ for i in range(M.shape[0]):
                 fontsize=7.5, color="white" if v < 0.55 else INK)
 # glyph key must live in the saved figure — it decodes the cell text.
 ax.text(0.0, 1.01, "\\u2193 falls below half peak    ~ declines    \\u2014 flat    "
-        "0 = mandate unbound", transform=ax.transAxes,
+        "0 = mandate not binding", transform=ax.transAxes,
         fontsize=8, color=MUTED, ha="left", va="bottom")
 ax.set_xticks(range(len(ARMS)))
 ax.set_xticklabels(["base"] + [SENS_META[s]["label"] for s in SENS],
                    rotation=30, ha="right")
 ax.set_yticks(range(len(CASE_ORDER)))
-ax.set_yticklabels([f"{tok} {p}" for tok, p in CASE_ORDER])
+ax.set_yticklabels([f"{ps.SCHED_SHORT[tok]}, {ps.PCT_SHORT[p]}" for tok, p in CASE_ORDER])
 ax.grid(False)
-fig.colorbar(im, ax=ax, shrink=0.6, label="end-of-horizon dual / peak dual")
+fig.colorbar(im, ax=ax, shrink=0.6, label="2050 shadow price ÷ peak shadow price")
 savefig(fig, "g02_shape_survival_matrix.png")
 plt.show()
 """)
@@ -412,9 +412,9 @@ for row_i, tok in enumerate(["eia", "eo"]):
                     lw=2.4 if s == "base" else 1.3,
                     alpha=1.0 if s == "base" else 0.85,
                     label="base" if s == "base" else SENS_META[s]["label"])
-        ax.set_title(f"{SCHED_LABEL[tok]} — {p}")
+        ax.set_title(f"{ps.SCHED_SHORT[tok]}, {ps.PCT_LABEL[p]}", fontsize=9)
         if col_i == 0:
-            ax.set_ylabel("mandate dual (2024$/kW-yr)")
+            ax.set_ylabel("shadow price of the mandate (2024$/kW-yr)")
         if row_i == 1:
             ax.set_xlabel("year")
 # figure-level legend below the grid: an in-axes legend occluded the start of

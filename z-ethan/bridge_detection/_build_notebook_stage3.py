@@ -4,8 +4,20 @@ Same convention as _build_notebook.py / _build_notebook_stage2.py. Run with the
 playground-env python. Stages 1 and 2 must have been executed first: this
 notebook reads the stage-1 exports (b01) and the stage-2 per-world bills
 (exports/b07_bills_perworld.npz) plus b09 for comparison rows.
+
+Market-world variant (2026-09-02, `z-ethan/market_transfer/`): with BD_SENS set
+to a step4 market world the builder emits bridge_detection_stage3_{sens}.ipynb,
+which reads the _{sens} stage-2 bills, takes the cap unit P50BILL from that
+file (in-world), and suffixes every stage-3 output _{sens}. The seed and the
+cell order are untouched, so the noise draws pair one-to-one with the base
+run. With BD_SENS unset the emission is unchanged.
 """
+import os
+import re
+
 import nbformat as nbf
+
+SENS = os.environ.get("BD_SENS", "").strip()
 
 nb = nbf.v4.new_notebook()
 nb.metadata = {
@@ -653,7 +665,7 @@ plt.show()
 code("""# ---- d13: PV committed at detection vs cap (2024$B axes; middle noise) ------------
 # Both axes in dollars; light band p05-p95, dark band interquartile, dotted
 # diagonal spend = cap (a hard bound up to one year's accrual). New figure,
-# 2026-08-25 amendment.
+# 2026-08-25 amendment. 09-03 (Ethan, coauthor review): plain-word labels.
 fig, axes = plt.subplots(2, 3, figsize=(ps.W3, 6.2))
 for ax, ab in zip(axes.ravel(), SCHEDULES):
     d = b17m[b17m["schedule"] == ab].sort_values("mult")
@@ -667,15 +679,15 @@ for ax, ab in zip(axes.ravel(), SCHEDULES):
     for m_ in (float(d["mult"].min()), 1.0, 1.5, 2.0):
         rr = d[np.isclose(d["mult"], m_)]
         if len(rr):
-            ax.annotate(f"prior {rr['prior_exceed'].iloc[0]:.0%}",
+            ax.annotate(f"{rr['prior_exceed'].iloc[0]:.0%} of worlds\\nover cap",
                         (0.99, rr["X_2024B"].iloc[0]),
                         xycoords=ax.get_yaxis_transform(), fontsize=6.5,
                         color=ps.FAINT, ha="right", va="center")
-    ax.set_title(ab)
+    ax.set_title(ps.SCHED_SHORT[ab])
 for ax in axes[:, 0]:
     ax.set_ylabel("spending cap (2024$B)")
 for ax in axes[1, :]:
-    ax.set_xlabel("PV committed at detection (2024$B)")
+    ax.set_xlabel("present value committed at detection (2024$B)")
 handles = [Line2D([], [], color=ps.MUTED, lw=2.0, label="median"),
            Patch(facecolor=ps.MUTED, alpha=0.25, label="interquartile range"),
            Patch(facecolor=ps.MUTED, alpha=0.13, label="p05–p95 range"),
@@ -834,7 +846,76 @@ for m_ in manifest:
     print(" ", m_)
 """)
 
+
+
+# ---- market-world patch table (applied only when BD_SENS is set) ------------------
+def _apply_sens_patches(cells, sens):
+    """Rewrite the cell sources for one step4 market world. Each textual patch
+    must hit exactly one cell; the stage-2 reads (b07 npz, b09) and every
+    stage-3 output (b14-b20, d09-d13) gain the _{sens} suffix. The seed line
+    and the cell order are not touched (common random numbers with base)."""
+    sfx = f"_{sens}"
+
+    def sub_once(old, new):
+        hits = [c for c in cells if old in c.source]
+        assert len(hits) == 1, (old[:70], len(hits))
+        hits[0].source = hits[0].source.replace(old, new)
+
+    sub_once('pd.set_option("display.width", 220)\n',
+             'pd.set_option("display.width", 220)\n'
+             f'SENS = "{sens}"          # step4 market world (BD_SENS)\n'
+             f'SFX = "{sfx}"\n')
+    sub_once(
+        't08 = pd.read_csv(S3ANALYSIS / "t08_rental_transfer.csv").set_index("case")\n'
+        'for ab in SCHEDULES:\n'
+        '    for p in ["p05", "p50", "p95"]:\n'
+        '        pub = float(t08.loc[f"smr100_{ab}_{p}", "PV_rental_transfer_2024B"])\n'
+        '        assert abs(B2050[ab][ANCH[ab][p]] - pub) <= 0.051, (ab, p)\n'
+        'P50BILL = {ab: float(t08.loc[f"smr100_{ab}_p50", "PV_rental_transfer_2024B"])\n'
+        '           for ab in SCHEDULES}\n'
+        'print("stage-2 bills loaded; anchor bills match published t08")\n',
+        't08 = pd.read_csv(S3ANALYSIS / "t08_rental_transfer.csv").set_index("case")\n'
+        '# market world SENS: the cap unit is the in-world middle-world bill written\n'
+        '# by stage 2; the published t08 (base world) enters only as a soft ratio.\n'
+        'P50BILL = {ab: float(BW[f"p50bill_{ab}"]) for ab in SCHEDULES}\n'
+        'for ab in SCHEDULES:\n'
+        '    assert abs(B2050[ab][ANCH[ab]["p50"]] - P50BILL[ab]) <= 1e-6, ab\n'
+        '_ratio = [B2050[ab][ANCH[ab][p]]\n'
+        '          / float(t08.loc[f"smr100_{ab}_{p}", "PV_rental_transfer_2024B"])\n'
+        '          for ab in SCHEDULES for p in ["p05", "p50", "p95"]]\n'
+        'print(f"stage-2 bills loaded ({SENS}); in-world anchor bills / published base "\n'
+        '      f"bills range {min(_ratio):.3f}-{max(_ratio):.3f}")\n')
+    sub_once('manifest = sorted(p.name for p in EXPORTS.glob("b*.csv")\n',
+             'manifest = sorted(p.name for p in EXPORTS.glob(f"b*{SFX}.csv")\n')
+    sub_once('    + sorted(p.name for p in FIGURES.glob("d*.png")\n',
+             '    + sorted(p.name for p in FIGURES.glob(f"d*{SFX}.png")\n')
+
+    pat = re.compile(r'(EXPORTS|FIGURES) / "(b(?:07|09|1[4-9]|20)|d(?:09|1[0-3]))_([a-z0-9_]+)\.(csv|npz|png)"')
+    n_hits = 0
+    for c in cells:
+        if c.cell_type != "code":
+            continue
+        c.source, k = pat.subn(r'\1 / f"\2_\3{SFX}.\4"', c.source)
+        n_hits += k
+    assert n_hits == 14, n_hits   # b07 npz + b09 read; b14-b20 (7); d09-d13 (5)
+
+    cells.insert(0, nbf.v4.new_markdown_cell(
+        f"# Market-world variant: `{sens}`\n\n"
+        "This notebook is the stage-3 analysis re-run on the per-world bills of "
+        f"the `{sens}` market world (stage-2 variant of the same name; see "
+        "`z-ethan/market_transfer/methods.md`). The observation calendar, the "
+        "cost ensemble, the noise model, the seed, and the cell order are "
+        "identical to the base notebook, so every noise history pairs with its "
+        "base counterpart; only the bills and the cap unit change. Every output "
+        f"carries the suffix `_{sens}`."))
+
+
+if SENS:
+    assert SENS in ["gaslo", "gashi", "demhi", "relo", "rehi", "translim"], SENS
+    _apply_sens_patches(C, SENS)
+    out = f"bridge_detection_stage3_{SENS}.ipynb"
+else:
+    out = "bridge_detection_stage3.ipynb"
 nb["cells"] = C
-out = "bridge_detection_stage3.ipynb"
 nbf.write(nb, out)
 print(f"wrote {out} with {len(C)} cells")

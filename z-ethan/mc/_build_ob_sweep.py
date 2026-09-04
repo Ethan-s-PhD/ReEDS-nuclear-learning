@@ -95,8 +95,10 @@ at the end pins both ends of the sweep to the published exports.
 
 **Outputs.** `exports/ob_sweep/{sweep_metrics.csv, flip_boundaries.csv,
 ob_sweep_metadata.json}`, the diagnostic `figures/obs_flip_curves.png`, and the paper
-Fig 3 panels `figures/{obs_evpi_vs_m.png, obs_bound_vs_m.png}` (baked letters c/d —
-they replaced the κ-profile insets in the 2026-08-26 Fig 3c/d swap).
+Fig 3 panels `figures/{obs_majority_vs_m.png, obs_evpi_vs_m.png}` (baked letters c/d —
+the sweep curves replaced the κ-profile insets in the 2026-08-26 Fig 3c/d swap; the
+2026-08-31 third recomposition made the majority flip panel c and the EVPI sweep
+panel d, and retired the standalone bound sweep `obs_bound_vs_m.png` from the paper).
 """, "obs-intro"))
 
 # ------------------------------------------------- ported setup (patched paths)
@@ -387,7 +389,7 @@ interpolated crossings.*
 cells.append(code("""\
 # S4 - the flip-curve figure.
 KCOL = {"k100": INK, "k050": ps.ACCENT["violet"], "k000": ps.ACCENT["gold"]}
-KLAB = {"k100": "kappa = 1 (coherent)", "k050": "kappa = 0.5", "k000": "kappa = 0"}
+KLAB = {"k100": "κ = 1 (fully coupled)", "k050": "κ = 0.5", "k000": "κ = 0 (independent)"}
 
 fig, axes = plt.subplots(2, 2, figsize=(ps.W2, 8.0))
 ms_all = np.array(sorted(SWEEP["m"].unique()))
@@ -403,7 +405,7 @@ for aid in AIDS:
     if np.isfinite(r["m_star"]) and not r["note"]:
         ax.plot([r["m_star"]], [0.5], "o", color=KCOL[aid], ms=6, zorder=5)
 ax.axhline(0.5, color=ps.ACCENT["red"], lw=1.2)
-ax.set_ylabel("P(SMR wins), min over schedules\\n(band: min-max across schedules)")
+ax.set_ylabel("probability the all-SMR program is cheaper\\n(line: lowest schedule; band: range across schedules)")
 ax.set_ylim(0, 1)
 ax.legend(fontsize=8, loc="upper right")
 
@@ -432,7 +434,7 @@ for ax, col, lab in [(axes[1, 0], "EVPI_pct", "EVPI (% of expected program cost)
     ax.legend(fontsize=8, loc="upper right")
 
 for ax in axes.ravel():
-    ax.set_xlabel("SMR optimism-bias multiplier m")
+    ax.set_xlabel("SMR optimism-bias multiplier m\\n(true SMR cost = m × sampled cost)")
 ps.letter_panels(list(axes.ravel()))
 plt.tight_layout()
 ps.savefig(fig, FIGURES / "obs_flip_curves.png")
@@ -444,42 +446,70 @@ cells.append(md("""\
 ## S4b — Paper Fig 3 panels c and d
 
 The 2026-08-26 sweep replaced the main paper's Fig 3c (EVPI vs κ) and Fig 3d (2036
-switch bound vs κ) with these optimism-bias flip curves; the κ-profile detail keeps its
-SI homes (SF7/SF8). House rule: the internally lettered source carries the FINAL panel
-letters ("c", "d"); the paper compose runs with `letters=""`.
+switch bound vs κ) with optimism-bias sweep curves. The 2026-08-31 third recomposition
+(Ethan, S2 drafting) re-paired the 2×2 as winner/value-of-waiting × baseline/optimism:
+panel c is now the **majority flip curve** (S4's panel a at paper size) and panel d the
+**EVPI sweep**. The standalone bound sweep `obs_bound_vs_m.png` is retired from the
+paper (the file on disk is a record artifact with its historical baked "d"): the
+bound-vs-m curve stays in `obs_flip_curves.png` (SI, the flip-curve page), and the
+baseline bound κ-profile moved into main Fig 3b (`tech_comparison.ipynb`, cell t8c).
+House rule: the internally lettered source carries the FINAL panel letters ("c", "d");
+the paper compose runs with `letters=""`.
 
-*Figure note (saved: `obs_evpi_vs_m.png`, `obs_bound_vs_m.png`): the S4 panels c/d
-re-emitted standalone at paper-panel size — max-over-schedules EVPI (c) and 2036 switch
-bound (d) against the optimism multiplier m per dependence anchor, with the
-pre-registered 1% C5 threshold and the interpolated κ = 1 crossing marked.*
+*Figure note (saved: `obs_majority_vs_m.png`, `obs_evpi_vs_m.png`): min-over-schedules
+P(SMR wins) with the min–max band, the 0.5 majority line, and the interpolated flip
+points (c); max-over-schedules EVPI with the pre-registered 1% C5 threshold and its
+interpolated crossings (d) — both against the optimism multiplier m per dependence
+anchor.*
 """, "obs-s4b-md"))
 
 cells.append(code("""\
 # S4b - paper Fig 3 panels c and d (baked final letters; composed with letters="").
-for col, letter, fname, claim, crit, ylab in [
-        ("EVPI_pct", "c", "obs_evpi_vs_m.png", "S2-c1 EVPI",
-         f"EVPI crosses {C5_THRESH_PCT}%",
-         "value of perfect information\\n(% of expected program cost)"),
-        ("bound_pct", "d", "obs_bound_vs_m.png", "S2-c2 switch bound",
-         f"bound crosses {C5_THRESH_PCT}% (C5)",
-         "value of one 2036 technology switch\\n(% of expected program cost)")]:
-    fig, ax = plt.subplots(figsize=(6.4, 4.2))
-    for aid in AIDS:
-        g = SWEEP[SWEEP["cell"] == aid].groupby("m")
-        ax.plot(ms_all, g[col].max().loc[ms_all], color=KCOL[aid], lw=2, label=KLAB[aid])
-    ax.axhline(C5_THRESH_PCT, color=ps.ACCENT["red"], lw=1.2)
-    for aid in AIDS:
-        r = BOUNDS[(BOUNDS["cell"] == aid) & (BOUNDS["claim"] == claim)
-                   & (BOUNDS["criterion"] == crit)].iloc[0]
-        if np.isfinite(r["m_star"]) and not r["note"]:
-            ax.plot([r["m_star"]], [C5_THRESH_PCT], "o", color=KCOL[aid], ms=6, zorder=5)
-    ax.set_xlabel("SMR optimism-bias multiplier m")
-    ax.set_ylabel(ylab)
-    ax.legend(fontsize=8, loc="upper right")
-    ps.panel_letter(ax, letter)
-    fig.tight_layout()
-    ps.savefig(fig, FIGURES / fname)
-    plt.show()
+# Recomposed 2026-08-31: c = the majority flip curve, d = the EVPI sweep. The
+# standalone bound sweep (obs_bound_vs_m.png) is retired from the paper -- its
+# curve stays in obs_flip_curves.png (SI flip-curve page), and the baseline bound
+# kappa-profile is main Fig 3b (tech_comparison t8c).
+
+# panel c - the majority claim vs m (S4's panel a at paper-panel size)
+fig, ax = plt.subplots(figsize=(6.4, 4.2))
+for aid in AIDS:
+    g = SWEEP[SWEEP["cell"] == aid].groupby("m")
+    ax.fill_between(ms_all, g["P_smr"].min().loc[ms_all], g["P_smr"].max().loc[ms_all],
+                    color=KCOL[aid], alpha=0.12)
+    ax.plot(ms_all, g["P_smr"].min().loc[ms_all], color=KCOL[aid], lw=2, label=KLAB[aid])
+    r = BOUNDS[(BOUNDS["cell"] == aid) & (BOUNDS["claim"] == "S2-d majority")
+               & (BOUNDS["schedule"] == "min over schedules")].iloc[0]
+    if np.isfinite(r["m_star"]) and not r["note"]:
+        ax.plot([r["m_star"]], [0.5], "o", color=KCOL[aid], ms=6, zorder=5)
+ax.axhline(0.5, color=ps.ACCENT["red"], lw=1.2)
+ax.set_xlabel("SMR optimism-bias multiplier m\\n(true SMR cost = m × sampled cost)")
+ax.set_ylabel("probability the all-SMR program is cheaper\\n(line: lowest schedule; band: range across schedules)")
+ax.set_ylim(0, 1)
+ax.legend(fontsize=8, loc="upper right")
+ps.panel_letter(ax, "c")
+fig.tight_layout()
+ps.savefig(fig, FIGURES / "obs_majority_vs_m.png")
+plt.show()
+
+# panel d - the EVPI sweep (baked letter c until 2026-08-31)
+fig, ax = plt.subplots(figsize=(6.4, 4.2))
+for aid in AIDS:
+    g = SWEEP[SWEEP["cell"] == aid].groupby("m")
+    ax.plot(ms_all, g["EVPI_pct"].max().loc[ms_all], color=KCOL[aid], lw=2,
+            label=KLAB[aid])
+ax.axhline(C5_THRESH_PCT, color=ps.ACCENT["red"], lw=1.2)
+for aid in AIDS:
+    r = BOUNDS[(BOUNDS["cell"] == aid) & (BOUNDS["claim"] == "S2-c1 EVPI")
+               & (BOUNDS["criterion"] == f"EVPI crosses {C5_THRESH_PCT}%")].iloc[0]
+    if np.isfinite(r["m_star"]) and not r["note"]:
+        ax.plot([r["m_star"]], [C5_THRESH_PCT], "o", color=KCOL[aid], ms=6, zorder=5)
+ax.set_xlabel("SMR optimism-bias multiplier m\\n(true SMR cost = m × sampled cost)")
+ax.set_ylabel("value of perfect information\\n(% of expected program cost)")
+ax.legend(fontsize=8, loc="upper right")
+ps.panel_letter(ax, "d")
+fig.tight_layout()
+ps.savefig(fig, FIGURES / "obs_evpi_vs_m.png")
+plt.show()
 """, "obs-s4b-panels"))
 
 # ---------------------------------------------------------------- S5: exports
