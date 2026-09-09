@@ -70,7 +70,10 @@ meta-analysis by Abou-Jaoude and colleagues, which pairs each cost trajectory wi
 deployment projection. Several other cost projections are in wide use: the Department
 of Energy's Liftoff report, MIT's bottom-up AP1000 projection, INL's cost-reduction
 pathways study, the EIA's capital cost study, EPRI's pooled FOAK/NOAK values, and the
-IEA/NEA country estimates. This notebook puts them side by side with the ATB source and
+IEA/NEA country estimates; and, added on 2026-09-08 after a second literature sweep, the
+Breakthrough Institute's endogenous-learning system model, Stewart & Shirvan's bottom-up
+eight-architecture estimates, the IEA's 2025 SMR outlook, and Vanatta et al.'s industrial
+SMR deployment model. This notebook puts them side by side with the ATB source and
 with the paper's learning engine (the model that turns a deployment schedule into an
 overnight-cost path; OCC, the build cost with no financing charges, in 2022 dollars per
 kilowatt). Three questions, in order:
@@ -89,8 +92,11 @@ kilowatt). Three questions, in order:
    design's unit count means for a national program.
 
 Gates, quoting rules, and kill rules were fixed in `methods.md` before this notebook
-was first executed. Tables are `c01` and up; figures `e01` and up. Run on the
-**playground-env** kernel from `z-ethan/lit_comparison/`.
+was first executed; the 09-08 additions were registered as v1.1 before the second
+execution. Tables are `c01` and up; figures `e01` and up. Studies the sweeps found that
+give no (cost, unit-count) pair are listed in a separate cite-only register (`c08`) and
+are never plotted or scored. Run on the **playground-env** kernel from
+`z-ethan/lit_comparison/`.
 """)
 
 # ============================================================================ 1: setup
@@ -281,6 +287,17 @@ The Abou-Jaoude/ATB rows are generated from the ATB files the fork ships and fro
 source's deployment table, never transcribed by hand. The INL 2023 literature review
 gives a parametric curve, generated here from its published quartiles.
 
+**The 09-08 additions** come through `_digitize_figures_b.py` (gate **G1b**): Stewart &
+Shirvan's Figures 2.24 and 2.25 are vector graphics, so each architecture's units 1–10 are
+exact; the IEA's Figures 2.4 and 2.11 are vector, so the scenario cost paths and global
+capacities are exact; Breakthrough's Figure 2-6 is a raster, so only the 2050 end point
+of each of its twelve curves is read (by hand, from zoomed crops, with the report's own
+equation B-2 drawn through each read as the check). Vanatta et al.'s Tables 2 and 3 are
+transcribed. Assumptions A8–A12 in `methods.md` v1.1 govern unit counts for these
+sources (each source's own unit, whatever its size), the IEA's global program (read R1
+only, an outer bound), the Breakthrough curve and floor, Vanatta's thermal-to-electric
+conversion, and the Stewart & Shirvan unit-1 convention.
+
 **Three conventions applied to every point** (assumption register in `methods.md`):
 
 - *Band (A1).* Each point carries the source's stated range where it gives one, the
@@ -372,7 +389,72 @@ for tech in TECH:
                          provenance="derived", band_rule="quartile", scored=int(N > N_BOAK_UNITS),
                          read_set="R1,R2", n_lo=np.nan, n_hi=np.nan,
                          note="Cost_N = BOAK x premium x (1-LR)^log2 N; low/central/high = its quartiles and premiums, LR 10%"))
+# --- Stewart & Shirvan (MIT ANP-194) Figs 2.24 / 2.25 (digitized vector, exact): units 1-10, eight architectures (2018$)
+ss = pd.read_csv(DATA / "mit_anp194_fig225_digitized.csv")
+SS_LARGE = {"PWR12", "LPSR", "DC-PWR", "LASR", "LM-BWR"}
+for r in ss.itertuples(index=False):
+    tech = "large" if r.architecture in SS_LARGE else "smr"
+    rows.append(dict(source_id="stewart_shirvan_2022", series_id=r.series_id, tech=tech, point_id=f"u{r.unit_index}",
+                     label=f"S&S {r.architecture} unit {r.unit_index}", n_units=r.n_units, n_post=r.n_units - N_BOAK_UNITS,
+                     cum_gw=r.cum_gw, year=np.nan, occ=r.occ, occ_lo=0.9*r.occ - r.read_err, occ_hi=1.1*r.occ + r.read_err,
+                     dollar_year=2018, basis=("FOAK" if r.unit_index == 1 else "NOAK" if r.unit_index == 10 else "sequential"),
+                     provenance="digitized-vector", band_rule="pct10+read", scored=int(r.n_units > N_BOAK_UNITS),
+                     read_set="R1,R2", n_lo=np.nan, n_hi=np.nan, is_curve=False,
+                     note=f"{r.design}; unit 1 = Fig 2.24 FOAK bar, units 2-10 = Fig 2.25 increments (A12)"))
+# --- IEA 2025 Figs 2.4 / 2.11 (digitized vector): US-and-EU cost path paired with GLOBAL SMR capacity (A9)
+iea = pd.read_csv(DATA / "iea_2025_digitized.csv", dtype={"figure": str})
+IEA_UNIT_MW = 120.0                        # ">1,000 SMRs" at 120 GW (A9)
+_us = iea[iea.region == "US and EU"]
+IEA_LABEL = {"iea_steps": "STEPS", "iea_aps": "APS", "iea_nze": "NZE", "iea_high_smr": "High SMR Case"}
+for sid in ("iea_steps", "iea_aps", "iea_nze", "iea_high_smr"):
+    if sid == "iea_high_smr":                                     # based on the APS; own capacity path; 2040 = parity
+        f30 = _us[(_us.series_id == "iea_aps") & (_us.year == 2030) & (_us.figure == "2.4")].iloc[0]
+        f40 = _us[(_us.series_id == "iea_high_smr") & (_us.year == 2040)].iloc[0]
+        gw30 = float(iea[(iea.series_id == "iea_aps") & (iea.year == 2030)].gw_global.iloc[0])
+        seq = [(2030, f30.occ, f30.read_err, gw30), (2040, f40.occ, f40.read_err, f40.gw_global)]
+    else:
+        q = _us[(_us.series_id == sid) & (_us.figure == "2.4")].sort_values("year")
+        seq = [(int(r.year), r.occ, r.read_err, r.gw_global) for r in q.itertuples()]
+    for yr, occ, err, gw in seq:
+        n = gw * 1000.0 / IEA_UNIT_MW
+        rows.append(dict(source_id="iea_2025", series_id=sid, tech="smr", point_id=str(yr),
+                         label=f"IEA 2025 {IEA_LABEL[sid]} {yr}", n_units=n, n_post=n - N_BOAK_UNITS, cum_gw=gw, year=yr,
+                         occ=occ, occ_lo=0.9*occ - err, occ_hi=1.1*occ + err, dollar_year=2023,
+                         basis=("FOAK" if yr == 2030 else "milestone"), provenance="digitized-vector", band_rule="pct10+read",
+                         scored=int(yr > 2030), read_set="R1", n_lo=np.nan, n_hi=np.nan, is_curve=False,
+                         note="US-and-EU cost path at GLOBAL SMR capacity; N = GW / 0.12 (A9); R1 only, outer bound"))
+_lg = _us[(_us.series_id == "iea_large") & (_us.year == 2040) & (_us.figure == "2.4")].iloc[0]
+rows.append(dict(source_id="iea_2025", series_id="iea_large", tech="large", point_id="2040", label="IEA 2025 large-scale reactor on time and budget (US and EU)",
+                 n_units=np.nan, n_post=np.nan, cum_gw=np.nan, year=2040, occ=_lg.occ, occ_lo=0.9*_lg.occ, occ_hi=1.1*_lg.occ,
+                 dollar_year=2023, basis="generic", provenance="digitized-vector", band_rule="pct10+read", scored=0, read_set="",
+                 n_lo=np.nan, n_hi=np.nan, is_curve=False, note="Fig 2.4 large-scale reactor line, 2040-2050 level; unpaired reference"))
+# --- Breakthrough 2022: eq. B-2 curve per (class x scenario) from unit 1 to the Fig 2-6 end point (A10); 2020$
+bti = pd.read_csv(DATA / "bti_fig26_endpoints.csv")
+for r in bti.itertuples(index=False):
+    sid = f"bti_{r.tech.lower()}_{r.cost_case[0]}c{r.learning_case[0]}l"
+    b = -np.log2(1.0 - r.lr)
+    unit_mw = r.unit_gw * 1000.0
+    n_end = float(r.n_units_2050)
+    curve_n = [n for n in (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048) if n < n_end]
+    for N in curve_n:
+        c = max(r.floor_2020usd, r.foak_2020usd * N ** (-b))
+        rows.append(dict(source_id="bti_2022", series_id=sid, tech="smr", point_id=f"N{N}",
+                         label=f"Breakthrough {r.tech} N={N}", n_units=N, n_post=N - N_BOAK_UNITS, cum_gw=N*r.unit_gw, year=np.nan,
+                         occ=c, occ_lo=0.9*c, occ_hi=1.1*c, dollar_year=2020, basis=("FOAK" if N == 1 else "parametric"),
+                         provenance="derived", band_rule="pct10", scored=0, read_set="", n_lo=np.nan, n_hi=np.nan, is_curve=(N > 1),
+                         note=f"eq. B-2 with the $1,800 floor; FOAK {r.foak_2020usd:,.0f}, LR {r.lr:.0%}; not scored (curve)"))
+    lo_c, hi_c = min(r.occ_2050_read, r.occ_2050_eq_b2), max(r.occ_2050_read, r.occ_2050_eq_b2)
+    wide = abs(r.ratio_read - r.ratio_eq_b2) > 0.04
+    rows.append(dict(source_id="bti_2022", series_id=sid, tech="smr", point_id="2050",
+                     label=f"Breakthrough {r.tech} 2050 end point", n_units=n_end, n_post=n_end - N_BOAK_UNITS,
+                     cum_gw=r.gw_2050, year=2050, occ=r.occ_2050_read,
+                     occ_lo=0.9*(lo_c if wide else r.occ_2050_read), occ_hi=1.1*(hi_c if wide else r.occ_2050_read),
+                     dollar_year=2020, basis="milestone", provenance="digitized-raster-manual",
+                     band_rule=("pct10+eqB2" if wide else "pct10"), scored=int(n_end > N_BOAK_UNITS), read_set="R1,R2",
+                     n_lo=float(r.gw_2050_lo / r.unit_gw), n_hi=float(r.gw_2050_hi / r.unit_gw), is_curve=False,
+                     note=f"{r.scenario}; ratio read {r.ratio_read:.3f} vs eq. B-2 {r.ratio_eq_b2:.3f}; x read error +-{r.x_err_decade:.3f} decade; {r.note}"))
 pts = pd.DataFrame(rows)
+pts["is_curve"] = pts["is_curve"].fillna(False).astype(bool)
 for col in ("occ", "occ_lo", "occ_hi"):
     pts[col + "_2022"] = [float(to2022(v, y)) for v, y in zip(pts[col], pts["dollar_year"])]
 pts["paired"] = pts["cum_gw"].notna()
@@ -391,11 +473,15 @@ print("\nunpaired reference values (no deployment stated):")
 print(pts[~pts.paired][["series_id", "tech", "label", "occ", "dollar_year", "occ_2022", "basis"]]
       .to_string(index=False, float_format=lambda v: f"{v:,.0f}"))
 
-# Gate G1 is re-asserted from the digitizer's record.
+# Gates G1 and G1b are re-asserted from the digitizers' records.
 _cal = json.loads((DATA / "digitize_calib.json").read_text(encoding="utf-8"))
 assert _cal["gate_G1"]["all_pass"], _cal["gate_G1"]
 VERDICT.append(("gate", "G1", "PASS", f"{len(_cal['gate_G1']['checks'])} text anchors reproduced by the digitized series"))
 print(f"\nG1 PASSED (re-asserted from data/digitize_calib.json): {len(_cal['gate_G1']['checks'])} anchors")
+_calb = json.loads((DATA / "digitize_calib_b.json").read_text(encoding="utf-8"))
+assert _calb["gate_G1b"]["all_pass"], _calb["gate_G1b"]
+VERDICT.append(("gate", "G1b", "PASS", f"{len(_calb['gate_G1b']['checks'])} anchors reproduced by the 09-08 digitized series"))
+print(f"G1b PASSED (re-asserted from data/digitize_calib_b.json): {len(_calb['gate_G1b']['checks'])} anchors")
 ''')
 code(r'''# c01 - the assumptions comparison (one column per source; the engine last).
 asm = pd.read_csv(DATA / "lit_assumptions.csv")
@@ -406,6 +492,21 @@ _cols = ["citation", "dollar_year", "tech_scope", "model_form", "lr_stated", "un
 pd.set_option("display.max_colwidth", 70)
 print("c01 - assumptions comparison -> exports/c01_assumptions.csv")
 print(asm.set_index("source_id")[_cols].T.to_string())
+''')
+md(r"""**Cited, not plotted (K5).** The two literature sweeps (09-04, 09-08) also found studies that
+give no (cost, unit-count) pair: cost-target inversions, deployment studies that consume
+exogenous costs, learning-rate reviews, cost-driver reports, and outlooks. They are kept in
+`data/lit_cite_only.csv`, exported as `c08_cite_only.csv`, and appear nowhere else in this
+notebook, so they cannot be mistaken for series. The `paper_role` column says where each is
+cited (I2, I3, the Methods learning-rate prior, or context only).
+""")
+code(r'''# c08 - the cite-only register (never plotted, never scored).
+cite = pd.read_csv(DATA / "lit_cite_only.csv")
+cite.to_csv(LIT_EXPORTS / "c08_cite_only.csv", index=False)
+VERDICT.append(("kill", "K5", "CITE-ONLY", f"{len(cite)} studies listed in c08, none plotted or scored"))
+pd.set_option("display.max_colwidth", 60)
+print(f"c08 - {len(cite)} cite-only studies -> exports/c08_cite_only.csv")
+print(cite[["cite_id", "pub_year", "kind", "why_not_plotted", "paper_role"]].to_string(index=False))
 ''')
 code(r'''# c03 - implied learning rates: the Wright slope between consecutive scored points of each series,
 # LR = 1 - (c2/c1)^(1/log2(N2/N1)), and the FOAK premium (first point / first scored point).
@@ -451,8 +552,21 @@ dated series against calendar year, so timing differences are visible separately
 volume differences. **e03** normalizes each series to its first scored point and plots it
 against doublings of the unit count, so the slope *is* the implied learning rate; the
 thin reference lines are pure Wright curves at 5, 10 and 15% per doubling.
+
+Every figure family (e01–e06) is drawn once per **source-family group**, so that no panel
+holds more than a handful of series and every series is named in its panel's legend:
+**g1** US agency chains and targets (Liftoff, INL pathways, INL review, EIA, realized
+projects); **g2** MIT bottom-up estimates (ANP-201, Stewart & Shirvan, EPRI); **g3**
+Breakthrough 2022, one panel per reactor class with its four scenarios; **g4** IEA 2025
+(with IEA/NEA 2020); **g5** industrial-heat SMRs (Vanatta) and the Steigerwald illustration.
+The three Abou-Jaoude trajectories are drawn in every panel as the common reference.
+Breakthrough's curves are its equation drawn from unit 1; only their 2050 end points carry
+deployment information and only those are marked.
 """)
-code(r'''# Series styling (identity never rides on colour alone: every series is labelled in the legend).
+code(r'''# Series styling and source-family groups. Identity never rides on colour alone: within a
+# group, sources differ by colour and the series of one source differ by marker / line style,
+# and every series is named in its panel's legend. The Abou-Jaoude trajectories (the ATB
+# source) are drawn in every panel as the common reference, in the technology hue.
 STYLE = {
     "mit_ap1000_23gw": dict(color=ps.ACCENT["violet"], ls="-", marker="D", label="MIT ANP-201 AP1000, 23 GW program (digitized)"),
     "mit_smr_7gw":     dict(color=ps.ACCENT["violet"], ls="-", marker="D", label="MIT ANP-201 SMR, 7 GW program (digitized)"),
@@ -468,11 +582,62 @@ STYLE = {
 }
 for scen in SCEN_ORDER:
     STYLE[f"aj_{scen}"] = dict(color=None, ls="-", marker="o", label=f"ATB 2024 / Abou-Jaoude {scen}")
+for arch, sid, mk in (("PWR12 1,147 MW", "ss_pwr12", "o"), ("LPSR 1,117 MW (AP1000-like)", "ss_lpsr", "s"),
+                      ("DC-PWR 1,650 MW", "ss_dcpwr", "D"), ("LASR 1,400 MW (APR1400-like)", "ss_lasr", "^"),
+                      ("LM-BWR 1,350 MW (ABWR-like)", "ss_lmbwr", "v"), ("MMNC 12x74 MW plant", "ss_mmnc", "o"),
+                      ("NC-SMR 160 MW", "ss_ncsmr", "s"), ("SM-BWR 300 MW (BWRX-300-like)", "ss_smbwr", "D")):
+    STYLE[sid] = dict(color=ps.ACCENT["green"], ls="-", marker=mk, label=f"Stewart & Shirvan 2022 {arch}, units 1-10 (digitized, exact)")
+BTI_COL = {"smr": ps.ACCENT["green"], "htgr": ps.ACCENT["gold"], "artes": ps.ACCENT["violet"]}
+BTI_MK = {"lcll": "o", "lchl": "s", "ucll": "D", "uchl": "^"}
+BTI_NAME = {"smr": "SMR 150 MW", "htgr": "HTGR 80 MW", "artes": "ARTES 345 MW"}
+for cls in BTI_COL:
+    for sc, mk in BTI_MK.items():
+        STYLE[f"bti_{cls}_{sc}"] = dict(color=BTI_COL[cls], ls=("-" if sc[0] == "l" else "--"), marker=mk,
+                                        label=f"Breakthrough 2022 {BTI_NAME[cls]}, {'lower' if sc[0] == 'l' else 'upper'} cost / "
+                                              f"{'high' if sc[2] == 'h' else 'low'} learning (eq. B-2 curve; 2050 end point read)")
+for sid, mk, nm in (("iea_steps", "o", "STEPS"), ("iea_aps", "s", "APS"), ("iea_nze", "^", "NZE"), ("iea_high_smr", "D", "High SMR Case")):
+    STYLE[sid] = dict(color=ps.ACCENT["red"], ls="-", marker=mk, label=f"IEA 2025 SMR {nm}, US-and-EU cost at global capacity (digitized, exact)")
+for sid, mk, nm in (("vanatta_ipwr", "o", "iPWR 77 MW"), ("vanatta_pbr", "s", "PBR-HTGR 80 MW"), ("vanatta_vhtr", "^", "VHTR 164 MW"),
+                    ("vanatta_micro", "x", "microreactor 6.7 MW (out of scope, not scored)")):
+    STYLE[sid] = dict(color=ps.ACCENT["red"], ls="-", marker=mk, label=f"Vanatta et al. 2024 {nm}, 2050 learned cost by module count")
 UNPAIRED_LABEL = {"eia_sl_large": "EIA/S&L 2024 AP1000", "eia_sl_smr": "EIA/S&L 2024 SMR",
-                  "epri_large": "EPRI 2023 LWR", "epri_smr": "EPRI 2023 SMR", "iea_nea_large": "IEA/NEA 2020 US LWR"}
+                  "epri_large": "EPRI 2023 LWR", "epri_smr": "EPRI 2023 SMR", "iea_nea_large": "IEA/NEA 2020 US LWR",
+                  "iea_large": "IEA 2025 large reactor on budget (US/EU)"}
+AJ_IDS = [f"aj_{s_}" for s_ in SCEN_ORDER]
+# Groups: (group id, group title, panels); panel = (tech, panel title, series ids). The
+# Abou-Jaoude trajectories are added to every panel automatically.
+GROUPS = [
+    ("g1_agency", "US agency chains and targets", [
+        ("large", "Liftoff, INL review, EIA", ["liftoff_ap1000", "liftoff_noak_target", "inl_review", "vogtle_realized", "eia_sl_large"]),
+        ("smr", "INL pathways, Liftoff target, INL review, EIA", ["inl_pathways_A", "inl_pathways_B", "liftoff_noak_target", "inl_review", "darlington_quote", "eia_sl_smr"])]),
+    ("g2_mit", "MIT bottom-up estimates", [
+        ("large", "MIT ANP-201, Stewart & Shirvan, EPRI", ["mit_ap1000_23gw", "ss_pwr12", "ss_lpsr", "ss_dcpwr", "ss_lasr", "ss_lmbwr", "epri_large"]),
+        ("smr", "MIT ANP-201, Stewart & Shirvan, EPRI", ["mit_smr_7gw", "mit_smr_23gw", "ss_mmnc", "ss_ncsmr", "ss_smbwr", "epri_smr"])]),
+    ("g3_breakthrough", "Breakthrough 2022 (endogenous learning, four scenarios per class)", [
+        ("smr", "Breakthrough SMR 150 MW", [f"bti_smr_{sc}" for sc in BTI_MK]),
+        ("smr", "Breakthrough HTGR 80 MW", [f"bti_htgr_{sc}" for sc in BTI_MK]),
+        ("smr", "Breakthrough ARTES 345 MW", [f"bti_artes_{sc}" for sc in BTI_MK])]),
+    ("g4_iea", "IEA 2025 scenario paths (global program)", [
+        ("large", "IEA 2025 large reactor, IEA/NEA 2020", ["iea_large", "iea_nea_large"]),
+        ("smr", "IEA 2025 SMR scenarios", ["iea_steps", "iea_aps", "iea_nze", "iea_high_smr"])]),
+    ("g5_industrial", "Industrial-heat SMRs and the scaling illustration", [
+        ("smr", "Vanatta et al. 2024, Steigerwald 2023", ["vanatta_ipwr", "vanatta_pbr", "vanatta_vhtr", "vanatta_micro", "steigerwald_parity"])]),
+]
+_all_ids = {sid for _, _, panels in GROUPS for _, _, ids in panels for sid in ids} | set(AJ_IDS)
+_missing = set(pts.series_id.unique()) - _all_ids
+assert not _missing, f"series in no group: {_missing}"
+FAMILIES = {"e01": "occ_vs_cumulative_build", "e02": "occ_vs_year", "e03": "normalized_vs_doublings",
+            "e04": "feasible_lr_s_maps", "e05": "dial_marginals", "e06": "projections_on_cost_plane"}
 
 def series_color(sid, tech):
     return SCEN_COLOR[tech][sid[3:]] if sid.startswith("aj_") else STYLE[sid]["color"]
+
+def panel_ids(ids):
+    return AJ_IDS + list(ids)
+
+def legend_handles(sids, tech):
+    return [Line2D([], [], color=series_color(s_, tech), ls=STYLE[s_]["ls"] if STYLE[s_]["ls"] != "none" else "",
+                   marker=STYLE[s_]["marker"] or None, label=STYLE[s_]["label"]) for s_ in sids if s_ in STYLE]
 
 def draw_series(ax, g, tech, with_bands=True, x="cum_gw"):
     sid = g["series_id"].iloc[0]
@@ -484,7 +649,8 @@ def draw_series(ax, g, tech, with_bands=True, x="cum_gw"):
         ax.plot(g[x], g["occ_2022"], color=col, ls=st["ls"], lw=1.2)
         return
     if st["ls"] != "none":
-        ax.plot(g[x], g["occ_2022"], color=col, ls=st["ls"], lw=1.4, zorder=3)
+        ax.plot(g[x], g["occ_2022"], color=col, ls=st["ls"], lw=(1.0 if sid.startswith("bti_") else 1.4), zorder=3)
+    g = g[~g["is_curve"]]                       # curve-only points (Breakthrough eq. B-2) carry no marker
     hollow = g["scored"] == 0
     for mask, fc in ((~hollow, col), (hollow, "white")):
         gg = g[mask]
@@ -500,13 +666,8 @@ def draw_series(ax, g, tech, with_bands=True, x="cum_gw"):
                 ax.plot([r.n_lo*r.cum_gw/r.n_units, r.n_hi*r.cum_gw/r.n_units], [r.occ_2022]*2,
                         color=col, lw=0.9, alpha=0.7)
 
-# e01 - cost vs cumulative build, one panel per technology, all series
-fig, axes = plt.subplots(1, 2, figsize=(ps.W3, 5.6), sharey=True)
-for ax, tech in zip(axes, TECH):
-    sub = pts[(pts.tech == tech) & pts.paired]
-    for sid, g in sub.groupby("series_id", sort=False):
-        draw_series(ax, g, tech)
-    unp = pts[(pts.tech == tech) & ~pts.paired].sort_values("occ_2022")
+def draw_unpaired(ax, tech, ids):
+    unp = pts[(pts.tech == tech) & ~pts.paired & pts.series_id.isin(ids)].sort_values("occ_2022")
     _last = -1e9
     for r in unp.itertuples():
         ax.axhline(r.occ_2022, color=FAINT, lw=0.9, ls=":", zorder=1)
@@ -515,79 +676,111 @@ for ax, tech in zip(axes, TECH):
                     (3000.0, r.occ_2022), xytext=(-3, -2 if crowd else 2), textcoords="offset points", fontsize=6.5,
                     color=MUTED, ha="right", va="top" if crowd else "bottom")
         _last = r.occ_2022
-    ax.set_xscale("log")
-    ax.set_xlim(0.2, 3000.0)
-    ax.set_xlabel("cumulative new build after the anchor (GW, log scale)")
-    ax.set_title(TECH_LABEL[tech], color=TECH_COLOR[tech], loc="left", fontsize=10)
-    handles = [Line2D([], [], color=series_color(s, tech), ls=STYLE[s]["ls"] if STYLE[s]["ls"] != "none" else "",
-                      marker=STYLE[s]["marker"] or None, label=STYLE[s]["label"])
-               for s in sub["series_id"].unique()]
-    ax.legend(handles=handles, fontsize=6.6, loc="upper right", ncol=1)
-axes[0].set_ylabel("overnight capital cost (2022$/kW)")
-ps.panel_letter(axes[0], "a"); ps.panel_letter(axes[1], "b")
-fig.tight_layout()
-ps.savefig(fig, LIT_FIGURES / "e01_occ_vs_cumulative_build.png")
-plt.show()
+
+def group_axes(panels, height=5.4, nrows=1, sharey=True):
+    n = len(panels)
+    fig, axes = plt.subplots(nrows, n, figsize=(4.9*n + 0.8, height*nrows), sharey=sharey, squeeze=False)
+    return fig, axes
+
+print("groups:", ", ".join(f"{gid} ({len(panels)} panels)" for gid, _, panels in GROUPS))
 ''')
-md(r"""**e01 — cost against cumulative build** (`e01_occ_vs_cumulative_build.png`). **a** large reactors, **b** SMRs; x = cumulative new build after each source's anchor (GW, log), y = overnight capital cost in 2022 dollars. Connected series = sources that pair cost with a unit count; hollow markers = first- and second-of-a-kind points (never scored); vertical bars = each point's significance band; horizontal bars on the Liftoff points = the stated 10–20-unit range; dotted horizontal lines = sources with no deployment attached. The Abou-Jaoude trajectories are placed at his own deployment path (x = his new build after 2030), three per technology.""")
-code(r'''# e02 - the dated series against calendar year
-fig, axes = plt.subplots(1, 2, figsize=(ps.W3, 4.8), sharey=True)
-for ax, tech in zip(axes, TECH):
-    sub = pts[(pts.tech == tech) & pts.paired & pts.dated]
-    for sid, g in sub.groupby("series_id", sort=False):
-        draw_series(ax, g, tech, with_bands=False, x="year")
-    ax.set_xlim(2022, 2060)
-    ax.set_xlabel("year")
-    ax.set_title(TECH_LABEL[tech], color=TECH_COLOR[tech], loc="left", fontsize=10)
-    handles = [Line2D([], [], color=series_color(s, tech), ls=STYLE[s]["ls"] if STYLE[s]["ls"] != "none" else "",
-                      marker=STYLE[s]["marker"] or None, label=STYLE[s]["label"]) for s in sub["series_id"].unique()]
-    ax.legend(handles=handles, fontsize=6.6, loc="upper right")
-axes[0].set_ylabel("overnight capital cost (2022$/kW)")
-ps.panel_letter(axes[0], "a"); ps.panel_letter(axes[1], "b")
-fig.tight_layout()
-ps.savefig(fig, LIT_FIGURES / "e02_occ_vs_year.png")
-plt.show()
+code(r'''# e01 - cost vs cumulative build, one figure per source-family group
+for gid, gtitle, panels in GROUPS:
+    fig, axes = group_axes(panels)
+    for c_, (tech, ptitle, ids) in enumerate(panels):
+        ax = axes[0, c_]
+        sub = pts[(pts.tech == tech) & pts.paired & pts.series_id.isin(panel_ids(ids))]
+        for sid, g in sub.groupby("series_id", sort=False):
+            draw_series(ax, g, tech)
+        draw_unpaired(ax, tech, ids)
+        ax.set_xscale("log")
+        ax.set_xlim(0.05, 3000.0)
+        ax.set_xlabel("cumulative new build after the anchor (GW, log scale)")
+        ax.set_title(f"{TECH_LABEL[tech]} — {ptitle}", color=TECH_COLOR[tech], loc="left", fontsize=9.5)
+        ax.legend(handles=legend_handles(sub["series_id"].unique(), tech), fontsize=6.2, loc="upper left", bbox_to_anchor=(0.0, -0.13), frameon=False)
+    axes[0, 0].set_ylabel("overnight capital cost (2022$/kW)")
+    ps.letter_panels(axes.ravel())
+    fig.suptitle(gtitle, fontsize=10, x=0.01, ha="left")
+    fig.tight_layout()
+    ps.savefig(fig, LIT_FIGURES / f"e01_{FAMILIES['e01']}_{gid}.png")
+    plt.show()
 ''')
-md(r"""**e02 — the dated series against calendar year** (`e02_occ_vs_year.png`). Only sources that attach a year: the Abou-Jaoude milestones (2030–2050), MIT's offering years (2024–2058), and the realized or quoted projects. Undated series (INL pathways, Liftoff, the INL review) do not appear.""")
-code(r'''# e03 - normalized cost vs doublings of the unit count; slope = implied learning rate
-fig, axes = plt.subplots(1, 2, figsize=(ps.W3, 4.8), sharey=True)
+md(r"""**e01 — cost against cumulative build**, one figure per source-family group (`e01_occ_vs_cumulative_build_<group>.png`; groups g1 US agency chains and targets, g2 MIT bottom-up estimates, g3 Breakthrough 2022 by reactor class, g4 IEA 2025, g5 industrial-heat SMRs). x = cumulative new build after each source's anchor (GW, log), y = overnight capital cost in 2022 dollars. Connected series = sources that pair cost with a unit count; hollow markers = points never scored (first- and second-of-a-kind, and the out-of-scope microreactor); vertical bars = each point's significance band; horizontal bars = a stated or read range of unit counts (Liftoff's 10–20 units; Breakthrough's end-point read error); dotted horizontal lines = sources with no deployment attached. The Abou-Jaoude trajectories are placed at his own deployment path (x = his new build after 2030), three per technology, in every panel. The IEA series sit at global SMR capacity (A9); the Breakthrough thin lines are its equation B-2 curves and only their 2050 end points are data.""")
+code(r'''# e02 - the dated series against calendar year, one figure per group (panels with no dated series are skipped)
+for gid, gtitle, panels in GROUPS:
+    keep = [(t, pt, ids) for t, pt, ids in panels
+            if len(pts[(pts.tech == t) & pts.paired & pts.dated & pts.series_id.isin(ids)])]
+    if not keep:
+        print(f"e02 {gid}: no dated series beyond the Abou-Jaoude milestones; skipped")
+        continue
+    fig, axes = group_axes(keep, height=4.8)
+    for c_, (tech, ptitle, ids) in enumerate(keep):
+        ax = axes[0, c_]
+        sub = pts[(pts.tech == tech) & pts.paired & pts.dated & pts.series_id.isin(panel_ids(ids))]
+        for sid, g in sub.groupby("series_id", sort=False):
+            draw_series(ax, g, tech, with_bands=False, x="year")
+        ax.set_xlim(2022, 2060)
+        ax.set_xlabel("year")
+        ax.set_title(f"{TECH_LABEL[tech]} — {ptitle}", color=TECH_COLOR[tech], loc="left", fontsize=9.5)
+        ax.legend(handles=legend_handles(sub["series_id"].unique(), tech), fontsize=6.2, loc="upper left", bbox_to_anchor=(0.0, -0.13), frameon=False)
+    axes[0, 0].set_ylabel("overnight capital cost (2022$/kW)")
+    ps.letter_panels(axes.ravel())
+    fig.suptitle(gtitle, fontsize=10, x=0.01, ha="left")
+    fig.tight_layout()
+    ps.savefig(fig, LIT_FIGURES / f"e02_{FAMILIES['e02']}_{gid}.png")
+    plt.show()
+''')
+md(r"""**e02 — the dated series against calendar year** (`e02_occ_vs_year_<group>.png`). Only sources that attach a year: the Abou-Jaoude milestones (2030–2050), MIT's offering years (2024–2058), the realized or quoted projects, the IEA scenario paths (2030–2050), the Breakthrough 2050 end points and Vanatta's 2030 FOAK and 2050 learned costs. Undated series (INL pathways, Liftoff, the INL review, Stewart & Shirvan) do not appear, and a group with no dated series beyond the milestones has no e02 figure.""")
+code(r'''# e03 - normalized cost vs doublings of the unit count; slope = implied learning rate; one figure per group
 xx = np.linspace(0, 7, 50)
-for ax, tech in zip(axes, TECH):
-    for lr_ref in (0.05, 0.10, 0.15):
-        ax.plot(xx, (1 - lr_ref)**xx, color=FAINT, lw=0.8, ls=":")
-        ax.annotate(f"{lr_ref:.0%}/doubling", (xx[-1], (1 - lr_ref)**xx[-1]), xytext=(3, 0),
-                    textcoords="offset points", fontsize=6.5, color=MUTED, va="center")
-    sub = pts[(pts.tech == tech) & pts.paired & (pts.scored == 1)]
-    handles = []
-    for sid, g in sub.groupby("series_id", sort=False):
-        g = g.sort_values("cum_gw")
-        if len(g) < 2 or sid == "inl_review":
-            continue
-        nn = g["n_post"].values + N_BOAK_UNITS if sid.startswith("aj_") else g["n_units"].values
-        nn = nn.astype(float)
-        if nn[0] <= 0:
-            continue
-        col = series_color(sid, tech)
-        st = STYLE[sid]
-        ax.plot(np.log2(nn/nn[0]), g["occ_2022"].values/g["occ_2022"].values[0], color=col, ls=st["ls"],
-                marker=st["marker"], ms=4, lw=1.3)
-        handles.append(Line2D([], [], color=col, ls=st["ls"], marker=st["marker"], label=st["label"]))
-    ax.set_xlabel("doublings of cumulative units since the first scored point")
-    ax.set_title(TECH_LABEL[tech], color=TECH_COLOR[tech], loc="left", fontsize=10)
-    ax.legend(handles=handles, fontsize=6.6, loc="lower left")
-axes[0].set_ylabel("cost relative to the first scored point")
-ps.panel_letter(axes[0], "a"); ps.panel_letter(axes[1], "b")
-fig.tight_layout()
-ps.savefig(fig, LIT_FIGURES / "e03_normalized_vs_doublings.png")
-plt.show()
+for gid, gtitle, panels in GROUPS:
+    fig, axes = group_axes(panels, height=4.8)
+    for c_, (tech, ptitle, ids) in enumerate(panels):
+        ax = axes[0, c_]
+        for lr_ref in (0.05, 0.10, 0.15):
+            ax.plot(xx, (1 - lr_ref)**xx, color=FAINT, lw=0.8, ls=":")
+            ax.annotate(f"{lr_ref:.0%}/doubling", (xx[-1], (1 - lr_ref)**xx[-1]), xytext=(3, 0),
+                        textcoords="offset points", fontsize=6.5, color=MUTED, va="center")
+        sub = pts[(pts.tech == tech) & pts.paired & (pts.scored == 1) & pts.series_id.isin(panel_ids(ids))]
+        handles = []
+        for sid, g in sub.groupby("series_id", sort=False):
+            g = g.sort_values("cum_gw")
+            if len(g) < 2 or sid == "inl_review":
+                continue
+            nn = g["n_post"].values + N_BOAK_UNITS if sid.startswith("aj_") else g["n_units"].values
+            nn = nn.astype(float)
+            if nn[0] <= 0:
+                continue
+            col = series_color(sid, tech)
+            st = STYLE[sid]
+            ax.plot(np.log2(nn/nn[0]), g["occ_2022"].values/g["occ_2022"].values[0], color=col, ls=st["ls"],
+                    marker=st["marker"], ms=4, lw=1.3)
+            handles.append(Line2D([], [], color=col, ls=st["ls"], marker=st["marker"], label=st["label"]))
+        ax.set_xlabel("doublings of cumulative units since the first scored point")
+        ax.set_title(f"{TECH_LABEL[tech]} — {ptitle}", color=TECH_COLOR[tech], loc="left", fontsize=9.5)
+        if handles:
+            ax.legend(handles=handles, fontsize=6.2, loc="upper left", bbox_to_anchor=(0.0, -0.13), frameon=False)
+    axes[0, 0].set_ylabel("cost relative to the first scored point")
+    ps.letter_panels(axes.ravel())
+    fig.suptitle(gtitle, fontsize=10, x=0.01, ha="left")
+    fig.tight_layout()
+    ps.savefig(fig, LIT_FIGURES / f"e03_{FAMILIES['e03']}_{gid}.png")
+    plt.show()
 ''')
-md(r"""**e03 — normalized cost against doublings** (`e03_normalized_vs_doublings.png`). Each scored series divided by its first scored point and plotted against log2 of its unit count; a straight line is a constant learning rate, and the dotted references are 5, 10 and 15% per doubling. Abou-Jaoude's counts are post-anchor units plus the two anchor units (his own per-vendor count would divide by the vendor count and steepen the apparent slope). The implied per-segment rates are in `c03`.""")
+md(r"""**e03 — normalized cost against doublings** (`e03_normalized_vs_doublings_<group>.png`). Each scored series divided by its first scored point and plotted against log2 of its unit count; a straight line is a constant learning rate, and the dotted references are 5, 10 and 15% per doubling. Abou-Jaoude's counts are post-anchor units plus the two anchor units (his own per-vendor count would divide by the vendor count and steepen the apparent slope). The implied per-segment rates are in `c03`. Series with a single scored point (the Breakthrough end points, the IEA High SMR Case, Vanatta's VHTR) do not appear (K2), so the g3 panels carry only the Abou-Jaoude reference.""")
 md(r"""**What e01–e03 show (read from `c02`/`c03`; every value 2022$/kW).**
 
 - *Levels converge where the programs overlap.* Between about 10 and 30 GW of cumulative build, the large-reactor series pass through one window, roughly 4,000–6,000: the ATB moderate and conservative trajectories, MIT's AP1000 chain (4,300–4,900 at 12–20 units) and the Liftoff chain (4,400 at 10–20 units). The ATB advanced trajectory sits below every other series at every deployment it covers. The unpaired reference values (EIA/S&L 7,550, EPRI NOAK 5,050, IEA/NEA 4,950) fall inside the same window. The INL 2023 review's quartile band spans the whole set.
 - *Shapes differ more than levels.* The single-design chains (MIT, Liftoff, INL pathways) fall steeply over their first doublings — implied 22–29% per doubling from the first scored point (`c03`) — and then flatten: MIT's SMR programs plateau near 5,600 after 24 units, INL's Concept A near 3,500 after ten plants. The Abou-Jaoude trajectories decline at a near-constant 9–12% per doubling with no plateau. The first shape is a first-of-a-kind-to-Nth-of-a-kind waterfall (overruns and rework eliminated in the first few plants); the second is a Wright curve. Both are stated model choices, not measurements.
 - *SMR sources disagree most before 5 GW and least after 10 GW.* First-of-a-kind SMR values run 12,000–19,000 (MIT, INL, Darlington) against the ATB's 2030 anchors of 5,500–10,000; beyond 10 GW the SMR series sit within 3,500–6,000 of each other's plateaus and the ATB moderate curve.
 - *Timing (e02).* Where sources attach years, MIT's AP1000 chain reaches the ATB moderate level about a decade later than the ATB places it (2048 vs 2040 for ~4,800), because MIT's program builds 23 GW by 2058 while the ATB moderate program builds 34 GW by 2050.
+
+**What the 09-08 additions add (groups g2–g5; `c02`/`c03`, 2022$/kW).**
+
+- *Stewart & Shirvan's best-case chains start low and fall gently.* Their unit-1 costs are 4,600–6,300 for the five large architectures and 6,700–8,500 for the three small ones, with unit-1-to-unit-3 premiums of only 1.13–1.31 (a "best-case FOAK" that carries the median 1970s–80s overrun and nothing else), against the 3.2× Vogtle-to-NOAK premium of the MIT ANP-201 and Liftoff chains. From unit 3 to unit 10 the implied slopes are 7–12% per doubling (large) and 10–13% (small): element-level rates of 16% factory, 13% labor and 7% material pool to plant-level rates inside the engine's sampled supports. Their 10th units land at 3,400–4,500 (large) and 4,100–5,800 (small), below the ATB moderate trajectory at the same cumulative build.
+- *Breakthrough's curves are pure Wright from unit 1 with a floor.* Twelve curves at 5% or 12% per doubling reach 2,050–4,400 at their 2050 end points (18–247 GW per class); the four high-learning classes with lower FOAK sit on the $1,800 (2020$) floor from 35–70 GW on. Only the end points are data; the lines between are the report's equation.
+- *The IEA's US-and-EU SMR path is the steepest series on the page:* 9,600 at the 2030 first-of-a-kind to 4,100 (APS, 118 GW global) or 3,400 (NZE, 200 GW) by 2050, an implied 13–23% per doubling between 2040 and 2050 when the global fleet is counted as the experience base. Under today's policies (STEPS) it stops at 6,000 after 39 GW.
+- *Vanatta's industrial designs barely move,* 2–3% per doubling of modules, because the reported number learns only on the factory share of cost (26–29% for the 77–80 MW designs) at 16% and excludes onsite learning: 6,300 → 5,700 for the iPWR after 24–30 modules, 5,200 → 4,250 for the pebble-bed HTGR after ~100.
 """)
 
 # ============================================================================ Part C
@@ -641,7 +834,7 @@ def score_series(g, tech, read, year_mode):
 SERIES = [(sid, tech, g) for (sid, tech), g in pts[pts.paired & (pts.scored == 1)].groupby(["series_id", "tech"], sort=False)]
 RUNS = []             # (sid, tech, read, year_mode) -> results
 for sid, tech, g in SERIES:
-    reads = ["R1"] if sid.startswith("aj_") else ["R1", "R2"]
+    reads = ["R1"] if sid.startswith(("aj_", "iea_")) else ["R1", "R2"]      # IEA: global program, R1 only (A9)
     modes = (["dated", "dated (+-250)"] if sid.startswith("aj_") else ["dated"]) if g["dated"].all() else ["2050", "2030"]
     for read in reads:
         for mode in modes:
@@ -773,118 +966,191 @@ print(f"G3 PASSED: {_checked} (world, point) checks; the full engine never leave
 VERDICT.append(("gate", "G3", "PASS", f"{_checked} full-engine checks inside band"))
 ''')
 code(r'''# e04 - where each series lives in the (learning rate, spillover) plane: the feasible region of
-# each series (any u, m, rho) outlined per experience base; R1 solid, R2 dashed.
+# each series (any u, m, rho) outlined per experience base; R1 solid, R2 dashed; one figure per group.
 def lr_s_region(feas, conv):
     z = feas.reshape(G_SHAPE)            # (rho, conv, m, lr, s, u)
     return z[:, int(conv)].any(axis=(0, 1, 4))     # (rho, m, lr, s, u) -> any over rho, m, u -> (lr, s)
 
-fig, axes = plt.subplots(2, 2, figsize=(ps.W3 + 4, 9.0), sharex=True, sharey=True)
-for c_, tech in enumerate(TECH):
-    for r_, conv in enumerate(CONV_GRID):
-        ax = axes[r_, c_]
-        ax.axvspan(TECH[tech]["lr_lo"], TECH[tech]["lr_hi"], color=ps.C_TINY, alpha=0.10, lw=0)
+for gid, gtitle, panels in GROUPS:
+    fig, axes = group_axes(panels, height=4.4, nrows=2)
+    for c_, (tech, ptitle, ids) in enumerate(panels):
+        for r_, conv in enumerate(CONV_GRID):
+            ax = axes[r_, c_]
+            ax.axvspan(TECH[tech]["lr_lo"], TECH[tech]["lr_hi"], color=ps.C_TINY, alpha=0.10, lw=0)
+            handles = []
+            for key in RUNS:
+                sid, t, read, mode = key
+                if t != tech or mode in ("2030", "dated (+-250)") or sid not in panel_ids(ids):
+                    continue
+                Z = lr_s_region(RES[key][0], conv)
+                if not Z.any():
+                    continue
+                col = series_color(sid, tech)
+                ls = "-" if read == "R1" else "--"
+                ax.contour(LR_GRID, S21, Z.T.astype(float), levels=[0.5], colors=[col], linestyles=[ls], linewidths=1.3)
+                if read == "R1":
+                    st = STYLE[sid]
+                    handles.append(Line2D([], [], color=col, marker=st["marker"] or None, ms=4, label=st["label"]))
+            if r_ == 0:
+                ax.set_title(f"{TECH_LABEL[tech]} — {ptitle}", color=TECH_COLOR[tech], loc="left", fontsize=9.5)
+            if c_ == 0:
+                ax.set_ylabel(("fresh-start" if conv == 0 else "legacy-fleet-credited") + "\nspillover scale s")
+            if r_ == 1:
+                ax.set_xlabel("firm-level learning rate")
+            ax.set_xlim(0.0, 0.3)
+            ax.set_ylim(0.0, 1.0)
+            handles += [Line2D([], [], color=INK, ls="-", label="read R1 (national build = source units)"),
+                        Line2D([], [], color=INK, ls="--", label="read R2 (each vendor = source units)"),
+                        Line2D([], [], color=ps.C_TINY, lw=6, alpha=0.3, label="MC sampled learning-rate support")]
+            ax.legend(handles=handles, fontsize=5.8, loc="upper right")
+    ps.letter_panels(axes.ravel())
+    fig.suptitle(gtitle, fontsize=10, x=0.01, ha="left")
+    fig.tight_layout()
+    ps.savefig(fig, LIT_FIGURES / f"e04_{FAMILIES['e04']}_{gid}.png")
+    plt.show()
+''')
+md(r"""**e04 — feasible regions in the (learning rate, spillover) plane** (`e04_feasible_lr_s_maps_<group>.png`). Each outline encloses the grid points where some setting of the other dials (foreign deployment, vendor count, combination rule, anchor within the prior) reproduces the whole series inside its bands; rows = experience base; solid = read R1, dashed = read R2; green band = the learning-rate support the Monte Carlo samples. The legend marker identifies the series; a series with no outline in a panel has no feasible world there (listed under K3 in the verdict).""")
+code(r'''# e05 - dial marginals (F4-style): share of feasible worlds by dial value, per series (R1, primary mode);
+# one figure per group, one row per panel.
+for gid, gtitle, panels in GROUPS:
+    fig, axes = plt.subplots(len(panels), 6, figsize=(ps.W3 + 2, 3.3*len(panels)), squeeze=False)
+    for r_, (tech, ptitle, ids) in enumerate(panels):
         handles = []
         for key in RUNS:
             sid, t, read, mode = key
-            if t != tech or mode in ("2030", "dated (+-250)"):
+            if t != tech or read != "R1" or mode in ("2030", "dated (+-250)") or sid not in panel_ids(ids):
                 continue
-            Z = lr_s_region(RES[key][0], conv)
-            if not Z.any():
+            feas = RES[key][0]
+            if not feas.any():
                 continue
             col = series_color(sid, tech)
-            ls = "-" if read == "R1" else "--"
-            ax.contour(LR_GRID, S21, Z.T.astype(float), levels=[0.5], colors=[col], linestyles=[ls], linewidths=1.3)
-            if read == "R1":
-                handles.append(Line2D([], [], color=col, label=STYLE[sid]["label"]))
-        if r_ == 0:
-            ax.set_title(TECH_LABEL[tech], color=TECH_COLOR[tech], loc="left", fontsize=10)
-        if c_ == 0:
-            ax.set_ylabel(("fresh-start" if conv == 0 else "legacy-fleet-credited") + "\nspillover scale s")
-        if r_ == 1:
-            ax.set_xlabel("firm-level learning rate")
-        handles += [Line2D([], [], color=INK, ls="-", label="read R1 (national build = source units)"),
-                    Line2D([], [], color=INK, ls="--", label="read R2 (each vendor = source units)"),
-                    Line2D([], [], color=ps.C_TINY, lw=6, alpha=0.3, label="MC sampled learning-rate support")]
-        ax.legend(handles=handles, fontsize=6.0, loc="upper left", bbox_to_anchor=(1.01, 1.0))
-ps.letter_panels(axes.ravel())
-fig.tight_layout()
-ps.savefig(fig, LIT_FIGURES / "e04_feasible_lr_s_maps.png")
-plt.show()
-''')
-md(r"""**e04 — feasible regions in the (learning rate, spillover) plane** (`e04_feasible_lr_s_maps.png`). Each outline encloses the grid points where some setting of the other dials (foreign deployment, vendor count, combination rule, anchor within the prior) reproduces the whole series inside its bands; rows = experience base; solid = read R1, dashed = read R2; green band = the learning-rate support the Monte Carlo samples. A series with no outline in a panel has no feasible world there (listed under K3 in the verdict).""")
-code(r'''# e05 - dial marginals (F4-style): share of feasible worlds by dial value, per series (R1, primary mode).
-fig, axes = plt.subplots(2, 6, figsize=(ps.W3 + 2, 6.4))
-for r_, tech in enumerate(TECH):
-    handles = []
-    for key in RUNS:
-        sid, t, read, mode = key
-        if t != tech or read != "R1" or mode in ("2030", "dated (+-250)"):
-            continue
-        feas = RES[key][0]
-        if not feas.any():
-            continue
-        col = series_color(sid, tech)
-        for c_, (d, arr) in enumerate(DIALS.items()):
-            vals = np.unique(arr)
-            share = np.array([feas[arr == v].mean() for v in vals])
+            st = STYLE[sid]
+            for c_, (d, arr) in enumerate(DIALS.items()):
+                vals = np.unique(arr)
+                share = np.array([feas[arr == v].mean() for v in vals])
+                axes[r_, c_].plot(vals, share, color=col, lw=1.2, ls=st["ls"] if st["ls"] != "none" else "-",
+                                  marker=st["marker"] or None, ms=3.5, markevery=(max(1, len(vals)//6)))
+            handles.append(Line2D([], [], color=col, ls=st["ls"] if st["ls"] != "none" else "-", marker=st["marker"] or None, ms=4, label=st["label"]))
+        for c_, d in enumerate(DIALS):
             ax = axes[r_, c_]
-            ax.plot(vals, share, color=col, lw=1.2, marker="." if len(vals) < 10 else None)
-        handles.append(Line2D([], [], color=col, label=STYLE[sid]["label"]))
-    for c_, d in enumerate(DIALS):
-        ax = axes[r_, c_]
-        if r_ == 1:
-            ax.set_xlabel({"lr": "learning rate", "s": "spillover s", "u": "foreign deployment u",
-                           "m": "vendor count m", "conv": "legacy credit (0/1)", "rho": "combination rule rho"}[d])
-        if c_ == 0:
-            ax.set_ylabel(f"{TECH_LABEL[tech]}\nshare of worlds feasible", color=TECH_COLOR[tech])
-        if d == "lr":
-            ax.axvspan(TECH[tech]["lr_lo"], TECH[tech]["lr_hi"], color=ps.C_TINY, alpha=0.10, lw=0)
-    axes[r_, -1].legend(handles=handles, fontsize=5.8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
-fig.tight_layout()
-ps.savefig(fig, LIT_FIGURES / "e05_dial_marginals.png")
-plt.show()
+            if r_ == len(panels) - 1:
+                ax.set_xlabel({"lr": "learning rate", "s": "spillover s", "u": "foreign deployment u",
+                               "m": "vendor count m", "conv": "legacy credit (0/1)", "rho": "combination rule rho"}[d])
+            if c_ == 0:
+                ax.set_ylabel(f"{TECH_LABEL[tech]}\n{ptitle}\nshare of worlds feasible", color=TECH_COLOR[tech], fontsize=7.5)
+            if d == "lr":
+                ax.axvspan(TECH[tech]["lr_lo"], TECH[tech]["lr_hi"], color=ps.C_TINY, alpha=0.10, lw=0)
+        axes[r_, -1].legend(handles=handles, fontsize=5.8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+    fig.suptitle(gtitle, fontsize=10, x=0.01, ha="left")
+    fig.tight_layout()
+    ps.savefig(fig, LIT_FIGURES / f"e05_{FAMILIES['e05']}_{gid}.png")
+    plt.show()
 ''')
-md(r"""**e05 — which dials each series pins** (`e05_dial_marginals.png`). For each dial value, the share of grid worlds holding that value that reproduce the series (read R1, dated or 2050 mode). A flat profile means the series carries no information about that dial; a peaked profile means it pins it.""")
-code(r'''# e06 - every series on the engine's cost-deployment plane (Fig 1's construction, one panel per
-# technology x experience base): fans over the support-restricted worlds AND the anchor prior.
-D_PLANE_GW = np.logspace(np.log10(0.2), np.log10(3000.0), 30)
+md(r"""**e05 — which dials each series pins** (`e05_dial_marginals_<group>.png`). For each dial value, the share of grid worlds holding that value that reproduce the series (read R1, dated or 2050 mode); one row per panel of the group, marker and line style as in the group's other figures. A flat profile means the series carries no information about that dial; a peaked profile means it pins it. Series with no feasible world are absent.""")
+code(r'''# e06 - every series on the engine's cost-deployment plane (Fig 1's construction): fans over the
+# support-restricted worlds AND the anchor prior; rows = experience base; one figure per group.
+D_PLANE_GW = np.logspace(np.log10(0.05), np.log10(3000.0), 32)
 BOAK_Q = {t: np.linspace(TECH[t]["boak_lo"], TECH[t]["boak_hi"], 11) for t in TECH}
-fig, axes = plt.subplots(2, 2, figsize=(ps.W3, 9.2), sharex=True)
-for c_, tech in enumerate(TECH):
-    for r_, conv in enumerate(CONV_GRID):
-        ax = axes[r_, c_]
+_FAN = {}
+for tech in TECH:
+    for conv in CONV_GRID:
         strat = SUPPORT[tech] & (G["conv"] == conv)
         q = np.empty((len(D_PLANE_GW), 5))
         for k, d in enumerate(D_PLANE_GW):
             sh = shape_2050(tech, G["lr"][strat], G["s"][strat], G["u"][strat], G["m"][strat], conv,
                             G["rho"][strat], d / TECH[tech]["unit_gw"])
             q[k] = np.quantile(np.outer(BOAK_Q[tech], sh).ravel(), [0.05, 0.25, 0.5, 0.75, 0.95])
-        ax.fill_between(D_PLANE_GW, q[:, 0], q[:, 4], color=TECH_COLOR[tech], alpha=0.12, lw=0,
+        _FAN[(tech, conv)] = q
+for gid, gtitle, panels in GROUPS:
+    fig, axes = group_axes(panels, height=4.8, nrows=2, sharey=False)
+    for c_, (tech, ptitle, ids) in enumerate(panels):
+        for r_, conv in enumerate(CONV_GRID):
+            ax = axes[r_, c_]
+            q = _FAN[(tech, conv)]
+            ax.fill_between(D_PLANE_GW, q[:, 0], q[:, 4], color=TECH_COLOR[tech], alpha=0.12, lw=0,
+                            label="engine, P5-P95 of worlds x anchor prior (2050)")
+            ax.fill_between(D_PLANE_GW, q[:, 1], q[:, 3], color=TECH_COLOR[tech], alpha=0.25, lw=0, label="P25-P75")
+            ax.plot(D_PLANE_GW, q[:, 2], color=TECH_COLOR[tech], lw=1.8, label="median world")
+            sub = pts[(pts.tech == tech) & pts.paired & pts.series_id.isin(panel_ids(ids))]
+            for sid, g in sub.groupby("series_id", sort=False):
+                draw_series(ax, g, tech, with_bands=False)
+            for scen in SCEN_ORDER:
+                t50 = float(ATB_T[(tech, scen)].loc[2050])
+                ax.plot([AJ_GW_ENT50[scen]]*2, [t50 - 125, t50 + 125], color=INK, lw=2.2, alpha=0.85, zorder=5)
+            ax.set_xscale("log")
+            ax.set_xlim(0.05, 3000.0)
+            if r_ == 0:
+                ax.set_title(f"{TECH_LABEL[tech]} — {ptitle}", color=TECH_COLOR[tech], loc="left", fontsize=9.5)
+            if c_ == 0:
+                ax.set_ylabel(("fresh-start" if conv == 0 else "legacy-fleet-credited") + "\novernight capital cost (2022$/kW)")
+            if r_ == 1:
+                ax.set_xlabel("cumulative new build after the anchor (GW, log scale)")
+            if r_ == 1:                                   # one legend per column, below the bottom panel
+                fan_h, fan_l = ax.get_legend_handles_labels()
+                handles = fan_h + legend_handles(sub["series_id"].unique(), tech) + \
+                          [Line2D([], [], color=INK, lw=2.2, label="ATB 2050 targets +-$125/kW at the paired deployment")]
+                ax.legend(handles=handles, fontsize=6.2, loc="upper left", bbox_to_anchor=(0.0, -0.13), frameon=False)
+    ps.letter_panels(axes.ravel())
+    fig.suptitle(gtitle, fontsize=10, x=0.01, ha="left")
+    fig.tight_layout()
+    ps.savefig(fig, LIT_FIGURES / f"e06_{FAMILIES['e06']}_{gid}.png")
+    plt.show()
+''')
+md(r"""**e06 — the projections on the engine's cost–deployment plane** (`e06_projections_on_cost_plane_<group>.png`). Fans = the 2050 cost the support-restricted grid worlds deliver at each cumulative build, with the anchor drawn uniformly across the Monte Carlo's 2030 anchor prior (P5–P95, P25–P75, median); rows = experience base. Every series of the group is overlaid at its own cumulative build (read R1); the black bars are the three ATB 2050 targets ±$125/kW at their paired deployments, as in the paper's Fig 1. The g1 figure is the SF-twin candidate for Fig 1; the Breakthrough thin lines in g3 are its equation B-2 curves (unit 1 to the 2050 end point); the IEA series in g4 sit at global capacity (A9).""")
+code(r"""# e10 - the engine against the whole literature: the four e06 panels with EVERY literature
+# series (the ATB source included) drawn as unlabeled grey lines and markers, so only the
+# engine's fans carry colour and the reader sees the model against the literature's range.
+def draw_series_grey(ax, g, x="cum_gw"):
+    g = g.sort_values(x)
+    sid = g["series_id"].iloc[0]
+    if sid == "inl_review":
+        return                                    # a range statement, not a projection
+    st = STYLE[sid]
+    if st["ls"] != "none":
+        ax.plot(g[x], g["occ_2022"], color=MUTED, ls="-", lw=0.7, alpha=0.55, zorder=3)
+    g = g[~g["is_curve"]]
+    hollow = g["scored"] == 0
+    for mask, fc in ((~hollow, MUTED), (hollow, "white")):
+        gg = g[mask]
+        if len(gg):
+            ax.scatter(gg[x], gg["occ_2022"], marker="o", s=11, facecolor=fc, edgecolor=MUTED, lw=0.6, alpha=0.8, zorder=4)
+
+fig, axes = plt.subplots(2, 2, figsize=(ps.W3, 9.0), sharex=True, sharey=True)
+n_series = {}
+for c_, tech in enumerate(TECH):
+    for r_, conv in enumerate(CONV_GRID):
+        ax = axes[r_, c_]
+        q = _FAN[(tech, conv)]
+        ax.fill_between(D_PLANE_GW, q[:, 0], q[:, 4], color=TECH_COLOR[tech], alpha=0.14, lw=0,
                         label="engine, P5-P95 of worlds x anchor prior (2050)")
-        ax.fill_between(D_PLANE_GW, q[:, 1], q[:, 3], color=TECH_COLOR[tech], alpha=0.25, lw=0, label="P25-P75")
-        ax.plot(D_PLANE_GW, q[:, 2], color=TECH_COLOR[tech], lw=1.8, label="median world")
+        ax.fill_between(D_PLANE_GW, q[:, 1], q[:, 3], color=TECH_COLOR[tech], alpha=0.28, lw=0, label="P25-P75")
+        ax.plot(D_PLANE_GW, q[:, 2], color=TECH_COLOR[tech], lw=2.0, label="median world", zorder=5)
         sub = pts[(pts.tech == tech) & pts.paired]
         for sid, g in sub.groupby("series_id", sort=False):
-            draw_series(ax, g, tech, with_bands=False)
-        for scen in SCEN_ORDER:
-            t50 = float(ATB_T[(tech, scen)].loc[2050])
-            ax.plot([AJ_GW_ENT50[scen]]*2, [t50 - 125, t50 + 125], color=INK, lw=2.2, alpha=0.85, zorder=5)
+            draw_series_grey(ax, g)
+        for r in pts[(pts.tech == tech) & ~pts.paired].itertuples():
+            ax.axhline(r.occ_2022, color=MUTED, lw=0.6, ls=":", alpha=0.6, zorder=1)
+        n_series[tech] = int(sub["series_id"].nunique()) + int(pts[(pts.tech == tech) & ~pts.paired]["series_id"].nunique())
         ax.set_xscale("log")
-        ax.set_xlim(0.2, 3000.0)
+        ax.set_xlim(0.05, 3000.0)
+        ax.set_ylim(0, 20000)                      # one y range on all four panels (Ethan, 09-08)
         if r_ == 0:
             ax.set_title(TECH_LABEL[tech], color=TECH_COLOR[tech], loc="left", fontsize=10)
         if c_ == 0:
             ax.set_ylabel(("fresh-start" if conv == 0 else "legacy-fleet-credited") + "\novernight capital cost (2022$/kW)")
         if r_ == 1:
             ax.set_xlabel("cumulative new build after the anchor (GW, log scale)")
-        if r_ == 0 and c_ == 0:
-            ax.legend(fontsize=6.5, loc="upper right")
+        if r_ == 0:
+            h, l = ax.get_legend_handles_labels()
+            h.append(Line2D([], [], color=MUTED, lw=0.7, marker="o", ms=3, label=f"literature projections, {n_series[tech]} series (unlabeled; e01 identifies them)"))
+            ax.legend(handles=h, fontsize=6.4, loc="upper right")
 ps.letter_panels(axes.ravel())
 fig.tight_layout()
-ps.savefig(fig, LIT_FIGURES / "e06_projections_on_cost_plane.png")
+ps.savefig(fig, LIT_FIGURES / "e10_engine_vs_all_literature.png")
 plt.show()
-''')
-md(r"""**e06 — the projections on the engine's cost–deployment plane** (`e06_projections_on_cost_plane.png`). Fans = the 2050 cost the support-restricted grid worlds deliver at each cumulative build, with the anchor drawn uniformly across the Monte Carlo's 2030 anchor prior (P5–P95, P25–P75, median); rows = experience base. Every literature series is overlaid at its own cumulative build (read R1); the black bars are the three ATB 2050 targets ±$125/kW at their paired deployments, as in the paper's Fig 1. This is the SF-twin candidate for Fig 1.""")
+print("e10: literature series per panel:", n_series)
+""")
+md(r"""**e10 — the engine against the whole literature** (`e10_engine_vs_all_literature.png`). The four e06 panels (columns = technology, rows = experience base) with the engine's 2050 fans in colour (P5–P95 and P25–P75 of the support-restricted worlds × the anchor prior, and the median world) and every literature series drawn in unlabeled grey: connected points for the sources that pair cost with a unit count (the ATB source's three trajectories, MIT ANP-201, INL pathways, Liftoff, Stewart & Shirvan, Breakthrough, IEA 2025, Vanatta, the realized projects), dotted horizontal lines for the unpaired references (EIA, EPRI, IEA/NEA, IEA large reactor). Hollow markers are unscored points (first- and second-of-a-kind, out of scope). The INL 2023 review's quartile band is omitted (a range statement). The grouped e01 figures identify every series.""")
 code(r'''# Plain-language reading per series, generated from c04/c05 (primary read/mode).
 def _fmt_range(row, d, pct=False):
     lo, hi = row[f"{d}_min"], row[f"{d}_max"]
@@ -920,6 +1186,15 @@ md(r"""**What Part C shows (read from `c04`/`c05`; shares are of the grid restri
 - *SMR series with a plateau are reproduced broadly.* MIT's 7 and 23 GW programs and INL's Concept B are feasible in 45–89% of the support because their plateaus (5,600–6,000 with ±10% bands, or the exact Concept B series) are broad enough for the engine's slower decline to cross; the dial marginals (e05) show these series bound the learning rate from above (roughly ≤15%) and say little about the other dials. INL's Concept A (a steeper waterfall to 3,500) has no feasible world (nearest miss $151 of anchor).
 - *The INL 2023 review's quartile band admits almost every world* (≥99% of the support). It carries no information about the dials; it is a range statement, not a projection.
 - *Experience base.* Legacy-fleet-credited worlds reproduce no large-reactor series (the credit flattens the large curve too much) but do reproduce the SMR plateaus.
+
+**What Part C shows for the 09-08 additions (`c04`/`c05`; shares of the support-restricted grid, read R1 unless stated).**
+
+- *Stewart & Shirvan's large chains are blocked by the anchor prior, not by their slope.* Their implied 7–12% per doubling sits inside the large support, but their unit-3 costs (3,700–4,600 in 2022$) lie below the engine's 2030 anchor prior (5,250–7,750 at each vendor's unit 2), so a world must start at the prior's floor and learn fast: LM-BWR 0.0%, LPSR 1.2%, PWR12 3.7% of the support, all at learning rates above 6–11%; DC-PWR 11% and LASR 43% (their unit-3 costs 4,550 and 5,570 reach the prior). Under R2 the shares rise to 0.8–64%. No legacy-credited world reproduces any of the five.
+- *Their small architectures are reproduced broadly:* NC-SMR 99.7%, SM-BWR 71%, MMNC 19% under R1 (74% under R2). Levels of 4,100–6,900 inside the SMR anchor prior and slopes of 10–13% are what the engine samples; MMNC's plant-level 4,100 at ten plants is the one that needs the vendor-count reading.
+- *Breakthrough's end points bound the learning rate from below and say little else.* One point at hundreds of units with a ±10% band is reproduced by 22–99% of the support; the high-learning cases need firm-level rates of at least 8–11.5% (their 12% with no cross-firm channel is the engine's ~10% plus spillover), the low-learning cases admit 0.5–6.5% and up. Every dial except the learning rate is flat (e05, g3).
+- *The IEA paths are reproduced by 31% (APS), 56% (NZE), 51% (STEPS) and 72% (High SMR Case) of the support under the global-as-national read (A9, an outer bound), with median learning rates of 5–8.5% and, for the APS and STEPS, an anchor pinned at or above 6,500. The 2040–2050 slope of 13–23% per doubling is carried by the global unit count, not by a rate the engine samples.
+- *Vanatta's iPWR (99.9%) and VHTR (97%) are almost unconstraining* (small declines inside the prior); the pebble-bed HTGR at 4,250 after ~100 modules is reproduced by 17% and needs an anchor at or below 9,400 with some spillover.
+- *Kill rule K3 fires for none of the 09-08 series at the primary year mode;* the LM-BWR and LPSR chains fail only under the 2030 bracket (zero foreign stock).
 """)
 # ============================================================================ closing
 md(r"""## Verdict and manifest
@@ -946,7 +1221,7 @@ manifest = {
              "worlds": int(NG), "part1_worlds_for_G2": int(NPTS*len(DISC_COMBOS))},
     "tolerance": {"atb": "+-125 $/kW", "stated": "source range", "pct10": "+-10%", "digitized": "+ read error",
                   "aj_regression_trajectory": TOL, "aj_regression_endpoint": TOL_END},
-    "assumptions": "A1-A7 in methods.md (A6 = MIT offering -> N, author confirmation requested)",
+    "assumptions": "A1-A12 in methods.md (A6 = MIT offering -> N, author confirmation requested; A8-A12 = the 09-08 additions, v1.1)",
     "deflators_to_2022": {str(y): float(DEFL.loc[y]/DEFL.loc[2022]) for y in (2018, 2019, 2020, 2023, 2024)},
     "inputs": {"mc_perdraw.npz": _crc(EXPORTS / "mc_perdraw.npz"), "atb_targets.csv": _crc(ATB_OUT / "atb_targets.csv"),
                "aj_deployment_csv": _crc(AJ_CSV), "lit_sources.csv": _crc(DATA / "lit_sources.csv"),
@@ -954,6 +1229,11 @@ manifest = {
                "mit_digitized": _crc(DATA / "mit_anp201_fig2_digitized.csv"),
                "inl_digitized": _crc(DATA / "inl_pathways_fig10_digitized.csv"),
                "digitize_calib.json": _crc(DATA / "digitize_calib.json"),
+               "anp194_digitized": _crc(DATA / "mit_anp194_fig225_digitized.csv"),
+               "iea_2025_digitized": _crc(DATA / "iea_2025_digitized.csv"),
+               "bti_fig26_endpoints": _crc(DATA / "bti_fig26_endpoints.csv"),
+               "digitize_calib_b.json": _crc(DATA / "digitize_calib_b.json"),
+               "lit_cite_only.csv": _crc(DATA / "lit_cite_only.csv"),
                "deflator.csv": _crc(REPO / "inputs" / "financials" / "deflator.csv")},
     "written": {str(p.relative_to(HERE)).replace("\\", "/"): _crc(p) for p in written},
 }

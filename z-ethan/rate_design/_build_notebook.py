@@ -15,7 +15,12 @@ pre-registered gates G0-G4 and kill criteria K1-K7 in methods.md. Nothing
 downstream (paper docs, paper_figures, instrument_comparison) is edited on
 its basis until the antagonistic audit and Ethan's ratification.
 """
+import os
+import re
+
 import nbformat as nbf
+
+ANCHORS = os.environ.get("RD_ANCHORS", "").strip()   # "5a": five-anchor twin (methods.md v2.3)
 
 nb = nbf.v4.new_notebook()
 nb.metadata = {
@@ -1056,7 +1061,118 @@ for p in sorted(EXPORTS.glob("u*.csv")) + sorted(FIGURES.glob("w*.png")):
     print(f"{p.relative_to(HERE)}  ({p.stat().st_size / 1024:.0f} kB)")
 """)
 
+
+# ---- five-anchor patch table (applied only when RD_ANCHORS=5a) --------------------
+def _apply_5a_patches(cells):
+    """Five-anchor twin (methods.md v2.3, 2026-09-08): the S1 map interpolates over
+    five anchors; the +/-20% certificate band becomes the E5 leave-one-out band read
+    from the stage-2 twin; every export/figure gains the _5a suffix. The t12 outlay
+    calibration (KAPPA) stays on the three production anchors by registration."""
+    sfx = "_5a"
+
+    def sub_once(old, new):
+        hits = [c for c in cells if old in c.source]
+        assert len(hits) == 1, (old[:70], len(hits))
+        hits[0].source = hits[0].source.replace(old, new)
+
+    sub_once('VERDICT = []              # (kind, name, result, detail) rows -> u90\n',
+             'VERDICT = []              # (kind, name, result, detail) rows -> u90\n'
+             'PCTS = ["p05", "p25", "p50", "p75", "p95"]     # five-anchor twin (RD_ANCHORS=5a)\n'
+             'INTERIOR = ["p25", "p50", "p75"]\n'
+             f'SFX = "{sfx}"\n')
+    sub_once('reg_smr = pd.read_csv(MC_EXPORTS / "smr100" / "selected_draws.csv")\n'
+             'reg_smr["ab"] = reg_smr["schedule"].map(NAME2AB)\n'
+             'assert len(reg_smr) == 18 and reg_smr["ab"].notna().all()\n',
+             'reg_smr = pd.concat([pd.read_csv(MC_EXPORTS / "smr100" / "selected_draws.csv"),\n'
+             '                     pd.read_csv(MC_EXPORTS / "smr100" / "selected_draws_p25p75.csv")],\n'
+             '                    ignore_index=True)\n'
+             'reg_smr["ab"] = reg_smr["schedule"].map(NAME2AB)\n'
+             'assert len(reg_smr) == 30 and reg_smr["ab"].notna().all()\n')
+    sub_once('BW = np.load(BRIDGE / "b07_bills_perworld.npz")\n',
+             'BW = np.load(BRIDGE / "b07_bills_perworld_5a.npz")\n'
+             'E5 = float(BW["e5_band"])          # the leave-one-out certificate band (stage-2 twin)\n'
+             'print(f"five-anchor certificate band E5 = {E5:.2f}")\n')
+    sub_once('    for p in ["p05", "p50", "p95"]:\n'
+             '        pub = float(t08.loc[f"smr100_{ab}_{p}", "PV_rental_transfer_2024B"])\n',
+             '    for p in PCTS:\n'
+             '        pub = float(t08.loc[f"smr100_{ab}_{p}", "PV_rental_transfer_2024B"])\n')
+    sub_once('    cases = {p: f"smr100_{ab}_{p}" for p in ["p05", "p50", "p95"]}\n',
+             '    cases = {p: f"smr100_{ab}_{p}" for p in PCTS}\n')
+    sub_once('        xs = np.array([occ[ANCH[ab][p], YI[t]] for p in ["p05", "p50", "p95"]])\n'
+             '        ys = np.array([rate_of(cases[p], t) for p in ["p05", "p50", "p95"]])\n',
+             '        xs = np.array([occ[ANCH[ab][p], YI[t]] for p in PCTS])\n'
+             '        ys = np.array([rate_of(cases[p], t) for p in PCTS])\n')
+    sub_once('    for p in ["p05", "p50", "p95"]:\n        w_ = ANCH[ab][p]\n'
+             '        tru = np.array([rate_of(cases[p], t) for t in BUILD_TS[ab]])\n',
+             '    for p in PCTS:\n        w_ = ANCH[ab][p]\n'
+             '        tru = np.array([rate_of(cases[p], t) for t in BUILD_TS[ab]])\n')
+    sub_once('    for tag, mult in [("lo", 0.8), ("hi", 1.2)]:\n'
+             '        need_b = np.maximum(IW[ab] * mult - TOL_SHORT, 0.0) * OCCW[ab]\n',
+             '    for tag, mult in [("lo", 1.0 - E5), ("hi", 1.0 + E5)]:   # E5 band (v2.3)\n'
+             '        need_b = np.maximum(IW[ab] * mult - TOL_SHORT, 0.0) * OCCW[ab]\n')
+    sub_once('        for p in ["p05", "p50", "p95"]:\n'
+             '            d_rows.append(dict(metric="knot_pctl"',
+             '        for p in PCTS:\n'
+             '            d_rows.append(dict(metric="knot_pctl"')
+    sub_once('                "inside the +/-20% band (rows with |gain| >= 0.005)"))',
+             '                f"inside the +/-{E5:.0%} E5 band (rows with |gain| >= 0.005)"))')
+    sub_once('for ab in SCHEDULES:\n'
+             '    ref = s01_old[s01_old["schedule"] == ab].sort_values("world")["fstar"].to_numpy()\n'
+             '    assert np.allclose(np.round(FSTAR[ab], 4), ref, atol=5e-4), ab\n'
+             'print("G1/G2/G3 PASS; f* matches the stored s01 export in all six schedules")\n',
+             '_d = {}\n'
+             'for ab in SCHEDULES:\n'
+             '    ref = s01_old[s01_old["schedule"] == ab].sort_values("world")["fstar"].to_numpy()\n'
+             '    _d[ab] = float(np.nanmax(np.abs(np.round(FSTAR[ab], 4) - ref)))\n'
+             'VERDICT.append(("gate", "G1-s01", "N/A-5a",\n'
+             '                "the stored s01 f* is the three-anchor map by definition; max |f* difference| "\n'
+             '                "five- vs three-anchor: " + str({k: round(v, 3) for k, v in _d.items()})))\n'
+             'print("G1/G2/G3 PASS; f* vs the three-anchor s01 export:", {k: round(v, 3) for k, v in _d.items()})\n')
+    for c in cells:
+        if c.cell_type == "code":
+            c.source = c.source.replace("at all 18 anchors", "at all 30 anchors")
+    for c in cells:
+        if c.cell_type == "markdown":
+            c.source = (c.source.replace("three anchor points", "five anchor points (p05/p25/p50/p75/p95)")
+                        .replace("18 exact anchors", "30 exact anchors")
+                        .replace("\u00b120%", "\u00b1E5 (the leave-one-out band)")
+                        .replace("+-20%", "+-E5 (the leave-one-out band)"))
+    for c in cells:
+        if c.cell_type == "code":
+            c.source = c.source.replace(
+                "outlay calibration residual <= 7% at all 30 anchors",
+                "outlay calibration residual <= 7% at the 3 production anchors (p05/p50/p95; the t12 calibration stays three-anchor by registration)")
+
+    pat = re.compile(r'(EXPORTS|FIGURES) / "([uw]\d\d)_([a-z0-9_]+)\.(csv|png)"')
+    n_hits = 0
+    for c in cells:
+        if c.cell_type != "code":
+            continue
+        c.source, k = pat.subn(r'\1 / f"\2_\3{SFX}.\4"', c.source)
+        n_hits += k
+    assert n_hits == N_HITS_V1, n_hits
+    sub_once('for p in sorted(EXPORTS.glob("u*.csv")) + sorted(FIGURES.glob("w*.png")):\n',
+             'for p in sorted(EXPORTS.glob(f"u*{SFX}.csv")) + sorted(FIGURES.glob(f"w*{SFX}.png")):\n')
+
+    cells.insert(0, nbf.v4.new_markdown_cell(
+        "# Five-anchor variant (`_5a`)\n\n"
+        "This notebook is the v1 observer sweep re-run with the per-year requirement map "
+        "interpolated over FIVE mandate anchors per schedule (p05, p25, p50, p75, p95; "
+        "the p25/p75 anchors returned with the rate_design batch, 2026-09-08) and with the "
+        "+/-20% certificate band replaced by the leave-one-out band E5 from the stage-2 "
+        "twin (`z-ethan/rate_design/methods.md` v2.3). The t12 outlay calibration stays "
+        "on the three production anchors by registration. Every output carries the "
+        "suffix `_5a`; the three-anchor v1 outputs are the frozen audit record."))
+
+
+N_HITS_V1 = 17
+
 nb.cells = C
-out = "rate_design.ipynb"
+if ANCHORS:
+    assert ANCHORS == "5a", ANCHORS
+    _apply_5a_patches(C)
+    out = "rate_design_5a.ipynb"
+else:
+    out = "rate_design.ipynb"
 nbf.write(nb, out)
 print(f"wrote {out} with {len(C)} cells")

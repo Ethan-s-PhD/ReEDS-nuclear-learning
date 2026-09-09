@@ -35,7 +35,8 @@ import pandas as pd
 import paperlib as P
 from paperlib import (MC_FIG, MC_EXP, S3_FIG, S3_EXP, S4_FIG, S4_EXP, S3C_EXP,
                       S4C_EXP, ITCFB_FIG, ITCFB_EXP, ITCFBM_FIG, ITCFBM_EXP,
-                      BD_FIG, BD_EXP, IC_FIG, IC_EXP, RD_FIG, RD_EXP, MT_FIG, MT_EXP)
+                      BD_FIG, BD_EXP, IC_FIG, IC_EXP, RD_FIG, RD_EXP, MT_FIG, MT_EXP,
+                      LIT_FIG, LIT_EXP)
 
 pd.set_option("display.max_columns", 40)
 pd.set_option("display.width", 160)
@@ -56,6 +57,7 @@ The same word always has the same meaning in this notebook.
 | **Mandate** | A rule added to the model: "at least this much new nuclear capacity must exist in year t." Each schedule becomes one mandate. |
 | **ReEDS** | The national power-system planning model (NREL). It chooses the cheapest mix of plants and transmission that meets demand and all rules. |
 | **Shadow price (dual)** | The price the model puts on the mandate rule. It equals the yearly rental payment, per kilowatt of mandated capacity, that would just make builders willing to build. Units: dollars per kW per year, in 2024 dollars. A shadow price of zero means the mandate needs no subsidy that year. The main text says "shadow price"; "dual" is the optimization term, used only in Methods (and in the exported file and column names, which keep it). |
+| **Certificate band (E5)** | How far the per-year requirement map may be off. We build the map from five model-solved cost worlds per schedule (the 5th, 25th, 50th, 75th and 95th percentiles) and interpolate between them. Hiding each interior anchor in turn and predicting it from the other four gives a largest error of 18% of the bill; every fan and mask is shown at the base case and at both ends of that band. |
 | **Learning rate** | The percent cost drop each time total built capacity doubles. Example: a 10% learning rate means the second 10 GW costs 10% less per kW than the first 10 GW. |
 | **Learning curve** | The cost path that a learning rate produces as capacity grows. |
 | **OCC (overnight capital cost)** | The cost to build a plant if it could be built "overnight" — no construction-period interest. Units: \$/kW. |
@@ -125,133 +127,90 @@ main_cells = [
 
     # ---------------------------------------------------------------- Fig 1
     md(r"""
-    ## Figure 1 — Where the ATB 2050 costs sit in learning space
+    ## Figure 1 — The learning engine against the literature's cost projections
 
-    **What this shows.** The NREL Annual Technology Baseline (ATB) publishes
-    nuclear cost trajectories that many models consume as inputs. Our 2030
-    anchor convention discards pre-2030 experience by design, so no engine
-    path can match an ATB trajectory year by year; the paper therefore scores
-    only the **2050 endpoint** — the 2050 cost, and the builds required to
-    reach it (Ethan, 08-21/08-24). Two stacked blocks (08-28, Ethan: the
-    endpoint maps left the figure — their spillover axis carried little —
-    and the share content moved onto these panels): the cost–deployment
-    plane for large reactors (a, top) and SMR (b, bottom) — for each amount
-    of post-2030 building completed through 2049 (the stock that prices
-    2050, per the engine's one-year lag), the 2050 overnight cost that the
-    defensible worlds deliver (fan across support-restricted grid worlds,
-    every dial varying jointly; dashed lines bound the lowest and highest
-    supported world), with the ATB 2050 target marked by its ±\$125 bar at
-    its paired Abou-Jaoude deployment (the separate target dot was removed
-    08-29 — the bar is the marker). Each block splits fresh-start (legacy fleet
-    excluded) vs legacy-fleet-credited rows — the paper-facing labels since
-    08-29; the internal stratum names (tiny-base / full-stock) stay in
-    code and SI only.
+    **What this shows.** (New Fig 1, Ethan 09-08; the ATB-placement figure it
+    replaces is now SF42.) Four panels on one y axis: columns are large reactors
+    and SMRs, rows are the two experience accountings — fresh-start (the
+    ~135-unit US legacy fleet not counted toward the experience base) and
+    legacy-fleet-credited. The coloured fans are the engine: for each amount of
+    post-2030 building, the 2050 overnight cost that the sampled learning worlds
+    deliver when the learning rate is restricted to each technology's support
+    and the anchor cost is drawn across its prior, every other input varying
+    jointly (P5–P95 and P25–P75 bands, median world). The grey lines and markers
+    are every published projection that pairs a cost with a unit count, drawn
+    at its own cumulative build in 2022 dollars and deliberately unlabeled: the
+    ATB source's three trajectories per technology, DOE Liftoff, MIT ANP-201,
+    INL's cost pathways, Stewart & Shirvan's eight architectures, the twelve
+    Breakthrough scenario curves, the IEA 2025 scenario paths, Vanatta et al.'s
+    industrial designs, and the realized Vogtle and quoted Darlington projects
+    (17 large and 36 SMR series). Dotted grey horizontals are published values
+    with no deployment attached (EIA, EPRI, IEA/NEA, the IEA large-reactor
+    path). Hollow markers are first- and second-of-a-kind or out-of-scope
+    points. The literature comparison notebook identifies every series in its
+    grouped figures and scores each one against the engine (`lit_comparison`,
+    gates G0–G3 + G1b).
 
-    **How to read it.** A target bar below the fan means fewer than 5% of
-    defensible worlds reach that cost at that amount of building; reading
-    right along the target's dotted line shows how much building would put
-    the target inside the fan. Two reads at the paired deployment (third
-    spec, 08-29): the black bar spans the target ±\$125/kW — one rounding
-    half-step of the ATB's nearest-\$250 reporting, so a cost inside the
-    bar meets the projection at its published precision — labeled with the
-    share of that stratum's supported worlds inside the band; the red
-    dimension bracket to its left spans the lowest supported cost to the
-    upper tolerance bound (target + \$125/kW) and is labeled with the share
-    at or below that bound — the paper's **one-sided** feasibility
-    criterion (overshoot is success, not misfit), so the bracket label is
-    the S1 share for that stratum. The bracket is omitted where that share
-    is zero (the large legacy-fleet-credited rows); sub-1% labels keep one
-    decimal. Each scenario is scored at its own paired
-    deployment — conservative 12, moderate 33, advanced 199 GW — so
-    cross-scenario comparisons reflect the ATB's pairing structure, not the
-    targets alone.
+    **How to read it.** The fan is what the paper's learning worlds allow at a
+    given cumulative build; the grey cloud is what the literature has claimed.
+    Where the cloud sits inside the fan, the published projections are
+    reachable by the sampled worlds at that build; where it sits below the fan,
+    they need faster learning, an earlier anchor, or pooled experience that the
+    engine does not sample.
 
-    **Key results.** The engine is pinned to the ATB's source: run at
-    Abou-Jaoude's own parameters and experience basis, it reproduces his
-    published SMR OCC tables within report rounding (max error \$500/kW).
-    Reaching an ATB 2050 cost at its paired deployment takes a firm-level
-    learning rate of 13–19.5% at the central discrete world (fresh-start basis,
-    spillover-dependent; T5, scored on the through-2049 stock that prices
-    2050 — the 08-24 registration fix) against the source study's own 9.5% —
-    the gap
-    is the expected anchor-convention premium, and it puts the large targets
-    at or above the top of large's sampled support (3–12%); the T5 solve
-    carries no tolerance (it requires exactly reaching the published
-    target), so those spans are criterion-invariant. On the
-    support-restricted grid the feasible shares (\$125 criterion, reported
-    split by experience accounting since 08-29 — the 50/50 pooled ranges
-    are retired) are 16.3–33.4% for SMR and 0.2–11.4% for large under
-    fresh-start accounting, and 3.8–21.5% / zero with the legacy fleet
-    credited. For SMR the cheaper scenarios owe their wider reach to the
-    much larger deployments the ATB pairs them with; large runs the other
-    way — its conservative target is the most reachable. When the
-    legacy fleet is credited no large target is reachable at all: zero feasible
-    worlds in all three scenarios, and no learning rate up to 30% closes the
-    gap at the paired deployment — every large trajectory presumes
-    fresh-start accounting (the large legacy-fleet-credited rows, where the target
-    sits below the dashed floor and the bracket is omitted, third spec). The
-    differences from the source are designed basis conventions (anchor
-    convention, experience basis; SN7), not disagreements. This inversion
-    uses about 0.79 million sampled worlds per target and zero ReEDS runs.
+    **Key results.** The literature occupies the lower half of the engine's fan
+    for both technologies. For large reactors nearly every published point below
+    about 15 GW lies under the median world, and the bottom-up chains (Stewart &
+    Shirvan's 3,000–3,500 $/kW at 10–15 GW) run along or below the P5 edge. For
+    SMRs the cloud straddles the P25–P75 band to about 10 GW, then falls to the
+    fan's lower edge beyond 50 GW, where the Breakthrough and IEA 2050 end
+    points sit at 2,000–4,000 $/kW. Crediting the legacy fleet flattens the
+    engine's fan more than any published curve. The gap is the paper's designed
+    difference: the engine prices each vendor's next unit from its second unit
+    in 2030 and divides experience among vendors, while most published curves
+    start at unit one and pool the whole program (SN7; the per-series scoring in
+    the literature comparison).
     """),
     code(r"""
     P.compose(
-        [[MC_FIG / "atb_cost_deployment_plane_large.png"],
-         [MC_FIG / "atb_cost_deployment_plane_smr.png"]],
-        "Fig1_atb_placement.png",
-        letters="",  # both sources carry their letters (a = large, b = smr); stacked a over b (08-28)
-        center=True,
+        [[LIT_FIG / "e10_engine_vs_all_literature.png"]],
+        "Fig1_engine_vs_literature.png",
+        letters="",  # the source carries a-d (columns = technology, rows = experience base)
     )
     P.source_ref(
-        (MC_FIG / "atb_cost_deployment_plane_large.png", "mc/atb_parameter_space.ipynb",
-         "cell F8 (2050-endpoint reframing 08-24; envelope + share labels + stacking, 08-28)",
-         "the closed-form 2050 evaluator over the support-restricted Part-2 grid; "
-         "bracket labels = `mc/exports/atb/endpoint_feasible_share.csv` stratum shares, recomputed in-cell"),
-        (MC_FIG / "atb_cost_deployment_plane_smr.png", "mc/atb_parameter_space.ipynb",
-         "cell F8", "same evaluator, SMR"),
+        (LIT_FIG / "e10_engine_vs_all_literature.png", "lit_comparison/lit_comparison.ipynb",
+         "cell e10 (added 09-08)",
+         "the closed-form 2050 evaluator over the support-restricted Part-2 grid (fans) and "
+         "`lit_comparison/exports/c02_points_2022usd.csv` (every literature series, 2022$; "
+         "digitized series via `_digitize_figures.py` / `_digitize_figures_b.py`, gates G1/G1b)"),
     )
-
-    es = pd.read_csv(MC_EXP / "atb" / "endpoint_feasible_share.csv")
-    print(es.to_string(index=False))
-    t5 = pd.read_csv(MC_EXP / "atb" / "min_lr_at_aj_deployment.csv")
-    tiny = t5[t5["base"] == "tiny"]
-    lr_cols = [c for c in t5.columns if c.startswith("min LR")]
-    lr_lo, lr_hi = tiny[lr_cols].min().min(), tiny[lr_cols].max().max()
-    print(f"\nmin firm-level LR to reach the 2050 cost at the paired deployment "
-          f"(tiny base, central world): {lr_lo:.3f}-{lr_hi:.3f}")
-    lg, sm = es[es["tech"] == "large"], es[es["tech"] == "smr"]
-    assert float(lg["share_support_full"].max()) == 0.0    # the full-stock large claim
-    print(f"support-restricted feasible shares (one-sided, $125 criterion; split by "
-          f"experience accounting): fresh start smr "
-          f"{100*sm['share_support_tiny'].min():.1f}-{100*sm['share_support_tiny'].max():.1f}%, "
-          f"large {100*lg['share_support_tiny'].min():.1f}-{100*lg['share_support_tiny'].max():.1f}%; "
-          f"legacy credited smr "
-          f"{100*sm['share_support_full'].min():.1f}-{100*sm['share_support_full'].max():.1f}%, "
-          f"large: 0 in all three scenarios")
+    c02 = pd.read_csv(LIT_EXP / "c02_points_2022usd.csv")
+    c99 = pd.read_csv(LIT_EXP / "c99_verdict.csv")
+    assert (c99[c99.kind == "gate"]["result"] == "PASS").all(), c99
+    paired = c02[c02.paired]
+    for tech in ("large", "smr"):
+        sub = c02[c02.tech == tech]
+        print(f"{tech}: {sub[sub.paired]['series_id'].nunique()} paired series from "
+              f"{sub[sub.paired]['source_id'].nunique()} sources, "
+              f"{sub[~sub.paired]['series_id'].nunique()} unpaired reference values")
+    print("sources:", ", ".join(sorted(paired["source_id"].unique())))
 
     P.caption("Fig 1", '''
-    Where the ATB 2050 nuclear costs sit in learning space (endpoint basis: the 2030 anchor
-    convention discards pre-2030 experience by design, so only the 2050 cost and the builds
-    that reach it are scored). The cost-deployment plane for large reactors (a) and SMR
-    (b): the 2050 overnight cost delivered across the sampled learning worlds restricted
-    to each technology's learning-rate support, every other input varying jointly (P5-P95
-    and P25-P75 fans, median line; dashed lines bound the lowest and highest supported
-    world), as a function of cumulative new build, split by experience accounting
-    (fresh-start vs legacy-fleet-credited rows). Dotted crosshairs locate each ATB 2050 target
-    at its paired deployment - conservative 12, moderate 33, advanced 199 GW - so
-    cross-scenario comparisons reflect the ATB's pairing structure, not the targets
-    alone. At each paired
-    deployment the black bar spans the target +-$125/kW - one rounding half-step of the
-    ATB's nearest-$250 reporting, so costs inside the bar meet the projection at its
-    published precision - labeled with the share of that stratum's supported worlds
-    inside the band; the red bracket to its left spans the lowest supported cost to the
-    upper tolerance bound (target + $125/kW), labeled with the share at or below that
-    bound - the paper's one-sided feasibility criterion (overshoot is success). The
-    bracket is omitted where that share is zero: in the large legacy-fleet-credited
-    rows the target sits below the lowest supported world and no world reaches it. The engine
-    reproduces the ATB source's published tables under its own parameters and experience
-    basis (max error $500/kW); the differences are designed basis conventions. ~0.79M
-    sampled worlds per target; no ReEDS runs.
+    The learning engine against the published nuclear cost projections. Columns: large
+    reactors (a, c) and SMRs (b, d); rows: fresh-start (a, b) and legacy-fleet-credited (c, d)
+    experience accounting; one y axis for all four panels. Coloured fans: the 2050 overnight
+    cost delivered across the sampled learning worlds restricted to each technology's
+    learning-rate support, with the anchor cost drawn across its prior and every other input
+    varying jointly (P5-P95 and P25-P75 bands, median line), as a function of cumulative new
+    build after the 2030 anchor. Grey: every published projection that pairs a cost with a unit
+    count - the ATB source's three trajectories per technology, DOE Liftoff, MIT ANP-201, INL's
+    cost pathways, Stewart & Shirvan 2022, Breakthrough 2022, IEA 2025, Vanatta et al. 2024, and
+    the realized Vogtle and quoted Darlington projects (17 large and 36 SMR series) - each at its
+    own cumulative build in 2022 dollars; hollow markers are first- and second-of-a-kind or
+    out-of-scope points; dotted grey lines are published values with no deployment attached
+    (EIA, EPRI, IEA/NEA, the IEA large-reactor path). The ATB 2050 targets at their paired
+    deployments and the shares of worlds that reach them are in SF42; the series, their bands and
+    unit conventions are identified in the literature-comparison SI.
     ''')
     """),
 
@@ -506,8 +465,9 @@ main_cells = [
          "`step3_checks/exports/duals_by_year.csv` (+ step4 checks for the large100 overlay)"),
     )
 
-    t03 = pd.read_csv(S3_EXP / "t03_dual_summary.csv")
-    t04 = pd.read_csv(S3_EXP / "t04_bridge_metrics.csv")
+    _prod = lambda df: df[~df["case"].str.contains("_p25|_p75")]   # the 37 production cases (anchors 09-08 excluded)
+    t03 = _prod(pd.read_csv(S3_EXP / "t03_dual_summary.csv"))
+    t04 = _prod(pd.read_csv(S3_EXP / "t04_bridge_metrics.csv"))
     smr = t03[t03["case"].str.startswith("smr100")]
     for pct in ["p05", "p50", "p95"]:
         sel = smr[smr["case"].str.endswith(pct)]
@@ -629,7 +589,7 @@ main_cells = [
     code(r"""
     P.compose(
         [[BD_FIG / "d13_paid_by_cap_noisy.png"],
-         [RD_FIG / "w37_ci_rate_points_paper.png"]],
+         [RD_FIG / "w37_ci_rate_points_paper_5a.png"]],
         "Fig5_cost_of_detection.png",
         letters="ab",
         center=True,
@@ -638,13 +598,14 @@ main_cells = [
         (BD_FIG / "d13_paid_by_cap_noisy.png", "bridge_detection/bridge_detection_stage3.ipynb",
          "figure cells", "`b17_exceedance_noisy.csv` (spend-aware standard, 2026-08-25 amendment; "
          "spec: `bridge_detection/methods.md` section 6)"),
-        (RD_FIG / "w37_ci_rate_points_paper.png", "rate_design/rate_design_v2.ipynb",
+        (RD_FIG / "w37_ci_rate_points_paper_5a.png", "rate_design/rate_design_v2_5a.ipynb",
          "S7 w37 cell (the w36/w20 grid with the credit-scale row re-denominated in "
-         "statutory rate points; Ethan's reading review 2026-09-02)",
-         "`u32_ci_rate_points.csv` (= u10 widths x the reference path's outlay-weighted "
-         "average rate) + `u30_part_a_restated.csv` (the frozen v1 sweep restated with every "
-         "audit repair; registration: `rate_design/methods.md` v2/v2.1, verdict INCLUDE in "
-         "`u91_verdict.csv`)"),
+         "statutory rate points; Ethan's reading review 2026-09-02) — the FIVE-ANCHOR twin "
+         "(RD_ANCHORS=5a; 2026-09-08, methods.md v2.3; display basis per u101 `display-basis`)",
+         "`u32_ci_rate_points_5a.csv` (= u10_5a widths x the reference path's outlay-weighted "
+         "average rate) + `u30_part_a_restated_5a.csv` (the v1 sweep re-run on the five-anchor "
+         "requirement map, band E5; the three-anchor originals are the frozen audit record: "
+         "SF39/ST16d-f)"),
     )
 
     b17 = pd.read_csv(BD_EXP / "b17_exceedance_noisy.csv")
@@ -669,8 +630,11 @@ main_cells = [
     pd_hi = m18d["c2_150_median_paid_at_det_2024B"].max()
     assert float(m18d["c2_150_share_never_detected"].max()) == 0.0
 
-    u30 = pd.read_csv(RD_EXP / "u30_part_a_restated.csv").set_index("schedule")
+    u30 = pd.read_csv(RD_EXP / "u30_part_a_restated_5a.csv").set_index("schedule")
     assert not u30["crosses_band5"].any()
+    _e5 = float(pd.read_csv(BD_EXP / "b07_bill_attachment_5a.csv")["band_e5"].iloc[0])
+    _u101 = pd.read_csv(RD_EXP / "u101_verdict.csv").set_index("name")
+    assert _u101.loc["display-basis", "result"] == "FIVE-ANCHOR", _u101.loc["display-basis", "result"]
     ratio_lo, ratio_hi = u30["final_over_tgt"].min(), u30["final_over_tgt"].max()
     plateau = "/".join(u30.index[u30["label"] == "asymptote"])
     lr0 = u30["prior_lr_w_pts"].max()
@@ -680,7 +644,7 @@ main_cells = [
           f"plateau label: {plateau} only")
     print(f"learning-rate CI narrows {lr0:.1f} -> {lr_lo:.1f}-{lr_hi:.1f} points (5-95)")
 
-    u32 = pd.read_csv(RD_EXP / "u32_ci_rate_points.csv")
+    u32 = pd.read_csv(RD_EXP / "u32_ci_rate_points_5a.csv")
     fin32 = u32[u32["k"] == u32.groupby(["schedule", "sigma"])["k"].transform("max")]
     def _rng(sig):
         f = fin32[fin32["sigma"] == sig]["width_pts"]
@@ -720,7 +684,8 @@ main_cells = [
     the target, and only {plateau} plateau by 2050 under the registered rule (the others
     are still declining at the horizon) — while the learning-rate interval narrows from
     {lr0:.1f} to {lr_lo:.1f}-{lr_hi:.1f} points: the coarse quantity is learned, the
-    design quantity is not (audit grid in scale units: SF39). Together: observation tells the government when to stop
+    design quantity is not (five-anchor requirement map, certificate band E5 = {_e5:.2f} — 2026-09-08; the
+    three-anchor audit grid in scale units: SF39). Together: observation tells the government when to stop
     paying, not how much to pay. Both observers know the ensemble and the noise model —
     upper bounds on real learnability; information, not a recommendation.
     ''')
@@ -789,11 +754,12 @@ main_cells = [
     **Key results** (computed in the cell below from `u50`/`u51`/`u52`).
     Most cost worlds need above-cap support in at least one post-window
     year, in every schedule: the post-window infeasible share is
-    ~0.27–0.90 at the 60% cap and ~0.56–1.00 at the 50% statutory
-    maximum, quoted ONLY as cap x certificate-band ranges. The
-    demonstration tier is priced: base-case medians at the 60% cap run
-    \$0.85B (aj) to \$23.5B (eo), p95 \$114B (base band; the band values
-    are larger — ST14). The message: a statutory-capped credit alone
+    ~0.36–0.91 at the 60% cap and ~0.62–1.00 at the 50% statutory
+    maximum (five-anchor map, band E5 = 0.18, 2026-09-08; the three-anchor
+    values 0.27–0.90 / 0.56–1.00 are in ST14f–j), quoted ONLY as cap x
+    certificate-band ranges. The demonstration tier is priced: base-case
+    medians at the 60% cap run \$0.9B (aj) to \$26.0B (eo), p95 \$114B (base
+    band; the band values are larger — ST14). The message: a statutory-capped credit alone
     reaches only the cheap tail of the cost distribution, and observation
     cannot rescue this by fine-tuning (Fig 5b).
 
@@ -828,27 +794,31 @@ main_cells = [
     """),
     code(r"""
     P.compose(
-        [[RD_FIG / "w34_rate_fans_paper.png"],
-         [RD_FIG / "w35_mask_gap_paper.png", ITCFBM_FIG / "j06_new_nuclear_cliff.png"]],
+        [[RD_FIG / "w34_rate_fans_paper_5a.png"],
+         [RD_FIG / "w35_mask_gap_paper_5a.png", ITCFBM_FIG / "j06_new_nuclear_cliff.png"]],
         "Fig6_required_itc_and_menu.png",
         letters="abc",
         center=True,  # row widths differ; do not leave a blank corner
     )
     P.source_ref(
-        (RD_FIG / "w34_rate_fans_paper.png", "rate_design/rate_design_v2.ipynb",
-         "S7 paper-variant cell (legended twin of the w30 audit artifact)",
-         "`u50_requirement_fans.csv` (certificate: 18 exact anchors G1 + stage-2 +-20% band + "
-         "r03 cushion; registration: `rate_design/methods.md` v2/v2.1)"),
-        (RD_FIG / "w35_mask_gap_paper.png", "rate_design/rate_design_v2.ipynb",
-         "S7 paper-variant cell (legended twin of the w32 audit artifact)",
-         "`u51_feasibility_mask.csv` + `u52_demonstration_gap.csv` (kills KB1/KB2 adjudicated; "
-         "verdicts + dispositions in `u91_verdict.csv`)"),
+        (RD_FIG / "w34_rate_fans_paper_5a.png", "rate_design/rate_design_v2_5a.ipynb",
+         "S7 paper-variant cell (legended twin of the w30 audit artifact) — the FIVE-ANCHOR twin "
+         "(2026-09-08, methods.md v2.3)",
+         "`u50_requirement_fans_5a.csv` (certificate: 30 exact anchors G1 + the five-anchor "
+         "leave-one-out band E5 + r03 cushion; GA1 PASS / GA2 PASS in `u101_verdict.csv`; the "
+         "three-anchor original is ST14f)"),
+        (RD_FIG / "w35_mask_gap_paper_5a.png", "rate_design/rate_design_v2_5a.ipynb",
+         "S7 paper-variant cell (legended twin of the w32 audit artifact) — the FIVE-ANCHOR twin",
+         "`u51_feasibility_mask_5a.csv` + `u52_demonstration_gap_5a.csv` (every kill re-adjudicated on the "
+         "E5 band in `u91_verdict_5a.csv`: KB1 cop28 still killed, KB2 now also demotes mck, K3 DEMOTE-SI, "
+         "K1 0.027; three-anchor originals ST14g/h)"),
         (ITCFBM_FIG / "j06_new_nuclear_cliff.png", "itcfbm_analysis/itcfbm_analysis.ipynb",
          "cell j06cd001", "`r04_rate_deployment.csv` (statutory basis, new nuclear only; "
          "promoted 2026-08-24)"),
     )
 
-    u50 = pd.read_csv(RD_EXP / "u50_requirement_fans.csv")
+    u50 = pd.read_csv(RD_EXP / "u50_requirement_fans_5a.csv")
+    _e5 = float(pd.read_csv(BD_EXP / "b07_bill_attachment_5a.csv")["band_e5"].iloc[0])
     br = u50[(u50["band"] == "base") & (u50["quantity"] == "rate")]
     cen = br[br["censored"] == True]  # noqa: E712 — literal bool column
     cen_txt = ", ".join(f"{r.schedule} {int(r.year)}" for r in cen.itertuples())
@@ -858,14 +828,14 @@ main_cells = [
           f"bounds): {cen_txt}")
     print(f"p95 clamp-pinned cells: {n_clamp}/{n_cells}")
 
-    u51 = pd.read_csv(RD_EXP / "u51_feasibility_mask.csv")
+    u51 = pd.read_csv(RD_EXP / "u51_feasibility_mask_5a.csv")
     pw = u51[(u51["kind"] == "per_world") & (u51["window"] == "w2035")]
     r60 = pw[pw["cap"] == 0.6]["share_not_credit_feasible"]
     r50 = pw[pw["cap"] == 0.5]["share_not_credit_feasible"]
     print(f"post-window infeasible share (quoted ONLY as cap x band ranges): "
           f"60% cap {r60.min():.2f}-{r60.max():.2f}; 50% cap {r50.min():.2f}-{r50.max():.2f}")
 
-    u52 = pd.read_csv(RD_EXP / "u52_demonstration_gap.csv")
+    u52 = pd.read_csv(RD_EXP / "u52_demonstration_gap_5a.csv")
     g = u52[(u52["band"] == "base") & (u52["cap"] == 0.6)
             & (u52["window"] == "w2035") & (u52["window_applicable"] == True)]  # noqa: E712
     gk = g[g["schedule"] != "cop28"]  # cop28's demonstration framing is killed (KB1)
@@ -879,8 +849,9 @@ main_cells = [
     P.caption("Fig 6", f'''
     The statutory wall: what caps can and cannot buy. (a) Required statutory credit
     rate on each world's own build cost, per schedule and build year, fanned across
-    the 10,000 cost worlds (median solid; interquartile and p5-p95 bands; thin dotted
-    = the +-20% certificate-band medians; grey dashed = the reference credit path,
+    the 10,000 cost worlds (five-anchor per-year map, 2026-09-08; median solid;
+    interquartile and p5-p95 bands; thin dotted = the +-{_e5*100:.0f}% certificate-band medians
+    — the five-anchor leave-one-out band E5; grey dashed = the reference credit path,
     the model-certified headline; grey band on aj/mck/eo = the run-certified
     minimal-rate bracket, one to five rate points below the reference); dotted red
     horizontal line = the 0.50 stackable statutory maximum (30% base + 10% energy
@@ -897,8 +868,8 @@ main_cells = [
     applicable: its first build year is 2038, so the window contains no eia year).
     Post-window, the share above the cap is the not-credit-feasible share:
     {r60.min():.2f}-{r60.max():.2f} at the 60% cap and {r50.min():.2f}-{r50.max():.2f}
-    at the 50% cap, across schedules and the +-20% certificate band — quoted only as
-    ranges. The cap choice alone moves the eia/aj shares 20-23 points (the mask is a
+    at the 50% cap, across schedules and the +-{_e5*100:.0f}% (E5) certificate band — quoted only
+    as ranges. The cap choice alone moves the eia/aj shares 20-23 points (the mask is a
     cap-sensitivity table), and cop28's above-cap need persists past the window at the
     low band end, so its demonstration framing is withdrawn (its median,
     {gcop:.1f} B$, is quoted only as a band range). Where the framing stands, the
@@ -1084,6 +1055,7 @@ main_cells = [
     """),
     code(r"""
     t01 = pd.read_csv(S3_EXP / "t01_case_inventory.csv")
+    t01 = t01[~t01["case"].str.contains("_p25|_p75")]   # production cases only (anchors 09-08 excluded)
 
     # Schedule metadata: token -> (source, provenance class). The tokens, the
     # source names, and the one-per-class design are the locked schedule set
@@ -1380,7 +1352,7 @@ appx_cells = [
     | SN6 | The endogenous-learning feed-back check: arm design (fbA/fbB/fbC/fbK/fbR), verdicts, and the minus-probe minimality bracket | `z-ethan/itcfb_analysis/itcfb_analysis.ipynb` + `z-ethan/itcfbm_analysis/itcfbm_analysis.ipynb` (tables in ST9 below) |
     | SN7 | The ATB basis mapping: the QA replication pin (max error $500/kW), the anchor-convention premium, the experience-basis comparison, and the deployment-space reading | `mc/mc_cost_trajectories.ipynb` (QA4) + `mc/atb_parameter_space.ipynb` (cell `atb-26-a27_qa`) |
     | SN8 | Bridge-failure detection: the ensemble observer, the bill attachment, the noise model, the conformal false-alarm calibration, the bias experiment, and the spend-aware exceedance amendment (2026-08-25; methods.md section 6) | `z-ethan/bridge_detection/methods.md` + `status.md` (tables in ST11, figures in SF25–27 below; the committed-spend figure is main-text Fig 5a) |
-    | SN9 | The declining-credit requirement analysis (zero-run), the cost-of-information limit, and the registered batch (new 2026-09-02; reallocated 2026-09-04 to 66 runs = 48 ITC-arm + 12 p25/p75 anchors + 6 horizon, reserve retired): the per-world requirement machinery and its certificate chain, the feasibility mask with its kill dispositions, the demonstration-gap accounting, the dollar-menu certificate scope, the exposure/allocation-cap argument, the Part A restatement, the batch gates + claim ladder, and the anchor-densification registration (GA1/GA2, the out-of-sample test of the three-anchor interpolation) | `z-ethan/rate_design/methods.md` (v2 + v2.1 + v2.2) + `status.md` (adjudications) + `exports/u91_verdict.csv` (tables in ST14–ST16, figures in SF34/SF37/SF38/SF39 below; the fans/mask are main-text Fig 6a/6b, the calibration limit is Fig 5b) |
+    | SN9 | The declining-credit requirement analysis, the cost-of-information limit, and the 66-run batch verdict (zero-run section 2026-09-02; batch reallocated 2026-09-04; RETURNED and adjudicated 2026-09-08): the per-world requirement machinery and its certificate chain — now the FIVE-anchor map (p05/p25/p50/p75/p95) with the leave-one-out band E5 replacing the +-20% hide-the-middle band; the feasibility mask with its kill dispositions; the demonstration-gap accounting; the dollar-menu certificate scope; the exposure/allocation-cap argument (confirmed in the model: delivering credit paths induce 1.0-11.9x take-up); the Part A restatement; the batch gates + claim ladder ADJUDICATED (rung FAIL: GE1/GH1 true failures on the eo and cop28 marginal worlds; GE2 measured per ladder; GX1 persists, shed 0.00; GA1/GA2 PASS, GA3 partial, E5 = 0.18) | `z-ethan/rate_design/methods.md` (v2 -> v2.3) + `status.md` (adjudications) + `exports/u101_verdict.csv` (the verdict) + `u91_verdict.csv` (three-anchor) / `u91_verdict_5a.csv` (five-anchor) (tables in ST14–ST16, figures in SF34/SF37/SF38/SF39/SF43–SF47 below; the fans/mask are main-text Fig 6a/6b, the calibration limit is Fig 5b — all on the five-anchor basis per the u101 `display-basis` row) |
     | SN10 | The market-world transfer (new 2026-09-02): the required credit rate re-derived on every step4 sensitivity output file (the t09 chain; gate G0a reproduces t09 exactly), the exact shadow-price-ratio x region-set-factor decomposition, the statutory mask per market world (gate G0b reproduces u50/u51), the paired per-world re-run of the spending-cap alarm (common random numbers; gates G-CRN, G-H1w), and the KT1-KT5 kill rules | `z-ethan/market_transfer/methods.md` (v1–v1.4) + `status.md` (review rounds) + `exports/v09_verdict.csv` (tables in ST18, figures SF40-SF41; the envelopes in the Fig 7 caption) |
     """),
 
@@ -1717,6 +1689,7 @@ appx_cells = [
          "`t13_flat_grant.csv` + `t14_itc_resolution.csv`"),
     )
     t13 = P.table(S3_EXP / "t13_flat_grant.csv", round_=3)
+    t13 = t13[~t13["case"].str.contains("_p25|_p75")]   # production cases only (anchors 09-08 excluded)
     smr = t13[t13["case"].str.startswith("smr100") & ~t13["case"].str.endswith("_eq")]
     lrg = t13[t13["case"].str.startswith("large100")]
     for name, fam in (("smr100", smr), ("large100", lrg)):
@@ -1824,7 +1797,7 @@ appx_cells = [
     md(r"""
     ## SF15–SF17 — ATB inversion detail
 
-    **What this shows.** The detail behind Figure 1. SF15: the deployment
+    **What this shows.** The detail behind SF42 (main-text Fig 1 until 09-08). SF15: the deployment
     each ATB trajectory would require as a function of the learning rate,
     with the ATB's own paired deployments marked. Read this as a basis
     mapping between the source's experience convention and ours (SN7): under
@@ -1835,7 +1808,7 @@ appx_cells = [
     different
     modeling goals; the mapping explains the difference, it does not
     adjudicate it. SF16: which dial values the endpoint-feasible worlds
-    require (dial marginals on the one-sided 2050 basis, matching Fig 1;
+    require (dial marginals on the one-sided 2050 basis, matching SF42;
     each scenario is scored at its own paired deployment — 12/33/199 GW —
     so LR orderings across scenarios reflect the ATB's pairing structure,
     not the targets alone). SF17: the cross-pairing check — each
@@ -2328,6 +2301,7 @@ appx_cells = [
          "`step3_analysis/exports/t09_required_itc.csv` (model convention, regenerated 2026-08-18)"),
     )
     t09 = pd.read_csv(S3_EXP / "t09_required_itc.csv")
+    t09 = t09[~t09["case"].str.contains("_p25|_p75")]   # production cases only (anchors 09-08 excluded)
     r = t09[t09["status"] == "rate"]
     smr_r = r[r["case"].str.startswith("smr100")]
     p50 = smr_r[smr_r["case"].str.endswith("p50")].groupby("case")["i_model_headline"].mean()
@@ -2455,7 +2429,7 @@ appx_cells = [
          "main Fig 6b 2026-08-24 -> 2026-09-02)"),
     )
     t18 = pd.read_csv(S3_EXP / "t18_instrument_menu.csv")
-    m18 = t18[~t18["case"].str.endswith("_eq")]
+    m18 = t18[~t18["case"].str.endswith("_eq") & ~t18["case"].str.contains("_p25|_p75")]
     hair = float(m18["dpmw_haircut"].iloc[0])
     ov_lo = (m18["uniform_itc"].min() / hair - 1) * 100
     ov_hi = (m18["uniform_itc"].max() / hair - 1) * 100
@@ -2488,19 +2462,24 @@ appx_cells = [
     below where any curve ends.
     """),
     code(r"""
-    P.show_panel(RD_FIG / "w21_asymptote.png")
+    P.show_panel(RD_FIG / "w21_asymptote_5a.png")
     P.source_ref(
-        (RD_FIG / "w21_asymptote.png", "rate_design/rate_design_v2.ipynb", "Part A cells",
-         "`u30_part_a_restated.csv` (decline_pct_per_obs_last3 column; the <=5%/observation "
-         "labeling rule is registered in `rate_design/methods.md` v2)"),
+        (RD_FIG / "w21_asymptote_5a.png", "rate_design/rate_design_v2_5a.ipynb", "Part A cells (five-anchor twin)",
+         "`u30_part_a_restated_5a.csv` (decline_pct_per_obs_last3 column; the <=5%/observation "
+         "labeling rule is registered in `rate_design/methods.md` v2; three-anchor original ST16d)"),
     )
-    P.caption("SF37", '''
-    The plateau test behind the Fig 5b labels: mid-noise credit-scale confidence width
-    vs cumulative mandate spend (log scale). "Asymptote" is earned only where the mean
-    decline over the last three observations is at most 5% per observation (aj 2.9%,
-    eo 1.6%); the other four schedules are still declining at the horizon (7.5-14.3%
-    per observation), so their verdict is "not within the program horizon", not
-    "never". Dotted lines: the per-schedule design targets. Tables: ST16.
+    _u30a = pd.read_csv(RD_EXP / "u30_part_a_restated_5a.csv").set_index("schedule")
+    _asy = _u30a[_u30a["label"] == "asymptote"]
+    _dec = _u30a[_u30a["label"] != "asymptote"]["decline_pct_per_obs_last3"]
+    _asy_txt = ", ".join(f"{s} {abs(v):.1f}%" for s, v in _asy["decline_pct_per_obs_last3"].items()) or "none"
+    P.caption("SF37", f'''
+    The plateau test behind the Fig 5b labels (five-anchor requirement map): mid-noise
+    credit-scale confidence width vs cumulative mandate spend (log scale). "Asymptote" is
+    earned only where the mean decline over the last three observations is at most 5% per
+    observation ({_asy_txt}); the other {len(_dec)} schedules are still declining at the
+    horizon ({_dec.abs().min():.1f}-{_dec.abs().max():.1f}% per observation), so their
+    verdict is "not within the program horizon", not "never". Dotted lines: the
+    per-schedule design targets. Tables: ST16.
     ''')
     """),
     md(r"""
@@ -2517,17 +2496,17 @@ appx_cells = [
     size IS main-text Fig 6a (the legended w34 variant).
     """),
     code(r"""
-    P.show_panel(RD_FIG / "w31_dollar_fans.png")
+    P.show_panel(RD_FIG / "w31_dollar_fans_5a.png")
     P.source_ref(
-        (RD_FIG / "w31_dollar_fans.png", "rate_design/rate_design_v2.ipynb", "Part B cells",
+        (RD_FIG / "w31_dollar_fans_5a.png", "rate_design/rate_design_v2_5a.ipynb", "Part B cells (five-anchor twin)",
          "`u50_requirement_fans.csv` (need_kw rows; the demonstration-gap input; the rate-unit "
          "grid is main-text Fig 6a, the legended w34 paper variant)"),
     )
     P.caption("SF38", '''
     The dollar requirement fans: the cushioned per-world requirement in $/kW, per
     schedule and build year — the Fig 6a fans in the unit the demonstration-gap
-    accounting consumes (encodings as in the Fig 6a legend: median solid,
-    interquartile and p5-p95 bands, thin dotted = +-20%-band medians, grey dashed =
+    accounting consumes (five-anchor map; encodings as in the Fig 6a legend: median solid,
+    interquartile and p5-p95 bands, thin dotted = E5-band medians, grey dashed =
     the reference credit path). Per-cell clamp shares and the band fans: ST14.
     ''')
     """),
@@ -2545,7 +2524,10 @@ appx_cells = [
     observation years where the mid-noise 10th-percentile effective sample
     falls below 100 worlds (it never does). Fig 5b is this grid with the
     top row times the reference path's outlay-weighted average rate (u32);
-    the learning-rate row is unchanged.
+    the learning-rate row is unchanged. **This grid is the three-anchor
+    frozen audit record (v1 sweep, 2026-09-01); since 2026-09-08 Fig 5b is
+    its five-anchor twin (`w37_5a`, band E5), so small differences between
+    this grid's top row and Fig 5b are the anchor densification.**
     """),
     code(r"""
     P.show_panel(RD_FIG / "w36_ci_curves_paper.png")
@@ -2654,6 +2636,277 @@ appx_cells = [
     dear-renewables, and transmission-limited worlds), excluded from the numeric envelope. Paired noise histories
     (same seed). The fixed-dollar companion (the base world's cap in 2024$) is in ST18. SMR
     program.
+    ''')
+    """),
+
+    # ---------------------------------------------------------------- SF42
+    md(r"""
+    ## SF42 — Where the ATB 2050 costs sit in learning space (main-text Fig 1 until 09-08)
+
+    **What this shows.** (Main-text Fig 1 until 09-08, when the engine-against-the-literature
+    figure took its place; the S1 shares and brackets described below live here now.)
+    The NREL Annual Technology Baseline (ATB) publishes
+    nuclear cost trajectories that many models consume as inputs. Our 2030
+    anchor convention discards pre-2030 experience by design, so no engine
+    path can match an ATB trajectory year by year; the paper therefore scores
+    only the **2050 endpoint** — the 2050 cost, and the builds required to
+    reach it (Ethan, 08-21/08-24). Two stacked blocks (08-28, Ethan: the
+    endpoint maps left the figure — their spillover axis carried little —
+    and the share content moved onto these panels): the cost–deployment
+    plane for large reactors (a, top) and SMR (b, bottom) — for each amount
+    of post-2030 building completed through 2049 (the stock that prices
+    2050, per the engine's one-year lag), the 2050 overnight cost that the
+    defensible worlds deliver (fan across support-restricted grid worlds,
+    every dial varying jointly; dashed lines bound the lowest and highest
+    supported world), with the ATB 2050 target marked by its ±\$125 bar at
+    its paired Abou-Jaoude deployment (the separate target dot was removed
+    08-29 — the bar is the marker). Each block splits fresh-start (legacy fleet
+    excluded) vs legacy-fleet-credited rows — the paper-facing labels since
+    08-29; the internal stratum names (tiny-base / full-stock) stay in
+    code and SI only.
+
+    **How to read it.** A target bar below the fan means fewer than 5% of
+    defensible worlds reach that cost at that amount of building; reading
+    right along the target's dotted line shows how much building would put
+    the target inside the fan. Two reads at the paired deployment (third
+    spec, 08-29): the black bar spans the target ±\$125/kW — one rounding
+    half-step of the ATB's nearest-\$250 reporting, so a cost inside the
+    bar meets the projection at its published precision — labeled with the
+    share of that stratum's supported worlds inside the band; the red
+    dimension bracket to its left spans the lowest supported cost to the
+    upper tolerance bound (target + \$125/kW) and is labeled with the share
+    at or below that bound — the paper's **one-sided** feasibility
+    criterion (overshoot is success, not misfit), so the bracket label is
+    the S1 share for that stratum. The bracket is omitted where that share
+    is zero (the large legacy-fleet-credited rows); sub-1% labels keep one
+    decimal. Each scenario is scored at its own paired
+    deployment — conservative 12, moderate 33, advanced 199 GW — so
+    cross-scenario comparisons reflect the ATB's pairing structure, not the
+    targets alone.
+
+    **Key results.** The engine is pinned to the ATB's source: run at
+    Abou-Jaoude's own parameters and experience basis, it reproduces his
+    published SMR OCC tables within report rounding (max error \$500/kW).
+    Reaching an ATB 2050 cost at its paired deployment takes a firm-level
+    learning rate of 13–19.5% at the central discrete world (fresh-start basis,
+    spillover-dependent; T5, scored on the through-2049 stock that prices
+    2050 — the 08-24 registration fix) against the source study's own 9.5% —
+    the gap
+    is the expected anchor-convention premium, and it puts the large targets
+    at or above the top of large's sampled support (3–12%); the T5 solve
+    carries no tolerance (it requires exactly reaching the published
+    target), so those spans are criterion-invariant. On the
+    support-restricted grid the feasible shares (\$125 criterion, reported
+    split by experience accounting since 08-29 — the 50/50 pooled ranges
+    are retired) are 16.3–33.4% for SMR and 0.2–11.4% for large under
+    fresh-start accounting, and 3.8–21.5% / zero with the legacy fleet
+    credited. For SMR the cheaper scenarios owe their wider reach to the
+    much larger deployments the ATB pairs them with; large runs the other
+    way — its conservative target is the most reachable. When the
+    legacy fleet is credited no large target is reachable at all: zero feasible
+    worlds in all three scenarios, and no learning rate up to 30% closes the
+    gap at the paired deployment — every large trajectory presumes
+    fresh-start accounting (the large legacy-fleet-credited rows, where the target
+    sits below the dashed floor and the bracket is omitted, third spec). The
+    differences from the source are designed basis conventions (anchor
+    convention, experience basis; SN7), not disagreements. This inversion
+    uses about 0.79 million sampled worlds per target and zero ReEDS runs.
+    """),
+    code(r"""
+    P.compose(
+        [[MC_FIG / "atb_cost_deployment_plane_large.png"],
+         [MC_FIG / "atb_cost_deployment_plane_smr.png"]],
+        "SF42_atb_placement.png",
+        letters="",  # both sources carry their letters (a = large, b = smr); stacked a over b (08-28)
+        center=True,
+    )
+    P.source_ref(
+        (MC_FIG / "atb_cost_deployment_plane_large.png", "mc/atb_parameter_space.ipynb",
+         "cell F8 (2050-endpoint reframing 08-24; envelope + share labels + stacking, 08-28)",
+         "the closed-form 2050 evaluator over the support-restricted Part-2 grid; "
+         "bracket labels = `mc/exports/atb/endpoint_feasible_share.csv` stratum shares, recomputed in-cell"),
+        (MC_FIG / "atb_cost_deployment_plane_smr.png", "mc/atb_parameter_space.ipynb",
+         "cell F8", "same evaluator, SMR"),
+    )
+
+    es = pd.read_csv(MC_EXP / "atb" / "endpoint_feasible_share.csv")
+    print(es.to_string(index=False))
+    t5 = pd.read_csv(MC_EXP / "atb" / "min_lr_at_aj_deployment.csv")
+    tiny = t5[t5["base"] == "tiny"]
+    lr_cols = [c for c in t5.columns if c.startswith("min LR")]
+    lr_lo, lr_hi = tiny[lr_cols].min().min(), tiny[lr_cols].max().max()
+    print(f"\nmin firm-level LR to reach the 2050 cost at the paired deployment "
+          f"(tiny base, central world): {lr_lo:.3f}-{lr_hi:.3f}")
+    lg, sm = es[es["tech"] == "large"], es[es["tech"] == "smr"]
+    assert float(lg["share_support_full"].max()) == 0.0    # the full-stock large claim
+    print(f"support-restricted feasible shares (one-sided, $125 criterion; split by "
+          f"experience accounting): fresh start smr "
+          f"{100*sm['share_support_tiny'].min():.1f}-{100*sm['share_support_tiny'].max():.1f}%, "
+          f"large {100*lg['share_support_tiny'].min():.1f}-{100*lg['share_support_tiny'].max():.1f}%; "
+          f"legacy credited smr "
+          f"{100*sm['share_support_full'].min():.1f}-{100*sm['share_support_full'].max():.1f}%, "
+          f"large: 0 in all three scenarios")
+
+    P.caption("SF42", '''
+    Where the ATB 2050 nuclear costs sit in learning space (endpoint basis: the 2030 anchor
+    convention discards pre-2030 experience by design, so only the 2050 cost and the builds
+    that reach it are scored). The cost-deployment plane for large reactors (a) and SMR
+    (b): the 2050 overnight cost delivered across the sampled learning worlds restricted
+    to each technology's learning-rate support, every other input varying jointly (P5-P95
+    and P25-P75 fans, median line; dashed lines bound the lowest and highest supported
+    world), as a function of cumulative new build, split by experience accounting
+    (fresh-start vs legacy-fleet-credited rows). Dotted crosshairs locate each ATB 2050 target
+    at its paired deployment - conservative 12, moderate 33, advanced 199 GW - so
+    cross-scenario comparisons reflect the ATB's pairing structure, not the targets
+    alone. At each paired
+    deployment the black bar spans the target +-$125/kW - one rounding half-step of the
+    ATB's nearest-$250 reporting, so costs inside the bar meet the projection at its
+    published precision - labeled with the share of that stratum's supported worlds
+    inside the band; the red bracket to its left spans the lowest supported cost to the
+    upper tolerance bound (target + $125/kW), labeled with the share at or below that
+    bound - the paper's one-sided feasibility criterion (overshoot is success). The
+    bracket is omitted where that share is zero: in the large legacy-fleet-credited
+    rows the target sits below the lowest supported world and no world reaches it. The engine
+    reproduces the ATB source's published tables under its own parameters and experience
+    basis (max error $500/kW); the differences are designed basis conventions. ~0.79M
+    sampled worlds per target; no ReEDS runs.
+    ''')
+    """),
+    # ---------------------------------------------------------------- SF43-SF47 (batch verdict exhibits, 2026-09-08)
+    md(r"""
+    ## SF43 — The delivery ladders: where the offline boundary actually lies
+
+    **What this shows** (new 2026-09-08; `z-ethan/rate_design/rate_design_v3.ipynb`;
+    SN9; ST15). Per schedule, every envelope and boundary-depth run of the batch:
+    the 2050 SMR capacity as a multiple of the target (log scale) against the run
+    world's offline margin in rate points (negative = the credit path covers the
+    world with slack; the vertical dashed line is the offline delivery boundary).
+    Filled markers deliver under the feed-back tier convention; open markers do
+    not; squares are the +3/+5 depth probes; faint markers are the 1.0x-budget
+    ladders. Read per schedule: on aj, mck and iaea every probe up to +1 or +3
+    points delivers (the offline criterion is conservative there); on eo and
+    cop28 the −1-point marginal run already fails while the comfortable run
+    delivers (the boundary lies inside the covered set); eia is the delayed-start
+    schedule (P1). Delivering runs build 1.0–11.9x their target: induced take-up.
+    """),
+    code(r"""
+    P.show_panel(RD_FIG / "w50_delivery_ladders.png")
+    P.source_ref(
+        (RD_FIG / "w50_delivery_ladders.png", "rate_design/rate_design_v3.ipynb", "S10 figure cell",
+         "`u100_gate_table.csv` (from `rate_design_checks/exports/delivery_outcomes.csv` + the frozen "
+         "`u80_batch_spec.csv`; verdict in `u101_verdict.csv`, depth reads in `u102_ge2_depth.csv`)"),
+    )
+    P.caption("SF43", '''
+    The delivery ladders of the 66-run batch: 2050 SMR capacity / target (log) against the
+    run world's offline margin (rate points; dashed = the offline boundary), per schedule;
+    filled = delivers, open = does not, squares = depth probes, faint = 1.0x budget. aj/mck/
+    iaea: every probe to +1 (aj to +3) delivers — the offline criterion is conservative; eo/
+    cop28: the -1-point run fails while the comfortable run delivers — the boundary lies
+    inside the covered set; eia: delayed start. Delivering runs overshoot 1.0-11.9x. Tables:
+    ST15b/c.
+    ''')
+    """),
+    md(r"""
+    ## SF44 — The cap ladder: the two-tier hybrids
+
+    **What this shows** (new 2026-09-08). The 14 hybrid runs against their
+    post-window excess of the world's need over the cap (rate points; dashed =
+    the offline cap boundary), circles at the 0.60 cap, diamonds at 0.50; filled
+    deliver. At 0.50 the aj, mck and iaea cap-binds probes deliver despite
+    predicted excesses of +1 to +5 points (the cap does not bite there); every
+    eo hybrid fails, including the cap-never-binds control; eia's 0.60 probe
+    fails and its control is the delayed-start shape. The 0.50 block has no
+    deliver-side control (directional reading, registered).
+    """),
+    code(r"""
+    P.show_panel(RD_FIG / "w51_cap_ladder.png")
+    P.source_ref(
+        (RD_FIG / "w51_cap_ladder.png", "rate_design/rate_design_v3.ipynb", "S10 figure cell",
+         "`u103_gh2_cap_depth.csv` (u80 post-window excess + the checks outcomes)"),
+    )
+    P.caption("SF44", '''
+    The cap ladder: the 14 two-tier hybrid runs against their post-window excess over the
+    cap (rate points; dashed = the offline cap boundary); circles cap 0.60, diamonds cap
+    0.50; filled = delivers. aj/mck/iaea deliver at 0.50 despite +1 to +5 points of
+    predicted excess; every eo hybrid fails, including the slack control; eia's 0.60 probe
+    fails. Directional at 0.50 (no slack control). Table: ST15d.
+    ''')
+    """),
+    md(r"""
+    ## SF45 — GX1: the 2050 uptick is not an end-of-horizon artifact
+
+    **What this shows** (new 2026-09-08). The required credit rate by build year
+    for each schedule's median-world anchor: the standard run (end year 2050)
+    against the extended run (end year 2055, mandate flat after 2050). The two
+    paths coincide to three decimals in every year, including 2050: the
+    extended run sheds 0.00 of the 2047→2050 uptick, so the rise is a real
+    terminal effect of the mandate path (the sequential solve does not see the
+    horizon), and every schedule keeps the with-2050 basis.
+    """),
+    code(r"""
+    P.show_panel(RD_FIG / "w52_gx1_horizon.png")
+    P.source_ref(
+        (RD_FIG / "w52_gx1_horizon.png", "rate_design/rate_design_v3.ipynb", "S10 figure cell",
+         "`u106_gx1.csv` (from `rate_design_checks/exports/gx1_horizon.csv`: the t09 code path "
+         "ported verbatim, SHA-pinned, on each extended run's own h5 — registration P3)"),
+    )
+    P.caption("SF45", '''
+    GX1: required credit rate by build year for each schedule's median-world anchor, the
+    standard run (end 2050) against the extended run (end 2055, mandate flat after 2050).
+    The paths coincide in every year; the extended run sheds 0.00 of the 2047-2050 uptick,
+    so the terminal rise is real, not an end-of-horizon artifact, and the with-2050 basis
+    stands for every schedule. Table: ST15g.
+    ''')
+    """),
+    md(r"""
+    ## SF46 — GA2 and GA3: the three-anchor map tested out of sample
+
+    **What this shows** (new 2026-09-08). (a) Each new p25/p75 anchor's bill
+    from its own run against the three-anchor map's pre-run prediction (u84),
+    with the ±10% (informative) and ±20% (certificate) bands: all 12 inside
+    ±20%, 9 inside ±10% (GA2 PASS). (b) The per-year required-rate error
+    (predicted − true, rate points) at the same anchors, with the ±5-point
+    r03 bracket: only 4 of 12 anchors stay inside it in every rate-bearing
+    year; the map under-predicts the late-year need of the upper-interior
+    worlds by up to 19 points on the largest schedule (GA3 partial) — the
+    same direction as the eo/cop28 delivery failures in SF43.
+    """),
+    code(r"""
+    P.show_panel(RD_FIG / "w53_ga_anchors.png")
+    P.source_ref(
+        (RD_FIG / "w53_ga_anchors.png", "rate_design/rate_design_v3.ipynb", "S10 figure cell",
+         "`u104_ga2_bills.csv` + `u105_ga3_rates.csv` (u84 pre-run predictions vs the 49-case "
+         "step3_analysis t08/t09 rows of the anchors)"),
+    )
+    P.caption("SF46", '''
+    The three-anchor map tested out of sample at the 12 p25/p75 anchors. (a) Bills: run vs
+    pre-run prediction, +-10% and +-20% bands — all 12 inside +-20%, 9 inside +-10% (GA2
+    PASS). (b) Per-year required-rate errors (predicted - true, points) with the +-5-point
+    bracket — 4 of 12 anchors inside it every year; the map under-predicts the late-year
+    need of the upper-interior worlds by up to 19 points (GA3 partial). Tables: ST15e/f.
+    ''')
+    """),
+    md(r"""
+    ## SF47 — The statutory mask on three and on five anchors
+
+    **What this shows** (new 2026-09-08). The post-window not-credit-feasible
+    share per schedule, at each cap, as the cap × band range on the
+    three-anchor map (±20% hide-the-middle band; the batch-placement basis)
+    beside the five-anchor map (leave-one-out band E5): the range framing
+    survives the densification; the bars move but the reading — a
+    statutory-capped credit reaches only the cheap tail — does not.
+    """),
+    code(r"""
+    P.show_panel(RD_FIG / "w54_mask_three_vs_five.png")
+    P.source_ref(
+        (RD_FIG / "w54_mask_three_vs_five.png", "rate_design/rate_design_v3.ipynb", "S10 figure cell (second run)",
+         "`u51_feasibility_mask.csv` (three-anchor) + `u51_feasibility_mask_5a.csv` (five-anchor)"),
+    )
+    P.caption("SF47", '''
+    The post-window not-credit-feasible share as cap x band ranges, per schedule, on the
+    three-anchor map (+-20% band) beside the five-anchor map (E5 band): the range framing and
+    the reading survive the anchor densification. Tables: ST14b (five-anchor) / ST14g
+    (three-anchor).
     ''')
     """),
 
@@ -2870,67 +3123,96 @@ appx_cells = [
     v2/v2.1 + `u91_verdict.csv`.
     """),
     code(r"""
-    P.table(RD_EXP / "u50_requirement_fans.csv", "ST14a_requirement_fans.csv", round_=4)
-    P.table(RD_EXP / "u51_feasibility_mask.csv", "ST14b_feasibility_mask.csv", round_=4)
-    P.table(RD_EXP / "u52_demonstration_gap.csv", "ST14c_demonstration_gap.csv", round_=3)
-    P.table(RD_EXP / "u53_dollar_menu.csv", "ST14d_dollar_menu.csv", round_=4)
-    P.table(RD_EXP / "u54_exposure_summary.csv", "ST14e_exposure_summary.csv", round_=3)
-    P.caption("ST14", '''
-    Declining-credit zero-run tables (behind Fig 6a/6b, SF34, SF38): requirement fans
-    with censor/clamp columns (u50); the feasibility mask per year and per world at
-    both caps and all three certificate-band points — quotable only as cap x band
+    # five-anchor primaries (2026-09-08; the display basis per u101) ...
+    P.table(RD_EXP / "u50_requirement_fans_5a.csv", "ST14a_requirement_fans_5a.csv", round_=4)
+    P.table(RD_EXP / "u51_feasibility_mask_5a.csv", "ST14b_feasibility_mask_5a.csv", round_=4)
+    P.table(RD_EXP / "u52_demonstration_gap_5a.csv", "ST14c_demonstration_gap_5a.csv", round_=3)
+    P.table(RD_EXP / "u53_dollar_menu_5a.csv", "ST14d_dollar_menu_5a.csv", round_=4)
+    P.table(RD_EXP / "u54_exposure_summary_5a.csv", "ST14e_exposure_summary_5a.csv", round_=3)
+    # ... and the three-anchor originals (the frozen audit record and the batch-placement basis)
+    P.table(RD_EXP / "u50_requirement_fans.csv", "ST14f_requirement_fans_3a.csv", round_=4)
+    P.table(RD_EXP / "u51_feasibility_mask.csv", "ST14g_feasibility_mask_3a.csv", round_=4)
+    P.table(RD_EXP / "u52_demonstration_gap.csv", "ST14h_demonstration_gap_3a.csv", round_=3)
+    P.table(RD_EXP / "u53_dollar_menu.csv", "ST14i_dollar_menu_3a.csv", round_=4)
+    P.table(RD_EXP / "u54_exposure_summary.csv", "ST14j_exposure_summary_3a.csv", round_=3)
+    _e5 = float(pd.read_csv(BD_EXP / "b07_bill_attachment_5a.csv")["band_e5"].iloc[0])
+    P.caption("ST14", f'''
+    Declining-credit tables (behind Fig 6a/6b, SF34, SF38), on the five-anchor map (a-e;
+    p05/p25/p50/p75/p95 mandate anchors, certificate band E5 = {_e5:.2f}, the leave-one-out
+    error of the interior anchors; 2026-09-08) with the three-anchor originals beside them
+    (f-j; the frozen audit record and the basis on which the batch was placed and scored):
+    requirement fans with censor/clamp columns (u50); the feasibility mask per year and per
+    world at both caps and all three certificate-band points — quotable only as cap x band
     ranges (u51); demonstration-gap fans per cap x band x window with the
-    window-applicability flag (u52); the dollar-menu zone table (u53); the
-    exposure/wedge summary (u54). Kill dispositions KB1/KB2/KB3 and the certificate
-    chain: rate_design/methods.md v2/v2.1 + u91_verdict.csv (SN9).
+    window-applicability flag (u52); the dollar-menu zone table (u53); the exposure/wedge
+    summary (u54). Kill dispositions KB1/KB2/KB3 and the certificate chain:
+    rate_design/methods.md v2 -> v2.3 + u91_verdict.csv / u91_verdict_5a.csv (SN9).
     ''')
     """),
     md(r"""
-    ### ST15 — The registered 66-run batch and the capture decomposition
+    ### ST15 — The 66-run batch: verdict, gate tables, and spec
 
-    **Conditional tables (new 2026-09-02; reallocated 2026-09-04, v2.2; SN9).**
-    The batch spec and the capture machinery behind the outline's `[BATCH]`
-    items: the contour schedules in \$/kW (u70), the capture decomposition
-    with the holdout-drop columns — kill K1 fired, so the quotable capture
-    is the holdout-scored value with the worst split drop as its error bar,
-    with the quantile-family capture as companion (u71); the no-2050
-    sensitivity that gate GX1 adjudicates (u73); the ITC-arm + horizon
-    batch spec (u80: 27 envelope + 7 boundary-depth + 14 hybrid + 6
-    horizon, no reserve) and the per-run offered credit paths (u81); the
-    p25/p75 anchor-densification spec (u82: 12 mandate-arm runs selected by
-    the frozen smr100 quantile rule, gates GA1/GA2). **Nothing in these
-    tables is paper-quotable until the batch returns and the registered
-    gates (GE1/GE2/GH1/GH2/GX1/GA1/GA2) are adjudicated**; the claim ladder
-    in `rate_design/methods.md` v2.1/v2.2 cannot be re-argued after outcomes.
+    **Adjudicated 2026-09-08 (SN9; cited from S3-4.5).** The batch returned on
+    2026-09-08 (66 h5 files, `rate_design_checks` 40 PASS / 13 INFO / 0 FAIL).
+    Every gate registered before launch (`rate_design/methods.md` v2.1–v2.2.2)
+    was applied with the mechanics registered before any output was read
+    (v2.3): the verdict (u101) with the claim-ladder rung reached; the per-run
+    gate table (u100); the GE2 boundary-depth reads per schedule x budget
+    (u102); the GH2 cap-depth reads per cap (u103); GA2 (u104) and GA3 (u105)
+    at the 12 p25/p75 anchors; GX1 per schedule (u106); the five-anchor summary
+    (u107); the five-anchor re-margining of the frozen run worlds — the
+    registered secondary read, never scored (u85); the per-year rate
+    leave-one-out at the interior anchors (u86). The spec: the ITC-arm + horizon
+    batch (u80) and the per-run offered credit paths (u81); the anchor spec (u82)
+    with the pre-run predictions (u84). The capture machinery (u70/u71/u73) is
+    kept for the record: on the FAIL rung no capture number is quotable (K1 rule).
     """),
     code(r"""
-    P.table(RD_EXP / "u70_contour_schedules_kw.csv", "ST15a_contour_schedules_kw.csv", round_=1)
-    P.table(RD_EXP / "u71_capture_decomposition.csv", "ST15b_capture_decomposition.csv", round_=4)
-    P.table(RD_EXP / "u73_no2050_sensitivity.csv", "ST15c_no2050_sensitivity.csv", round_=4)
-    P.table(RD_EXP / "u80_batch_spec.csv", "ST15d_batch_spec.csv", round_=4)
-    P.table(RD_EXP / "u81_run_schedules.csv", "ST15e_run_schedules.csv", round_=1)
-    P.table(RD_EXP / "u82_anchor_spec.csv", "ST15f_anchor_spec.csv", round_=4)
-    P.table(RD_EXP / "u84_anchor_predictions.csv", "ST15g_anchor_predictions.csv", round_=4)
-    _u80 = pd.read_csv(RD_EXP / "u80_batch_spec.csv")
-    _u82 = pd.read_csv(RD_EXP / "u82_anchor_spec.csv")
-    _bn = _u80["block"].value_counts().to_dict()
-    assert (_u80["block"] == "reserve").sum() == 0 and len(_u82) == 12, (_bn, len(_u82))
-    _live80 = _u80[_u80["block"].isin(["envelope", "boundary", "hybrid"])]
+    P.table(RD_EXP / "u101_verdict.csv", "ST15a_verdict.csv")
+    P.table(RD_EXP / "u100_gate_table.csv", "ST15b_gate_table.csv", round_=4)
+    P.table(RD_EXP / "u102_ge2_depth.csv", "ST15c_ge2_depth.csv", round_=4)
+    P.table(RD_EXP / "u103_gh2_cap_depth.csv", "ST15d_gh2_cap_depth.csv", round_=4)
+    P.table(RD_EXP / "u104_ga2_bills.csv", "ST15e_ga2_bills.csv", round_=4)
+    P.table(RD_EXP / "u105_ga3_rates.csv", "ST15f_ga3_rates.csv", round_=4)
+    P.table(RD_EXP / "u106_gx1.csv", "ST15g_gx1.csv", round_=4)
+    P.table(RD_EXP / "u107_five_anchor_summary.csv", "ST15h_five_anchor_summary.csv", round_=4)
+    P.table(RD_EXP / "u85_remargin_5a.csv", "ST15i_remargin_5a.csv", round_=4)
+    P.table(RD_EXP / "u86_anchor_loo_rates_5a.csv", "ST15j_anchor_loo_rates_5a.csv", round_=4)
+    P.table(RD_EXP / "u80_batch_spec.csv", "ST15k_batch_spec.csv", round_=4)
+    P.table(RD_EXP / "u81_run_schedules.csv", "ST15l_run_schedules.csv", round_=1)
+    P.table(RD_EXP / "u82_anchor_spec.csv", "ST15m_anchor_spec.csv", round_=4)
+    P.table(RD_EXP / "u84_anchor_predictions.csv", "ST15n_anchor_predictions.csv", round_=4)
+    P.table(RD_EXP / "u70_contour_schedules_kw.csv", "ST15o_contour_schedules_kw.csv", round_=1)
+    P.table(RD_EXP / "u71_capture_decomposition.csv", "ST15p_capture_decomposition.csv", round_=4)
+    P.table(RD_EXP / "u73_no2050_sensitivity.csv", "ST15q_no2050_sensitivity.csv", round_=4)
+    _v = pd.read_csv(RD_EXP / "u101_verdict.csv").set_index("name")
+    assert _v.loc["rung", "result"] == "FAIL", _v.loc["rung", "result"]
+    _u100 = pd.read_csv(RD_EXP / "u100_gate_table.csv")
+    _dl = _u100[_u100["counts_as_delivering"] & _u100["block"].isin(["envelope", "boundary"])]
+    _u104 = pd.read_csv(RD_EXP / "u104_ga2_bills.csv")
+    _u106 = pd.read_csv(RD_EXP / "u106_gx1.csv")
+    _u85 = pd.read_csv(RD_EXP / "u85_remargin_5a.csv")
+    _u85e = _u85[_u85["block"] != "hybrid"]
+    _nflip = int((_u85e["side_3a"] != _u85e["side_5a"]).sum())
+    _e5 = float(pd.read_csv(BD_EXP / "b07_bill_attachment_5a.csv")["band_e5"].iloc[0])
     P.caption("ST15", f'''
-    The registered {len(_u80) + len(_u82)}-run batch and the capture decomposition
-    (conditional — nothing here is quotable until the batch returns and gates
-    GE1/GE2/GH1/GH2/GX1/GA1/GA2 are adjudicated): contour schedules in $/kW (u70); the
-    capture decomposition with holdout drops — kill K1 fired, so any quotable capture is
-    the holdout-scored value with its worst split drop as the error bar, quantile family
-    as companion (u71); the no-2050 sensitivity behind gate GX1 (u73); the ITC-arm +
-    horizon spec — {_bn["envelope"]} envelope + {_bn["boundary"]} boundary-depth +
-    {_bn["hybrid"]} hybrid (caps 0.60 and 0.50) + {_bn["horizon"]} horizon, no reserve,
-    every offered rate <= {_live80["max_rate_on_world"].max():.3f} on its run world (u80);
-    per-run offered credit paths with credit/demonstration tier splits (u81); the
-    {len(_u82)} p25/p75 anchor-densification runs selected by the frozen smr100 quantile
-    rule (u82) with the three-anchor map's pre-run predictions of their rates, needs
-    and bills — the GA2/GA3 out-of-sample test (u84). Registration:
-    rate_design/methods.md v2/v2.1/v2.2/v2.2.1 (SN9).
+    The 66-run batch, adjudicated 2026-09-08: the verdict (u101; claim-ladder rung
+    {_v.loc["rung", "result"]}), the per-run gate table (u100), the GE2 boundary-depth reads
+    (u102), the GH2 cap-depth reads (u103), GA2 at the 12 anchors (u104: signed bill errors
+    {_u104["signed_rel_err"].min():+.2f} to {_u104["signed_rel_err"].max():+.2f}, all inside
+    +-20%), GA3 (u105), GX1 (u106: the extended runs shed
+    {_u106["shed_fraction"].max():.2f} of the 2047-2050 uptick — it persists), the
+    five-anchor summary (u107: E5 = {_e5:.2f}), the five-anchor re-margining of the frozen
+    run worlds (u85: {_nflip} of {len(_u85e)} envelope/boundary worlds change side, hybrids compared on the cap excess; a disclosed secondary read, never
+    scored), the per-year rate leave-one-out (u86), the batch spec (u80/u81/u82/u84) and the
+    capture machinery (u70/u71/u73 — not quotable on the FAIL rung; K1 stands). GE1/GH1:
+    {_v.loc["GE1", "result"]}/{_v.loc["GH1", "result"]} — true failures on the eo and cop28
+    marginal worlds (the -1-point runs) and the eo cap-never-binds hybrid, while the
+    comfortable runs of every schedule deliver; the {len(_dl)} delivering envelope/boundary
+    runs build {_dl["delivered_frac_2050"].min():.2f}-{_dl["delivered_frac_2050"].max():.1f}x
+    their 2050 target (median {_dl["delivered_frac_2050"].median():.1f}x): induced take-up
+    breaks any uncapped every-world outlay bound. Registration and mechanics:
+    rate_design/methods.md v2.1 -> v2.3 (SN9); figures SF43-SF47.
     ''')
     """),
     md(r"""
@@ -2948,11 +3230,16 @@ appx_cells = [
     constant (u32).
     """),
     code(r"""
-    P.table(RD_EXP / "u30_part_a_restated.csv", "ST16a_part_a_restated.csv", round_=3)
-    P.table(RD_EXP / "u31_part_a_slopes.csv", "ST16b_part_a_slopes.csv", round_=4)
-    P.table(RD_EXP / "u32_ci_rate_points.csv", "ST16c_ci_rate_points.csv", round_=2)
+    P.table(RD_EXP / "u30_part_a_restated_5a.csv", "ST16a_part_a_restated_5a.csv", round_=3)
+    P.table(RD_EXP / "u31_part_a_slopes_5a.csv", "ST16b_part_a_slopes_5a.csv", round_=4)
+    P.table(RD_EXP / "u32_ci_rate_points_5a.csv", "ST16c_ci_rate_points_5a.csv", round_=2)
+    P.table(RD_EXP / "u30_part_a_restated.csv", "ST16d_part_a_restated_3a.csv", round_=3)
+    P.table(RD_EXP / "u31_part_a_slopes.csv", "ST16e_part_a_slopes_3a.csv", round_=4)
+    P.table(RD_EXP / "u32_ci_rate_points.csv", "ST16f_ci_rate_points_3a.csv", round_=2)
     P.caption("ST16", '''
-    Cost-of-information tables (behind Fig 5b, SF37 and SF39): per schedule, the design
+    Cost-of-information tables (behind Fig 5b, SF37 and SF39), on the five-anchor map (a-c,
+    the Fig 5b basis since 2026-09-08) with the three-anchor originals beside them (d-f, the
+    frozen audit record behind SF39): per schedule, the design
     target, final credit-scale CI width and its ratio to the target, the plateau label
     under the <=5%-per-observation rule, the learning-rate CI narrowing, and the
     effective-sample columns (u30); the mid-noise width-vs-committed-spend path (u31);

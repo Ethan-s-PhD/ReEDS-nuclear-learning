@@ -18,7 +18,12 @@ of methods.md (registered before this file existed):
 v1 files (rate_design.ipynb, u01-u20, u90, w01-w13) are frozen as the audit
 record. v2 exports use disjoint numbers: u30+ tables, w20+ figures.
 """
+import os
+import re
+
 import nbformat as nbf
+
+ANCHORS = os.environ.get("RD_ANCHORS", "").strip()   # "5a": five-anchor twin (methods.md v2.3)
 
 nb = nbf.v4.new_notebook()
 nb.metadata = {
@@ -1918,7 +1923,239 @@ for p in sorted(EXPORTS.glob("u*.csv")) + sorted(FIGURES.glob("w*.png")):
         print(f"{p.relative_to(HERE)}  ({p.stat().st_size / 1024:.0f} kB)")
 """)
 
+
+# ---- five-anchor patch table (applied only when RD_ANCHORS=5a) --------------------
+U85_MD = """## S5 (twin) — the frozen batch worlds re-margined on the five-anchor map
+
+The batch was placed on the three-anchor map and GE2/GH2 are scored on those
+margins (methods.md v2.2, v2.3). This twin does not re-select anything: it
+re-computes the margin of every frozen u80 run world on the five-anchor map
+(**u85**, the registered secondary read, reported beside the primary and
+never used for scoring) and exports the per-year rate leave-one-out errors at
+the interior anchors (**u86**, a diagnostic, never the band)."""
+
+U85_CODE = """# u85: five-anchor re-margining of the frozen u80 run worlds (secondary read; never scored)
+import re as _re
+u80 = pd.read_csv(EXPORTS / "u80_batch_spec.csv")
+u81 = pd.read_csv(EXPORTS / "u81_run_schedules.csv")
+
+def margins(ab, E):
+    occ_ref = OCCW[ab][ANCH[ab]["p50"]]
+    return np.max((NEED[ab] - E[None, :]) / occ_ref[None, :], axis=1)
+
+rows85 = []
+for r in u80[u80["block"].isin(["envelope", "boundary", "hybrid"])].itertuples():
+    ab, w = r.schedule, int(r.draw_index)
+    sched = u81[u81["run"] == r.run].set_index("year").sort_index()
+    assert list(sched.index) == BUILD_TS[ab], r.run
+    E = sched["offer_kW"].to_numpy(float)
+    m5 = float(margins(ab, E)[w])
+    row = dict(run=r.run, block=r.block, schedule=ab, draw_index=w, cap=r.cap, gate=r.gate,
+               expected=r.expected, margin_3a=r.margin_ratepts, margin_5a=round(m5, 4),
+               d_margin=(round(m5 - r.margin_ratepts, 4) if r.block != "hybrid" else np.nan),
+               # like-for-like only where the launched offer IS the envelope (envelope/boundary runs);
+               # for hybrids u80's margin is the pre-cap design margin, so the cap dimension is compared
+               # through excess_3a/excess_5a instead (review 2, 2026-09-08)
+               side_3a=(("shortfall" if r.margin_ratepts > 0 else "deliver") if r.block != "hybrid" else "n/a (hybrid)"),
+               side_5a=(("shortfall" if m5 > 0 else "deliver") if r.block != "hybrid" else "n/a (hybrid)"),
+               upper_clamped_5a=bool(UPCLAMP[ab][w]))
+    if r.block == "hybrid":
+        cap = float(r.cap)
+        post = np.array([t > W_PRIMARY for t in BUILD_TS[ab]])
+        ex5 = float(np.max(IW[ab][w, post] - TOL_SHORT - cap)) if post.any() else np.nan
+        m3 = _re.search(r"excess ([+-]\\d\\.\\d+)", str(r.note))
+        assert m3, r.run
+        row.update(excess_3a=float(m3.group(1)), excess_5a=round(ex5, 4))
+    rows85.append(row)
+u85 = pd.DataFrame(rows85)
+assert len(u85) == 48, len(u85)
+u85.to_csv(EXPORTS / f"u85_remargin{SFX}.csv", index=False)
+_env = u85[u85["block"] != "hybrid"]
+_hyb = u85[u85["block"] == "hybrid"]
+n_flip = int((_env["side_3a"] != _env["side_5a"]).sum())
+n_capflip = int((np.sign(_hyb["excess_3a"]) != np.sign(_hyb["excess_5a"])).sum())
+VERDICT.append(("secondary", "GE2-5a-remargin", "DISCLOSED",
+                f"five-anchor re-margining of the frozen run worlds (like-for-like on the launched offers): "
+                f"{n_flip} of {len(_env)} envelope/boundary worlds change side ({_env[_env['side_3a'] != _env['side_5a']]['run'].tolist()}); "
+                f"max |d margin| {_env['d_margin'].abs().max():.3f} rate points; hybrids compared on the cap excess: "
+                f"{n_capflip} of {len(_hyb)} change sign; never used for scoring (GE2/GH2 stay on the three-anchor margins)"))
+print(u85[["run", "margin_3a", "margin_5a", "d_margin", "side_3a", "side_5a"]].to_string(index=False))
+
+# u86: per-year rate leave-one-out at the interior anchors (diagnostic, never the band)
+rows86 = []
+for ab in SCHEDULES:
+    occ = Z[f"occ_{AB2TOK[ab]}_smr"]
+    cases = {p: f"smr100_{ab}_{p}" for p in PCTS}
+    for j, t in enumerate(BUILD_TS[ab]):
+        for q in INTERIOR:
+            others = [p for p in PCTS if p != q]
+            xs = np.array([occ[ANCH[ab][p], YI[t]] for p in others])
+            ys = np.array([rate_of(cases[p], t) for p in others])
+            o = np.argsort(xs)
+            pred = float(np.interp(occ[ANCH[ab][q], YI[t]], xs[o], ys[o]))
+            true = rate_of(cases[q], t)
+            rows86.append(dict(schedule=ab, hidden=q, year=t, pred_rate=round(pred, 4),
+                               true_rate=round(true, 4), err_ratepts=round(100 * (pred - true), 2),
+                               rate_status=("rate" if true > 0 else "not-rate")))
+u86 = pd.DataFrame(rows86)
+u86.to_csv(EXPORTS / f"u86_anchor_loo_rates{SFX}.csv", index=False)
+r86 = u86[u86["rate_status"] == "rate"]
+print(f"u86: per-year rate LOO at the interior anchors, |err| max {r86['err_ratepts'].abs().max():.1f} pts, "
+      f"median {r86['err_ratepts'].abs().median():.1f} pts over {len(r86)} rate cells")
+"""
+
+ENTRY_CODE = """# entry gate (methods.md v2.3): no five-anchor number before GA1 has passed and GA2 is adjudicated
+_u101 = EXPORTS / "u101_verdict.csv"
+assert _u101.exists(), "u101_verdict.csv missing: execute rate_design_v3.ipynb first"
+_v = pd.read_csv(_u101).set_index("name")
+assert str(_v.loc["GA1", "result"]).startswith("PASS"), _v.loc["GA1"].to_dict()
+assert "GA2" in _v.index, "GA2 not adjudicated"
+VERDICT.append(("gate", "entry-5a", "PASS",
+                f"GA1 {_v.loc['GA1', 'result']}; GA2 {_v.loc['GA2', 'result']} -- five-anchor twin admitted"))
+print("entry gate:", _v.loc[["GA1", "GA2"], "result"].to_dict())
+"""
+
+
+def _apply_5a_patches(cells):
+    """Five-anchor twin (methods.md v2.3, 2026-09-08)."""
+    sfx = "_5a"
+
+    def sub_once(old, new):
+        hits = [c for c in cells if old in c.source]
+        assert len(hits) == 1, (old[:70], len(hits))
+        hits[0].source = hits[0].source.replace(old, new)
+
+    def find_one(pred):
+        hits = [i for i, c in enumerate(cells) if pred(c)]
+        assert len(hits) == 1, hits
+        return hits[0]
+
+    # setup
+    sub_once('VERDICT = []              # (kind, name, result, detail) rows -> u91\n',
+             'VERDICT = []              # (kind, name, result, detail) rows -> u91\n'
+             'PCTS = ["p05", "p25", "p50", "p75", "p95"]     # five-anchor twin (RD_ANCHORS=5a)\n'
+             'INTERIOR = ["p25", "p50", "p75"]\n'
+             f'SFX = "{sfx}"\n')
+    sub_once('reg_smr = pd.read_csv(MC_EXPORTS / "smr100" / "selected_draws.csv")\n'
+             'reg_smr["ab"] = reg_smr["schedule"].map(NAME2AB)\n'
+             'assert len(reg_smr) == 18 and reg_smr["ab"].notna().all()\n',
+             'reg_smr = pd.concat([pd.read_csv(MC_EXPORTS / "smr100" / "selected_draws.csv"),\n'
+             '                     pd.read_csv(MC_EXPORTS / "smr100" / "selected_draws_p25p75.csv")],\n'
+             '                    ignore_index=True)\n'
+             'reg_smr["ab"] = reg_smr["schedule"].map(NAME2AB)\n'
+             'assert len(reg_smr) == 30 and reg_smr["ab"].notna().all()\n')
+    sub_once('BW = np.load(BRIDGE / "b07_bills_perworld.npz")\n',
+             'BW = np.load(BRIDGE / "b07_bills_perworld_5a.npz")\n'
+             'E5 = float(BW["e5_band"])          # the leave-one-out certificate band (stage-2 twin)\n'
+             'print(f"five-anchor certificate band E5 = {E5:.2f}")\n')
+    sub_once('    for p in ["p05", "p50", "p95"]:\n'
+             '        pub = float(t08.loc[f"smr100_{ab}_{p}", "PV_rental_transfer_2024B"])\n',
+             '    for p in PCTS:\n'
+             '        pub = float(t08.loc[f"smr100_{ab}_{p}", "PV_rental_transfer_2024B"])\n')
+    # S1
+    sub_once('    cases = {p: f"smr100_{ab}_{p}" for p in ["p05", "p50", "p95"]}\n',
+             '    cases = {p: f"smr100_{ab}_{p}" for p in PCTS}\n')
+    sub_once('        xs = np.array([occ[ANCH[ab][p], YI[t]] for p in ["p05", "p50", "p95"]])\n'
+             '        ys = np.array([rate_of(cases[p], t) for p in ["p05", "p50", "p95"]])\n',
+             '        xs = np.array([occ[ANCH[ab][p], YI[t]] for p in PCTS])\n'
+             '        ys = np.array([rate_of(cases[p], t) for p in PCTS])\n')
+    sub_once('    for p in ["p05", "p50", "p95"]:\n        w_ = ANCH[ab][p]\n'
+             '        tru = np.array([rate_of(cases[p], t) for t in BUILD_TS[ab]])\n',
+             '    for p in PCTS:\n        w_ = ANCH[ab][p]\n'
+             '        tru = np.array([rate_of(cases[p], t) for t in BUILD_TS[ab]])\n')
+    sub_once('s01_old = pd.read_csv(REPO / "z-ethan" / "instrument_comparison" / "exports"\n'
+             '                      / "s01_per_world_thresholds.csv")\n'
+             'for ab in SCHEDULES:\n'
+             '    ref = s01_old[s01_old["schedule"] == ab].sort_values("world")["fstar"].to_numpy()\n'
+             '    assert np.allclose(np.round(FSTAR[ab], 4), ref, atol=5e-4), ab\n'
+             'print("G1/G2/G3 PASS; f* matches the stored s01 export in all six schedules")\n',
+             's01_old = pd.read_csv(REPO / "z-ethan" / "instrument_comparison" / "exports"\n'
+             '                      / "s01_per_world_thresholds.csv")\n'
+             '_d = {}\n'
+             'for ab in SCHEDULES:\n'
+             '    ref = s01_old[s01_old["schedule"] == ab].sort_values("world")["fstar"].to_numpy()\n'
+             '    _d[ab] = float(np.nanmax(np.abs(np.round(FSTAR[ab], 4) - ref)))\n'
+             'VERDICT.append(("gate", "G1-s01", "N/A-5a",\n'
+             '                "the stored s01 f* is the three-anchor map by definition; max |f* difference| "\n'
+             '                "five- vs three-anchor: " + str({k: round(v, 3) for k, v in _d.items()})))\n'
+             'print("G1/G2/G3 PASS; f* vs the three-anchor s01 export:", {k: round(v, 3) for k, v in _d.items()})\n')
+    # bands
+    sub_once('BAND = {"base": 1.0, "lo": 0.8, "hi": 1.2}\n',
+             'BAND = {"base": 1.0, "lo": 1.0 - E5, "hi": 1.0 + E5}   # E5 band (v2.3)\n')
+    sub_once('    for tag, mult in [("lo", 0.8), ("hi", 1.2)]:\n'
+             '        need_b = np.maximum(IW[ab] * mult - TOL_SHORT, 0.0) * OCCW[ab]\n',
+             '    for tag, mult in [("lo", 1.0 - E5), ("hi", 1.0 + E5)]:   # E5 band (v2.3)\n'
+             '        need_b = np.maximum(IW[ab] * mult - TOL_SHORT, 0.0) * OCCW[ab]\n')
+    sub_once('                "inside the +/-20% band (filter-free, all rows tested)"))',
+             '                f"inside the +/-{E5:.0%} E5 band (filter-free, all rows tested)"))')
+    sub_once('print("not-credit-feasible share, min-max across the +/-20% band (window 2035):")',
+             'print(f"not-credit-feasible share, min-max across the +/-{E5:.0%} E5 band (window 2035):")')
+    sub_once('           label="median with the requirement \u00b120%"),',
+             '           label=f"median with the requirement \u00b1{E5:.0%}"),')
+    for c in cells:
+        if c.cell_type == "code":
+            c.source = c.source.replace("at all 18 anchors", "at all 30 anchors")
+    for c in cells:
+        if c.cell_type == "markdown":
+            c.source = (c.source.replace("three anchor points", "five anchor points (p05/p25/p50/p75/p95)")
+                        .replace("18 exact anchors", "30 exact anchors")
+                        .replace("\u00b120%", "\u00b1E5 (the leave-one-out band)")
+                        .replace("+-20%", "+-E5 (the leave-one-out band)"))
+    for c in cells:
+        if c.cell_type == "code":
+            c.source = c.source.replace(
+                "outlay calibration residual <= 7% at all 30 anchors",
+                "outlay calibration residual <= 7% at the 3 production anchors (p05/p50/p95; the t12 calibration stays three-anchor by registration)")
+
+    # drop the batch-selection machinery (the twin never re-selects)
+    for marker in ('def margins(ab, E):', '_u82p = EXPORTS / "u82_anchor_spec.csv"',
+                   '# w42: the batch map'):
+        i = find_one(lambda c, m=marker: c.cell_type == "code" and m in c.source)
+        del cells[i]
+    i = find_one(lambda c: c.cell_type == "markdown" and c.source.startswith("### GA registration (v2.2.1)"))
+    del cells[i]
+    i = find_one(lambda c: c.cell_type == "markdown" and c.source.startswith("## S5"))
+    cells[i] = nbf.v4.new_markdown_cell(U85_MD)
+    assert not any(c.cell_type == "code" and ("u80[" in c.source or "ENV[" in c.source) for c in cells)
+
+    pat = re.compile(r'(EXPORTS|FIGURES) / "([uw]\d\d)_([a-z0-9_]+)\.(csv|png)"')
+    n_hits = 0
+    for c in cells:
+        if c.cell_type != "code":
+            continue
+        c.source, k = pat.subn(r'\1 / f"\2_\3{SFX}.\4"', c.source)
+        n_hits += k
+    assert n_hits == N_HITS_V2, n_hits
+    sub_once('for p in sorted(EXPORTS.glob("u*.csv")) + sorted(FIGURES.glob("w*.png")):\n',
+             'for p in sorted(EXPORTS.glob(f"u*{SFX}.csv")) + sorted(FIGURES.glob(f"w*{SFX}.png")):\n')
+
+    # insert the u85/u86 cell after the (replaced) S5 markdown, and the entry gate after setup
+    i = find_one(lambda c: c.cell_type == "markdown" and c.source.startswith("## S5 (twin)"))
+    cells.insert(i + 1, nbf.v4.new_code_cell(U85_CODE))
+    i = find_one(lambda c: c.cell_type == "code" and 'print("G0 PASS; p50 bills' in c.source)
+    cells.insert(i + 1, nbf.v4.new_code_cell(ENTRY_CODE))
+
+    cells.insert(0, nbf.v4.new_markdown_cell(
+        "# Five-anchor variant (`_5a`)\n\n"
+        "This notebook is the v2 analysis re-run with the per-year requirement map "
+        "interpolated over FIVE mandate anchors per schedule (p05, p25, p50, p75, p95; "
+        "the p25/p75 anchors returned with the rate_design batch, 2026-09-08), with the "
+        "+/-20% certificate band replaced by the leave-one-out band E5 from the stage-2 "
+        "twin, and with the batch-selection section replaced by the registered secondary "
+        "read u85 (`z-ethan/rate_design/methods.md` v2.3). It refuses to run before GA1 "
+        "has passed and GA2 is adjudicated in `u101_verdict.csv`. Every output carries "
+        "the suffix `_5a`; the three-anchor v2 outputs are the frozen audit record and the "
+        "basis on which the batch was placed and scored."))
+
+
+N_HITS_V2 = 28
+
 nb.cells = C
-out = "rate_design_v2.ipynb"
+if ANCHORS:
+    assert ANCHORS == "5a", ANCHORS
+    _apply_5a_patches(C)
+    out = "rate_design_v2_5a.ipynb"
+else:
+    out = "rate_design_v2.ipynb"
 nbf.write(nb, out)
 print(f"wrote {out} with {len(C)} cells")

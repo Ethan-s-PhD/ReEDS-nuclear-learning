@@ -62,6 +62,8 @@ RD = REPO / "z-ethan" / "rate_design"
 RD_FIG, RD_EXP = RD / "figures", RD / "exports"
 MT = REPO / "z-ethan" / "market_transfer"
 MT_FIG, MT_EXP = MT / "figures", MT / "exports"
+LIT = REPO / "z-ethan" / "lit_comparison"
+LIT_FIG, LIT_EXP = LIT / "figures", LIT / "exports"
 
 OUT_FIG = HERE / "figures"
 OUT_EXP = HERE / "exports"

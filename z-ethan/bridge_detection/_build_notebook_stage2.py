@@ -20,6 +20,8 @@ import re
 import nbformat as nbf
 
 SENS = os.environ.get("BD_SENS", "").strip()
+ANCHORS = os.environ.get("BD_ANCHORS", "").strip()   # "5a": five-anchor twin (rate_design methods.md v2.3)
+assert not (SENS and ANCHORS), "BD_SENS and BD_ANCHORS are exclusive"
 
 nb = nbf.v4.new_notebook()
 nb.metadata = {
@@ -166,6 +168,14 @@ duals4 = pd.read_csv(CHECKS4 / "duals_by_year.csv")
 large_cases = [f"large100_{ab}_{p}" for ab in SCHEDULES for p in ["p05", "p95"]]
 DUALS = pd.concat([duals3, duals4[duals4["case"].isin(large_cases)]],
                   ignore_index=True)
+# 2026-09-08: t08 also carries the 12 smr100 p25/p75 anchors (rate_design delivery);
+# their duals join DUALS so G1 covers every t08 row. The three-anchor map below is
+# keyed by ANCH (p05/p50/p95) and does not read them.
+CHECKS_RD = REPO / "z-ethan" / "rate_design_checks" / "exports"
+if (CHECKS_RD / "duals_by_year.csv").exists():
+    duals_rd = pd.read_csv(CHECKS_RD / "duals_by_year.csv")
+    duals_rd = duals_rd[duals_rd["case"].str.startswith("smr100_") & (duals_rd["t"] <= 2050)]
+    DUALS = pd.concat([DUALS, duals_rd[DUALS.columns]], ignore_index=True)
 
 YEARS_RUN = sorted(int(t) for t in DUALS["t"].unique())
 GAP = {t: (YEARS_RUN[i + 1] - t if i + 1 < len(YEARS_RUN) else 1)
@@ -990,10 +1000,140 @@ def _apply_sens_patches(cells, sens):
         f"ratio. Every output of this notebook carries the suffix `_{sens}`."))
 
 
+# ---- five-anchor patch table (applied only when BD_ANCHORS=5a) --------------------
+def _apply_5a_patches(cells):
+    """Five-anchor twin (rate_design/methods.md v2.3, 2026-09-08): the p25/p75
+    mandate anchors join the per-year interpolation; the hide-the-middle G2 test
+    becomes the leave-one-out band E5 (hide each interior anchor in turn). Every
+    stage-2 output gains the _5a suffix; stage 3 is NOT re-run on this twin."""
+    sfx = "_5a"
+
+    def sub_once(old, new):
+        hits = [c for c in cells if old in c.source]
+        assert len(hits) == 1, (old[:70], len(hits))
+        hits[0].source = hits[0].source.replace(old, new)
+
+    sub_once('pd.set_option("display.width", 220)\n',
+             'pd.set_option("display.width", 220)\n'
+             'PCTS = ["p05", "p25", "p50", "p75", "p95"]     # five-anchor twin (BD_ANCHORS=5a)\n'
+             'INTERIOR = ["p25", "p50", "p75"]\n'
+             f'SFX = "{sfx}"\n')
+    sub_once('reg_smr = pd.read_csv(MC_EXPORTS / "smr100" / "selected_draws.csv")\n'
+             'reg_smr["ab"] = reg_smr["schedule"].map(NAME2AB)\n'
+             'assert len(reg_smr) == 18 and reg_smr["ab"].notna().all()\n',
+             'reg_smr = pd.concat([pd.read_csv(MC_EXPORTS / "smr100" / "selected_draws.csv"),\n'
+             '                     pd.read_csv(MC_EXPORTS / "smr100" / "selected_draws_p25p75.csv")],\n'
+             '                    ignore_index=True)\n'
+             'reg_smr["ab"] = reg_smr["schedule"].map(NAME2AB)\n'
+             'assert len(reg_smr) == 30 and reg_smr["ab"].notna().all()\n')
+    sub_once('if (CHECKS_RD / "duals_by_year.csv").exists():\n',
+             'assert (CHECKS_RD / "duals_by_year.csv").exists(), "rate_design_checks duals missing"\n'
+             'if True:\n')
+    sub_once('    for p in ["p05", "p50", "p95"]:\n        case = f"smr100_{ab}_{p}"\n',
+             '    for p in PCTS:\n        case = f"smr100_{ab}_{p}"\n')
+    sub_once('print(f"b06: {len(b06)} rows (18 anchors x {len(OBS_YEARS)} years)")',
+             'print(f"b06: {len(b06)} rows (30 anchors x {len(OBS_YEARS)} years)")')
+    sub_once('    cases = {p: f"smr100_{ab}_{p}" for p in ["p05", "p50", "p95"]}\n'
+             '    d0 = DCASE[cases["p05"]]\n    for p in ["p50", "p95"]:\n',
+             '    cases = {p: f"smr100_{ab}_{p}" for p in PCTS}\n'
+             '    d0 = DCASE[cases["p05"]]\n    for p in PCTS[1:]:\n')
+    sub_once('    pred_dual_p50 = np.empty(len(build_ts))\n',
+             '    pred_dual_loo = {q: np.empty(len(build_ts)) for q in INTERIOR}\n')
+    sub_once('        xs = np.array([occ[ANCH[ab][p], YI[t]] for p in ["p05", "p50", "p95"]])\n'
+             '        ys = np.array([DCASE[cases[p]].loc[t, "dual_2024_MWyr"]\n'
+             '                       for p in ["p05", "p50", "p95"]])\n',
+             '        xs = np.array([occ[ANCH[ab][p], YI[t]] for p in PCTS])\n'
+             '        ys = np.array([DCASE[cases[p]].loc[t, "dual_2024_MWyr"]\n'
+             '                       for p in PCTS])\n')
+    sub_once('        # predict-the-middle: outer anchors only, evaluated at the middle world\n'
+             '        xs2 = np.array([occ[ANCH[ab]["p05"], YI[t]], occ[ANCH[ab]["p95"], YI[t]]])\n'
+             '        ys2 = np.array([DCASE[cases["p05"]].loc[t, "dual_2024_MWyr"],\n'
+             '                        DCASE[cases["p95"]].loc[t, "dual_2024_MWyr"]])\n'
+             '        o2 = np.argsort(xs2)\n'
+             '        pred_dual_p50[j] = np.interp(occ[ANCH[ab]["p50"], YI[t]], xs2[o2], ys2[o2])\n',
+             '        # leave-one-out (E5, methods.md v2.3): hide each interior anchor in turn,\n'
+             '        # interpolate over the remaining four, evaluate at the hidden world\n'
+             '        for q in INTERIOR:\n'
+             '            others = [p for p in PCTS if p != q]\n'
+             '            xs_o = np.array([occ[ANCH[ab][p], YI[t]] for p in others])\n'
+             '            ys_o = np.array([DCASE[cases[p]].loc[t, "dual_2024_MWyr"] for p in others])\n'
+             '            oo = np.argsort(xs_o)\n'
+             '            pred_dual_loo[q][j] = np.interp(occ[ANCH[ab][q], YI[t]], xs_o[oo], ys_o[oo])\n')
+    sub_once('    for p in ["p05", "p50", "p95"]:\n        w_ = ANCH[ab][p]\n'
+             '        assert abs(B2050[ab][w_] - anchor_bill(cases[p])) < 1e-6, (ab, p)\n',
+             '    for p in PCTS:\n        w_ = ANCH[ab][p]\n'
+             '        assert abs(B2050[ab][w_] - anchor_bill(cases[p])) < 1e-6, (ab, p)\n')
+    sub_once('    pred_bill = float(np.sum(pred_dual_p50 * prog / 1e9 * Wm[-1]))\n'
+             '    true_bill = anchor_bill(cases["p50"])\n'
+             '    err = (pred_bill - true_bill) / true_bill\n'
+             '    G2ERR[ab] = err\n'
+             '    pred_rows.append(dict(schedule=ab, pred_p50_bill_2024B=round(pred_bill, 2),\n'
+             '                          true_p50_bill_2024B=round(true_bill, 2),\n'
+             '                          signed_rel_err=round(err, 3)))\n',
+             '    loo = {}\n'
+             '    for q in INTERIOR:\n'
+             '        pb = float(np.sum(pred_dual_loo[q] * prog / 1e9 * Wm[-1]))\n'
+             '        tb = anchor_bill(cases[q])\n'
+             '        loo[q] = (pb, tb, (pb - tb) / tb)\n'
+             '    G2ERR[ab] = max(abs(v[2]) for v in loo.values())   # E5 input: max |LOO error|\n'
+             '    pred_rows.append(dict(schedule=ab,\n'
+             '                          pred_p50_bill_2024B=round(loo["p50"][0], 2),\n'
+             '                          true_p50_bill_2024B=round(loo["p50"][1], 2),\n'
+             '                          signed_rel_err=round(loo["p50"][2], 3),\n'
+             '                          **{f"loo_err_{q}": round(loo[q][2], 3) for q in INTERIOR},\n'
+             '                          loo_max_abs_err=round(G2ERR[ab], 3)))\n')
+    sub_once('b07 = pd.merge(pd.DataFrame(pred_rows), pd.DataFrame(extra_rows), on="schedule")\n',
+             'b07 = pd.merge(pd.DataFrame(pred_rows), pd.DataFrame(extra_rows), on="schedule")\n'
+             'E5 = float(np.ceil(100.0 * max(G2ERR.values())) / 100.0)   # the certificate band, up to 0.01\n'
+             'b07["band_e5"] = E5\n')
+    sub_once('                    **{f"bad_{ab}": BAD[ab] for ab in SCHEDULES})\n',
+             '                    **{f"bad_{ab}": BAD[ab] for ab in SCHEDULES},\n'
+             '                    e5_band=np.array(E5))\n')
+    sub_once('print(f"\\nG2 (predict-the-middle) max abs signed error: "\n'
+             '      f"{max(abs(e) for e in G2ERR.values()):.3f} (gate: <= 0.20)")\n',
+             'print(f"\\nG2-5a (leave-one-out over the three interior anchors) max abs error: "\n'
+             '      f"{max(G2ERR.values()):.3f}; E5 band = {E5:.2f} (three-anchor G2 gate: <= 0.20)")\n')
+    sub_once('    *[dict(metric=f"g2_signed_rel_err_{ab}", value=round(G2ERR[ab], 3))\n',
+             '    *[dict(metric=f"g2_loo_max_abs_err_{ab}", value=round(G2ERR[ab], 3))\n')
+    sub_once('    dict(metric="g2_within_20pct_all", value=g2_all),\n',
+             '    dict(metric="g2_within_20pct_all", value=g2_all),\n'
+             '    dict(metric="e5_band", value=E5),\n')
+    sub_once('manifest = sorted(p.name for p in EXPORTS.glob("b*.csv")\n',
+             'manifest = sorted(p.name for p in EXPORTS.glob(f"b*{SFX}.csv")\n')
+    sub_once('    + sorted(p.name for p in FIGURES.glob("d0*.png") if p.name[:3] >= "d04")\n',
+             '    + sorted(p.name for p in FIGURES.glob(f"d0*{SFX}.png") if p.name[:3] >= "d04")\n')
+
+    pat = re.compile(r'(EXPORTS|FIGURES) / "(b(?:0[6-9]|1[0-3])|d0[4-8])_([a-z0-9_]+)\.(csv|npz|png)"')
+    n_hits = 0
+    for c in cells:
+        if c.cell_type != "code":
+            continue
+        c.source, k = pat.subn(r'\1 / f"\2_\3{SFX}.\4"', c.source)
+        n_hits += k
+    assert n_hits == 14, n_hits   # b06-b13 (b07 twice: csv + npz) + d04-d08
+    assert not any('"b07_bills_perworld.npz"' in c.source for c in cells if c.cell_type == "code")
+
+    cells.insert(0, nbf.v4.new_markdown_cell(
+        "# Five-anchor variant (`_5a`)\n\n"
+        "This notebook is the stage-2 analysis re-run with the per-year interpolation "
+        "over FIVE mandate anchors per schedule (p05, p25, p50, p75, p95; the p25/p75 "
+        "anchors returned with the rate_design batch, 2026-09-08). The hide-the-middle "
+        "test G2 becomes the leave-one-out band E5 registered in "
+        "`z-ethan/rate_design/methods.md` v2.3: hide each interior anchor in turn, predict "
+        "its bill from the other four; E5 = the largest absolute error over the 18 "
+        "(schedule, hidden anchor) pairs, rounded up to 0.01. Every output carries the "
+        "suffix `_5a`; stage 3 (the detection result, main-text Fig 5a) is not re-run on "
+        "this twin."))
+
+
 if SENS:
     assert SENS in ["gaslo", "gashi", "demhi", "relo", "rehi", "translim"], SENS
     _apply_sens_patches(C, SENS)
     out = f"bridge_detection_stage2_{SENS}.ipynb"
+elif ANCHORS:
+    assert ANCHORS == "5a", ANCHORS
+    _apply_5a_patches(C)
+    out = "bridge_detection_stage2_5a.ipynb"
 else:
     out = "bridge_detection_stage2.ipynb"
 nb["cells"] = C
