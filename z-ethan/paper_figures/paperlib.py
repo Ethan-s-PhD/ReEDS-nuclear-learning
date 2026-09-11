@@ -37,6 +37,7 @@ import plotstyle as ps  # noqa: E402
 INK, MUTED, FAINT = ps.INK, ps.MUTED, ps.FAINT
 GRID_C, EDGE_C, SURFACE, NEUTRAL = ps.GRID_C, ps.EDGE_C, ps.SURFACE, ps.NEUTRAL
 COL, C_TINY, C_FULL = ps.COL, ps.C_TINY, ps.C_FULL
+SCHED_SHORT = ps.SCHED_SHORT   # paper-facing schedule names (2026-09-10; Fig 3/4 captions)
 apply_style = ps.apply  # back-compat shim (generated cells call P.apply_style())
 panel_letter = ps.panel_letter
 letter_panels = ps.letter_panels
@@ -60,10 +61,14 @@ IC = REPO / "z-ethan" / "instrument_comparison"
 IC_FIG, IC_EXP = IC / "figures", IC / "exports"
 RD = REPO / "z-ethan" / "rate_design"
 RD_FIG, RD_EXP = RD / "figures", RD / "exports"
+RD2 = REPO / "z-ethan" / "rate_design2"          # batch-6 refit (2026-09-10)
+RD2_FIG, RD2_EXP = RD2 / "figures", RD2 / "exports"
 MT = REPO / "z-ethan" / "market_transfer"
 MT_FIG, MT_EXP = MT / "figures", MT / "exports"
 LIT = REPO / "z-ethan" / "lit_comparison"
 LIT_FIG, LIT_EXP = LIT / "figures", LIT / "exports"
+VOI = REPO / "z-ethan" / "voi"
+VOI_FIG, VOI_EXP = VOI / "figures", VOI / "exports"
 
 OUT_FIG = HERE / "figures"
 OUT_EXP = HERE / "exports"

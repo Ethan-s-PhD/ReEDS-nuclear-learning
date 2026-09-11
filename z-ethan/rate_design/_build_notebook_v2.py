@@ -111,6 +111,8 @@ BRIDGE = REPO / "z-ethan" / "bridge_detection" / "exports"
 
 SEED = 20260901
 TOL_SHORT = 0.01          # delivery cushion, statutory rate points (r03-certified)
+DISPLAY_CUT = 0.03        # paper display allowance below the mapped rate (Ethan 09-09,
+                          # "for now"; the r03 bracket is (head-5, head-1]; twins only)
 LV_MID = (0.30, 0.10)     # the stage-3 mid-noise headline dials
 LV_LIGHT = (0.15, 0.05)
 UNIT_MW = 300
@@ -144,6 +146,16 @@ assert len(reg_smr) == 18 and reg_smr["ab"].notna().all()
 ANCH = {ab: {} for ab in SCHEDULES}
 for _, r in reg_smr.iterrows():
     ANCH[r["ab"]][r["percentile"]] = int(r["draw_index"])
+
+# ---- the demonstration-window end: one common year (Ethan, 2026-09-10) -------------
+# The decision-value analysis (voi/, SF56, ST19) found that graduation is essentially complete
+# by 2038 in every schedule at both ceilings (voi p36_common_window_table.csv; eia builds only
+# from 2038), so the paper carries ONE window end for every schedule: build years through 2038.
+# The per-schedule expected-loss minimizers (09-09) stay in the SI. The registered 2035 window
+# remains the basis of KB1/KB2 and of the w2035 rows of u51/u52.
+W_COMMON = 2038
+W_VOI = {ab: W_COMMON for ab in SCHEDULES}   # dict form kept: the u51/u52 loop and w43 index by schedule
+print("common demonstration-window end (all schedules, build years through):", W_COMMON)
 
 # ---- discount rate and price level (must reproduce the study constants) -----------
 FIN_DIR = REPO / "inputs" / "financials"
@@ -556,29 +568,44 @@ adjudicated audit (v2.1):
 - The fans are the offline interpolation; only the 18 anchors are
   model-exact.""")
 
-code("""fan_rows = []
-BAND = {"base": 1.0, "lo": 0.8, "hi": 1.2}
+code("""BAND = {"base": 1.0, "lo": 0.8, "hi": 1.2}
 QS = [5, 25, 50, 75, 95]
-for ab in SCHEDULES:
-    occ_ref = OCCW[ab][ANCH[ab]["p50"]]
-    for band, mult in BAND.items():
-        iwm = IW[ab] * mult
-        needm = np.maximum(iwm - TOL_SHORT, 0.0) * OCCW[ab]
-        for qty, arr, ref in [("rate", iwm, IREF[ab] * mult),
-                              ("need_kw", needm, REFC[ab] * mult)]:
-            P = np.percentile(arr, QS, axis=0)
-            for j, t in enumerate(BUILD_TS[ab]):
-                above = round(float(1 - TOPKNOT_PCT[ab][j]) * 100, 1)
-                below = round(float(BOTKNOT_PCT[ab][j]) * 100, 1)
-                fan_rows.append(dict(schedule=ab, band=band, quantity=qty, year=t,
-                                     **{f"p{q:02d}": round(float(P[i, j]), 4)
-                                        for i, q in enumerate(QS)},
-                                     ref=round(float(ref[j]), 4),
-                                     censored=(ab, t) in CENSORED,
-                                     above_top_pct=above, below_bot_pct=below,
-                                     p95_clamp_pinned=above > 5.0))
-u50 = pd.DataFrame(fan_rows)
+
+def requirement_fans(cut=None):
+    \"\"\"u50 rows. cut=None: the registered fans (rate = the mapped requirement; need =
+    requirement - TOL_SHORT). cut=x: the paper display twin (Ethan 09-09) -- rate and
+    need both x points below the mapped requirement, never below zero, reference
+    paths likewise.\"\"\"
+    fan_rows = []
+    for ab in SCHEDULES:
+        occ_ref = OCCW[ab][ANCH[ab]["p50"]]
+        for band, mult in BAND.items():
+            iwm = IW[ab] * mult
+            if cut is None:
+                needm = np.maximum(iwm - TOL_SHORT, 0.0) * OCCW[ab]
+                pairs = [("rate", iwm, IREF[ab] * mult), ("need_kw", needm, REFC[ab] * mult)]
+            else:
+                ratec = np.maximum(iwm - cut, 0.0)
+                refc = np.maximum(IREF[ab] * mult - cut, 0.0)
+                pairs = [("rate", ratec, refc), ("need_kw", ratec * OCCW[ab], refc * occ_ref)]
+            for qty, arr, ref in pairs:
+                P = np.percentile(arr, QS, axis=0)
+                for j, t in enumerate(BUILD_TS[ab]):
+                    above = round(float(1 - TOPKNOT_PCT[ab][j]) * 100, 1)
+                    below = round(float(BOTKNOT_PCT[ab][j]) * 100, 1)
+                    fan_rows.append(dict(schedule=ab, band=band, quantity=qty, year=t,
+                                         **{f"p{q:02d}": round(float(P[i, j]), 4)
+                                            for i, q in enumerate(QS)},
+                                         ref=round(float(ref[j]), 4),
+                                         censored=(ab, t) in CENSORED,
+                                         above_top_pct=above, below_bot_pct=below,
+                                         p95_clamp_pinned=above > 5.0))
+    return pd.DataFrame(fan_rows)
+
+u50 = requirement_fans()
 u50.to_csv(EXPORTS / "u50_requirement_fans.csv", index=False)
+u50c = requirement_fans(DISPLAY_CUT)     # the paper display twin (Fig 6a since 2026-09-09)
+u50c.to_csv(EXPORTS / "u50_requirement_fans_cut.csv", index=False)
 base_rate = u50[(u50["band"] == "base") & (u50["quantity"] == "rate")]
 print(f"u50: {len(u50)} rows; {int(base_rate['censored'].sum())} censored "
       f"year-cells flagged; {int(base_rate['p95_clamp_pinned'].sum())}/"
@@ -674,40 +701,51 @@ puts a ±5% systematic on any single world's priced gap (bounded by G3).
 The censored cop28/eo late-year cells understate above-cap shares there —
 the infeasible-share direction is conservative.""")
 
-code("""mask_rows, world_rows, gap_rows = [], [], []
-for ab in SCHEDULES:
-    for band, mult in BAND.items():
-        iwm = IW[ab] * mult
-        for cap in CAPS:
-            above = iwm > cap + TOL_SHORT          # (10000, T)
-            for j, t in enumerate(BUILD_TS[ab]):
-                mask_rows.append(dict(schedule=ab, band=band, cap=cap, year=t,
-                                      share_above=round(float(above[:, j].mean()), 4),
-                                      censored=(ab, t) in CENSORED))
-            for wname, wend in [("w2035", W_PRIMARY), ("w2033", W_SENS)]:
-                post = [j for j, t in enumerate(BUILD_TS[ab]) if t > wend]
-                infeas = np.any(above[:, post], axis=1) if post else np.zeros(10000, bool)
-                world_rows.append(dict(schedule=ab, band=band, cap=cap, window=wname,
-                                       share_not_credit_feasible=round(float(infeas.mean()), 4)))
-                # the demonstration gap: above-cap need inside the window, priced
-                win = [j for j, t in enumerate(BUILD_TS[ab]) if t <= wend]
-                gap_kw = np.maximum(iwm[:, win] - TOL_SHORT - cap, 0.0) * OCCW[ab][:, win]
-                gap_B = gap_kw @ WPRICE[ab][win] if win else np.zeros(10000)
-                gq = np.percentile(gap_B, QS)
-                gap_rows.append(dict(schedule=ab, band=band, cap=cap, window=wname,
-                                     window_applicable=bool(win),
-                                     share_needing_demo=round(float((gap_B > 0).mean()), 4),
-                                     **{f"gap_p{q:02d}_B": round(float(gq[i]), 3)
-                                        for i, q in enumerate(QS)},
-                                     gap_mean_B=round(float(gap_B.mean()), 3)))
-u51 = pd.DataFrame(mask_rows)
-u51w = pd.DataFrame(world_rows)
-u51["kind"] = "per_year"
-u51w["kind"] = "per_world"
+code("""def feasibility_tables(cut):
+    \"\"\"(u51 per-year mask, u51w per-world mask, u52 demonstration gap) for a cushion
+    `cut` below the mapped requirement: TOL_SHORT = the registered tables; DISPLAY_CUT =
+    the paper display twins (Ethan 09-09).\"\"\"
+    mask_rows, world_rows, gap_rows = [], [], []
+    for ab in SCHEDULES:
+        for band, mult in BAND.items():
+            iwm = IW[ab] * mult
+            for cap in CAPS:
+                above = iwm > cap + cut          # (10000, T)
+                for j, t in enumerate(BUILD_TS[ab]):
+                    mask_rows.append(dict(schedule=ab, band=band, cap=cap, year=t,
+                                          share_above=round(float(above[:, j].mean()), 4),
+                                          censored=(ab, t) in CENSORED))
+                for wname, wend_ in [("w2035", W_PRIMARY), ("w2033", W_SENS), ("w2038", W_VOI)]:
+                    wend = wend_[ab] if isinstance(wend_, dict) else wend_   # w2038: the common year (dict form)
+                    post = [j for j, t in enumerate(BUILD_TS[ab]) if t > wend]
+                    infeas = np.any(above[:, post], axis=1) if post else np.zeros(10000, bool)
+                    world_rows.append(dict(schedule=ab, band=band, cap=cap, window=wname,
+                                           share_not_credit_feasible=round(float(infeas.mean()), 4)))
+                    # the demonstration gap: above-cap need inside the window, priced
+                    win = [j for j, t in enumerate(BUILD_TS[ab]) if t <= wend]
+                    gap_kw = np.maximum(iwm[:, win] - cut - cap, 0.0) * OCCW[ab][:, win]
+                    gap_B = gap_kw @ WPRICE[ab][win] if win else np.zeros(10000)
+                    gq = np.percentile(gap_B, QS)
+                    gap_rows.append(dict(schedule=ab, band=band, cap=cap, window=wname,
+                                         window_applicable=bool(win),
+                                         share_needing_demo=round(float((gap_B > 0).mean()), 4),
+                                         **{f"gap_p{q:02d}_B": round(float(gq[i]), 3)
+                                            for i, q in enumerate(QS)},
+                                         gap_mean_B=round(float(gap_B.mean()), 3)))
+    u51 = pd.DataFrame(mask_rows)
+    u51w = pd.DataFrame(world_rows)
+    u51["kind"] = "per_year"
+    u51w["kind"] = "per_world"
+    return u51, u51w, pd.DataFrame(gap_rows)
+
+u51, u51w, u52 = feasibility_tables(TOL_SHORT)
 pd.concat([u51, u51w], ignore_index=True).to_csv(
     EXPORTS / "u51_feasibility_mask.csv", index=False)
-u52 = pd.DataFrame(gap_rows)
 u52.to_csv(EXPORTS / "u52_demonstration_gap.csv", index=False)
+u51c, u51wc, u52c = feasibility_tables(DISPLAY_CUT)   # paper display twins (Fig 6b/6c since 09-09)
+pd.concat([u51c, u51wc], ignore_index=True).to_csv(
+    EXPORTS / "u51_feasibility_mask_cut.csv", index=False)
+u52c.to_csv(EXPORTS / "u52_demonstration_gap_cut.csv", index=False)
 
 # KB1: max in-window share_above >= max post-window share_above, all bands;
 # an empty window (eia: build years start 2038) is N/A, not a vacuous pass
@@ -1675,7 +1713,14 @@ data and geometry — the only changes are complete in-figure legends,
 de-jargonned axis labels, and integer year ticks (the analysis originals
 explained their encodings in the surrounding markdown, which a composed
 paper figure does not carry). The originals stay frozen as the audit
-record; the outline's `[FIGS]` ledger row provides for new w34+ numbers.""")
+record; the outline's `[FIGS]` ledger row provides for new w34+ numbers.
+
+**2026-09-09 (Ethan's figure revisions):** w38/w39/w43 are the paper's
+Fig 6a/6b/6c — the same exhibits on the `_cut` display twins (every value
+DISPLAY_CUT = 3 rate points below the mapped requirement, the cliff-finding
+allowance; the registered one-point objects are untouched), rates in
+percent, the fans clipped at 100% with a red edge, the cliff itself demoted
+to SF24.""")
 
 code("""# w34: the rate fans, paper variant (full legend, integer years)
 from matplotlib.lines import Line2D
@@ -1779,6 +1824,131 @@ axes[1].text(0.02, 0.55, "EIA AEO high: no builds\\nbefore 2036", transform=axes
              fontsize=6, color=ps.MUTED, va="top")
 fig.tight_layout()
 ps.savefig(fig, FIGURES / "w35_mask_gap_paper.png")
+plt.show()
+
+# w38: the rate fans, paper display twin (Fig 6a since 2026-09-09, Ethan's revisions):
+# every value DISPLAY_CUT below the mapped requirement (u50c); rates in percent; the y axis
+# clipped at 100% with a red edge along the clipped span (no censor triangles: the edge
+# carries that); no reference path / minimal-rate band (they went to SF24 with the cliff).
+from matplotlib.ticker import PercentFormatter
+
+def _clip_spans(ts, top, lim=1.0):
+    \"\"\"x spans where `top` exceeds `lim`; crossings linearly interpolated.\"\"\"
+    ts, top = np.asarray(ts, float), np.asarray(top, float)
+    spans, x0 = [], None
+    for j in range(len(ts)):
+        if top[j] > lim and x0 is None:
+            x0 = ts[j] if j == 0 else ts[j-1] + (lim - top[j-1]) / (top[j] - top[j-1]) * (ts[j] - ts[j-1])
+        elif top[j] <= lim and x0 is not None:
+            spans.append((x0, ts[j-1] + (lim - top[j-1]) / (top[j] - top[j-1]) * (ts[j] - ts[j-1])))
+            x0 = None
+    if x0 is not None:
+        spans.append((x0, ts[-1]))
+    return spans
+
+fig, axes = plt.subplots(2, 3, figsize=(ps.W3, 6.2), sharey=True)
+for ax, ab in zip(axes.flat, SCHEDULES):
+    sub = u50c[(u50c["schedule"] == ab) & (u50c["band"] == "base")
+               & (u50c["quantity"] == "rate")]
+    ts = sub["year"].to_numpy()
+    ax.fill_between(ts, sub["p05"], sub["p95"], color=ps.SCHED_C[ab], alpha=0.12, lw=0)
+    ax.fill_between(ts, sub["p25"], sub["p75"], color=ps.SCHED_C[ab], alpha=0.25, lw=0)
+    ax.plot(ts, sub["p50"], color=ps.SCHED_C[ab], lw=1.5)
+    for bnd in ["lo", "hi"]:
+        sb = u50c[(u50c["schedule"] == ab) & (u50c["band"] == bnd)
+                  & (u50c["quantity"] == "rate")]
+        ax.plot(sb["year"], sb["p50"], color=ps.SCHED_C[ab], lw=0.6, ls=":", alpha=0.7)
+    for cap, ls in zip(CAPS, [":", "-."]):
+        ax.axhline(cap, color=ps.ACCENT["red"], lw=0.9, ls=ls)
+    ax.set_ylim(0.0, 1.0)
+    for x0, x1 in _clip_spans(ts, sub["p95"]):
+        ax.plot([x0, x1], [1.0, 1.0], color=ps.ACCENT["red"], lw=2.4,
+                solid_capstyle="butt", clip_on=False, zorder=6)
+    ax.axvline(W_COMMON + 0.5, color="k", lw=0.8, ls="--")
+    ax.set_title(ps.SCHED_SHORT[ab])
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+    ax.yaxis.set_major_formatter(PercentFormatter(xmax=1.0, decimals=0))
+for ax in axes[1]:
+    ax.set_xlabel("build year")
+for ax in axes[:, 0]:
+    ax.set_ylabel("required tax credit rate\\n(% of plant cost)")
+handles = [
+    Line2D([], [], color=GREY, lw=1.5, label="median required rate"),
+    Patch(facecolor=GREY, alpha=0.30, label="interquartile band"),
+    Patch(facecolor=GREY, alpha=0.12, label="p5\u2013p95 band"),
+    Line2D([], [], color=GREY, lw=0.6, ls=":",
+           label="median with the requirement \u00b120%"),
+    Line2D([], [], color=ps.ACCENT["red"], lw=0.9, ls=":",
+           label="current statutory maximum 50% (48E with bonuses)"),
+    Line2D([], [], color=ps.ACCENT["red"], lw=0.9, ls="-.",
+           label="hypothetical 60% cap"),
+    Line2D([], [], color="k", lw=0.8, ls="--",
+           label="demonstration window ends (grants for above-cap need through 2038)"),
+]
+fig.tight_layout()
+fig.legend(handles=handles, ncol=4, fontsize=6.5, frameon=False,
+           loc="upper center", bbox_to_anchor=(0.5, 0.0))
+ps.savefig(fig, FIGURES / "w38_rate_fans_pct.png")
+plt.show()
+
+# w39: share of samples covered by the credit, display twin (Fig 6b; Ethan's revisions 2026-09-09/10):
+# the 50% statutory maximum only (the existing incentive structure); coverage = 1 - share above the
+# cap; one dashed line at the common window end; right-edge labels = share covered in the last build
+# year (= the share of worlds that ever become credit-feasible; Table 2 / voi p36).
+fig, ax = plt.subplots(figsize=(ps.W2 * 0.62, 3.6))
+_ends = {}
+for ab in SCHEDULES:
+    sub = u51c[(u51c["schedule"] == ab) & (u51c["band"] == "base") & (u51c["cap"] == 0.50)].sort_values("year")
+    cov = (1.0 - sub["share_above"].to_numpy()) * 100
+    ax.plot(sub["year"], cov, color=ps.SCHED_C[ab], lw=1.4, label=ps.SCHED_SHORT[ab])
+    _ends[ab] = (float(sub["year"].iloc[-1]), float(cov[-1]))
+# right-edge labels, nudged apart by at least 4 points so they stay legible
+_order = sorted(_ends, key=lambda a: _ends[a][1])
+_ys = [_ends[a][1] for a in _order]
+for i in range(1, len(_ys)):
+    _ys[i] = max(_ys[i], _ys[i - 1] + 4.0)
+_ys = [y - max(_ys[-1] - 100.0, 0.0) for y in _ys]
+for ab, y in zip(_order, _ys):
+    x_end, v = _ends[ab]
+    ax.annotate(f"{v:.0f}%", xy=(x_end, v), xytext=(x_end + 0.5, y), textcoords="data",
+                fontsize=6.5, color=ps.SCHED_C[ab], va="center", ha="left",
+                arrowprops=dict(arrowstyle="-", color=ps.SCHED_C[ab], lw=0.4, alpha=0.6, shrinkA=0, shrinkB=1))
+ax.axvline(W_COMMON + 0.5, color="k", lw=0.8, ls="--")
+ax.text(W_COMMON + 0.8, 98, "demonstration\\nwindow ends", fontsize=6, color="k", va="top", ha="left")
+ax.set_xlabel("build year")
+ax.set_ylabel("share of samples covered by credit (%)")
+ax.set_ylim(0, 100)
+ax.set_xlim(right=max(v[0] for v in _ends.values()) + 3.0)
+ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+ax.legend(fontsize=6, frameon=False, ncol=2, loc="upper left", title="schedule", title_fontsize=6)
+fig.tight_layout()
+ps.savefig(fig, FIGURES / "w39_mask_paper.png")
+plt.show()
+
+# w43: the demonstration funding requirement alone, display twin (Fig 6c since 2026-09-09)
+fig, ax = plt.subplots(figsize=(ps.W2 * 0.62, 3.6))
+GAP_SCHED = list(SCHEDULES)     # common window end 2038, eia included (its builds start in 2038)
+xpos = np.arange(len(GAP_SCHED))
+for k_, (cap, off, al) in enumerate([(0.50, -0.17, 0.55), (0.60, 0.17, 1.0)]):
+    sub = u52c[(u52c["band"] == "base") & (u52c["window"] == "w2038")
+               & (u52c["cap"] == cap)].set_index("schedule").reindex(GAP_SCHED)
+    ax.bar(xpos + off, sub["gap_p95_B"], width=0.3, alpha=al * 0.35,
+           color=[ps.SCHED_C[ab] for ab in GAP_SCHED])
+    ax.bar(xpos + off, sub["gap_p50_B"], width=0.3, alpha=al,
+           color=[ps.SCHED_C[ab] for ab in GAP_SCHED])
+ax.set_xticks(xpos, [ps.SCHED_SHORT[ab].replace(" ", "\\n", 1) for ab in GAP_SCHED], fontsize=7)
+ax.set_ylabel("demonstration funding requirement (2024 $B)")
+ax.legend(handles=[
+    Patch(facecolor="0.35", alpha=0.55, label="left bar: 50% cap"),
+    Patch(facecolor="0.35", alpha=1.0, label="right bar: 60% cap"),
+    Patch(facecolor="0.35", alpha=0.35,
+          label="faint extension: expensive world (P95; lower bound where censored)"),
+    Patch(facecolor="0.35", alpha=1.0, label="solid: median world")],
+    fontsize=6, frameon=False, loc="upper left")
+ax.text(0.02, 0.55, f"priced through the common last grant year, {W_COMMON}",
+        transform=ax.transAxes, fontsize=5.5, color=ps.MUTED, va="top")
+fig.tight_layout()
+ps.savefig(fig, FIGURES / "w43_gap_paper.png")
 plt.show()
 
 # w36: the CI curves, paper variant (plain labels, full legend)
@@ -2148,7 +2318,7 @@ def _apply_5a_patches(cells):
         "basis on which the batch was placed and scored."))
 
 
-N_HITS_V2 = 28
+N_HITS_V2 = 34   # 28 + the 09-09 display twins (3 exports, 3 figures)
 
 nb.cells = C
 if ANCHORS:

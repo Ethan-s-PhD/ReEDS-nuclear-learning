@@ -1061,6 +1061,17 @@ for tech in TECH:
                             G["rho"][strat], d / TECH[tech]["unit_gw"])
             q[k] = np.quantile(np.outer(BOAK_Q[tech], sh).ravel(), [0.05, 0.25, 0.5, 0.75, 0.95])
         _FAN[(tech, conv)] = q
+_ENV = {}
+for tech in TECH:
+    for conv in CONV_GRID:
+        strat = SUPPORT[tech] & (G["conv"] == conv)
+        env = np.empty((len(D_PLANE_GW), 2))
+        for k, d in enumerate(D_PLANE_GW):
+            sh = shape_2050(tech, G["lr"][strat], G["s"][strat], G["u"][strat], G["m"][strat], conv,
+                            G["rho"][strat], d / TECH[tech]["unit_gw"])
+            allc = np.outer(BOAK_Q[tech], sh).ravel()
+            env[k] = (allc.min(), allc.max())
+        _ENV[(tech, conv)] = env
 for gid, gtitle, panels in GROUPS:
     fig, axes = group_axes(panels, height=4.8, nrows=2, sharey=False)
     for c_, (tech, ptitle, ids) in enumerate(panels):
@@ -1100,12 +1111,19 @@ md(r"""**e06 — the projections on the engine's cost–deployment plane** (`e06
 code(r"""# e10 - the engine against the whole literature: the four e06 panels with EVERY literature
 # series (the ATB source included) drawn as unlabeled grey lines and markers, so only the
 # engine's fans carry colour and the reader sees the model against the literature's range.
+GREY_SKIP = {"inl_review", "vanatta_micro", "steigerwald_parity"}   # a range statement; an out-of-scope design; a parity illustration
+AJ_ANCHOR_GW = 0.1     # where the ATB source's 2030 anchor (zero post-2030 build) is drawn on the log axis (Ethan, 09-09)
 def draw_series_grey(ax, g, x="cum_gw"):
-    g = g.sort_values(x)
+    # One literature series in unlabeled grey. The ATB source's 2030 anchor sits at zero
+    # post-2030 build (minus infinity on a log axis); it is drawn at AJ_ANCHOR_GW and the line
+    # runs through it (the source's own SMR curves start near 0.83 units, ~0.25 GW).
+    g = g.sort_values(x).copy()
     sid = g["series_id"].iloc[0]
-    if sid == "inl_review":
-        return                                    # a range statement, not a projection
+    if sid in GREY_SKIP:
+        return
     st = STYLE[sid]
+    if sid.startswith("aj_"):
+        g.loc[g[x] <= 0, x] = AJ_ANCHOR_GW
     if st["ls"] != "none":
         ax.plot(g[x], g["occ_2022"], color=MUTED, ls="-", lw=0.7, alpha=0.55, zorder=3)
     g = g[~g["is_curve"]]
@@ -1125,12 +1143,15 @@ for c_, tech in enumerate(TECH):
                         label="engine, P5-P95 of worlds x anchor prior (2050)")
         ax.fill_between(D_PLANE_GW, q[:, 1], q[:, 3], color=TECH_COLOR[tech], alpha=0.28, lw=0, label="P25-P75")
         ax.plot(D_PLANE_GW, q[:, 2], color=TECH_COLOR[tech], lw=2.0, label="median world", zorder=5)
+        ax.plot(D_PLANE_GW, _ENV[(tech, conv)][:, 0], color=TECH_COLOR[tech], lw=1.0, ls="--", zorder=5,
+                label="lowest and highest world the engine can produce")
+        ax.plot(D_PLANE_GW, _ENV[(tech, conv)][:, 1], color=TECH_COLOR[tech], lw=1.0, ls="--", zorder=5)
         sub = pts[(pts.tech == tech) & pts.paired]
         for sid, g in sub.groupby("series_id", sort=False):
             draw_series_grey(ax, g)
         for r in pts[(pts.tech == tech) & ~pts.paired].itertuples():
             ax.axhline(r.occ_2022, color=MUTED, lw=0.6, ls=":", alpha=0.6, zorder=1)
-        n_series[tech] = int(sub["series_id"].nunique()) + int(pts[(pts.tech == tech) & ~pts.paired]["series_id"].nunique())
+        n_series[tech] = int(len(set(sub["series_id"]) - GREY_SKIP)) + int(pts[(pts.tech == tech) & ~pts.paired]["series_id"].nunique())
         ax.set_xscale("log")
         ax.set_xlim(0.05, 3000.0)
         ax.set_ylim(0, 20000)                      # one y range on all four panels (Ethan, 09-08)
@@ -1150,7 +1171,84 @@ ps.savefig(fig, LIT_FIGURES / "e10_engine_vs_all_literature.png")
 plt.show()
 print("e10: literature series per panel:", n_series)
 """)
-md(r"""**e10 — the engine against the whole literature** (`e10_engine_vs_all_literature.png`). The four e06 panels (columns = technology, rows = experience base) with the engine's 2050 fans in colour (P5–P95 and P25–P75 of the support-restricted worlds × the anchor prior, and the median world) and every literature series drawn in unlabeled grey: connected points for the sources that pair cost with a unit count (the ATB source's three trajectories, MIT ANP-201, INL pathways, Liftoff, Stewart & Shirvan, Breakthrough, IEA 2025, Vanatta, the realized projects), dotted horizontal lines for the unpaired references (EIA, EPRI, IEA/NEA, IEA large reactor). Hollow markers are unscored points (first- and second-of-a-kind, out of scope). The INL 2023 review's quartile band is omitted (a range statement). The grouped e01 figures identify every series.""")
+md(r"""**e10 — the engine against the whole literature** (`e10_engine_vs_all_literature.png`). The four e06 panels (columns = technology, rows = experience base) with the engine's 2050 fans in colour (P5–P95 and P25–P75 of the support-restricted worlds × the anchor prior, and the median world; dashed = the lowest and highest cost any supported world reaches at that build, the engine's bounds) and every literature series drawn in unlabeled grey: connected points for the sources that pair cost with a unit count (the ATB source's three trajectories, MIT ANP-201, INL pathways, Liftoff, Stewart & Shirvan, Breakthrough, IEA 2025, Vanatta, the realized projects), dotted horizontal lines for the unpaired references (EIA, EPRI, IEA/NEA, IEA large reactor). Hollow markers are unscored points (first- and second-of-a-kind, out of scope). The INL 2023 review's quartile band is omitted (a range statement) and so are the out-of-scope microreactor and the Steigerwald parity illustration; the ATB source's 2030 anchors (zero post-2030 build) are drawn at 0.1 GW. The grouped e01 figures identify every series.""")
+code(r"""# e11 - the paper-ready two-panel version of e10 (main-text Fig 1 candidate, 09-09): one panel
+# per technology; the engine's fan pooled over BOTH experience accountings (the grid holds the
+# two strata in equal numbers, as the Monte Carlo samples them), every literature series in
+# unlabeled grey. The split by accounting stays in e10 (SI).
+_FAN2, _ENV2 = {}, {}
+for tech in TECH:
+    strat = SUPPORT[tech]
+    q = np.empty((len(D_PLANE_GW), 5))
+    env = np.empty((len(D_PLANE_GW), 2))
+    for k, d in enumerate(D_PLANE_GW):
+        sh = shape_at(tech, G["lr"][strat], G["s"][strat], G["u"][strat], G["m"][strat], G["conv"][strat],
+                      G["rho"][strat], d / TECH[tech]["unit_gw"], 2050)
+        allc = np.outer(BOAK_Q[tech], sh).ravel()
+        q[k] = np.quantile(allc, [0.05, 0.25, 0.5, 0.75, 0.95])
+        env[k] = (allc.min(), allc.max())            # lowest / highest supported world x anchor prior
+    _FAN2[tech], _ENV2[tech] = q, env
+    # consistency: the pooled fan lies between the two per-stratum fans (e06/e10) at every point
+    lo = np.minimum(_FAN[(tech, 0.0)], _FAN[(tech, 1.0)]); hi = np.maximum(_FAN[(tech, 0.0)], _FAN[(tech, 1.0)])
+    assert np.all(q[:, 2] >= lo[:, 2] - 1e-6) and np.all(q[:, 2] <= hi[:, 2] + 1e-6), tech
+
+# 2026-09-10 (coauthor review, Fig 1): W1 width so the composed figure prints at ~9 pt; plain
+# log tick labels; a shorter x label; one shared legend below the axes at 7.5 pt.
+from matplotlib.ticker import FixedLocator, FuncFormatter, NullFormatter
+fig, axes = plt.subplots(1, 2, figsize=(ps.W1, 3.9), sharey=True)
+n11 = {}
+for c_, tech in enumerate(TECH):
+    ax = axes[c_]
+    q = _FAN2[tech]
+    ax.fill_between(D_PLANE_GW, q[:, 0], q[:, 4], color=TECH_COLOR[tech], alpha=0.14, lw=0,
+                    label="learning worlds, 5th-95th percentile")
+    ax.fill_between(D_PLANE_GW, q[:, 1], q[:, 3], color=TECH_COLOR[tech], alpha=0.28, lw=0, label="25th-75th percentile")
+    ax.plot(D_PLANE_GW, q[:, 2], color=TECH_COLOR[tech], lw=2.0, label="median world", zorder=5)
+    ax.plot(D_PLANE_GW, _ENV2[tech][:, 0], color=TECH_COLOR[tech], lw=1.0, ls="--", zorder=5,
+            label="lowest and highest world the engine can produce")
+    ax.plot(D_PLANE_GW, _ENV2[tech][:, 1], color=TECH_COLOR[tech], lw=1.0, ls="--", zorder=5)
+    sub = pts[(pts.tech == tech) & pts.paired]
+    for sid, g in sub.groupby("series_id", sort=False):
+        draw_series_grey(ax, g)
+    for r in pts[(pts.tech == tech) & ~pts.paired].itertuples():
+        ax.axhline(r.occ_2022, color=MUTED, lw=0.6, ls=":", alpha=0.6, zorder=1)
+    n11[tech] = int(len(set(sub["series_id"]) - GREY_SKIP)) + int(pts[(pts.tech == tech) & ~pts.paired]["series_id"].nunique())
+    ax.set_xscale("log")
+    ax.set_xlim(0.05, 3000.0)
+    ax.set_ylim(0, 20000)
+    ax.set_title(TECH_LABEL[tech], color=TECH_COLOR[tech], loc="left", fontsize=10)
+    ax.xaxis.set_major_locator(FixedLocator([0.1, 1, 10, 100, 1000]))
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:g}"))
+    ax.xaxis.set_minor_formatter(NullFormatter())
+    ax.set_xlabel("cumulative capacity built after 2030 (GW)")
+    if c_ == 0:
+        ax.set_ylabel("overnight capital cost (2022$/kW)")
+    h, l = ax.get_legend_handles_labels()
+    h.append(Line2D([], [], color=MUTED, lw=0.7, marker="o", ms=3, label="published projections (series counts in the caption)"))
+    h.append(Line2D([], [], color=MUTED, ls="", marker="o", ms=3, markerfacecolor="white", label="first- and second-of-a-kind values"))
+    h.append(Line2D([], [], color=MUTED, ls=":", lw=0.6, label="published values with no deployment attached"))
+    _h11 = h
+# one shared legend for both technologies: neutral grey swatches for the engine entries (09-10 review)
+from matplotlib.patches import Patch as _Patch
+_G = "0.45"
+_h11 = [_Patch(facecolor=_G, alpha=0.14, label="learning worlds, 5th–95th percentile"),
+        _Patch(facecolor=_G, alpha=0.30, label="25th–75th percentile"),
+        Line2D([], [], color=_G, lw=2.0, label="median world"),
+        Line2D([], [], color=_G, lw=1.0, ls="--", label="lowest and highest world the engine can produce")] + _h11[4:]
+ps.panel_letter(axes[0], "a"); ps.panel_letter(axes[1], "b")
+fig.tight_layout()
+fig.legend(handles=_h11, ncol=2, fontsize=7.5, frameon=False, loc="upper center", bbox_to_anchor=(0.5, 0.0))
+ps.savefig(fig, LIT_FIGURES / "e11_engine_vs_literature_2panel.png")
+plt.show()
+print("e11: literature series per panel:", n11)
+print("pooled vs per-stratum median at 10 / 100 / 1000 GW (2022$/kW):")
+for tech in TECH:
+    for gw in (10.0, 100.0, 1000.0):
+        k = int(np.argmin(np.abs(D_PLANE_GW - gw)))
+        print(f"  {tech} {D_PLANE_GW[k]:,.0f} GW: pooled {_FAN2[tech][k, 2]:,.0f}  fresh-start {_FAN[(tech, 0.0)][k, 2]:,.0f}  "
+              f"legacy-credited {_FAN[(tech, 1.0)][k, 2]:,.0f}")
+""")
+md(r"""**e11 — the two-panel, paper-ready version** (`e11_engine_vs_literature_2panel.png`; main-text Fig 1 candidate, 09-09). One panel per technology. The engine's fan is pooled over both experience accountings (fresh-start and legacy-fleet-credited worlds in equal numbers, as the Monte Carlo samples them), with the anchor cost drawn across its prior and every other input varying jointly; the dashed lines are the lowest and highest cost any supported world reaches at that build with the anchor anywhere in its prior — the bounds of what the engine can produce; e10 keeps the split by accounting for the SI. Every published projection that pairs a cost with a unit count is drawn in unlabeled grey at its own cumulative build (hollow = first- and second-of-a-kind values; the out-of-scope microreactor, the Steigerwald parity illustration and the INL review's range band are omitted); dotted lines are published values with no deployment attached; the ATB source's 2030 anchors (zero post-2030 build) are drawn at 0.1 GW. The pooled median sits between the two per-stratum medians at every build (asserted in-cell).""")
 code(r'''# Plain-language reading per series, generated from c04/c05 (primary read/mode).
 def _fmt_range(row, d, pct=False):
     lo, hi = row[f"{d}_min"], row[f"{d}_max"]

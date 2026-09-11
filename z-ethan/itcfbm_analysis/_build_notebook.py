@@ -551,7 +551,8 @@ anchors sit at their familiar 30% and 50% and the 48E band overlays exactly
 as in that panel. The cell reads the committed r04 export, so it re-runs
 without the h5 drive.""")
 
-code("""# ---- j06: the cliff, statutory basis, new nuclear only (main-text Fig 5c; 2026-08-24) -----------
+code("""# ---- j06: the cliff, statutory basis, new nuclear only (main-text Fig 5c 2026-08-24; Fig 6c
+# 08-26; SI SF24 since 2026-09-09 -- x axis in percent) -----------------------------------------
 j06 = pd.read_csv(EXPORTS / "r04_rate_deployment.csv")
 assert j06["large_2050_GW"].nunique() == 1          # large never moves with the credit
 j06["new_GW"] = j06["smr_2050_GW"]                  # so new nuclear = SMR exactly
@@ -583,7 +584,9 @@ for w in ["eia", "iaea", "cop28"]:                  # headline-only worlds
                zorder=5, label=J06_LAB[w] + " (single run)")
 ax.plot([], [], color=MUTED, lw=1.8, marker="o", ms=5, label="with learning")
 ax.plot([], [], color=MUTED, lw=1.1, ls="--", alpha=0.6, label="no learning")
-ax.set_xlabel("tax credit rate (same basis as panel a)")
+from matplotlib.ticker import PercentFormatter
+ax.set_xlabel("tax credit rate (statutory, model convention)")
+ax.xaxis.set_major_formatter(PercentFormatter(xmax=1.0, decimals=0))
 ax.set_ylabel("new nuclear 2050 capacity (GW)")
 ax.set_xlim(-0.02, 0.79)
 ax.legend(fontsize=7, ncol=2, loc="upper left", handletextpad=0.5,

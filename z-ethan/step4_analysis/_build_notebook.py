@@ -427,6 +427,52 @@ savefig(fig, "g03_dual_overlays.png")
 plt.show()
 """)
 
+md("""**Figure g03b (paper Fig 7a since 2026-09-09) — the same overlays capitalized.**
+Ethan's figure revisions: the paper's shadow-price panels read in 2024$/kW of
+capacity — the dual times the model's own 30-year annuity factor (`pvf_onm`,
+flat at 14.7645 from 2026; step3_checks QA), i.e. the year's capitalized cost gap
+of the marginal build on ReEDS's financed basis: the required reduction in
+financed capital cost. Same data, geometry and legend as g03; only the unit.""")
+
+code("""# ---- g03b: the g03 overlays on the capitalized basis (paper Fig 7a since 2026-09-09) --
+# dual [2024$/kW-yr] x pvf_onm = the year's capitalized cost gap [2024$/kW]. pvf_onm is
+# ReEDS's 30-year annuity factor (1/crf), flat from 2026 at 14.7645 in every run of the
+# program (step3_checks: max dev 1e-6). Read once from a base-case h5 and pinned.
+with h5py.File(H5_DIR4 / "step4_smr100_eo_p50_gaslo_outputs.h5", "r") as _f:
+    _pv = pd.Series(_f["pvf_onm"]["Value"][:], index=_f["pvf_onm"]["t"][:].astype(int))
+PVFO = float(_pv.loc[2031])
+assert abs(PVFO - 14.7645) < 1e-3, PVFO
+assert (abs(_pv[_pv.index >= 2026] - PVFO) < 1e-3).all()
+CAPEX_GAP_LABEL = "required reduction in\\nfinanced capital cost (2024$/kW)"
+# 2026-09-10 (coauthor review, print legibility): 8.4 in wide, text >= 9 pt (the docx scales the composed
+# figure to ~7 in, so printed pt = fontsize x 7 / width).
+fig, axes = plt.subplots(2, 3, figsize=(8.4, 5.0), sharex=True)
+for row_i, tok in enumerate(["eia", "eo"]):
+    for col_i, p in enumerate(PCTS):
+        ax = axes[row_i, col_i]
+        for s in ["base"] + SENS:
+            c = f"smr100_{tok}_{p}" + ("" if s == "base" else f"_{s}")
+            d = DUALS[(DUALS["case"] == c) & DUALS["mandated"]].set_index("t").sort_index()
+            y = d["dual_2024_MWyr"] / 1000.0 * PVFO
+            ax.plot(y.index, y.values,
+                    color=BASE_C if s == "base" else SENS_C[s],
+                    lw=2.4 if s == "base" else 1.3,
+                    alpha=1.0 if s == "base" else 0.85,
+                    label="base" if s == "base" else SENS_META[s]["label"])
+        ax.set_title(f"{ps.SCHED_SHORT[tok]}, {ps.PCT_LABEL[p]}", fontsize=10)
+        ax.tick_params(labelsize=9)
+        if col_i == 0:
+            ax.set_ylabel(CAPEX_GAP_LABEL, fontsize=9)
+        if row_i == 1:
+            ax.set_xlabel("year", fontsize=9)
+h03b, l03b = axes[0, 0].get_legend_handles_labels()
+fig.legend(h03b, l03b, loc="lower center", ncol=4, fontsize=9,
+           bbox_to_anchor=(0.5, -0.05))
+fig.tight_layout(rect=(0, 0.04, 1, 1))
+savefig(fig, "g03b_dual_overlays_capex.png")
+plt.show()
+""")
+
 md("""## R3 — SECONDARY: ambition-ladder ranking preservation
 
 Within each (market world, percentile), rank the six schedules by two subsidy
