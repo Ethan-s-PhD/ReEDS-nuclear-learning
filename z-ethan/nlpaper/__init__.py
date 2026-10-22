@@ -1,26 +1,24 @@
 """nlpaper: the shared helper package of the nuclear-learning analysis notebooks.
 
 The notebooks under ``z-ethan/notebooks`` import this package for paths, the
-house plot style, figure composition, ReEDS output extracts, the requirement-map
-fit, the PRIS loader and the text-number resolver.
+house plot style, figure composition and the PRIS loader.
 
-Submodules load lazily. ``import nlpaper`` therefore never imports matplotlib,
-numba, h5py or pyarrow; each dependency loads when a notebook first touches the
-submodule that needs it.
+Submodules load lazily. ``import nlpaper`` therefore never imports matplotlib
+or numba; each dependency loads when a notebook first touches the submodule
+that needs it.
 
 Typical first cell of a notebook::
 
     import nlpaper
     nlpaper.setup(threads=4)            # thread limits + rcParams + version line
-    from nlpaper import paths, plotstyle as ps, h5io
+    from nlpaper import paths, plotstyle as ps
 """
 
 from __future__ import annotations
 
 import importlib
 
-__all__ = ["paths", "setup", "plotstyle", "compose", "h5io", "mapfit",
-           "pris_loader", "numbers"]
+__all__ = ["paths", "setup", "plotstyle", "compose", "pris_loader"]
 __version__ = "1.0.0"
 
 

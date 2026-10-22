@@ -1,8 +1,8 @@
-# Analysis environment for the nuclear-learning paper (notebooks under analysis/notebooks).
+# Analysis environment for the nuclear-learning paper (notebooks under z-ethan/notebooks).
 # Exact pins of the environment that produced the paper's results (conda env "playground-env",
 # Windows, 2026-09-25). Packages that environment installed with pip are pinned under `pip:`,
 # so the same wheels are used. Create with:
-#     conda env create -f analysis/environment.yml
+#     conda env create -f z-ethan/environment.yml
 #     conda activate nuclear-learning-analysis
 #     python -m pip install --force-reinstall --no-deps numpy==1.26.4
 # The last line matters: the results were produced with the PyPI wheel of numpy 1.26.4 (installed
@@ -10,8 +10,8 @@
 # some elementary functions. With the PyPI wheel a clean run reproduces results/ byte for byte.
 # numexpr and bottleneck are pinned because pandas uses them, when present, for some
 # arithmetic and nan-reductions; a different version can change the last digits of a result.
-# numba, scikit-learn and seaborn are not imported by any current notebook; they are kept so the
-# environment matches the one that produced the results.
+# numba, scikit-learn, seaborn, h5py and pyarrow are not imported by any notebook of this kit; they
+# are kept so the environment matches the one that produced the results.
 name: nuclear-learning-analysis
 channels:
   - conda-forge

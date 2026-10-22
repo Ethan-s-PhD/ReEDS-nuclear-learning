@@ -9,8 +9,8 @@ ReEDS outputs (the 588 ``outputs.h5`` files, 38.8 GB) are not in the
 repository. ``reeds_outputs()`` finds the unpacked archive through the
 environment variable ``NL_REEDS_OUTPUTS``; without it, the default is a sibling
 folder of the repository, ``<REPO>/../nuclear-learning-reeds-outputs``. When
-neither exists, the function returns None and the notebooks use the committed
-parquet extracts under ``results/extracts`` instead.
+neither exists, the function returns None. In this kit only notebook 01 asks for
+the archive, and it skips its archive copy when the archive is absent.
 """
 
 from __future__ import annotations
@@ -35,7 +35,6 @@ ANALYSIS = REPO / "z-ethan"
 DATA = ANALYSIS / "data"
 NOTEBOOKS = ANALYSIS / "notebooks"
 RESULTS = ANALYSIS / "results"
-EXTRACTS = RESULTS / "extracts"
 FIGS_MAIN = RESULTS / "figures" / "main"
 FIGS_SI = RESULTS / "figures" / "si"
 TABLES = RESULTS / "tables"
@@ -65,11 +64,6 @@ def deflator_path() -> Path:
     return REPO / "inputs" / "financials" / "deflator.csv"
 
 
-def casefile(batch: str) -> Path:
-    """The ReEDS casefile of one batch: ``<REPO>/cases_nuclearlearning_<batch>.csv``."""
-    return REPO / f"cases_nuclearlearning_{batch}.csv"
-
-
 def reeds_outputs(quiet: bool = False) -> Path | None:
     """Root of the unpacked ReEDS output archive, or None when it is absent.
 
@@ -84,7 +78,7 @@ def reeds_outputs(quiet: bool = False) -> Path | None:
     if not quiet:
         src = f"${ENV_OUTPUTS}" if raw else "the default location"
         print(f"nlpaper: ReEDS output archive not found at {p} ({src}); "
-              "using committed extracts.")
+              "continuing without it.")
     return None
 
 

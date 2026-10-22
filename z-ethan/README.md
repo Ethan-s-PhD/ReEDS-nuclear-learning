@@ -13,14 +13,14 @@ Everything outside `z-ethan/` is paper 1's ReEDS fork, unchanged. The worktree s
 
 | Path | Contents | In Git |
 |---|---|---|
-| `nlpaper/` | The helper package of paper 1's public analysis: repository paths, thread and plot setup, plot style, figure composition, the `outputs.h5` reader, and the requirement-map fitter. | yes |
+| `nlpaper/` | The helper package of paper 1's public analysis, without the modules that no EF notebook uses: repository paths, thread and plot setup, plot style, figure composition and the PRIS loader. | yes |
 | `notebooks/` | Four notebooks from paper 1's public analysis, with the changes listed below. `00_run_all.ipynb` runs them in order. The committed notebooks hold the outputs of the kit's full run on 2026-10-22. | yes |
 | `data/literature/` | Frozen records of the published cost projections: transcribed cost points, one row of method assumptions per source, digitized figures, and the cite-only list. `data/literature/README.md` describes each file. | yes |
 | `data/reeds_inputs/` | Small frozen slices of ReEDS inputs that notebook 03a reads. | yes |
 | `mc/` | `pris_loader.py` and `rds2_2025_units.csv`, the reactor unit list. Notebook 01 and `inputs/nuclear_learning/_generate_cap_trajectories.py` read them here. | yes |
-| `environment.yml`, `requirements.txt` | The pinned Python environment of paper 1's public analysis. | yes |
+| `environment.yml` | The pinned Python environment of paper 1's public analysis. | yes |
 | `results/` | A local cache of the exports of the four notebooks, copied from paper 1's public results. The notebooks overwrite this cache when they run. | no |
-| `docs/` | The outline, the literature review for EF (review, gap-list extract, the EF rows of the claims and bibliography tables, the broad assessment) and the 10-14 stocktake (synthesis and report 01). | no |
+| `docs/` | The master plan (`master_plan.md`: goals, route and status), the file ledger (`file_ledger.md`: one row per file, used to prune and merge files), the outline, the literature review for EF (review, gap-list extract, the EF rows of the claims and bibliography tables, the broad assessment) and the 10-14 stocktake (synthesis and report 01). | no |
 
 `z-ethan/.gitignore` decides what Git tracks. The repository's shared `.git/info/exclude` holds
 paper 1's rule that ignores most of `z-ethan`. The rules in `z-ethan/.gitignore` take precedence
@@ -42,7 +42,8 @@ on an Intel i7-1355U, at below-normal priority, while other work ran on the lapt
 ## Changes from the public analysis
 
 The source is `nuclear-learning-target-analysis-ReEDS/analysis/` as published for paper 1.
-The kit changes the paths, and it corrects two notebooks. The analysis code is unchanged.
+The kit changes the paths, corrects two notebooks and drops unused code. The analysis code that
+runs is unchanged.
 
 - `nlpaper/paths.py` finds the repository by the folder `z-ethan/nlpaper`, and `ANALYSIS` is `z-ethan/`.
 - `nlpaper/pris_loader.py` loads the loader and the unit list from `z-ethan/mc/`, because this fork keeps them there.
@@ -52,6 +53,12 @@ The kit changes the paths, and it corrects two notebooks. The analysis code is u
 - The kit build stored two cells with one character per line: the runtimes cell of `00_run_all.ipynb`
   and the matched-pair fit cell of notebook 02 (cell 13). Jupyter still ran them. On 2026-10-22 Claude
   stored both cells as ordinary lines. The code text of both cells is unchanged.
+- On 2026-10-22 the kit dropped the files that no EF notebook uses: the `nlpaper` modules `h5io`,
+  `mapfit` and `numbers`; `data/reeds_inputs/budget_parity_context.csv`, which only paper 1's
+  notebook 09 reads; and `requirements.txt`, because `environment.yml` holds the same pins. The
+  setup cells of notebooks 01 to 03b no longer import `h5io`, which they never called, and
+  `nlpaper.paths` no longer defines `EXTRACTS` or `casefile`, which only `h5io` used. Commit
+  `1099bc9` holds the last copies of the dropped files. `docs/file_ledger.md` logs each removal.
 
 ## How to run
 
@@ -65,7 +72,7 @@ No notebook in this kit needs the ReEDS outputs.
 **Warning: notebook 01 writes into the output archive.** When `NL_REEDS_OUTPUTS` is set (or a
 folder `nuclear-learning-reeds-outputs` sits next to the repository), notebook 01 copies its
 `mc_perdraw.npz` into the archive unless the archived copy is array-identical. In this environment
-the regenerated file differs from the archived one in the last digits (see "Smoke test"). A run of
+the regenerated file differs from the archived one in the last digits (see "Full run"). A run of
 notebook 01 with the variable set would therefore overwrite the archived file and break the
 archive's `SHA256SUMS`. Leave `NL_REEDS_OUTPUTS` unset for this kit.
 
@@ -95,24 +102,6 @@ archive's `SHA256SUMS`. Leave `NL_REEDS_OUTPUTS` unset for this kit.
   vendor (`AJ_X_UNITS_2030`, code cell 44). The 10-15 check found that placement wrong: the tables
   count units industry-wide from zero.
 
-## Smoke test (2026-10-21)
-
-Claude ran the notebooks of this kit with `nbconvert`, in the environment
-`nuclear-learning-analysis`. The executed copies went to a scratch folder, so the notebooks
-committed on 10-21 kept paper 1's outputs. The notebooks wrote their exports to `results/exports/`. Claude
-compared those exports with paper 1's committed exports.
-
-| Notebook | Exit | Time | Exports compared with paper 1 |
-|---|---|---|---|
-| 01 | 0 | 21 s | 9 identical; `mc_perdraw.npz` and `engine_constants.json` differ by at most 3 ULP (relative 7e-16) |
-| 02 | 0 | 87 s | 18 identical |
-| 03a | 0 | 17 min | 4 identical; `npv_winner_summary.csv` differs at relative 1e-14, and its win probabilities are identical |
-| 03b | not finished | stopped after about 12 min | Claude Code stopped the run because the computer ran low on memory; the notebook raised no error. The 9 CSV files it had written by then match paper 1: 6 identical, 3 within relative 3e-14 |
-
-ULP means unit in the last place. The public README documents the source of these last-digit
-differences: this environment carries conda-forge's numpy build, and paper 1's results came from the
-PyPI wheel. The full run of 2026-10-22 (next section) completed notebook 03b.
-
 ## Full run (2026-10-22)
 
 Claude ran `00_run_all.ipynb` with `nbconvert`, in the environment `nuclear-learning-analysis`, with
@@ -131,6 +120,9 @@ included, with paper 1's committed exports.
 | 02 | 0 | 1.3 min | at least 1.1 GB | 27 files, all identical |
 | 03a | 0 | 12.4 min | 0.6 GB | 10 files: 8 identical; `npv_winner_summary.csv` within relative 1e-12; `mixed_build_metadata.json` differs only in the git commit and the timestamp |
 | 03b | 0 | 32.0 min | 1.3 GB (2.9 GB committed) | 17 files: 13 identical; `dominance_tests.csv`, `large_win_margins.csv` and `robustness_map.csv` within relative 1e-12; `tc_metadata.json` differs only in those three files' hashes, the git commit and the timestamp |
+
+The last-digit differences come from the numpy build. This environment carries conda-forge's numpy,
+and paper 1's results came from the PyPI wheel. The public README documents this source.
 
 Free memory never fell below about 4.8 GB of the laptop's 15.7 GB. Notebook 03b therefore fits on the
 laptop alongside ordinary work.

@@ -6,7 +6,6 @@
 !/README.md
 !/.gitignore
 !/environment.yml
-!/requirements.txt
 !/nlpaper/
 !/nlpaper/*.py
 !/nlpaper/README.md
