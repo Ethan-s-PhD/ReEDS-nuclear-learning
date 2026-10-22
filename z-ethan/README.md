@@ -14,7 +14,7 @@ Everything outside `z-ethan/` is paper 1's ReEDS fork, unchanged. The worktree s
 | Path | Contents | In Git |
 |---|---|---|
 | `nlpaper/` | The helper package of paper 1's public analysis: repository paths, thread and plot setup, plot style, figure composition, the `outputs.h5` reader, and the requirement-map fitter. | yes |
-| `notebooks/` | Four notebooks from paper 1's public analysis, unchanged except for paths (see below). `00_run_all.ipynb` runs them in order. | yes |
+| `notebooks/` | Four notebooks from paper 1's public analysis, with the changes listed below. `00_run_all.ipynb` runs them in order. The committed notebooks hold the outputs of the kit's full run on 2026-10-22. | yes |
 | `data/literature/` | Frozen records of the published cost projections: transcribed cost points, one row of method assumptions per source, digitized figures, and the cite-only list. `data/literature/README.md` describes each file. | yes |
 | `data/reeds_inputs/` | Small frozen slices of ReEDS inputs that notebook 03a reads. | yes |
 | `mc/` | `pris_loader.py` and `rds2_2025_units.csv`, the reactor unit list. Notebook 01 and `inputs/nuclear_learning/_generate_cap_trajectories.py` read them here. | yes |
@@ -28,25 +28,30 @@ over it inside this folder.
 
 ### The four notebooks
 
-| Notebook | What EF uses it for | Runtime |
-|---|---|---|
-| 01 Monte Carlo cost engine | The learning engine: the 10,000-draw cost ensemble per target trajectory. | 0.5 min |
-| 02 ATB basis and literature | The ATB feasibility tables, which test which cost inputs reproduce the ATB (NREL's Annual Technology Baseline), and the published cost points placed on the engine (the source of paper 1's Fig 1). | 2.5 min |
-| 03a NPV winner and mixed build | The probability that each technology wins on net present value, and the mixed build. | 17 min |
-| 03b Technology comparison and observation | The large-against-SMR comparison in cost space, the claims ledger and the optimism-bias sweep. | 80 min |
+| Notebook | What EF uses it for | Runtime, reference machine | Runtime, laptop |
+|---|---|---|---|
+| 01 Monte Carlo cost engine | The learning engine: the 10,000-draw cost ensemble per target trajectory. | 0.5 min | 0.4 min |
+| 02 ATB basis and literature | The ATB feasibility tables, which test which cost inputs reproduce the ATB (NREL's Annual Technology Baseline), and the published cost points placed on the engine (the source of paper 1's Fig 1). | 2.5 min | 1.3 min |
+| 03a NPV winner and mixed build | The probability that each technology wins on net present value, and the mixed build. | 17 min | 12.4 min |
+| 03b Technology comparison and observation | The large-against-SMR comparison in cost space, the claims ledger and the optimism-bias sweep. | 80 min | 32.0 min |
 
-The runtimes are for paper 1's reference machine with four threads. A busy laptop can take up to
-three times longer.
+The reference machine is paper 1's, with four threads, and it often shared the CPU with other runs.
+The laptop column comes from the full run of 2026-10-22 (see "Full run"). That run used four threads
+on an Intel i7-1355U, at below-normal priority, while other work ran on the laptop.
 
 ## Changes from the public analysis
 
 The source is `nuclear-learning-target-analysis-ReEDS/analysis/` as published for paper 1.
-The kit changes only paths:
+The kit changes the paths, and it corrects two notebooks. The analysis code is unchanged.
 
 - `nlpaper/paths.py` finds the repository by the folder `z-ethan/nlpaper`, and `ANALYSIS` is `z-ethan/`.
 - `nlpaper/pris_loader.py` loads the loader and the unit list from `z-ethan/mc/`, because this fork keeps them there.
 - In the notebooks and the package messages, the string `analysis/` reads `z-ethan/`.
-- `00_run_all.ipynb` lists only the four notebooks of this kit.
+- `00_run_all.ipynb` lists only the four notebooks of this kit. Since 2026-10-22, its text also
+  describes only these four notebooks: their order, their runtimes and the `NL_REEDS_OUTPUTS` warning.
+- The kit build stored two cells with one character per line: the runtimes cell of `00_run_all.ipynb`
+  and the matched-pair fit cell of notebook 02 (cell 13). Jupyter still ran them. On 2026-10-22 Claude
+  stored both cells as ordinary lines. The code text of both cells is unchanged.
 
 ## How to run
 
@@ -93,8 +98,8 @@ archive's `SHA256SUMS`. Leave `NL_REEDS_OUTPUTS` unset for this kit.
 ## Smoke test (2026-10-21)
 
 Claude ran the notebooks of this kit with `nbconvert`, in the environment
-`nuclear-learning-analysis`. The executed copies went to a scratch folder, so the committed
-notebooks keep paper 1's outputs. The notebooks wrote their exports to `results/exports/`. Claude
+`nuclear-learning-analysis`. The executed copies went to a scratch folder, so the notebooks
+committed on 10-21 kept paper 1's outputs. The notebooks wrote their exports to `results/exports/`. Claude
 compared those exports with paper 1's committed exports.
 
 | Notebook | Exit | Time | Exports compared with paper 1 |
@@ -106,5 +111,26 @@ compared those exports with paper 1's committed exports.
 
 ULP means unit in the last place. The public README documents the source of these last-digit
 differences: this environment carries conda-forge's numpy build, and paper 1's results came from the
-PyPI wheel. A full run of 03b is still open. It takes about 80 minutes and should run when the
-computer has memory to spare.
+PyPI wheel. The full run of 2026-10-22 (next section) completed notebook 03b.
+
+## Full run (2026-10-22)
+
+Claude ran `00_run_all.ipynb` with `nbconvert`, in the environment `nuclear-learning-analysis`, with
+`NL_REEDS_OUTPUTS` unset. The driver executed the four notebooks in place, so the committed notebooks
+now hold the outputs of this run. Every notebook exited 0, and the whole run took 46 minutes.
+Notebook 01 found no output archive, so it skipped the archive copy. Notebook 03b ran the full
+10,000 draws per schedule.
+
+A watcher sampled the memory of the run's processes every 30 seconds. The watcher started late, so it
+missed notebook 01 and the first minute of notebook 02. Claude compared every export file, figures
+included, with paper 1's committed exports.
+
+| Notebook | Exit | Time | Peak working set | Exports compared with paper 1 |
+|---|---|---|---|---|
+| 01 | 0 | 0.4 min | not measured | 14 files: 11 identical; `mc_perdraw.npz` and `engine_constants.json` within relative 1e-12; `mc_export_metadata.json` differs only in paths and the git commit |
+| 02 | 0 | 1.3 min | at least 1.1 GB | 27 files, all identical |
+| 03a | 0 | 12.4 min | 0.6 GB | 10 files: 8 identical; `npv_winner_summary.csv` within relative 1e-12; `mixed_build_metadata.json` differs only in the git commit and the timestamp |
+| 03b | 0 | 32.0 min | 1.3 GB (2.9 GB committed) | 17 files: 13 identical; `dominance_tests.csv`, `large_win_margins.csv` and `robustness_map.csv` within relative 1e-12; `tc_metadata.json` differs only in those three files' hashes, the git commit and the timestamp |
+
+Free memory never fell below about 4.8 GB of the laptop's 15.7 GB. Notebook 03b therefore fits on the
+laptop alongside ordinary work.
