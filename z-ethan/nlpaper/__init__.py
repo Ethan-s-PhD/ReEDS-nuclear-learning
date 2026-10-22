@@ -24,7 +24,7 @@ __version__ = "1.0.0"
 
 def __getattr__(name):
     # PEP 562 lazy submodule import. `nlpaper.setup` is a callable module, so
-    # both `nlpaper.setup(threads=4)` and `nlpaper.setup.notebook_header(...)` work.
+    # `nlpaper.setup(threads=4)` works.
     if name in __all__:
         return importlib.import_module(f"{__name__}.{name}")
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

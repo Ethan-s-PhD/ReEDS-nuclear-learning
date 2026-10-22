@@ -7,7 +7,7 @@ before anything imports numba::
     nlpaper.setup(threads=4)
 
 ``nlpaper.setup`` is this module, made callable: ``nlpaper.setup(...)`` runs
-:func:`setup`, and ``nlpaper.setup.notebook_header(...)`` reaches the helper.
+:func:`setup`.
 
 Why the thread limit matters. The requirement-map fit (notebook 10) and the
 bridge-detection calibration run BLAS-backed least squares on small matrices.
@@ -96,19 +96,6 @@ def setup(threads: int = 4, seed_note: str | None = None, style: bool = True) ->
         print(f"seeds: {seed_note}")
     info["seed_note"] = seed_note
     return info
-
-
-def notebook_header(name: str, produces: list[str] | None = None,
-                    reads: list[str] | None = None) -> None:
-    """Print the standard header line block at the top of a notebook run."""
-    import datetime as dt
-
-    from . import paths
-
-    print(f"== {name} ==  run {dt.datetime.now():%Y-%m-%d %H:%M}  repo {paths.REPO.name}")
-    for label, items in (("reads", reads), ("produces", produces)):
-        for it in items or []:
-            print(f"  {label}: {it}")
 
 
 class _CallableModule(types.ModuleType):

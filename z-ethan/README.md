@@ -59,6 +59,13 @@ runs is unchanged.
   setup cells of notebooks 01 to 03b no longer import `h5io`, which they never called, and
   `nlpaper.paths` no longer defines `EXTRACTS` or `casefile`, which only `h5io` used. Commit
   `1099bc9` holds the last copies of the dropped files. `docs/file_ledger.md` logs each removal.
+- Later on 2026-10-22 the kit removed the unused names inside the remaining `nlpaper` modules:
+  every helper of `compose` except `compose()` itself, `setup.notebook_header`, the `plotstyle`
+  constants `PCT_LABEL`, `PCT_SHORT`, `BASE_C`, `PCT_STYLE`, `SENS_C`, `C_TINY` and `C_FULL`,
+  and the `paths` folders `NOTEBOOKS`,
+  `FIGS_MAIN` and `TABLES`. A bare file name passed to `compose()` now needs `out_dir`; every
+  call in the notebooks already passes a full path or `out_dir`. Commit `863c3aa` holds the
+  last copies.
 
 ## How to run
 

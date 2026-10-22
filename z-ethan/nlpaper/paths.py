@@ -33,11 +33,8 @@ def _find_repo(start: Path) -> Path:
 REPO = _find_repo(_HERE)
 ANALYSIS = REPO / "z-ethan"
 DATA = ANALYSIS / "data"
-NOTEBOOKS = ANALYSIS / "notebooks"
 RESULTS = ANALYSIS / "results"
-FIGS_MAIN = RESULTS / "figures" / "main"
 FIGS_SI = RESULTS / "figures" / "si"
-TABLES = RESULTS / "tables"
 
 ENV_OUTPUTS = "NL_REEDS_OUTPUTS"
 DEFAULT_OUTPUTS = REPO.parent / "nuclear-learning-reeds-outputs"

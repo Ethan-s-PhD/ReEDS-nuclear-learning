@@ -8,11 +8,13 @@ lazily, so `import nlpaper` alone imports no heavy dependency. Create the enviro
 The public package of paper 1 had three more modules: `h5io` (the ReEDS `outputs.h5` reader and
 extracts), `mapfit` (the requirement-map fit) and `numbers` (the text-number resolver of the draft).
 No notebook of this kit used them, so the kit dropped them on 2026-10-22. Commit `1099bc9` holds
-the last copies.
+the last copies. The same day, the kit also removed the unused names of the remaining modules: the
+paper-figure helpers of `compose`, `setup.notebook_header`, seven `plotstyle` constants and three
+`paths` folders. Commit `863c3aa` holds their last copies.
 
 **`paths`.** This module defines every location relative to the repository root `REPO`, which it
 finds by walking up from its own file to the folder that contains `z-ethan/nlpaper`. It names
-`ANALYSIS`, `DATA`, `NOTEBOOKS`, `RESULTS`, `FIGS_MAIN`, `FIGS_SI` and `TABLES`.
+`ANALYSIS`, `DATA`, `RESULTS` and `FIGS_SI`.
 `exports(nb)` creates and returns `results/exports/<nb>`. `reeds_inputs()` and `deflator_path()`
 point into the ReEDS fork. `reeds_outputs()` returns the unpacked ReEDS output archive: it reads
 the environment variable `NL_REEDS_OUTPUTS`, defaults to the sibling folder
@@ -25,10 +27,10 @@ BLAS, OpenMP, numexpr and numba thread variables (only where they are unset), li
 thread pools with `threadpoolctl`, applies the plot style and prints one line with the Python,
 numpy, pandas and matplotlib versions and the thread count. The paper's results were produced with
 4 threads; a different count can change the last digits of least-squares results. The module is
-callable, so `nlpaper.setup.notebook_header(name, produces)` reaches the optional header helper.
+callable: `nlpaper.setup(...)` runs it.
 
-**`plotstyle`.** This module is the house plot style: palettes (`SCHED_C`, `COL`, `SENS_C`,
-`ACCENT`), paper-facing names (`SCHED_SHORT`, `SCHED_LABEL`, `PCT_LABEL`, `PROGRAM_LABEL`), the
+**`plotstyle`.** This module is the house plot style: palettes (`SCHED_C`, `COL`,
+`ACCENT`), paper-facing names (`SCHED_SHORT`, `SCHED_LABEL`, `PROGRAM_LABEL`), the
 type specification (`PAPER_FONT`, `fonts()`, `font_rc()`), `apply()`, `savefig()`, panel letters,
 the unit grammar `usd()` and the dollar-year multiplier `to2025(year)`, which reads the ReEDS
 deflator table. It is a port of the working-tree module with no change to any colour, label or
@@ -44,9 +46,8 @@ Arial (for example the `ttf-mscorefonts-installer` package) for pixel identity.
 **`compose`.** `compose(rows, out, letters=..., center=..., letter_pt=...)` pastes source PNGs at
 their native pixel size into one multi-panel figure and stamps panel letters. The house rule holds:
 letters are unique and continuous across the composed page, and a source that is internally
-lettered carries its final letters (pass a blank entry in `letters` for it). The module also holds
-the small paper-figure helpers `show_panel`, `source_ref`, `caption`, `write_captions`, `table`,
-`savefig` and `to2024`.
+lettered carries its final letters (pass a blank entry in `letters` for it). `out` is a full path,
+or a file name inside `out_dir`.
 
 **`pris_loader`.** Helpers that turn IAEA PRIS / RDS-2 unit data into the retirement schedule,
 the committed pipeline and the construction-duration panel that the cost engine uses (all four

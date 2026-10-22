@@ -53,10 +53,8 @@ The standard
     image). Never letter the same panel at both levels (2026-08-17 audit:
     that produced duplicate a/b letters inside lettered figures).
 4.  Colors come from the semantic palettes below. One concept, one hue,
-    everywhere: schedules use SCHED_C, the two techs use COL, percentile
-    weight uses PCT_STYLE, step4 market arms use SENS_C, experience-base
-    strata use C_TINY / C_FULL. Ad-hoc hex codes in notebooks are forbidden;
-    one-off accents come from ACCENT.
+    everywhere: schedules use SCHED_C and the two techs use COL. Ad-hoc hex
+    codes in notebooks are forbidden; one-off accents come from ACCENT.
 5.  Axis labels are lowercase with units in parentheses, built with ``usd``
     for money: ``(2022$/kW)`` for ATB-basis MC quantities (they really are
     2022 dollars), ``(2024$/kW-yr)`` / ``(2024$B/yr)`` for ReEDS-side
@@ -78,8 +76,7 @@ The standard
 
 Provenance of the tokens: the retired winner_boundary notebook, cell 2 ("dataviz reference
 palette, light mode"), consolidated through the paper-figure helper (now ``nlpaper.compose``). The
-viridis schedule ramp and PCT_STYLE come from step3_analysis cell 2; SENS_C
-(Okabe-Ito) from step4_analysis. dpi 300, all-notebook scope, and the Nature
+viridis schedule ramp comes from step3_analysis cell 2. dpi 300, all-notebook scope, and the Nature
 title convention are Ethan's decisions of 2026-08-17.
 """
 
@@ -112,8 +109,6 @@ SURFACE, NEUTRAL = "#ffffff", "#f0efec"
 COL = {"large": "#2a78d6", "smr": "#eb6834"}  # tech identity
 TECH_LABEL = {"large": "Large LWR (1 GWe)", "smr": "SMR (300 MWe)"}
 
-C_TINY, C_FULL = "#1baf7a", "#4a3aa7"  # experience-base strata (aqua / violet)
-
 # Schedule identity: fixed, ambition-ordered viridis segment (perceptually
 # ordered, colorblind-safe). Values = mpl.cm.viridis(linspace(0.02, 0.72, 6)),
 # hardcoded so importing this module never needs matplotlib.
@@ -126,9 +121,8 @@ SCHED_C = {
 # Paper-facing names (2026-09-03 de-jargon pass for the coauthor review; 2026-09-18
 # the paper's own terms: a Monte Carlo draw is a "sample", never a "world", and the
 # Abou-Jaoude schedule is the "ATB moderate" target): one short name per schedule
-# code, one label per cost-sample percentile, one name per priced program. Every
-# figure that labels a schedule, a percentile sample or a program uses these, so
-# the same word means the same thing on every panel. The internal codes
+# code and one name per priced program. Every figure that labels a schedule or a
+# program uses these, so the same word means the same thing on every panel. The internal codes
 # (eia/aj/.., p05/p50/p95, smr100/large100) stay in file names, column names and
 # case names only - never in saved pixels.
 # 2026-09-23 (Ethan, comments C7/C14/C21): target names are proper names, so every word is
@@ -137,28 +131,7 @@ SCHED_SHORT = {"eia": "EIA AEO High", "aj": "ATB Moderate", "iaea": "IAEA High",
                "mck": "McKinsey", "cop28": "COP28", "eo": "2025 EO"}
 SCHED_GW = {"eia": 117, "aj": 134, "iaea": 172, "mck": 200, "cop28": 300, "eo": 400}
 SCHED_LABEL = {k: f"{SCHED_SHORT[k]} ({SCHED_GW[k]} GW)" for k in SCHED_ORDER}
-# 2026-09-23 (Ethan C23, the SI pass): a percentile case is named by its percentile, never
-# by an adjective and never as "median sample": "median" names the median statistic of a
-# distribution, not one drawn cost sample.
-PCT_LABEL = {"p05": "P5 sample", "p50": "P50 sample", "p95": "P95 sample"}
-PCT_SHORT = {"p05": "P5", "p50": "P50", "p95": "P95"}
 PROGRAM_LABEL = {"smr100": "SMR program", "large100": "large-reactor program"}
-
-# Percentile weight inside a schedule hue: p05 light, p50 solid, p95 dashed.
-PCT_STYLE = {
-    "p05": dict(lw=1.2, alpha=0.55, ls="-"),
-    "p50": dict(lw=2.2, alpha=1.00, ls="-"),
-    "p95": dict(lw=1.6, alpha=0.85, ls="--"),
-}
-
-# Step-4 market arms: Okabe-Ito (colorblind-safe); base world stays ink-grey.
-# Okabe-Ito is reserved for these arms — never reuse it for schedules.
-SENS_C = {
-    "gaslo": "#56b4e9", "gashi": "#0072b2", "demhi": "#e69f00",
-    "relo": "#009e73", "rehi": "#d55e00", "translim": "#cc79a7",
-    "co2cap": "#a89f00",   # the seventh world (batch 3, 2026-09-18): Okabe-Ito yellow darkened for print
-}
-BASE_C = "#4a4945"
 
 # One-off accents for quantities with no semantic palette of their own.
 ACCENT = {
