@@ -1,0 +1,81 @@
+series_id,architecture,design,unit_index,n_units,unit_mw,cum_mw,cum_gw,cum_cost_busd,occ,read_err,dollar_year,provenance,foak_fig224,tenoak_fig224
+ss_pwr12,PWR12,"PWR12 (1,147 MWe EEDB reference PWR)",1,1,1147.0,1147.0,1.1466,5.393,4717.0,20.0,2018,digitized-vector,4717.0,3163.0
+ss_pwr12,PWR12,"PWR12 (1,147 MWe EEDB reference PWR)",2,2,1147.0,2293.0,2.2932,10.223,4213.0,34.0,2018,digitized-vector,4717.0,3163.0
+ss_pwr12,PWR12,"PWR12 (1,147 MWe EEDB reference PWR)",3,3,1147.0,3426.0,3.4264,14.717,3966.0,34.0,2018,digitized-vector,4717.0,3163.0
+ss_pwr12,PWR12,"PWR12 (1,147 MWe EEDB reference PWR)",4,4,1147.0,4573.0,4.5731,18.966,3706.0,34.0,2018,digitized-vector,4717.0,3163.0
+ss_pwr12,PWR12,"PWR12 (1,147 MWe EEDB reference PWR)",5,5,1147.0,5720.0,5.7197,23.002,3519.0,34.0,2018,digitized-vector,4717.0,3163.0
+ss_pwr12,PWR12,"PWR12 (1,147 MWe EEDB reference PWR)",6,6,1147.0,6866.0,6.8663,26.976,3466.0,34.0,2018,digitized-vector,4717.0,3163.0
+ss_pwr12,PWR12,"PWR12 (1,147 MWe EEDB reference PWR)",7,7,1147.0,8008.0,8.0085,30.858,3399.0,34.0,2018,digitized-vector,4717.0,3163.0
+ss_pwr12,PWR12,"PWR12 (1,147 MWe EEDB reference PWR)",8,8,1147.0,9155.0,9.1551,34.588,3253.0,34.0,2018,digitized-vector,4717.0,3163.0
+ss_pwr12,PWR12,"PWR12 (1,147 MWe EEDB reference PWR)",9,9,1147.0,10293.0,10.2928,38.257,3225.0,34.0,2018,digitized-vector,4717.0,3163.0
+ss_pwr12,PWR12,"PWR12 (1,147 MWe EEDB reference PWR)",10,10,1147.0,11435.0,11.4349,41.864,3158.0,34.0,2018,digitized-vector,4717.0,3163.0
+ss_lpsr,LPSR,"Large passive-safety PWR (1,117 MWe, AP1000-like)",1,1,1115.0,1115.0,1.1153,4.812,4289.0,20.0,2018,digitized-vector,4289.0,2927.0
+ss_lpsr,LPSR,"Large passive-safety PWR (1,117 MWe, AP1000-like)",2,2,1115.0,2240.0,2.2397,9.122,3834.0,34.0,2018,digitized-vector,4289.0,2927.0
+ss_lpsr,LPSR,"Large passive-safety PWR (1,117 MWe, AP1000-like)",3,3,1115.0,3351.0,3.3506,13.097,3577.0,34.0,2018,digitized-vector,4289.0,2927.0
+ss_lpsr,LPSR,"Large passive-safety PWR (1,117 MWe, AP1000-like)",4,4,1115.0,4466.0,4.466,16.918,3426.0,34.0,2018,digitized-vector,4289.0,2927.0
+ss_lpsr,LPSR,"Large passive-safety PWR (1,117 MWe, AP1000-like)",5,5,1115.0,5590.0,5.5903,20.587,3263.0,34.0,2018,digitized-vector,4289.0,2927.0
+ss_lpsr,LPSR,"Large passive-safety PWR (1,117 MWe, AP1000-like)",6,6,1115.0,6706.0,6.7057,24.163,3207.0,34.0,2018,digitized-vector,4289.0,2927.0
+ss_lpsr,LPSR,"Large passive-safety PWR (1,117 MWe, AP1000-like)",7,7,1115.0,7817.0,7.8166,27.618,3110.0,34.0,2018,digitized-vector,4289.0,2927.0
+ss_lpsr,LPSR,"Large passive-safety PWR (1,117 MWe, AP1000-like)",8,8,1115.0,8932.0,8.932,31.072,3097.0,34.0,2018,digitized-vector,4289.0,2927.0
+ss_lpsr,LPSR,"Large passive-safety PWR (1,117 MWe, AP1000-like)",9,9,1115.0,10056.0,10.0563,34.374,2937.0,34.0,2018,digitized-vector,4289.0,2927.0
+ss_lpsr,LPSR,"Large passive-safety PWR (1,117 MWe, AP1000-like)",10,10,1115.0,11167.0,11.1673,37.615,2917.0,34.0,2018,digitized-vector,4289.0,2927.0
+ss_mmnc,MMNC,Multi-module natural-circulation SMR plant (12 x 74 MWe),1,1,888.0,888.0,0.8878,5.087,5719.0,20.0,2018,digitized-vector,5719.0,3591.0
+ss_mmnc,MMNC,Multi-module natural-circulation SMR plant (12 x 74 MWe),2,2,888.0,1780.0,1.7801,9.275,4694.0,36.0,2018,digitized-vector,5719.0,3591.0
+ss_mmnc,MMNC,Multi-module natural-circulation SMR plant (12 x 74 MWe),3,3,888.0,2668.0,2.668,13.158,4373.0,36.0,2018,digitized-vector,5719.0,3591.0
+ss_mmnc,MMNC,Multi-module natural-circulation SMR plant (12 x 74 MWe),4,4,888.0,3556.0,3.5558,16.918,4235.0,36.0,2018,digitized-vector,5719.0,3591.0
+ss_mmnc,MMNC,Multi-module natural-circulation SMR plant (12 x 74 MWe),5,5,888.0,4444.0,4.4437,20.434,3960.0,36.0,2018,digitized-vector,5719.0,3591.0
+ss_mmnc,MMNC,Multi-module natural-circulation SMR plant (12 x 74 MWe),6,6,888.0,5332.0,5.3315,23.949,3960.0,36.0,2018,digitized-vector,5719.0,3591.0
+ss_mmnc,MMNC,Multi-module natural-circulation SMR plant (12 x 74 MWe),7,7,888.0,6210.0,6.2104,27.343,3861.0,36.0,2018,digitized-vector,5719.0,3591.0
+ss_mmnc,MMNC,Multi-module natural-circulation SMR plant (12 x 74 MWe),8,8,888.0,7098.0,7.0983,30.644,3719.0,36.0,2018,digitized-vector,5719.0,3591.0
+ss_mmnc,MMNC,Multi-module natural-circulation SMR plant (12 x 74 MWe),9,9,888.0,7991.0,7.9906,33.854,3597.0,36.0,2018,digitized-vector,5719.0,3591.0
+ss_mmnc,MMNC,Multi-module natural-circulation SMR plant (12 x 74 MWe),10,10,888.0,8878.0,8.8785,37.003,3547.0,36.0,2018,digitized-vector,5719.0,3591.0
+ss_ncsmr,NC-SMR,Natural-circulation SMR (160 MWe),1,1,161.0,161.0,0.1606,1.205,7283.0,20.0,2018,digitized-vector,7283.0,4874.0
+ss_ncsmr,NC-SMR,Natural-circulation SMR (160 MWe),2,2,161.0,321.0,0.3212,2.244,6471.0,61.0,2018,digitized-vector,7283.0,4874.0
+ss_ncsmr,NC-SMR,Natural-circulation SMR (160 MWe),3,3,161.0,482.0,0.4818,3.192,5900.0,61.0,2018,digitized-vector,7283.0,4874.0
+ss_ncsmr,NC-SMR,Natural-circulation SMR (160 MWe),4,4,161.0,642.0,0.6424,4.078,5520.0,61.0,2018,digitized-vector,7283.0,4874.0
+ss_ncsmr,NC-SMR,Natural-circulation SMR (160 MWe),5,5,161.0,803.0,0.803,4.965,5520.0,61.0,2018,digitized-vector,7283.0,4874.0
+ss_ncsmr,NC-SMR,Natural-circulation SMR (160 MWe),6,6,161.0,964.0,0.9636,5.821,5329.0,61.0,2018,digitized-vector,7283.0,4874.0
+ss_ncsmr,NC-SMR,Natural-circulation SMR (160 MWe),7,7,161.0,1124.0,1.1243,6.646,5139.0,61.0,2018,digitized-vector,7283.0,4874.0
+ss_ncsmr,NC-SMR,Natural-circulation SMR (160 MWe),8,8,161.0,1285.0,1.2849,7.441,4949.0,61.0,2018,digitized-vector,7283.0,4874.0
+ss_ncsmr,NC-SMR,Natural-circulation SMR (160 MWe),9,9,161.0,1437.0,1.4366,8.266,5441.0,61.0,2018,digitized-vector,7283.0,4874.0
+ss_ncsmr,NC-SMR,Natural-circulation SMR (160 MWe),10,10,161.0,1597.0,1.5972,9.061,4949.0,61.0,2018,digitized-vector,7283.0,4874.0
+ss_dcpwr,DC-PWR,"Double-containment PWR (1,650 MWe, EPR-like)",1,1,1651.0,1651.0,1.6507,7.288,4402.0,20.0,2018,digitized-vector,4402.0,3434.0
+ss_dcpwr,DC-PWR,"Double-containment PWR (1,650 MWe, EPR-like)",2,2,1651.0,3297.0,3.297,14.044,4104.0,33.0,2018,digitized-vector,4402.0,3434.0
+ss_dcpwr,DC-PWR,"Double-containment PWR (1,650 MWe, EPR-like)",3,3,1651.0,4948.0,4.9478,20.495,3908.0,33.0,2018,digitized-vector,4402.0,3434.0
+ss_dcpwr,DC-PWR,"Double-containment PWR (1,650 MWe, EPR-like)",4,4,1651.0,6599.0,6.5986,26.823,3833.0,33.0,2018,digitized-vector,4402.0,3434.0
+ss_dcpwr,DC-PWR,"Double-containment PWR (1,650 MWe, EPR-like)",5,5,1651.0,8245.0,8.2449,32.968,3732.0,33.0,2018,digitized-vector,4402.0,3434.0
+ss_dcpwr,DC-PWR,"Double-containment PWR (1,650 MWe, EPR-like)",6,6,1651.0,9896.0,9.8957,38.99,3648.0,33.0,2018,digitized-vector,4402.0,3434.0
+ss_dcpwr,DC-PWR,"Double-containment PWR (1,650 MWe, EPR-like)",7,7,1651.0,11542.0,11.542,44.952,3621.0,33.0,2018,digitized-vector,4402.0,3434.0
+ss_dcpwr,DC-PWR,"Double-containment PWR (1,650 MWe, EPR-like)",8,8,1651.0,13202.0,13.2017,50.821,3537.0,33.0,2018,digitized-vector,4402.0,3434.0
+ss_dcpwr,DC-PWR,"Double-containment PWR (1,650 MWe, EPR-like)",9,9,1651.0,14853.0,14.8525,56.599,3500.0,33.0,2018,digitized-vector,4402.0,3434.0
+ss_dcpwr,DC-PWR,"Double-containment PWR (1,650 MWe, EPR-like)",10,10,1651.0,16503.0,16.5033,62.255,3426.0,33.0,2018,digitized-vector,4402.0,3434.0
+ss_lasr,LASR,"Large active-safety PWR (1,400 MWe, APR1400-like)",1,1,1401.0,1405.0,1.4053,7.594,5415.0,20.0,2018,digitized-vector,5415.0,3828.0
+ss_lasr,LASR,"Large active-safety PWR (1,400 MWe, APR1400-like)",2,2,1401.0,2797.0,2.7973,14.625,5051.0,34.0,2018,digitized-vector,5415.0,3828.0
+ss_lasr,LASR,"Large active-safety PWR (1,400 MWe, APR1400-like)",3,3,1401.0,4198.0,4.1983,21.32,4779.0,34.0,2018,digitized-vector,5415.0,3828.0
+ss_lasr,LASR,"Large active-safety PWR (1,400 MWe, APR1400-like)",4,4,1401.0,5599.0,5.5992,27.618,4495.0,34.0,2018,digitized-vector,5415.0,3828.0
+ss_lasr,LASR,"Large active-safety PWR (1,400 MWe, APR1400-like)",5,5,1401.0,7005.0,7.0046,33.701,4329.0,34.0,2018,digitized-vector,5415.0,3828.0
+ss_lasr,LASR,"Large active-safety PWR (1,400 MWe, APR1400-like)",6,6,1401.0,8397.0,8.3966,39.571,4217.0,34.0,2018,digitized-vector,5415.0,3828.0
+ss_lasr,LASR,"Large active-safety PWR (1,400 MWe, APR1400-like)",7,7,1401.0,9798.0,9.7976,45.318,4103.0,34.0,2018,digitized-vector,5415.0,3828.0
+ss_lasr,LASR,"Large active-safety PWR (1,400 MWe, APR1400-like)",8,8,1401.0,11203.0,11.2029,50.882,3959.0,34.0,2018,digitized-vector,5415.0,3828.0
+ss_lasr,LASR,"Large active-safety PWR (1,400 MWe, APR1400-like)",9,9,1401.0,12604.0,12.6039,56.324,3884.0,34.0,2018,digitized-vector,5415.0,3828.0
+ss_lasr,LASR,"Large active-safety PWR (1,400 MWe, APR1400-like)",10,10,1401.0,13996.0,13.9959,61.674,3843.0,34.0,2018,digitized-vector,5415.0,3828.0
+ss_lmbwr,LM-BWR,"Large modular BWR (1,350 MWe, ABWR-like)",1,1,1350.0,1405.0,1.4053,5.393,3985.0,20.0,2018,digitized-vector,3985.0,2533.0
+ss_lmbwr,LM-BWR,"Large modular BWR (1,350 MWe, ABWR-like)",2,2,1350.0,2757.0,2.7572,10.101,3483.0,34.0,2018,digitized-vector,3985.0,2533.0
+ss_lmbwr,LM-BWR,"Large modular BWR (1,350 MWe, ABWR-like)",3,3,1350.0,4105.0,4.1046,14.411,3199.0,34.0,2018,digitized-vector,3985.0,2533.0
+ss_lmbwr,LM-BWR,"Large modular BWR (1,350 MWe, ABWR-like)",4,4,1350.0,5452.0,5.452,18.538,3063.0,34.0,2018,digitized-vector,3985.0,2533.0
+ss_lmbwr,LM-BWR,"Large modular BWR (1,350 MWe, ABWR-like)",5,5,1350.0,6804.0,6.8038,22.421,2872.0,34.0,2018,digitized-vector,3985.0,2533.0
+ss_lmbwr,LM-BWR,"Large modular BWR (1,350 MWe, ABWR-like)",6,6,1350.0,8151.0,8.1512,26.242,2836.0,34.0,2018,digitized-vector,3985.0,2533.0
+ss_lmbwr,LM-BWR,"Large modular BWR (1,350 MWe, ABWR-like)",7,7,1350.0,9503.0,9.5031,29.911,2714.0,34.0,2018,digitized-vector,3985.0,2533.0
+ss_lmbwr,LM-BWR,"Large modular BWR (1,350 MWe, ABWR-like)",8,8,1350.0,10850.0,10.8505,33.426,2609.0,34.0,2018,digitized-vector,3985.0,2533.0
+ss_lmbwr,LM-BWR,"Large modular BWR (1,350 MWe, ABWR-like)",9,9,1350.0,12211.0,12.2113,36.942,2584.0,34.0,2018,digitized-vector,3985.0,2533.0
+ss_lmbwr,LM-BWR,"Large modular BWR (1,350 MWe, ABWR-like)",10,10,1350.0,13559.0,13.5587,40.397,2564.0,34.0,2018,digitized-vector,3985.0,2533.0
+ss_smbwr,SM-BWR,"Small modular BWR (300 MWe, BWRX-300-like)",1,1,290.0,290.0,0.2899,1.785,6090.0,20.0,2018,digitized-vector,6090.0,3974.0
+ss_smbwr,SM-BWR,"Small modular BWR (300 MWe, BWRX-300-like)",2,2,290.0,580.0,0.5799,3.344,5376.0,47.0,2018,digitized-vector,6090.0,3974.0
+ss_smbwr,SM-BWR,"Small modular BWR (300 MWe, BWRX-300-like)",3,3,290.0,870.0,0.87,4.812,5060.0,47.0,2018,digitized-vector,6090.0,3974.0
+ss_smbwr,SM-BWR,"Small modular BWR (300 MWe, BWRX-300-like)",4,4,290.0,1155.0,1.1555,6.126,4604.0,47.0,2018,digitized-vector,6090.0,3974.0
+ss_smbwr,SM-BWR,"Small modular BWR (300 MWe, BWRX-300-like)",5,5,290.0,1445.0,1.4455,7.441,4533.0,47.0,2018,digitized-vector,6090.0,3974.0
+ss_smbwr,SM-BWR,"Small modular BWR (300 MWe, BWRX-300-like)",6,6,290.0,1735.0,1.7355,8.694,4322.0,47.0,2018,digitized-vector,6090.0,3974.0
+ss_smbwr,SM-BWR,"Small modular BWR (300 MWe, BWRX-300-like)",7,7,290.0,2034.0,2.0344,9.948,4193.0,47.0,2018,digitized-vector,6090.0,3974.0
+ss_smbwr,SM-BWR,"Small modular BWR (300 MWe, BWRX-300-like)",8,8,290.0,2324.0,2.3244,11.11,4006.0,47.0,2018,digitized-vector,6090.0,3974.0
+ss_smbwr,SM-BWR,"Small modular BWR (300 MWe, BWRX-300-like)",9,9,290.0,2614.0,2.6144,12.302,4111.0,47.0,2018,digitized-vector,6090.0,3974.0
+ss_smbwr,SM-BWR,"Small modular BWR (300 MWe, BWRX-300-like)",10,10,290.0,2904.0,2.9044,13.463,4006.0,47.0,2018,digitized-vector,6090.0,3974.0

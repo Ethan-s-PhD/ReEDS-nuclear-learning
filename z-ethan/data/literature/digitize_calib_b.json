@@ -1,0 +1,789 @@
+{
+  "anp194_fig224": {
+    "page": 58,
+    "ticks": [
+      [
+        0.0,
+        582.9925537109375
+      ],
+      [
+        1000.0,
+        561.632568359375
+      ],
+      [
+        2000.0,
+        540.2725830078125
+      ],
+      [
+        3000.0,
+        518.91259765625
+      ],
+      [
+        4000.0,
+        497.5525817871094
+      ],
+      [
+        5000.0,
+        476.4325866699219
+      ],
+      [
+        6000.0,
+        455.0726013183594
+      ],
+      [
+        7000.0,
+        433.7126159667969
+      ],
+      [
+        8000.0,
+        412.3526306152344
+      ]
+    ],
+    "usd_per_pt": -46.9042776256903,
+    "intercept": 27342.347985070668,
+    "tick_fit_max_resid_usd": 5.003555549112207,
+    "values_2018usd": {
+      "PWR12 FOAK": 4716.9,
+      "LPSR FOAK": 4289.1,
+      "MMNC FOAK": 5718.8,
+      "NC-SMR FOAK": 7283.5,
+      "DC-PWR FOAK": 4401.7,
+      "LASR FOAK": 5414.8,
+      "LM-BWR FOAK": 3985.2,
+      "SM-BWR FOAK": 6090.2,
+      "PWR12 10-OAK": 3163.4,
+      "LPSR 10-OAK": 2927.0,
+      "MMNC 10-OAK": 3591.2,
+      "NC-SMR 10-OAK": 4874.5,
+      "DC-PWR 10-OAK": 3433.6,
+      "LASR 10-OAK": 3827.6,
+      "LM-BWR 10-OAK": 2533.0,
+      "SM-BWR 10-OAK": 3973.9
+    }
+  },
+  "anp194_fig225_unit1_vs_fig224": {
+    "PWR12": {
+      "fig225_first_marker_usd_per_kw": 4703.0,
+      "fig224_foak_bar": 4717.0,
+      "gap_busd": 0.015
+    },
+    "LPSR": {
+      "fig225_first_marker_usd_per_kw": 4314.0,
+      "fig224_foak_bar": 4289.0,
+      "gap_busd": -0.028
+    },
+    "MMNC": {
+      "fig225_first_marker_usd_per_kw": 5730.0,
+      "fig224_foak_bar": 5719.0,
+      "gap_busd": -0.01
+    },
+    "NC-SMR": {
+      "fig225_first_marker_usd_per_kw": 7502.0,
+      "fig224_foak_bar": 7283.0,
+      "gap_busd": -0.035
+    },
+    "DC-PWR": {
+      "fig225_first_marker_usd_per_kw": 4415.0,
+      "fig224_foak_bar": 4402.0,
+      "gap_busd": -0.022
+    },
+    "LASR": {
+      "fig225_first_marker_usd_per_kw": 5404.0,
+      "fig224_foak_bar": 5415.0,
+      "gap_busd": 0.016
+    },
+    "LM-BWR": {
+      "fig225_first_marker_usd_per_kw": 3837.0,
+      "fig224_foak_bar": 3985.0,
+      "gap_busd": 0.2
+    },
+    "SM-BWR": {
+      "fig225_first_marker_usd_per_kw": 6158.0,
+      "fig224_foak_bar": 6090.0,
+      "gap_busd": -0.02
+    }
+  },
+  "anp194_fig225": {
+    "page": 59,
+    "x_ticks": [
+      [
+        0.0,
+        105.6355972290039
+      ],
+      [
+        0.0,
+        115.54149627685547
+      ],
+      [
+        2000.0,
+        160.33147430419922
+      ],
+      [
+        4000.0,
+        205.15137481689453
+      ],
+      [
+        6000.0,
+        249.97117614746094
+      ],
+      [
+        8000.0,
+        294.7911834716797
+      ],
+      [
+        10000.0,
+        339.6410675048828
+      ],
+      [
+        12000.0,
+        384.4609832763672
+      ],
+      [
+        14000.0,
+        429.28077697753906
+      ],
+      [
+        16000.0,
+        474.1007843017578
+      ],
+      [
+        18000.0,
+        518.9206695556641
+      ]
+    ],
+    "y_ticks": [
+      [
+        0.0,
+        560.672607421875
+      ],
+      [
+        10.0,
+        528.0325927734375
+      ],
+      [
+        20.0,
+        495.3926086425781
+      ],
+      [
+        30.0,
+        462.5126037597656
+      ],
+      [
+        40.0,
+        429.8725891113281
+      ],
+      [
+        50.0,
+        397.2326354980469
+      ],
+      [
+        60.0,
+        364.3526306152344
+      ],
+      [
+        70.0,
+        331.7126159667969
+      ]
+    ],
+    "mwe_per_pt": 44.615687711689866,
+    "busd_per_pt": -0.3057100784802395,
+    "x_fit_max_resid_mwe": 4.445544401357438,
+    "y_fit_max_resid_busd": 0.02663796541139618,
+    "x_ticks_px": [
+      115.51,
+      160.27,
+      205.15,
+      250.03,
+      294.91,
+      339.55,
+      384.43,
+      429.31,
+      474.19,
+      518.89
+    ],
+    "y_ticks_px": [
+      561.47,
+      528.67,
+      496.03,
+      463.39,
+      430.51,
+      397.87,
+      365.23,
+      332.45
+    ],
+    "label_centre_vs_tick_max_pt": 0.8773962402343614,
+    "series_colours": {
+      "PWR12": [
+        0.267,
+        0.447,
+        0.769
+      ],
+      "LPSR": [
+        0.929,
+        0.49,
+        0.192
+      ],
+      "MMNC": [
+        0.647,
+        0.647,
+        0.647
+      ],
+      "NC-SMR": [
+        1.0,
+        0.753,
+        0.0
+      ],
+      "DC-PWR": [
+        0.357,
+        0.608,
+        0.835
+      ],
+      "LASR": [
+        0.439,
+        0.678,
+        0.278
+      ],
+      "LM-BWR": [
+        0.149,
+        0.267,
+        0.471
+      ],
+      "SM-BWR": [
+        0.62,
+        0.282,
+        0.055
+      ]
+    },
+    "unit_mw_from_spacing": {
+      "PWR12": 1147.0,
+      "LPSR": 1115.0,
+      "MMNC": 888.0,
+      "NC-SMR": 161.0,
+      "DC-PWR": 1651.0,
+      "LASR": 1401.0,
+      "LM-BWR": 1350.0,
+      "SM-BWR": 290.0
+    },
+    "read_err_note": "vector-exact marker centres; +-$30/kWe plus 5,000/unit_MWe covers the two axis fits on the increments; unit 1 is the Fig 2.24 bar (+-$20)",
+    "unit1_note": "Fig 2.25's first marker lies a near-constant ~0.4 $B below FOAK x unit size for all eight architectures (see anp194_fig225_unit1_vs_fig224); unit 1 therefore comes from the Fig 2.24 bar, which reproduces the text (LPSR 4,290; SM-BWR 6,089). Units 2-10 are increments and independent of that offset; unit 10 reproduces the 10-OAK bars."
+  },
+  "iea_fig24": {
+    "page": 50,
+    "ticks": [
+      [
+        0.0,
+        257.31226348876953
+      ],
+      [
+        2500.0,
+        222.593994140625
+      ],
+      [
+        5000.0,
+        187.87567138671875
+      ],
+      [
+        7500.0,
+        153.1575927734375
+      ],
+      [
+        10000.0,
+        118.43926620483398
+      ]
+    ],
+    "usd_per_pt": -72.00825932616566,
+    "tick_fit_max_resid_usd": 0.006207987436937401,
+    "colours": {
+      "iea_steps": [
+        0.28,
+        0.83,
+        1.0
+      ],
+      "iea_aps": [
+        0.24,
+        0.478,
+        0.83
+      ],
+      "iea_nze": [
+        0.4,
+        0.955,
+        0.577
+      ],
+      "iea_large": [
+        0.1,
+        0.678,
+        0.631
+      ]
+    }
+  },
+  "iea_fig211": {
+    "page": 63,
+    "left_ticks": [
+      [
+        0.0,
+        643.0110778808594
+      ],
+      [
+        1200.0,
+        612.1423645019531
+      ],
+      [
+        2400.0,
+        581.2737121582031
+      ],
+      [
+        3600.0,
+        550.4048767089844
+      ],
+      [
+        4800.0,
+        519.5361633300781
+      ],
+      [
+        6000.0,
+        488.66749572753906
+      ]
+    ],
+    "left_usd_per_pt": -38.874298438469275,
+    "left_fit_resid": 0.002655162737937644,
+    "right_gw_ticks": [
+      [
+        0.0,
+        642.9725036621094
+      ],
+      [
+        40.0,
+        612.1084899902344
+      ],
+      [
+        80.0,
+        581.2444763183594
+      ],
+      [
+        120.0,
+        550.3805236816406
+      ],
+      [
+        160.0,
+        519.5165100097656
+      ],
+      [
+        200.0,
+        488.6525115966797
+      ]
+    ],
+    "right_gw_per_pt": -1.296008470928605,
+    "right_fit_resid": 3.126415685983375e-05,
+    "year_ticks": [
+      [
+        2025.0,
+        309.4382019042969
+      ],
+      [
+        2030.0,
+        348.1695251464844
+      ],
+      [
+        2035.0,
+        386.9007263183594
+      ],
+      [
+        2040.0,
+        425.63201904296875
+      ],
+      [
+        2045.0,
+        464.36322021484375
+      ],
+      [
+        2050.0,
+        503.09458923339844
+      ]
+    ],
+    "gw_curves_read_at": [
+      2030,
+      2035,
+      2040,
+      2045,
+      2050
+    ]
+  },
+  "bti_fig26": {
+    "page": 41,
+    "image_size_px": [
+      813,
+      434
+    ],
+    "x_label_centres_px": [
+      141.5,
+      306.0,
+      470.0,
+      632.0,
+      785.0
+    ],
+    "log10gw_per_px": 0.006114261547771753,
+    "log10gw_intercept": -1.8685120670680817,
+    "x_fit_resid_decade": 0.005190860384642004,
+    "y_label_centres_px": [
+      13.5,
+      38.0,
+      63.0,
+      88.5,
+      112.0,
+      137.5,
+      163.0,
+      187.0,
+      212.0,
+      237.0,
+      262.0
+    ],
+    "ratio_per_px": -0.0040240599129035964,
+    "ratio_intercept": 1.05367406165269,
+    "y_fit_resid": 0.002979351407487285,
+    "tech_rgb": {
+      "SMR": [
+        0,
+        57,
+        77
+      ],
+      "ARTES": [
+        0,
+        188,
+        162
+      ],
+      "HTGR": [
+        57,
+        158,
+        205
+      ]
+    },
+    "read_method": "manual end-point reads from 5x zoom crops (see BTI_MANUAL in the script)",
+    "table_1_2_inputs": {
+      "foak_2020usd_lower_upper": {
+        "SMR": [
+          5108.0,
+          6974.0
+        ],
+        "HTGR": [
+          5518.0,
+          7500.0
+        ],
+        "ARTES": [
+          4000.0,
+          6220.0
+        ]
+      },
+      "lr": {
+        "low": 0.05,
+        "high": 0.12
+      },
+      "floor": 1800.0,
+      "unit_gw": {
+        "SMR": 0.15,
+        "ARTES": 0.345,
+        "HTGR": 0.08
+      }
+    },
+    "scenario_totals_gw": {
+      "lower cost, high learning": 454.70000000000005,
+      "lower cost, low learning": 357.2,
+      "upper cost, high learning": 453.8,
+      "upper cost, low learning": 185.2
+    },
+    "scenario_totals_units": {
+      "lower cost, high learning": 3310.0,
+      "lower cost, low learning": 1989.0,
+      "upper cost, high learning": 3122.0,
+      "upper cost, low learning": 561.0
+    }
+  },
+  "gate_G1b": {
+    "all_pass": true,
+    "checks": [
+      {
+        "name": "ANP-194 PWR12: Fig 2.25 unit-10 increment = Fig 2.24 10-OAK bar",
+        "got": 3158.0,
+        "want": 3163.4106802333395,
+        "tol": 54.0
+      },
+      {
+        "name": "ANP-194 LPSR: Fig 2.25 unit-10 increment = Fig 2.24 10-OAK bar",
+        "got": 2917.0,
+        "want": 2927.014151611429,
+        "tol": 54.0
+      },
+      {
+        "name": "ANP-194 MMNC: Fig 2.25 unit-10 increment = Fig 2.24 10-OAK bar",
+        "got": 3547.0,
+        "want": 3591.1788945597987,
+        "tol": 56.0
+      },
+      {
+        "name": "ANP-194 NC-SMR: Fig 2.25 unit-10 increment = Fig 2.24 10-OAK bar",
+        "got": 4949.0,
+        "want": 4874.479243324306,
+        "tol": 81.0
+      },
+      {
+        "name": "ANP-194 DC-PWR: Fig 2.25 unit-10 increment = Fig 2.24 10-OAK bar",
+        "got": 3426.0,
+        "want": 3433.5797774069015,
+        "tol": 53.0
+      },
+      {
+        "name": "ANP-194 LASR: Fig 2.25 unit-10 increment = Fig 2.24 10-OAK bar",
+        "got": 3843.0,
+        "want": 3827.5754231817086,
+        "tol": 54.0
+      },
+      {
+        "name": "ANP-194 LM-BWR: Fig 2.25 unit-10 increment = Fig 2.24 10-OAK bar",
+        "got": 2564.0,
+        "want": 2533.017074431665,
+        "tol": 54.0
+      },
+      {
+        "name": "ANP-194 SM-BWR: Fig 2.25 unit-10 increment = Fig 2.24 10-OAK bar",
+        "got": 4006.0,
+        "want": 3973.9165403490692,
+        "tol": 67.0
+      },
+      {
+        "name": "ANP-194 Table 2.14: LPSR FOAK 4,290 (text) = Fig 2.24 bar",
+        "got": 4289.0,
+        "want": 4290,
+        "tol": 40.0
+      },
+      {
+        "name": "ANP-194 Table 2.14: MMNC 12x74 10th-OAK 3,590 (text) = Fig 2.24 bar",
+        "got": 3591.1788945597987,
+        "want": 3590,
+        "tol": 40.0
+      },
+      {
+        "name": "ANP-194 Table 2.14: LM-BWR 10th-OAK 2,550 (text) = Fig 2.24 bar",
+        "got": 2533.017074431665,
+        "want": 2550,
+        "tol": 40.0
+      },
+      {
+        "name": "ANP-194 Table 2.14: SM-BWR FOAK 6,089 (text) = Fig 2.24 bar",
+        "got": 6090.0,
+        "want": 6089,
+        "tol": 40.0
+      },
+      {
+        "name": "ANP-194 Table 2.14: LASR first-4-unit average 4,900 (text)",
+        "got": 4935.0,
+        "want": 4900,
+        "tol": 80.0
+      },
+      {
+        "name": "ANP-194 unit size from marker spacing: LPSR 1,117 MWe (text p.24)",
+        "got": 1115.0,
+        "want": 1117,
+        "tol": 15.0
+      },
+      {
+        "name": "ANP-194 unit size from marker spacing: DC-PWR 1,650 MWe (text)",
+        "got": 1651.0,
+        "want": 1650,
+        "tol": 15.0
+      },
+      {
+        "name": "ANP-194 unit size from marker spacing: MMNC 12x74 = 888 MWe",
+        "got": 888.0,
+        "want": 888,
+        "tol": 15.0
+      },
+      {
+        "name": "IEA Fig 2.4 US&EU 2030 FOAK ~10,000 (text: 'around USD 10 000 per kW')",
+        "got": 9974.0,
+        "want": 10000,
+        "tol": 250.0
+      },
+      {
+        "name": "IEA Fig 2.11 High SMR Case US&EU 2040 = 4,500 (text)",
+        "got": 4503.0,
+        "want": 4500,
+        "tol": 100.0
+      },
+      {
+        "name": "IEA Fig 2.11 High SMR Case China 2040 = 2,500 (text)",
+        "got": 2501.0,
+        "want": 2500,
+        "tol": 100.0
+      },
+      {
+        "name": "IEA Fig 2.4 = Fig 2.11 for APS US&EU 2040 (two charts, same value)",
+        "got": 5828.0,
+        "want": 5851.0,
+        "tol": 60.0
+      },
+      {
+        "name": "IEA Fig 2.4 APS US&EU 2050 under 5,000 (text: 'parity ... in the 2040s, at under USD 5 000/kW')",
+        "got": 4255.0,
+        "want": [
+          0,
+          5000
+        ],
+        "tol": 0.0
+      },
+      {
+        "name": "IEA Fig 2.11 High SMR Case 2040 is ~25% below APS 2040 (text)",
+        "got": 0.7696120321312596,
+        "want": [
+          0.7,
+          0.8
+        ],
+        "tol": 0.0
+      },
+      {
+        "name": "IEA Fig 2.11 STEPS 2050 = 40 GW (text)",
+        "got": 38.6,
+        "want": 40,
+        "tol": 5.0
+      },
+      {
+        "name": "IEA Fig 2.11 APS 2050 = 120 GW (text)",
+        "got": 117.9,
+        "want": 120,
+        "tol": 6.0
+      },
+      {
+        "name": "IEA Fig 2.11 High SMR Case 2050 ~190 GW (text)",
+        "got": 189.6,
+        "want": 190,
+        "tol": 10.0
+      },
+      {
+        "name": "IEA Fig 2.11 NZE 2050 almost 200 GW (text)",
+        "got": 199.6,
+        "want": [
+          185,
+          200
+        ],
+        "tol": 0.0
+      },
+      {
+        "name": "BTI Fig 2-6 SMR lower cost, low learning: end-point ratio read vs eq. B-2 at 18 GW",
+        "got": 0.706,
+        "want": 0.703,
+        "tol": 0.04
+      },
+      {
+        "name": "BTI Fig 2-6 SMR lower cost, high learning: end-point ratio read vs eq. B-2 at 53 GW",
+        "got": 0.358,
+        "want": 0.352,
+        "tol": 0.04
+      },
+      {
+        "name": "BTI Fig 2-6 SMR upper cost, low learning: end-point ratio read vs eq. B-2 at 6 GW",
+        "got": 0.764,
+        "want": 0.76,
+        "tol": 0.04
+      },
+      {
+        "name": "BTI Fig 2-6 SMR upper cost, high learning: end-point ratio read vs eq. B-2 at 84 GW",
+        "got": 0.313,
+        "want": 0.312,
+        "tol": 0.04
+      },
+      {
+        "name": "BTI Fig 2-6 ARTES lower cost, low learning: end-point ratio read vs eq. B-2 at 247 GW",
+        "got": 0.617,
+        "want": 0.615,
+        "tol": 0.04
+      },
+      {
+        "name": "BTI Fig 2-6 ARTES lower cost, high learning: end-point ratio read vs eq. B-2 at 215 GW",
+        "got": 0.454,
+        "want": 0.45,
+        "tol": 0.04
+      },
+      {
+        "name": "BTI Fig 2-6 ARTES upper cost, low learning: end-point ratio read vs eq. B-2 at 179 GW",
+        "got": 0.631,
+        "want": 0.63,
+        "tol": 0.04
+      },
+      {
+        "name": "BTI Fig 2-6 ARTES upper cost, high learning: end-point ratio read vs eq. B-2 at 215 GW",
+        "got": 0.301,
+        "want": 0.305,
+        "tol": 0.04
+      },
+      {
+        "name": "BTI Fig 2-6 HTGR lower cost, low learning: end-point ratio read vs eq. B-2 at 92 GW",
+        "got": 0.597,
+        "want": 0.593,
+        "tol": 0.04
+      },
+      {
+        "name": "BTI Fig 2-6 HTGR lower cost, high learning: end-point ratio read vs eq. B-2 at 187 GW",
+        "got": 0.333,
+        "want": 0.326,
+        "tol": 0.04
+      },
+      {
+        "name": "BTI 2050 total, max scenario = 469 GW (Table 2-1; lower cost, high learning)",
+        "got": 454.70000000000005,
+        "want": 469,
+        "tol": 37.52
+      },
+      {
+        "name": "BTI 2050 total, min scenario = 185 GW (Table 2-1; upper cost, low learning)",
+        "got": 185.2,
+        "want": 185,
+        "tol": 18.5
+      },
+      {
+        "name": "BTI all four 2050 totals inside 185-469 GW (+-8%)",
+        "got": [
+          185.2,
+          454.70000000000005
+        ],
+        "want": [
+          170.20000000000002,
+          506.52000000000004
+        ],
+        "tol": 0.0
+      },
+      {
+        "name": "BTI 2050 reactor count 560-3,415 (Table 2-3; +-8%)",
+        "got": [
+          561.0,
+          3310.0
+        ],
+        "want": [
+          515.2,
+          3688.2000000000003
+        ],
+        "tol": 0.0
+      }
+    ]
+  },
+  "sources": {
+    "anp194_pdf": {
+      "file": "MIT_ANP-194_Stewart_Shirvan_uncertainty.pdf",
+      "pages": [
+        58,
+        59
+      ],
+      "sha256": "59f2305b0322a6969a2108335ee178459cbc729d46b6784b5323c0e7027c3c6b"
+    },
+    "iea_pdf": {
+      "file": "IEA_2025_Path_to_New_Era_Nuclear.pdf",
+      "pages": [
+        50,
+        63
+      ],
+      "sha256": "50a8ec161bf766f71c3d25ad9aed5279213dc6539537cb53ade5e461532fef8e"
+    },
+    "bti_pdf": {
+      "file": "Breakthrough_Advancing_Nuclear_Energy_v3.pdf",
+      "page": 41,
+      "sha256": "89744d356157f6793a826885691b38e57411d6c823358de520fd960e1e2d195a"
+    }
+  }
+}

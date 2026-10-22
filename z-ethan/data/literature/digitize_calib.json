@@ -1,0 +1,223 @@
+{
+  "mit": {
+    "image_xref": 76,
+    "image_size_px": [
+      1044,
+      328
+    ],
+    "left_half_px": 522,
+    "gridline_rows_px": [
+      24.0,
+      75.0,
+      125.0,
+      176.0,
+      227.0,
+      278.0
+    ],
+    "axis_row_px": 278.0,
+    "usd_per_px": -98.47967044132037,
+    "intercept": 27354.016958232492,
+    "tick_fit_max_resid_usd": 44.058153067446256,
+    "series_rgb": {
+      "mit_ap1000_23gw": [
+        64,
+        112,
+        192
+      ],
+      "mit_smr_7gw": [
+        232,
+        120,
+        48
+      ],
+      "mit_smr_23gw": [
+        160,
+        160,
+        160
+      ]
+    }
+  },
+  "inl": {
+    "A": {
+      "ticks": [
+        [
+          0.0,
+          359.3733215332031
+        ],
+        [
+          2000.0,
+          341.74639892578125
+        ],
+        [
+          4000.0,
+          323.8712158203125
+        ],
+        [
+          6000.0,
+          306.24432373046875
+        ],
+        [
+          8000.0,
+          288.36920166015625
+        ],
+        [
+          10000.0,
+          270.7421875
+        ],
+        [
+          12000.0,
+          252.86713409423828
+        ],
+        [
+          14000.0,
+          235.24024963378906
+        ]
+      ],
+      "usd_per_pt": -112.70679628372075,
+      "intercept": 40508.4917695029,
+      "tick_fit_max_resid_usd": 8.649994920291647,
+      "n_bars": 13,
+      "bar_x_centres_pt": [
+        129.0,
+        143.0,
+        156.0,
+        170.0,
+        183.0,
+        197.0,
+        210.0,
+        224.0,
+        237.0,
+        251.0,
+        264.0,
+        278.0,
+        291.0
+      ]
+    },
+    "B": {
+      "ticks": [
+        [
+          0.0,
+          359.36228942871094
+        ],
+        [
+          2000.0,
+          341.7363739013672
+        ],
+        [
+          4000.0,
+          323.86216735839844
+        ],
+        [
+          6000.0,
+          306.2363739013672
+        ],
+        [
+          8000.0,
+          288.36216735839844
+        ],
+        [
+          10000.0,
+          270.7363739013672
+        ],
+        [
+          12000.0,
+          252.8621597290039
+        ],
+        [
+          14000.0,
+          235.23624420166016
+        ]
+      ],
+      "usd_per_pt": -112.71322794617848,
+      "intercept": 40509.56024375516,
+      "tick_fit_max_resid_usd": 8.649995256946568,
+      "n_bars": 13,
+      "bar_x_centres_pt": [
+        363.0,
+        376.0,
+        390.0,
+        403.0,
+        417.0,
+        430.0,
+        444.0,
+        457.0,
+        471.0,
+        484.0,
+        498.0,
+        511.0,
+        525.0
+      ]
+    }
+  },
+  "gate_G1": {
+    "all_pass": true,
+    "checks": [
+      {
+        "name": "INL A plant 1 = 12,800 (text, rounded $100)",
+        "got": 12759.0,
+        "want": 12800,
+        "tol": 119.0
+      },
+      {
+        "name": "INL A target 3,600 reached after 11 plants -> plant 12 <= 3,650",
+        "got": 3610.0,
+        "want": 3600,
+        "tol": 119.0
+      },
+      {
+        "name": "INL A order-book average = 5,000 (text)",
+        "got": 4946.153846153846,
+        "want": 5000,
+        "tol": 119.0
+      },
+      {
+        "name": "INL B order-book average = 5,900 (text)",
+        "got": 5846.076923076923,
+        "want": 5900,
+        "tol": 119.0
+      },
+      {
+        "name": "MIT AP1000 FOAK (Vogtle) ~15,000 (text)",
+        "got": 14946.0,
+        "want": 15000,
+        "tol": 492.0
+      },
+      {
+        "name": "MIT AP1000 'Next 2' inside 8,300-10,375 (text range)",
+        "got": 8249.0,
+        "want": [
+          8300,
+          10375
+        ],
+        "tol": 192.0
+      },
+      {
+        "name": "MIT AP1000 NOAK 4,625-4,750 (text) = last offering",
+        "got": 4605.0,
+        "want": [
+          4625,
+          4750
+        ],
+        "tol": 192.0
+      },
+      {
+        "name": "MIT SMR FOAK ~20,000 (both programs, chart)",
+        "got": 19968.0,
+        "want": 20000,
+        "tol": 492.0
+      }
+    ]
+  },
+  "sources": {
+    "mit_pdf": {
+      "file": "MIT_ANP-201_Shirvan_2024.pdf",
+      "page": 27,
+      "sha256": "9371420c5377b803ef744891785e091ea9a88e9f9a23186b2240057ba2d49280"
+    },
+    "inl_pdf": {
+      "file": "INL_Sort_109810_cost_pathways_2024.pdf",
+      "page": 44,
+      "sha256": "e099e076fc5887ac96ffc29363bfd3a094b9f2f130a0850c7e1b44dba6053ab9"
+    }
+  },
+  "mit_unit_map_note": "A6: n_units = cumulative units per MIT's table under Fig 2 with FOAK = Vogtle 3&4 (N = 2), 'Next 2' = units 3-4 (N = 4), '4-OAK' read as the offering after the next two (N = 6), then 8/12/16/20-OAK literal. n_units_alt = the literal label number (4-OAK -> 4). Author confirmation requested."
+}

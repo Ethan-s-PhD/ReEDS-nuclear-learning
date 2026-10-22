@@ -1,0 +1,24 @@
+# What this branch tracks in z-ethan.
+# The repository's shared .git/info/exclude (paper 1's 2026-08-16 policy) ignores most of z-ethan
+# in every worktree. The rules below take precedence over it inside this folder.
+# Tracked: code, environment files and input data (all of it already public in
+# nuclear-learning-target-analysis-ReEDS). Local only: docs/, scratch/ and results/.
+!/README.md
+!/.gitignore
+!/environment.yml
+!/requirements.txt
+!/nlpaper/
+!/nlpaper/*.py
+!/nlpaper/README.md
+!/notebooks/
+!/notebooks/*.ipynb
+!/data/
+!/data/**
+!/mc/
+!/mc/pris_loader.py
+!/mc/rds2_2025_units.csv
+/docs/
+/scratch/
+/results/
+__pycache__/
+.ipynb_checkpoints/

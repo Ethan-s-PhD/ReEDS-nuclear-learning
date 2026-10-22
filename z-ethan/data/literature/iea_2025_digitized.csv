@@ -1,0 +1,46 @@
+series_id,region,year,occ,figure,dollar_year,provenance,read_err,gw_global
+iea_aps,China,2030,5477.0,2.4,2023,digitized-vector,25.0,1.1
+iea_aps,China,2040,3226.0,2.4,2023,digitized-vector,25.0,50.3
+iea_aps,China,2040,3251.0,2.11,2023,digitized-vector,25.0,50.3
+iea_aps,China,2050,2350.0,2.4,2023,digitized-vector,25.0,117.9
+iea_high_smr,China,2040,2501.0,2.11,2023,digitized-vector,25.0,75.7
+iea_large,China,2030,2725.0,2.4,2023,digitized-vector,25.0,
+iea_large,China,2040,2478.0,2.4,2023,digitized-vector,25.0,
+iea_large,China,2040,2529.0,2.11,2023,digitized-vector,25.0,
+iea_large,China,2050,2478.0,2.4,2023,digitized-vector,25.0,
+iea_nze,China,2030,5477.0,2.4,2023,digitized-vector,25.0,1.5
+iea_nze,China,2040,2479.0,2.4,2023,digitized-vector,25.0,108.7
+iea_nze,China,2050,1979.0,2.4,2023,digitized-vector,25.0,199.6
+iea_steps,China,2030,5477.0,2.4,2023,digitized-vector,25.0,0.9
+iea_steps,China,2040,4226.0,2.4,2023,digitized-vector,25.0,15.0
+iea_steps,China,2050,3475.0,2.4,2023,digitized-vector,25.0,38.6
+iea_aps,India,2030,5576.0,2.4,2023,digitized-vector,25.0,1.1
+iea_aps,India,2040,3618.0,2.4,2023,digitized-vector,25.0,50.3
+iea_aps,India,2040,3643.0,2.11,2023,digitized-vector,25.0,50.3
+iea_aps,India,2050,2639.0,2.4,2023,digitized-vector,25.0,117.9
+iea_high_smr,India,2040,2800.0,2.11,2023,digitized-vector,25.0,75.7
+iea_large,India,2030,2774.0,2.4,2023,digitized-vector,25.0,
+iea_large,India,2040,2774.0,2.4,2023,digitized-vector,25.0,
+iea_large,India,2040,2832.0,2.11,2023,digitized-vector,25.0,
+iea_large,India,2050,2774.0,2.4,2023,digitized-vector,25.0,
+iea_nze,India,2030,5576.0,2.4,2023,digitized-vector,25.0,1.5
+iea_nze,India,2040,2775.0,2.4,2023,digitized-vector,25.0,108.7
+iea_nze,India,2050,2215.0,2.4,2023,digitized-vector,25.0,199.6
+iea_steps,India,2030,5576.0,2.4,2023,digitized-vector,25.0,0.9
+iea_steps,India,2040,4737.0,2.4,2023,digitized-vector,25.0,15.0
+iea_steps,India,2050,3898.0,2.4,2023,digitized-vector,25.0,38.6
+iea_aps,US and EU,2030,9974.0,2.4,2023,digitized-vector,25.0,1.1
+iea_aps,US and EU,2040,5828.0,2.4,2023,digitized-vector,25.0,50.3
+iea_aps,US and EU,2040,5851.0,2.11,2023,digitized-vector,25.0,50.3
+iea_aps,US and EU,2050,4255.0,2.4,2023,digitized-vector,25.0,117.9
+iea_high_smr,US and EU,2040,4503.0,2.11,2023,digitized-vector,25.0,75.7
+iea_large,US and EU,2030,4980.0,2.4,2023,digitized-vector,25.0,
+iea_large,US and EU,2040,4479.0,2.4,2023,digitized-vector,25.0,
+iea_large,US and EU,2040,4528.0,2.11,2023,digitized-vector,25.0,
+iea_large,US and EU,2050,4479.0,2.4,2023,digitized-vector,25.0,
+iea_nze,US and EU,2030,9974.0,2.4,2023,digitized-vector,25.0,1.5
+iea_nze,US and EU,2040,4474.0,2.4,2023,digitized-vector,25.0,108.7
+iea_nze,US and EU,2050,3574.0,2.4,2023,digitized-vector,25.0,199.6
+iea_steps,US and EU,2030,9974.0,2.4,2023,digitized-vector,25.0,0.9
+iea_steps,US and EU,2040,7625.0,2.4,2023,digitized-vector,25.0,15.0
+iea_steps,US and EU,2050,6276.0,2.4,2023,digitized-vector,25.0,38.6

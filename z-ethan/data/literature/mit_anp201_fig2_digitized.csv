@@ -1,0 +1,22 @@
+series_id,design,offering,label,n_units,n_units_alt,unit_mw,cum_gw,year,occ,read_err,dollar_year,provenance
+mit_ap1000_23gw,"AP1000 (23 GWe program, 2024-58)",1,FOAK (Vogtle 3&4),2,2.0,1117.0,2.234,2024,14946.0,192.0,2024,digitized-raster
+mit_ap1000_23gw,"AP1000 (23 GWe program, 2024-58)",2,Next 2,4,4.0,1117.0,4.468,2031,8249.0,192.0,2024,digitized-raster
+mit_ap1000_23gw,"AP1000 (23 GWe program, 2024-58)",3,4-OAK,6,4.0,1117.0,6.702,2037,7166.0,192.0,2024,digitized-raster
+mit_ap1000_23gw,"AP1000 (23 GWe program, 2024-58)",4,8-OAK,8,8.0,1117.0,8.936,2043,5787.0,192.0,2024,digitized-raster
+mit_ap1000_23gw,"AP1000 (23 GWe program, 2024-58)",5,12-OAK,12,12.0,1117.0,13.404,2048,5196.0,192.0,2024,digitized-raster
+mit_ap1000_23gw,"AP1000 (23 GWe program, 2024-58)",6,16-OAK,16,16.0,1117.0,17.872,2053,4802.0,192.0,2024,digitized-raster
+mit_ap1000_23gw,"AP1000 (23 GWe program, 2024-58)",7,20-OAK,20,20.0,1117.0,22.34,2058,4605.0,192.0,2024,digitized-raster
+mit_smr_7gw,"300-MWe SMR (7 GWe program, 2032-56)",1,FOAK,1,,300.0,0.3,2032,19968.0,192.0,2024,digitized-raster
+mit_smr_7gw,"300-MWe SMR (7 GWe program, 2032-56)",2,4-OAK,4,,300.0,1.2,2037,8938.0,192.0,2024,digitized-raster
+mit_smr_7gw,"300-MWe SMR (7 GWe program, 2032-56)",3,8-OAK,8,,300.0,2.4,2042,7461.0,192.0,2024,digitized-raster
+mit_smr_7gw,"300-MWe SMR (7 GWe program, 2032-56)",4,12-OAK,12,,300.0,3.6,2046,6772.0,192.0,2024,digitized-raster
+mit_smr_7gw,"300-MWe SMR (7 GWe program, 2032-56)",5,16-OAK,16,,300.0,4.8,2050,6279.0,192.0,2024,digitized-raster
+mit_smr_7gw,"300-MWe SMR (7 GWe program, 2032-56)",6,20-OAK,20,,300.0,6.0,2053,5984.0,192.0,2024,digitized-raster
+mit_smr_7gw,"300-MWe SMR (7 GWe program, 2032-56)",7,24-OAK,24,,300.0,7.2,2056,5984.0,192.0,2024,digitized-raster
+mit_smr_23gw,"300-MWe SMR (23 GWe program, 2032-58)",1,FOAK,1,,300.0,0.3,2032,19968.0,192.0,2024,digitized-raster
+mit_smr_23gw,"300-MWe SMR (23 GWe program, 2032-58)",2,12-OAK,12,,300.0,3.6,2037,7757.0,192.0,2024,digitized-raster
+mit_smr_23gw,"300-MWe SMR (23 GWe program, 2032-58)",3,24-OAK,24,,300.0,7.2,2042,5984.0,192.0,2024,digitized-raster
+mit_smr_23gw,"300-MWe SMR (23 GWe program, 2032-58)",4,36-OAK,36,,300.0,10.8,2046,5984.0,192.0,2024,digitized-raster
+mit_smr_23gw,"300-MWe SMR (23 GWe program, 2032-58)",5,48-OAK,48,,300.0,14.4,2050,5984.0,192.0,2024,digitized-raster
+mit_smr_23gw,"300-MWe SMR (23 GWe program, 2032-58)",6,60-OAK,60,,300.0,18.0,2054,5984.0,192.0,2024,digitized-raster
+mit_smr_23gw,"300-MWe SMR (23 GWe program, 2032-58)",7,75-OAK,75,,300.0,22.5,2058,5984.0,192.0,2024,digitized-raster
