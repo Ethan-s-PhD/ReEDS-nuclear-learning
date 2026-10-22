@@ -1,0 +1,47 @@
+# Extract spec for notebook 05_extract_reeds_outputs. One row per (key, batch group); a (batch, key) appears in one row only.
+# Columns (nlpaper/h5io.py::_apply): batches = 'all' or ';' list; tech_filter = regex matched in full against i (or col=regex);
+# aggregate_to = blank | national | sum:<cols> | mean:<cols> | national_except:<regex>; dims_kept = blank (all) or ';' list.
+# Nuclear techs are exactly 'nuclear' (large LWR) and 'nuclear-smr'. Readers are listed in z-ethan census 05_reader_census.md.
+key,batches,tech_filter,aggregate_to,dims_kept,note
+nuclear_cap_price,smr100;step4;itcfb;ratedesign;ratedesign2;batch3,,,,shadow price of the nuclear capacity mandate by year (2004$/MW-yr rental basis); absent in runs without a binding mandate
+nuclear_cap_price_raw,smr100;step4;itcfb;ratedesign;ratedesign2;batch3,,,,raw marginal of the mandate constraint in objective units (= cost_scale x pvf_onm x nuclear_cap_price)
+objfn_raw,all,,,,objective function value (2004$ present value)
+cost_scale,all,,,,objective scaling factor (1 in these runs)
+pvf_onm,all,,,,present-value factor of operating costs by year (1/crf; 14.7645 from 2026 in sequential solves)
+pvf_capital,all,,,,present-value factor of capital costs by year (1 in sequential solves)
+z_rep,all,,,,objective value reported per solve year
+raw_inv_cost,all,,,,investment part of the objective by year
+raw_op_cost,all,,,,operating part of the objective by year
+tax_expenditure_itc,all,,,,ITC tax expenditure by year (negative = government outlay)
+error_check,all,,,,solver residual checks (z and objective)
+systemcost,all,,,,system cost by cost stream and year
+systemcost_techba,all,,national_except:nuclear|nuclear-smr,,system cost by stream and tech; nuclear rows by region; other techs summed nationally (r = national)
+cost_cap,all,,,,overnight capital cost by tech and year (2004$/MW; all techs)
+cost_cap_fin_mult,smr100;itcfb;itcfbm,,,,capital-cost financing multiplier (with ITC) by tech region year; all techs (non-nuclear ITC-wedge leak test)
+cost_cap_fin_mult,step4;ratedesign;ratedesign2;batch2;batch3,nuclear|nuclear-smr,,,capital-cost financing multiplier (with ITC); nuclear techs only
+cost_cap_fin_mult_noITC,smr100;itcfb;itcfbm,,,,capital-cost financing multiplier without ITC by tech region year; all techs
+cost_cap_fin_mult_noITC,step4;ratedesign;ratedesign2;batch2;batch3,nuclear|nuclear-smr,,,capital-cost financing multiplier without ITC; nuclear techs only
+reduced_cost,all,nuclear|nuclear-smr,,,LP reduced cost of nuclear variables by vintage region year
+heat_rate,all,nuclear|nuclear-smr,,,heat rate of nuclear techs by vintage region year
+cost_vom,all,nuclear|nuclear-smr,,,variable O&M cost of nuclear techs by vintage region year
+cap,all,,national_except:nuclear|nuclear-smr,,capacity (MW); nuclear rows by region; other techs summed nationally (r = national)
+cap_new_ann,all,,national_except:nuclear|nuclear-smr,,annualized new capacity (MW/yr); nuclear by region; other techs national
+gen_ann,all,,national_except:nuclear|nuclear-smr,,annual generation (MWh); nuclear by region; other techs national
+ret_ann,all,,national_except:nuclear|nuclear-smr,,annualized retirements (MW/yr); nuclear by region; other techs national
+cap_nat,all,,,,national capacity by tech and year
+cap_new_ann_nat,all,,,,national annualized new capacity by tech and year
+gen_ann_nat,all,,,,national generation by tech and year
+ret_ann_nat,all,,,,national annualized retirements by tech and year
+revenue,all,nuclear|nuclear-smr,,,market revenue of nuclear techs by category region year
+valnew,all,*.1=nuclear|nuclear-smr,,,value of new nuclear capacity (MW; MWh; val_load; val_resmarg; val_rps ...) by region (*.2) and year
+reqt_price,all,*=load,mean:*.2,,energy (load) requirement price: simple mean over the representative timeslices present (*.2) by region and year
+repgasprice_nat,all,,,,national representative natural-gas price by year
+co2_price,batch3,,,,CO2 cap shadow price by year (CO2-cap world only)
+emit_nat,all,,,,national emissions by type pollutant year
+invtran_out,all,,,,new transmission investment by corridor type year
+load_rt,all,,,,annual busbar load by region and year
+load_cat,all,,,,annual load by category region year
+load_stress,all,,,t,stress-period load summed nationally by year
+hours,all,,,,hours per representative timeslice
+dropped_load,all,,,,dropped load by region timeslice year
+curt_ann,all,,,,annual curtailment by region and year

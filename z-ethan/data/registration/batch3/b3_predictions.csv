@@ -1,0 +1,49 @@
+run,block,world,ab,pct,r_start,excess_post,inputs,prediction
+bx_eia_p05_f50_gashi,B1,gashi,eia,p05,0.148,-0.51,step 4 exact chain (v01),full delivery
+bx_eia_p25_f50_gashi,B1,gashi,eia,p25,,,block A (this batch),from block A
+bx_eia_p50_f50_gashi,B1,gashi,eia,p50,0.485,-0.063,step 4 exact chain (v01),full delivery
+bx_aj_p05_f50_gashi,B1,gashi,aj,p05,0.494,-0.432,step 4 exact chain (v01),full delivery
+bx_aj_p25_f50_gashi,B1,gashi,aj,p25,,,block A (this batch),from block A
+bx_aj_p50_f50_gashi,B1,gashi,aj,p50,0.547,-0.04,step 4 exact chain (v01),fuzzy
+bx_iaea_p05_f50_gashi,B1,gashi,iaea,p05,0.391,-0.51,step 4 exact chain (v01),full delivery
+bx_iaea_p25_f50_gashi,B1,gashi,iaea,p25,,,block A (this batch),from block A
+bx_iaea_p50_f50_gashi,B1,gashi,iaea,p50,0.736,-0.141,step 4 exact chain (v01),shortfall
+bx_mck_p05_f50_gashi,B1,gashi,mck,p05,0.4,-0.51,step 4 exact chain (v01),full delivery
+bx_mck_p25_f50_gashi,B1,gashi,mck,p25,,,block A (this batch),from block A
+bx_mck_p50_f50_gashi,B1,gashi,mck,p50,0.638,-0.098,step 4 exact chain (v01),"late start, recovers"
+bx_cop28_p05_f50_gashi,B1,gashi,cop28,p05,0.515,-0.51,step 4 exact chain (v01),"late start, recovers"
+bx_cop28_p25_f50_gashi,B1,gashi,cop28,p25,,,block A (this batch),from block A
+bx_cop28_p50_f50_gashi,B1,gashi,cop28,p50,0.736,-0.067,step 4 exact chain (v01),shortfall
+bx_eo_p05_f50_gashi,B1,gashi,eo,p05,0.48,-0.51,step 4 exact chain (v01),full delivery
+bx_eo_p25_f50_gashi,B1,gashi,eo,p25,,,block A (this batch),from block A
+bx_eo_p50_f50_gashi,B1,gashi,eo,p50,0.566,0.221,step 4 exact chain (v01),shortfall
+bx_eia_p05_f50_co2cap,B2,co2cap,eia,p05,,,block A (this batch),from block A
+bx_eia_p25_f50_co2cap,B2,co2cap,eia,p25,,,block A (this batch),from block A
+bx_eia_p50_f50_co2cap,B2,co2cap,eia,p50,,,block A (this batch),from block A
+bx_eia_p75_f50_co2cap,B2,co2cap,eia,p75,,,block A (this batch),from block A
+bx_aj_p05_f50_co2cap,B2,co2cap,aj,p05,,,block A (this batch),from block A
+bx_aj_p25_f50_co2cap,B2,co2cap,aj,p25,,,block A (this batch),from block A
+bx_aj_p50_f50_co2cap,B2,co2cap,aj,p50,,,block A (this batch),from block A
+bx_aj_p75_f50_co2cap,B2,co2cap,aj,p75,,,block A (this batch),from block A
+bx_iaea_p05_f50_co2cap,B2,co2cap,iaea,p05,,,block A (this batch),from block A
+bx_iaea_p25_f50_co2cap,B2,co2cap,iaea,p25,,,block A (this batch),from block A
+bx_iaea_p50_f50_co2cap,B2,co2cap,iaea,p50,,,block A (this batch),from block A
+bx_iaea_p75_f50_co2cap,B2,co2cap,iaea,p75,,,block A (this batch),from block A
+bx_mck_p05_f50_co2cap,B2,co2cap,mck,p05,,,block A (this batch),from block A
+bx_mck_p25_f50_co2cap,B2,co2cap,mck,p25,,,block A (this batch),from block A
+bx_mck_p50_f50_co2cap,B2,co2cap,mck,p50,,,block A (this batch),from block A
+bx_mck_p75_f50_co2cap,B2,co2cap,mck,p75,,,block A (this batch),from block A
+bx_cop28_p05_f50_co2cap,B2,co2cap,cop28,p05,,,block A (this batch),from block A
+bx_cop28_p25_f50_co2cap,B2,co2cap,cop28,p25,,,block A (this batch),from block A
+bx_cop28_p50_f50_co2cap,B2,co2cap,cop28,p50,,,block A (this batch),from block A
+bx_cop28_p75_f50_co2cap,B2,co2cap,cop28,p75,,,block A (this batch),from block A
+bx_eo_p05_f50_co2cap,B2,co2cap,eo,p05,,,block A (this batch),from block A
+bx_eo_p25_f50_co2cap,B2,co2cap,eo,p25,,,block A (this batch),from block A
+bx_eo_p50_f50_co2cap,B2,co2cap,eo,p50,,,block A (this batch),from block A
+bx_eo_p75_f50_co2cap,B2,co2cap,eo,p75,,,block A (this batch),from block A
+bx_eia_p05_f50_rehi,B3,rehi,eia,p05,0.348,-0.46,step 4 exact chain (v01),full delivery
+bx_aj_p05_f50_rehi,B3,rehi,aj,p05,0.557,-0.39,step 4 exact chain (v01),"late start, recovers"
+bx_iaea_p05_f50_rehi,B3,rehi,iaea,p05,0.492,-0.444,step 4 exact chain (v01),full delivery
+bx_mck_p05_f50_rehi,B3,rehi,mck,p05,0.509,-0.458,step 4 exact chain (v01),full delivery
+bx_cop28_p05_f50_rehi,B3,rehi,cop28,p05,0.614,-0.477,step 4 exact chain (v01),"late start, recovers"
+bx_eo_p05_f50_rehi,B3,rehi,eo,p05,0.597,-0.323,step 4 exact chain (v01),"late start, recovers"

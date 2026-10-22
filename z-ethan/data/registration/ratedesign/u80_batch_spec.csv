@@ -1,0 +1,55 @@
+run,block,schedule,mult,draw_index,expected,gate,margin_ratepts,max_rate_on_world,cap,target_ratepts,pool_n,deficit_years,note
+fb_aj_m100_cw,envelope,aj,1.0,608,deliver,GE1,-0.042,0.66,,-0.042,824.0,,
+fb_aj_m100_mg,envelope,aj,1.0,2695,deliver,GE1,-0.01,0.7,,-0.01,824.0,,
+fb_aj_m100_ju,envelope,aj,1.0,8867,shortfall,GE2,0.01,0.692,,0.01,8088.0,2044|2047|2050,
+fb_aj_m150_cw,envelope,aj,1.5,348,deliver,GE1,-0.0824,0.808,,-0.0824,1881.0,,
+fb_aj_m150_mg,envelope,aj,1.5,8857,deliver,GE1,-0.0099,0.741,,-0.01,1881.0,,
+fb_aj_m150_ju,envelope,aj,1.5,2068,shortfall,GE2,0.01,0.7,,0.01,6697.0,2033|2034|2035,
+fb_mck_m100_cw,envelope,mck,1.0,1874,deliver,GE1,-0.0834,0.795,,-0.0834,966.0,,
+fb_mck_m100_mg,envelope,mck,1.0,1260,deliver,GE1,-0.01,0.754,,-0.01,966.0,,
+fb_mck_m100_ju,envelope,mck,1.0,9097,shortfall,GE2,0.0099,0.797,,0.01,6682.0,2033|2034|2035|2038,
+fb_mck_m150_cw,envelope,mck,1.5,4610,deliver,GE1,-0.0752,0.867,,-0.0753,651.0,,
+fb_mck_m150_mg,envelope,mck,1.5,855,deliver,GE1,-0.0099,0.804,,-0.01,651.0,,
+fb_mck_m150_ju,envelope,mck,1.5,6631,shortfall,GE2,0.0099,0.818,,0.01,4447.0,2033|2034,
+fb_eo_m100_cw,envelope,eo,1.0,1249,deliver,GE1,-0.0625,0.868,,-0.0625,554.0,,
+fb_eo_m100_mg,envelope,eo,1.0,5877,deliver,GE1,-0.01,0.83,,-0.01,554.0,,
+fb_eo_m100_ju,envelope,eo,1.0,308,shortfall,GE2,0.009,0.913,,0.01,4939.0,2041|2044|2047|2050,
+fb_eo_m150_cw,envelope,eo,1.5,1493,deliver,GE1,-0.0455,0.926,,-0.0455,219.0,,
+fb_eo_m150_mg,envelope,eo,1.5,4509,deliver,GE1,-0.0104,0.919,,-0.01,219.0,,
+fb_eo_m150_ju,envelope,eo,1.5,7157,shortfall,GE2,0.0099,0.894,,0.01,2034.0,2032|2033|2034|2035,
+fb_eia_m150_cw,envelope,eia,1.5,2256,deliver,GE1,-0.1449,0.726,,-0.1449,3437.0,,
+fb_eia_m150_mg,envelope,eia,1.5,3688,deliver,GE1,-0.0101,0.638,,-0.01,3437.0,,
+fb_eia_m150_ju,envelope,eia,1.5,5756,shortfall,GE2,0.0099,0.628,,0.01,5457.0,2038|2041|2044|2047|2050,
+fb_iaea_m150_cw,envelope,iaea,1.5,5271,deliver,GE1,-0.1009,0.912,,-0.1009,932.0,,
+fb_iaea_m150_mg,envelope,iaea,1.5,3200,deliver,GE1,-0.0103,0.8,,-0.01,932.0,,
+fb_iaea_m150_ju,envelope,iaea,1.5,7007,shortfall,GE2,0.0101,0.785,,0.01,5058.0,2032|2033|2034|2035,
+fb_cop28_m150_cw,envelope,cop28,1.5,8117,deliver,GE1,-0.0737,0.854,,-0.0737,589.0,,
+fb_cop28_m150_mg,envelope,cop28,1.5,8401,deliver,GE1,-0.0102,0.815,,-0.01,589.0,,
+fb_cop28_m150_ju,envelope,cop28,1.5,3259,shortfall,GE2,0.0101,0.832,,0.01,4554.0,2032|2033,
+bd_eia_p3,boundary,eia,1.5,1096,shortfall,GE2,0.0299,0.617,,0.03,5456.0,2038,depth probe at +3 rate points
+bd_aj_p3,boundary,aj,1.5,8691,shortfall,GE2,0.03,0.825,,0.03,6696.0,2041|2044|2047|2050,depth probe at +3 rate points
+bd_iaea_p3,boundary,iaea,1.5,1139,shortfall,GE2,0.0299,0.74,,0.03,5057.0,2031,depth probe at +3 rate points
+bd_mck_p3,boundary,mck,1.5,8,shortfall,GE2,0.03,0.794,,0.03,4446.0,2031|2032|2033|2034|2035|2038,depth probe at +3 rate points
+bd_cop28_p3,boundary,cop28,1.5,868,shortfall,GE2,0.03,0.799,,0.03,4553.0,2031|2032|2033|2034|2035,depth probe at +3 rate points
+bd_eo_p3,boundary,eo,1.5,3032,shortfall,GE2,0.03,0.927,,0.03,2033.0,2032|2033|2034|2035,depth probe at +3 rate points
+bd_eo_p5,boundary,eo,1.5,3416,shortfall,GE2,0.0499,0.936,,0.05,2032.0,2033|2034|2035|2038|2041|2044|2047|2050,depth probe at +5 rate points
+hy_eia_nb,hybrid,eia,1.5,5489,deliver,GH1,-0.1667,0.6,0.6,-0.1667,2869.0,,post-window cap 0.60 excess -0.070; bind years none; excess at 0.50 cap +0.030; no demonstration window (all build years post-2035): pure capped credit
+hy_eia_cb,hybrid,eia,1.5,9024,shortfall,GH2,-0.0039,0.6,0.6,0.03,566.0,2038,post-window cap 0.60 excess +0.030; bind years 2038; no demonstration window (all build years post-2035): pure capped credit
+hy_aj_nb,hybrid,aj,1.5,456,deliver,GH1,-0.0823,0.805,0.6,-0.0823,1879.0,,post-window cap 0.60 excess -0.089; bind years none; excess at 0.50 cap +0.011
+hy_aj_cb50,hybrid,aj,1.5,7086,shortfall,GH2,-0.0219,0.849,0.5,0.03,855.0,2038,post-window cap 0.50 excess +0.030; bind years 2038
+hy_iaea_nb,hybrid,iaea,1.5,551,deliver,GH1,-0.101,0.926,0.6,-0.1009,930.0,,post-window cap 0.60 excess -0.154; bind years none; excess at 0.50 cap -0.054
+hy_iaea_cb50,hybrid,iaea,1.5,143,shortfall,GH2,-0.0142,0.92,0.5,0.05,147.0,2038|2050,post-window cap 0.50 excess +0.050; bind years 2038|2050
+hy_mck_nb,hybrid,mck,1.5,2965,deliver,GH1,-0.075,0.844,0.6,-0.075,649.0,,post-window cap 0.60 excess -0.201; bind years none; excess at 0.50 cap -0.101
+hy_mck_cb50,hybrid,mck,1.5,1033,shortfall,GH2,-0.0195,0.907,0.5,0.01,51.0,2038,post-window cap 0.50 excess +0.010; bind years 2038
+hy_cop28_nb,hybrid,cop28,1.5,7137,deliver,GH1,-0.0763,0.855,0.6,-0.0762,570.0,,post-window cap 0.60 excess -0.263; bind years none; excess at 0.50 cap -0.163
+hy_cop28_cb,hybrid,cop28,1.5,3725,shortfall,GH2,-0.004,0.933,0.6,0.01,17.0,2050,post-window cap 0.60 excess +0.010; bind years 2050
+hy_eo_nb,hybrid,eo,1.5,3433,deliver,GH1,-0.0497,0.919,0.6,-0.0497,201.0,,post-window cap 0.60 excess -0.056; bind years none; excess at 0.50 cap +0.044
+hy_eo_cb,hybrid,eo,1.5,711,shortfall,GH2,-0.0182,0.944,0.6,0.01,16.0,2050,post-window cap 0.60 excess +0.010; bind years 2050
+hy_eo_cb2,hybrid,eo,1.5,451,shortfall,GH2,-0.0033,0.948,0.6,0.02,15.0,2050,post-window cap 0.60 excess +0.021; bind years 2050
+hy_eo_cb50,hybrid,eo,1.5,3821,shortfall,GH2,-0.0662,0.915,0.5,0.05,140.0,2047|2050,post-window cap 0.50 excess +0.052; bind years 2047|2050
+hz_eia_p50_ext,horizon,eia,,9573,diagnostic,GX1,,,,,,,"rerun the p50 anchor extended (2055 target, mandate flat at its 2050 level, x0.9 monetized parity); 2047->2050 uptick +0.054 rate pts; artifact if the extended run sheds >= half"
+hz_aj_p50_ext,horizon,aj,,242,diagnostic,GX1,,,,,,,"rerun the p50 anchor extended (2055 target, mandate flat at its 2050 level, x0.9 monetized parity); 2047->2050 uptick +0.059 rate pts; artifact if the extended run sheds >= half"
+hz_iaea_p50_ext,horizon,iaea,,4993,diagnostic,GX1,,,,,,,"rerun the p50 anchor extended (2055 target, mandate flat at its 2050 level, x0.9 monetized parity); 2047->2050 uptick +0.068 rate pts; artifact if the extended run sheds >= half"
+hz_mck_p50_ext,horizon,mck,,8920,diagnostic,GX1,,,,,,,"rerun the p50 anchor extended (2055 target, mandate flat at its 2050 level, x0.9 monetized parity); 2047->2050 uptick +0.033 rate pts; artifact if the extended run sheds >= half"
+hz_cop28_p50_ext,horizon,cop28,,101,diagnostic,GX1,,,,,,,"rerun the p50 anchor extended (2055 target, mandate flat at its 2050 level, x0.9 monetized parity); 2047->2050 uptick +0.079 rate pts; artifact if the extended run sheds >= half"
+hz_eo_p50_ext,horizon,eo,,9019,diagnostic,GX1,,,,,,,"rerun the p50 anchor extended (2055 target, mandate flat at its 2050 level, x0.9 monetized parity); 2047->2050 uptick +0.045 rate pts; artifact if the extended run sheds >= half"
