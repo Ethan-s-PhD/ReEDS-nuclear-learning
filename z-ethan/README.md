@@ -14,7 +14,7 @@ Everything outside `z-ethan/` is paper 1's ReEDS fork, unchanged. The worktree s
 | Path | Contents | In Git |
 |---|---|---|
 | `nlpaper/` | The helper package of paper 1's public analysis, without the modules that no EF notebook uses: repository paths, thread and plot setup, plot style, figure composition and the PRIS loader. | yes |
-| `notebooks/` | Four notebooks from paper 1's public analysis, with the changes listed below. `00_run_all.ipynb` runs them in order. The committed notebooks hold the outputs of the kit's full run on 2026-10-22. | yes |
+| `notebooks/` | Four notebooks from paper 1's public analysis, with the changes listed below. `00_run_all.ipynb` runs them in order. The committed notebooks hold no outputs (see "How to run"). | yes |
 | `data/literature/` | Frozen records of the published cost projections: transcribed cost points, one row of method assumptions per source, digitized figures, and the cite-only list. `data/literature/README.md` describes each file. | yes |
 | `data/reeds_inputs/` | Small frozen slices of ReEDS inputs that notebook 03a reads. | yes |
 | `mc/` | `pris_loader.py` and `rds2_2025_units.csv`, the reactor unit list. Notebook 01 and `inputs/nuclear_learning/_generate_cap_trajectories.py` read them here. | yes |
@@ -62,10 +62,13 @@ runs is unchanged.
 - Later on 2026-10-22 the kit removed the unused names inside the remaining `nlpaper` modules:
   every helper of `compose` except `compose()` itself, `setup.notebook_header`, the `plotstyle`
   constants `PCT_LABEL`, `PCT_SHORT`, `BASE_C`, `PCT_STYLE`, `SENS_C`, `C_TINY` and `C_FULL`,
-  and the `paths` folders `NOTEBOOKS`,
-  `FIGS_MAIN` and `TABLES`. A bare file name passed to `compose()` now needs `out_dir`; every
-  call in the notebooks already passes a full path or `out_dir`. Commit `863c3aa` holds the
-  last copies.
+  and the `paths` folders `NOTEBOOKS`, `FIGS_MAIN` and `TABLES`. A bare file name passed to
+  `compose()` now needs `out_dir`; every call in the notebooks already passes a full path or
+  `out_dir`. Commit `863c3aa` holds the last copies.
+- Also on 2026-10-22 the kit stripped the saved outputs from all five notebooks: the outputs, the
+  execution counts, the per-cell execution timestamps and the run stamp `nlpaper_run_all`. The
+  notebooks shrank from 12 MB to 0.7 MB. Their code and markdown are unchanged. Commit `834db84`
+  is the last commit that holds the outputs of the full run.
 
 ## How to run
 
@@ -75,6 +78,13 @@ runs is unchanged.
 2. Run the notebooks from `z-ethan/notebooks/` in the order 01, 02, 03a, 03b, or run `00_run_all.ipynb`.
 
 No notebook in this kit needs the ReEDS outputs.
+
+**Keep the committed notebooks free of outputs.** `00_run_all.ipynb` executes the notebooks in
+place, so a run through it writes outputs into them again. To leave them clean, execute each
+notebook into a folder outside Git:
+`python -m nbconvert --to notebook --execute --output-dir <folder> <notebook>.ipynb`.
+Otherwise, clear the outputs, the execution counts and the run stamp `nlpaper_run_all` before a
+commit. The exports in `results/` do not depend on the saved outputs.
 
 **Warning: notebook 01 writes into the output archive.** When `NL_REEDS_OUTPUTS` is set (or a
 folder `nuclear-learning-reeds-outputs` sits next to the repository), notebook 01 copies its
@@ -112,8 +122,9 @@ archive's `SHA256SUMS`. Leave `NL_REEDS_OUTPUTS` unset for this kit.
 ## Full run (2026-10-22)
 
 Claude ran `00_run_all.ipynb` with `nbconvert`, in the environment `nuclear-learning-analysis`, with
-`NL_REEDS_OUTPUTS` unset. The driver executed the four notebooks in place, so the committed notebooks
-now hold the outputs of this run. Every notebook exited 0, and the whole run took 46 minutes.
+`NL_REEDS_OUTPUTS` unset. The driver executed the four notebooks in place, and commit `1099bc9`
+stored them with the outputs of this run; the kit stripped those outputs later that day (see
+"Changes from the public analysis"). Every notebook exited 0, and the whole run took 46 minutes.
 Notebook 01 found no output archive, so it skipped the archive copy. Notebook 03b ran the full
 10,000 draws per schedule.
 
