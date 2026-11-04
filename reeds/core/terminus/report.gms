@@ -462,6 +462,9 @@ load_rt(r,t)$tmodel_new(t) = sum{h, hours(h) * load_exog(r,h,t) } ;
 
 load_stress(r,allh,t)$[tmodel_new(t)$h_stress_t(allh,t)] = LOAD.l(r,allh,t) ;
 
+* [paper AG] exports to Canada in stress timeslices (part of LOAD there; zero when Sw_Canada=0)
+can_exports_stress(r,allh,t)$[tmodel_new(t)$h_stress_t(allh,t)$(Sw_Canada=1)] = can_exports_h(r,allh,t) ;
+
 co2_price(t)$tmodel_new(t) = (1 / cost_scale) * (1 / pvf_onm(t)) * eq_annual_cap.m("CO2",t) ;
 
 rggi_price(t)$tmodel_new(t) = (1 / cost_scale) * (1 / pvf_onm(t)) * eq_RGGI_cap.m(t) ;

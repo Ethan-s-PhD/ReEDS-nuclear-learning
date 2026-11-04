@@ -316,6 +316,7 @@ GSw_StartCost,Technologies with startup costs (0=none; 1=nuclear; 2=nuclear/coal
 GSw_StateCap,Turn on/off state cap and trade constraints,0; 1,1,
 GSw_StateRPS,Turn on/off state RPS requirements,0; 1,1,
 GSw_StateRPS_Carveouts,Turn wind and solar carveouts off/on,0;1,0,
+GSw_RECExportFix,"State RPS/CES REC exports (0 = upstream formulation; 1 = fix). eq_REC_Generation removes each exported REC from the selling state's supply, and with 0 eq_REC_Requirement also subtracts it from the RECs that count toward the selling state's own requirement, so one export counts twice against the seller (the buyer's REC price is then at least about twice the seller's). 1 drops those three export terms from eq_REC_Requirement. Added for paper AG RUN-3 (z-ethan/docs/master_plan.md); exports to Canada are unchanged.",0; 1,0,
 GSw_StateCO2ImportLevel,Hierarchy level within which to calculate CO2 emissions rate [metric ton/MWh] for state CO2 caps,r; nercr; transreg; cendiv; st; interconnect; country; usda_region,interconnect,
 GSw_Storage,0=ban storage; 1=use all standalone storage techs,0; 1,1,
 GSw_StorageBinPenalty,Turn on/off the storage bin penalty for the PRM method (when on results in better firm capacity outputs),0; 1,1,

@@ -15,6 +15,7 @@ param,units,comment,reeds2x,output_rename,input
 "cap_nat(i,t)",MW,national capacity,,,
 "cap_new_cc(i,r,ccseason,t)",MW,"new capacity that is VRE, for new capacity credit calculation",,,
 "cc_new(i,r,ccseason,t)",frac,capacity credit for new VRE techs,,,
+"can_exports_stress(r,allh,t)",MW,"[paper AG] Exports to Canada in stress timeslices, as seen by the model (can_exports_h); the capacity part of export payments = this x the stress-period res_marg price",,,
 "cap_converter_out(r,t)",MW,AC/DC converter capacity,1,,
 "cap_ivrt(i,v,r,t)",MW,"undegraded power capacity by tech, year, region, and class",1,,
 "cap_energy_ivrt(i,v,r,t)",MWh,"undegraded energy capacity by tech, year, region, and class",1,,

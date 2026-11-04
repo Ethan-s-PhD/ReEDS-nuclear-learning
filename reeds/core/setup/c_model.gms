@@ -2653,22 +2653,24 @@ eq_REC_Requirement(RPSCat,st,t)$[RecPerc(RPSCat,st,t)$(not tfirst(t))
                                 $(not sameas(RPSCat,"CES_Bundled"))]..
 
 * RECs owned (i.e. imported and generated/used in state minus exports)
+* [Sw_RECExportFix=1] exports are already removed from the seller's supply in eq_REC_Generation,
+* so the three export terms below are dropped to avoid counting each export twice against the seller
     + sum{(i,ast)$[RecMap(i,RPSCat,ast,st,t)$stfeas(ast)],
          RECS(RPSCat,i,ast,st,t) }
     - sum{(i,ast)$[RecMap(i,RPSCat,st,ast,t)$stfeas(ast)$(not sameas(st,ast))],
-         RECS(RPSCat,i,st,ast,t) }
+         RECS(RPSCat,i,st,ast,t) }$[Sw_RECExportFix=0]
 
 * bundled RECS can also be used to meet the RPS_All requirements (imports minus exports)
     + sum{(i,ast)$[RecMap(i,"RPS_Bundled",ast,st,t)$stfeas(ast)$(not sameas(ast,st))],
          RECS("RPS_Bundled",i,ast,st,t) }$[sameas(RPSCat,"RPS_All")]
     - sum{(i,ast)$[RecMap(i,"RPS_Bundled",st,ast,t)$stfeas(ast)$(not sameas(st,ast))],
-         RECS("RPS_Bundled",i,st,ast,t) }$[sameas(RPSCat,"RPS_All")]
+         RECS("RPS_Bundled",i,st,ast,t) }$[sameas(RPSCat,"RPS_All")$(Sw_RECExportFix=0)]
 
 * bundled CES credits can also be used to meet the CES requirements (imports minus exports)
     + sum{(i,ast)$[RecMap(i,"CES_Bundled",ast,st,t)$stfeas(ast)$(not sameas(ast,st))],
          RECS("CES_Bundled",i,ast,st,t) }$[sameas(RPSCat,"CES")]
     - sum{(i,ast)$[RecMap(i,"CES_Bundled",st,ast,t)$stfeas(ast)$(not sameas(st,ast))],
-         RECS("CES_Bundled",i,st,ast,t) }$[sameas(RPSCat,"CES")]
+         RECS("CES_Bundled",i,st,ast,t) }$[sameas(RPSCat,"CES")$(Sw_RECExportFix=0)]
 
 * ACP credits can also be purchased
     + ACP_PURCHASES(rpscat,st,t)$(not acp_disallowed(st,RPSCat))
