@@ -10,6 +10,11 @@
 !/nlpaper/
 !/nlpaper/*.py
 !/nlpaper/README.md
+# Paper AG's own helpers (2026-10-28).
+!/aglib/
+!/aglib/*.py
+!/aglib/review/
+!/aglib/review/template.html
 !/notebooks/
 !/notebooks/*.ipynb
 !/data/
