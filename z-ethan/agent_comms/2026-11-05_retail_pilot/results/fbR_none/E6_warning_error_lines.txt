@@ -1,0 +1,43 @@
+﻿272: copy_files.py | 2026-11-05 09:57:02 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+273: copy_files.py | 2026-11-05 09:57:02 | ERROR |   _init_gdal_data()
+353: copy_files.py | 2026-11-05 09:57:35 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\agretail_fbR_none\reeds\input_processing\copy_files.py:465: DtypeWarning: Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_memory=False.
+354: copy_files.py | 2026-11-05 09:57:35 | ERROR |   df = pd.read_csv(full_path, dtype={'FIPS':str, 'fips':str, 'cnty_fips':str}, comment='#')
+355: copy_files.py | 2026-11-05 09:57:35 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\agretail_fbR_none\reeds\input_processing\copy_files.py:896: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+356: copy_files.py | 2026-11-05 09:57:35 | ERROR |   df['r'] = df['FIPS'].map(county2zone)
+367: copy_files.py | 2026-11-05 09:57:55 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\raw.py:733: RuntimeWarning: Cannot find tms_NZTM2000.json (GDAL_DATA is not defined)
+368: copy_files.py | 2026-11-05 09:57:55 | ERROR |   ogr_write(
+390: h2_storage.py | 2026-11-05 09:58:08 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+391: h2_storage.py | 2026-11-05 09:58:08 | ERROR |   _init_gdal_data()
+398: fuelcostprep.py | 2026-11-05 09:58:17 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+399: fuelcostprep.py | 2026-11-05 09:58:17 | ERROR |   _init_gdal_data()
+479: recf.py | 2026-11-05 10:05:06 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\agretail_fbR_none\reeds\input_processing\recf.py:422: Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is active in pandas since 3.0 which utilizes a lazy copy mechanism that defers copies until necessary. Use .copy() to make an eager copy if necessary.
+480: recf.py | 2026-11-05 10:05:06 | ERROR |   recf = pd.concat(
+481: recf.py | 2026-11-05 10:05:06 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\agretail_fbR_none\reeds\input_processing\recf.py:449: Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is active in pandas since 3.0 which utilizes a lazy copy mechanism that defers copies until necessary. Use .copy() to make an eager copy if necessary.
+482: recf.py | 2026-11-05 10:05:06 | ERROR |   recf = recf.reindex(labels=resources['resource'].drop_duplicates(), axis=1, copy=False)
+489: WriteHintage.py | 2026-11-05 10:05:18 | INFO | Note that the clustering can result in warnings if the heat rates
+496: transmission.py | 2026-11-05 10:05:32 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+497: transmission.py | 2026-11-05 10:05:32 | ERROR |   _init_gdal_data()
+526: hourly_repperiods.py | 2026-11-05 10:14:10 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+527: hourly_repperiods.py | 2026-11-05 10:14:10 | ERROR |   _init_gdal_data()
+1450: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:161: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+1451: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |   .assign(cost_cap=lambda x: x['cost_cap_x'].fillna(x['cost_cap_y']))
+1452: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR | Traceback (most recent call last):
+1453: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py", line 2337, in <module>
+1454: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |     main(
+1455: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |     ~~~~^
+1456: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |         run_dir=run_dir,
+1457: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |         ^^^^^^^^^^^^^^^^
+1458: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |         inputpath=os.path.join(mdir,'inputs.csv'),
+1459: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1460: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |         write=True, verbose=args.verbose,
+1461: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1462: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |         )
+1463: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py", line 272, in main
+1464: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |     calculate_historical_capex.main(run_dir)
+1465: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+1466: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py", line 169, in main
+1467: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |     raise ValueError(
+1468: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |     ...<5 lines>...
+1469: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR |     )
+1470: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR | ValueError: The following technologies have no associated capital costs. You may need to update the `tech_name_map` dictionary in the `get_historical_units` function so that the historical unit technology names match those of the capital cost data from inputs.gdx:
+1471: retail_rate_calculations.py | 2026-11-05 10:26:26 | ERROR | hydnd
