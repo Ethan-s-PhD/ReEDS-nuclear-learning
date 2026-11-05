@@ -1,0 +1,3 @@
+# Supplied and returned data files keep their exact bytes, so checksums match on every machine.
+*/outputs/** -text
+*/results/** -text

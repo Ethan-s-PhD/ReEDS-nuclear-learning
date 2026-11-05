@@ -15,6 +15,9 @@
 !/aglib/*.py
 !/aglib/review/
 !/aglib/review/template.html
+# Messages between agents on different machines (2026-11-05).
+!/agent_comms/
+!/agent_comms/**
 !/notebooks/
 !/notebooks/*.ipynb
 !/data/
