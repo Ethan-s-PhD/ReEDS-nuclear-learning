@@ -7,7 +7,9 @@ This folder carries tasks and replies between Claude on Ethan's machine and the 
 1. **One subfolder per task**, named `YYYY-MM-DD_<task>`. Each subfolder holds:
    - `instructions.md`, written by the side that sends the task;
    - `response.md`, written by the side that does the task;
-   - optional `scripts/`, `outputs/` (inputs supplied with the task) and `results/` (files returned with the response).
+   - optional `scripts/`, `outputs/` and `reference/` (inputs supplied with the task) and `results/` (files returned with the response).
+
+   A follow-up round in the same task uses `instructions_2.md` and `response_2.md`, and so on.
 2. **Write only your own files.** The sender never edits `response.md` or `results/`. The receiver never edits `instructions.md`, `scripts/` or `outputs/`. To ask a question or report a problem, write it in `response.md`.
 3. **Commit only inside this folder**, except for files that `instructions.md` names explicitly.
 4. **Every commit message starts with** `agent_comms: <task> -`.
@@ -19,5 +21,5 @@ This folder carries tasks and replies between Claude on Ethan's machine and the 
 
 | Folder | From → to | Status |
 |---|---|---|
-| `2026-11-05_retail_pilot` | Claude (Ethan's machine) → lab agent | sent 2026-11-05 |
+| `2026-11-05_retail_pilot` | Claude (Ethan's machine) → lab agent | sent 2026-11-05; step 6 failed (fcae372); round 2 (diagnostic) sent 2026-11-05 |
 | `2026-11-05_new_runs` | Claude (Ethan's machine) → lab agent | sent 2026-11-05; runs before the retail pilot |
