@@ -20,3 +20,4 @@ This folder carries tasks and replies between Claude on Ethan's machine and the 
 | Folder | From → to | Status |
 |---|---|---|
 | `2026-11-05_retail_pilot` | Claude (Ethan's machine) → lab agent | sent 2026-11-05 |
+| `2026-11-05_new_runs` | Claude (Ethan's machine) → lab agent | sent 2026-11-05; runs before the retail pilot |
