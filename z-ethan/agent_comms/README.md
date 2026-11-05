@@ -21,5 +21,6 @@ This folder carries tasks and replies between Claude on Ethan's machine and the 
 
 | Folder | From → to | Status |
 |---|---|---|
-| `2026-11-05_retail_pilot` | Claude (Ethan's machine) → lab agent | sent 2026-11-05; step 6 failed (fcae372); round 2 (diagnostic) returned (7167a7e); round 3 (2010 block, step 6 again) sent 2026-11-05 |
+| `2026-11-05_retail_pilot` | Claude (Ethan's machine) → lab agent | sent 2026-11-05; step 6 failed (fcae372); round 2 (diagnostic) returned (7167a7e); round 3 (2010 block, step 6 again) returned ready (bf3e339); round 4 (answers) closes it |
+| `2026-11-05_retail_stage1` | Claude (Ethan's machine) → lab agent | sent 2026-11-05; the other five stage-1 P50 runs; after `new_runs` has priority |
 | `2026-11-05_new_runs` | Claude (Ethan's machine) → lab agent | sent 2026-11-05; runs before the retail pilot; round 2 (paper 1's `Manifest.toml`, Ethan's decision) sent 2026-11-05 |
