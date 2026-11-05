@@ -1,4 +1,9 @@
 symbol,i
+cost_cap_fin_mult_out,hydnd
+cost_cap_fin_mult_out,hydnpnd
+cost_cap_fin_mult_out,hydsnd
+cost_cap_fin_mult_out,hydud
+cost_cap_fin_mult_out,hydund
 rsc_dat,hydd
 rsc_dat,hydnd
 rsc_dat,hydnpd

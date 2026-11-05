@@ -1,0 +1,3 @@
+case,exists,rows,n_columns,n_states,year_min,year_max,n_years,n_value_columns
+smr100_eo_p50,True,4368,61,48,1960,2050,91,59
+fbR_none,True,4368,61,48,1960,2050,91,59

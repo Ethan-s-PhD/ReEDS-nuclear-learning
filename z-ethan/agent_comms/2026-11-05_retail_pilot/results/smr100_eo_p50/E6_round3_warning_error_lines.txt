@@ -1,0 +1,489 @@
+# gamslog.txt lines > 1471 (round 3) matching error|warning|traceback: 476
+gamslog 2331: check_inputs.py | 2026-11-05 11:33:30 | INFO | Load inputs.gdx for error checking
+gamslog 2381: retail_rate_calculations.py | 2026-11-05 11:39:37 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:161: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+gamslog 2382: retail_rate_calculations.py | 2026-11-05 11:39:37 | ERROR |   .assign(cost_cap=lambda x: x['cost_cap_x'].fillna(x['cost_cap_y']))
+gamslog 2383: retail_rate_calculations.py | 2026-11-05 11:39:37 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:179: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+gamslog 2384: retail_rate_calculations.py | 2026-11-05 11:39:37 | ERROR |   init_capex['capex'] = init_capex['cost_cap'] * init_capex['cap_new']
+gamslog 2385: retail_rate_calculations.py | 2026-11-05 11:39:37 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:182: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+gamslog 2386: retail_rate_calculations.py | 2026-11-05 11:39:37 | ERROR |   .sum()
+gamslog 2392: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:883: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+gamslog 2393: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2394: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2395: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'.
+gamslog 2396: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2397: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+gamslog 2398: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_gen_capex['eval_period'].fillna(20, inplace=True)
+gamslog 2399: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:889: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+gamslog 2400: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2401: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2402: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'.
+gamslog 2403: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2404: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+gamslog 2405: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_gen_capex['depreciation_sch'].fillna('20', inplace=True)
+gamslog 2406: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:926: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+gamslog 2407: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2408: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2409: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'.
+gamslog 2410: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2411: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+gamslog 2412: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_gen_capex_init['eval_period'].fillna(20, inplace=True)
+gamslog 2413: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:930: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+gamslog 2414: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2415: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2416: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'.
+gamslog 2417: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2418: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+gamslog 2419: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_gen_capex_init['depreciation_sch'].fillna('20', inplace=True)
+gamslog 2420: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+gamslog 2421: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2422: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2423: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'.
+gamslog 2424: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2425: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+gamslog 2426: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)
+gamslog 2427: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2428: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2429: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2430: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2431: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2432: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2433: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2434: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+gamslog 2435: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2436: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2437: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'.
+gamslog 2438: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2439: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+gamslog 2440: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)
+gamslog 2441: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2442: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2443: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2444: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2445: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2446: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2447: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2448: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2449: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2450: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2451: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2452: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2453: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2454: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2455: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2456: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2457: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2458: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2459: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2460: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2461: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2462: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2463: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2464: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2465: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2466: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2467: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2468: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2469: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2470: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2471: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2472: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2473: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2474: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2475: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2476: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2477: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2478: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2479: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2480: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2481: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2482: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2483: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2484: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2485: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2486: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2487: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2488: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2489: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2490: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2491: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2492: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2493: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2494: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2495: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2496: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2497: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2498: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2499: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2500: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2501: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2502: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2503: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2504: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2505: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2506: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2507: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2508: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2509: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2510: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2511: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2512: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2513: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2514: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2515: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2516: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2517: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2518: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+gamslog 2519: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2520: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2521: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'.
+gamslog 2522: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | 
+gamslog 2523: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+gamslog 2524: retail_rate_calculations.py | 2026-11-05 11:39:39 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)
+gamslog 2525: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2526: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2527: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2528: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2529: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2530: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2531: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2532: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2533: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2534: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2535: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2536: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2537: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2538: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2539: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2540: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2541: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2542: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2543: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2544: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2545: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2546: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2547: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2548: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2549: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2550: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2551: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2552: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2553: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2554: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2555: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2556: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2557: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2558: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2559: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2560: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2561: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2562: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2563: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2564: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2565: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2566: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2567: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2568: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2569: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2570: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2571: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2572: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2573: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2574: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2575: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2576: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2577: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2578: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2579: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2580: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2581: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2582: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2583: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2584: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2585: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2586: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2587: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2588: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2589: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2590: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2591: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2592: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2593: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2594: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2595: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2596: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2597: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2598: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2599: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2600: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2601: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2602: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2603: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2604: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2605: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2606: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2607: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2608: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2609: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2610: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2611: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2612: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2613: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2614: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2615: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2616: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2617: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2618: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2619: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2620: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2621: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2622: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2623: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2624: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2625: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2626: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2627: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2628: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2629: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2630: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2631: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2632: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2633: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2634: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2635: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2636: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2637: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2638: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2639: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2640: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2641: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2642: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2643: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2644: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2645: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2646: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2647: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2648: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2649: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2650: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2651: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2652: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2653: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2654: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2655: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2656: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2657: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2658: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2659: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2660: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2661: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2662: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2663: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2664: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2665: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2666: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2667: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2668: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2669: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2670: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2671: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2672: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2673: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2674: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2675: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2676: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2677: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2678: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2679: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2680: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2681: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2682: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2683: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2684: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2685: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2686: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2687: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2688: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2689: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2690: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2691: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2692: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2693: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2694: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2695: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2696: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2697: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2698: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2699: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2700: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2701: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2702: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2703: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2704: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2705: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2706: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2707: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2708: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2709: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2710: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2711: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2712: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2713: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2714: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2715: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2716: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2717: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2718: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2719: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2720: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2721: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2722: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2723: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2724: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2725: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2726: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2727: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2728: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2729: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2730: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2731: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2732: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2733: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2734: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2735: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2736: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2737: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2738: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2739: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2740: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2741: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2742: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2743: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2744: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2745: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2746: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2747: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2748: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2749: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2750: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2751: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2752: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2753: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2754: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2755: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2756: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2757: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2758: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2759: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2760: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2761: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2762: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2763: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2764: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2765: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2766: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2767: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2768: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2769: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2770: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2771: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2772: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2773: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2774: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2775: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2776: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2777: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2778: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2779: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2780: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2781: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2782: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2783: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2784: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2785: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2786: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2787: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2788: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2789: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2790: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2791: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2792: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2793: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2794: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2795: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2796: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2797: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2798: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2799: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2800: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2801: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2802: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2803: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2804: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2805: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2806: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2807: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2808: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2809: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2810: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2811: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2812: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2813: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2814: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2815: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2816: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2817: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2818: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2819: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2820: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2821: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2822: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2823: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2824: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2825: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2826: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2827: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2828: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2829: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2830: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2831: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2832: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2833: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2834: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2835: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2836: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2837: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2838: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2839: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2840: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2841: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2842: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2843: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2844: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2845: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2846: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2847: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2848: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2849: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2850: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2851: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2852: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2853: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+gamslog 2854: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog 2855: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+gamslog 2856: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2857: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+gamslog 2858: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+gamslog 2859: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+gamslog 2860: retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+# A2 console (stdout+stderr of the 2010 block) matching: 11
+A2console 12: C:\Users\egallup\ReEDS-nuclear-learning\runs\agretail_smr100_eo_p50>echo A2MARK smr100_eo_p50 cmd1 END Thu 11/05/2026 11:29:34.45 errorlevel=0 
+A2console 13: A2MARK smr100_eo_p50 cmd1 END Thu 11/05/2026 11:29:34.45 errorlevel=0
+A2console 876: C:\Users\egallup\ReEDS-nuclear-learning\runs\agretail_smr100_eo_p50>echo A2MARK smr100_eo_p50 cmd2 END Thu 11/05/2026 11:33:27.94 errorlevel=0 
+A2console 877: A2MARK smr100_eo_p50 cmd2 END Thu 11/05/2026 11:33:27.94 errorlevel=0
+A2console 888: check_inputs.py | 2026-11-05 11:33:30 | INFO | Load inputs.gdx for error checking
+A2console 937: C:\Users\egallup\ReEDS-nuclear-learning\runs\agretail_smr100_eo_p50>echo A2MARK smr100_eo_p50 cmd3 END Thu 11/05/2026 11:33:54.46 errorlevel=0 
+A2console 938: A2MARK smr100_eo_p50 cmd3 END Thu 11/05/2026 11:33:54.46 errorlevel=0
+A2console 951: Traceback (most recent call last):
+A2console 960: AttributeError: 'NoneType' object has no attribute 'rename'
+A2console 963: C:\Users\egallup\ReEDS-nuclear-learning\runs\agretail_smr100_eo_p50>echo A2MARK smr100_eo_p50 cmd4 END Thu 11/05/2026 11:34:00.86 errorlevel=0 
+A2console 964: A2MARK smr100_eo_p50 cmd4 END Thu 11/05/2026 11:34:00.86 errorlevel=0

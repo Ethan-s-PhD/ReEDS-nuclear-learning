@@ -1,200 +1,200 @@
-﻿--- .. ccsflex_perf.csv(7) 119 Mb
---- . b_inputs.gms(3784) 119 Mb
---- .. pvb_ilr.csv(2) 120 Mb
---- . b_inputs.gms(3801) 120 Mb
---- .. pvb_bir.csv(2) 120 Mb
---- . b_inputs.gms(3842) 120 Mb
---- .. hydrocapcostmult.csv(42) 120 Mb
---- . b_inputs.gms(3852) 120 Mb
---- .. dr_shed_capcostmult.csv(69) 120 Mb
---- . b_inputs.gms(3862) 120 Mb
---- .. dr_shed_capacity_scalar.csv(69) 120 Mb
---- . b_inputs.gms(3874) 120 Mb
---- .. plantchar_dr_shed_vom.csv(69) 120 Mb
---- . b_inputs.gms(3886) 120 Mb
---- .. plantchar_dr_shed_fom.csv(69) 120 Mb
---- . b_inputs.gms(3897) 120 Mb
---- .. ofswind_rsc_mult.csv(42) 120 Mb
---- . b_inputs.gms(4034) 120 Mb
---- .. hyd_fom.csv(11) 120 Mb
---- . b_inputs.gms(4093) 120 Mb
---- .. heat_rate_adj.csv(39) 121 Mb
---- . b_inputs.gms(4137) 121 Mb
---- .. fprice.csv(3691) 122 Mb
---- . b_inputs.gms(4187) 122 Mb
---- .. cap_hyd_ccseason_adj.csv(721) 123 Mb
---- . b_inputs.gms(4195) 123 Mb
---- .. windcfmult.csv(42) 123 Mb
---- . b_inputs.gms(4204) 123 Mb
---- .. pv_cf_improve.csv(41) 123 Mb
---- . b_inputs.gms(4243) 123 Mb
---- .. ramptime.csv(4) 123 Mb
---- . b_inputs.gms(4252) 123 Mb
---- .. orperc.csv(4) 124 Mb
---- . b_inputs.gms(4273) 124 Mb
---- .. ramprate.csv(49) 124 Mb
---- . b_inputs.gms(4301) 124 Mb
---- .. cost_opres_default.csv(96) 124 Mb
---- . b_inputs.gms(4321) 124 Mb
---- .. heat_rate_penalty_spin.csv(45) 124 Mb
---- . b_inputs.gms(4359) 124 Mb
---- .. minloadfrac0.csv(38) 124 Mb
---- . b_inputs.gms(4370) 124 Mb
---- .. hydro_mingen.csv(1801) 124 Mb
---- . b_inputs.gms(4379) 124 Mb
---- .. startcost.csv(29) 124 Mb
---- . b_inputs.gms(4398) 124 Mb
---- .. mingen_fixed.csv(3) 124 Mb
---- . b_inputs.gms(4412) 124 Mb
---- .. loadsite_annual.csv(26) 124 Mb
---- . b_inputs.gms(4425) 124 Mb
---- .. cangrowth.csv(1) 124 Mb
---- . b_inputs.gms(4434) 124 Mb
---- .. mex_growth_rate.csv(41) 124 Mb
---- . b_inputs.gms(4449) 124 Mb
---- .. prm_initial.csv(1441) 124 Mb
---- . b_inputs.gms(4459) 124 Mb
---- .. firm_import_limit.csv(209) 124 Mb
---- . b_inputs.gms(4468) 124 Mb
---- .. peakload_nercr.csv(209) 124 Mb
---- . b_inputs.gms(4484) 124 Mb
---- .. ccmult.csv(3473) 124 Mb
---- . b_inputs.gms(4493) 124 Mb
---- .. tax_rate.csv(17) 124 Mb
---- . b_inputs.gms(4502) 124 Mb
---- .. itc_frac_monetized.csv(3473) 124 Mb
---- . b_inputs.gms(4512) 124 Mb
---- .. itc_energy_comm_bonus.csv(3601) 124 Mb
---- . b_inputs.gms(4522) 124 Mb
---- .. pv_frac_of_depreciation.csv(3473) 124 Mb
---- . b_inputs.gms(4531) 124 Mb
---- .. degradation_adj.csv(3473) 124 Mb
---- . b_inputs.gms(4540) 124 Mb
---- .. financing_risk_mult.csv(3473) 124 Mb
---- . b_inputs.gms(4549) 124 Mb
---- .. reg_cap_cost_diff.csv(10711) 124 Mb
---- . b_inputs.gms(4558) 125 Mb
---- .. eval_period_adj_mult.csv(8898) 125 Mb
---- . b_inputs.gms(4581) 125 Mb
---- .. trans_cap_cost_mult.csv(71) 125 Mb
---- . b_inputs.gms(4590) 125 Mb
---- .. trans_cap_cost_mult_noITC.csv(71) 125 Mb
---- . b_inputs.gms(4630) 125 Mb
---- .. emitrate.csv(38) 126 Mb
---- . b_inputs.gms(4640) 126 Mb
---- .. ccs_link.csv(33) 126 Mb
---- . b_inputs.gms(4698) 126 Mb
---- .. methane_leakage_rate.csv(42) 126 Mb
---- . b_inputs.gms(4712) 126 Mb
---- .. h2_leakage_rate.csv(6) 126 Mb
---- . b_inputs.gms(4823) 127 Mb
---- .. growth_limit_absolute.csv(4) 127 Mb
---- . b_inputs.gms(4832) 127 Mb
---- .. growth_penalty.csv(5) 127 Mb
---- . b_inputs.gms(4842) 127 Mb
---- .. gbin_min.csv(13) 127 Mb
---- . b_inputs.gms(4851) 127 Mb
---- .. growth_bin_size_mult.csv(5) 127 Mb
---- . b_inputs.gms(4887) 127 Mb
---- .. gasprice_ref.csv(10) 127 Mb
---- . b_inputs.gms(4932) 127 Mb
---- .. ng_demand_elec.csv(10) 127 Mb
---- . b_inputs.gms(4940) 127 Mb
---- .. ng_demand_tot.csv(10) 127 Mb
---- . b_inputs.gms(5022) 128 Mb
---- .. ng_crf_penalty_st.csv(121) 128 Mb
---- . b_inputs.gms(5032) 128 Mb
---- .. ng_crf_penalty.csv(42) 128 Mb
---- . b_inputs.gms(5069) 128 Mb
---- .. cd_beta0.csv(10) 128 Mb
---- . b_inputs.gms(5078) 128 Mb
---- .. cd_beta0_allsector.csv(10) 128 Mb
---- . b_inputs.gms(5105) 128 Mb
---- .. alpha.csv(42) 128 Mb
---- . b_inputs.gms(5113) 128 Mb
---- .. cendivweights.csv(91) 128 Mb
---- . b_inputs.gms(5215) 128 Mb
---- .. storinmaxfrac.csv(28) 128 Mb
---- . b_inputs.gms(5235) 128 Mb
---- .. pvbcapcostmult.csv(42) 128 Mb
---- . b_inputs.gms(5276) 128 Mb
---- .. storage_duration.csv(60) 128 Mb
---- . b_inputs.gms(5286) 128 Mb
---- .. psh_sc_duration.csv(1) 128 Mb
---- . b_inputs.gms(5315) 128 Mb
---- .. storage_duration_pshdata.csv(28) 128 Mb
---- . b_inputs.gms(5373) 128 Mb
---- .. minCF.csv(34) 128 Mb
---- . b_inputs.gms(5388) 128 Mb
---- .. maxdailycf.csv(2) 128 Mb
---- . b_inputs.gms(5444) 128 Mb
---- .. upgrade_costs_ccs_coal.csv(42) 128 Mb
---- . b_inputs.gms(5453) 128 Mb
---- .. upgrade_costs_ccs_gas.csv(42) 128 Mb
---- . b_inputs.gms(5479) 128 Mb
---- .. upgrade_mult_final.csv(27) 128 Mb
---- . b_inputs.gms(5534) 128 Mb
---- .. bio_supplycurve.csv(211) 130 Mb
---- . b_inputs.gms(5687) 130 Mb
---- .. nuclear_subsidies.csv(5) 130 Mb
---- . b_inputs.gms(5946) 130 Mb
---- .. r_cs.csv(960) 130 Mb
---- . b_inputs.gms(5964) 130 Mb
---- .. r_cs_distance_mi.csv(960) 130 Mb
---- . b_inputs.gms(5984) 130 Mb
---- .. co2_site_char.csv(156) 130 Mb
---- . b_inputs.gms(6026) 130 Mb
---- .. employment_factor_plant.csv(206) 131 Mb
---- . b_inputs.gms(6037) 131 Mb
---- .. employment_factor_inter_transmission.csv(1) 131 Mb
---- . b_inputs.gms(6242) 131 Mb
---- a_createmodel.gms(7) 131 Mb
---- . c_model.gms(4022) 131 Mb
---- a_createmodel.gms(8) 131 Mb
---- . d_objective.gms(372) 131 Mb
---- a_createmodel.gms(9) 131 Mb
---- . d_mga.gms(30) 131 Mb
---- a_createmodel.gms(10) 131 Mb
---- . e_solveprep.gms(254) 131 Mb
---- a_createmodel.gms(10) 160 Mb
---- Starting execution: elapsed 0:00:03.068
---- a_createmodel.gms(651102) 426 Mb
---- GDX File (execute_unload) C:\Users\egallup\ReEDS-nuclear-learning\runs\agretail_smr100_eo_p50\inputs_case\inputs.gdx
---- Profile Summary (5376 records processed)
-     7.578   0.426GB    641918 Assignment emit_rate (1074168)
-     2.140   0.416GB    641915 Assignment emit_rate (851134)
-     1.969   0.426GB    643722 Assignment retiretech (117182)
-     1.344   0.426GB    651102 GAMS Fini   
-     1.328   0.164GB      2710 Assignment one_newv (7)
-     1.281   0.184GB     87535 Loop       
-     1.031   0.426GB    651102 Unload     
-     0.719   0.251GB    536045 Assignment RecTech (89949)
-     0.672   0.194GB    531624 Assignment valcap (194763)
-     0.610   0.256GB    536222 Assignment RecMap (215382)
-*** Status: Normal completion
---- a_createmodel.gms(651102) 424 Mb
---- Job a_createmodel.gms Stop 11/05/26 10:25:24 elapsed 0:00:30.612
-retail_rate_calculations.py | 2026-11-05 10:26:17 | INFO | Starting retail_rate_calculations.py
-retail_rate_calculations.py | 2026-11-05 10:26:17 | INFO | Calculating historical capital costs...
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:161: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |   .assign(cost_cap=lambda x: x['cost_cap_x'].fillna(x['cost_cap_y']))
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR | Traceback (most recent call last):
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py", line 2337, in <module>
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |     main(
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |     ~~~~^
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |         run_dir=run_dir,
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |         ^^^^^^^^^^^^^^^^
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |         inputpath=os.path.join(mdir,'inputs.csv'),
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |         write=True, verbose=args.verbose,
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |         )
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py", line 272, in main
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |     calculate_historical_capex.main(run_dir)
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py", line 169, in main
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |     raise ValueError(
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |     ...<5 lines>...
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR |     )
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR | ValueError: The following technologies have no associated capital costs. You may need to update the `tech_name_map` dictionary in the `get_historical_units` function so that the historical unit technology names match those of the capital cost data from inputs.gdx:
-retail_rate_calculations.py | 2026-11-05 10:26:20 | ERROR | hydnd
+﻿retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | 
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+retail_rate_calculations.py | 2026-11-05 11:39:40 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+retail_rate_calculations.py | 2026-11-05 11:39:41 | INFO |    - Transmission O&M Expenditures
+retail_rate_calculations.py | 2026-11-05 11:39:42 | INFO |    - PTC Values
+retail_rate_calculations.py | 2026-11-05 11:39:42 | INFO |    - ITC Values
+retail_rate_calculations.py | 2026-11-05 11:39:42 | INFO | Getting US-average retail rates
+retail_rate_calculations.py | 2026-11-05 11:39:42 | INFO | Creating Plots:
+retail_rate_calculations.py | 2026-11-05 11:39:42 | INFO |  - Plot 1a: Full retail rate disaggregation
+retail_rate_calculations.py | 2026-11-05 11:39:43 | INFO | The only entries in the following list should be related to the PTC and ITC.
+retail_rate_calculations.py | 2026-11-05 11:39:43 | INFO | If there are additional entries, add them to
+retail_rate_calculations.py | 2026-11-05 11:39:43 | INFO | postprocessing/retail_rate_module/retail_rate_calculations.retail_plots().
+retail_rate_calculations.py | 2026-11-05 11:39:43 | INFO | ['itc_normalized_value', 'itc_trans', 'ptc_grossup']
+retail_rate_calculations.py | 2026-11-05 11:39:45 | INFO |  - Plot 1b: Aggregate rates by financial type
+retail_rate_calculations.py | 2026-11-05 11:39:46 | INFO |  - Plot 1c: Aggregate rates by model category
+retail_rate_calculations.py | 2026-11-05 11:39:47 | INFO |  - Plot 2: EIA861 Historic vs ReEDS rates
+retail_rate_calculations.py | 2026-11-05 11:39:50 | INFO | Finished retail_rate_calculations.py
