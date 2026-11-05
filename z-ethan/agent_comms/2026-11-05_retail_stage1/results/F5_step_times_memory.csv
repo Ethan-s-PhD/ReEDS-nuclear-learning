@@ -1,0 +1,42 @@
+step,case,start,end,seconds,peak_process_rss_GB,peak_process_private_GB,peak_process,tree_max_GB_60s_log,min_avail_GB_60s_log
+4 runreeds.py (parent of all five),(all),11:54:23,14:19:11,8688,10.02,15.68,python.exe runreeds.py,10.62,118.6
+4 input processing,smr100_eia_p50,11:55:36,12:24:35,1739,10.58,10.68,python.exe hourly_repperiods.py,10.24,127.8
+4 input processing,smr100_aj_p50,12:24:53,12:53:38,1725,10.34,10.68,python.exe hourly_repperiods.py,10.62,174.0
+4 input processing,smr100_iaea_p50,12:53:57,13:21:31,1654,10.64,10.67,python.exe hourly_repperiods.py,6.4,118.6
+4 input processing,smr100_mck_p50,13:21:47,13:51:47,1800,10.59,12.0,python.exe recf.py,10.34,174.3
+4 input processing,smr100_cop28_p50,13:51:56,14:19:11,1635,10.48,11.98,python.exe recf.py,9.95,120.5
+5 compile (a_createmodel.gms),smr100_eia_p50,14:19:17,14:19:43,26,0.41,0.41,gamscmex.exe C:\GAMS\50\gamscmex.exe,,
+5 cmd1 1_tc_phaseout.py,smr100_eia_p50,14:19:43,14:19:47,4,,,,,
+5 cmd2 solve.py 2010,smr100_eia_p50,14:19:47,14:23:53,246,4.63,4.66,gamscmex.exe C:\GAMS\50\gamscmex.exe,7.33,118.9
+5 cmd3 check_inputs.py,smr100_eia_p50,14:23:53,14:24:27,34,6.13,7.76,python.exe check_inputs.py,6.13,125.3
+5 cmd4 diagnostic_plots.py,smr100_eia_p50,14:24:27,14:24:33,6,0.02,0.02,python.exe diagnostic_plots.py,,
+6 diag_hydnd.py,smr100_eia_p50,14:24:33,14:24:43,10,,,,,
+7 retail_rate_calculations.py,smr100_eia_p50,14:24:43,14:25:03,20,0.26,0.22,python.exe retail_rate_calculations.py,,
+5 compile (a_createmodel.gms),smr100_aj_p50,14:25:03,14:25:29,26,0.41,0.4,gamscmex.exe C:\GAMS\50\gamscmex.exe,0.43,128.1
+5 cmd1 1_tc_phaseout.py,smr100_aj_p50,14:25:29,14:25:32,3,0.13,0.1,python.exe 1_tc_phaseout.py,,
+5 cmd2 solve.py 2010,smr100_aj_p50,14:25:32,14:29:06,214,4.64,4.66,gamscmex.exe C:\GAMS\50\gamscmex.exe,7.47,118.9
+5 cmd3 check_inputs.py,smr100_aj_p50,14:29:06,14:29:28,22,4.59,4.8,python.exe check_inputs.py,,
+5 cmd4 diagnostic_plots.py,smr100_aj_p50,14:29:28,14:29:33,5,0.04,0.03,python.exe diagnostic_plots.py,,
+6 diag_hydnd.py,smr100_aj_p50,14:29:33,14:29:40,7,0.25,0.21,python.exe diag_hydnd.py,0.26,179.8
+7 retail_rate_calculations.py,smr100_aj_p50,14:29:40,14:29:54,14,0.39,0.33,python.exe retail_rate_calculations.py,,
+5 compile (a_createmodel.gms),smr100_iaea_p50,14:29:54,14:30:15,21,0.45,0.45,gamscmex.exe C:\GAMS\50\gamscmex.exe,,
+5 cmd1 1_tc_phaseout.py,smr100_iaea_p50,14:30:15,14:30:17,2,,,,,
+5 cmd2 solve.py 2010,smr100_iaea_p50,14:30:17,14:33:24,187,4.64,4.66,gamscmex.exe C:\GAMS\50\gamscmex.exe,6.15,144.9
+5 cmd3 check_inputs.py,smr100_iaea_p50,14:33:24,14:33:46,22,11.2,11.18,python.exe check_inputs.py,,
+5 cmd4 diagnostic_plots.py,smr100_iaea_p50,14:33:46,14:33:51,5,0.32,0.28,python.exe diagnostic_plots.py,,
+6 diag_hydnd.py,smr100_iaea_p50,14:33:52,14:33:59,7,0.3,0.26,python.exe diag_hydnd.py,0.3,188.6
+7 retail_rate_calculations.py,smr100_iaea_p50,14:33:59,14:34:13,14,0.33,0.27,python.exe retail_rate_calculations.py,,
+5 compile (a_createmodel.gms),smr100_mck_p50,14:34:13,14:34:35,22,0.41,0.41,gamscmex.exe C:\GAMS\50\gamscmex.exe,,
+5 cmd1 1_tc_phaseout.py,smr100_mck_p50,14:34:35,14:34:37,2,,,,,
+5 cmd2 solve.py 2010,smr100_mck_p50,14:34:37,14:38:31,234,4.63,4.66,gamscmex.exe C:\GAMS\50\gamscmex.exe,7.32,172.0
+5 cmd3 check_inputs.py,smr100_mck_p50,14:38:31,14:38:57,26,6.44,6.41,python.exe check_inputs.py,,
+5 cmd4 diagnostic_plots.py,smr100_mck_p50,14:38:57,14:39:15,18,0.18,0.15,python.exe diagnostic_plots.py,,
+6 diag_hydnd.py,smr100_mck_p50,14:39:15,14:39:23,8,,,,0.0,179.0
+7 retail_rate_calculations.py,smr100_mck_p50,14:39:23,14:39:43,20,0.27,0.23,python.exe retail_rate_calculations.py,,
+5 compile (a_createmodel.gms),smr100_cop28_p50,14:39:43,14:40:09,26,0.41,0.4,gamscmex.exe C:\GAMS\50\gamscmex.exe,,
+5 cmd1 1_tc_phaseout.py,smr100_cop28_p50,14:40:09,14:40:12,3,0.16,0.13,python.exe 1_tc_phaseout.py,,
+5 cmd2 solve.py 2010,smr100_cop28_p50,14:40:12,14:44:05,233,4.64,4.66,gamscmex.exe C:\GAMS\50\gamscmex.exe,7.32,172.0
+5 cmd3 check_inputs.py,smr100_cop28_p50,14:44:05,14:44:30,25,11.2,11.18,python.exe check_inputs.py,,
+5 cmd4 diagnostic_plots.py,smr100_cop28_p50,14:44:30,14:44:36,6,,,,,
+6 diag_hydnd.py,smr100_cop28_p50,14:44:36,14:44:45,9,,,,,
+7 retail_rate_calculations.py,smr100_cop28_p50,14:44:45,14:45:01,16,0.5,0.45,python.exe retail_rate_calculations.py,0.51,179.4

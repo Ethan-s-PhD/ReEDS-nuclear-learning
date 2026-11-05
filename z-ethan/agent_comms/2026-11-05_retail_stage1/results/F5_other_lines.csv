@@ -1,0 +1,27 @@
+case,source,line,text
+smr100_eia_p50,gamslog.txt,489,WriteHintage.py | 2026-11-05 12:04:37 | INFO | Note that the clustering can result in warnings if the heat rates
+smr100_eia_p50,gamslog.txt,2307,check_inputs.py | 2026-11-05 14:24:03 | INFO | Load inputs.gdx for error checking
+smr100_eia_p50,S5 console,1773,check_inputs.py | 2026-11-05 14:24:03 | INFO | Load inputs.gdx for error checking
+smr100_eia_p50,S5 console,1836,Traceback (most recent call last):
+smr100_eia_p50,S5 console,1845,AttributeError: 'NoneType' object has no attribute 'rename'
+smr100_aj_p50,gamslog.txt,489,WriteHintage.py | 2026-11-05 12:34:14 | INFO | Note that the clustering can result in warnings if the heat rates
+smr100_aj_p50,gamslog.txt,2307,check_inputs.py | 2026-11-05 14:29:08 | INFO | Load inputs.gdx for error checking
+smr100_aj_p50,S5 console,1773,check_inputs.py | 2026-11-05 14:29:08 | INFO | Load inputs.gdx for error checking
+smr100_aj_p50,S5 console,1836,Traceback (most recent call last):
+smr100_aj_p50,S5 console,1845,AttributeError: 'NoneType' object has no attribute 'rename'
+smr100_iaea_p50,gamslog.txt,489,WriteHintage.py | 2026-11-05 13:02:59 | INFO | Note that the clustering can result in warnings if the heat rates
+smr100_iaea_p50,gamslog.txt,2307,check_inputs.py | 2026-11-05 14:33:27 | INFO | Load inputs.gdx for error checking
+smr100_iaea_p50,S5 console,1773,check_inputs.py | 2026-11-05 14:33:27 | INFO | Load inputs.gdx for error checking
+smr100_iaea_p50,S5 console,1836,Traceback (most recent call last):
+smr100_iaea_p50,S5 console,1845,AttributeError: 'NoneType' object has no attribute 'rename'
+smr100_mck_p50,gamslog.txt,489,WriteHintage.py | 2026-11-05 13:31:16 | INFO | Note that the clustering can result in warnings if the heat rates
+smr100_mck_p50,gamslog.txt,2307,check_inputs.py | 2026-11-05 14:38:34 | INFO | Load inputs.gdx for error checking
+smr100_mck_p50,S5 console,1773,check_inputs.py | 2026-11-05 14:38:34 | INFO | Load inputs.gdx for error checking
+smr100_mck_p50,S5 console,1836,Traceback (most recent call last):
+smr100_mck_p50,S5 console,1845,AttributeError: 'NoneType' object has no attribute 'rename'
+smr100_cop28_p50,gamslog.txt,489,WriteHintage.py | 2026-11-05 14:01:09 | INFO | Note that the clustering can result in warnings if the heat rates
+smr100_cop28_p50,gamslog.txt,2307,check_inputs.py | 2026-11-05 14:44:07 | INFO | Load inputs.gdx for error checking
+smr100_cop28_p50,S5 console,1773,check_inputs.py | 2026-11-05 14:44:07 | INFO | Load inputs.gdx for error checking
+smr100_cop28_p50,S5 console,1836,Traceback (most recent call last):
+smr100_cop28_p50,S5 console,1845,AttributeError: 'NoneType' object has no attribute 'rename'
+"(all, runreeds)",step4 console,1,Warning 3: Cannot find header.dxf (GDAL_DATA is not defined)

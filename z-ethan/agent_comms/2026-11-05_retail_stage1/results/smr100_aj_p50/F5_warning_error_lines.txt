@@ -1,0 +1,159 @@
+# warning headers (file:line: Class) by source
+gamslog.txt 272: [copy_files.py] core.py:34 RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+gamslog.txt 353: [copy_files.py] copy_files.py:465 DtypeWarning: Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_m
+gamslog.txt 355: [copy_files.py] copy_files.py:896 PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many
+gamslog.txt 367: [copy_files.py] raw.py:733 RuntimeWarning: Cannot find tms_NZTM2000.json (GDAL_DATA is not defined)
+gamslog.txt 390: [h2_storage.py] core.py:34 RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+gamslog.txt 398: [fuelcostprep.py] core.py:34 RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+gamslog.txt 479: [recf.py] recf.py:422 Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a
+gamslog.txt 481: [recf.py] recf.py:449 Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a
+gamslog.txt 496: [transmission.py] core.py:34 RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+gamslog.txt 526: [hourly_repperiods.py] core.py:34 RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+gamslog.txt 2357: [retail_rate_calculations.py] calculate_historical_capex.py:161 PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many
+gamslog.txt 2359: [retail_rate_calculations.py] calculate_historical_capex.py:179 PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many
+gamslog.txt 2361: [retail_rate_calculations.py] calculate_historical_capex.py:182 PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many
+gamslog.txt 2368: [retail_rate_calculations.py] retail_rate_calculations.py:883 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+gamslog.txt 2375: [retail_rate_calculations.py] retail_rate_calculations.py:889 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+gamslog.txt 2382: [retail_rate_calculations.py] retail_rate_calculations.py:926 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+gamslog.txt 2389: [retail_rate_calculations.py] retail_rate_calculations.py:930 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+gamslog.txt 2396: [retail_rate_calculations.py] ferc_distadmin.py:383 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+gamslog.txt 2403: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2410: [retail_rate_calculations.py] ferc_distadmin.py:383 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+gamslog.txt 2417: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2424: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2431: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2438: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2445: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2452: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2459: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2466: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2473: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2480: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2487: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2494: [retail_rate_calculations.py] ferc_distadmin.py:383 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+gamslog.txt 2501: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2508: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2515: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2522: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2529: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2536: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2543: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2550: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2557: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2564: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2571: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2578: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2585: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2592: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2599: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2606: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2613: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2620: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2627: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2634: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2641: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2648: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2655: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2662: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2669: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2676: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2683: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2690: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2697: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2704: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2711: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2718: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2725: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2732: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2739: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2746: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2753: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2760: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2767: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2774: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2781: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2788: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2795: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2802: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2809: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2816: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2823: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+gamslog.txt 2830: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S6 console 1: [-] diag_hydnd.py:48 PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many
+S6 console 3: [-] diag_hydnd.py:93 PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many
+S7 console 3: [retail_rate_calculations.py] calculate_historical_capex.py:161 PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many
+S7 console 5: [retail_rate_calculations.py] calculate_historical_capex.py:179 PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many
+S7 console 7: [retail_rate_calculations.py] calculate_historical_capex.py:182 PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many
+S7 console 14: [retail_rate_calculations.py] retail_rate_calculations.py:883 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+S7 console 21: [retail_rate_calculations.py] retail_rate_calculations.py:889 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+S7 console 28: [retail_rate_calculations.py] retail_rate_calculations.py:926 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+S7 console 35: [retail_rate_calculations.py] retail_rate_calculations.py:930 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+S7 console 42: [retail_rate_calculations.py] ferc_distadmin.py:383 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+S7 console 49: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 56: [retail_rate_calculations.py] ferc_distadmin.py:383 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+S7 console 63: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 70: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 77: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 84: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 91: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 98: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 105: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 112: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 119: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 126: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 133: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 140: [retail_rate_calculations.py] ferc_distadmin.py:383 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using a
+S7 console 147: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 154: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 161: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 168: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 175: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 182: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 189: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 196: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 203: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 210: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 217: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 224: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 231: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 238: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 245: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 252: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 259: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 266: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 273: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 280: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 287: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 294: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 301: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 308: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 315: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 322: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 329: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 336: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 343: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 350: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 357: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 364: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 371: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 378: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 385: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 392: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 399: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 406: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 413: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 420: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 427: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 434: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 441: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 448: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 455: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 462: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 469: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+S7 console 476: [retail_rate_calculations.py] ferc_distadmin.py:449 ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+# other lines matching error|warning|traceback (not in a warning block, excluding S5MARK echoes)
+gamslog.txt 489: WriteHintage.py | 2026-11-05 12:34:14 | INFO | Note that the clustering can result in warnings if the heat rates
+gamslog.txt 2307: check_inputs.py | 2026-11-05 14:29:08 | INFO | Load inputs.gdx for error checking
+S5 console 1773: check_inputs.py | 2026-11-05 14:29:08 | INFO | Load inputs.gdx for error checking
+S5 console 1836: Traceback (most recent call last):
+S5 console 1845: AttributeError: 'NoneType' object has no attribute 'rename'

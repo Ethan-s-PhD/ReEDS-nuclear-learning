@@ -1,0 +1,32 @@
+source,logged_by,at,kind,smr100_eia_p50,smr100_aj_p50,smr100_iaea_p50,smr100_mck_p50,smr100_cop28_p50,"(all, runreeds)"
+gamslog.txt,copy_files.py,core.py:34,RuntimeWarning,1,1,1,1,1,0
+gamslog.txt,copy_files.py,copy_files.py:465,DtypeWarning,1,1,1,1,1,0
+gamslog.txt,copy_files.py,copy_files.py:896,PerformanceWarning,1,1,1,1,1,0
+gamslog.txt,copy_files.py,raw.py:733,RuntimeWarning,1,1,1,1,1,0
+gamslog.txt,h2_storage.py,core.py:34,RuntimeWarning,1,1,1,1,1,0
+gamslog.txt,fuelcostprep.py,core.py:34,RuntimeWarning,1,1,1,1,1,0
+gamslog.txt,recf.py,recf.py:422,Pandas4Warning,1,1,1,1,1,0
+gamslog.txt,recf.py,recf.py:449,Pandas4Warning,1,1,1,1,1,0
+gamslog.txt,transmission.py,core.py:34,RuntimeWarning,1,1,1,1,1,0
+gamslog.txt,hourly_repperiods.py,core.py:34,RuntimeWarning,1,1,1,1,1,0
+gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,1,1,1,1,1,0
+gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,1,1,1,1,1,0
+gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,1,1,1,1,1,0
+gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,1,1,1,1,1,0
+gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,1,1,1,1,1,0
+gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,1,1,1,1,1,0
+gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,1,1,1,1,1,0
+gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,3,3,3,3,3,0
+gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,60,60,60,60,60,0
+S6 console,-,diag_hydnd.py:48,PerformanceWarning,1,1,1,1,1,0
+S6 console,-,diag_hydnd.py:93,PerformanceWarning,1,1,1,1,1,0
+S7 console,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,1,1,1,1,1,0
+S7 console,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,1,1,1,1,1,0
+S7 console,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,1,1,1,1,1,0
+S7 console,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,1,1,1,1,1,0
+S7 console,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,1,1,1,1,1,0
+S7 console,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,1,1,1,1,1,0
+S7 console,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,1,1,1,1,1,0
+S7 console,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,3,3,3,3,3,0
+S7 console,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,60,60,60,60,60,0
+step4 console,-,core.py:34,RuntimeWarning,0,0,0,0,0,1

@@ -1,0 +1,6 @@
+case,rows,n_columns,n_value_columns,n_states,year_min,year_max,n_years,columns_same_as_pilot_fbR_none,columns_same_as_pilot_smr100_eo_p50,states_same_as_pilot,index_same_as_pilot
+smr100_eia_p50,4368,61,59,48,1960,2050,91,True,True,True,True
+smr100_aj_p50,4368,61,59,48,1960,2050,91,True,True,True,True
+smr100_iaea_p50,4368,61,59,48,1960,2050,91,True,True,True,True
+smr100_mck_p50,4368,61,59,48,1960,2050,91,True,True,True,True
+smr100_cop28_p50,4368,61,59,48,1960,2050,91,True,True,True,True

@@ -1,0 +1,6 @@
+case,switches_csv_keys,casefile_keys,common,input_processing_only_switches_csv,input_processing_only_casefile,n_value_differs,only_in_switches_csv,only_in_casefile
+smr100_eia_p50,431,429,429,1,1,0,hpc=0;numclass=33,
+smr100_aj_p50,431,429,429,1,1,0,hpc=0;numclass=33,
+smr100_iaea_p50,431,429,429,1,1,0,hpc=0;numclass=33,
+smr100_mck_p50,431,429,429,1,1,0,hpc=0;numclass=33,
+smr100_cop28_p50,431,429,429,1,1,0,hpc=0;numclass=33,

@@ -1,0 +1,152 @@
+case,source,logged_by,at,kind,message,count,first_line
+smr100_eia_p50,gamslog.txt,copy_files.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,272
+smr100_eia_p50,gamslog.txt,copy_files.py,copy_files.py:465,DtypeWarning,Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_m,1,353
+smr100_eia_p50,gamslog.txt,copy_files.py,copy_files.py:896,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,355
+smr100_eia_p50,gamslog.txt,copy_files.py,raw.py:733,RuntimeWarning,Cannot find tms_NZTM2000.json (GDAL_DATA is not defined),1,367
+smr100_eia_p50,gamslog.txt,h2_storage.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,390
+smr100_eia_p50,gamslog.txt,fuelcostprep.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,398
+smr100_eia_p50,gamslog.txt,recf.py,recf.py:422,Pandas4Warning,The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a,1,479
+smr100_eia_p50,gamslog.txt,recf.py,recf.py:449,Pandas4Warning,The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a,1,481
+smr100_eia_p50,gamslog.txt,transmission.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,496
+smr100_eia_p50,gamslog.txt,hourly_repperiods.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,526
+smr100_eia_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2357
+smr100_eia_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2359
+smr100_eia_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2361
+smr100_eia_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2368
+smr100_eia_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2375
+smr100_eia_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2382
+smr100_eia_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2389
+smr100_eia_p50,gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,3,2396
+smr100_eia_p50,gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment.,60,2403
+smr100_eia_p50,S6 console,-,diag_hydnd.py:48,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,1
+smr100_eia_p50,S6 console,-,diag_hydnd.py:93,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,3
+smr100_eia_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,3
+smr100_eia_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,5
+smr100_eia_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,7
+smr100_eia_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,14
+smr100_eia_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,21
+smr100_eia_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,28
+smr100_eia_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,35
+smr100_eia_p50,S7 console,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,3,42
+smr100_eia_p50,S7 console,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment.,60,49
+smr100_aj_p50,gamslog.txt,copy_files.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,272
+smr100_aj_p50,gamslog.txt,copy_files.py,copy_files.py:465,DtypeWarning,Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_m,1,353
+smr100_aj_p50,gamslog.txt,copy_files.py,copy_files.py:896,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,355
+smr100_aj_p50,gamslog.txt,copy_files.py,raw.py:733,RuntimeWarning,Cannot find tms_NZTM2000.json (GDAL_DATA is not defined),1,367
+smr100_aj_p50,gamslog.txt,h2_storage.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,390
+smr100_aj_p50,gamslog.txt,fuelcostprep.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,398
+smr100_aj_p50,gamslog.txt,recf.py,recf.py:422,Pandas4Warning,The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a,1,479
+smr100_aj_p50,gamslog.txt,recf.py,recf.py:449,Pandas4Warning,The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a,1,481
+smr100_aj_p50,gamslog.txt,transmission.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,496
+smr100_aj_p50,gamslog.txt,hourly_repperiods.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,526
+smr100_aj_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2357
+smr100_aj_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2359
+smr100_aj_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2361
+smr100_aj_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2368
+smr100_aj_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2375
+smr100_aj_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2382
+smr100_aj_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2389
+smr100_aj_p50,gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,3,2396
+smr100_aj_p50,gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment.,60,2403
+smr100_aj_p50,S6 console,-,diag_hydnd.py:48,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,1
+smr100_aj_p50,S6 console,-,diag_hydnd.py:93,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,3
+smr100_aj_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,3
+smr100_aj_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,5
+smr100_aj_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,7
+smr100_aj_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,14
+smr100_aj_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,21
+smr100_aj_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,28
+smr100_aj_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,35
+smr100_aj_p50,S7 console,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,3,42
+smr100_aj_p50,S7 console,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment.,60,49
+smr100_iaea_p50,gamslog.txt,copy_files.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,272
+smr100_iaea_p50,gamslog.txt,copy_files.py,copy_files.py:465,DtypeWarning,Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_m,1,353
+smr100_iaea_p50,gamslog.txt,copy_files.py,copy_files.py:896,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,355
+smr100_iaea_p50,gamslog.txt,copy_files.py,raw.py:733,RuntimeWarning,Cannot find tms_NZTM2000.json (GDAL_DATA is not defined),1,367
+smr100_iaea_p50,gamslog.txt,h2_storage.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,390
+smr100_iaea_p50,gamslog.txt,fuelcostprep.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,398
+smr100_iaea_p50,gamslog.txt,recf.py,recf.py:422,Pandas4Warning,The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a,1,479
+smr100_iaea_p50,gamslog.txt,recf.py,recf.py:449,Pandas4Warning,The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a,1,481
+smr100_iaea_p50,gamslog.txt,transmission.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,496
+smr100_iaea_p50,gamslog.txt,hourly_repperiods.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,526
+smr100_iaea_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2357
+smr100_iaea_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2359
+smr100_iaea_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2361
+smr100_iaea_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2368
+smr100_iaea_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2375
+smr100_iaea_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2382
+smr100_iaea_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2389
+smr100_iaea_p50,gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,3,2396
+smr100_iaea_p50,gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment.,60,2403
+smr100_iaea_p50,S6 console,-,diag_hydnd.py:48,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,1
+smr100_iaea_p50,S6 console,-,diag_hydnd.py:93,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,3
+smr100_iaea_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,3
+smr100_iaea_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,5
+smr100_iaea_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,7
+smr100_iaea_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,14
+smr100_iaea_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,21
+smr100_iaea_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,28
+smr100_iaea_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,35
+smr100_iaea_p50,S7 console,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,3,42
+smr100_iaea_p50,S7 console,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment.,60,49
+smr100_mck_p50,gamslog.txt,copy_files.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,272
+smr100_mck_p50,gamslog.txt,copy_files.py,copy_files.py:465,DtypeWarning,Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_m,1,353
+smr100_mck_p50,gamslog.txt,copy_files.py,copy_files.py:896,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,355
+smr100_mck_p50,gamslog.txt,copy_files.py,raw.py:733,RuntimeWarning,Cannot find tms_NZTM2000.json (GDAL_DATA is not defined),1,367
+smr100_mck_p50,gamslog.txt,h2_storage.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,390
+smr100_mck_p50,gamslog.txt,fuelcostprep.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,398
+smr100_mck_p50,gamslog.txt,recf.py,recf.py:422,Pandas4Warning,The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a,1,479
+smr100_mck_p50,gamslog.txt,recf.py,recf.py:449,Pandas4Warning,The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a,1,481
+smr100_mck_p50,gamslog.txt,transmission.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,496
+smr100_mck_p50,gamslog.txt,hourly_repperiods.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,526
+smr100_mck_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2357
+smr100_mck_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2359
+smr100_mck_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2361
+smr100_mck_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2368
+smr100_mck_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2375
+smr100_mck_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2382
+smr100_mck_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2389
+smr100_mck_p50,gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,3,2396
+smr100_mck_p50,gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment.,60,2403
+smr100_mck_p50,S6 console,-,diag_hydnd.py:48,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,1
+smr100_mck_p50,S6 console,-,diag_hydnd.py:93,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,3
+smr100_mck_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,3
+smr100_mck_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,5
+smr100_mck_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,7
+smr100_mck_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,14
+smr100_mck_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,21
+smr100_mck_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,28
+smr100_mck_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,35
+smr100_mck_p50,S7 console,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,3,42
+smr100_mck_p50,S7 console,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment.,60,49
+smr100_cop28_p50,gamslog.txt,copy_files.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,272
+smr100_cop28_p50,gamslog.txt,copy_files.py,copy_files.py:465,DtypeWarning,Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_m,1,353
+smr100_cop28_p50,gamslog.txt,copy_files.py,copy_files.py:896,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,355
+smr100_cop28_p50,gamslog.txt,copy_files.py,raw.py:733,RuntimeWarning,Cannot find tms_NZTM2000.json (GDAL_DATA is not defined),1,367
+smr100_cop28_p50,gamslog.txt,h2_storage.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,390
+smr100_cop28_p50,gamslog.txt,fuelcostprep.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,398
+smr100_cop28_p50,gamslog.txt,recf.py,recf.py:422,Pandas4Warning,The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a,1,479
+smr100_cop28_p50,gamslog.txt,recf.py,recf.py:449,Pandas4Warning,The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is a,1,481
+smr100_cop28_p50,gamslog.txt,transmission.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,496
+smr100_cop28_p50,gamslog.txt,hourly_repperiods.py,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,526
+smr100_cop28_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2357
+smr100_cop28_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2359
+smr100_cop28_p50,gamslog.txt,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,2361
+smr100_cop28_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2368
+smr100_cop28_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2375
+smr100_cop28_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2382
+smr100_cop28_p50,gamslog.txt,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,2389
+smr100_cop28_p50,gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,3,2396
+smr100_cop28_p50,gamslog.txt,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment.,60,2403
+smr100_cop28_p50,S6 console,-,diag_hydnd.py:48,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,1
+smr100_cop28_p50,S6 console,-,diag_hydnd.py:93,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,3
+smr100_cop28_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:161,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,3
+smr100_cop28_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:179,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,5
+smr100_cop28_p50,S7 console,retail_rate_calculations.py,calculate_historical_capex.py:182,PerformanceWarning,DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many,1,7
+smr100_cop28_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:883,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,14
+smr100_cop28_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:889,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,21
+smr100_cop28_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:926,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,28
+smr100_cop28_p50,S7 console,retail_rate_calculations.py,retail_rate_calculations.py:930,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,1,35
+smr100_cop28_p50,S7 console,retail_rate_calculations.py,ferc_distadmin.py:383,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment using a,3,42
+smr100_cop28_p50,S7 console,retail_rate_calculations.py,ferc_distadmin.py:449,ChainedAssignmentError,A value is being set on a copy of a DataFrame or Series through chained assignment.,60,49
+"(all, runreeds)",step4 console,-,core.py:34,RuntimeWarning,Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.,1,2
