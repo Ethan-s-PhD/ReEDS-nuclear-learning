@@ -1,0 +1,15 @@
+run,source,lines,lines_matching_error_warning_traceback,warning_headers,ChainedAssignmentError,Traceback,start,end,exit,seconds
+smr100_eo_p50,console,27,6,3,0,0,16:16:54.830,16:17:21.006,0,26.2
+smr100_eo_p50,gamslog.txt added lines,27,6,3,0,0,16:16:54.830,16:17:21.006,0,26.2
+fbR_none,console,27,6,3,0,0,16:17:21.322,16:17:36.614,0,15.3
+fbR_none,gamslog.txt added lines,27,6,3,0,0,16:17:21.322,16:17:36.614,0,15.3
+smr100_eia_p50,console,27,6,3,0,0,16:17:36.906,16:17:52.714,0,15.8
+smr100_eia_p50,gamslog.txt added lines,27,6,3,0,0,16:17:36.906,16:17:52.714,0,15.8
+smr100_aj_p50,console,27,6,3,0,0,16:17:53.013,16:18:08.582,0,15.6
+smr100_aj_p50,gamslog.txt added lines,27,6,3,0,0,16:17:53.013,16:18:08.582,0,15.6
+smr100_iaea_p50,console,27,6,3,0,0,16:18:08.858,16:18:24.815,0,16.0
+smr100_iaea_p50,gamslog.txt added lines,27,6,3,0,0,16:18:08.858,16:18:24.815,0,16.0
+smr100_mck_p50,console,27,6,3,0,0,16:18:25.118,16:18:40.918,0,15.8
+smr100_mck_p50,gamslog.txt added lines,27,6,3,0,0,16:18:25.118,16:18:40.918,0,15.8
+smr100_cop28_p50,console,27,6,3,0,0,16:18:41.211,16:18:57.075,0,15.9
+smr100_cop28_p50,gamslog.txt added lines,27,6,3,0,0,16:18:41.211,16:18:57.075,0,15.9

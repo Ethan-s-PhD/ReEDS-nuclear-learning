@@ -1,0 +1,43 @@
+run,source,at,kind,count
+smr100_eo_p50,console,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_eo_p50,console,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_eo_p50,console,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_eo_p50,gamslog.txt added lines,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_eo_p50,gamslog.txt added lines,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_eo_p50,gamslog.txt added lines,calculate_historical_capex.py:182,PerformanceWarning,1
+fbR_none,console,calculate_historical_capex.py:161,PerformanceWarning,1
+fbR_none,console,calculate_historical_capex.py:179,PerformanceWarning,1
+fbR_none,console,calculate_historical_capex.py:182,PerformanceWarning,1
+fbR_none,gamslog.txt added lines,calculate_historical_capex.py:161,PerformanceWarning,1
+fbR_none,gamslog.txt added lines,calculate_historical_capex.py:179,PerformanceWarning,1
+fbR_none,gamslog.txt added lines,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_eia_p50,console,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_eia_p50,console,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_eia_p50,console,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_eia_p50,gamslog.txt added lines,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_eia_p50,gamslog.txt added lines,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_eia_p50,gamslog.txt added lines,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_aj_p50,console,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_aj_p50,console,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_aj_p50,console,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_aj_p50,gamslog.txt added lines,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_aj_p50,gamslog.txt added lines,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_aj_p50,gamslog.txt added lines,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_iaea_p50,console,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_iaea_p50,console,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_iaea_p50,console,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_iaea_p50,gamslog.txt added lines,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_iaea_p50,gamslog.txt added lines,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_iaea_p50,gamslog.txt added lines,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_mck_p50,console,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_mck_p50,console,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_mck_p50,console,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_mck_p50,gamslog.txt added lines,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_mck_p50,gamslog.txt added lines,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_mck_p50,gamslog.txt added lines,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_cop28_p50,console,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_cop28_p50,console,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_cop28_p50,console,calculate_historical_capex.py:182,PerformanceWarning,1
+smr100_cop28_p50,gamslog.txt added lines,calculate_historical_capex.py:161,PerformanceWarning,1
+smr100_cop28_p50,gamslog.txt added lines,calculate_historical_capex.py:179,PerformanceWarning,1
+smr100_cop28_p50,gamslog.txt added lines,calculate_historical_capex.py:182,PerformanceWarning,1

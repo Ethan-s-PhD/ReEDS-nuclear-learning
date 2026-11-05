@@ -1,0 +1,10 @@
+item,value
+original retail_rate_calculations.py md5 (normalized),90061ca2ac28abc1373b0bd02785bd7b
+original ferc_distadmin.py md5 (normalized),b55c953972b8d5204dc69ec035a47461
+retail_rate_calculations.py,6 patches applied
+ferc_distadmin.py,2 patches applied
+diff lines added (printed),24
+exit code,0
+md5 results/patch.diff,9410f18ba21724cf065e11d58f6acc22
+md5 reference/patch_expected.diff,9410f18ba21724cf065e11d58f6acc22
+pandas version,3.0.5

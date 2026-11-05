@@ -1,0 +1,95 @@
+--- postprocessing/retail_rate_module/retail_rate_calculations.py
++++ runs/agretail_module_patch/retail_rate_calculations.py
+@@ -875,18 +875,21 @@
+     depreciation_sch['depreciation_sch'] = depreciation_sch['depreciation_sch'].astype(str)
+ 
+     # Merge generator capex on eval_period and depreciation_sch
+-    df_gen_capex = df_gen_capex.merge(
+-        eval_period[['i', 't', 'eval_period']],
+-        on=['i', 't'], how='left')
++    # AG patch (O33): match technology names ignoring case, and assign the fills
++    # (pandas 3 ignores df[col].fillna(..., inplace=True))
++    _ep = eval_period[['i', 't', 'eval_period']].assign(_il=lambda x: x['i'].str.lower()).drop(columns='i')
++    _ds = depreciation_sch[['i', 't', 'depreciation_sch']].assign(_il=lambda x: x['i'].str.lower()).drop(columns='i')
++    df_gen_capex['_il'] = df_gen_capex['i'].str.lower()
++    df_gen_capex = df_gen_capex.merge(_ep, on=['_il', 't'], how='left')
++    _agpatch_unmatched = [df_gen_capex.loc[df_gen_capex['eval_period'].isna()].assign(src='new')]
+     # Fill in any missing eval_period with the default 20 years
+     # This should apply to upgrades only
+-    df_gen_capex['eval_period'].fillna(20, inplace=True)
+-    df_gen_capex = df_gen_capex.merge(
+-        depreciation_sch[['i', 't', 'depreciation_sch']],
+-        on=['i', 't'], how='left')
++    df_gen_capex['eval_period'] = df_gen_capex['eval_period'].fillna(20)
++    df_gen_capex = df_gen_capex.merge(_ds, on=['_il', 't'], how='left')
+     # Fill in any missing eval_period with the default 20 years
+     # This should also apply to upgrades only
+-    df_gen_capex['depreciation_sch'].fillna('20', inplace=True)
++    df_gen_capex['depreciation_sch'] = df_gen_capex['depreciation_sch'].fillna('20')
++    df_gen_capex = df_gen_capex.drop(columns='_il')
+ 
+ #%% # For historical capital expenditures, we use a pre-calculated result.
+     #   The expenditures are based on a EIA-NEMS database of historical capacity
+@@ -903,19 +906,20 @@
+     # Find tech-region-year combos for historical builds,
+     # for expanding out eval_period and dep_schedules
+     init_irt = df_gen_capex_init[['i', 'region', 't']].copy().drop_duplicates()
++    init_irt['_il'] = init_irt['i'].str.lower()  # AG patch (O33)
+ 
+     # Expand eval_period for historical builds (assigning historical builds the earliest data)
+     eval_period_init = init_irt.copy()
+     eval_period_init = eval_period_init.merge(
+-        eval_period[eval_period['t']==first_year][['i', 'eval_period']],
+-        on='i', how='left')
++        _ep[_ep['t']==first_year][['_il', 'eval_period']],
++        on='_il', how='left')  # AG patch (O33)
+     eval_period_init = eval_period_init[eval_period_init['t']<=first_year]
+ 
+     # Expand depreciation_sch for historical builds (assigning historical builds the earliest data)
+     dep_sch_init = init_irt.copy()
+     dep_sch_init = dep_sch_init.merge(
+-        depreciation_sch[depreciation_sch['t']==first_year][['i', 'depreciation_sch']],
+-        on='i', how='left')
++        _ds[_ds['t']==first_year][['_il', 'depreciation_sch']],
++        on='_il', how='left')  # AG patch (O33)
+     dep_sch_init = dep_sch_init[dep_sch_init['t']<=first_year]
+ 
+     # Merge on eval_period, depreciation_sch, state, and cost category for generator capex
+@@ -923,11 +927,15 @@
+         eval_period_init[['i', 'region', 't', 'eval_period']],
+         on=['i', 'region', 't'], how='left')
+     # Fill in any missing eval_period with the default 20 years
+-    df_gen_capex_init['eval_period'].fillna(20, inplace=True)
++    _agpatch_unmatched.append(df_gen_capex_init.loc[df_gen_capex_init['eval_period'].isna()].assign(src='historical'))
++    df_gen_capex_init['eval_period'] = df_gen_capex_init['eval_period'].fillna(20)  # AG patch (O33)
+     df_gen_capex_init = df_gen_capex_init.merge(
+         dep_sch_init[['i', 'region', 't', 'depreciation_sch']],
+         on=['i', 'region', 't'], how='left')
+-    df_gen_capex_init['depreciation_sch'].fillna('20', inplace=True)
++    df_gen_capex_init['depreciation_sch'] = df_gen_capex_init['depreciation_sch'].fillna('20')  # AG patch (O33)
++    os.makedirs(os.path.join(run_dir, 'outputs', 'retail'), exist_ok=True)
++    pd.concat(_agpatch_unmatched)[['src', 'i', 'region', 't', 'capex']].to_csv(
++        os.path.join(run_dir, 'outputs', 'retail', 'agpatch_eval_unmatched.csv'), index=False)
+ 
+ #%% # Combine both new and historical capital expenditures
+     df_gen_capex = pd.concat(
+--- postprocessing/retail_rate_module/ferc_distadmin.py
++++ runs/agretail_module_patch/ferc_distadmin.py
+@@ -380,7 +380,7 @@
+         (dfall.t == 1993) | (dfall.state.isin(['AK','HI']))
+         ].index).reset_index(drop=True)
+     ### Assign DC to MD (since that's how ReEDS treats it)
+-    dfall.state.replace({'DC':'MD'}, inplace=True)
++    dfall['state'] = dfall['state'].replace({'DC':'MD'})  # AG patch (pandas 3)
+     ### Fill missing states
+     dfall.state = dfall.apply(lambda row: missingstates.get(row['Utility Name'],row.state), axis=1)
+     ### Add a column for region
+@@ -446,7 +446,7 @@
+         df_extrapolate_dim['t'] = df_extrapolate_dim['index'] + df_loop['t'].max() + 1
+ 
+         df_extrapolate_dim['index'] = numprojyears - df_extrapolate_dim['index']
+-        df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
++        df_extrapolate_dim.loc[df_extrapolate_dim['index'] < 0, 'index'] = 0  # AG patch (pandas 3)
+ 
+         # List the years of historical data used for extrapolation
+         slopeyears = np.array(df_loop['t'].tail(numslopeyears))
