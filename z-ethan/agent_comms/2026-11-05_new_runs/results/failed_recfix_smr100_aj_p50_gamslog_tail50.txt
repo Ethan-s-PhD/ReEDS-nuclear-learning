@@ -1,0 +1,50 @@
+ [10] systemmodel_0_8(f::HDF5.File)
+    @ PRASFiles C:\Users\egallup\.julia\packages\PRASFiles\4U9FG\src\Systems\read.jl:283
+ [11] (::PRASFiles.var"#SystemModel##0#SystemModel##1")(f::HDF5.File)
+    @ PRASFiles C:\Users\egallup\.julia\packages\PRASFiles\4U9FG\src\Systems\read.jl:24
+ [12] (::HDF5.var"#21#22"{HDF5.HDF5Context, @Kwargs{}, PRASFiles.var"#SystemModel##0#SystemModel##1", HDF5.File})()
+    @ HDF5 C:\Users\egallup\.julia\packages\HDF5\MIuzl\src\file.jl:98
+ [13] task_local_storage(body::HDF5.var"#21#22"{HDF5.HDF5Context, @Kwargs{}, PRASFiles.var"#SystemModel##0#SystemModel##1", HDF5.File}, key::Symbol, val::HDF5.HDF5Context)
+    @ Base .\task.jl:298
+ [14] #h5open#19
+    @ C:\Users\egallup\.julia\packages\HDF5\MIuzl\src\file.jl:93 [inlined]
+ [15] h5open
+    @ C:\Users\egallup\.julia\packages\HDF5\MIuzl\src\file.jl:91 [inlined]
+ [16] SystemModel
+    @ C:\Users\egallup\.julia\packages\PRASFiles\4U9FG\src\Systems\read.jl:16 [inlined]
+ [17] run_pras(pras_system_path::String, args::Dict{String, Any})
+    @ Main C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_smr100_aj_p50\reeds\resource_adequacy\run_pras.jl:172
+ [18] main(args::Dict{String, Any})
+    @ Main C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_smr100_aj_p50\reeds\resource_adequacy\run_pras.jl:433
+ [19] top-level scope
+    @ C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_smr100_aj_p50\reeds\resource_adequacy\run_pras.jl:485
+ [20] include(mod::Module, _path::String)
+    @ Base .\Base.jl:306
+ [21] exec_options(opts::Base.JLOptions)
+    @ Base .\client.jl:317
+ [22] _start()
+    @ Base .\client.jl:550
+in expression starting at C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_smr100_aj_p50\reeds\resource_adequacy\run_pras.jl:442
+solve.py | 2026-11-06 10:46:19 | INFO | ^^^^^^^^^^^^^^^ run_pras.jl 2020i0 ^^^^^^^^^^^^^^^
+solve.py | 2026-11-06 10:46:19 | INFO | list index out of range
+solve.py | 2026-11-06 10:46:19 | ERROR | Traceback (most recent call last):
+solve.py | 2026-11-06 10:46:19 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_smr100_aj_p50\reeds\core\solve\solve.py", line 176, in <module>
+solve.py | 2026-11-06 10:46:19 | ERROR |     main(casepath=casepath, t=t, overwrite=overwrite)
+solve.py | 2026-11-06 10:46:19 | ERROR |     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+solve.py | 2026-11-06 10:46:19 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_smr100_aj_p50\reeds\core\solve\solve.py", line 120, in main
+solve.py | 2026-11-06 10:46:19 | ERROR |     run_reeds(casepath, t, iteration=iteration)
+solve.py | 2026-11-06 10:46:19 | ERROR |     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+solve.py | 2026-11-06 10:46:19 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_smr100_aj_p50\reeds\core\solve\solve.py", line 82, in run_reeds
+solve.py | 2026-11-06 10:46:19 | ERROR |     reeds.resource_adequacy.ra_calcs.main(
+solve.py | 2026-11-06 10:46:19 | ERROR |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+solve.py | 2026-11-06 10:46:19 | ERROR |         t=t,
+solve.py | 2026-11-06 10:46:19 | ERROR |         ^^^^
+solve.py | 2026-11-06 10:46:19 | ERROR |     ...<2 lines>...
+solve.py | 2026-11-06 10:46:19 | ERROR |         iteration=iteration,
+solve.py | 2026-11-06 10:46:19 | ERROR |         ^^^^^^^^^^^^^^^^^^^^
+solve.py | 2026-11-06 10:46:19 | ERROR |     )
+solve.py | 2026-11-06 10:46:19 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\reeds\resource_adequacy\ra_calcs.py", line 164, in main
+solve.py | 2026-11-06 10:46:19 | ERROR |     raise Exception(
+solve.py | 2026-11-06 10:46:19 | ERROR |         f"run_pras.jl returned code {result.returncode}. Check gamslog.txt for error trace."
+solve.py | 2026-11-06 10:46:19 | ERROR |     )
+solve.py | 2026-11-06 10:46:19 | ERROR | Exception: run_pras.jl returned code 1. Check gamslog.txt for error trace.

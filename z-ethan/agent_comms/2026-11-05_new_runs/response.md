@@ -4,7 +4,7 @@
 
 ## 1. Status
 
-**Running:** the batch was launched at 09:58:20 on 2026-11-06 with `-r 3`; Ethan gave the start in person (Claude Code session, 2026-11-06).
+**Running, with one failure:** the batch was launched at 09:58:20 on 2026-11-06 with `-r 3` (Ethan gave the start in person). `recfix_smr100_aj_p50` failed at 10:46:19 in the 2020 solve with a Julia `OutOfMemoryError` in `run_pras.jl`, while available memory was 0.01 GB (section 3b). The question for Ethan is in section 7.
 
 ## 2. Resource check
 
@@ -24,14 +24,14 @@ Neither check stopped the launch. Folder sizes at the end of each run are in N1.
 
 ## 3. Progress table
 
-As of 2026-11-06 10:00: 20 queued, 3 running. Times are 2026 local time (MM-DD hh:mm:ss). Start is the first time stamp in `gamslog.txt`; end is the last write of `gamslog.txt` after the batch window closed. Last solve year is the largest year among `lstfiles/*_<year>i<iter>.lst`. Peak memory is the largest sum over the case's process tree in the 30-s samples (CSV in `results/memory_peaks.csv` at the end).
+As of 2026-11-06 10:50: 19 queued, 3 running, 1 failed. Times are 2026 local time (MM-DD hh:mm:ss). Start is the first time stamp in `gamslog.txt`; end is the last write of `gamslog.txt` after the batch window closed. Last solve year is the largest year among `lstfiles/*_<year>i<iter>.lst`. Peak memory is the largest sum over the case's process tree in the 30-s samples (CSV in `results/memory_peaks.csv` at the end).
 
 | # | Case | Status | Last solve year | Start | End | Peak memory, GB (working set / private) |
 |---|---|---|---|---|---|---|
-| 1 | `recfix_fbR_none` | running |  | 11-06 09:59:39 |  | 0.70 / 0.65 |
-| 2 | `recfix_smr100_eia_p50` | running |  | 11-06 09:59:39 |  | 0.70 / 0.65 |
-| 3 | `recfix_smr100_aj_p50` | running |  | 11-06 09:59:39 |  | 0.71 / 0.66 |
-| 4 | `recfix_smr100_iaea_p50` | queued |  |  |  |  |
+| 1 | `recfix_fbR_none` | running | 2020 | 11-06 09:59:39 |  | 71.56 / 85.91 |
+| 2 | `recfix_smr100_eia_p50` | running | 2020 | 11-06 09:59:39 |  | 65.11 / 79.83 |
+| 3 | `recfix_smr100_aj_p50` | failed | 2020 | 11-06 09:59:39 | 11-06 10:46:19 | 69.33 / 79.95 |
+| 4 | `recfix_smr100_iaea_p50` | running |  | 11-06 10:46:31 |  | 3.49 / 3.44 |
 | 5 | `recfix_smr100_mck_p50` | queued |  |  |  |  |
 | 6 | `recfix_smr100_cop28_p50` | queued |  |  |  |  |
 | 7 | `recfix_smr100_eo_p50` | queued |  |  |  |  |
@@ -52,6 +52,35 @@ As of 2026-11-06 10:00: 20 queued, 3 running. Times are 2026 local time (MM-DD h
 | 22 | `p05base_eia_p05` | queued |  |  |  |  |
 | 23 | `p05base_cop28_p05_co2cap` | queued |  |  |  |  |
 
+## 3b. Failed runs and memory pressure
+
+### `recfix_smr100_aj_p50`: failed at 10:46:19, 2020 solve
+
+- **Error:** `run_pras.jl` for 2020i0, at `gamslog.txt` line 5230 of 5299: `ERROR: LoadError: OutOfMemoryError()`. The trace runs through `HDF5.read`, then `PRASFiles._systemmodel_core` (`read.jl:213`), then `run_pras` (`run_pras.jl:172`). The preceding lines are `Successfully exported the PRAS SystemModel to .pras file ...\handoff\PRAS\PRAS_2020i0.pras` and `Parsing PRAS System ...` at 10:45:00. Lines 5221–5232 are in `results/failed_recfix_smr100_aj_p50_gamslog_lines5221-5232.txt`.
+- **`solve.py` then raised** `Exception: run_pras.jl returned code 1. Check gamslog.txt for error trace.` (`ra_calcs.py`, line 164), and the batch file stopped.
+- **The last 50 lines** of `gamslog.txt` are in `results/failed_recfix_smr100_aj_p50_gamslog_tail50.txt`.
+- **Earlier in the same log:** 318 lines `┌ Error: 2026-11-06 10:41:47 | MT_C,hydud,BoundsError(Float64[], (1,))` (first at line 4580), written before the PRAS export. The two runs that are still going have 265 (`recfix_smr100_eia_p50`) and 271 (`recfix_fbR_none`) such lines.
+- **Per the instructions,** the run was not relaunched, edited or deleted. The batch continued: `recfix_smr100_iaea_p50` started at 10:46:31.
+
+### Memory, 10:40–10:48
+
+30-s samples (`memory_samples.csv`); the tree is the case's process tree, and private memory is given as GB.
+
+| Time | Available, GB | `recfix_smr100_aj_p50` tree, private GB | `recfix_smr100_eia_p50` tree, private GB | Largest process |
+|---|---|---|---|---|
+| 10:41:06 | 190.15 | 4.80 | 4.81 | `solve.py` |
+| 10:42:07 | 128.20 | 32.04 | 32.05 | `julia.exe` |
+| 10:43:08 | 47.73 | 55.12 | 55.14 | `julia.exe` |
+| 10:45:11 | 59.61 | 56.89 | 56.90 | `julia.exe` |
+| 10:45:41 | **0.01** | 79.95 | 68.43 | `julia.exe` 66.54 / 57.69 GB working set |
+| 10:46:12 | 2.88 | 72.49 | 79.83 | `julia.exe` |
+| 10:46:42 | 110.48 | — (ended) | not sampled | — |
+
+- `recfix_fbR_none` reached its PRAS step at about the same time: its tree was at 79.90 GB private at 10:45:41.
+- At 10:49, two `julia.exe` 1.12.1 processes, started at 10:40:57 and 10:40:59, held 51.04 and 63.49 GB private, with 103.37 GB available. No other ReEDS run was going on the machine.
+- Available memory was below 2 GB in one 30-s sample (10:45:41) and was back at 110 GB by 10:46:42, so the 10-minute rule has not fired.
+- The three cases started together and reached each step within about a minute of each other, so their PRAS steps overlapped.
+
 ## 4. Deviations
 
 1. **`Manifest.toml` (instructions_2.md, M1–M3).** The runs use paper 1's `Manifest.toml`.
@@ -71,4 +100,4 @@ As of 2026-11-06 10:00: 20 queued, 3 running. Times are 2026 local time (MM-DD h
 
 ## 7. Questions for Claude
 
-None so far.
+1. **Three runs at a time do not fit in memory during the PRAS step (section 3b).** The `-r 3` rule says to report and ask. Each run's `julia.exe` reached about 57–67 GB working set (up to 80 GB private for the tree) in the 2020 PRAS step, three overlapped, available memory reached 0.01 GB, and one run failed. Every later solve year runs PRAS too. The batch is still going at `-r 3`, unchanged. I have asked Ethan in person whether to continue as is or to change it; his answer will be recorded here.
