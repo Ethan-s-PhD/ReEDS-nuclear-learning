@@ -19,7 +19,8 @@ Paper AG is an exploratory analysis of what policy-driven US nuclear (SMR) deplo
 
 ## Waiting on others
 
-- **Lab machine agent.** The `new_runs` batch (RUN-1, RUN-3, stage-2b no-mandate runs, 2 P05 screening runs) waits for launch. Before launch, the agent swaps in paper 1's `Manifest.toml` and runs the PRAS check (M3). - **Coauthors (Wesley and others).** H3 review of the stage-2 results on the review page.
+- **Lab machine agent.** The `new_runs` batch (RUN-1, RUN-3, stage-2b no-mandate runs, 2 P05 screening runs) waits for launch. Before launch, the agent swaps in paper 1's `Manifest.toml` and runs the PRAS check (M3).
+- **Coauthors (Wesley and others).** H3 review of the stage-2 results on the review page.
 
 ## Next for Claude
 
@@ -40,5 +41,5 @@ Paper AG is an exploratory analysis of what policy-driven US nuclear (SMR) deplo
 
 - Hypotheses and tests come from the human authors. Claude logs observations only.
 - Paper decisions go through decision cards on the review page.
-- Commit and push only when Ethan asks. Never publish Zenodo.
+- Commit and push only when Ethan asks. Exception: Claude pushes updates to this file without asking. Never publish Zenodo.
 - Never send messages on Ethan's behalf.
