@@ -1,0 +1,50 @@
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | OR_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | PA_E,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
+┌ Error: 2026-11-06 10:41:47 | WA_W,hydund,BoundsError(Float64[], (1,))
+└ @ Main.ReEDS2PRAS C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recfix_fbR_none\reeds\resource_adequacy\reeds2pras\src\utils\reeds_data_parsing.jl:648
