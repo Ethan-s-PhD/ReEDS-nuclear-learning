@@ -1,0 +1,3 @@
+group,case,outputs_h5_exists,h5_MB,last_solve_year,endyear,start,end,run_hours,folder_GB
+RUN-3,recfix_smr100_eia_p50,True,66.1,2050,2050,2026-11-06 09:59:39,2026-11-07 05:25:43.884750,19.43,5.84
+RUN-3,recfix_smr100_iaea_p50,True,66.1,2050,2050,2026-11-06 10:46:31,2026-11-07 05:55:24.416263,19.15,5.84

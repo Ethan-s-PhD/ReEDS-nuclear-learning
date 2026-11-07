@@ -8,7 +8,10 @@
 - The `-r 3` batch was launched at 09:58:20 on 2026-11-06 (Ethan gave the start in person).
 - `recfix_smr100_aj_p50` failed at 10:46:19 in the 2020 solve with a Julia `OutOfMemoryError` in `run_pras.jl`, while available memory was 0.01 GB (section 3b).
 - `recfix_fbR_none` hung in its 2020 PRAS step; on Ethan's decision it was stopped at 12:45:00.
-- `recfix_smr100_eia_p50` and `recfix_smr100_iaea_p50` continue. When both have ended, the rest of the cases are launched at `-r 2`, including reruns of `recfix_fbR_none` and `recfix_smr100_aj_p50`.
+- `recfix_smr100_eia_p50` finished at 05:25:43 and `recfix_smr100_iaea_p50` at 05:55:24 on 2026-11-07, each after about 19.2–19.4 h. Both have `outputs/outputs.h5`.
+- The `-r 2` batch started at 05:55:43 on 2026-11-07 with the other 21 cases, beginning with the reruns of `recfix_fbR_none` and `recfix_smr100_aj_p50`.
+- **Disk:** a finished folder is 5.84 GB, so 21 more need about 123 GB against 93 GB free on `C:`. Ethan decided to move finished run folders off `C:` (deviation 5). The move waits for an external drive, which Ethan will connect on his return.
+- **Lab agent paused** at 11:00 on 2026-11-07, on Ethan's instruction, until the drive is connected. The ReEDS runs keep going.
 
 ## 2. Resource check
 
@@ -28,14 +31,14 @@ Neither check stopped the launch. Folder sizes at the end of each run are in N1.
 
 ## 3. Progress table
 
-As of 2026-11-06 12:47: 21 queued, 2 running. Times are 2026 local time (MM-DD hh:mm:ss). Start is the first time stamp in `gamslog.txt`; end is the last write of `gamslog.txt` after the batch window closed. Last solve year is the largest year among `lstfiles/*_<year>i<iter>.lst`. Peak memory is the largest sum over the case's process tree in the 30-s samples (CSV in `results/memory_peaks.csv` at the end).
+As of 2026-11-07 11:23: 19 queued, 2 running, 2 done. Times are 2026 local time (MM-DD hh:mm:ss). Start is the first time stamp in `gamslog.txt`; end is the last write of `gamslog.txt` after the batch window closed. Last solve year is the largest year among `lstfiles/*_<year>i<iter>.lst`. Peak memory is the largest sum over the case's process tree in the 30-s samples (CSV in `results/memory_peaks.csv` at the end).
 
 | # | Case | Status | Last solve year | Start | End | Peak memory, GB (working set / private) |
 |---|---|---|---|---|---|---|
-| 1 | `recfix_fbR_none` | queued |  |  |  |  |
-| 2 | `recfix_smr100_eia_p50` | running | 2029 | 11-06 09:59:39 |  | 78.52 / 82.33 |
-| 3 | `recfix_smr100_aj_p50` | queued |  |  |  |  |
-| 4 | `recfix_smr100_iaea_p50` | running | 2026 | 11-06 10:46:31 |  | 83.16 / 85.01 |
+| 1 | `recfix_fbR_none` | running | 2032 | 11-07 05:57:05 |  | 85.29 / 90.74 |
+| 2 | `recfix_smr100_eia_p50` | done | 2050 | 11-06 09:59:39 | 11-07 05:25:43 | 99.17 / 100.93 |
+| 3 | `recfix_smr100_aj_p50` | running | 2031 | 11-07 05:57:05 |  | 80.72 / 82.46 |
+| 4 | `recfix_smr100_iaea_p50` | done | 2050 | 11-06 10:46:31 | 11-07 05:55:24 | 90.85 / 92.59 |
 | 5 | `recfix_smr100_mck_p50` | queued |  |  |  |  |
 | 6 | `recfix_smr100_cop28_p50` | queued |  |  |  |  |
 | 7 | `recfix_smr100_eo_p50` | queued |  |  |  |  |
@@ -108,14 +111,29 @@ As of 2026-11-06 12:47: 21 queued, 2 running. Times are 2026 local time (MM-DD h
    - **About 12:45:** Ethan chose to rerun `recfix_smr100_aj_p50` at `-r 2` as well.
    - Both old folders were renamed with suffixes `_hung_20261106` and `_oom_20261106`, not deleted, so `runreeds.py` can create the folders again.
    - **Relaunch:** when no `call_ag_*.bat` window is left, a script starts `python runreeds.py -b ag -c nuclearlearning_ag -r 2` from the repo root, with the same environment as the first launch. It answers `runreeds.py`'s prompts with `n` ("overwrite them?") and `y` ("run them and skip the rest?"), so the finished `ag_` folders are kept and skipped. The cases run in casefile order.
+   - **Relaunch result:** the script started at 05:55:42 on 2026-11-07, once no `ag_` window was left. The console shows both prompts answered and lists 21 cases to run; `local version ok` is printed for the remote files.
+5. **Finished run folders to move off `C:` (Ethan's decision, 2026-11-07, about 10:40).** Step 6 says not to move run folders; this overrides it.
+   - **Why:** `recfix_smr100_eia_p50` uses 5.84 GB, of which `g00files/` is 1.2 GB (2 `.g00` files are kept); 21 more runs need about 123 GB, and `C:` had 101 GB free at 05:30.
+   - **Plan per run:** N1–N7 on the folder in place, copy `outputs.h5` to the collection folder and check its MD5, then move the folder and compare file counts and bytes.
+   - **First try, 10:49:** the target `N:\egallup\ag_new_runs\` (Ethan's choice) could not be made: `Access is denied` at `N:`'s top level. Robocopy exited 16 and copied nothing. `runs/ag_recfix_smr100_eia_p50/` is intact (2320 files, 5844920812 bytes).
+   - **Now:** Ethan will connect an external drive on his return. No run folder has been moved.
 
 ## 5. Checks N1–N7
 
-*After all runs finish.*
+**Partial:** 2 of 23 runs checked (`recfix_smr100_eia_p50`, `recfix_smr100_iaea_p50`). The CSV files in `results/` hold the rows so far and are rebuilt as more runs finish.
+
+- **N1:** both runs have `outputs.h5` (66.1 MB each), last solve year 2050, 19.43 h and 19.15 h, 5.84 GB folders.
+- **N2:** no difference between `inputs_case/switches.csv` and the casefile column, for either run.
+- **N3:** one key from `expected_keys.txt` is missing in both runs: `can_exports_stress`.
+- **N4:** `can_exports_stress` is missing in both runs (see N3).
+- **N5, N6:** these checks do not apply to RUN-3 runs.
+- **N7:** `results/N7_error_warning_lines.csv` has every line matching "error" or "warning" (case-insensitive): 954 lines (`eia`) and 952 lines (`iaea`). Most are Python warnings logged at ERROR level by `retail_rate_calculations.py` (pandas chained-assignment warnings) and `ReEDS2PRAS` `No generators in region` warnings.
+
+The full tables follow when every run has finished.
 
 ## 6. Collection folder
 
-*After all runs finish.*
+**Partial:** `C:\Users\egallup\collected_outputs_ag\` holds 2 files (`ag_recfix_smr100_eia_p50_outputs.h5`, `ag_recfix_smr100_iaea_p50_outputs.h5`). MD5 checksums are in `results/MD5SUMS_outputs.txt`; each copy's MD5 equals its source's.
 
 ## 7. Questions for Claude
 
