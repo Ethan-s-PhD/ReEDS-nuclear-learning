@@ -1,9 +1,13 @@
 case,missing_key
+recctl_fbR_none,can_exports_stress
+recctl_fbR_none,nuclear_cap_price
+recctl_fbR_none,nuclear_cap_price_raw
 recfix_fbR_none,can_exports_stress
 recfix_fbR_none,nuclear_cap_price
 recfix_fbR_none,nuclear_cap_price_raw
 recfix_smr100_aj_p50,can_exports_stress
 recfix_smr100_cop28_p50,can_exports_stress
 recfix_smr100_eia_p50,can_exports_stress
+recfix_smr100_eo_p50,can_exports_stress
 recfix_smr100_iaea_p50,can_exports_stress
 recfix_smr100_mck_p50,can_exports_stress
