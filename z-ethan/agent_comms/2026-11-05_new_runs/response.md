@@ -10,8 +10,10 @@
 - `recfix_fbR_none` hung in its 2020 PRAS step; on Ethan's decision it was stopped at 12:45:00.
 - `recfix_smr100_eia_p50` finished at 05:25:43 and `recfix_smr100_iaea_p50` at 05:55:24 on 2026-11-07, each after about 19.2–19.4 h. Both have `outputs/outputs.h5`.
 - The `-r 2` batch started at 05:55:43 on 2026-11-07 with the other 21 cases, beginning with the reruns of `recfix_fbR_none` and `recfix_smr100_aj_p50`.
-- **Disk:** a finished folder is 5.84 GB, so 21 more need about 123 GB against 93 GB free on `C:`. Ethan decided to move finished run folders off `C:` (deviation 5). The move waits for an external drive, which Ethan will connect on his return.
-- **Lab agent paused** at 11:00 on 2026-11-07, on Ethan's instruction, until the drive is connected. The ReEDS runs keep going.
+- **6 of 23 done** as of 09:57 on 2026-11-09, all with `outputs/outputs.h5` and last solve year 2050. The 4 `-r 2` runs took 18.39–19.15 h each. `recfix_smr100_eo_p50` and `recctl_fbR_none` started at 19:30:06 on 11-08 and were at 2041 at 09:57.
+- **Memory at `-r 2`:** the lowest available memory in the 30-s samples since 05:55:43 on 11-07 is 17.37 GB (19:10:30 on 11-08); no sample is below 2 GB. Peak tree memory per run is 91.74–101.37 GB working set (section 3).
+- **Disk:** a finished folder is about 5.85 GB. On Ethan's decision (deviation 5), each finished folder is moved to the external drive `E:\ag_new_runs\` after its checks and `outputs.h5` copy. The 6 finished folders were moved between 09:50 and 09:57 on 11-09. Free space after the moves: `C:` 100 GB, `E:` 344 GB.
+- The lab agent was paused from 11:00 on 11-07 to about 09:45 on 11-09, on Ethan's instruction, until the drive was connected; the ReEDS runs kept going.
 
 ## 2. Resource check
 
@@ -31,18 +33,18 @@ Neither check stopped the launch. Folder sizes at the end of each run are in N1.
 
 ## 3. Progress table
 
-As of 2026-11-07 11:23: 19 queued, 2 running, 2 done. Times are 2026 local time (MM-DD hh:mm:ss). Start is the first time stamp in `gamslog.txt`; end is the last write of `gamslog.txt` after the batch window closed. Last solve year is the largest year among `lstfiles/*_<year>i<iter>.lst`. Peak memory is the largest sum over the case's process tree in the 30-s samples (CSV in `results/memory_peaks.csv` at the end).
+As of 2026-11-09 09:57: 15 queued, 6 done, 2 running. Times are 2026 local time (MM-DD hh:mm:ss). Start is the first time stamp in `gamslog.txt`; end is the last write of `gamslog.txt` after the batch window closed. Last solve year is the largest year among `lstfiles/*_<year>i<iter>.lst`. Peak memory is the largest sum over the case's process tree in the 30-s samples (CSV in `results/memory_peaks.csv` at the end).
 
 | # | Case | Status | Last solve year | Start | End | Peak memory, GB (working set / private) |
 |---|---|---|---|---|---|---|
-| 1 | `recfix_fbR_none` | running | 2032 | 11-07 05:57:05 |  | 85.29 / 90.74 |
-| 2 | `recfix_smr100_eia_p50` | done | 2050 | 11-06 09:59:39 | 11-07 05:25:43 | 99.17 / 100.93 |
-| 3 | `recfix_smr100_aj_p50` | running | 2031 | 11-07 05:57:05 |  | 80.72 / 82.46 |
-| 4 | `recfix_smr100_iaea_p50` | done | 2050 | 11-06 10:46:31 | 11-07 05:55:24 | 90.85 / 92.59 |
-| 5 | `recfix_smr100_mck_p50` | queued |  |  |  |  |
-| 6 | `recfix_smr100_cop28_p50` | queued |  |  |  |  |
-| 7 | `recfix_smr100_eo_p50` | queued |  |  |  |  |
-| 8 | `recctl_fbR_none` | queued |  |  |  |  |
+| 1 | `recfix_fbR_none` | done | 2050 | 11-07 05:57:05 | 11-08 01:06:04 | 99.25 / 101.24 |
+| 2 | `recfix_smr100_eia_p50` | done | 2050 | 11-06 09:59:39 | 11-07 05:25:44 | 99.17 / 100.93 |
+| 3 | `recfix_smr100_aj_p50` | done | 2050 | 11-07 05:57:05 | 11-08 00:59:22 | 91.74 / 94.40 |
+| 4 | `recfix_smr100_iaea_p50` | done | 2050 | 11-06 10:46:31 | 11-07 05:55:26 | 90.85 / 92.59 |
+| 5 | `recfix_smr100_mck_p50` | done | 2050 | 11-08 00:59:46 | 11-08 19:29:52 | 94.10 / 95.93 |
+| 6 | `recfix_smr100_cop28_p50` | done | 2050 | 11-08 01:06:15 | 11-08 19:29:50 | 101.37 / 103.14 |
+| 7 | `recfix_smr100_eo_p50` | running | 2041 | 11-08 19:30:06 |  | 88.35 / 90.85 |
+| 8 | `recctl_fbR_none` | running | 2041 | 11-08 19:30:06 |  | 88.12 / 90.60 |
 | 9 | `recctl_smr100_eo_p50` | queued |  |  |  |  |
 | 10 | `run1_smr100_eia_p50_grow` | queued |  |  |  |  |
 | 11 | `run1_smr100_aj_p50_grow` | queued |  |  |  |  |
@@ -116,24 +118,38 @@ As of 2026-11-07 11:23: 19 queued, 2 running, 2 done. Times are 2026 local time 
    - **Why:** `recfix_smr100_eia_p50` uses 5.84 GB, of which `g00files/` is 1.2 GB (2 `.g00` files are kept); 21 more runs need about 123 GB, and `C:` had 101 GB free at 05:30.
    - **Plan per run:** N1–N7 on the folder in place, copy `outputs.h5` to the collection folder and check its MD5, then move the folder and compare file counts and bytes.
    - **First try, 10:49:** the target `N:\egallup\ag_new_runs\` (Ethan's choice) could not be made: `Access is denied` at `N:`'s top level. Robocopy exited 16 and copied nothing. `runs/ag_recfix_smr100_eia_p50/` is intact (2320 files, 5844920812 bytes).
-   - **Now:** Ethan will connect an external drive on his return. No run folder has been moved.
+   - **External drive, 2026-11-09:** Ethan connected a drive (`E:`, label `T7 Shield`, exFAT, 931.5 GB, 377.6 GB free before the moves). Target: `E:\ag_new_runs\` (new folder; nothing else on `E:` was touched).
+   - **Moves, 09:50–09:57:** `robocopy /MOVE /E` per folder, exit 1 each time. For all 6 folders the file count and byte total on `E:` equal the source's, and 0 files are left at the source:
+
+     | Case | Files | Bytes |
+     |---|---|---|
+     | `recfix_smr100_eia_p50` | 2320 | 5844920812 |
+     | `recfix_smr100_iaea_p50` | 2318 | 5839410546 |
+     | `recfix_fbR_none` | 2323 | 5848528250 |
+     | `recfix_smr100_aj_p50` | 2318 | 5853142809 |
+     | `recfix_smr100_mck_p50` | 2323 | 5853174958 |
+     | `recfix_smr100_cop28_p50` | 2323 | 5859018338 |
+
+   - The renamed old attempts `runs/ag_recfix_fbR_none_hung_20261106/` and `runs/ag_recfix_smr100_aj_p50_oom_20261106/` (6.1 GB each) are not finished runs and stay on `C:`.
+   - End times in section 3 and N1 for moved runs come from the `gamslog.txt` copy on `E:` (exFAT) and differ from the earlier readings on `C:` by 1–2 s.
+6. **N7 table split per case.** With 6 runs, `results/N7_error_warning_lines.csv` was 899 KB, and the full batch would pass the 1 MB limit for committed logs. From 09:57 on 11-09, the lines are in `results/N7_error_warning_lines/<case>.csv` (about 150 KB each), and `results/N7_error_warning_lines.csv` holds the line count per case.
 
 ## 5. Checks N1–N7
 
-**Partial:** 2 of 23 runs checked (`recfix_smr100_eia_p50`, `recfix_smr100_iaea_p50`). The CSV files in `results/` hold the rows so far and are rebuilt as more runs finish.
+**Partial:** 6 of 23 runs checked, all RUN-3: `recfix_fbR_none` and `recfix_smr100_{eia,aj,iaea,mck,cop28}_p50`. Each was checked in place on `C:` before its move. The CSV files in `results/` hold the rows so far and are rebuilt as more runs finish.
 
-- **N1:** both runs have `outputs.h5` (66.1 MB each), last solve year 2050, 19.43 h and 19.15 h, 5.84 GB folders.
-- **N2:** no difference between `inputs_case/switches.csv` and the casefile column, for either run.
-- **N3:** one key from `expected_keys.txt` is missing in both runs: `can_exports_stress`.
-- **N4:** `can_exports_stress` is missing in both runs (see N3).
+- **N1:** all 6 have `outputs.h5` (66.0–66.4 MB), last solve year 2050 (= `endyear`), 18.39–19.43 h, folders 5.84–5.86 GB.
+- **N2:** no difference between `inputs_case/switches.csv` and the casefile column, for any of the 6.
+- **N3:** `can_exports_stress` is missing in all 6. `recfix_fbR_none` also lacks `nuclear_cap_price` and `nuclear_cap_price_raw`; the 5 `smr100` runs have both.
+- **N4:** `can_exports_stress` is missing in all 6 (see N3).
 - **N5, N6:** these checks do not apply to RUN-3 runs.
-- **N7:** `results/N7_error_warning_lines.csv` has every line matching "error" or "warning" (case-insensitive): 954 lines (`eia`) and 952 lines (`iaea`). Most are Python warnings logged at ERROR level by `retail_rate_calculations.py` (pandas chained-assignment warnings) and `ReEDS2PRAS` `No generators in region` warnings.
+- **N7:** lines matching "error" or "warning" (case-insensitive) in `gamslog.txt`: 954 (`recfix_fbR_none`, `recfix_smr100_eia_p50`) and 952 (the other 4). Lines are in `results/N7_error_warning_lines/<case>.csv` (deviation 6). In the first 2 runs, most are Python warnings logged at ERROR level by `retail_rate_calculations.py` (pandas chained-assignment warnings) and `ReEDS2PRAS` `No generators in region` warnings.
 
 The full tables follow when every run has finished.
 
 ## 6. Collection folder
 
-**Partial:** `C:\Users\egallup\collected_outputs_ag\` holds 2 files (`ag_recfix_smr100_eia_p50_outputs.h5`, `ag_recfix_smr100_iaea_p50_outputs.h5`). MD5 checksums are in `results/MD5SUMS_outputs.txt`; each copy's MD5 equals its source's.
+**Partial:** `C:\Users\egallup\collected_outputs_ag\` holds 6 files, `ag_<case>_outputs.h5` for each finished case in section 5. MD5 checksums are in `results/MD5SUMS_outputs.txt`; each copy's MD5 equals its source's, taken before the move. The run folders themselves are in `E:\ag_new_runs\ag_<case>\` (deviation 5).
 
 ## 7. Questions for Claude
 
