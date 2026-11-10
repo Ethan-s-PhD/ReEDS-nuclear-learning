@@ -2,6 +2,7 @@ case,missing_key
 recctl_fbR_none,can_exports_stress
 recctl_fbR_none,nuclear_cap_price
 recctl_fbR_none,nuclear_cap_price_raw
+recctl_smr100_eo_p50,can_exports_stress
 recfix_fbR_none,can_exports_stress
 recfix_fbR_none,nuclear_cap_price
 recfix_fbR_none,nuclear_cap_price_raw

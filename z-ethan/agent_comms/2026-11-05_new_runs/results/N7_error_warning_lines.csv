@@ -1,5 +1,6 @@
 case,lines,file
 recctl_fbR_none,952,N7_error_warning_lines/recctl_fbR_none.csv
+recctl_smr100_eo_p50,952,N7_error_warning_lines/recctl_smr100_eo_p50.csv
 recfix_fbR_none,954,N7_error_warning_lines/recfix_fbR_none.csv
 recfix_smr100_aj_p50,952,N7_error_warning_lines/recfix_smr100_aj_p50.csv
 recfix_smr100_cop28_p50,952,N7_error_warning_lines/recfix_smr100_cop28_p50.csv

@@ -1,0 +1,953 @@
+case,line_no,line
+recctl_smr100_eo_p50,272,copy_files.py | 2026-11-09 14:05:37 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+recctl_smr100_eo_p50,273,copy_files.py | 2026-11-09 14:05:37 | ERROR |   _init_gdal_data()
+recctl_smr100_eo_p50,353,copy_files.py | 2026-11-09 14:06:18 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recctl_smr100_eo_p50\reeds\input_processing\copy_files.py:465: DtypeWarning: Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_memory=False.
+recctl_smr100_eo_p50,354,"copy_files.py | 2026-11-09 14:06:18 | ERROR |   df = pd.read_csv(full_path, dtype={'FIPS':str, 'fips':str, 'cnty_fips':str}, comment='#')"
+recctl_smr100_eo_p50,355,"copy_files.py | 2026-11-09 14:06:18 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recctl_smr100_eo_p50\reeds\input_processing\copy_files.py:896: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+recctl_smr100_eo_p50,356,copy_files.py | 2026-11-09 14:06:18 | ERROR |   df['r'] = df['FIPS'].map(county2zone)
+recctl_smr100_eo_p50,367,copy_files.py | 2026-11-09 14:06:45 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\raw.py:733: RuntimeWarning: Cannot find tms_NZTM2000.json (GDAL_DATA is not defined)
+recctl_smr100_eo_p50,368,copy_files.py | 2026-11-09 14:06:45 | ERROR |   ogr_write(
+recctl_smr100_eo_p50,390,h2_storage.py | 2026-11-09 14:07:03 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+recctl_smr100_eo_p50,391,h2_storage.py | 2026-11-09 14:07:03 | ERROR |   _init_gdal_data()
+recctl_smr100_eo_p50,398,fuelcostprep.py | 2026-11-09 14:07:15 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+recctl_smr100_eo_p50,399,fuelcostprep.py | 2026-11-09 14:07:15 | ERROR |   _init_gdal_data()
+recctl_smr100_eo_p50,479,recf.py | 2026-11-09 14:14:43 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recctl_smr100_eo_p50\reeds\input_processing\recf.py:422: Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is active in pandas since 3.0 which utilizes a lazy copy mechanism that defers copies until necessary. Use .copy() to make an eager copy if necessary.
+recctl_smr100_eo_p50,480,recf.py | 2026-11-09 14:14:43 | ERROR |   recf = pd.concat(
+recctl_smr100_eo_p50,481,recf.py | 2026-11-09 14:14:43 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recctl_smr100_eo_p50\reeds\input_processing\recf.py:449: Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is active in pandas since 3.0 which utilizes a lazy copy mechanism that defers copies until necessary. Use .copy() to make an eager copy if necessary.
+recctl_smr100_eo_p50,482,"recf.py | 2026-11-09 14:14:43 | ERROR |   recf = recf.reindex(labels=resources['resource'].drop_duplicates(), axis=1, copy=False)"
+recctl_smr100_eo_p50,489,WriteHintage.py | 2026-11-09 14:15:04 | INFO | Note that the clustering can result in warnings if the heat rates
+recctl_smr100_eo_p50,496,transmission.py | 2026-11-09 14:15:19 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+recctl_smr100_eo_p50,497,transmission.py | 2026-11-09 14:15:19 | ERROR |   _init_gdal_data()
+recctl_smr100_eo_p50,526,hourly_repperiods.py | 2026-11-09 14:22:22 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+recctl_smr100_eo_p50,527,hourly_repperiods.py | 2026-11-09 14:22:22 | ERROR |   _init_gdal_data()
+recctl_smr100_eo_p50,2307,check_inputs.py | 2026-11-09 14:36:43 | INFO | Load inputs.gdx for error checking
+recctl_smr100_eo_p50,4580,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4582,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4584,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4586,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4588,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4590,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4592,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4594,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4596,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4598,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4600,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4602,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4604,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4606,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4608,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4610,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4612,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4614,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4616,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4618,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4620,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4622,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4624,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4626,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4628,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4630,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4632,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4634,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4636,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4638,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4640,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4642,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4644,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4646,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4648,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4650,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4652,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4654,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4656,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4658,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4660,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4662,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4664,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4666,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4668,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4670,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4672,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4674,"â”Œ Error: 2026-11-09 14:47:34 | WA_E,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4676,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4678,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4680,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4682,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4684,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4686,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4688,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4690,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4692,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4694,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4696,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4698,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4700,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4702,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4704,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4706,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4708,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4710,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4712,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4714,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4716,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4718,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4720,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4722,"â”Œ Error: 2026-11-09 14:47:34 | MT_W,hydud,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4724,"â”Œ Error: 2026-11-09 14:47:34 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4726,"â”Œ Error: 2026-11-09 14:47:34 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4728,"â”Œ Error: 2026-11-09 14:47:34 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4730,"â”Œ Error: 2026-11-09 14:47:34 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4732,"â”Œ Error: 2026-11-09 14:47:34 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4734,"â”Œ Error: 2026-11-09 14:47:34 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4736,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4738,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4740,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4742,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4744,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4746,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4748,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4750,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4752,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4754,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4756,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4758,"â”Œ Error: 2026-11-09 14:47:34 | CA_N,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4760,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4762,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4764,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4766,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4768,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4770,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4772,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4774,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4776,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4778,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4780,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4782,"â”Œ Error: 2026-11-09 14:47:34 | CO_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4784,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4786,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4788,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4790,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4792,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4794,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4796,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4798,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4800,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4802,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4804,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4806,"â”Œ Error: 2026-11-09 14:47:34 | CO_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4808,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4810,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4812,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4814,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4816,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4818,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4820,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4822,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4824,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4826,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4828,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4830,"â”Œ Error: 2026-11-09 14:47:34 | ID_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4832,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4834,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4836,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4838,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4840,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4842,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4844,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4846,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4848,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4850,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4852,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4854,"â”Œ Error: 2026-11-09 14:47:34 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4856,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4858,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4860,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4862,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4864,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4866,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4868,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4870,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4872,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4874,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4876,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4878,"â”Œ Error: 2026-11-09 14:47:34 | KS,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4880,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4882,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4884,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4886,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4888,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4890,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4892,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4894,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4896,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4898,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4900,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4902,"â”Œ Error: 2026-11-09 14:47:34 | ME,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4904,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4906,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4908,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4910,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4912,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4914,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4916,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4918,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4920,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4922,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4924,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4926,"â”Œ Error: 2026-11-09 14:47:34 | MN_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4928,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4930,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4932,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4934,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4936,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4938,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4940,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4942,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4944,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4946,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4948,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4950,"â”Œ Error: 2026-11-09 14:47:34 | MT_C,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4952,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4954,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4956,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4958,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4960,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4962,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4964,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4966,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4968,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4970,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4972,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4974,"â”Œ Error: 2026-11-09 14:47:34 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4976,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4978,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4980,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4982,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4984,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4986,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4988,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4990,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4992,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4994,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4996,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,4998,"â”Œ Error: 2026-11-09 14:47:34 | NM_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5000,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5002,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5004,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5006,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5008,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5010,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5012,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5014,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5016,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5018,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5020,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5022,"â”Œ Error: 2026-11-09 14:47:34 | NY_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5024,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5026,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5028,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5030,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5032,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5034,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5036,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5038,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5040,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5042,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5044,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5046,"â”Œ Error: 2026-11-09 14:47:34 | NY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5048,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5050,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5052,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5054,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5056,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5058,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5060,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5062,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5064,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5066,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5068,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5070,"â”Œ Error: 2026-11-09 14:47:34 | OR_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5072,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5074,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5076,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5078,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5080,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5082,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5084,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5086,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5088,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5090,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5092,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5094,"â”Œ Error: 2026-11-09 14:47:34 | OR_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5096,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5098,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5100,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5102,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5104,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5106,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5108,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5110,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5112,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5114,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5116,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5118,"â”Œ Error: 2026-11-09 14:47:34 | PA_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5120,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5122,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5124,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5126,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5128,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5130,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5132,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5134,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5136,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5138,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5140,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5142,"â”Œ Error: 2026-11-09 14:47:34 | WA_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5144,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5146,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5148,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5150,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5152,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5154,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5156,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5158,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5160,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5162,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5164,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5166,"â”Œ Error: 2026-11-09 14:47:34 | WI_E,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5168,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5170,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5172,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5174,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5176,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5178,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5180,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5182,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5184,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5186,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5188,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5190,"â”Œ Error: 2026-11-09 14:47:34 | WY_W,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5192,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5194,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5196,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5198,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5200,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5202,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5204,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5206,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5208,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5210,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5212,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,5214,"â”Œ Error: 2026-11-09 14:47:34 | CA_S,hydund,BoundsError(Float64[], (1,))"
+recctl_smr100_eo_p50,8235,â”Œ Warning: 2026-11-09 15:45:14 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,8237,â”Œ Warning: 2026-11-09 15:45:14 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,9866,â”Œ Warning: 2026-11-09 16:46:53 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,9868,â”Œ Warning: 2026-11-09 16:46:53 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,11555,â”Œ Warning: 2026-11-09 18:03:08 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,11557,â”Œ Warning: 2026-11-09 18:03:08 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,13246,â”Œ Warning: 2026-11-09 19:16:42 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,13248,â”Œ Warning: 2026-11-09 19:16:42 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,14839,â”Œ Warning: 2026-11-09 20:35:19 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,14841,â”Œ Warning: 2026-11-09 20:35:19 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,14843,â”Œ Warning: 2026-11-09 20:35:19 | No generators in region: DC|UT
+recctl_smr100_eo_p50,14845,â”Œ Warning: 2026-11-09 20:35:19 | No generators in region: DC|WY_E
+recctl_smr100_eo_p50,16422,â”Œ Warning: 2026-11-09 21:52:58 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,16424,â”Œ Warning: 2026-11-09 21:52:58 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,16426,â”Œ Warning: 2026-11-09 21:52:58 | No generators in region: DC|UT
+recctl_smr100_eo_p50,16428,â”Œ Warning: 2026-11-09 21:52:58 | No generators in region: DC|WY_E
+recctl_smr100_eo_p50,18036,â”Œ Warning: 2026-11-09 23:12:44 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,18038,â”Œ Warning: 2026-11-09 23:12:44 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,18040,â”Œ Warning: 2026-11-09 23:12:44 | No generators in region: DC|UT
+recctl_smr100_eo_p50,18042,â”Œ Warning: 2026-11-09 23:12:44 | No generators in region: DC|WY_E
+recctl_smr100_eo_p50,19622,â”Œ Warning: 2026-11-10 00:32:08 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,19624,â”Œ Warning: 2026-11-10 00:32:08 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,19626,â”Œ Warning: 2026-11-10 00:32:08 | No generators in region: DC|UT
+recctl_smr100_eo_p50,19628,â”Œ Warning: 2026-11-10 00:32:08 | No generators in region: DC|WY_E
+recctl_smr100_eo_p50,21248,â”Œ Warning: 2026-11-10 01:59:43 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,21250,â”Œ Warning: 2026-11-10 01:59:43 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,21252,â”Œ Warning: 2026-11-10 01:59:43 | No generators in region: DC|UT
+recctl_smr100_eo_p50,21254,â”Œ Warning: 2026-11-10 01:59:43 | No generators in region: DC|WY_E
+recctl_smr100_eo_p50,22747,â”Œ Warning: 2026-11-10 03:13:37 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,22749,â”Œ Warning: 2026-11-10 03:13:37 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,22751,â”Œ Warning: 2026-11-10 03:13:37 | No generators in region: DC|UT
+recctl_smr100_eo_p50,22753,â”Œ Warning: 2026-11-10 03:13:37 | No generators in region: DC|WY_E
+recctl_smr100_eo_p50,24328,â”Œ Warning: 2026-11-10 04:18:47 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,24330,â”Œ Warning: 2026-11-10 04:18:47 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,24332,â”Œ Warning: 2026-11-10 04:18:47 | No generators in region: DC|UT
+recctl_smr100_eo_p50,24334,â”Œ Warning: 2026-11-10 04:18:47 | No generators in region: DC|WY_E
+recctl_smr100_eo_p50,25770,â”Œ Warning: 2026-11-10 05:25:34 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,25772,â”Œ Warning: 2026-11-10 05:25:34 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,25774,â”Œ Warning: 2026-11-10 05:25:35 | No generators in region: DC|UT
+recctl_smr100_eo_p50,25776,â”Œ Warning: 2026-11-10 05:25:35 | No generators in region: DC|WY_E
+recctl_smr100_eo_p50,27338,â”Œ Warning: 2026-11-10 06:38:45 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,27340,â”Œ Warning: 2026-11-10 06:38:45 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,27342,â”Œ Warning: 2026-11-10 06:38:45 | No generators in region: DC|UT
+recctl_smr100_eo_p50,27344,â”Œ Warning: 2026-11-10 06:38:45 | No generators in region: DC|WY_E
+recctl_smr100_eo_p50,28899,â”Œ Warning: 2026-11-10 07:52:12 | No generators in region: DC|AZ_S
+recctl_smr100_eo_p50,28901,â”Œ Warning: 2026-11-10 07:52:12 | No generators in region: DC|NM_W
+recctl_smr100_eo_p50,28903,â”Œ Warning: 2026-11-10 07:52:12 | No generators in region: DC|UT
+recctl_smr100_eo_p50,28905,â”Œ Warning: 2026-11-10 07:52:12 | No generators in region: DC|WY_E
+recctl_smr100_eo_p50,29021,"report_dump.py | 2026-11-10 08:26:16 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+recctl_smr100_eo_p50,29023,"report_dump.py | 2026-11-10 08:26:16 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29025,"report_dump.py | 2026-11-10 08:26:16 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29030,"report_dump.py | 2026-11-10 08:26:16 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+recctl_smr100_eo_p50,29037,report_dump.py | 2026-11-10 08:26:16 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+recctl_smr100_eo_p50,29052,"report_dump.py | 2026-11-10 08:26:16 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+recctl_smr100_eo_p50,29054,"report_dump.py | 2026-11-10 08:26:16 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29056,"report_dump.py | 2026-11-10 08:26:16 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29061,"report_dump.py | 2026-11-10 08:26:16 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+recctl_smr100_eo_p50,29068,report_dump.py | 2026-11-10 08:26:16 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+recctl_smr100_eo_p50,29083,"report_dump.py | 2026-11-10 08:26:17 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+recctl_smr100_eo_p50,29085,"report_dump.py | 2026-11-10 08:26:17 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29087,"report_dump.py | 2026-11-10 08:26:17 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29092,"report_dump.py | 2026-11-10 08:26:17 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+recctl_smr100_eo_p50,29099,report_dump.py | 2026-11-10 08:26:17 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+recctl_smr100_eo_p50,29114,"report_dump.py | 2026-11-10 08:26:17 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+recctl_smr100_eo_p50,29116,"report_dump.py | 2026-11-10 08:26:17 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29118,"report_dump.py | 2026-11-10 08:26:17 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29123,"report_dump.py | 2026-11-10 08:26:17 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+recctl_smr100_eo_p50,29130,report_dump.py | 2026-11-10 08:26:17 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+recctl_smr100_eo_p50,29145,"report_dump.py | 2026-11-10 08:26:17 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+recctl_smr100_eo_p50,29147,"report_dump.py | 2026-11-10 08:26:17 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29149,"report_dump.py | 2026-11-10 08:26:17 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29154,"report_dump.py | 2026-11-10 08:26:17 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+recctl_smr100_eo_p50,29161,report_dump.py | 2026-11-10 08:26:17 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+recctl_smr100_eo_p50,29176,"report_dump.py | 2026-11-10 08:26:17 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+recctl_smr100_eo_p50,29178,"report_dump.py | 2026-11-10 08:26:17 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29180,"report_dump.py | 2026-11-10 08:26:17 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29185,"report_dump.py | 2026-11-10 08:26:17 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+recctl_smr100_eo_p50,29192,report_dump.py | 2026-11-10 08:26:17 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+recctl_smr100_eo_p50,29207,"report_dump.py | 2026-11-10 08:26:17 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+recctl_smr100_eo_p50,29209,"report_dump.py | 2026-11-10 08:26:17 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29211,"report_dump.py | 2026-11-10 08:26:17 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29216,"report_dump.py | 2026-11-10 08:26:17 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+recctl_smr100_eo_p50,29223,report_dump.py | 2026-11-10 08:26:17 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+recctl_smr100_eo_p50,29238,"report_dump.py | 2026-11-10 08:26:18 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+recctl_smr100_eo_p50,29240,"report_dump.py | 2026-11-10 08:26:18 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29242,"report_dump.py | 2026-11-10 08:26:18 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29247,"report_dump.py | 2026-11-10 08:26:18 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+recctl_smr100_eo_p50,29254,report_dump.py | 2026-11-10 08:26:18 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+recctl_smr100_eo_p50,29269,"report_dump.py | 2026-11-10 08:26:18 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+recctl_smr100_eo_p50,29271,"report_dump.py | 2026-11-10 08:26:18 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29273,"report_dump.py | 2026-11-10 08:26:18 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+recctl_smr100_eo_p50,29278,"report_dump.py | 2026-11-10 08:26:18 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+recctl_smr100_eo_p50,29285,report_dump.py | 2026-11-10 08:26:18 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+recctl_smr100_eo_p50,29357,report_dump.py | 2026-11-10 08:26:24 | INFO | Saving error_check as error_check.csv
+recctl_smr100_eo_p50,29358,report_dump.py | 2026-11-10 08:26:24 | INFO | Saving error_gen as error_gen.csv
+recctl_smr100_eo_p50,29565,report_dump.py | 2026-11-10 08:26:44 | ERROR | Traceback (most recent call last):
+recctl_smr100_eo_p50,29566,"report_dump.py | 2026-11-10 08:26:44 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recctl_smr100_eo_p50\reeds\core\terminus\report_dump.py"", line 302, in <module>"
+recctl_smr100_eo_p50,29567,"report_dump.py | 2026-11-10 08:26:44 | ERROR |     postprocess_outputs(case, outputs_path=outputs_path)"
+recctl_smr100_eo_p50,29568,report_dump.py | 2026-11-10 08:26:44 | ERROR |     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+recctl_smr100_eo_p50,29569,"report_dump.py | 2026-11-10 08:26:44 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_recctl_smr100_eo_p50\reeds\core\terminus\report_dump.py"", line 203, in postprocess_outputs"
+recctl_smr100_eo_p50,29570,report_dump.py | 2026-11-10 08:26:44 | ERROR |     reeds.results.calc_systemcost(case).to_csv(
+recctl_smr100_eo_p50,29571,report_dump.py | 2026-11-10 08:26:44 | ERROR |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+recctl_smr100_eo_p50,29572,"report_dump.py | 2026-11-10 08:26:44 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\reeds\results.py"", line 315, in calc_systemcost"
+recctl_smr100_eo_p50,29573,"report_dump.py | 2026-11-10 08:26:44 | ERROR |     df_capex_init = pd.read_csv(os.path.join(inputs_case, 'df_capex_init.csv'))"
+recctl_smr100_eo_p50,29574,"report_dump.py | 2026-11-10 08:26:44 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 873, in read_csv"
+recctl_smr100_eo_p50,29575,"report_dump.py | 2026-11-10 08:26:44 | ERROR |     return _read(filepath_or_buffer, kwds)"
+recctl_smr100_eo_p50,29576,"report_dump.py | 2026-11-10 08:26:44 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 300, in _read"
+recctl_smr100_eo_p50,29577,"report_dump.py | 2026-11-10 08:26:44 | ERROR |     parser = TextFileReader(filepath_or_buffer, **kwds)"
+recctl_smr100_eo_p50,29578,"report_dump.py | 2026-11-10 08:26:44 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1645, in __init__"
+recctl_smr100_eo_p50,29579,"report_dump.py | 2026-11-10 08:26:44 | ERROR |     self._engine = self._make_engine(f, self.engine)"
+recctl_smr100_eo_p50,29580,report_dump.py | 2026-11-10 08:26:44 | ERROR |                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+recctl_smr100_eo_p50,29581,"report_dump.py | 2026-11-10 08:26:44 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1904, in _make_engine"
+recctl_smr100_eo_p50,29582,report_dump.py | 2026-11-10 08:26:44 | ERROR |     self.handles = get_handle(
+recctl_smr100_eo_p50,29583,report_dump.py | 2026-11-10 08:26:44 | ERROR |                    ~~~~~~~~~~^
+recctl_smr100_eo_p50,29584,"report_dump.py | 2026-11-10 08:26:44 | ERROR |         f,"
+recctl_smr100_eo_p50,29585,report_dump.py | 2026-11-10 08:26:44 | ERROR |         ^^
+recctl_smr100_eo_p50,29586,report_dump.py | 2026-11-10 08:26:44 | ERROR |     ...<6 lines>...
+recctl_smr100_eo_p50,29587,"report_dump.py | 2026-11-10 08:26:44 | ERROR |         storage_options=self.options.get(""storage_options"", None),"
+recctl_smr100_eo_p50,29588,report_dump.py | 2026-11-10 08:26:44 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+recctl_smr100_eo_p50,29589,report_dump.py | 2026-11-10 08:26:44 | ERROR |     )
+recctl_smr100_eo_p50,29590,"report_dump.py | 2026-11-10 08:26:44 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py"", line 930, in get_handle"
+recctl_smr100_eo_p50,29591,report_dump.py | 2026-11-10 08:26:44 | ERROR |     handle = open(
+recctl_smr100_eo_p50,29592,"report_dump.py | 2026-11-10 08:26:44 | ERROR |         handle,"
+recctl_smr100_eo_p50,29593,report_dump.py | 2026-11-10 08:26:44 | ERROR |     ...<3 lines>...
+recctl_smr100_eo_p50,29594,"report_dump.py | 2026-11-10 08:26:44 | ERROR |         newline="""","
+recctl_smr100_eo_p50,29595,report_dump.py | 2026-11-10 08:26:44 | ERROR |     )
+recctl_smr100_eo_p50,29596,report_dump.py | 2026-11-10 08:26:44 | ERROR | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_recctl_smr100_eo_p50\\inputs_case\\df_capex_init.csv'
+recctl_smr100_eo_p50,29599,"retail_rate_calculations.py | 2026-11-10 08:26:50 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:161: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+recctl_smr100_eo_p50,29600,retail_rate_calculations.py | 2026-11-10 08:26:50 | ERROR |   .assign(cost_cap=lambda x: x['cost_cap_x'].fillna(x['cost_cap_y']))
+recctl_smr100_eo_p50,29601,"retail_rate_calculations.py | 2026-11-10 08:26:50 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:179: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+recctl_smr100_eo_p50,29602,retail_rate_calculations.py | 2026-11-10 08:26:50 | ERROR |   init_capex['capex'] = init_capex['cost_cap'] * init_capex['cap_new']
+recctl_smr100_eo_p50,29603,"retail_rate_calculations.py | 2026-11-10 08:26:50 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:182: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+recctl_smr100_eo_p50,29604,retail_rate_calculations.py | 2026-11-10 08:26:50 | ERROR |   .sum()
+recctl_smr100_eo_p50,29610,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:883: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+recctl_smr100_eo_p50,29611,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29612,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29613,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+recctl_smr100_eo_p50,29614,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29615,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+recctl_smr100_eo_p50,29616,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |   df_gen_capex['eval_period'].fillna(20, inplace=True)"
+recctl_smr100_eo_p50,29617,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:889: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+recctl_smr100_eo_p50,29618,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29619,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29620,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+recctl_smr100_eo_p50,29621,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29622,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+recctl_smr100_eo_p50,29623,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |   df_gen_capex['depreciation_sch'].fillna('20', inplace=True)"
+recctl_smr100_eo_p50,29624,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:926: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+recctl_smr100_eo_p50,29625,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29626,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29627,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+recctl_smr100_eo_p50,29628,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29629,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+recctl_smr100_eo_p50,29630,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |   df_gen_capex_init['eval_period'].fillna(20, inplace=True)"
+recctl_smr100_eo_p50,29631,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:930: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+recctl_smr100_eo_p50,29632,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29633,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29634,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+recctl_smr100_eo_p50,29635,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29636,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+recctl_smr100_eo_p50,29637,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |   df_gen_capex_init['depreciation_sch'].fillna('20', inplace=True)"
+recctl_smr100_eo_p50,29638,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+recctl_smr100_eo_p50,29639,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29640,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29641,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+recctl_smr100_eo_p50,29642,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29643,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+recctl_smr100_eo_p50,29644,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)"
+recctl_smr100_eo_p50,29645,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29646,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29647,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29648,"retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29649,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |
+recctl_smr100_eo_p50,29650,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29651,retail_rate_calculations.py | 2026-11-10 08:26:51 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29652,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+recctl_smr100_eo_p50,29653,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29654,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29655,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+recctl_smr100_eo_p50,29656,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29657,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+recctl_smr100_eo_p50,29658,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)"
+recctl_smr100_eo_p50,29659,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29660,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29661,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29662,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29663,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29664,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29665,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29666,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29667,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29668,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29669,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29670,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29671,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29672,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29673,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29674,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29675,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29676,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29677,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29678,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29679,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29680,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29681,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29682,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29683,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29684,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29685,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29686,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29687,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29688,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29689,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29690,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29691,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29692,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29693,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29694,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29695,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29696,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29697,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29698,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29699,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29700,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29701,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29702,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29703,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29704,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29705,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29706,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29707,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29708,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29709,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29710,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29711,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29712,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29713,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29714,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29715,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29716,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29717,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29718,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29719,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29720,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29721,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29722,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29723,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29724,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29725,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29726,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29727,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29728,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29729,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29730,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29731,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29732,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29733,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29734,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29735,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29736,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+recctl_smr100_eo_p50,29737,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29738,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29739,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+recctl_smr100_eo_p50,29740,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29741,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+recctl_smr100_eo_p50,29742,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)"
+recctl_smr100_eo_p50,29743,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29744,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29745,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29746,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29747,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29748,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29749,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29750,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29751,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29752,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29753,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29754,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29755,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29756,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29757,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29758,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29759,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29760,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29761,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29762,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29763,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29764,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29765,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29766,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29767,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29768,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29769,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29770,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29771,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29772,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29773,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29774,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29775,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29776,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29777,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29778,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29779,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29780,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29781,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29782,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29783,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29784,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29785,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29786,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29787,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29788,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29789,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29790,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29791,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29792,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29793,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29794,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29795,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29796,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29797,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29798,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29799,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29800,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29801,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29802,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29803,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29804,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29805,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29806,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29807,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29808,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29809,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29810,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29811,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29812,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29813,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29814,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29815,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29816,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29817,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29818,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29819,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29820,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29821,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29822,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29823,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29824,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29825,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29826,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29827,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29828,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29829,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29830,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29831,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29832,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29833,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29834,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29835,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29836,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29837,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29838,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29839,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29840,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29841,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29842,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29843,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29844,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29845,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29846,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29847,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29848,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29849,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29850,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29851,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29852,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29853,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29854,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29855,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29856,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29857,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29858,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29859,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29860,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29861,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29862,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29863,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29864,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29865,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29866,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29867,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29868,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29869,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29870,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29871,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29872,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29873,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29874,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29875,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29876,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29877,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29878,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29879,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29880,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29881,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29882,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29883,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29884,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29885,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29886,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29887,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29888,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29889,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29890,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29891,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29892,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29893,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29894,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29895,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29896,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29897,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29898,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29899,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29900,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29901,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29902,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29903,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29904,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29905,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29906,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29907,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29908,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29909,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29910,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29911,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29912,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29913,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29914,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29915,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29916,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29917,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29918,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29919,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29920,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29921,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29922,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29923,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29924,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29925,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29926,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29927,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29928,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29929,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29930,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29931,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29932,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29933,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29934,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29935,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29936,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29937,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29938,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29939,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29940,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29941,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29942,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29943,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29944,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29945,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29946,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29947,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29948,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29949,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29950,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29951,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29952,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29953,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29954,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29955,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29956,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29957,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29958,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29959,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29960,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29961,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29962,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29963,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29964,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29965,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29966,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29967,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29968,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29969,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29970,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29971,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29972,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29973,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29974,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29975,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29976,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29977,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29978,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29979,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29980,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29981,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29982,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29983,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29984,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29985,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29986,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29987,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29988,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29989,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29990,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29991,"retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29992,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |
+recctl_smr100_eo_p50,29993,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,29994,retail_rate_calculations.py | 2026-11-10 08:26:52 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,29995,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,29996,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,29997,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,29998,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,29999,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30000,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30001,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30002,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30003,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30004,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30005,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30006,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30007,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30008,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30009,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30010,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30011,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30012,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30013,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30014,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30015,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30016,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30017,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30018,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30019,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30020,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30021,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30022,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30023,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30024,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30025,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30026,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30027,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30028,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30029,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30030,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30031,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30032,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30033,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30034,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30035,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30036,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30037,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30038,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30039,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30040,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30041,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30042,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30043,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30044,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30045,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30046,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30047,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30048,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30049,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30050,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30051,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30052,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30053,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30054,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30055,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30056,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30057,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30058,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30059,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30060,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30061,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30062,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30063,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30064,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30065,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30066,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30067,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30068,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30069,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30070,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30071,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30072,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+recctl_smr100_eo_p50,30073,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+recctl_smr100_eo_p50,30074,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30075,"retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+recctl_smr100_eo_p50,30076,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |
+recctl_smr100_eo_p50,30077,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+recctl_smr100_eo_p50,30078,retail_rate_calculations.py | 2026-11-10 08:26:53 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+recctl_smr100_eo_p50,30099,reeds_to_rev.py | 2026-11-10 08:27:17 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\ONSHORE/2025_08_31_NewSites\wind-ons_reference_county\results\wind-ons_supply_curve_raw.csv...
+recctl_smr100_eo_p50,30125,reeds_to_rev.py | 2026-11-10 08:27:17 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\ONSHORE/2025_08_31_NewSites\\wind-ons_reference_county\\results\\wind-ons_supply_curve_raw.csv'
+recctl_smr100_eo_p50,30131,reeds_to_rev.py | 2026-11-10 08:27:20 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\OFFSHORE/2025_08_11_NewSites\wind-ofs_reference_county\results\wind-ofs_supply_curve_raw.csv...
+recctl_smr100_eo_p50,30157,reeds_to_rev.py | 2026-11-10 08:27:20 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\OFFSHORE/2025_08_11_NewSites\\wind-ofs_reference_county\\results\\wind-ofs_supply_curve_raw.csv'
+recctl_smr100_eo_p50,30163,reeds_to_rev.py | 2026-11-10 08:27:24 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\UPV/2025_09_29_Update\upv_reference_county\results\upv_supply_curve_raw.csv...
+recctl_smr100_eo_p50,30189,reeds_to_rev.py | 2026-11-10 08:27:24 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\UPV/2025_09_29_Update\\upv_reference_county\\results\\upv_supply_curve_raw.csv'
+recctl_smr100_eo_p50,30195,reeds_to_rev.py | 2026-11-10 08:27:27 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\GeoHydro/2024_Update\geohydro_reference_county\results\geohydro_supply_curve_raw.csv...
+recctl_smr100_eo_p50,30221,reeds_to_rev.py | 2026-11-10 08:27:27 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\GeoHydro/2024_Update\\geohydro_reference_county\\results\\geohydro_supply_curve_raw.csv'
+recctl_smr100_eo_p50,30228,single_case_plots.py | 2026-11-10 08:30:38 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+recctl_smr100_eo_p50,30229,single_case_plots.py | 2026-11-10 08:30:38 | ERROR |   _init_gdal_data()
