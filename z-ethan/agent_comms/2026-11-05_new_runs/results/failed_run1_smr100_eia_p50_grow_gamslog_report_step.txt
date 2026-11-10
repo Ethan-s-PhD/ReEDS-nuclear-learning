@@ -1,0 +1,39 @@
+          University of Utah,                                       DC17182
+          \\netapp.chemeng.utah.edu\ChemE-homes\egallup\Documents\GAMS\gamslice.txt
+          ethan.gallup@utah.edu                                            
+          The maintenance period of the license expired on May 18, 2026
+          Please contact GAMS or your distributor for further information
+System information: 24 physical cores and 256 Gb physical memory detected
+GAMS 50.4.0   Copyright (C) 1987-2025 GAMS Development. All rights reserved
+--- Starting continued compilation
+--- Workfile was generated under GAMS version WEX504-504
+--- report.gms(119) 32761 Mb
+--- . report_params.gms(241) 32761 Mb
+--- report.gms(2191) 32772 Mb
+--- . report_paramlist.txt(280) 32772 Mb
+--- report.gms(2192) 32801 Mb
+--- Starting execution: elapsed 0:00:45.789
+--- report.gms(72146023) 39290 Mb
+--- GDX File (execute_unload) C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_eia_p50_grow\outputs\rep_ag_run1_smr100_eia_p50_grow.gdx
+--- Profile Summary (445 records processed)
+   101.312  39.240GB  72144961 Assignment emit_r (13492)
+    72.766  39.240GB  72144994 Assignment emit_irt (37624)
+    69.188  39.178GB  72144585 Assignment curt_h (39998)
+    62.562  37.388GB  72144208 Assignment reqt_quant (2390878)
+    60.453  37.692GB  72144465 Assignment gen_h (4129276)
+    56.203  37.796GB  72144486 Assignment gen_h_stress (2650537)
+    47.937  39.290GB  72145946 Assignment h2_usage (3982)
+    33.297  39.239GB  72144846 Assignment revenue_en_nat (2738)
+    33.172  39.239GB  72144814 Assignment revenue (46608)
+    28.656  39.239GB  72144833 Assignment revenue_en (51715)
+*** Status: Normal completion
+--- report.gms(72146023) 39288 Mb
+--- Job report.gms Stop 11/10/26 13:57:04 elapsed 0:14:54.810
+retail_rate_calculations.py | 2026-11-10 13:57:29 | INFO | Starting retail_rate_calculations.py
+retail_rate_calculations.py | 2026-11-10 13:57:29 | INFO | Calculating historical capital costs...
+retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:161: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   .assign(cost_cap=lambda x: x['cost_cap_x'].fillna(x['cost_cap_y']))
+retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:179: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   init_capex['capex'] = init_capex['cost_cap'] * init_capex['cap_new']
+retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:182: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   .sum()

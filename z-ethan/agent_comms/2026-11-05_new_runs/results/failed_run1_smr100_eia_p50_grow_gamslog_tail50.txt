@@ -1,0 +1,50 @@
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |   File "C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py", line 1904, in _make_engine
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |     self.handles = get_handle(
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |                    ~~~~~~~~~~^
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |         f,
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |         ^^
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |     ...<6 lines>...
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |         storage_options=self.options.get("storage_options", None),
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |     )
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |   File "C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py", line 930, in get_handle
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |     handle = open(
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |         handle,
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |     ...<3 lines>...
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |         newline="",
+single_case_plots.py | 2026-11-10 13:59:53 | INFO |     )
+single_case_plots.py | 2026-11-10 13:59:53 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+single_case_plots.py | 2026-11-10 13:59:54 | INFO | map_capacity_markers failed:
+single_case_plots.py | 2026-11-10 13:59:54 | INFO | Traceback (most recent call last):
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |   File "C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\single_case_plots.py", line 846, in <module>
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     f,ax = reedsplots.map_capacity_markers(
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |         case=case, level=level, year=year, ms=ms[level])
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |   File "C:\Users\egallup\ReEDS-nuclear-learning\reeds\reedsplots.py", line 2782, in map_capacity_markers
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     cap = reeds.io.read_output(case, 'cap')
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |   File "C:\Users\egallup\ReEDS-nuclear-learning\reeds\io.py", line 523, in read_output
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     df = pd.read_csv(os.path.join(case, 'outputs', _filename))
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |   File "C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py", line 873, in read_csv
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     return _read(filepath_or_buffer, kwds)
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |   File "C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py", line 300, in _read
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     parser = TextFileReader(filepath_or_buffer, **kwds)
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |   File "C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py", line 1645, in __init__
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     self._engine = self._make_engine(f, self.engine)
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |   File "C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py", line 1904, in _make_engine
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     self.handles = get_handle(
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |                    ~~~~~~~~~~^
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |         f,
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |         ^^
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     ...<6 lines>...
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |         storage_options=self.options.get("storage_options", None),
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     )
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |   File "C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py", line 930, in get_handle
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     handle = open(
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |         handle,
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     ...<3 lines>...
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |         newline="",
+single_case_plots.py | 2026-11-10 13:59:54 | INFO |     )
+single_case_plots.py | 2026-11-10 13:59:54 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
