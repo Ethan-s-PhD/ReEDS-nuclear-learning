@@ -1,0 +1,684 @@
+case,line_no,line
+run1_smr100_eia_p50_grow,272,copy_files.py | 2026-11-09 15:07:37 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+run1_smr100_eia_p50_grow,273,copy_files.py | 2026-11-09 15:07:37 | ERROR |   _init_gdal_data()
+run1_smr100_eia_p50_grow,353,copy_files.py | 2026-11-09 15:08:15 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_eia_p50_grow\reeds\input_processing\copy_files.py:465: DtypeWarning: Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_memory=False.
+run1_smr100_eia_p50_grow,354,"copy_files.py | 2026-11-09 15:08:15 | ERROR |   df = pd.read_csv(full_path, dtype={'FIPS':str, 'fips':str, 'cnty_fips':str}, comment='#')"
+run1_smr100_eia_p50_grow,355,"copy_files.py | 2026-11-09 15:08:15 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_eia_p50_grow\reeds\input_processing\copy_files.py:896: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+run1_smr100_eia_p50_grow,356,copy_files.py | 2026-11-09 15:08:15 | ERROR |   df['r'] = df['FIPS'].map(county2zone)
+run1_smr100_eia_p50_grow,367,copy_files.py | 2026-11-09 15:08:39 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\raw.py:733: RuntimeWarning: Cannot find tms_NZTM2000.json (GDAL_DATA is not defined)
+run1_smr100_eia_p50_grow,368,copy_files.py | 2026-11-09 15:08:39 | ERROR |   ogr_write(
+run1_smr100_eia_p50_grow,390,h2_storage.py | 2026-11-09 15:08:55 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+run1_smr100_eia_p50_grow,391,h2_storage.py | 2026-11-09 15:08:55 | ERROR |   _init_gdal_data()
+run1_smr100_eia_p50_grow,398,fuelcostprep.py | 2026-11-09 15:09:05 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+run1_smr100_eia_p50_grow,399,fuelcostprep.py | 2026-11-09 15:09:05 | ERROR |   _init_gdal_data()
+run1_smr100_eia_p50_grow,479,recf.py | 2026-11-09 15:15:51 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_eia_p50_grow\reeds\input_processing\recf.py:422: Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is active in pandas since 3.0 which utilizes a lazy copy mechanism that defers copies until necessary. Use .copy() to make an eager copy if necessary.
+run1_smr100_eia_p50_grow,480,recf.py | 2026-11-09 15:15:51 | ERROR |   recf = pd.concat(
+run1_smr100_eia_p50_grow,481,recf.py | 2026-11-09 15:15:51 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_eia_p50_grow\reeds\input_processing\recf.py:449: Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is active in pandas since 3.0 which utilizes a lazy copy mechanism that defers copies until necessary. Use .copy() to make an eager copy if necessary.
+run1_smr100_eia_p50_grow,482,"recf.py | 2026-11-09 15:15:51 | ERROR |   recf = recf.reindex(labels=resources['resource'].drop_duplicates(), axis=1, copy=False)"
+run1_smr100_eia_p50_grow,1512,WriteHintage.py | 2026-11-09 15:22:57 | INFO | Note that the clustering can result in warnings if the heat rates
+run1_smr100_eia_p50_grow,1519,transmission.py | 2026-11-09 15:23:13 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+run1_smr100_eia_p50_grow,1520,transmission.py | 2026-11-09 15:23:13 | ERROR |   _init_gdal_data()
+run1_smr100_eia_p50_grow,1549,hourly_repperiods.py | 2026-11-09 15:31:12 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+run1_smr100_eia_p50_grow,1550,hourly_repperiods.py | 2026-11-09 15:31:12 | ERROR |   _init_gdal_data()
+run1_smr100_eia_p50_grow,3329,check_inputs.py | 2026-11-09 15:49:27 | INFO | Load inputs.gdx for error checking
+run1_smr100_eia_p50_grow,5590,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5592,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5594,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5596,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5598,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5600,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5602,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5604,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5606,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5608,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5610,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5612,"â”Œ Error: 2026-11-09 16:02:20 | MT_C,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5614,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5616,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5618,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5620,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5622,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5624,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5626,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5628,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5630,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5632,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5634,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5636,"â”Œ Error: 2026-11-09 16:02:20 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5638,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5640,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5642,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5644,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5646,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5648,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5650,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5652,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5654,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5656,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5658,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5660,"â”Œ Error: 2026-11-09 16:02:20 | NY_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5662,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5664,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5666,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5668,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5670,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5672,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5674,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5676,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5678,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5680,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5682,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5684,"â”Œ Error: 2026-11-09 16:02:20 | WA_E,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5686,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5688,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5690,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5692,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5694,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5696,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5698,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5700,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5702,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5704,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5706,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5708,"â”Œ Error: 2026-11-09 16:02:20 | WA_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5710,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5712,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5714,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5716,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5718,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5720,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5722,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5724,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5726,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5728,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5730,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5732,"â”Œ Error: 2026-11-09 16:02:20 | MT_W,hydud,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5734,"â”Œ Error: 2026-11-09 16:02:21 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5736,"â”Œ Error: 2026-11-09 16:02:21 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5738,"â”Œ Error: 2026-11-09 16:02:21 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5740,"â”Œ Error: 2026-11-09 16:02:21 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5742,"â”Œ Error: 2026-11-09 16:02:21 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5744,"â”Œ Error: 2026-11-09 16:02:21 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5746,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5748,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5750,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5752,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5754,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5756,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5758,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5760,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5762,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5764,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5766,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5768,"â”Œ Error: 2026-11-09 16:02:21 | CA_N,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5770,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5772,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5774,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5776,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5778,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5780,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5782,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5784,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5786,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5788,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5790,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5792,"â”Œ Error: 2026-11-09 16:02:21 | CO_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5794,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5796,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5798,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5800,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5802,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5804,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5806,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5808,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5810,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5812,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5814,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5816,"â”Œ Error: 2026-11-09 16:02:21 | CO_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5818,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5820,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5822,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5824,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5826,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5828,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5830,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5832,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5834,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5836,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5838,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5840,"â”Œ Error: 2026-11-09 16:02:21 | ID_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5842,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5844,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5846,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5848,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5850,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5852,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5854,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5856,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5858,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5860,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5862,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5864,"â”Œ Error: 2026-11-09 16:02:21 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5866,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5868,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5870,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5872,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5874,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5876,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5878,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5880,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5882,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5884,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5886,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5888,"â”Œ Error: 2026-11-09 16:02:21 | KS,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5890,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5892,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5894,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5896,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5898,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5900,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5902,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5904,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5906,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5908,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5910,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5912,"â”Œ Error: 2026-11-09 16:02:21 | ME,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5914,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5916,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5918,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5920,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5922,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5924,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5926,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5928,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5930,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5932,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5934,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5936,"â”Œ Error: 2026-11-09 16:02:21 | MN_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5938,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5940,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5942,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5944,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5946,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5948,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5950,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5952,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5954,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5956,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5958,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5960,"â”Œ Error: 2026-11-09 16:02:21 | MT_C,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5962,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5964,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5966,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5968,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5970,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5972,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5974,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5976,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5978,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5980,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5982,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5984,"â”Œ Error: 2026-11-09 16:02:21 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5986,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5988,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5990,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5992,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5994,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5996,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,5998,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6000,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6002,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6004,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6006,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6008,"â”Œ Error: 2026-11-09 16:02:21 | NM_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6010,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6012,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6014,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6016,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6018,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6020,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6022,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6024,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6026,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6028,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6030,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6032,"â”Œ Error: 2026-11-09 16:02:21 | NY_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6034,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6036,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6038,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6040,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6042,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6044,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6046,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6048,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6050,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6052,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6054,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6056,"â”Œ Error: 2026-11-09 16:02:21 | NY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6058,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6060,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6062,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6064,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6066,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6068,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6070,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6072,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6074,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6076,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6078,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6080,"â”Œ Error: 2026-11-09 16:02:21 | OR_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6082,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6084,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6086,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6088,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6090,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6092,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6094,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6096,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6098,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6100,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6102,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6104,"â”Œ Error: 2026-11-09 16:02:21 | OR_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6106,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6108,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6110,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6112,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6114,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6116,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6118,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6120,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6122,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6124,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6126,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6128,"â”Œ Error: 2026-11-09 16:02:21 | PA_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6130,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6132,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6134,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6136,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6138,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6140,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6142,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6144,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6146,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6148,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6150,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6152,"â”Œ Error: 2026-11-09 16:02:21 | WA_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6154,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6156,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6158,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6160,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6162,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6164,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6166,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6168,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6170,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6172,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6174,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6176,"â”Œ Error: 2026-11-09 16:02:21 | WI_E,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6178,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6180,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6182,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6184,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6186,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6188,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6190,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6192,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6194,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6196,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6198,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6200,"â”Œ Error: 2026-11-09 16:02:21 | WY_W,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6202,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6204,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6206,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6208,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6210,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6212,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6214,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6216,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6218,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6220,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6222,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,6224,"â”Œ Error: 2026-11-09 16:02:21 | CA_S,hydund,BoundsError(Float64[], (1,))"
+run1_smr100_eia_p50_grow,9243,â”Œ Warning: 2026-11-09 17:09:20 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,9245,â”Œ Warning: 2026-11-09 17:09:20 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,10857,â”Œ Warning: 2026-11-09 18:11:56 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,10859,â”Œ Warning: 2026-11-09 18:11:56 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,12341,â”Œ Warning: 2026-11-09 19:40:10 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,12343,â”Œ Warning: 2026-11-09 19:40:10 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,13814,â”Œ Warning: 2026-11-09 21:04:04 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,13816,â”Œ Warning: 2026-11-09 21:04:04 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,15244,â”Œ Warning: 2026-11-09 22:29:25 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,15246,â”Œ Warning: 2026-11-09 22:29:25 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,15248,â”Œ Warning: 2026-11-09 22:29:25 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,15250,â”Œ Warning: 2026-11-09 22:29:25 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,16859,â”Œ Warning: 2026-11-09 23:48:35 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,16861,â”Œ Warning: 2026-11-09 23:48:35 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,16863,â”Œ Warning: 2026-11-09 23:48:35 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,16865,â”Œ Warning: 2026-11-09 23:48:35 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,18535,â”Œ Warning: 2026-11-10 01:18:36 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,18537,â”Œ Warning: 2026-11-10 01:18:36 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,18539,â”Œ Warning: 2026-11-10 01:18:36 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,18541,â”Œ Warning: 2026-11-10 01:18:36 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,20175,â”Œ Warning: 2026-11-10 02:43:24 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,20177,â”Œ Warning: 2026-11-10 02:43:24 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,20179,â”Œ Warning: 2026-11-10 02:43:24 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,20181,â”Œ Warning: 2026-11-10 02:43:24 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,21957,â”Œ Warning: 2026-11-10 04:25:01 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,21959,â”Œ Warning: 2026-11-10 04:25:01 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,21961,â”Œ Warning: 2026-11-10 04:25:01 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,21963,â”Œ Warning: 2026-11-10 04:25:01 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,23589,â”Œ Warning: 2026-11-10 05:38:45 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,23591,â”Œ Warning: 2026-11-10 05:38:45 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,23593,â”Œ Warning: 2026-11-10 05:38:45 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,23595,â”Œ Warning: 2026-11-10 05:38:45 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,25031,â”Œ Warning: 2026-11-10 06:47:37 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,25033,â”Œ Warning: 2026-11-10 06:47:37 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,25035,â”Œ Warning: 2026-11-10 06:47:37 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,25037,â”Œ Warning: 2026-11-10 06:47:37 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,26763,â”Œ Warning: 2026-11-10 08:14:09 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,26765,â”Œ Warning: 2026-11-10 08:14:09 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,26767,â”Œ Warning: 2026-11-10 08:14:09 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,26769,â”Œ Warning: 2026-11-10 08:14:09 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,28365,â”Œ Warning: 2026-11-10 09:19:25 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,28367,â”Œ Warning: 2026-11-10 09:19:25 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,28369,â”Œ Warning: 2026-11-10 09:19:25 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,28371,â”Œ Warning: 2026-11-10 09:19:25 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,29989,â”Œ Warning: 2026-11-10 10:39:03 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,29991,â”Œ Warning: 2026-11-10 10:39:03 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,29993,â”Œ Warning: 2026-11-10 10:39:03 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,29995,â”Œ Warning: 2026-11-10 10:39:03 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,31557,â”Œ Warning: 2026-11-10 11:55:16 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,31559,â”Œ Warning: 2026-11-10 11:55:16 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,31561,â”Œ Warning: 2026-11-10 11:55:16 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,31563,â”Œ Warning: 2026-11-10 11:55:16 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,33130,â”Œ Warning: 2026-11-10 13:16:16 | No generators in region: DC|AZ_S
+run1_smr100_eia_p50_grow,33132,â”Œ Warning: 2026-11-10 13:16:16 | No generators in region: DC|NM_W
+run1_smr100_eia_p50_grow,33134,â”Œ Warning: 2026-11-10 13:16:16 | No generators in region: DC|UT
+run1_smr100_eia_p50_grow,33136,â”Œ Warning: 2026-11-10 13:16:16 | No generators in region: DC|WY_E
+run1_smr100_eia_p50_grow,33236,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:161: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+run1_smr100_eia_p50_grow,33237,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   .assign(cost_cap=lambda x: x['cost_cap_x'].fillna(x['cost_cap_y']))
+run1_smr100_eia_p50_grow,33238,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:179: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+run1_smr100_eia_p50_grow,33239,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   init_capex['capex'] = init_capex['cost_cap'] * init_capex['cap_new']
+run1_smr100_eia_p50_grow,33240,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:182: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+run1_smr100_eia_p50_grow,33241,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   .sum()
+run1_smr100_eia_p50_grow,33244,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR | Traceback (most recent call last):
+run1_smr100_eia_p50_grow,33245,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py"", line 2337, in <module>"
+run1_smr100_eia_p50_grow,33246,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     main(
+run1_smr100_eia_p50_grow,33247,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     ~~~~^
+run1_smr100_eia_p50_grow,33248,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         run_dir=run_dir,"
+run1_smr100_eia_p50_grow,33249,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         ^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33250,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         inputpath=os.path.join(mdir,'inputs.csv'),"
+run1_smr100_eia_p50_grow,33251,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33252,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         write=True, verbose=args.verbose,"
+run1_smr100_eia_p50_grow,33253,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33254,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         )
+run1_smr100_eia_p50_grow,33255,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py"", line 350, in main"
+run1_smr100_eia_p50_grow,33256,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     pd.read_csv(os.path.join(run_dir, 'outputs', 'load_cat.csv')"
+run1_smr100_eia_p50_grow,33257,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33258,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     ).rename(columns={'loadtype':'load_category', 'Dim1':'load_category',"
+run1_smr100_eia_p50_grow,33259,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 873, in read_csv"
+run1_smr100_eia_p50_grow,33260,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     return _read(filepath_or_buffer, kwds)"
+run1_smr100_eia_p50_grow,33261,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 300, in _read"
+run1_smr100_eia_p50_grow,33262,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     parser = TextFileReader(filepath_or_buffer, **kwds)"
+run1_smr100_eia_p50_grow,33263,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1645, in __init__"
+run1_smr100_eia_p50_grow,33264,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     self._engine = self._make_engine(f, self.engine)"
+run1_smr100_eia_p50_grow,33265,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33266,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1904, in _make_engine"
+run1_smr100_eia_p50_grow,33267,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     self.handles = get_handle(
+run1_smr100_eia_p50_grow,33268,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |                    ~~~~~~~~~~^
+run1_smr100_eia_p50_grow,33269,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         f,"
+run1_smr100_eia_p50_grow,33270,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         ^^
+run1_smr100_eia_p50_grow,33271,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     ...<6 lines>...
+run1_smr100_eia_p50_grow,33272,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         storage_options=self.options.get(""storage_options"", None),"
+run1_smr100_eia_p50_grow,33273,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33274,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     )
+run1_smr100_eia_p50_grow,33275,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py"", line 930, in get_handle"
+run1_smr100_eia_p50_grow,33276,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     handle = open(
+run1_smr100_eia_p50_grow,33277,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         handle,"
+run1_smr100_eia_p50_grow,33278,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     ...<3 lines>...
+run1_smr100_eia_p50_grow,33279,"retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |         newline="""","
+run1_smr100_eia_p50_grow,33280,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR |     )
+run1_smr100_eia_p50_grow,33281,retail_rate_calculations.py | 2026-11-10 13:57:31 | ERROR | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\postprocessing\\retail_rate_module\\..\\..\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\load_cat.csv'
+run1_smr100_eia_p50_grow,33282,health_damage_calculations.py | 2026-11-10 13:57:35 | INFO | Error when processing health damages for ag_run1_smr100_eia_p50_grow
+run1_smr100_eia_p50_grow,33311,health_damage_calculations.py | 2026-11-10 13:57:35 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\emit_r.csv'
+run1_smr100_eia_p50_grow,33317,reeds_to_rev.py | 2026-11-10 13:57:38 | INFO | ***Error for wind-ons...
+run1_smr100_eia_p50_grow,33348,reeds_to_rev.py | 2026-11-10 13:57:38 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33349,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR | Traceback (most recent call last):
+run1_smr100_eia_p50_grow,33350,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2335, in <module>"
+run1_smr100_eia_p50_grow,33351,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     main()
+run1_smr100_eia_p50_grow,33352,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     ~~~~^^
+run1_smr100_eia_p50_grow,33353,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2331, in main"
+run1_smr100_eia_p50_grow,33354,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     run(**args.__dict__)
+run1_smr100_eia_p50_grow,33355,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     ~~~^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33356,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2225, in run"
+run1_smr100_eia_p50_grow,33357,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     raise e
+run1_smr100_eia_p50_grow,33358,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2179, in run"
+run1_smr100_eia_p50_grow,33359,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     if not check_tech(run_folder, tech):"
+run1_smr100_eia_p50_grow,33360,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33361,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2076, in check_tech"
+run1_smr100_eia_p50_grow,33362,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     df_cap = pd.read_csv(
+run1_smr100_eia_p50_grow,33363,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |         cap_chk, low_memory=False, names=[""tech"", ""region"", ""year"", ""MW""], header=0"
+run1_smr100_eia_p50_grow,33364,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     )
+run1_smr100_eia_p50_grow,33365,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 873, in read_csv"
+run1_smr100_eia_p50_grow,33366,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     return _read(filepath_or_buffer, kwds)"
+run1_smr100_eia_p50_grow,33367,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 300, in _read"
+run1_smr100_eia_p50_grow,33368,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     parser = TextFileReader(filepath_or_buffer, **kwds)"
+run1_smr100_eia_p50_grow,33369,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1645, in __init__"
+run1_smr100_eia_p50_grow,33370,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     self._engine = self._make_engine(f, self.engine)"
+run1_smr100_eia_p50_grow,33371,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33372,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1904, in _make_engine"
+run1_smr100_eia_p50_grow,33373,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     self.handles = get_handle(
+run1_smr100_eia_p50_grow,33374,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |                    ~~~~~~~~~~^
+run1_smr100_eia_p50_grow,33375,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |         f,"
+run1_smr100_eia_p50_grow,33376,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |         ^^
+run1_smr100_eia_p50_grow,33377,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     ...<6 lines>...
+run1_smr100_eia_p50_grow,33378,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |         storage_options=self.options.get(""storage_options"", None),"
+run1_smr100_eia_p50_grow,33379,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33380,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     )
+run1_smr100_eia_p50_grow,33381,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py"", line 930, in get_handle"
+run1_smr100_eia_p50_grow,33382,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     handle = open(
+run1_smr100_eia_p50_grow,33383,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |         handle,"
+run1_smr100_eia_p50_grow,33384,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     ...<3 lines>...
+run1_smr100_eia_p50_grow,33385,"reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |         newline="""","
+run1_smr100_eia_p50_grow,33386,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR |     )
+run1_smr100_eia_p50_grow,33387,reeds_to_rev.py | 2026-11-10 13:57:38 | ERROR | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33392,reeds_to_rev.py | 2026-11-10 13:57:41 | INFO | ***Error for wind-ofs...
+run1_smr100_eia_p50_grow,33423,reeds_to_rev.py | 2026-11-10 13:57:41 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33424,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR | Traceback (most recent call last):
+run1_smr100_eia_p50_grow,33425,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2335, in <module>"
+run1_smr100_eia_p50_grow,33426,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     main()
+run1_smr100_eia_p50_grow,33427,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     ~~~~^^
+run1_smr100_eia_p50_grow,33428,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2331, in main"
+run1_smr100_eia_p50_grow,33429,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     run(**args.__dict__)
+run1_smr100_eia_p50_grow,33430,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     ~~~^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33431,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2225, in run"
+run1_smr100_eia_p50_grow,33432,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     raise e
+run1_smr100_eia_p50_grow,33433,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2179, in run"
+run1_smr100_eia_p50_grow,33434,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     if not check_tech(run_folder, tech):"
+run1_smr100_eia_p50_grow,33435,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33436,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2076, in check_tech"
+run1_smr100_eia_p50_grow,33437,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     df_cap = pd.read_csv(
+run1_smr100_eia_p50_grow,33438,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |         cap_chk, low_memory=False, names=[""tech"", ""region"", ""year"", ""MW""], header=0"
+run1_smr100_eia_p50_grow,33439,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     )
+run1_smr100_eia_p50_grow,33440,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 873, in read_csv"
+run1_smr100_eia_p50_grow,33441,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     return _read(filepath_or_buffer, kwds)"
+run1_smr100_eia_p50_grow,33442,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 300, in _read"
+run1_smr100_eia_p50_grow,33443,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     parser = TextFileReader(filepath_or_buffer, **kwds)"
+run1_smr100_eia_p50_grow,33444,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1645, in __init__"
+run1_smr100_eia_p50_grow,33445,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     self._engine = self._make_engine(f, self.engine)"
+run1_smr100_eia_p50_grow,33446,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33447,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1904, in _make_engine"
+run1_smr100_eia_p50_grow,33448,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     self.handles = get_handle(
+run1_smr100_eia_p50_grow,33449,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |                    ~~~~~~~~~~^
+run1_smr100_eia_p50_grow,33450,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |         f,"
+run1_smr100_eia_p50_grow,33451,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |         ^^
+run1_smr100_eia_p50_grow,33452,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     ...<6 lines>...
+run1_smr100_eia_p50_grow,33453,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |         storage_options=self.options.get(""storage_options"", None),"
+run1_smr100_eia_p50_grow,33454,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33455,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     )
+run1_smr100_eia_p50_grow,33456,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py"", line 930, in get_handle"
+run1_smr100_eia_p50_grow,33457,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     handle = open(
+run1_smr100_eia_p50_grow,33458,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |         handle,"
+run1_smr100_eia_p50_grow,33459,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     ...<3 lines>...
+run1_smr100_eia_p50_grow,33460,"reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |         newline="""","
+run1_smr100_eia_p50_grow,33461,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR |     )
+run1_smr100_eia_p50_grow,33462,reeds_to_rev.py | 2026-11-10 13:57:41 | ERROR | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33467,reeds_to_rev.py | 2026-11-10 13:57:44 | INFO | ***Error for upv...
+run1_smr100_eia_p50_grow,33498,reeds_to_rev.py | 2026-11-10 13:57:44 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33499,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR | Traceback (most recent call last):
+run1_smr100_eia_p50_grow,33500,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2335, in <module>"
+run1_smr100_eia_p50_grow,33501,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     main()
+run1_smr100_eia_p50_grow,33502,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     ~~~~^^
+run1_smr100_eia_p50_grow,33503,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2331, in main"
+run1_smr100_eia_p50_grow,33504,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     run(**args.__dict__)
+run1_smr100_eia_p50_grow,33505,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     ~~~^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33506,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2225, in run"
+run1_smr100_eia_p50_grow,33507,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     raise e
+run1_smr100_eia_p50_grow,33508,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2179, in run"
+run1_smr100_eia_p50_grow,33509,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     if not check_tech(run_folder, tech):"
+run1_smr100_eia_p50_grow,33510,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33511,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2076, in check_tech"
+run1_smr100_eia_p50_grow,33512,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     df_cap = pd.read_csv(
+run1_smr100_eia_p50_grow,33513,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |         cap_chk, low_memory=False, names=[""tech"", ""region"", ""year"", ""MW""], header=0"
+run1_smr100_eia_p50_grow,33514,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     )
+run1_smr100_eia_p50_grow,33515,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 873, in read_csv"
+run1_smr100_eia_p50_grow,33516,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     return _read(filepath_or_buffer, kwds)"
+run1_smr100_eia_p50_grow,33517,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 300, in _read"
+run1_smr100_eia_p50_grow,33518,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     parser = TextFileReader(filepath_or_buffer, **kwds)"
+run1_smr100_eia_p50_grow,33519,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1645, in __init__"
+run1_smr100_eia_p50_grow,33520,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     self._engine = self._make_engine(f, self.engine)"
+run1_smr100_eia_p50_grow,33521,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33522,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1904, in _make_engine"
+run1_smr100_eia_p50_grow,33523,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     self.handles = get_handle(
+run1_smr100_eia_p50_grow,33524,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |                    ~~~~~~~~~~^
+run1_smr100_eia_p50_grow,33525,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |         f,"
+run1_smr100_eia_p50_grow,33526,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |         ^^
+run1_smr100_eia_p50_grow,33527,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     ...<6 lines>...
+run1_smr100_eia_p50_grow,33528,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |         storage_options=self.options.get(""storage_options"", None),"
+run1_smr100_eia_p50_grow,33529,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33530,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     )
+run1_smr100_eia_p50_grow,33531,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py"", line 930, in get_handle"
+run1_smr100_eia_p50_grow,33532,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     handle = open(
+run1_smr100_eia_p50_grow,33533,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |         handle,"
+run1_smr100_eia_p50_grow,33534,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     ...<3 lines>...
+run1_smr100_eia_p50_grow,33535,"reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |         newline="""","
+run1_smr100_eia_p50_grow,33536,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR |     )
+run1_smr100_eia_p50_grow,33537,reeds_to_rev.py | 2026-11-10 13:57:44 | ERROR | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33542,reeds_to_rev.py | 2026-11-10 13:57:47 | INFO | ***Error for geohydro_allkm...
+run1_smr100_eia_p50_grow,33573,reeds_to_rev.py | 2026-11-10 13:57:47 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33574,reeds_to_rev.py | 2026-11-10 13:57:47 | ERROR | Traceback (most recent call last):
+run1_smr100_eia_p50_grow,33575,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2335, in <module>"
+run1_smr100_eia_p50_grow,33576,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     main()
+run1_smr100_eia_p50_grow,33577,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     ~~~~^^
+run1_smr100_eia_p50_grow,33578,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2331, in main"
+run1_smr100_eia_p50_grow,33579,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     run(**args.__dict__)
+run1_smr100_eia_p50_grow,33580,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     ~~~^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33581,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2225, in run"
+run1_smr100_eia_p50_grow,33582,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     raise e
+run1_smr100_eia_p50_grow,33583,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2179, in run"
+run1_smr100_eia_p50_grow,33584,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     if not check_tech(run_folder, tech):"
+run1_smr100_eia_p50_grow,33585,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33586,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2076, in check_tech"
+run1_smr100_eia_p50_grow,33587,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     df_cap = pd.read_csv(
+run1_smr100_eia_p50_grow,33588,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |         cap_chk, low_memory=False, names=[""tech"", ""region"", ""year"", ""MW""], header=0"
+run1_smr100_eia_p50_grow,33589,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     )
+run1_smr100_eia_p50_grow,33590,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 873, in read_csv"
+run1_smr100_eia_p50_grow,33591,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     return _read(filepath_or_buffer, kwds)"
+run1_smr100_eia_p50_grow,33592,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 300, in _read"
+run1_smr100_eia_p50_grow,33593,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     parser = TextFileReader(filepath_or_buffer, **kwds)"
+run1_smr100_eia_p50_grow,33594,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1645, in __init__"
+run1_smr100_eia_p50_grow,33595,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     self._engine = self._make_engine(f, self.engine)"
+run1_smr100_eia_p50_grow,33596,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33597,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1904, in _make_engine"
+run1_smr100_eia_p50_grow,33598,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     self.handles = get_handle(
+run1_smr100_eia_p50_grow,33599,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |                    ~~~~~~~~~~^
+run1_smr100_eia_p50_grow,33600,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |         f,"
+run1_smr100_eia_p50_grow,33601,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |         ^^
+run1_smr100_eia_p50_grow,33602,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     ...<6 lines>...
+run1_smr100_eia_p50_grow,33603,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |         storage_options=self.options.get(""storage_options"", None),"
+run1_smr100_eia_p50_grow,33604,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33605,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     )
+run1_smr100_eia_p50_grow,33606,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py"", line 930, in get_handle"
+run1_smr100_eia_p50_grow,33607,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     handle = open(
+run1_smr100_eia_p50_grow,33608,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |         handle,"
+run1_smr100_eia_p50_grow,33609,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     ...<3 lines>...
+run1_smr100_eia_p50_grow,33610,"reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |         newline="""","
+run1_smr100_eia_p50_grow,33611,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR |     )
+run1_smr100_eia_p50_grow,33612,reeds_to_rev.py | 2026-11-10 13:57:48 | ERROR | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33617,reeds_to_rev.py | 2026-11-10 13:57:51 | INFO | ***Error for egs_allkm...
+run1_smr100_eia_p50_grow,33648,reeds_to_rev.py | 2026-11-10 13:57:51 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33649,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR | Traceback (most recent call last):
+run1_smr100_eia_p50_grow,33650,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2335, in <module>"
+run1_smr100_eia_p50_grow,33651,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     main()
+run1_smr100_eia_p50_grow,33652,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     ~~~~^^
+run1_smr100_eia_p50_grow,33653,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2331, in main"
+run1_smr100_eia_p50_grow,33654,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     run(**args.__dict__)
+run1_smr100_eia_p50_grow,33655,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     ~~~^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33656,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2225, in run"
+run1_smr100_eia_p50_grow,33657,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     raise e
+run1_smr100_eia_p50_grow,33658,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2179, in run"
+run1_smr100_eia_p50_grow,33659,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     if not check_tech(run_folder, tech):"
+run1_smr100_eia_p50_grow,33660,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33661,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\hourlize\reeds_to_rev.py"", line 2076, in check_tech"
+run1_smr100_eia_p50_grow,33662,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     df_cap = pd.read_csv(
+run1_smr100_eia_p50_grow,33663,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |         cap_chk, low_memory=False, names=[""tech"", ""region"", ""year"", ""MW""], header=0"
+run1_smr100_eia_p50_grow,33664,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     )
+run1_smr100_eia_p50_grow,33665,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 873, in read_csv"
+run1_smr100_eia_p50_grow,33666,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     return _read(filepath_or_buffer, kwds)"
+run1_smr100_eia_p50_grow,33667,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 300, in _read"
+run1_smr100_eia_p50_grow,33668,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     parser = TextFileReader(filepath_or_buffer, **kwds)"
+run1_smr100_eia_p50_grow,33669,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1645, in __init__"
+run1_smr100_eia_p50_grow,33670,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     self._engine = self._make_engine(f, self.engine)"
+run1_smr100_eia_p50_grow,33671,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33672,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1904, in _make_engine"
+run1_smr100_eia_p50_grow,33673,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     self.handles = get_handle(
+run1_smr100_eia_p50_grow,33674,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |                    ~~~~~~~~~~^
+run1_smr100_eia_p50_grow,33675,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |         f,"
+run1_smr100_eia_p50_grow,33676,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |         ^^
+run1_smr100_eia_p50_grow,33677,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     ...<6 lines>...
+run1_smr100_eia_p50_grow,33678,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |         storage_options=self.options.get(""storage_options"", None),"
+run1_smr100_eia_p50_grow,33679,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+run1_smr100_eia_p50_grow,33680,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     )
+run1_smr100_eia_p50_grow,33681,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py"", line 930, in get_handle"
+run1_smr100_eia_p50_grow,33682,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     handle = open(
+run1_smr100_eia_p50_grow,33683,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |         handle,"
+run1_smr100_eia_p50_grow,33684,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     ...<3 lines>...
+run1_smr100_eia_p50_grow,33685,"reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |         newline="""","
+run1_smr100_eia_p50_grow,33686,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR |     )
+run1_smr100_eia_p50_grow,33687,reeds_to_rev.py | 2026-11-10 13:57:51 | ERROR | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33688,single_case_plots.py | 2026-11-10 13:58:06 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+run1_smr100_eia_p50_grow,33689,single_case_plots.py | 2026-11-10 13:58:06 | ERROR |   _init_gdal_data()
+run1_smr100_eia_p50_grow,33720,single_case_plots.py | 2026-11-10 13:58:06 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,33758,single_case_plots.py | 2026-11-10 13:58:07 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\tran_out.csv'
+run1_smr100_eia_p50_grow,33796,single_case_plots.py | 2026-11-10 13:58:07 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\tran_out.csv'
+run1_smr100_eia_p50_grow,33834,single_case_plots.py | 2026-11-10 13:58:07 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\tran_cap_energy.csv'
+run1_smr100_eia_p50_grow,33869,single_case_plots.py | 2026-11-10 13:58:07 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\tran_flow_rep.csv'
+run1_smr100_eia_p50_grow,33904,single_case_plots.py | 2026-11-10 13:58:07 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\tran_flow_stress.csv'
+run1_smr100_eia_p50_grow,33936,single_case_plots.py | 2026-11-10 13:58:07 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\net_import_ann_rep.csv'
+run1_smr100_eia_p50_grow,33968,single_case_plots.py | 2026-11-10 13:58:07 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\tran_flow_all_stress.csv'
+run1_smr100_eia_p50_grow,34005,single_case_plots.py | 2026-11-10 13:58:07 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap_converter_out.csv'
+run1_smr100_eia_p50_grow,34040,single_case_plots.py | 2026-11-10 13:58:08 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,34075,single_case_plots.py | 2026-11-10 13:58:08 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,34129,single_case_plots.py | 2026-11-10 13:58:09 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\tran_out.csv'
+run1_smr100_eia_p50_grow,34161,single_case_plots.py | 2026-11-10 13:58:09 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,34193,single_case_plots.py | 2026-11-10 13:58:09 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34225,single_case_plots.py | 2026-11-10 13:58:09 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34252,single_case_plots.py | 2026-11-10 13:58:11 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\reeds-report\\report.xlsx'
+run1_smr100_eia_p50_grow,34286,single_case_plots.py | 2026-11-10 13:58:11 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'
+run1_smr100_eia_p50_grow,34321,single_case_plots.py | 2026-11-10 13:58:12 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\tran_out.csv'
+run1_smr100_eia_p50_grow,34348,single_case_plots.py | 2026-11-10 13:58:12 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\reeds-report\\report.xlsx'
+run1_smr100_eia_p50_grow,34382,single_case_plots.py | 2026-11-10 13:58:12 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\h2_storage_cap.csv'
+run1_smr100_eia_p50_grow,34416,single_case_plots.py | 2026-11-10 13:58:12 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\h2_storage_level.csv'
+run1_smr100_eia_p50_grow,34468,single_case_plots.py | 2026-11-10 13:59:05 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\capacity_offline.csv'
+run1_smr100_eia_p50_grow,34503,single_case_plots.py | 2026-11-10 13:59:43 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h_stress.csv'
+run1_smr100_eia_p50_grow,34535,single_case_plots.py | 2026-11-10 13:59:43 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h_stress.csv'
+run1_smr100_eia_p50_grow,34583,single_case_plots.py | 2026-11-10 13:59:51 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34624,single_case_plots.py | 2026-11-10 13:59:52 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34665,single_case_plots.py | 2026-11-10 13:59:52 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34706,single_case_plots.py | 2026-11-10 13:59:52 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34747,single_case_plots.py | 2026-11-10 13:59:52 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34788,single_case_plots.py | 2026-11-10 13:59:53 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34829,single_case_plots.py | 2026-11-10 13:59:53 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34870,single_case_plots.py | 2026-11-10 13:59:53 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34911,single_case_plots.py | 2026-11-10 13:59:53 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\gen_h.csv'
+run1_smr100_eia_p50_grow,34945,single_case_plots.py | 2026-11-10 13:59:54 | INFO | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_run1_smr100_eia_p50_grow\\outputs\\cap.csv'

@@ -5,3 +5,9 @@ run1_smr100_aj_p50_grow,nuclear_cap_trajectory_abou_jaoude_smr_grow.csv,2047,228
 run1_smr100_aj_p50_grow,nuclear_cap_trajectory_abou_jaoude_smr_grow.csv,2050,36399.0,36399.0,0.0
 run1_smr100_aj_p50_grow,nuclear_cap_trajectory_abou_jaoude_smr_grow.csv,2053,45465.30078125,45465.3,0.0007812499970896
 run1_smr100_aj_p50_grow,nuclear_cap_trajectory_abou_jaoude_smr_grow.csv,2055,51509.6015625,51509.6,0.0015625000014551
+run1_smr100_eia_p50_grow,nuclear_cap_trajectory_eia_aeo_high_smr_grow.csv,2041,16580.0,16580.0,0.0
+run1_smr100_eia_p50_grow,nuclear_cap_trajectory_eia_aeo_high_smr_grow.csv,2044,16820.0,16820.0,0.0
+run1_smr100_eia_p50_grow,nuclear_cap_trajectory_eia_aeo_high_smr_grow.csv,2047,17060.0,17060.0,0.0
+run1_smr100_eia_p50_grow,nuclear_cap_trajectory_eia_aeo_high_smr_grow.csv,2050,20699.0,20699.0,0.0
+run1_smr100_eia_p50_grow,nuclear_cap_trajectory_eia_aeo_high_smr_grow.csv,2053,22072.0,22072.0,0.0
+run1_smr100_eia_p50_grow,nuclear_cap_trajectory_eia_aeo_high_smr_grow.csv,2055,22987.30078125,22987.3,0.0007812500007275
