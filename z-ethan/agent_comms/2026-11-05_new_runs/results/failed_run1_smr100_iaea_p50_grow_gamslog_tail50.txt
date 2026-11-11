@@ -1,0 +1,50 @@
+Objective:  1608962982308.612793
+
+--- Reading solution for model ReEDSmodel
+--- Executing after solve: elapsed 0:57:09.670
+--- 3_solve_oneyear.gms(56924575) 33940 Mb
+--- GDX File (execute_unload) C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_iaea_p50_grow\handoff\reeds_data\reeds_data_2044.gdx
+--- 3_solve_oneyear.gms(56924659) 33940 Mb
+--- GDX File (execute_unload) C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_iaea_p50_grow\outputs\tc_phaseout_data\emit_for_tc_phaseout_calc_2044.gdx
+--- 3_solve_oneyear.gms(56924674) 33940 Mb
+--- Profile Summary (721 records processed)
+  3017.675  33.940GB  56923994 Solver     ReEDSmodel
+   115.187  30.201GB    658769 Equation   eq_supply_demand_balance (36720)
+    79.125  33.940GB  56924674 GAMS Fini   
+    47.406  29.064GB    658620 Equation   eq_curt_gen_balance (36720)
+    34.312  33.940GB  56924408 Assignment gen_h_stress_filt (2066306)
+    27.843  33.940GB  56923994 Solve Fini ReEDSmodel (145311801)
+    23.156  29.682GB    658853 Equation   eq_ramping (546960)
+    20.375  31.095GB    659812 Equation   eq_CSAPR_Budget (2)
+    19.797  26.229GB    658533 Equation   eq_capacity_limit (10795272)
+    11.172  21.955GB  56232272 Assignment m_cf (53928612)
+*** Status: Normal completion
+--- 3_solve_oneyear.gms(56924674) 33938 Mb
+--- Job 3_solve_oneyear.gms Stop 11/11/26 06:18:27 elapsed 0:59:40.271
+solve.py | 2026-11-11 06:18:40 | INFO | Preparing data for resource adequacy calculations
+solve.py | 2026-11-11 06:19:32 | INFO | calculating capacity credit...
+solve.py | 2026-11-11 06:19:32 | INFO | Running ReEDS2PRAS and PRAS
+solve.py | 2026-11-11 06:19:32 | INFO | julia --project=C:\Users\egallup\ReEDS-nuclear-learning --threads=8 C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_iaea_p50_grow\reeds\resource_adequacy\run_pras.jl --reeds_path=C:\Users\egallup\ReEDS-nuclear-learning --reedscase=C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_iaea_p50_grow --solve_year=2044 --weather_year=2007 --timesteps=131400 --hydro_energylim=1 --write_flow=0 --write_surplus=0 --write_energy=1 --write_shortfall_samples=0 --write_availability_samples=0 --iteration=0 --samples=100 --overwrite=1 --include_samples=0 --scheduled_outage=0 --pras_agg_ogs_lfillgas=0 --pras_existing_unit_size=1 --pras_max_unitsize_prm=1 --pras_seed=1
+solve.py | 2026-11-11 06:19:32 | INFO | vvvvvvvvvvvvvvv run_pras.jl 2044i0 vvvvvvvvvvvvvvv
+solve.py | 2026-11-11 06:26:07 | INFO | ^^^^^^^^^^^^^^^ run_pras.jl 2044i0 ^^^^^^^^^^^^^^^
+solve.py | 2026-11-11 06:26:07 | ERROR | Traceback (most recent call last):
+solve.py | 2026-11-11 06:26:07 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_iaea_p50_grow\reeds\core\solve\solve.py", line 176, in <module>
+solve.py | 2026-11-11 06:26:07 | ERROR |     main(casepath=casepath, t=t, overwrite=overwrite)
+solve.py | 2026-11-11 06:26:07 | ERROR |     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+solve.py | 2026-11-11 06:26:07 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_iaea_p50_grow\reeds\core\solve\solve.py", line 120, in main
+solve.py | 2026-11-11 06:26:07 | ERROR |     run_reeds(casepath, t, iteration=iteration)
+solve.py | 2026-11-11 06:26:07 | ERROR |     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+solve.py | 2026-11-11 06:26:07 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_run1_smr100_iaea_p50_grow\reeds\core\solve\solve.py", line 82, in run_reeds
+solve.py | 2026-11-11 06:26:07 | ERROR |     reeds.resource_adequacy.ra_calcs.main(
+solve.py | 2026-11-11 06:26:07 | ERROR |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+solve.py | 2026-11-11 06:26:07 | ERROR |         t=t,
+solve.py | 2026-11-11 06:26:07 | ERROR |         ^^^^
+solve.py | 2026-11-11 06:26:07 | ERROR |     ...<2 lines>...
+solve.py | 2026-11-11 06:26:07 | ERROR |         iteration=iteration,
+solve.py | 2026-11-11 06:26:07 | ERROR |         ^^^^^^^^^^^^^^^^^^^^
+solve.py | 2026-11-11 06:26:07 | ERROR |     )
+solve.py | 2026-11-11 06:26:07 | ERROR |   File "C:\Users\egallup\ReEDS-nuclear-learning\reeds\resource_adequacy\ra_calcs.py", line 164, in main
+solve.py | 2026-11-11 06:26:07 | ERROR |     raise Exception(
+solve.py | 2026-11-11 06:26:07 | ERROR |         f"run_pras.jl returned code {result.returncode}. Check gamslog.txt for error trace."
+solve.py | 2026-11-11 06:26:07 | ERROR |     )
+solve.py | 2026-11-11 06:26:07 | ERROR | Exception: run_pras.jl returned code 541541187. Check gamslog.txt for error trace.

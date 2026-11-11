@@ -11,7 +11,11 @@
 - `recfix_smr100_eia_p50` finished at 05:25:43 and `recfix_smr100_iaea_p50` at 05:55:24 on 2026-11-07, each after about 19.2–19.4 h. Both have `outputs/outputs.h5`.
 - The `-r 2` batch started at 05:55:43 on 2026-11-07 with the other 21 cases, beginning with the reruns of `recfix_fbR_none` and `recfix_smr100_aj_p50`.
 - **RUN-3 group finished: 9 of 23 done** as of 08:35 on 2026-11-10: all 7 `recfix_*` runs and both `recctl_*` runs. All have `outputs/outputs.h5` and last solve year 2050. The 7 `-r 2` runs took 18.39–19.62 h each. `run1_smr100_aj_p50_grow` started at 08:33:12 on 11-10.
-- **`run1_smr100_eia_p50_grow` failed at the end (section 3b):** all solve years through 2055 and `report.gms` completed (13:57:04 on 11-10), but there is no `outputs/outputs.h5`. `report_dump.py` wrote no line to `gamslog.txt`. The batch window closed at 13:59:54 after 22.87 h. The batch then started `run1_smr100_iaea_p50_grow` at 14:00:12. The folder stays in `runs/` on `C:`, untouched.
+- **`run1_smr100_eia_p50_grow` failed at the end (section 3b):** all solve years through 2055 and `report.gms` completed (13:57:04 on 11-10), but there is no `outputs/outputs.h5`. `report_dump.py` wrote no line to `gamslog.txt`. The batch window closed at 13:59:54 after 22.87 h. The batch then started `run1_smr100_iaea_p50_grow` at 14:00:12. The folder stays in `runs/` on `C:`, untouched. On Ethan's decision, `report_dump.py` was run on a copy on 11-11 (deviation 7).
+- **`run1_smr100_aj_p50_grow` done** at 06:59:58 on 11-11 after 22.45 h, with `outputs.h5` (72.9 MB); moved to `E:` at 07:01:39.
+- **`run1_smr100_iaea_p50_grow` failed at 06:26:07 on 11-11, in its 2044 PRAS step (section 3b):** `run_pras.jl returned code 541541187`, 24 s after a Windows low-virtual-memory event. The folder stays in `runs/` on `C:`, untouched.
+- **Now (10:48 on 11-11):** 10 done, 2 failed, 2 running (`run1_smr100_mck_p50_grow` since 06:26:29, `run1_smr100_cop28_p50_grow` since 07:00:10, both at 2031), 9 queued.
+- **Memory sampler:** `monitor.ps1` wrote no sample after 01:20:48 on 11-11, while its process stayed alive; it was restarted at 10:44. From 10:45 a second sampler writes commit limit, free commit and free RAM every 30 s to `commit_samples.csv` (same folder).
 - **Memory at `-r 2`:** the lowest available memory in the 30-s samples since 05:55:43 on 11-07 is 17.37 GB (19:10:30 on 11-08); no sample is below 2 GB. Peak tree memory per run is 91.74–107.21 GB working set and 92.59–116.78 GB private (section 3); the highest is `recfix_smr100_eo_p50`, reached in its 2047 solve.
 - **Disk:** a finished folder is about 5.85 GB. On Ethan's decision (deviation 5), each finished folder is moved to the external drive `E:\ag_new_runs\` after its checks and `outputs.h5` copy. The first 6 were moved between 09:50 and 09:57 on 11-09. From 09:58 a loop (`autopost.sh`, every 120 s) runs the checks, copy and move for each case that has ended; it moved `recfix_smr100_eo_p50` at 14:06 and `recctl_fbR_none` at 15:08 on 11-09, and `recctl_smr100_eo_p50` at 08:35 on 11-10. Free space at 08:35 on 11-10: `C:` 109 GB, `E:` 327 GB.
 - **`C:` free space and `pagefile.sys`:** in the 30-min checks, free space on `C:` fell below 80 GB several times and came back to about 100 GB within the next check or two: 78 GB (13:02, 11-09), 71 GB (01:23, 11-10), 77 GB (02:56), 69 GB (03:27), 71 GB (04:28), 61 GB (05:30), 76 GB (07:33), 70 GB (08:03). `C:\pagefile.sys` was 58.3 GB at 12:44 on 11-09, 69.1 GB at 01:23 and 75.2 GB at 05:30 on 11-10. The two run folders on `C:` were 4.9–7.2 GB each at those times. The folder of `run1_smr100_eia_p50_grow` (endyear 2055) was 7.2 GB at 01:23 on 11-10, at solve year 2034.
@@ -35,7 +39,7 @@ Neither check stopped the launch. Folder sizes at the end of each run are in N1.
 
 ## 3. Progress table
 
-As of 2026-11-10 14:01: 11 queued, 9 done, 2 running, 1 failed. Times are 2026 local time (MM-DD hh:mm:ss). Start is the first time stamp in `gamslog.txt`; end is the last write of `gamslog.txt` after the batch window closed. Last solve year is the largest year among `lstfiles/*_<year>i<iter>.lst`. Peak memory is the largest sum over the case's process tree in the 30-s samples (CSV in `results/memory_peaks.csv` at the end).
+As of 2026-11-11 10:48: 10 done, 9 queued, 2 failed, 2 running. Times are 2026 local time (MM-DD hh:mm:ss). Start is the first time stamp in `gamslog.txt`; end is the last write of `gamslog.txt` after the batch window closed. Last solve year is the largest year among `lstfiles/*_<year>i<iter>.lst`. Peak memory is the largest sum over the case's process tree in the 30-s samples (CSV in `results/memory_peaks.csv` at the end).
 
 | # | Case | Status | Last solve year | Start | End | Peak memory, GB (working set / private) |
 |---|---|---|---|---|---|---|
@@ -49,10 +53,10 @@ As of 2026-11-10 14:01: 11 queued, 9 done, 2 running, 1 failed. Times are 2026 l
 | 8 | `recctl_fbR_none` | done | 2050 | 11-08 19:30:06 | 11-09 15:07:18 | 95.60 / 97.41 |
 | 9 | `recctl_smr100_eo_p50` | done | 2050 | 11-09 14:05:33 | 11-10 08:32:52 | 92.89 / 94.64 |
 | 10 | `run1_smr100_eia_p50_grow` | failed | 2055 | 11-09 15:07:34 | 11-10 13:59:54 | 101.02 / 102.80 |
-| 11 | `run1_smr100_aj_p50_grow` | running | 2031 | 11-10 08:33:12 |  | 85.34 / 90.23 |
-| 12 | `run1_smr100_iaea_p50_grow` | running |  | 11-10 14:00:12 |  | 0.72 / 0.67 |
-| 13 | `run1_smr100_mck_p50_grow` | queued |  |  |  |  |
-| 14 | `run1_smr100_cop28_p50_grow` | queued |  |  |  |  |
+| 11 | `run1_smr100_aj_p50_grow` | done | 2055 | 11-10 08:33:12 | 11-11 06:59:58 | 91.72 / 93.54 |
+| 12 | `run1_smr100_iaea_p50_grow` | failed | 2044 | 11-10 14:00:12 | 11-11 06:26:07 | 93.28 / 95.17 |
+| 13 | `run1_smr100_mck_p50_grow` | running | 2031 | 11-11 06:26:29 |  | 31.58 / 34.24 |
+| 14 | `run1_smr100_cop28_p50_grow` | running | 2031 | 11-11 07:00:10 |  | 29.26 / 30.29 |
 | 15 | `run1_smr100_eo_p50_grow` | queued |  |  |  |  |
 | 16 | `nomand_fbR_none_gaslo` | queued |  |  |  |  |
 | 17 | `nomand_fbR_none_gashi` | queued |  |  |  |  |
@@ -91,6 +95,22 @@ As of 2026-11-10 14:01: 11 queued, 9 done, 2 running, 1 failed. Times are 2026 l
 - **Files:** the last 50 lines of `gamslog.txt` are in `results/failed_run1_smr100_eia_p50_grow_gamslog_tail50.txt`; lines 33203–33241 (around the report step) are in `results/failed_run1_smr100_eia_p50_grow_gamslog_report_step.txt`.
 - **Resources at the time:** at 13:57 the 30-s samples show 146–177 GB available memory; `C:` had 102 GB free at 13:44 and 14:00.
 - **Per the instructions,** the run was not relaunched, edited or deleted, and `report_dump.py` was not run again on it. The other 5 `run1_*_grow` cases have the same endyear (2055); `run1_smr100_aj_p50_grow` (at 2031) and `run1_smr100_iaea_p50_grow` (started 14:00:12) are running.
+- **`report_dump.py` on a copy, 11-11 (deviation 7):** the folder was copied to `E:\ag_new_runs_diag\ag_run1_smr100_eia_p50_grow\` (2167 files, 5253031152 bytes, equal to the source) and `python reeds\core\terminus\report_dump.py <copy> -c` was run there at 10:45:05 with the batch environment, stdout and stderr captured (`C:\Users\egallup\ag_new_runs_work\diag_report_dump_stdout.txt`). Results:
+  - It logged `Starting report_dump.py` and wrote `outputs/outputs.h5` (72840519 bytes, 10:45) and 322 files in `outputs/`.
+  - It then exited with code 1 at 10:46:27: `TypeError: Invalid value '[1.07270508e+00 1.48327330e+01 nan ...]' for dtype 'float32'` at `reeds/results.py` line 398 (`df.loc[mask, 'inv_investment_capacity_costs'] = df.loc[mask, 'capex']`), in `calc_systemcost`, called from `report_dump.py` line 203 (`postprocess_outputs`).
+  - The copy's state differs from the original at the time `report_dump.py` ran: `inputs_case/df_capex_init.csv` (written by `retail_rate_calculations.py`, which runs after `report_dump.py`) existed in the copy; in the original it was written at 13:57:31, after the step.
+  - **All 10 finished runs** have the same `report_dump.py` error at the end of their own run: `FileNotFoundError: ... inputs_case\df_capex_init.csv` at `reeds/results.py` line 315, in `calc_systemcost`, from `postprocess_outputs` (32 ERROR lines each). Their `outputs.h5` is written before that point.
+  - The original failure (no line at all from `report_dump.py`) was not reproduced; its error text is not available. `reeds/results.py`, `reeds/io.py`, `reeds/log.py` and `report_dump.py` were last changed on 2026-11-05 09:19:35, and the run's `report_dump.py` equals the repo's.
+- The copy's `outputs.h5` has not been checked with N1–N7 or added to the collection folder.
+
+### `run1_smr100_iaea_p50_grow`: failed at 06:26:07 on 2026-11-11, 2044 PRAS step
+
+- **Error:** `run_pras.jl 2044i0` started at 06:19:32. `gamslog.txt` has no Julia output between its `vvv` and `^^^` markers. Then `solve.py` raised `Exception: run_pras.jl returned code 541541187. Check gamslog.txt for error trace.` (`ra_calcs.py`, line 164). Last solve year 2044 (`_2044i0.lst`). The last 50 lines are in `results/failed_run1_smr100_iaea_p50_grow_gamslog_tail50.txt`.
+- **Windows System log, event 2004 (Resource-Exhaustion-Detector), 06:25:43:** "Windows successfully diagnosed a low virtual memory condition. The following programs consumed the most virtual memory: julia.exe (27172) consumed 98870444032 bytes, julia.exe (46624) consumed 98388418560 bytes, and Code.exe (27968) consumed 3991314432 bytes." The only other event 2004 since 11-06 is at 10:46:11 on 11-06 (the `recfix_smr100_aj_p50` `OutOfMemoryError`), naming three `julia.exe` at 87.6, 85.6 and 82.8 GB.
+- **Overlap:** `run1_smr100_aj_p50_grow` ran `run_pras.jl 2055i0` from 06:14:24 to 06:34:37 and finished normally.
+- **Commit limit** at 10:43 on 11-11: 304.7 GB (253.35 GB RAM; `pagefile.sys` was 75.2 GB at 05:30 on 11-10). Free commit 56.6–78.1 GB at 10:46–10:47, with `mck` and `cop28` at 2031.
+- **Memory samples:** none between 01:20:48 and 10:44 (see section 1).
+- **Per the instructions,** the run was not relaunched, edited or deleted.
 
 ### Memory, 10:40–10:48
 
@@ -148,25 +168,28 @@ As of 2026-11-10 14:01: 11 queued, 9 done, 2 running, 1 failed. Times are 2026 l
    - The renamed old attempts `runs/ag_recfix_fbR_none_hung_20261106/` and `runs/ag_recfix_smr100_aj_p50_oom_20261106/` (6.1 GB each) are not finished runs and stay on `C:`.
    - End times in section 3 and N1 for moved runs come from the `gamslog.txt` copy on `E:` (exFAT) and differ from the earlier readings on `C:` by 1–2 s.
 6. **N7 table split per case.** With 6 runs, `results/N7_error_warning_lines.csv` was 899 KB, and the full batch would pass the 1 MB limit for committed logs. From 09:57 on 11-09, the lines are in `results/N7_error_warning_lines/<case>.csv` (about 150 KB each), and `results/N7_error_warning_lines.csv` holds the line count per case.
+7. **`report_dump.py` run on a copy of `run1_smr100_eia_p50_grow` (Ethan's decision, answered 10:42 on 11-11).** The original folder was not touched; the copy is `E:\ag_new_runs_diag\ag_run1_smr100_eia_p50_grow\` (section 3b).
 
 ## 5. Checks N1–N7
 
-**Partial:** 9 of 23 runs checked: the full RUN-3 group (`recfix_fbR_none`, `recfix_smr100_{eia,aj,iaea,mck,cop28,eo}_p50`, `recctl_fbR_none`, `recctl_smr100_eo_p50`). Each was checked in place on `C:` before its move. The CSV files in `results/` hold the rows so far and are rebuilt as more runs finish.
+**Partial:** 10 of 23 runs checked: the full RUN-3 group (`recfix_fbR_none`, `recfix_smr100_{eia,aj,iaea,mck,cop28,eo}_p50`, `recctl_fbR_none`, `recctl_smr100_eo_p50`) and `run1_smr100_aj_p50_grow`. Each was checked in place on `C:` before its move. The CSV files in `results/` hold the rows so far and are rebuilt as more runs finish.
 
 - **N1:** all 9 have `outputs.h5` (65.7–66.4 MB), last solve year 2050 (= `endyear`), 18.39–19.62 h (the 7 `-r 2` runs: 18.39–19.62 h; the 2 `-r 3` runs: 19.15 and 19.43 h), folders 5.84–5.86 GB.
 - **N2:** no difference between `inputs_case/switches.csv` and the casefile column, for any of the 9.
 - **N3:** `can_exports_stress` is missing in all 9. The two `fbR_none` runs (`recfix_fbR_none`, `recctl_fbR_none`) also lack `nuclear_cap_price` and `nuclear_cap_price_raw`; the 7 `smr100` runs have both.
 - **N4:** `can_exports_stress` is missing in all 9 (see N3).
-- **N5, N6:** these checks do not apply to RUN-3 runs.
+- **N5, N6:** N5 does not apply to RUN-3 or RUN-1. N6 (RUN-1, `run1_smr100_aj_p50_grow` only so far): `nuclear-smr` capacity equals `nuclear_cap_trajectory_abou_jaoude_smr_grow.csv` in 2041, 2044, 2047 and 2050; it is above it by 0.00078 MW in 2053 (45465.30078 vs 45465.3) and 0.0016 MW in 2055 (51509.60156 vs 51509.6).
+- **`run1_smr100_aj_p50_grow`:** `outputs.h5` 72.9 MB, last solve year 2055 (= `endyear`), 22.45 h, folder 6.68 GB; N2 no difference; N3 only `can_exports_stress` missing; N7 960 lines.
 - **N7:** lines matching "error" or "warning" (case-insensitive) in `gamslog.txt`: 954 (`recfix_fbR_none`, `recfix_smr100_eia_p50`) and 952 (the other 7). Lines are in `results/N7_error_warning_lines/<case>.csv` (deviation 6). In the first 2 runs, most are Python warnings logged at ERROR level by `retail_rate_calculations.py` (pandas chained-assignment warnings) and `ReEDS2PRAS` `No generators in region` warnings.
 
 The full tables follow when every run has finished.
 
 ## 6. Collection folder
 
-**Partial:** `C:\Users\egallup\collected_outputs_ag\` holds 9 files, `ag_<case>_outputs.h5` for each finished case in section 5. MD5 checksums are in `results/MD5SUMS_outputs.txt`; each copy's MD5 equals its source's, taken before the move. The run folders themselves are in `E:\ag_new_runs\ag_<case>\` (deviation 5).
+**Partial:** `C:\Users\egallup\collected_outputs_ag\` holds 10 files, `ag_<case>_outputs.h5` for each finished case in section 5. MD5 checksums are in `results/MD5SUMS_outputs.txt`; each copy's MD5 equals its source's, taken before the move. The run folders themselves are in `E:\ag_new_runs\ag_<case>\` (deviation 5).
 
 ## 7. Questions for Claude
 
 1. **Three runs at a time do not fit in memory during the PRAS step (section 3b).** The `-r 3` rule says to report and ask. Each run's `julia.exe` reached about 57–67 GB working set (up to 80 GB private for the tree) in the 2020 PRAS step, three overlapped, available memory reached 0.01 GB, and one run failed. Every later solve year runs PRAS too. **Answered by Ethan in person:** let the running cases finish, then run the rest at `-r 2`, rerunning `recfix_fbR_none` and `recfix_smr100_aj_p50` (deviation 4). No open question.
-2. **`run1_smr100_eia_p50_grow` has no `outputs.h5` (section 3b).** `report_dump.py` left no line in `gamslog.txt`, and its error text is not in any file. The other 5 `run1_*_grow` cases also end in 2055 and will reach the same step from about 07:30 on 11-11 (`run1_smr100_aj_p50_grow`) onward. Open; asked Ethan on 2026-11-10 at about 14:15.
+2. **`run1_smr100_eia_p50_grow` has no `outputs.h5` (section 3b).** `report_dump.py` left no line in `gamslog.txt`, and its error text is not in any file. The other 5 `run1_*_grow` cases also end in 2055 and will reach the same step from about 07:30 on 11-11 (`run1_smr100_aj_p50_grow`) onward. Asked Ethan on 2026-11-10 at about 14:15; **answered 10:42 on 11-11:** run `report_dump.py` on a copy (deviation 7). Open: whether the copy's `outputs.h5` is used or the case is rerun.
+3. **`run1_smr100_iaea_p50_grow` failed in its 2044 PRAS step during a Windows low-virtual-memory event (section 3b).** Two `julia.exe` held about 98 GB virtual memory each. `run1_smr100_mck_p50_grow` and `run1_smr100_cop28_p50_grow` (endyear 2055) are running at the same time; `run1_smr100_eo_p50_grow` is queued. Open; asked Ethan on 11-11.

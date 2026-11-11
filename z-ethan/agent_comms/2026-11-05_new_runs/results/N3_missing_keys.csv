@@ -12,3 +12,4 @@ recfix_smr100_eia_p50,can_exports_stress
 recfix_smr100_eo_p50,can_exports_stress
 recfix_smr100_iaea_p50,can_exports_stress
 recfix_smr100_mck_p50,can_exports_stress
+run1_smr100_aj_p50_grow,can_exports_stress

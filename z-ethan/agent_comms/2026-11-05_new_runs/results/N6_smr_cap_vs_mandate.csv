@@ -1,1 +1,7 @@
-
+case,mandate_file,t,cap_nuclear_smr_MW,mandate_MW,diff_MW
+run1_smr100_aj_p50_grow,nuclear_cap_trajectory_abou_jaoude_smr_grow.csv,2041,9200.0,9200.0,0.0
+run1_smr100_aj_p50_grow,nuclear_cap_trajectory_abou_jaoude_smr_grow.csv,2044,14300.0,14300.0,0.0
+run1_smr100_aj_p50_grow,nuclear_cap_trajectory_abou_jaoude_smr_grow.csv,2047,22800.0,22800.0,0.0
+run1_smr100_aj_p50_grow,nuclear_cap_trajectory_abou_jaoude_smr_grow.csv,2050,36399.0,36399.0,0.0
+run1_smr100_aj_p50_grow,nuclear_cap_trajectory_abou_jaoude_smr_grow.csv,2053,45465.30078125,45465.3,0.0007812499970896
+run1_smr100_aj_p50_grow,nuclear_cap_trajectory_abou_jaoude_smr_grow.csv,2055,51509.6015625,51509.6,0.0015625000014551
