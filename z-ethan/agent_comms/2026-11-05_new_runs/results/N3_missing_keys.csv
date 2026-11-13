@@ -1,4 +1,7 @@
 case,missing_key
+nomand_fbR_none_gaslo,can_exports_stress
+nomand_fbR_none_gaslo,nuclear_cap_price
+nomand_fbR_none_gaslo,nuclear_cap_price_raw
 recctl_fbR_none,can_exports_stress
 recctl_fbR_none,nuclear_cap_price
 recctl_fbR_none,nuclear_cap_price_raw
@@ -15,4 +18,5 @@ recfix_smr100_mck_p50,can_exports_stress
 run1_smr100_aj_p50_grow,can_exports_stress
 run1_smr100_cop28_p50_grow,can_exports_stress
 run1_smr100_eia_p50_grow,can_exports_stress
+run1_smr100_eo_p50_grow,can_exports_stress
 run1_smr100_mck_p50_grow,can_exports_stress

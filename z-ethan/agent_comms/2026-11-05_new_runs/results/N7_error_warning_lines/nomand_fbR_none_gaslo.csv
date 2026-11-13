@@ -1,0 +1,955 @@
+case,line_no,line
+nomand_fbR_none_gaslo,272,copy_files.py | 2026-11-12 05:05:43 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+nomand_fbR_none_gaslo,273,copy_files.py | 2026-11-12 05:05:43 | ERROR |   _init_gdal_data()
+nomand_fbR_none_gaslo,353,copy_files.py | 2026-11-12 05:06:17 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_nomand_fbR_none_gaslo\reeds\input_processing\copy_files.py:465: DtypeWarning: Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_memory=False.
+nomand_fbR_none_gaslo,354,"copy_files.py | 2026-11-12 05:06:17 | ERROR |   df = pd.read_csv(full_path, dtype={'FIPS':str, 'fips':str, 'cnty_fips':str}, comment='#')"
+nomand_fbR_none_gaslo,355,"copy_files.py | 2026-11-12 05:06:17 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_nomand_fbR_none_gaslo\reeds\input_processing\copy_files.py:896: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+nomand_fbR_none_gaslo,356,copy_files.py | 2026-11-12 05:06:17 | ERROR |   df['r'] = df['FIPS'].map(county2zone)
+nomand_fbR_none_gaslo,367,copy_files.py | 2026-11-12 05:06:38 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\raw.py:733: RuntimeWarning: Cannot find tms_NZTM2000.json (GDAL_DATA is not defined)
+nomand_fbR_none_gaslo,368,copy_files.py | 2026-11-12 05:06:38 | ERROR |   ogr_write(
+nomand_fbR_none_gaslo,390,h2_storage.py | 2026-11-12 05:06:52 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+nomand_fbR_none_gaslo,391,h2_storage.py | 2026-11-12 05:06:52 | ERROR |   _init_gdal_data()
+nomand_fbR_none_gaslo,398,fuelcostprep.py | 2026-11-12 05:07:01 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+nomand_fbR_none_gaslo,399,fuelcostprep.py | 2026-11-12 05:07:01 | ERROR |   _init_gdal_data()
+nomand_fbR_none_gaslo,479,recf.py | 2026-11-12 05:13:42 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_nomand_fbR_none_gaslo\reeds\input_processing\recf.py:422: Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is active in pandas since 3.0 which utilizes a lazy copy mechanism that defers copies until necessary. Use .copy() to make an eager copy if necessary.
+nomand_fbR_none_gaslo,480,recf.py | 2026-11-12 05:13:42 | ERROR |   recf = pd.concat(
+nomand_fbR_none_gaslo,481,recf.py | 2026-11-12 05:13:42 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_nomand_fbR_none_gaslo\reeds\input_processing\recf.py:449: Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is active in pandas since 3.0 which utilizes a lazy copy mechanism that defers copies until necessary. Use .copy() to make an eager copy if necessary.
+nomand_fbR_none_gaslo,482,"recf.py | 2026-11-12 05:13:42 | ERROR |   recf = recf.reindex(labels=resources['resource'].drop_duplicates(), axis=1, copy=False)"
+nomand_fbR_none_gaslo,489,WriteHintage.py | 2026-11-12 05:13:54 | INFO | Note that the clustering can result in warnings if the heat rates
+nomand_fbR_none_gaslo,496,transmission.py | 2026-11-12 05:14:06 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+nomand_fbR_none_gaslo,497,transmission.py | 2026-11-12 05:14:06 | ERROR |   _init_gdal_data()
+nomand_fbR_none_gaslo,526,hourly_repperiods.py | 2026-11-12 05:20:33 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+nomand_fbR_none_gaslo,527,hourly_repperiods.py | 2026-11-12 05:20:33 | ERROR |   _init_gdal_data()
+nomand_fbR_none_gaslo,2307,check_inputs.py | 2026-11-12 05:35:59 | INFO | Load inputs.gdx for error checking
+nomand_fbR_none_gaslo,4580,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4582,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4584,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4586,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4588,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4590,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4592,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4594,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4596,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4598,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4600,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4602,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4604,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4606,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4608,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4610,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4612,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4614,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4616,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4618,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4620,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4622,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4624,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4626,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4628,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4630,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4632,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4634,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4636,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4638,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4640,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4642,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4644,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4646,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4648,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4650,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4652,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4654,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4656,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4658,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4660,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4662,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4664,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4666,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4668,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4670,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4672,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4674,"â”Œ Error: 2026-11-12 05:45:26 | WA_E,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4676,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4678,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4680,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4682,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4684,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4686,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4688,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4690,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4692,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4694,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4696,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4698,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4700,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4702,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4704,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4706,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4708,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4710,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4712,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4714,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4716,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4718,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4720,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4722,"â”Œ Error: 2026-11-12 05:45:26 | MT_W,hydud,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4724,"â”Œ Error: 2026-11-12 05:45:26 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4726,"â”Œ Error: 2026-11-12 05:45:26 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4728,"â”Œ Error: 2026-11-12 05:45:26 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4730,"â”Œ Error: 2026-11-12 05:45:26 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4732,"â”Œ Error: 2026-11-12 05:45:26 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4734,"â”Œ Error: 2026-11-12 05:45:26 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4736,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4738,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4740,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4742,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4744,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4746,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4748,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4750,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4752,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4754,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4756,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4758,"â”Œ Error: 2026-11-12 05:45:26 | CA_N,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4760,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4762,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4764,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4766,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4768,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4770,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4772,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4774,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4776,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4778,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4780,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4782,"â”Œ Error: 2026-11-12 05:45:26 | CO_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4784,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4786,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4788,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4790,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4792,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4794,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4796,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4798,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4800,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4802,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4804,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4806,"â”Œ Error: 2026-11-12 05:45:26 | CO_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4808,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4810,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4812,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4814,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4816,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4818,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4820,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4822,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4824,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4826,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4828,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4830,"â”Œ Error: 2026-11-12 05:45:26 | ID_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4832,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4834,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4836,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4838,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4840,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4842,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4844,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4846,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4848,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4850,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4852,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4854,"â”Œ Error: 2026-11-12 05:45:26 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4856,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4858,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4860,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4862,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4864,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4866,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4868,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4870,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4872,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4874,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4876,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4878,"â”Œ Error: 2026-11-12 05:45:26 | KS,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4880,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4882,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4884,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4886,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4888,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4890,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4892,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4894,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4896,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4898,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4900,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4902,"â”Œ Error: 2026-11-12 05:45:26 | ME,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4904,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4906,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4908,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4910,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4912,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4914,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4916,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4918,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4920,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4922,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4924,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4926,"â”Œ Error: 2026-11-12 05:45:26 | MN_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4928,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4930,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4932,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4934,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4936,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4938,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4940,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4942,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4944,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4946,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4948,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4950,"â”Œ Error: 2026-11-12 05:45:26 | MT_C,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4952,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4954,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4956,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4958,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4960,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4962,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4964,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4966,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4968,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4970,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4972,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4974,"â”Œ Error: 2026-11-12 05:45:26 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4976,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4978,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4980,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4982,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4984,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4986,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4988,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4990,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4992,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4994,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4996,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,4998,"â”Œ Error: 2026-11-12 05:45:26 | NM_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5000,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5002,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5004,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5006,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5008,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5010,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5012,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5014,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5016,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5018,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5020,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5022,"â”Œ Error: 2026-11-12 05:45:26 | NY_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5024,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5026,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5028,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5030,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5032,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5034,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5036,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5038,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5040,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5042,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5044,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5046,"â”Œ Error: 2026-11-12 05:45:26 | NY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5048,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5050,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5052,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5054,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5056,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5058,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5060,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5062,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5064,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5066,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5068,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5070,"â”Œ Error: 2026-11-12 05:45:26 | OR_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5072,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5074,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5076,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5078,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5080,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5082,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5084,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5086,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5088,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5090,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5092,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5094,"â”Œ Error: 2026-11-12 05:45:26 | OR_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5096,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5098,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5100,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5102,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5104,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5106,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5108,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5110,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5112,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5114,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5116,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5118,"â”Œ Error: 2026-11-12 05:45:26 | PA_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5120,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5122,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5124,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5126,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5128,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5130,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5132,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5134,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5136,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5138,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5140,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5142,"â”Œ Error: 2026-11-12 05:45:26 | WA_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5144,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5146,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5148,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5150,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5152,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5154,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5156,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5158,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5160,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5162,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5164,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5166,"â”Œ Error: 2026-11-12 05:45:26 | WI_E,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5168,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5170,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5172,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5174,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5176,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5178,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5180,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5182,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5184,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5186,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5188,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5190,"â”Œ Error: 2026-11-12 05:45:26 | WY_W,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5192,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5194,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5196,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5198,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5200,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5202,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5204,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5206,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5208,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5210,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5212,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,5214,"â”Œ Error: 2026-11-12 05:45:26 | CA_S,hydund,BoundsError(Float64[], (1,))"
+nomand_fbR_none_gaslo,8224,â”Œ Warning: 2026-11-12 06:46:27 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,8226,â”Œ Warning: 2026-11-12 06:46:27 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,9889,â”Œ Warning: 2026-11-12 07:48:55 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,9891,â”Œ Warning: 2026-11-12 07:48:55 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,11545,â”Œ Warning: 2026-11-12 09:11:20 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,11547,â”Œ Warning: 2026-11-12 09:11:20 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,13149,â”Œ Warning: 2026-11-12 10:28:06 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,13151,â”Œ Warning: 2026-11-12 10:28:06 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,13153,â”Œ Warning: 2026-11-12 10:28:06 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,13155,â”Œ Warning: 2026-11-12 10:28:06 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,14765,â”Œ Warning: 2026-11-12 11:43:54 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,14767,â”Œ Warning: 2026-11-12 11:43:54 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,14769,â”Œ Warning: 2026-11-12 11:43:54 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,14771,â”Œ Warning: 2026-11-12 11:43:54 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,16369,â”Œ Warning: 2026-11-12 13:02:21 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,16371,â”Œ Warning: 2026-11-12 13:02:21 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,16373,â”Œ Warning: 2026-11-12 13:02:21 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,16375,â”Œ Warning: 2026-11-12 13:02:21 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,18050,â”Œ Warning: 2026-11-12 14:43:19 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,18052,â”Œ Warning: 2026-11-12 14:43:19 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,18054,â”Œ Warning: 2026-11-12 14:43:19 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,18056,â”Œ Warning: 2026-11-12 14:43:19 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,19680,â”Œ Warning: 2026-11-12 16:11:21 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,19682,â”Œ Warning: 2026-11-12 16:11:21 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,19684,â”Œ Warning: 2026-11-12 16:11:21 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,19686,â”Œ Warning: 2026-11-12 16:11:21 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,21334,â”Œ Warning: 2026-11-12 17:36:58 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,21336,â”Œ Warning: 2026-11-12 17:36:58 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,21338,â”Œ Warning: 2026-11-12 17:36:58 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,21340,â”Œ Warning: 2026-11-12 17:36:58 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,22978,â”Œ Warning: 2026-11-12 18:49:02 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,22980,â”Œ Warning: 2026-11-12 18:49:02 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,22982,â”Œ Warning: 2026-11-12 18:49:02 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,22984,â”Œ Warning: 2026-11-12 18:49:02 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,24609,â”Œ Warning: 2026-11-12 19:57:59 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,24611,â”Œ Warning: 2026-11-12 19:57:59 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,24613,â”Œ Warning: 2026-11-12 19:57:59 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,24615,â”Œ Warning: 2026-11-12 19:57:59 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,26444,â”Œ Warning: 2026-11-12 21:47:07 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,26446,â”Œ Warning: 2026-11-12 21:47:07 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,26448,â”Œ Warning: 2026-11-12 21:47:07 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,26450,â”Œ Warning: 2026-11-12 21:47:07 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,28025,â”Œ Warning: 2026-11-12 22:57:38 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,28027,â”Œ Warning: 2026-11-12 22:57:38 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,28029,â”Œ Warning: 2026-11-12 22:57:38 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,28031,â”Œ Warning: 2026-11-12 22:57:38 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,29601,â”Œ Warning: 2026-11-13 00:08:29 | No generators in region: DC|AZ_S
+nomand_fbR_none_gaslo,29603,â”Œ Warning: 2026-11-13 00:08:29 | No generators in region: DC|NM_W
+nomand_fbR_none_gaslo,29605,â”Œ Warning: 2026-11-13 00:08:29 | No generators in region: DC|UT
+nomand_fbR_none_gaslo,29607,â”Œ Warning: 2026-11-13 00:08:29 | No generators in region: DC|WY_E
+nomand_fbR_none_gaslo,29723,"report_dump.py | 2026-11-13 00:41:02 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+nomand_fbR_none_gaslo,29725,"report_dump.py | 2026-11-13 00:41:02 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29727,"report_dump.py | 2026-11-13 00:41:02 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29732,"report_dump.py | 2026-11-13 00:41:02 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+nomand_fbR_none_gaslo,29739,report_dump.py | 2026-11-13 00:41:02 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+nomand_fbR_none_gaslo,29754,"report_dump.py | 2026-11-13 00:41:02 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+nomand_fbR_none_gaslo,29756,"report_dump.py | 2026-11-13 00:41:02 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29758,"report_dump.py | 2026-11-13 00:41:02 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29763,"report_dump.py | 2026-11-13 00:41:02 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+nomand_fbR_none_gaslo,29770,report_dump.py | 2026-11-13 00:41:02 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+nomand_fbR_none_gaslo,29785,"report_dump.py | 2026-11-13 00:41:03 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+nomand_fbR_none_gaslo,29787,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29789,"report_dump.py | 2026-11-13 00:41:03 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29794,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+nomand_fbR_none_gaslo,29801,report_dump.py | 2026-11-13 00:41:03 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+nomand_fbR_none_gaslo,29816,"report_dump.py | 2026-11-13 00:41:03 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+nomand_fbR_none_gaslo,29818,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29820,"report_dump.py | 2026-11-13 00:41:03 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29825,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+nomand_fbR_none_gaslo,29832,report_dump.py | 2026-11-13 00:41:03 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+nomand_fbR_none_gaslo,29847,"report_dump.py | 2026-11-13 00:41:03 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+nomand_fbR_none_gaslo,29849,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29851,"report_dump.py | 2026-11-13 00:41:03 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29856,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+nomand_fbR_none_gaslo,29863,report_dump.py | 2026-11-13 00:41:03 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+nomand_fbR_none_gaslo,29878,"report_dump.py | 2026-11-13 00:41:03 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+nomand_fbR_none_gaslo,29880,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29882,"report_dump.py | 2026-11-13 00:41:03 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29887,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+nomand_fbR_none_gaslo,29894,report_dump.py | 2026-11-13 00:41:03 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+nomand_fbR_none_gaslo,29909,"report_dump.py | 2026-11-13 00:41:03 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+nomand_fbR_none_gaslo,29911,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29913,"report_dump.py | 2026-11-13 00:41:03 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29918,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+nomand_fbR_none_gaslo,29925,report_dump.py | 2026-11-13 00:41:03 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+nomand_fbR_none_gaslo,29940,"report_dump.py | 2026-11-13 00:41:03 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+nomand_fbR_none_gaslo,29942,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29944,"report_dump.py | 2026-11-13 00:41:03 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29949,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+nomand_fbR_none_gaslo,29956,report_dump.py | 2026-11-13 00:41:03 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+nomand_fbR_none_gaslo,29971,"report_dump.py | 2026-11-13 00:41:03 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+nomand_fbR_none_gaslo,29973,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29975,"report_dump.py | 2026-11-13 00:41:03 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+nomand_fbR_none_gaslo,29980,"report_dump.py | 2026-11-13 00:41:03 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+nomand_fbR_none_gaslo,29987,report_dump.py | 2026-11-13 00:41:03 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+nomand_fbR_none_gaslo,30059,report_dump.py | 2026-11-13 00:41:08 | INFO | Saving error_check as error_check.csv
+nomand_fbR_none_gaslo,30060,report_dump.py | 2026-11-13 00:41:08 | INFO | Saving error_gen as error_gen.csv
+nomand_fbR_none_gaslo,30267,report_dump.py | 2026-11-13 00:41:22 | ERROR | Traceback (most recent call last):
+nomand_fbR_none_gaslo,30268,"report_dump.py | 2026-11-13 00:41:22 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_nomand_fbR_none_gaslo\reeds\core\terminus\report_dump.py"", line 302, in <module>"
+nomand_fbR_none_gaslo,30269,"report_dump.py | 2026-11-13 00:41:22 | ERROR |     postprocess_outputs(case, outputs_path=outputs_path)"
+nomand_fbR_none_gaslo,30270,report_dump.py | 2026-11-13 00:41:22 | ERROR |     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+nomand_fbR_none_gaslo,30271,"report_dump.py | 2026-11-13 00:41:22 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_nomand_fbR_none_gaslo\reeds\core\terminus\report_dump.py"", line 203, in postprocess_outputs"
+nomand_fbR_none_gaslo,30272,report_dump.py | 2026-11-13 00:41:22 | ERROR |     reeds.results.calc_systemcost(case).to_csv(
+nomand_fbR_none_gaslo,30273,report_dump.py | 2026-11-13 00:41:22 | ERROR |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+nomand_fbR_none_gaslo,30274,"report_dump.py | 2026-11-13 00:41:22 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\reeds\results.py"", line 315, in calc_systemcost"
+nomand_fbR_none_gaslo,30275,"report_dump.py | 2026-11-13 00:41:22 | ERROR |     df_capex_init = pd.read_csv(os.path.join(inputs_case, 'df_capex_init.csv'))"
+nomand_fbR_none_gaslo,30276,"report_dump.py | 2026-11-13 00:41:22 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 873, in read_csv"
+nomand_fbR_none_gaslo,30277,"report_dump.py | 2026-11-13 00:41:22 | ERROR |     return _read(filepath_or_buffer, kwds)"
+nomand_fbR_none_gaslo,30278,"report_dump.py | 2026-11-13 00:41:22 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 300, in _read"
+nomand_fbR_none_gaslo,30279,"report_dump.py | 2026-11-13 00:41:22 | ERROR |     parser = TextFileReader(filepath_or_buffer, **kwds)"
+nomand_fbR_none_gaslo,30280,"report_dump.py | 2026-11-13 00:41:22 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1645, in __init__"
+nomand_fbR_none_gaslo,30281,"report_dump.py | 2026-11-13 00:41:22 | ERROR |     self._engine = self._make_engine(f, self.engine)"
+nomand_fbR_none_gaslo,30282,report_dump.py | 2026-11-13 00:41:22 | ERROR |                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+nomand_fbR_none_gaslo,30283,"report_dump.py | 2026-11-13 00:41:22 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1904, in _make_engine"
+nomand_fbR_none_gaslo,30284,report_dump.py | 2026-11-13 00:41:22 | ERROR |     self.handles = get_handle(
+nomand_fbR_none_gaslo,30285,report_dump.py | 2026-11-13 00:41:22 | ERROR |                    ~~~~~~~~~~^
+nomand_fbR_none_gaslo,30286,"report_dump.py | 2026-11-13 00:41:22 | ERROR |         f,"
+nomand_fbR_none_gaslo,30287,report_dump.py | 2026-11-13 00:41:22 | ERROR |         ^^
+nomand_fbR_none_gaslo,30288,report_dump.py | 2026-11-13 00:41:22 | ERROR |     ...<6 lines>...
+nomand_fbR_none_gaslo,30289,"report_dump.py | 2026-11-13 00:41:22 | ERROR |         storage_options=self.options.get(""storage_options"", None),"
+nomand_fbR_none_gaslo,30290,report_dump.py | 2026-11-13 00:41:22 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+nomand_fbR_none_gaslo,30291,report_dump.py | 2026-11-13 00:41:22 | ERROR |     )
+nomand_fbR_none_gaslo,30292,"report_dump.py | 2026-11-13 00:41:22 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py"", line 930, in get_handle"
+nomand_fbR_none_gaslo,30293,report_dump.py | 2026-11-13 00:41:22 | ERROR |     handle = open(
+nomand_fbR_none_gaslo,30294,"report_dump.py | 2026-11-13 00:41:22 | ERROR |         handle,"
+nomand_fbR_none_gaslo,30295,report_dump.py | 2026-11-13 00:41:22 | ERROR |     ...<3 lines>...
+nomand_fbR_none_gaslo,30296,"report_dump.py | 2026-11-13 00:41:22 | ERROR |         newline="""","
+nomand_fbR_none_gaslo,30297,report_dump.py | 2026-11-13 00:41:22 | ERROR |     )
+nomand_fbR_none_gaslo,30298,report_dump.py | 2026-11-13 00:41:22 | ERROR | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_nomand_fbR_none_gaslo\\inputs_case\\df_capex_init.csv'
+nomand_fbR_none_gaslo,30301,"retail_rate_calculations.py | 2026-11-13 00:41:27 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:161: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+nomand_fbR_none_gaslo,30302,retail_rate_calculations.py | 2026-11-13 00:41:27 | ERROR |   .assign(cost_cap=lambda x: x['cost_cap_x'].fillna(x['cost_cap_y']))
+nomand_fbR_none_gaslo,30303,"retail_rate_calculations.py | 2026-11-13 00:41:27 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:179: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+nomand_fbR_none_gaslo,30304,retail_rate_calculations.py | 2026-11-13 00:41:27 | ERROR |   init_capex['capex'] = init_capex['cost_cap'] * init_capex['cap_new']
+nomand_fbR_none_gaslo,30305,"retail_rate_calculations.py | 2026-11-13 00:41:27 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:182: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+nomand_fbR_none_gaslo,30306,retail_rate_calculations.py | 2026-11-13 00:41:27 | ERROR |   .sum()
+nomand_fbR_none_gaslo,30312,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:883: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+nomand_fbR_none_gaslo,30313,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30314,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |
+nomand_fbR_none_gaslo,30315,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+nomand_fbR_none_gaslo,30316,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |
+nomand_fbR_none_gaslo,30317,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+nomand_fbR_none_gaslo,30318,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |   df_gen_capex['eval_period'].fillna(20, inplace=True)"
+nomand_fbR_none_gaslo,30319,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:889: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+nomand_fbR_none_gaslo,30320,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30321,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |
+nomand_fbR_none_gaslo,30322,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+nomand_fbR_none_gaslo,30323,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |
+nomand_fbR_none_gaslo,30324,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+nomand_fbR_none_gaslo,30325,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |   df_gen_capex['depreciation_sch'].fillna('20', inplace=True)"
+nomand_fbR_none_gaslo,30326,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:926: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+nomand_fbR_none_gaslo,30327,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30328,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |
+nomand_fbR_none_gaslo,30329,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+nomand_fbR_none_gaslo,30330,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |
+nomand_fbR_none_gaslo,30331,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+nomand_fbR_none_gaslo,30332,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |   df_gen_capex_init['eval_period'].fillna(20, inplace=True)"
+nomand_fbR_none_gaslo,30333,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:930: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+nomand_fbR_none_gaslo,30334,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30335,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |
+nomand_fbR_none_gaslo,30336,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+nomand_fbR_none_gaslo,30337,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |
+nomand_fbR_none_gaslo,30338,retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+nomand_fbR_none_gaslo,30339,"retail_rate_calculations.py | 2026-11-13 00:41:28 | ERROR |   df_gen_capex_init['depreciation_sch'].fillna('20', inplace=True)"
+nomand_fbR_none_gaslo,30340,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+nomand_fbR_none_gaslo,30341,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30342,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30343,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+nomand_fbR_none_gaslo,30344,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30345,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+nomand_fbR_none_gaslo,30346,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)"
+nomand_fbR_none_gaslo,30347,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30348,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30349,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30350,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30351,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30352,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30353,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30354,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+nomand_fbR_none_gaslo,30355,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30356,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30357,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+nomand_fbR_none_gaslo,30358,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30359,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+nomand_fbR_none_gaslo,30360,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)"
+nomand_fbR_none_gaslo,30361,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30362,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30363,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30364,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30365,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30366,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30367,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30368,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30369,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30370,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30371,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30372,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30373,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30374,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30375,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30376,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30377,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30378,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30379,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30380,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30381,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30382,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30383,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30384,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30385,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30386,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30387,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30388,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30389,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30390,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30391,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30392,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30393,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30394,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30395,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30396,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30397,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30398,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30399,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30400,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30401,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30402,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30403,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30404,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30405,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30406,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30407,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30408,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30409,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30410,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30411,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30412,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30413,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30414,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30415,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30416,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30417,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30418,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30419,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30420,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30421,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30422,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30423,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30424,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30425,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30426,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30427,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30428,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30429,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30430,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30431,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30432,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30433,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30434,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30435,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30436,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30437,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30438,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+nomand_fbR_none_gaslo,30439,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30440,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30441,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+nomand_fbR_none_gaslo,30442,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30443,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+nomand_fbR_none_gaslo,30444,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)"
+nomand_fbR_none_gaslo,30445,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30446,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30447,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30448,"retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30449,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |
+nomand_fbR_none_gaslo,30450,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30451,retail_rate_calculations.py | 2026-11-13 00:41:29 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30452,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30453,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30454,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30455,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30456,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30457,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30458,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30459,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30460,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30461,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30462,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30463,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30464,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30465,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30466,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30467,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30468,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30469,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30470,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30471,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30472,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30473,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30474,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30475,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30476,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30477,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30478,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30479,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30480,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30481,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30482,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30483,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30484,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30485,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30486,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30487,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30488,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30489,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30490,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30491,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30492,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30493,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30494,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30495,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30496,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30497,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30498,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30499,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30500,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30501,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30502,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30503,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30504,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30505,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30506,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30507,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30508,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30509,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30510,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30511,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30512,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30513,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30514,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30515,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30516,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30517,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30518,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30519,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30520,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30521,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30522,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30523,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30524,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30525,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30526,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30527,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30528,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30529,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30530,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30531,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30532,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30533,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30534,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30535,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30536,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30537,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30538,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30539,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30540,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30541,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30542,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30543,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30544,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30545,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30546,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30547,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30548,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30549,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30550,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30551,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30552,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30553,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30554,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30555,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30556,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30557,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30558,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30559,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30560,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30561,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30562,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30563,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30564,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30565,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30566,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30567,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30568,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30569,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30570,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30571,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30572,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30573,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30574,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30575,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30576,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30577,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30578,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30579,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30580,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30581,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30582,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30583,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30584,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30585,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30586,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30587,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30588,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30589,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30590,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30591,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30592,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30593,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30594,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30595,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30596,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30597,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30598,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30599,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30600,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30601,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30602,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30603,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30604,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30605,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30606,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30607,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30608,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30609,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30610,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30611,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30612,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30613,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30614,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30615,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30616,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30617,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30618,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30619,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30620,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30621,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30622,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30623,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30624,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30625,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30626,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30627,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30628,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30629,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30630,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30631,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30632,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30633,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30634,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30635,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30636,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30637,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30638,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30639,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30640,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30641,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30642,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30643,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30644,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30645,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30646,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30647,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30648,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30649,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30650,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30651,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30652,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30653,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30654,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30655,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30656,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30657,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30658,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30659,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30660,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30661,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30662,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30663,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30664,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30665,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30666,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30667,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30668,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30669,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30670,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30671,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30672,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30673,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30674,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30675,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30676,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30677,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30678,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30679,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30680,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30681,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30682,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30683,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30684,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30685,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30686,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30687,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30688,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30689,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30690,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30691,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30692,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30693,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30694,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30695,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30696,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30697,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30698,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30699,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30700,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30701,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30702,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30703,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30704,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30705,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30706,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30707,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30708,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30709,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30710,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30711,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30712,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30713,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30714,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30715,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30716,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30717,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30718,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30719,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30720,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30721,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30722,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30723,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30724,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30725,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30726,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30727,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30728,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30729,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30730,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30731,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30732,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30733,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30734,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30735,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30736,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30737,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30738,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30739,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30740,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30741,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30742,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30743,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30744,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30745,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30746,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30747,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30748,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30749,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30750,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30751,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30752,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30753,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30754,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30755,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30756,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30757,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30758,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30759,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30760,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30761,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30762,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30763,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30764,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30765,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30766,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30767,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30768,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30769,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30770,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30771,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30772,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30773,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30774,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+nomand_fbR_none_gaslo,30775,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+nomand_fbR_none_gaslo,30776,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30777,"retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+nomand_fbR_none_gaslo,30778,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |
+nomand_fbR_none_gaslo,30779,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+nomand_fbR_none_gaslo,30780,retail_rate_calculations.py | 2026-11-13 00:41:30 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+nomand_fbR_none_gaslo,30801,reeds_to_rev.py | 2026-11-13 00:41:50 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\ONSHORE/2025_08_31_NewSites\wind-ons_reference_county\results\wind-ons_supply_curve_raw.csv...
+nomand_fbR_none_gaslo,30827,reeds_to_rev.py | 2026-11-13 00:41:50 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\ONSHORE/2025_08_31_NewSites\\wind-ons_reference_county\\results\\wind-ons_supply_curve_raw.csv'
+nomand_fbR_none_gaslo,30833,reeds_to_rev.py | 2026-11-13 00:41:52 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\OFFSHORE/2025_08_11_NewSites\wind-ofs_reference_county\results\wind-ofs_supply_curve_raw.csv...
+nomand_fbR_none_gaslo,30859,reeds_to_rev.py | 2026-11-13 00:41:52 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\OFFSHORE/2025_08_11_NewSites\\wind-ofs_reference_county\\results\\wind-ofs_supply_curve_raw.csv'
+nomand_fbR_none_gaslo,30865,reeds_to_rev.py | 2026-11-13 00:41:55 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\UPV/2025_09_29_Update\upv_reference_county\results\upv_supply_curve_raw.csv...
+nomand_fbR_none_gaslo,30891,reeds_to_rev.py | 2026-11-13 00:41:55 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\UPV/2025_09_29_Update\\upv_reference_county\\results\\upv_supply_curve_raw.csv'
+nomand_fbR_none_gaslo,30897,reeds_to_rev.py | 2026-11-13 00:41:58 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\GeoHydro/2024_Update\geohydro_reference_county\results\geohydro_supply_curve_raw.csv...
+nomand_fbR_none_gaslo,30923,reeds_to_rev.py | 2026-11-13 00:41:58 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\GeoHydro/2024_Update\\geohydro_reference_county\\results\\geohydro_supply_curve_raw.csv'
+nomand_fbR_none_gaslo,30930,single_case_plots.py | 2026-11-13 00:44:18 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+nomand_fbR_none_gaslo,30931,single_case_plots.py | 2026-11-13 00:44:18 | ERROR |   _init_gdal_data()

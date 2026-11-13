@@ -1,4 +1,5 @@
 case,lines,file
+nomand_fbR_none_gaslo,954,N7_error_warning_lines/nomand_fbR_none_gaslo.csv
 recctl_fbR_none,952,N7_error_warning_lines/recctl_fbR_none.csv
 recctl_smr100_eo_p50,952,N7_error_warning_lines/recctl_smr100_eo_p50.csv
 recfix_fbR_none,954,N7_error_warning_lines/recfix_fbR_none.csv
@@ -11,4 +12,5 @@ recfix_smr100_mck_p50,952,N7_error_warning_lines/recfix_smr100_mck_p50.csv
 run1_smr100_aj_p50_grow,960,N7_error_warning_lines/run1_smr100_aj_p50_grow.csv
 run1_smr100_cop28_p50_grow,960,N7_error_warning_lines/run1_smr100_cop28_p50_grow.csv
 run1_smr100_eia_p50_grow,683,N7_error_warning_lines/run1_smr100_eia_p50_grow.csv
+run1_smr100_eo_p50_grow,960,N7_error_warning_lines/run1_smr100_eo_p50_grow.csv
 run1_smr100_mck_p50_grow,960,N7_error_warning_lines/run1_smr100_mck_p50_grow.csv
