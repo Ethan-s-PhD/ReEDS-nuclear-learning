@@ -1,7 +1,10 @@
 case,lines,file
+nomand_fbR_none_demhi,960,N7_error_warning_lines/nomand_fbR_none_demhi.csv
 nomand_fbR_none_gashi,956,N7_error_warning_lines/nomand_fbR_none_gashi.csv
 nomand_fbR_none_gaslo,954,N7_error_warning_lines/nomand_fbR_none_gaslo.csv
+nomand_fbR_none_rehi,950,N7_error_warning_lines/nomand_fbR_none_rehi.csv
 nomand_fbR_none_relo,952,N7_error_warning_lines/nomand_fbR_none_relo.csv
+nomand_fbR_none_translim,932,N7_error_warning_lines/nomand_fbR_none_translim.csv
 recctl_fbR_none,952,N7_error_warning_lines/recctl_fbR_none.csv
 recctl_smr100_eo_p50,952,N7_error_warning_lines/recctl_smr100_eo_p50.csv
 recfix_fbR_none,954,N7_error_warning_lines/recfix_fbR_none.csv

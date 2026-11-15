@@ -1,7 +1,10 @@
 case,t,total,columns
+nomand_fbR_none_demhi,,key missing,
 nomand_fbR_none_gashi,,key missing,
 nomand_fbR_none_gaslo,,key missing,
+nomand_fbR_none_rehi,,key missing,
 nomand_fbR_none_relo,,key missing,
+nomand_fbR_none_translim,,key missing,
 recctl_fbR_none,,key missing,
 recctl_smr100_eo_p50,,key missing,
 recfix_fbR_none,,key missing,
