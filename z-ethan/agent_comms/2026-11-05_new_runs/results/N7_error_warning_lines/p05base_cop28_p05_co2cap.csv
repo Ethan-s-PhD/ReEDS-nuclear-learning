@@ -1,0 +1,962 @@
+case,line_no,line
+p05base_cop28_p05_co2cap,272,copy_files.py | 2026-11-15 10:17:36 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+p05base_cop28_p05_co2cap,273,copy_files.py | 2026-11-15 10:17:36 | ERROR |   _init_gdal_data()
+p05base_cop28_p05_co2cap,353,copy_files.py | 2026-11-15 10:18:12 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_p05base_cop28_p05_co2cap\reeds\input_processing\copy_files.py:465: DtypeWarning: Columns (0: RetireYearGiven) have mixed types. Specify dtype option on import or set low_memory=False.
+p05base_cop28_p05_co2cap,354,"copy_files.py | 2026-11-15 10:18:12 | ERROR |   df = pd.read_csv(full_path, dtype={'FIPS':str, 'fips':str, 'cnty_fips':str}, comment='#')"
+p05base_cop28_p05_co2cap,355,"copy_files.py | 2026-11-15 10:18:13 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_p05base_cop28_p05_co2cap\reeds\input_processing\copy_files.py:896: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+p05base_cop28_p05_co2cap,356,copy_files.py | 2026-11-15 10:18:13 | ERROR |   df['r'] = df['FIPS'].map(county2zone)
+p05base_cop28_p05_co2cap,367,copy_files.py | 2026-11-15 10:18:35 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\raw.py:733: RuntimeWarning: Cannot find tms_NZTM2000.json (GDAL_DATA is not defined)
+p05base_cop28_p05_co2cap,368,copy_files.py | 2026-11-15 10:18:35 | ERROR |   ogr_write(
+p05base_cop28_p05_co2cap,390,h2_storage.py | 2026-11-15 10:18:51 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+p05base_cop28_p05_co2cap,391,h2_storage.py | 2026-11-15 10:18:51 | ERROR |   _init_gdal_data()
+p05base_cop28_p05_co2cap,398,fuelcostprep.py | 2026-11-15 10:19:02 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+p05base_cop28_p05_co2cap,399,fuelcostprep.py | 2026-11-15 10:19:02 | ERROR |   _init_gdal_data()
+p05base_cop28_p05_co2cap,479,recf.py | 2026-11-15 10:25:59 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_p05base_cop28_p05_co2cap\reeds\input_processing\recf.py:422: Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is active in pandas since 3.0 which utilizes a lazy copy mechanism that defers copies until necessary. Use .copy() to make an eager copy if necessary.
+p05base_cop28_p05_co2cap,480,recf.py | 2026-11-15 10:25:59 | ERROR |   recf = pd.concat(
+p05base_cop28_p05_co2cap,481,recf.py | 2026-11-15 10:25:59 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_p05base_cop28_p05_co2cap\reeds\input_processing\recf.py:449: Pandas4Warning: The copy keyword is deprecated and will be removed in a future version. Copy-on-Write is active in pandas since 3.0 which utilizes a lazy copy mechanism that defers copies until necessary. Use .copy() to make an eager copy if necessary.
+p05base_cop28_p05_co2cap,482,"recf.py | 2026-11-15 10:25:59 | ERROR |   recf = recf.reindex(labels=resources['resource'].drop_duplicates(), axis=1, copy=False)"
+p05base_cop28_p05_co2cap,489,WriteHintage.py | 2026-11-15 10:26:11 | INFO | Note that the clustering can result in warnings if the heat rates
+p05base_cop28_p05_co2cap,496,transmission.py | 2026-11-15 10:26:25 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+p05base_cop28_p05_co2cap,497,transmission.py | 2026-11-15 10:26:25 | ERROR |   _init_gdal_data()
+p05base_cop28_p05_co2cap,526,hourly_repperiods.py | 2026-11-15 10:33:20 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+p05base_cop28_p05_co2cap,527,hourly_repperiods.py | 2026-11-15 10:33:20 | ERROR |   _init_gdal_data()
+p05base_cop28_p05_co2cap,2311,check_inputs.py | 2026-11-15 10:48:24 | INFO | Load inputs.gdx for error checking
+p05base_cop28_p05_co2cap,4579,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4581,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4583,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4585,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4587,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4589,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4591,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4593,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4595,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4597,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4599,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4601,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4603,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4605,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4607,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4609,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4611,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4613,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4615,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4617,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4619,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4621,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4623,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4625,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4627,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4629,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4631,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4633,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4635,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4637,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4639,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4641,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4643,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4645,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4647,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4649,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4651,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4653,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4655,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4657,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4659,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4661,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4663,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4665,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4667,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4669,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4671,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4673,"â”Œ Error: 2026-11-15 10:58:19 | WA_E,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4675,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4677,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4679,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4681,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4683,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4685,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4687,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4689,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4691,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4693,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4695,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4697,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4699,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4701,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4703,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4705,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4707,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4709,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4711,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4713,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4715,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4717,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4719,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4721,"â”Œ Error: 2026-11-15 10:58:19 | MT_W,hydud,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4723,"â”Œ Error: 2026-11-15 10:58:19 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4725,"â”Œ Error: 2026-11-15 10:58:19 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4727,"â”Œ Error: 2026-11-15 10:58:19 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4729,"â”Œ Error: 2026-11-15 10:58:19 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4731,"â”Œ Error: 2026-11-15 10:58:19 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4733,"â”Œ Error: 2026-11-15 10:58:19 | TX_MISO,hydnpnd,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4735,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4737,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4739,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4741,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4743,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4745,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4747,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4749,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4751,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4753,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4755,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4757,"â”Œ Error: 2026-11-15 10:58:19 | CA_N,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4759,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4761,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4763,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4765,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4767,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4769,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4771,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4773,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4775,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4777,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4779,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4781,"â”Œ Error: 2026-11-15 10:58:19 | CO_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4783,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4785,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4787,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4789,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4791,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4793,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4795,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4797,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4799,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4801,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4803,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4805,"â”Œ Error: 2026-11-15 10:58:19 | CO_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4807,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4809,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4811,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4813,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4815,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4817,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4819,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4821,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4823,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4825,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4827,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4829,"â”Œ Error: 2026-11-15 10:58:19 | ID_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4831,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4833,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4835,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4837,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4839,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4841,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4843,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4845,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4847,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4849,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4851,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4853,"â”Œ Error: 2026-11-15 10:58:19 | IL_MISO,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4855,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4857,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4859,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4861,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4863,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4865,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4867,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4869,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4871,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4873,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4875,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4877,"â”Œ Error: 2026-11-15 10:58:19 | KS,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4879,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4881,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4883,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4885,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4887,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4889,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4891,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4893,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4895,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4897,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4899,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4901,"â”Œ Error: 2026-11-15 10:58:19 | ME,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4903,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4905,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4907,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4909,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4911,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4913,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4915,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4917,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4919,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4921,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4923,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4925,"â”Œ Error: 2026-11-15 10:58:19 | MN_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4927,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4929,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4931,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4933,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4935,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4937,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4939,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4941,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4943,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4945,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4947,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4949,"â”Œ Error: 2026-11-15 10:58:19 | MT_C,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4951,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4953,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4955,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4957,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4959,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4961,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4963,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4965,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4967,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4969,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4971,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4973,"â”Œ Error: 2026-11-15 10:58:19 | NC_SE,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4975,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4977,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4979,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4981,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4983,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4985,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4987,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4989,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4991,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4993,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4995,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4997,"â”Œ Error: 2026-11-15 10:58:19 | NM_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,4999,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5001,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5003,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5005,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5007,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5009,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5011,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5013,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5015,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5017,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5019,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5021,"â”Œ Error: 2026-11-15 10:58:19 | NY_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5023,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5025,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5027,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5029,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5031,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5033,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5035,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5037,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5039,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5041,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5043,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5045,"â”Œ Error: 2026-11-15 10:58:19 | NY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5047,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5049,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5051,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5053,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5055,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5057,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5059,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5061,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5063,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5065,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5067,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5069,"â”Œ Error: 2026-11-15 10:58:19 | OR_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5071,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5073,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5075,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5077,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5079,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5081,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5083,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5085,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5087,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5089,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5091,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5093,"â”Œ Error: 2026-11-15 10:58:19 | OR_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5095,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5097,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5099,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5101,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5103,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5105,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5107,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5109,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5111,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5113,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5115,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5117,"â”Œ Error: 2026-11-15 10:58:19 | PA_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5119,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5121,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5123,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5125,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5127,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5129,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5131,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5133,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5135,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5137,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5139,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5141,"â”Œ Error: 2026-11-15 10:58:19 | WA_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5143,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5145,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5147,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5149,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5151,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5153,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5155,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5157,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5159,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5161,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5163,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5165,"â”Œ Error: 2026-11-15 10:58:19 | WI_E,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5167,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5169,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5171,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5173,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5175,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5177,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5179,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5181,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5183,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5185,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5187,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5189,"â”Œ Error: 2026-11-15 10:58:19 | WY_W,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5191,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5193,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5195,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5197,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5199,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5201,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5203,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5205,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5207,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5209,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5211,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,5213,"â”Œ Error: 2026-11-15 10:58:19 | CA_S,hydund,BoundsError(Float64[], (1,))"
+p05base_cop28_p05_co2cap,8159,â”Œ Warning: 2026-11-15 11:59:46 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,8161,â”Œ Warning: 2026-11-15 11:59:46 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,9863,â”Œ Warning: 2026-11-15 13:02:56 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,9865,â”Œ Warning: 2026-11-15 13:02:56 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,11612,â”Œ Warning: 2026-11-15 14:11:21 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,11614,â”Œ Warning: 2026-11-15 14:11:21 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,13347,â”Œ Warning: 2026-11-15 15:31:11 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,13349,â”Œ Warning: 2026-11-15 15:31:11 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,13405,nuclear_learning.py | 2026-11-15 15:52:38 | INFO | nuclear_learning: WARNING no post-anchor nuclear investment yet; OCC is pinned at BOAK. (Small single-region runs may barely move the series index — verify the region is national for magnitude studies.)
+p05base_cop28_p05_co2cap,15005,â”Œ Warning: 2026-11-15 16:52:13 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,15007,â”Œ Warning: 2026-11-15 16:52:13 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,15009,â”Œ Warning: 2026-11-15 16:52:13 | No generators in region: DC|UT
+p05base_cop28_p05_co2cap,15011,â”Œ Warning: 2026-11-15 16:52:13 | No generators in region: DC|WY_E
+p05base_cop28_p05_co2cap,15111,nuclear_learning.py | 2026-11-15 17:16:55 | INFO | nuclear_learning: WARNING no post-anchor nuclear investment yet; OCC is pinned at BOAK. (Small single-region runs may barely move the series index — verify the region is national for magnitude studies.)
+p05base_cop28_p05_co2cap,16665,â”Œ Warning: 2026-11-15 18:17:51 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,16667,â”Œ Warning: 2026-11-15 18:17:51 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,16669,â”Œ Warning: 2026-11-15 18:17:51 | No generators in region: DC|UT
+p05base_cop28_p05_co2cap,16671,â”Œ Warning: 2026-11-15 18:17:51 | No generators in region: DC|WY_E
+p05base_cop28_p05_co2cap,16771,nuclear_learning.py | 2026-11-15 18:42:36 | INFO | nuclear_learning: WARNING no post-anchor nuclear investment yet; OCC is pinned at BOAK. (Small single-region runs may barely move the series index — verify the region is national for magnitude studies.)
+p05base_cop28_p05_co2cap,18320,â”Œ Warning: 2026-11-15 19:32:37 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,18322,â”Œ Warning: 2026-11-15 19:32:37 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,18324,â”Œ Warning: 2026-11-15 19:32:37 | No generators in region: DC|UT
+p05base_cop28_p05_co2cap,18326,â”Œ Warning: 2026-11-15 19:32:37 | No generators in region: DC|WY_E
+p05base_cop28_p05_co2cap,18426,nuclear_learning.py | 2026-11-15 19:56:25 | INFO | nuclear_learning: WARNING no post-anchor nuclear investment yet; OCC is pinned at BOAK. (Small single-region runs may barely move the series index — verify the region is national for magnitude studies.)
+p05base_cop28_p05_co2cap,19961,â”Œ Warning: 2026-11-15 20:56:45 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,19963,â”Œ Warning: 2026-11-15 20:56:45 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,19965,â”Œ Warning: 2026-11-15 20:56:45 | No generators in region: DC|UT
+p05base_cop28_p05_co2cap,19967,â”Œ Warning: 2026-11-15 20:56:45 | No generators in region: DC|WY_E
+p05base_cop28_p05_co2cap,20067,nuclear_learning.py | 2026-11-15 21:19:40 | INFO | nuclear_learning: WARNING no post-anchor nuclear investment yet; OCC is pinned at BOAK. (Small single-region runs may barely move the series index — verify the region is national for magnitude studies.)
+p05base_cop28_p05_co2cap,21599,â”Œ Warning: 2026-11-15 22:14:41 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,21601,â”Œ Warning: 2026-11-15 22:14:41 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,21603,â”Œ Warning: 2026-11-15 22:14:41 | No generators in region: DC|UT
+p05base_cop28_p05_co2cap,21605,â”Œ Warning: 2026-11-15 22:14:41 | No generators in region: DC|WY_E
+p05base_cop28_p05_co2cap,21705,nuclear_learning.py | 2026-11-15 22:38:28 | INFO | nuclear_learning: WARNING no post-anchor nuclear investment yet; OCC is pinned at BOAK. (Small single-region runs may barely move the series index — verify the region is national for magnitude studies.)
+p05base_cop28_p05_co2cap,23367,â”Œ Warning: 2026-11-15 23:34:30 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,23369,â”Œ Warning: 2026-11-15 23:34:30 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,23371,â”Œ Warning: 2026-11-15 23:34:30 | No generators in region: DC|UT
+p05base_cop28_p05_co2cap,23373,â”Œ Warning: 2026-11-15 23:34:30 | No generators in region: DC|WY_E
+p05base_cop28_p05_co2cap,25099,â”Œ Warning: 2026-11-16 00:54:47 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,25101,â”Œ Warning: 2026-11-16 00:54:47 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,25103,â”Œ Warning: 2026-11-16 00:54:47 | No generators in region: DC|UT
+p05base_cop28_p05_co2cap,25105,â”Œ Warning: 2026-11-16 00:54:47 | No generators in region: DC|WY_E
+p05base_cop28_p05_co2cap,25205,nuclear_learning.py | 2026-11-16 01:17:37 | INFO | nuclear_learning: WARNING no post-anchor nuclear investment yet; OCC is pinned at BOAK. (Small single-region runs may barely move the series index — verify the region is national for magnitude studies.)
+p05base_cop28_p05_co2cap,26771,â”Œ Warning: 2026-11-16 02:08:19 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,26773,â”Œ Warning: 2026-11-16 02:08:19 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,26775,â”Œ Warning: 2026-11-16 02:08:19 | No generators in region: DC|UT
+p05base_cop28_p05_co2cap,26777,â”Œ Warning: 2026-11-16 02:08:19 | No generators in region: DC|WY_E
+p05base_cop28_p05_co2cap,26877,nuclear_learning.py | 2026-11-16 02:32:36 | INFO | nuclear_learning: WARNING no post-anchor nuclear investment yet; OCC is pinned at BOAK. (Small single-region runs may barely move the series index — verify the region is national for magnitude studies.)
+p05base_cop28_p05_co2cap,28388,â”Œ Warning: 2026-11-16 03:20:43 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,28390,â”Œ Warning: 2026-11-16 03:20:43 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,28392,â”Œ Warning: 2026-11-16 03:20:43 | No generators in region: DC|UT
+p05base_cop28_p05_co2cap,28394,â”Œ Warning: 2026-11-16 03:20:43 | No generators in region: DC|WY_E
+p05base_cop28_p05_co2cap,28494,nuclear_learning.py | 2026-11-16 03:43:22 | INFO | nuclear_learning: WARNING no post-anchor nuclear investment yet; OCC is pinned at BOAK. (Small single-region runs may barely move the series index — verify the region is national for magnitude studies.)
+p05base_cop28_p05_co2cap,29809,â”Œ Warning: 2026-11-16 04:28:34 | No generators in region: DC|AZ_S
+p05base_cop28_p05_co2cap,29811,â”Œ Warning: 2026-11-16 04:28:34 | No generators in region: DC|NM_W
+p05base_cop28_p05_co2cap,29813,â”Œ Warning: 2026-11-16 04:28:34 | No generators in region: DC|UT
+p05base_cop28_p05_co2cap,29815,â”Œ Warning: 2026-11-16 04:28:34 | No generators in region: DC|WY_E
+p05base_cop28_p05_co2cap,29931,"report_dump.py | 2026-11-16 05:01:51 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+p05base_cop28_p05_co2cap,29933,"report_dump.py | 2026-11-16 05:01:51 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,29935,"report_dump.py | 2026-11-16 05:01:51 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,29940,"report_dump.py | 2026-11-16 05:01:51 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+p05base_cop28_p05_co2cap,29947,report_dump.py | 2026-11-16 05:01:51 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+p05base_cop28_p05_co2cap,29962,"report_dump.py | 2026-11-16 05:01:51 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+p05base_cop28_p05_co2cap,29964,"report_dump.py | 2026-11-16 05:01:51 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,29966,"report_dump.py | 2026-11-16 05:01:51 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,29971,"report_dump.py | 2026-11-16 05:01:51 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+p05base_cop28_p05_co2cap,29978,report_dump.py | 2026-11-16 05:01:51 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+p05base_cop28_p05_co2cap,29993,"report_dump.py | 2026-11-16 05:01:52 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+p05base_cop28_p05_co2cap,29995,"report_dump.py | 2026-11-16 05:01:52 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,29997,"report_dump.py | 2026-11-16 05:01:52 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30002,"report_dump.py | 2026-11-16 05:01:52 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30009,report_dump.py | 2026-11-16 05:01:52 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+p05base_cop28_p05_co2cap,30024,"report_dump.py | 2026-11-16 05:01:52 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+p05base_cop28_p05_co2cap,30026,"report_dump.py | 2026-11-16 05:01:52 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30028,"report_dump.py | 2026-11-16 05:01:52 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30033,"report_dump.py | 2026-11-16 05:01:52 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30040,report_dump.py | 2026-11-16 05:01:52 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+p05base_cop28_p05_co2cap,30055,"report_dump.py | 2026-11-16 05:01:53 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+p05base_cop28_p05_co2cap,30057,"report_dump.py | 2026-11-16 05:01:53 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30059,"report_dump.py | 2026-11-16 05:01:53 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30064,"report_dump.py | 2026-11-16 05:01:53 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30071,report_dump.py | 2026-11-16 05:01:53 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+p05base_cop28_p05_co2cap,30086,"report_dump.py | 2026-11-16 05:01:53 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+p05base_cop28_p05_co2cap,30088,"report_dump.py | 2026-11-16 05:01:53 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30090,"report_dump.py | 2026-11-16 05:01:53 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30095,"report_dump.py | 2026-11-16 05:01:53 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30102,report_dump.py | 2026-11-16 05:01:53 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+p05base_cop28_p05_co2cap,30117,"report_dump.py | 2026-11-16 05:01:53 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+p05base_cop28_p05_co2cap,30119,"report_dump.py | 2026-11-16 05:01:53 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30121,"report_dump.py | 2026-11-16 05:01:53 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30126,"report_dump.py | 2026-11-16 05:01:53 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30133,report_dump.py | 2026-11-16 05:01:53 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+p05base_cop28_p05_co2cap,30148,"report_dump.py | 2026-11-16 05:01:53 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+p05base_cop28_p05_co2cap,30150,"report_dump.py | 2026-11-16 05:01:53 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30152,"report_dump.py | 2026-11-16 05:01:53 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30157,"report_dump.py | 2026-11-16 05:01:53 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30164,report_dump.py | 2026-11-16 05:01:53 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+p05base_cop28_p05_co2cap,30179,"report_dump.py | 2026-11-16 05:01:53 | INFO |     res_col = col.astype(dtype=cdt, errors=errors)"
+p05base_cop28_p05_co2cap,30181,"report_dump.py | 2026-11-16 05:01:53 | INFO |     new_data = self._mgr.astype(dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30183,"report_dump.py | 2026-11-16 05:01:53 | INFO |     return self.apply(""astype"", dtype=dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30188,"report_dump.py | 2026-11-16 05:01:53 | INFO |     new_values = astype_array_safe(values, dtype, errors=errors)"
+p05base_cop28_p05_co2cap,30195,report_dump.py | 2026-11-16 05:01:53 | INFO | ValueError: could not convert string to float: '': Error while type casting for column 'Value'
+p05base_cop28_p05_co2cap,30267,report_dump.py | 2026-11-16 05:01:58 | INFO | Saving error_check as error_check.csv
+p05base_cop28_p05_co2cap,30268,report_dump.py | 2026-11-16 05:01:58 | INFO | Saving error_gen as error_gen.csv
+p05base_cop28_p05_co2cap,30475,report_dump.py | 2026-11-16 05:02:13 | ERROR | Traceback (most recent call last):
+p05base_cop28_p05_co2cap,30476,"report_dump.py | 2026-11-16 05:02:13 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_p05base_cop28_p05_co2cap\reeds\core\terminus\report_dump.py"", line 302, in <module>"
+p05base_cop28_p05_co2cap,30477,"report_dump.py | 2026-11-16 05:02:13 | ERROR |     postprocess_outputs(case, outputs_path=outputs_path)"
+p05base_cop28_p05_co2cap,30478,report_dump.py | 2026-11-16 05:02:13 | ERROR |     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+p05base_cop28_p05_co2cap,30479,"report_dump.py | 2026-11-16 05:02:13 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\runs\ag_p05base_cop28_p05_co2cap\reeds\core\terminus\report_dump.py"", line 203, in postprocess_outputs"
+p05base_cop28_p05_co2cap,30480,report_dump.py | 2026-11-16 05:02:13 | ERROR |     reeds.results.calc_systemcost(case).to_csv(
+p05base_cop28_p05_co2cap,30481,report_dump.py | 2026-11-16 05:02:13 | ERROR |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+p05base_cop28_p05_co2cap,30482,"report_dump.py | 2026-11-16 05:02:13 | ERROR |   File ""C:\Users\egallup\ReEDS-nuclear-learning\reeds\results.py"", line 315, in calc_systemcost"
+p05base_cop28_p05_co2cap,30483,"report_dump.py | 2026-11-16 05:02:13 | ERROR |     df_capex_init = pd.read_csv(os.path.join(inputs_case, 'df_capex_init.csv'))"
+p05base_cop28_p05_co2cap,30484,"report_dump.py | 2026-11-16 05:02:13 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 873, in read_csv"
+p05base_cop28_p05_co2cap,30485,"report_dump.py | 2026-11-16 05:02:13 | ERROR |     return _read(filepath_or_buffer, kwds)"
+p05base_cop28_p05_co2cap,30486,"report_dump.py | 2026-11-16 05:02:13 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 300, in _read"
+p05base_cop28_p05_co2cap,30487,"report_dump.py | 2026-11-16 05:02:13 | ERROR |     parser = TextFileReader(filepath_or_buffer, **kwds)"
+p05base_cop28_p05_co2cap,30488,"report_dump.py | 2026-11-16 05:02:13 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1645, in __init__"
+p05base_cop28_p05_co2cap,30489,"report_dump.py | 2026-11-16 05:02:13 | ERROR |     self._engine = self._make_engine(f, self.engine)"
+p05base_cop28_p05_co2cap,30490,report_dump.py | 2026-11-16 05:02:13 | ERROR |                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+p05base_cop28_p05_co2cap,30491,"report_dump.py | 2026-11-16 05:02:13 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\parsers\readers.py"", line 1904, in _make_engine"
+p05base_cop28_p05_co2cap,30492,report_dump.py | 2026-11-16 05:02:13 | ERROR |     self.handles = get_handle(
+p05base_cop28_p05_co2cap,30493,report_dump.py | 2026-11-16 05:02:13 | ERROR |                    ~~~~~~~~~~^
+p05base_cop28_p05_co2cap,30494,"report_dump.py | 2026-11-16 05:02:13 | ERROR |         f,"
+p05base_cop28_p05_co2cap,30495,report_dump.py | 2026-11-16 05:02:13 | ERROR |         ^^
+p05base_cop28_p05_co2cap,30496,report_dump.py | 2026-11-16 05:02:13 | ERROR |     ...<6 lines>...
+p05base_cop28_p05_co2cap,30497,"report_dump.py | 2026-11-16 05:02:13 | ERROR |         storage_options=self.options.get(""storage_options"", None),"
+p05base_cop28_p05_co2cap,30498,report_dump.py | 2026-11-16 05:02:13 | ERROR |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+p05base_cop28_p05_co2cap,30499,report_dump.py | 2026-11-16 05:02:13 | ERROR |     )
+p05base_cop28_p05_co2cap,30500,"report_dump.py | 2026-11-16 05:02:13 | ERROR |   File ""C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pandas\io\common.py"", line 930, in get_handle"
+p05base_cop28_p05_co2cap,30501,report_dump.py | 2026-11-16 05:02:13 | ERROR |     handle = open(
+p05base_cop28_p05_co2cap,30502,"report_dump.py | 2026-11-16 05:02:13 | ERROR |         handle,"
+p05base_cop28_p05_co2cap,30503,report_dump.py | 2026-11-16 05:02:13 | ERROR |     ...<3 lines>...
+p05base_cop28_p05_co2cap,30504,"report_dump.py | 2026-11-16 05:02:13 | ERROR |         newline="""","
+p05base_cop28_p05_co2cap,30505,report_dump.py | 2026-11-16 05:02:13 | ERROR |     )
+p05base_cop28_p05_co2cap,30506,report_dump.py | 2026-11-16 05:02:13 | ERROR | FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\egallup\\ReEDS-nuclear-learning\\runs\\ag_p05base_cop28_p05_co2cap\\inputs_case\\df_capex_init.csv'
+p05base_cop28_p05_co2cap,30509,"retail_rate_calculations.py | 2026-11-16 05:02:18 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:161: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+p05base_cop28_p05_co2cap,30510,retail_rate_calculations.py | 2026-11-16 05:02:18 | ERROR |   .assign(cost_cap=lambda x: x['cost_cap_x'].fillna(x['cost_cap_y']))
+p05base_cop28_p05_co2cap,30511,"retail_rate_calculations.py | 2026-11-16 05:02:18 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:179: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+p05base_cop28_p05_co2cap,30512,retail_rate_calculations.py | 2026-11-16 05:02:18 | ERROR |   init_capex['capex'] = init_capex['cost_cap'] * init_capex['cap_new']
+p05base_cop28_p05_co2cap,30513,"retail_rate_calculations.py | 2026-11-16 05:02:18 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\calculate_historical_capex.py:182: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`"
+p05base_cop28_p05_co2cap,30514,retail_rate_calculations.py | 2026-11-16 05:02:18 | ERROR |   .sum()
+p05base_cop28_p05_co2cap,30520,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:883: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+p05base_cop28_p05_co2cap,30521,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30522,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |
+p05base_cop28_p05_co2cap,30523,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+p05base_cop28_p05_co2cap,30524,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |
+p05base_cop28_p05_co2cap,30525,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+p05base_cop28_p05_co2cap,30526,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |   df_gen_capex['eval_period'].fillna(20, inplace=True)"
+p05base_cop28_p05_co2cap,30527,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:889: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+p05base_cop28_p05_co2cap,30528,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30529,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |
+p05base_cop28_p05_co2cap,30530,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+p05base_cop28_p05_co2cap,30531,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |
+p05base_cop28_p05_co2cap,30532,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+p05base_cop28_p05_co2cap,30533,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |   df_gen_capex['depreciation_sch'].fillna('20', inplace=True)"
+p05base_cop28_p05_co2cap,30534,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:926: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+p05base_cop28_p05_co2cap,30535,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30536,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |
+p05base_cop28_p05_co2cap,30537,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+p05base_cop28_p05_co2cap,30538,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |
+p05base_cop28_p05_co2cap,30539,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+p05base_cop28_p05_co2cap,30540,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |   df_gen_capex_init['eval_period'].fillna(20, inplace=True)"
+p05base_cop28_p05_co2cap,30541,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\retail_rate_calculations.py:930: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+p05base_cop28_p05_co2cap,30542,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30543,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |
+p05base_cop28_p05_co2cap,30544,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+p05base_cop28_p05_co2cap,30545,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |
+p05base_cop28_p05_co2cap,30546,retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+p05base_cop28_p05_co2cap,30547,"retail_rate_calculations.py | 2026-11-16 05:02:19 | ERROR |   df_gen_capex_init['depreciation_sch'].fillna('20', inplace=True)"
+p05base_cop28_p05_co2cap,30548,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+p05base_cop28_p05_co2cap,30549,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30550,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30551,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+p05base_cop28_p05_co2cap,30552,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30553,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+p05base_cop28_p05_co2cap,30554,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)"
+p05base_cop28_p05_co2cap,30555,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30556,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30557,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30558,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30559,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30560,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30561,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30562,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+p05base_cop28_p05_co2cap,30563,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30564,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30565,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+p05base_cop28_p05_co2cap,30566,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30567,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+p05base_cop28_p05_co2cap,30568,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)"
+p05base_cop28_p05_co2cap,30569,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30570,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30571,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30572,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30573,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30574,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30575,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30576,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30577,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30578,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30579,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30580,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30581,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30582,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30583,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30584,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30585,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30586,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30587,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30588,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30589,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30590,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30591,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30592,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30593,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30594,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30595,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30596,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30597,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30598,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30599,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30600,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30601,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30602,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30603,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30604,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30605,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30606,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30607,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30608,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30609,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30610,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30611,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30612,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30613,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30614,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30615,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30616,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30617,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30618,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30619,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30620,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30621,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30622,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30623,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30624,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30625,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30626,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30627,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30628,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30629,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30630,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30631,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30632,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30633,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30634,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30635,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30636,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30637,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30638,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30639,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30640,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30641,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30642,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30643,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30644,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30645,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30646,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:383: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+p05base_cop28_p05_co2cap,30647,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such inplace method never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30648,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30649,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' instead, to perform the operation inplace on the original object, or try to avoid an inplace operation using 'df[col] = df[col].method(value)'."
+p05base_cop28_p05_co2cap,30650,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30651,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html
+p05base_cop28_p05_co2cap,30652,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   dfall.state.replace({'DC':'MD'}, inplace=True)"
+p05base_cop28_p05_co2cap,30653,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30654,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30655,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30656,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30657,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30658,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30659,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30660,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30661,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30662,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30663,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30664,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30665,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30666,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30667,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30668,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30669,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30670,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30671,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30672,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30673,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30674,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30675,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30676,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30677,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30678,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30679,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30680,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30681,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30682,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30683,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30684,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30685,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30686,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30687,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30688,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30689,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30690,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30691,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30692,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30693,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30694,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30695,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30696,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30697,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30698,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30699,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30700,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30701,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30702,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30703,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30704,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30705,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30706,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30707,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30708,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30709,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30710,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30711,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30712,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30713,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30714,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30715,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30716,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30717,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30718,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30719,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30720,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30721,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30722,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30723,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30724,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30725,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30726,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30727,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30728,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30729,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30730,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30731,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30732,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30733,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30734,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30735,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30736,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30737,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30738,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30739,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30740,"retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30741,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |
+p05base_cop28_p05_co2cap,30742,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30743,retail_rate_calculations.py | 2026-11-16 05:02:20 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30744,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30745,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30746,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30747,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30748,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30749,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30750,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30751,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30752,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30753,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30754,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30755,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30756,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30757,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30758,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30759,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30760,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30761,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30762,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30763,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30764,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30765,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30766,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30767,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30768,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30769,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30770,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30771,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30772,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30773,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30774,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30775,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30776,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30777,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30778,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30779,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30780,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30781,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30782,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30783,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30784,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30785,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30786,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30787,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30788,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30789,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30790,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30791,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30792,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30793,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30794,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30795,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30796,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30797,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30798,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30799,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30800,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30801,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30802,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30803,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30804,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30805,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30806,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30807,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30808,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30809,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30810,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30811,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30812,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30813,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30814,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30815,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30816,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30817,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30818,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30819,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30820,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30821,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30822,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30823,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30824,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30825,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30826,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30827,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30828,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30829,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30830,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30831,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30832,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30833,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30834,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30835,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30836,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30837,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30838,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30839,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30840,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30841,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30842,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30843,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30844,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30845,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30846,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30847,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30848,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30849,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30850,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30851,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30852,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30853,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30854,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30855,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30856,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30857,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30858,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30859,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30860,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30861,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30862,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30863,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30864,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30865,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30866,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30867,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30868,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30869,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30870,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30871,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30872,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30873,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30874,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30875,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30876,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30877,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30878,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30879,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30880,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30881,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30882,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30883,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30884,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30885,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30886,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30887,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30888,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30889,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30890,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30891,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30892,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30893,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30894,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30895,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30896,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30897,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30898,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30899,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30900,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30901,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30902,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30903,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30904,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30905,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30906,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30907,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30908,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30909,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30910,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30911,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30912,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30913,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30914,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30915,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30916,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30917,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30918,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30919,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30920,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30921,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30922,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30923,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30924,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30925,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30926,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30927,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30928,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30929,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30930,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30931,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30932,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30933,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30934,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30935,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30936,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30937,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30938,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30939,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30940,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30941,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30942,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30943,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30944,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30945,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30946,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30947,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30948,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30949,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30950,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30951,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30952,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30953,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30954,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30955,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30956,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30957,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30958,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30959,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30960,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30961,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30962,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30963,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30964,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30965,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30966,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30967,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30968,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30969,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30970,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30971,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30972,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30973,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30974,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30975,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30976,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30977,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30978,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30979,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30980,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30981,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,30982,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | C:\Users\egallup\ReEDS-nuclear-learning\postprocessing\retail_rate_module\ferc_distadmin.py:449: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+p05base_cop28_p05_co2cap,30983,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write)."
+p05base_cop28_p05_co2cap,30984,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30985,"retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step."
+p05base_cop28_p05_co2cap,30986,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |
+p05base_cop28_p05_co2cap,30987,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR | See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+p05base_cop28_p05_co2cap,30988,retail_rate_calculations.py | 2026-11-16 05:02:21 | ERROR |   df_extrapolate_dim['index'][df_extrapolate_dim['index'].values < 0] = 0
+p05base_cop28_p05_co2cap,31009,reeds_to_rev.py | 2026-11-16 05:02:40 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\ONSHORE/2025_08_31_NewSites\wind-ons_reference_county\results\wind-ons_supply_curve_raw.csv...
+p05base_cop28_p05_co2cap,31035,reeds_to_rev.py | 2026-11-16 05:02:40 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\ONSHORE/2025_08_31_NewSites\\wind-ons_reference_county\\results\\wind-ons_supply_curve_raw.csv'
+p05base_cop28_p05_co2cap,31041,reeds_to_rev.py | 2026-11-16 05:02:43 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\OFFSHORE/2025_08_11_NewSites\wind-ofs_reference_county\results\wind-ofs_supply_curve_raw.csv...
+p05base_cop28_p05_co2cap,31067,reeds_to_rev.py | 2026-11-16 05:02:43 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\OFFSHORE/2025_08_11_NewSites\\wind-ofs_reference_county\\results\\wind-ofs_supply_curve_raw.csv'
+p05base_cop28_p05_co2cap,31073,reeds_to_rev.py | 2026-11-16 05:02:45 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\UPV/2025_09_29_Update\upv_reference_county\results\upv_supply_curve_raw.csv...
+p05base_cop28_p05_co2cap,31099,reeds_to_rev.py | 2026-11-16 05:02:45 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\UPV/2025_09_29_Update\\upv_reference_county\\results\\upv_supply_curve_raw.csv'
+p05base_cop28_p05_co2cap,31105,reeds_to_rev.py | 2026-11-16 05:02:48 | INFO | ***Error reading //nrelnas01\ReEDS\Supply_Curve_Data\GeoHydro/2024_Update\geohydro_reference_county\results\geohydro_supply_curve_raw.csv...
+p05base_cop28_p05_co2cap,31131,reeds_to_rev.py | 2026-11-16 05:02:48 | INFO | FileNotFoundError: [Errno 2] No such file or directory: '//nrelnas01\\ReEDS\\Supply_Curve_Data\\GeoHydro/2024_Update\\geohydro_reference_county\\results\\geohydro_supply_curve_raw.csv'
+p05base_cop28_p05_co2cap,31138,single_case_plots.py | 2026-11-16 05:05:06 | ERROR | C:\Users\egallup\.conda\envs\reeds\Lib\site-packages\pyogrio\core.py:34: RuntimeWarning: Could not detect GDAL data files. Set GDAL_DATA environment variable to the correct path.
+p05base_cop28_p05_co2cap,31139,single_case_plots.py | 2026-11-16 05:05:06 | ERROR |   _init_gdal_data()

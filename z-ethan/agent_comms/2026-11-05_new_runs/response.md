@@ -15,7 +15,7 @@
 - **`run1_smr100_aj_p50_grow` done** at 06:59:58 on 11-11 after 22.45 h, with `outputs.h5` (72.9 MB); moved to `E:` at 07:01:39.
 - **`run1_smr100_iaea_p50_grow` failed at 06:26:07 on 11-11, in its 2044 PRAS step (section 3b):** `run_pras.jl returned code 541541187`, 24 s after a Windows low-virtual-memory event. The folder stays in `runs/` on `C:`, untouched.
 - **Now (21:20 on 11-13):** 17 of 23 have an `outputs.h5` in the collection folder: 16 done in place, plus `run1_smr100_eia_p50_grow` from the copy (deviation 7). Earlier on 11-12/11-13: `run1_smr100_mck_p50_grow` (04:36:42 on 11-12, 22.17 h), `run1_smr100_cop28_p50_grow` (05:03:38, 22.06 h), `nomand_fbR_none_gaslo` (00:45:53 on 11-13, 19.67 h), `run1_smr100_eo_p50_grow` (00:50:33, 20.20 h). Then: `nomand_fbR_none_relo` (19:54:08 on 11-13, 19.00 h), `nomand_fbR_none_gashi` (21:15:08, 20.45 h), `nomand_fbR_none_rehi` (15:20:10 on 11-14, 18.05 h), `nomand_fbR_none_demhi` (18:35:46, 22.66 h) and `nomand_fbR_none_translim` (10:15:36 on 11-15, 18.90 h); all moved to `E:`. Every queue launch since 11-13 worked on the first try.
-- **Now (10:20 on 11-15):** 20 of 23 have an `outputs.h5` in the collection folder (19 done in place, plus `run1_smr100_eia_p50_grow` from the copy). RUN-3 and stage-2b are complete; RUN-1 is complete except the `run1_smr100_iaea_p50_grow` rerun. Running: `p05base_eia_p05` (since 18:37:40 on 11-14, at 2044) and `p05base_cop28_p05_co2cap` (since 10:17:33 on 11-15). Queued: the `iaea` rerun. Estimated end of the last run: about 11:40 on 11-16 (19.27 h for endyear 2050, 21.72 h for 2055).
+- **Now (05:15 on 11-16):** 22 of 23 have an `outputs.h5` in the collection folder (21 done in place, plus `run1_smr100_eia_p50_grow` from the copy). RUN-3, stage-2b and P05 are complete: `p05base_eia_p05` finished at 13:24:13 on 11-15 (18.78 h) and `p05base_cop28_p05_co2cap` at 05:06:42 on 11-16 (18.82 h); both moved to `E:`. The queue started the `run1_smr100_iaea_p50_grow` rerun at 13:24:28 on 11-15 (folder 13:25:40, first try) and then exited (`queue2 empty; exit`, 13:26:28). The rerun was at 2044 at 05:07. Estimated end: about 11:10 on 11-16 (21.72 h for endyear 2055).
 - **Commit charge since 13:00 on 11-11:** free commit at least 62.74 GB in the 30-s samples (lowest 62.74 GB at 00:25:29 on 11-13, while `run1_smr100_eo_p50_grow` and `nomand_fbR_none_gaslo` ran).
 - **Batch launcher closed at about 12:54 on 11-11 (deviation 9):** the minimized PowerShell window that ran `runreeds.py` closed; `runreeds.py` had just logged `ag_run1_smr100_cop28_p50_grow has finished` (while that case's window kept running) and created `runs/ag_run1_smr100_eo_p50_grow/` with empty `autocode/` and `inputs_case/` at 12:54:50. No System or Application event between 12:52 and 12:57. At the same time Firefox, 3 of 4 idle Julia 1.13 sessions (started 10-21 to 11-02) and 22 of 38 VS Code processes were closed. The two running case windows were not affected. On Ethan's decision the queue was restarted at 12:58:52 with a script (deviation 9).
 - **Commit charge (deviation 3):** from 10:45 to 12:54 on 11-11, free commit was 5.27–78 GB (lowest 5.27 GB at 10:55:32 and 7.06 GB at 11:35:29, each during one `run_pras.jl` step while the other case ran GAMS). Committed bytes exceeded the sum of process private bytes by a constant 120.4 GB (20 samples, 11:51:59–11:56:27); kernel pools were 7.3 GB; uptime since 10-14. After the closures above, at 12:57:16: committed 141.1 GB, process private 125.8 GB, difference 15.3 GB, free commit 161 GB. Estimated end of the last run: about 07:35 on 11-16, from mean run times (18.93 h for endyear 2050, 22.45 h for 2055).
@@ -43,7 +43,7 @@ Neither check stopped the launch. Folder sizes at the end of each run are in N1.
 
 ## 3. Progress table
 
-As of 2026-11-15 10:19: 19 done, 2 running, 1 failed, 1 queued. Times are 2026 local time (MM-DD hh:mm:ss). Start is the first time stamp in `gamslog.txt`; end is the last write of `gamslog.txt` after the batch window closed. Last solve year is the largest year among `lstfiles/*_<year>i<iter>.lst`. Peak memory is the largest sum over the case's process tree in the 30-s samples (CSV in `results/memory_peaks.csv` at the end).
+As of 2026-11-16 05:09: 21 done, 1 failed, 1 running. Times are 2026 local time (MM-DD hh:mm:ss). Start is the first time stamp in `gamslog.txt`; end is the last write of `gamslog.txt` after the batch window closed. Last solve year is the largest year among `lstfiles/*_<year>i<iter>.lst`. Peak memory is the largest sum over the case's process tree in the 30-s samples (CSV in `results/memory_peaks.csv` at the end).
 
 | # | Case | Status | Last solve year | Start | End | Peak memory, GB (working set / private) |
 |---|---|---|---|---|---|---|
@@ -58,7 +58,7 @@ As of 2026-11-15 10:19: 19 done, 2 running, 1 failed, 1 queued. Times are 2026 l
 | 9 | `recctl_smr100_eo_p50` | done | 2050 | 11-09 14:05:33 | 11-10 08:32:52 | 92.89 / 94.64 |
 | 10 | `run1_smr100_eia_p50_grow` | failed | 2055 | 11-09 15:07:34 | 11-10 13:59:54 | 101.02 / 102.80 |
 | 11 | `run1_smr100_aj_p50_grow` | done | 2055 | 11-10 08:33:12 | 11-11 06:59:58 | 91.72 / 93.54 |
-| 12 | `run1_smr100_iaea_p50_grow` | queued |  |  |  |  |
+| 12 | `run1_smr100_iaea_p50_grow` | running | 2044 | 11-15 13:25:40 |  | 91.39 / 94.99 |
 | 13 | `run1_smr100_mck_p50_grow` | done | 2055 | 11-11 06:26:29 | 11-12 04:36:42 | 99.37 / 101.15 |
 | 14 | `run1_smr100_cop28_p50_grow` | done | 2055 | 11-11 07:00:10 | 11-12 05:03:38 | 96.77 / 98.52 |
 | 15 | `run1_smr100_eo_p50_grow` | done | 2055 | 11-12 04:38:29 | 11-13 00:50:34 | 104.26 / 106.00 |
@@ -68,8 +68,8 @@ As of 2026-11-15 10:19: 19 done, 2 running, 1 failed, 1 queued. Times are 2026 l
 | 19 | `nomand_fbR_none_relo` | done | 2050 | 11-13 00:54:09 | 11-13 19:54:10 | 101.69 / 103.45 |
 | 20 | `nomand_fbR_none_rehi` | done | 2050 | 11-13 21:17:10 | 11-14 15:20:12 | 94.60 / 97.61 |
 | 21 | `nomand_fbR_none_translim` | done | 2050 | 11-14 15:21:36 | 11-15 10:15:38 | 97.42 / 99.27 |
-| 22 | `p05base_eia_p05` | running | 2044 | 11-14 18:37:40 |  | 91.13 / 92.88 |
-| 23 | `p05base_cop28_p05_co2cap` | running |  | 11-15 10:17:33 |  | 0.67 / 0.62 |
+| 22 | `p05base_eia_p05` | done | 2050 | 11-14 18:37:40 | 11-15 13:24:14 | 96.70 / 98.46 |
+| 23 | `p05base_cop28_p05_co2cap` | done | 2050 | 11-15 10:17:33 | 11-16 05:06:44 | 91.72 / 93.59 |
 
 ## 3b. Failed runs and memory pressure
 
@@ -187,12 +187,13 @@ As of 2026-11-15 10:19: 19 done, 2 running, 1 failed, 1 queued. Times are 2026 l
 
 ## 5. Checks N1–N7
 
-**Partial:** 20 of 23 runs checked: the full RUN-3 group (`recfix_fbR_none`, `recfix_smr100_{eia,aj,iaea,mck,cop28,eo}_p50`, `recctl_fbR_none`, `recctl_smr100_eo_p50`), 5 RUN-1 runs (`run1_smr100_{aj,eia,mck,cop28,eo}_p50_grow`; `eia` with the copy's `outputs.h5`, deviation 7) and all 6 stage-2b runs (`nomand_fbR_none_{gaslo,gashi,demhi,relo,rehi,translim}`). Each was checked on `C:` before its move. The CSV files in `results/` hold the rows so far and are rebuilt as more runs finish.
+**Partial:** 22 of 23 runs checked (all but the `run1_smr100_iaea_p50_grow` rerun): both P05 runs, the full RUN-3 group (`recfix_fbR_none`, `recfix_smr100_{eia,aj,iaea,mck,cop28,eo}_p50`, `recctl_fbR_none`, `recctl_smr100_eo_p50`), 5 RUN-1 runs (`run1_smr100_{aj,eia,mck,cop28,eo}_p50_grow`; `eia` with the copy's `outputs.h5`, deviation 7) and all 6 stage-2b runs (`nomand_fbR_none_{gaslo,gashi,demhi,relo,rehi,translim}`). Each was checked on `C:` before its move. The CSV files in `results/` hold the rows so far and are rebuilt as more runs finish.
 
 - **N1:** all 9 have `outputs.h5` (65.7–66.4 MB), last solve year 2050 (= `endyear`), 18.39–19.62 h (the 7 `-r 2` runs: 18.39–19.62 h; the 2 `-r 3` runs: 19.15 and 19.43 h), folders 5.84–5.86 GB.
 - **N2:** no difference between `inputs_case/switches.csv` and the casefile column, for any of the 9.
 - **N3:** `can_exports_stress` is missing in all 9. The two `fbR_none` runs (`recfix_fbR_none`, `recctl_fbR_none`) also lack `nuclear_cap_price` and `nuclear_cap_price_raw`; the 7 `smr100` runs have both.
 - **N4:** `can_exports_stress` is missing in all 9 (see N3).
+- **N5 (P05, both):** `p05base_eia_p05` (66.3 MB, 18.78 h, 5.86 GB, N7 961 lines) and `p05base_cop28_p05_co2cap` (67.2 MB, 18.82 h, 5.88 GB, N7 961 lines) have the same N5 values as the stage-2b runs below (`nuclear` 1122.0, 1114.0, 1882.5 and 1404.2 MW in 2020–2029, 0 from 2031; `nuclear-smr` 0 in every solve year), last solve year 2050, N2 no difference, and the same 3 missing keys in N3 (`can_exports_stress`, `nuclear_cap_price`, `nuclear_cap_price_raw`).
 - **N5 (stage-2b, all 6):** `nomand_fbR_none_relo` (66.4 MB, 19.00 h, 5.85 GB, N7 952 lines), `nomand_fbR_none_gashi` (67.7 MB, 20.45 h, 5.99 GB, N7 956 lines), `nomand_fbR_none_rehi` (65.5 MB, 18.05 h, 5.78 GB, N7 950 lines), `nomand_fbR_none_demhi` (67.9 MB, 22.66 h, 6.08 GB, N7 960 lines) and `nomand_fbR_none_translim` (65.9 MB, 18.90 h, 5.82 GB, N7 932 lines) have the same N5 values as `gaslo` below, last solve year 2050, N2 no difference, and the same 3 missing keys in N3. `nomand_fbR_none_gaslo`: `cap_new_ivrt` for `nuclear` is 1122.0 MW (2020), 1114.0 (2023), 1882.5 (2026) and 1404.2 (2029), and 0 in every solve year from 2031 to 2050; `nuclear-smr` is 0 in every solve year. `outputs.h5` 65.2 MB, last solve year 2050, 19.67 h, folder 5.82 GB; N2 no difference; N3 `can_exports_stress`, `nuclear_cap_price` and `nuclear_cap_price_raw` missing (as in the two `fbR_none` RUN-3 runs); N7 954 lines.
 - **N5, N6:** N5 does not apply to RUN-3 or RUN-1. N6 (RUN-1, 5 runs so far): `nuclear-smr` capacity equals the mandate file in 2041–2050 for all 5. `run1_smr100_eo_p50_grow` (`nuclear_cap_trajectory_eo2025_smr_grow.csv`) equals it in 2053 and is above it by 0.0125 MW in 2055 (405287.3125 vs 405287.3). `run1_smr100_mck_p50_grow` equals it in 2053 and is below it by 0.0031 MW in 2055 (137787.296875 vs 137787.3). `run1_smr100_cop28_p50_grow` (`nuclear_cap_trajectory_cop28_smr_grow.csv`) equals it in 2053 and is above it by 0.0125 MW in 2055 (280287.3125 vs 280287.3). `run1_smr100_aj_p50_grow` (`nuclear_cap_trajectory_abou_jaoude_smr_grow.csv`) is above it by 0.00078 MW in 2053 (45465.30078 vs 45465.3) and 0.0016 MW in 2055 (51509.60156 vs 51509.6). `run1_smr100_eia_p50_grow` (`nuclear_cap_trajectory_eia_aeo_high_smr_grow.csv`) equals it in 2053 and is above it by 0.00078 MW in 2055 (22987.30078 vs 22987.3).
 - **RUN-1 so far:** `run1_smr100_aj_p50_grow`: `outputs.h5` 72.9 MB, last solve year 2055 (= `endyear`), 22.45 h, folder 6.68 GB; N2 no difference; N3 only `can_exports_stress` missing; N7 960 lines. `run1_smr100_eia_p50_grow`: `outputs.h5` (copy) 72.8 MB, last solve year 2055, 22.87 h, folder 5.25 GB (original, without the files `report_dump.py` writes); N2 no difference; N3 only `can_exports_stress` missing; N7 683 lines. `run1_smr100_mck_p50_grow`: 72.6 MB, 2055, 22.17 h, 6.66 GB; `run1_smr100_cop28_p50_grow`: 72.3 MB, 2055, 22.06 h, 6.66 GB; both N2 no difference, N3 only `can_exports_stress` missing, N7 960 lines. `run1_smr100_eo_p50_grow`: 72.2 MB, 2055, 20.20 h, 6.68 GB; N2 no difference, N3 only `can_exports_stress` missing, N7 960 lines.
@@ -202,7 +203,7 @@ The full tables follow when every run has finished.
 
 ## 6. Collection folder
 
-**Partial:** `C:\Users\egallup\collected_outputs_ag\` holds 20 files, `ag_<case>_outputs.h5` for each checked case in section 5 (`run1_smr100_eia_p50_grow` from the copy on `E:`, deviation 7). MD5 checksums are in `results/MD5SUMS_outputs.txt`; each copy's MD5 equals its source's, taken before the move. The run folders themselves are in `E:\ag_new_runs\ag_<case>\` (deviation 5).
+**Partial:** `C:\Users\egallup\collected_outputs_ag\` holds 22 files, `ag_<case>_outputs.h5` for each checked case in section 5 (`run1_smr100_eia_p50_grow` from the copy on `E:`, deviation 7). MD5 checksums are in `results/MD5SUMS_outputs.txt`; each copy's MD5 equals its source's, taken before the move. The run folders themselves are in `E:\ag_new_runs\ag_<case>\` (deviation 5).
 
 ## 7. Questions for Claude
 
