@@ -23,6 +23,12 @@ run1_smr100_eo_p50_grow,nuclear_cap_trajectory_eo2025_smr_grow.csv,2047,240000.0
 run1_smr100_eo_p50_grow,nuclear_cap_trajectory_eo2025_smr_grow.csv,2050,303399.0,303399.0,0.0
 run1_smr100_eo_p50_grow,nuclear_cap_trajectory_eo2025_smr_grow.csv,2053,364532.0,364532.0,0.0
 run1_smr100_eo_p50_grow,nuclear_cap_trajectory_eo2025_smr_grow.csv,2055,405287.3125,405287.3,0.0125000000116415
+run1_smr100_iaea_p50_grow,nuclear_cap_trajectory_iaea_high_smr_grow.csv,2041,37830.0,37830.0,0.0
+run1_smr100_iaea_p50_grow,nuclear_cap_trajectory_iaea_high_smr_grow.csv,2044,49320.0,49320.0,0.0
+run1_smr100_iaea_p50_grow,nuclear_cap_trajectory_iaea_high_smr_grow.csv,2047,60810.0,60810.0,0.0
+run1_smr100_iaea_p50_grow,nuclear_cap_trajectory_iaea_high_smr_grow.csv,2050,75699.0,75699.0,0.0
+run1_smr100_iaea_p50_grow,nuclear_cap_trajectory_iaea_high_smr_grow.csv,2053,88322.0,88322.0,0.0
+run1_smr100_iaea_p50_grow,nuclear_cap_trajectory_iaea_high_smr_grow.csv,2055,96737.296875,96737.3,-0.0031250000029103
 run1_smr100_mck_p50_grow,nuclear_cap_trajectory_mckinsey_smr_grow.csv,2041,41500.0,41500.0,0.0
 run1_smr100_mck_p50_grow,nuclear_cap_trajectory_mckinsey_smr_grow.csv,2044,61000.0,61000.0,0.0
 run1_smr100_mck_p50_grow,nuclear_cap_trajectory_mckinsey_smr_grow.csv,2047,80500.0,80500.0,0.0

@@ -40,4 +40,5 @@ run1_smr100_aj_p50_grow,can_exports_stress
 run1_smr100_cop28_p50_grow,can_exports_stress
 run1_smr100_eia_p50_grow,can_exports_stress
 run1_smr100_eo_p50_grow,can_exports_stress
+run1_smr100_iaea_p50_grow,can_exports_stress
 run1_smr100_mck_p50_grow,can_exports_stress
