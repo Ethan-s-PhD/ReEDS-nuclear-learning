@@ -1,0 +1,6 @@
+asset_or_measure,year,share,definition,limits,source_id,location
+"US corporate equity (all industries), total",2022,0.42,"share of total US corporate equity held by foreigners (portfolio + FDI), end-2022",economy-wide; not specific to utilities or gas producers,S18,"Tax Notes Federal 183(1), p. 94"
+US publicly traded corporate stock (all industries),2022,0.32,"share of publicly traded US stock held by foreigners, end-2022",economy-wide; excludes closely held equity and FDI,S18,"Tax Notes Federal 183(1), p. 94"
+"US business-sector value added, majority-owned US affiliates of foreign MNEs",2024,0.067,affiliate value added / total US business-sector value added,"economy-wide; majority-owned affiliates only; industry detail (utilities, oil and gas extraction) exists only in BEA interactive tables, not opened",S19,"BEA release, p. 1"
+"US private-industry employment, majority-owned US affiliates of foreign MNEs",2024,0.061,affiliate employment / total US private-industry employment,economy-wide,S19,"BEA release, p. 1"
+US shale-play investment 2008-2012 (oil and gas),2008-2012,0.2,foreign joint ventures' share of $133.7 billion shale-play deal investment (73 deals),"flow of deal investment, not ownership of production; dated",S20,"EIA Today in Energy, Apr 8, 2013"

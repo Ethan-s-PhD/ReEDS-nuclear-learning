@@ -1,0 +1,339 @@
+sector,row_code,row_level,year,quantity,unit,source_id
+"Total consumption (all sectors, reference only)",T,reference,2025,33.1255,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2026,33.2436,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2027,31.7321,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2028,31.5076,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2029,31.4847,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2030,31.9066,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2031,31.9635,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2032,33.3529,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2033,32.7562,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2034,32.7635,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2035,32.9937,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2036,33.465,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2037,34.015,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2038,34.245,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2039,34.5674,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2040,34.767,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2041,35.2002,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2042,35.7438,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2043,36.2484,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2044,36.8248,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2045,37.2837,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2046,37.8221,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2047,38.3037,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2048,38.7427,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2049,39.1286,trillion cubic feet,S21
+"Total consumption (all sectors, reference only)",T,reference,2050,39.4252,trillion cubic feet,S21
+Residential,1,sector,2025,4.7457,trillion cubic feet,S21
+Residential,1,sector,2026,4.5822,trillion cubic feet,S21
+Residential,1,sector,2027,4.7063,trillion cubic feet,S21
+Residential,1,sector,2028,4.6995,trillion cubic feet,S21
+Residential,1,sector,2029,4.6623,trillion cubic feet,S21
+Residential,1,sector,2030,4.6139,trillion cubic feet,S21
+Residential,1,sector,2031,4.5634,trillion cubic feet,S21
+Residential,1,sector,2032,4.5126,trillion cubic feet,S21
+Residential,1,sector,2033,4.47,trillion cubic feet,S21
+Residential,1,sector,2034,4.4296,trillion cubic feet,S21
+Residential,1,sector,2035,4.3953,trillion cubic feet,S21
+Residential,1,sector,2036,4.3624,trillion cubic feet,S21
+Residential,1,sector,2037,4.3274,trillion cubic feet,S21
+Residential,1,sector,2038,4.2985,trillion cubic feet,S21
+Residential,1,sector,2039,4.27,trillion cubic feet,S21
+Residential,1,sector,2040,4.2405,trillion cubic feet,S21
+Residential,1,sector,2041,4.2069,trillion cubic feet,S21
+Residential,1,sector,2042,4.1741,trillion cubic feet,S21
+Residential,1,sector,2043,4.1425,trillion cubic feet,S21
+Residential,1,sector,2044,4.1124,trillion cubic feet,S21
+Residential,1,sector,2045,4.0845,trillion cubic feet,S21
+Residential,1,sector,2046,4.0561,trillion cubic feet,S21
+Residential,1,sector,2047,4.0272,trillion cubic feet,S21
+Residential,1,sector,2048,3.9991,trillion cubic feet,S21
+Residential,1,sector,2049,3.9716,trillion cubic feet,S21
+Residential,1,sector,2050,3.9447,trillion cubic feet,S21
+Commercial,2,sector,2025,3.5066,trillion cubic feet,S21
+Commercial,2,sector,2026,3.4332,trillion cubic feet,S21
+Commercial,2,sector,2027,3.4399,trillion cubic feet,S21
+Commercial,2,sector,2028,3.4242,trillion cubic feet,S21
+Commercial,2,sector,2029,3.3884,trillion cubic feet,S21
+Commercial,2,sector,2030,3.3446,trillion cubic feet,S21
+Commercial,2,sector,2031,3.304,trillion cubic feet,S21
+Commercial,2,sector,2032,3.2743,trillion cubic feet,S21
+Commercial,2,sector,2033,3.2605,trillion cubic feet,S21
+Commercial,2,sector,2034,3.2553,trillion cubic feet,S21
+Commercial,2,sector,2035,3.2549,trillion cubic feet,S21
+Commercial,2,sector,2036,3.256,trillion cubic feet,S21
+Commercial,2,sector,2037,3.2538,trillion cubic feet,S21
+Commercial,2,sector,2038,3.2552,trillion cubic feet,S21
+Commercial,2,sector,2039,3.2565,trillion cubic feet,S21
+Commercial,2,sector,2040,3.2567,trillion cubic feet,S21
+Commercial,2,sector,2041,3.2541,trillion cubic feet,S21
+Commercial,2,sector,2042,3.2511,trillion cubic feet,S21
+Commercial,2,sector,2043,3.2492,trillion cubic feet,S21
+Commercial,2,sector,2044,3.2487,trillion cubic feet,S21
+Commercial,2,sector,2045,3.2499,trillion cubic feet,S21
+Commercial,2,sector,2046,3.248,trillion cubic feet,S21
+Commercial,2,sector,2047,3.2454,trillion cubic feet,S21
+Commercial,2,sector,2048,3.2431,trillion cubic feet,S21
+Commercial,2,sector,2049,3.2406,trillion cubic feet,S21
+Commercial,2,sector,2050,3.2375,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2025,10.6777,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2026,10.5267,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2027,10.4579,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2028,10.4413,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2029,10.4169,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2030,10.465,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2031,10.5744,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2032,10.7416,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2033,10.8902,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2034,11.0513,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2035,11.1973,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2036,11.2775,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2037,11.3759,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2038,11.4981,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2039,11.6239,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2040,11.7515,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2041,11.8728,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2042,11.9839,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2043,12.0885,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2044,12.198,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2045,12.3193,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2046,12.4535,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2047,12.6224,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2048,12.7584,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2049,12.8739,trillion cubic feet,S21
+Industrial (total incl. lease and plant fuel and H2 feedstock),3,subtotal,2050,12.9758,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2025,7.7739,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2026,7.7071,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2027,7.6105,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2028,7.5847,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2029,7.5575,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2030,7.5466,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2031,7.5806,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2032,7.5811,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2033,7.6163,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2034,7.6241,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2035,7.6723,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2036,7.6823,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2037,7.6988,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2038,7.7874,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2039,7.8509,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2040,7.9093,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2041,7.962,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2042,8.0271,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2043,8.091,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2044,8.1627,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2045,8.2517,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2046,8.3278,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2047,8.4322,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2048,8.526,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2049,8.6136,trillion cubic feet,S21
+Industrial: other industrial,3a,component of 3,2050,8.7003,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2025,2.062,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2026,2.0734,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2027,2.0899,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2028,2.0987,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2029,2.1003,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2030,2.1645,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2031,2.2014,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2032,2.2919,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2033,2.3282,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2034,2.3739,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2035,2.3929,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2036,2.4054,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2037,2.416,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2038,2.4281,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2039,2.452,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2040,2.4873,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2041,2.522,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2042,2.5485,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2043,2.5573,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2044,2.5649,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2045,2.5732,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2046,2.5975,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2047,2.6298,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2048,2.652,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2049,2.6551,trillion cubic feet,S21
+Industrial: lease and plant fuel,3b,component of 3,2050,2.6505,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2025,0.8417,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2026,0.7462,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2027,0.7575,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2028,0.7579,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2029,0.7591,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2030,0.7539,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2031,0.7924,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2032,0.8686,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2033,0.9457,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2034,1.0534,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2035,1.1321,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2036,1.1898,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2037,1.2611,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2038,1.2826,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2039,1.3211,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2040,1.3549,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2041,1.3888,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2042,1.4083,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2043,1.4402,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2044,1.4705,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2045,1.4944,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2046,1.5282,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2047,1.5604,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2048,1.5805,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2049,1.6053,trillion cubic feet,S21
+Industrial: hydrogen production feedstock,3c,component of 3,2050,1.625,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2025,1.3649,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2026,1.3808,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2027,1.4051,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2028,1.4459,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2029,1.5085,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2030,1.6859,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2031,1.7466,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2032,1.773,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2033,1.8037,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2034,1.8456,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2035,1.8757,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2036,1.908,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2037,1.9337,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2038,1.9565,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2039,1.9832,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2040,2.015,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2041,2.0715,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2042,2.1123,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2043,2.1366,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2044,2.1752,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2045,2.2192,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2046,2.2697,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2047,2.3226,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2048,2.3663,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2049,2.3899,trillion cubic feet,S21
+Transportation (total incl. pipeline and liquefaction fuel),4,subtotal,2050,2.419,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2025,0.0854,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2026,0.0891,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2027,0.0932,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2028,0.0965,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2029,0.0997,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2030,0.1016,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2031,0.1024,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2032,0.1017,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2033,0.1016,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2034,0.1019,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2035,0.1024,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2036,0.1042,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2037,0.1068,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2038,0.1116,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2039,0.1174,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2040,0.1244,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2041,0.1325,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2042,0.1416,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2043,0.1517,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2044,0.1634,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2045,0.1766,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2046,0.1919,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2047,0.2088,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2048,0.2273,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2049,0.2476,trillion cubic feet,S21
+"Transportation: motor vehicles, trains, and ships",4a,component of 4,2050,0.2688,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2025,0.7093,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2026,0.6652,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2027,0.6616,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2028,0.6521,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2029,0.6655,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2030,0.7049,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2031,0.7191,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2032,0.7304,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2033,0.7282,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2034,0.729,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2035,0.7408,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2036,0.7573,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2037,0.7771,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2038,0.7942,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2039,0.8142,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2040,0.8292,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2041,0.8543,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2042,0.8756,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2043,0.8897,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2044,0.9034,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2045,0.9158,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2046,0.93,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2047,0.945,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2048,0.9571,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2049,0.963,trillion cubic feet,S21
+Transportation: pipeline and distribution fuel,4b,component of 4,2050,0.9709,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2025,0.5702,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2026,0.6265,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2027,0.6503,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2028,0.6973,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2029,0.7434,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2030,0.8794,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2031,0.9251,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2032,0.9409,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2033,0.974,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2034,1.0147,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2035,1.0324,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2036,1.0466,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2037,1.0498,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2038,1.0507,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2039,1.0516,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2040,1.0613,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2041,1.0847,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2042,1.0952,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2043,1.0952,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2044,1.1084,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2045,1.1267,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2046,1.1478,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2047,1.1688,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2048,1.1819,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2049,1.1793,trillion cubic feet,S21
+Transportation: fuel used to liquefy gas for export,4c,component of 4,2050,1.1793,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2025,12.8306,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2026,13.3207,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2027,11.723,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2028,11.4968,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2029,11.5085,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2030,11.7972,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2031,11.7751,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2032,13.0515,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2033,12.3317,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2034,12.1818,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2035,12.2705,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2036,12.661,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2037,13.1243,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2038,13.2368,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2039,13.4338,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2040,13.5034,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2041,13.7949,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2042,14.2224,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2043,14.6316,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2044,15.0906,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2045,15.4108,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2046,15.7947,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2047,16.0862,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2048,16.3757,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2049,16.6526,trillion cubic feet,S21
+Electric power (reference only; excluded from non-power total),5,reference,2050,16.8482,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2025,20.2949,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2026,19.9229,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2027,20.0092,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2028,20.0109,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2029,19.9761,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2030,20.1094,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2031,20.1884,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2032,20.3015,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2033,20.4244,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2034,20.5818,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2035,20.7232,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2036,20.8039,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2037,20.8908,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2038,21.0083,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2039,21.1336,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2040,21.2637,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2041,21.4053,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2042,21.5214,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2043,21.6168,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2044,21.7343,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2045,21.8729,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2046,22.0273,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2047,22.2176,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2048,22.3669,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2049,22.476,trillion cubic feet,S21
+Non-power total (derived: 1+2+3+4),NP,derived,2050,22.577,trillion cubic feet,S21

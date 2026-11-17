@@ -1,0 +1,43 @@
+# Paper AG extract spec for notebook 20_ag_extract. Same columns and rules as data/extract_spec.csv (nlpaper/h5io.py::_apply).
+# One row per (key, batch group). Paper AG reads every technology, not only nuclear. Keys whose ledger use is a product of
+# price and quantity (reqt_price x reqt_quant, flows x prices) are not here: aglib/reduce.py forms them per run.
+# Census-division keys (systemcost_ba, gascost_cendiv by region) enter in Phase 4 together with the region mapping.
+key,batches,tech_filter,aggregate_to,dims_kept,note
+revenue_nat,all,,,,market revenue by category (load / charge / res_marg / rps) and technology; protocol 4.4-4.5 and C1-C2
+systemcost,all,,,,system cost by category; inv_* lumps in the solve year and op_* annual flows; protocol view 2
+systemcost_techba,all,,national,,system cost by category and technology (credits by technology; fuel / FOM / VOM); protocol 4.3-4.5
+capex_ivrt,all,,national,i;t,capital expenditure before credits by technology; protocol 4.4-4.5 annualization
+cap_new_ivrt,all,,national,i;t,new capacity by technology; support lump and baseline verification (protocol 4.3 and 7)
+cap_nat,all,,,,capacity by technology; support rental form and market share (protocol 4.3 and 8)
+cap_new_ann_nat,all,,,,annual new capacity by technology; market share (protocol 8)
+ret_ann_nat,all,,,,annual retirements by technology; market share (protocol 8)
+gen_ann_nat,all,,,,annual generation by technology; market share and $/MWh (protocol 8)
+nuclear_cap_price,all,,,,mandate shadow price (absent when the mandate never binds); protocol 4.3
+tax_expenditure_itc,all,,,,ITC lump; sign verified in notebook 21 (protocol 4.3)
+tax_expenditure_ptc,all,,,,PTC + 45Q annual flow; protocol 4.3
+emit_nat,all,,,,national emissions by gas and type (process / upstream); protocol 4.8
+emit_nat_tech,all,,,,national emissions by technology; market and incidence readouts
+emit_r,all,,,,emissions by state (NOx and SO2 for health damages); protocol 4.8
+co2_price,all,,,,emissions-constraint price (cap runs only); protocol 4.8
+repgasprice_nat,all,,,,national gas price; protocol 4.2 and 4.6
+repgasquant_nat,all,,,,power-sector gas quantity (quads); protocol 4.6
+gascost_cendiv,all,,,,power-sector gas cost by census division; protocol 4.6 and Phase 4
+tran_hurdle_cost_ann,all,,sum:r;rr;trtype,,hurdle charges (a transfer to transmission owners); protocol 4.7
+losses_ann,all,,,,annual losses by type; closure readouts
+load_cat,all,,national,,load by type (end use / losses / H2 / storage charge); closure readouts
+prod_load_ann,all,,national,,annual H2/DAC production load by technology; H2 overlap check (protocol 9 item 7)
+dropped_load,all,,sum:r;allh,,dropped load (checked zero after 2026)
+expenditure_flow_int,all,,sum:r,,Canadian imports value minus exports value at zone energy prices; export payment = revenue(load; can-imports) minus this (protocol amendment A10)
+valnew,all,,,,value of new builds by measure and technology and zone (technologies are reported by zone only; the benchmark also at sys); notebook 23 sums zones; protocol 8
+pvf_onm,all,,,,present-value factor of operating flows; shadow price to support
+cost_scale,all,,,,objective scale
+error_check,all,,,,ReEDS run checks
+emit_irt,all,eall=CO2,,,CO2 emissions by technology and zone (process and upstream); allowance entries by owner group and state (protocol amendments A14-A15)
+state_cap_and_trade_price,all,,,,state cap-and-trade allowance price (CA; DE and NJ as modelled); amendment A14
+state_cap_and_trade_quant,all,,,,state cap-and-trade cap (tonnes CO2); amendment A14
+rggi_price,all,,,,RGGI allowance price; amendment A14
+rggi_quant,all,,,,RGGI cap (tonnes CO2); amendment A14
+revenue_en_nat,all,,,,market revenue per MWh of generation by category and technology; existing-fleet value (protocol 8)
+revenue_cap_nat,all,,,,market revenue per MW of capacity by category and technology; existing-fleet value (protocol 8)
+tran_out,all,,sum:r;rr,,transmission capacity (MW) by line type; market share (protocol 8)
+tran_mi_out,all,,,,transmission capacity (MW-miles) by line type; market share (protocol 8)

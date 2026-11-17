@@ -1,0 +1,339 @@
+sector,row_code,row_level,year,quantity,unit,note,source_id
+Residential: natural gas,1,sector,2025,4.9261,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2026,4.7563,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2027,4.8851,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2028,4.878,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2029,4.8395,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2030,4.7893,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2031,4.7368,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2032,4.6841,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2033,4.6399,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2034,4.5979,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2035,4.5623,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2036,4.5282,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2037,4.4918,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2038,4.4618,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2039,4.4323,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2040,4.4016,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2041,4.3668,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2042,4.3327,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2043,4.2999,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2044,4.2686,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2045,4.2397,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2046,4.2102,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2047,4.1802,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2048,4.1511,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2049,4.1225,quadrillion Btu,,S29
+Residential: natural gas,1,sector,2050,4.0946,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2025,3.6398,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2026,3.5637,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2027,3.5706,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2028,3.5543,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2029,3.5172,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2030,3.4717,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2031,3.4295,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2032,3.3987,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2033,3.3843,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2034,3.379,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2035,3.3786,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2036,3.3797,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2037,3.3774,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2038,3.3789,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2039,3.3802,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2040,3.3804,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2041,3.3778,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2042,3.3746,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2043,3.3726,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2044,3.3722,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2045,3.3734,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2046,3.3715,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2047,3.3687,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2048,3.3664,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2049,3.3637,quadrillion Btu,,S29
+Commercial: natural gas,2,sector,2050,3.3605,quadrillion Btu,,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2025,7.8904,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2026,7.8413,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2027,7.7386,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2028,7.7118,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2029,7.6833,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2030,7.6731,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2031,7.7002,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2032,7.6845,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2033,7.7047,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2034,7.6898,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2035,7.7232,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2036,7.7213,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2037,7.7233,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2038,7.8107,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2039,7.8683,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2040,7.9218,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2041,7.9693,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2042,8.0327,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2043,8.0922,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2044,8.1602,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2045,8.2475,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2046,8.3194,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2047,8.4209,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2048,8.5139,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2049,8.5996,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: natural gas (excl. lease and plant fuel and hydrogen production),3a,component,2050,8.6854,quadrillion Btu,scope differs from Table 13 row 3a; see README,S29
+Industrial: lease and plant fuel,3b,component,2025,2.1363,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2026,2.148,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2027,2.1652,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2028,2.1743,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2029,2.1759,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2030,2.2424,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2031,2.2806,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2032,2.3744,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2033,2.412,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2034,2.4593,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2035,2.4791,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2036,2.492,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2037,2.5029,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2038,2.5155,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2039,2.5402,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2040,2.5768,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2041,2.6127,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2042,2.6402,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2043,2.6493,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2044,2.6572,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2045,2.6658,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2046,2.691,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2047,2.7245,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2048,2.7474,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2049,2.7507,quadrillion Btu,,S29
+Industrial: lease and plant fuel,3b,component,2050,2.7459,quadrillion Btu,,S29
+"Industrial: hydrogen production, natural gas",3c,component,2025,1.0526,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2026,0.9332,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2027,0.9474,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2028,0.9478,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2029,0.9493,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2030,0.9428,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2031,0.991,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2032,1.0862,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2033,1.1827,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2034,1.3174,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2035,1.4158,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2036,1.4879,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2037,1.5771,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2038,1.604,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2039,1.6521,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2040,1.6945,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2041,1.7368,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2042,1.7613,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2043,1.8012,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2044,1.839,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2045,1.8689,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2046,1.9111,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2047,1.9514,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2048,1.9765,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2049,2.0076,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: hydrogen production, natural gas",3c,component,2050,2.0323,quadrillion Btu,Table 2 section 'Industrial: Hydrogen Production'; scope differs from Table 13 row 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2025,10.0267,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2026,9.9893,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2027,9.9038,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2028,9.8861,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2029,9.8592,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2030,9.9155,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2031,9.9808,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2032,10.0589,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2033,10.1167,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2034,10.1492,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2035,10.2023,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2036,10.2133,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2037,10.2262,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2038,10.3262,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2039,10.4086,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2040,10.4986,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2041,10.5821,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2042,10.6729,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2043,10.7416,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2044,10.8174,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2045,10.9134,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2046,11.0104,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2047,11.1454,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2048,11.2614,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2049,11.3502,quadrillion Btu,excludes 3c,S29
+"Industrial: natural gas subtotal (3a+3b, excl. hydrogen production)",3ab,subtotal,2050,11.4313,quadrillion Btu,excludes 3c,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2025,0.0887,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2026,0.0925,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2027,0.0967,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2028,0.1001,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2029,0.1035,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2030,0.1054,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2031,0.1063,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2032,0.1055,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2033,0.1054,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2034,0.1058,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2035,0.1063,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2036,0.1081,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2037,0.1109,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2038,0.1158,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2039,0.1218,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2040,0.1292,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2041,0.1376,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2042,0.147,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2043,0.1575,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2044,0.1696,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2045,0.1833,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2046,0.1992,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2047,0.2168,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2048,0.2359,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2049,0.257,quadrillion Btu,,S29
+Transportation: compressed/liquefied natural gas (vehicles),4a,component,2050,0.279,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2025,0.7348,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2026,0.6892,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2027,0.6855,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2028,0.6756,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2029,0.6894,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2030,0.7303,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2031,0.745,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2032,0.7567,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2033,0.7544,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2034,0.7552,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2035,0.7675,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2036,0.7846,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2037,0.8051,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2038,0.8228,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2039,0.8435,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2040,0.859,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2041,0.885,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2042,0.9071,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2043,0.9217,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2044,0.9359,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2045,0.9488,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2046,0.9635,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2047,0.979,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2048,0.9916,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2049,0.9977,quadrillion Btu,,S29
+Transportation: pipeline and distribution fuel,4b,component,2050,1.0058,quadrillion Btu,,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2025,0.5907,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2026,0.649,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2027,0.6737,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2028,0.7224,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2029,0.7701,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2030,0.9111,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2031,0.9584,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2032,0.9748,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2033,1.009,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2034,1.0512,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2035,1.0696,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2036,1.0843,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2037,1.0876,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2038,1.0885,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2039,1.0895,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2040,1.0995,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2041,1.1237,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2042,1.1346,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2043,1.1346,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2044,1.1483,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2045,1.1673,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2046,1.1891,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2047,1.2109,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2048,1.2245,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2049,1.2217,quadrillion Btu,listed under Transportation in Table 2,S29
+Transportation: natural gas to liquefy gas for export,4c,component,2050,1.2217,quadrillion Btu,listed under Transportation in Table 2,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2025,20.0068,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2026,19.74,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2027,19.8154,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2028,19.8166,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2029,19.779,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2030,19.9232,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2031,19.9568,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2032,19.9788,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2033,20.0098,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2034,20.0383,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2035,20.0866,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2036,20.0982,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2037,20.0989,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2038,20.194,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2039,20.2759,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2040,20.3684,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2041,20.473,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2042,20.5689,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2043,20.628,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2044,20.712,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2045,20.8259,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2046,20.9439,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2047,21.1009,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2048,21.2308,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2049,21.3129,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+"Delivered, all sectors: natural gas subtotal (excl. hydrogen production)",D,reference,2050,21.3931,quadrillion Btu,equals 1+2+3a+3b+4a+4b+4c,S29
+Electric power: natural gas (reference only),5,reference,2025,13.254,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2026,13.7603,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2027,12.1098,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2028,11.8762,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2029,11.8882,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2030,12.1865,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2031,12.1637,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2032,13.4822,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2033,12.7386,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2034,12.5838,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2035,12.6755,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2036,13.0788,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2037,13.5574,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2038,13.6736,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2039,13.8771,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2040,13.949,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2041,14.2502,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2042,14.6917,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2043,15.1144,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2044,15.5885,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2045,15.9193,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2046,16.3159,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2047,16.617,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2048,16.9161,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2049,17.2022,quadrillion Btu,,S29
+Electric power: natural gas (reference only),5,reference,2050,17.4041,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2025,34.3134,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2026,34.4336,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2027,32.8725,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2028,32.6405,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2029,32.6166,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2030,33.0526,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2031,33.1115,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2032,34.5471,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2033,33.9312,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2034,33.9394,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2035,34.1778,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2036,34.6649,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2037,35.2335,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2038,35.4716,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2039,35.8052,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2040,36.0119,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2041,36.46,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2042,37.0219,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2043,37.5436,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2044,38.1395,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2045,38.6142,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2046,39.171,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2047,39.6693,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2048,40.1234,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2049,40.5226,quadrillion Btu,,S29
+Total energy consumption: natural gas subtotal (reference only),T,reference,2050,40.8295,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2025,21.0594,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2026,20.6732,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2027,20.7627,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2028,20.7644,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2029,20.7283,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2030,20.8661,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2031,20.9478,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2032,21.065,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2033,21.1925,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2034,21.3556,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2035,21.5023,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2036,21.5861,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2037,21.6761,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2038,21.798,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2039,21.9281,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2040,22.0628,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2041,22.2098,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2042,22.3301,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2043,22.4291,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2044,22.551,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2045,22.6948,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2046,22.855,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2047,23.0523,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2048,23.2073,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2049,23.3204,quadrillion Btu,,S29
+Non-power total (derived: 1+2+3a+3b+3c+4a+4b+4c),NP,derived,2050,23.4254,quadrillion Btu,,S29

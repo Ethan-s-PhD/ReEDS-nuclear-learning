@@ -687,6 +687,14 @@ const GLOSS = [
   ["CMR", "Code of Massachusetts Regulations"],
   ["FAQ", "frequently asked questions"],
   ["AAEA", "Agricultural and Applied Economics Association"],
+  ["IOU", "investor-owned utility", "investor-owned utilities"],
+  ["POU", "publicly owned utility", "publicly owned utilities"],
+  ["CARB", "California Air Resources Board"],
+  ["GGRF", "Greenhouse Gas Reduction Fund, California's fund for the state's auction proceeds"],
+  ["FERC", "Federal Energy Regulatory Commission"],
+  ["ADIT", "accumulated deferred income taxes"],
+  ["MACRS", "the federal tax depreciation schedules"],
+  ["MBE", "mean bias error"],
 ];
 const NOGLOSS = ".eq, svg, code, select, option, label, button, h1, h2, h3, th, dt, summary, .pill, .eyebrow, .chips, .fig-no, .ctrl-state";
 const glossKey = g => g.toLowerCase().replace(/^(the|an?|us|eia's|new york's) /, "").split(" ").slice(0, 2).join(" ");
@@ -733,6 +741,7 @@ const PAGES = [
   { id: "decisions", group: "Decide", title: "Decisions", d: "Open items and what they change", render: pDecisions },
   { id: "rps", group: "Decide", title: "RPS residual note", d: "Background to decision items 2–4", render: pRps },
   { id: "newruns", group: "Decide", title: "New runs: RUN-1 and RUN-3", d: "What each run is for, and why; RUN-2 dropped", render: pNewRuns },
+  { id: "verify", group: "Decide", title: "Methods to verify", d: "How the CA share 0.42 was computed; the ReEDS retail-rate method", render: pVerify },
   { id: "observations", group: "Reference", title: "Observation log", d: "Patterns as logged", render: pObservations },
   { id: "glossary", group: "Reference", title: "Glossary", d: "Every term of art", render: pGlossary },
 ];
@@ -810,15 +819,15 @@ function pOverview(el) {
         ["Stage-1 ledger on the six P50 runs", "notebooks 20–21; reviewed at checkpoint H2", "done", "Done"],
         ["Baseline verification and band", "notebook 22; 19 of 19 baselines pass", "done", "Done"],
         ["Stage-2 ledger", `notebook 24; ${d3.sum(pc, r => r.runs)} runs, ${d3.sum(pc, r => r.pairs)} pairs`, "done", "Done"],
-        ["Census-division readouts", "notebook 26; 9 divisions; amendment A16 waits for Ethan", "done", "Done"],
+        ["Census-division readouts", "notebook 26; 9 divisions; amendment A16 confirmed", "done", "Done"],
         ["Markets and technologies", "notebook 23; hourly value from notebook 20 §7 (amendment A17)", "done", "Done"],
-        ["Retail rates", "junction created 2026-11-04 (item 8); pilot pair next", "wait", "Next"],
-        ["New runs: P05 closed-loop baselines, RUN-1, RUN-3 (no REC double count); RUN-2 dropped", "RUN-1, RUN-3, the stage-2b no-mandate runs (commit 25f71ea) and 2 P05 screening runs (commit 12c893c) wait for launch on the lab machine", "wait", "Waiting"],
-      ].map(([a, b, c, d]) => h("div", { class: "status-row" }, h("div", {}, h("div", {}, a), h("div", { class: "sub" }, b)), h("span", { class: "pill " + c }, d))))),
+        ["Retail rates", `notebook 27 on the patched module, 7 runs; A21 confirmed 2026-11-13 (Decisions, item 18); the results are not on this page yet (<a href="#verify">Methods to verify</a>)`, "wait", "Next"],
+        ["New runs: RUN-1, RUN-3 (no REC double count), stage-2b no-mandate runs, 2 P05 screening runs; RUN-2 dropped", `all 23 returned 2026-11-16 and pass the lab checks; RUN-3 processed (notebook 28, <a href="#rps">RPS residual note</a>); RUN-1, stage 2b and P05 not yet processed`, "wait", "Returned"],
+      ].map(([a, b, c, d]) => h("div", { class: "status-row" }, h("div", {}, h("div", {}, a), h("div", { class: "sub", html: b })), h("span", { class: "pill " + c }, d))))),
     h("div", { class: "panel" }, h("h2", {}, "Do the accounts close?"),
       h("p", { html: `<b>Energy and capacity markets (C1, C2).</b> What consumers pay equals what generators, storage and the network receive. The largest gap in any run-year is ${pct(cm.c1, 3)} (energy) and ${pct(cm.c2, 3)} (capacity) of gross payments, over stage 1 and all ${d3.sum(pc, r => r.pairs)} stage-2 pairs. No run-year passes the 0.5% flag.` }),
       h("p", { html: `<b>The two resident views (C3).</b> The gap between View 1 and View 2 equals the named market residuals within ${d3.format(".1e")(cm.c3)} 2025 $B in every pair.` }),
-      h("p", { html: `<b>State RPS account.</b> This account stays open. Its gap is decomposed into named terms, but no actor receives it yet (Decisions, items 2–4).` }),
+      h("p", { html: `<b>State RPS account.</b> This account stays open. Its gap is decomposed into named terms. Ethan decided that the selling generators receive the wedge from non-binding sellers and from trade limits (Decisions, items 2 and 4), and Prof. Davies affirmed that treatment (2026-11-09). The ledger does not apply it yet. The double count stays a named residual (item 3). RUN-3, which removes the double count from the model, returned on 2026-11-16: it changes entries outside the RPS account as well, so item 20 asks how the ledger carries it (<a href="#rps">RPS residual note</a>).` }),
       h("p", { class: "note", html: `<a href="#closure">Closure checks →</a>` }))));
   el.append(h("div", { class: "panel" }, h("h2", {}, "How to read the numbers"),
     h("div", { class: "prose" }, h("ul", {},
@@ -1471,6 +1480,43 @@ function diagWedge() {
 }
 
 /* ---------- 16 RPS residual note ---------- */
+function run3Section(el) {
+  const R = C.run3, T = C.targets, N = R.names, f1_ = d3.format(".1f"), f0p = d3.format(".0f"), pct = v => (v > 0 ? "+" : "") + d3.format(".1f")(v) + "%";
+  const rs = R.recs.source, rf = R.recs.fix, rc = R.recs.control;
+  const tot = k => (rf[k].wedge_total - rs[k].wedge_total) / rs[k].wedge_total;
+  const dcf = N.map(k => rf[k].wedge_double_count);
+  const lab = k => k === "fbR_none" ? "fbR_none (baseline)" : k.toUpperCase() + " P50";
+  el.append(h("h2", { id: "run3" }, "RUN-3: the runs without the double count"));
+  el.append(h("div", { class: "prose" },
+    h("p", { html: `RUN-3 removes the three terms of <code>eq_REC_Requirement</code> that subtract REC exports a second time from the seller's RECs (switch <code>GSw_RECExportFix = 1</code>). It has 7 fix runs, one for <code>fbR_none</code> and one for each of the six P50 mandate runs, and 2 controls that run today's code with the switch off (<code>fbR_none</code> and EO P50). The lab machine ran them from 2026-11-06 to 2026-11-10; notebook 28 compares each with its archived source run. Sums are over the solve years 2026–2050 in 2004 $B unless a table says otherwise.` }),
+    h("ul", {},
+      h("li", { html: `<b>The controls reproduce the source runs.</b> Every money quantity of the two controls is within ${f2d(d3.max(Object.values(R.repro.max_pct_money)))}% of its source, and the ledger of a control against its source moves no actor by more than ${d3.format(".3f")(d3.max(Object.values(R.repro.ledger_max)))} 2025 $B (the fix against its source: up to ${f0p(d3.max(Object.values(R.repro.fix_ledger_max)))}). The REC quantity from sellers whose rule does not bind differs by up to ${f1_(d3.max(Object.values(R.repro.q_unbound_pct).map(Math.abs)))}% between control and source, while the money on those RECs agrees. So each fix run minus its source is the fix alone.` }),
+      h("li", { html: `<b>The double count is gone.</b> In each run, the smallest buyer/seller price ratio on RECs from sellers with a positive price (2026–2050) is ${f2d(d3.min(N, k => R.min_ratio.source[k]))}–${f2d(d3.max(N, k => R.min_ratio.source[k]))} in the source runs and ${f2d(d3.min(N, k => R.min_ratio.fix[k]))}–${f2d(d3.max(N, k => R.min_ratio.fix[k]))} in the fix runs. A ratio of 2 is the double count's signature; below 1, the buyer's price is under the seller's (EO P50 fix run).` }),
+      h("li", { html: `<b>The trade wedge falls by ${f0p(-100 * d3.max(N, tot))}–${f0p(-100 * d3.min(N, tot))}%.</b> The part that the split labels “double count” keeps ${f2d(d3.min(dcf))}–${f2d(d3.max(dcf))} in the fix runs. The split assigns that part by a price rule (the smaller of the buyer–seller price gap and the seller's price), so in the fix runs it is a price gap, not the model error. The wedge from sellers whose rule does not bind also falls, and the trade-limit part rises.` }),
+      h("li", { html: `<b>The fix changes more than the RPS account.</b> RPS payments fall, process CO2 rises, and the 2050 build mix moves (tables below). In the stage-1 ledger, the consumers' gain falls in all six pairs; under horizon A, view 1 rises for the four smaller targets and falls for COP28 and EO.` }),
+      h("li", { html: `<b>The RPS account still does not close in the fix runs.</b> Most of the remaining gap is the wedge from sellers whose rule does not bind, which items 2 and 4 give to the selling generators.` }))));
+  el.append(table([{ h: "Run", k: "k", f: lab }, { h: "Wedge, source", k: ({ k }) => rs[k].wedge_total, num: true, f: f2d }, { h: "Wedge, fix", k: ({ k }) => rf[k].wedge_total, num: true, f: f2d },
+    { h: "Change", k: ({ k }) => 100 * tot(k), num: true, f: pct },
+    { h: "Not binding: source → fix", k: ({ k }) => `${f2d(rs[k].wedge_seller_unbound)} → ${f2d(rf[k].wedge_seller_unbound)}`, num: true },
+    { h: "“Double count”: source → fix", k: ({ k }) => `${f2d(rs[k].wedge_double_count)} → ${f2d(rf[k].wedge_double_count)}`, num: true },
+    { h: "Trade limits: source → fix", k: ({ k }) => `${f2d(rs[k].wedge_trade_limits)} → ${f2d(rf[k].wedge_trade_limits)}`, num: true }],
+    N.map(k => ({ k })), { cap: `The REC trade wedge by origin, 2004 $B summed over 2026–2050, source run and fix run. Controls: <code>fbR_none</code> ${f2d(rc.fbR_none.wedge_total)}, EO P50 ${f2d(rc.eo.wedge_total)} (sources ${f2d(rs.fbR_none.wedge_total)} and ${f2d(rs.eo.wedge_total)}). Source: notebook 28, <code>run3_recs_by_origin.csv</code>.` }));
+  el.append(table([{ h: "Run", k: "k", f: lab },
+    { h: "RPS payments", k: ({ k }) => R.other[k].P_R.pct, num: true, f: pct, sign: true },
+    { h: "System cost (no credits)", k: ({ k }) => R.other[k].syscost.pct, num: true, f: pct, sign: true },
+    { h: "Process CO2", k: ({ k }) => R.other[k].co2.pct, num: true, f: pct, sign: true },
+    { h: "SMR support per MW", k: ({ k }) => k === "fbR_none" ? null : R.other[k].support.pct, num: true, f: v => v == null ? "–" : pct(v), sign: true }],
+    N.map(k => ({ k })), { cap: `Fix run against source run, % change of the sum over 2026–2050. SMR support per MW is the mandate's shadow price × <code>pvf_onm</code>, averaged over the years where it is positive (paper 1's support). Source: notebook 28, <code>run3_other.csv</code>.` }));
+  const groups = Object.keys(R.cap2050);
+  el.append(table([{ h: "Group", k: "g" }, ...N.map((k, i) => ({ h: k === "fbR_none" ? "fbR_none" : k.toUpperCase(), k: r => r.v[i], num: true, f: f1_, sign: true }))],
+    groups.map(g => ({ g, v: R.cap2050[g] })), { cap: `Capacity in 2050, fix run minus source run, GW. Source: notebook 28, <code>run3_cap2050.csv</code>.` }));
+  const acts = Object.keys(R.actors.source).filter(a => T.some((t, i) => Math.abs(R.actors.source[a][i]) > 1 || Math.abs(R.actors.fix[a][i]) > 1));
+  el.append(table([{ h: "Actor", k: "a" }, ...T.map((t, i) => ({ h: t.toUpperCase(), k: r => `${f1_(R.actors.source[r.a][i])} → ${f1_(R.actors.fix[r.a][i])}`, num: true }))],
+    acts.map(a => ({ a })), { cap: `The stage-1 ledger built from the source runs → from the fix runs (mandate run minus <code>fbR_none</code> in each case), actor sums, PV at 2.0%, horizon A, funding T, lump support, allowances free, 2025 $B. The environment is left out because it holds one entry per carbon value and health model; the views below carry it. The source values equal notebook 21. Source: notebook 28, <code>run3_pair_actor.csv</code>.` }));
+  const V = R.views;
+  el.append(table([{ h: "Target", k: "t", f: t => t.toUpperCase() }, ...["A", "B"].flatMap(hz => ["view1", "view2"].map(v => ({ h: `${v === "view1" ? "View 1" : "View 2"}, ${hz}`, k: r => `${f1_(V.source[hz][v][r.i])} → ${f1_(V.fix[hz][v][r.i])}`, num: true })))],
+    T.map((t, i) => ({ t, i })), { cap: `The two resident views, source pairs → fix pairs, reference variant (funding T, lump support, AP2 ACS, MCPF 1, φ = 0, allowances free, global EPA 2023 carbon value at 2.0%), 2025 $B. Source: notebook 28, <code>run3_pair_views.csv</code>.` }));
+}
 function pRps(el) {
   const R = C.rps, B0 = R.fbR_none, E = R.eo, P = C.rps_pv;
   const others = TORDER.filter(t => t !== "eo");
@@ -1486,7 +1532,10 @@ function pRps(el) {
     h("li", { html: `<b>Its source.</b> The main term comes from credits that one state sells to another. The buying state's credit price is higher than the selling state's price. The model charges the buyer the higher price but credits the seller with the lower price. Nobody in the model's reports receives the difference.` }),
     h("li", { html: `<b>Why the prices differ.</b> In <code>fbR_none</code>, summed over the solve years 2026–2050, ${pct("seller_unbound")} of this difference comes from credits whose selling state has no binding rule of its own, ${pct("double_count")} from a double count of exports in the ReEDS credit equations (a model error), and ${pct("trade_limits")} from limits on trade between states.` }),
     h("li", { html: `<b>Why it matters for the ledger.</b> The ledger must give every dollar to an actor: consumers, taxpayers, generators, transmission owners or people outside the US. This gap has no actor yet, so it stays in the ledger as a named, unassigned amount (check C3).` }),
-    h("li", { html: `<b>The question for Prof. Davies.</b> In real markets, who keeps the difference between what a buying state's credit is worth and what the same kind of credit is worth in the selling state? The double count is a model error, so the question concerns the rest of the difference.` })))));
+    h("li", { html: `<b>The question for Prof. Davies.</b> In real markets, who keeps the difference between what a buying state's credit is worth and what the same kind of credit is worth in the selling state? The double count is a model error, so the question concerns the rest of the difference.` }),
+    h("li", { html: `<b>His answer (2026-11-09, reported by Ethan).</b> Prof. Davies affirmed the ledger's treatment: the selling generators receive the wedge from non-binding sellers and from trade limits (Decisions, items 2 and 4, recorded 2026-11-03). The double count is a model error and stays a named residual until RUN-3 (item 3). The page does not record a separate answer to each question below.` }),
+    h("li", { html: `<b>RUN-3 (returned 2026-11-16).</b> The runs without the double count are in the next section. Removing it lowers RPS payments and the trade wedge, and it also changes the build mix, emissions and the stage-1 ledger outside the RPS account. <a href="#decisions">Decisions</a>, item 20, asks how the ledger carries it.` })))));
+  run3Section(el);
 
   el.append(h("h2", {}, "Background"));
   el.append(h("div", { class: "prose" }, h("ul", {},
@@ -1545,7 +1594,7 @@ function pRps(el) {
   el.append(table([{ h: "Origin of the price difference", k: "o", html: true }, { h: "What the real arrangement suggests", k: "r", html: true }, { h: "Decision", k: "d", html: true }], [
     { o: `Seller's rule not binding (${pct("seller_unbound")})`, r: "The seller, or its contract counterparty, keeps about the buyer-market price. The model's revenue report pays the seller zero only because of how the report is written.", d: `<a href="#decisions">item 2</a>` },
     { o: `Double count in ReEDS (${pct("double_count")})`, r: "No real arrangement: a registry removes an exported REC once. Nobody keeps this value.", d: `<a href="#decisions">item 3</a>` },
-    { o: `Trade limits (${pct("trade_limits")})`, r: "A scarcity value of eligibility or delivery. Its holder is the open question for Prof. Davies.", d: `<a href="#decisions">item 4</a>` }],
+    { o: `Trade limits (${pct("trade_limits")})`, r: "A scarcity value of eligibility or delivery. The selling generators keep it (Ethan's decision, affirmed by Prof. Davies on 2026-11-09).", d: `<a href="#decisions">item 4</a>` }],
     { cap: "Shares are of the trade wedge in <code>fbR_none</code>, summed over the solve years 2026–2050 (Figure " + PAGENO + ".3)." }));
 
   el.append(h("h2", {}, "What published sources say"));
@@ -1587,6 +1636,7 @@ function pRps(el) {
       h("p", { html: `<a href="#decisions">Decisions, items 2–4 →</a> show what each option would change.` }),
       h("p", { class: "note", html: `RUN-3 (<a href="#decisions">Decisions, item 12</a>) reruns the seven runs on this page without the double count. It shows how much of the wedge remains, and how the other two parts change when the model is corrected.` })),
     h("div", { class: "panel" }, h("h3", {}, "Questions for Prof. Davies"),
+      h("p", { class: "note" }, "Answered 2026-11-09: Prof. Davies affirmed the ledger's treatment (selling generators, except the double count). The questions stay here as the record of what was asked."),
       h("ol", {}, h("li", {}, "When an out-of-state REC is sold into a state where it is worth more than in its home state, does anything in law or contract stop the generator (or the owner of the REC) from capturing the higher price? Do common contract terms, such as long-term bundled purchase agreements at fixed prices, pass the difference to the buyer or to a marketer? In particular: when the seller's own state has no binding rule, so the REC is worth nothing at home, does the seller usually receive about the buyer-market price, or does a fixed-price contract or a marketer keep most of it?"),
         h("li", {}, "Is the section “How an interstate REC sale works in practice” above correct: tracking systems that record no price, eligibility set by the buyer's state, bilateral contracts and state procurements?"),
         h("li", {}, "Does any state rule give the value of scarce deliverability to transmission owners or to the grid operator, rather than to the REC seller?"),
@@ -1605,6 +1655,11 @@ function pRps(el) {
 /* ---------- decision figures (page 15) ---------- */
 const NOFIG = "No figure: this item chooses new runs, a compute route or a data source, so no existing result depends on it yet.";
 const DFIG = {
+  "rps-double-run3": card => card.append(h("p", { class: "note", html: `The tables are on the <a href="#rps">RPS residual note</a>, section “RUN-3”.` })),
+  "lab-manifest": card => card.append(h("p", { class: "note" }, "No figure: the choice sets the Julia package versions on the lab machine. It changes no ledger entry, input file or ReEDS code.")),
+  "ca-share-check": card => card.append(h("p", { class: "note", html: `No figure: the share moves money between electricity consumers and taxpayers only (item 15). The calculation is on <a href="#verify">Methods to verify</a>.` })),
+  "retail-capex": card => card.append(h("p", { class: "note" }, "No figure: the retail results are not on this page yet. The check and the sizes are in notebook 27 §6 (results/exports/27/rr_capex_*.csv).")),
+  "a21": card => card.append(h("p", { class: "note" }, "No figure: A21 sets how the retail rates are computed. No retail result shows on this page before you confirm it.")),
   "ca-share": card => card.append(h("p", { class: "note" }, "No figure: the share moves CA receipts between electricity consumers and taxpayers only. Both actors are in View 1, and the ledger puts no deadweight cost on state receipts (item 1), so View 1 and View 2 are the same for every option. Only those two actor rows change under \"actual policy\".")),
   "mcpf-state": card => {
     const ri = C.const.rates.indexOf("2.0%"), ms = C.const.mcpf.filter(m => m > 1);
@@ -1740,6 +1795,91 @@ function pNewRuns(el) {
   el.append(h("p", { class: "note", html: `The plan holds one more set of new runs: 12 closed-loop no-mandate baselines at the P05 cost sample, 6 in the reference market and 6 under the national cap. They share the compute route of item 7.` }));
 }
 
+/* ---------- methods to verify: CA share (H5) and the retail method (A21) ---------- */
+function pVerify(el) {
+  const RR = "postprocessing/retail_rate_module";
+  const L_ = (a, b) => `<code>retail_rate_calculations.py</code> ${b ? `lines ${a}–${b}` : `line ${a}`}`;
+  header(el, "Decide", "Methods to verify: the California share and the retail rates",
+    `This page sets out two methods for a human author to check by hand. Section 1 shows how Claude computed the California share of 0.42 (checkpoint H5; <a href="#decisions">Decisions</a>, items 15 and 19). Section 2 goes through how the ReEDS retail-rate module turns a run into a retail rate, and what notebook 27 adds (amendment A21; Decisions, item 18). The page shows no retail result: results wait for A21. Line numbers refer to <code>${RR}/retail_rate_calculations.py</code> on the <code>paper-AG</code> branch, unless the text names another file.`);
+
+  /* ---- 1. California share ---- */
+  el.append(h("h2", {}, "1. The California share of allowance receipts: 0.42"));
+  el.append(h("div", { class: "panel" }, h("h3", {}, "What the share does in the ledger"), h("div", { class: "prose" }, h("ul", {},
+    h("li", { html: `The share is used only under the state allowance value “actual policy” (<code>allowance_state = policy</code>, amendment A20). Under that value the CA cap is auctioned. The receipts are the CA allowance price × the CA cap.` }),
+    h("li", { html: `The ledger gives 0.42 of the receipts to electricity consumers and 0.58 to state governments, inside taxpayers (<code>aglib/ledger.py</code>: the constant <code>CA_UTILITY_SHARE</code> at line 56, used at lines 354–359).` }),
+    h("li", { html: `Both actors are in View 1, and state receipts stay out of the MCPF base (Decisions, item 1 = exclude). So neither resident view depends on the share. Only the split between consumers and taxpayers depends on it.` }),
+    h("li", { html: `Ethan recorded 0.42 on 2026-11-05 (item 15), with the note that a human author must check the calculation. Record the result of the check on item 19.` })))));
+
+  el.append(table([{ h: "Quantity", k: "q" }, { h: "Value", k: "v", num: true }, { h: "Where it comes from", k: "s", html: true }], [
+    { q: "Investor-owned utilities (IOUs), FY2025-26 proceeds", v: "$2,204.9M", s: "CARB Summary of Proceeds (September 2026), FY2025-26 row, IOU column" },
+    { q: "Publicly owned utilities (POUs), FY2025-26 proceeds", v: "$240.2M", s: "same row, POU column" },
+    { q: "Utilities, total", v: "$2,445.1M", s: "sum of the two rows above" },
+    { q: "All auction proceeds, FY2025-26", v: "$5,820.1M", s: "same row, total column: the state's own allowances and the utilities' consigned allowances" },
+    { q: "Share", v: "0.4201", s: "2,445.1 ÷ 5,820.1, rounded to 0.42 in the ledger" },
+    { q: "Alternative: all proceeds to date", v: "0.386", s: "FY2012-13 to August 2026: $23,259.4M ÷ $60,326.8M (the 0.386 option on item 15)" }],
+    { cap: "Claude recomputed both ratios from the figures on 2026-11-09. Claude did not reopen the CARB documents for this page. The figures are the ones the research agent and Claude used on 2026-11-04 (<code>docs/state_allowance_research.md</code>, last section)." }));
+
+  el.append(h("div", { class: "panel" }, h("h3", {}, "What to check by hand"), h("ol", {},
+    h("li", { html: `Open CARB's <a href="https://ww2.arb.ca.gov/sites/default/files/2020-09/proceeds_summary.pdf" target="_blank" rel="noopener">Summary of Proceeds to California and Consigning Entities</a> (September 2026). In the FY2025-26 row, find the IOU column ($2,204.9M), the POU column ($240.2M) and the total ($5,820.1M).` }),
+    h("li", { html: `Check the column alignment. The summary's columns are shifted by one row, so Claude aligned them against CARB's <a href="https://ww2.arb.ca.gov/sites/default/files/2026-09/nc-aug_2026_ca_proceeds_report.pdf" target="_blank" rel="noopener">August 2026 proceeds report</a>. Check that each value sits under the column named above.` }),
+    h("li", { html: `Decide whether the denominator is right. It is all auction proceeds: the state's own allowances plus the allowances that the utilities consign. Another base, such as the power sector's share of the cap, would need its own source.` }),
+    h("li", { html: `Decide whether one fiscal year (0.42) or all years to date (0.386) is the better basis.` }))));
+
+  el.append(h("div", { class: "panel" }, h("h3", {}, "Known limits"), h("ul", { class: "vlist" },
+    h("li", { html: `The proceeds are economy-wide. The ReEDS CA cap covers the power sector only, so the industry share of the real programme has no counterpart in the ledger (A20).` }),
+    h("li", { html: `The IOU column also holds allowances that natural-gas suppliers consign. Their proceeds serve gas customers, not electricity customers.` }),
+    h("li", { html: `The ledger counts the whole utility share as a gain to electricity consumers. In 2024 the IOUs spent their allowance value as follows: 61% residential climate credit, 6% small-business credit, 4% industry assistance credit, 3% clean energy and efficiency, and 26% unspent but designated (<a href="https://ww2.arb.ca.gov/sites/default/files/cap-and-trade/allowanceallocation/EDU%202024%20Use%20of%20Allowance%20Value%20Report.pdf" target="_blank" rel="noopener">CARB, EDU 2024 use-of-value report</a>; EDU means electrical distribution utility). The POUs deposited 32% for compliance and left 55% unspent.` }),
+    h("li", { html: `The two CARB proceeds documents are not yet rows in <code>data/external/sources.csv</code>.` }))));
+
+  /* ---- 2. retail method ---- */
+  el.append(h("h2", {}, "2. The retail-rate method"));
+  el.append(h("div", { class: "panel" }, h("h3", {}, "The method in brief"), h("div", { class: "prose" },
+    h("p", { html: `The module follows Brown, Gagnon, Corcoran and Cole (2022), <a href="https://www.nlr.gov/docs/fy22osti/78224.pdf" target="_blank" rel="noopener"><i>Retail Rate Projections for Long-Term Electricity System Models</i></a>, report <code>NREL/TP-6A20-78224</code>, and the module's <code>README.md</code>. The module runs after a ReEDS run. It assumes that one regulated IOU serves each state. Each year that utility collects a <b>revenue requirement</b>: its operating expenses, plus a return on its rate base, plus the income tax on that return. The retail rate is the revenue requirement divided by retail sales.` }),
+    h("div", { class: "eq" }, h("span", { class: "lhs" }, "rate(state, year) ="), h("span", { class: "t" }, "operating costs"), h("span", { class: "op" }, "+"), h("span", { class: "t" }, "capital recovery"), h("span", { class: "op" }, "+"), h("span", { class: "t" }, "net purchases from other states and Canada"), h("span", { class: "op" }, "−"), h("span", { class: "t neg" }, "tax credits"), h("span", { class: "op" }, "+"), h("span", { class: "t" }, "bias correction"), h("span", { class: "op" }, "÷"), h("span", { class: "t" }, "retail load")),
+    h("p", { html: `Capital recovery = book depreciation + return on rate base + income tax, for every capital asset. The module takes builds, costs and flows from ReEDS. It does not use ReEDS's wholesale prices. It recovers each build's capital from the ratepayers of the build's state through the rate base, whoever would own the plant in ReEDS. The mandate's support is not a cost entry in ReEDS, so the module has no line for it. The SMR capital itself enters the rate base (step 4).` }))));
+
+  const steps = [
+    { n: "1", s: "Retail load", w: `Busbar load = <code>load_cat</code> summed over every category except <code>stor_charge</code> and <code>trans_loss</code>, by state, interpolated between solve years. End-use load = busbar load × (1 − 0.05) (<code>distloss</code>). Retail load = end-use load − rooftop solar generation (<code>distpv</code>), which the module assumes is self-consumed. Years before 2010 use EIA state sales (<code>load_by_state_eia.csv</code>).`, l: `${L_(349, 410)}; ${L_(1366, 1379)}`, c: "The 5% loss; that rooftop solar is all self-consumed." },
+    { n: "2", s: "Operating costs, passed through each year", w: `Every <code>op_</code> cost in <code>systemcost_ba_retailrate</code>, by state: fuel, VOM, FOM, start-up, ACP, spur-line and intra-zone FOM, CO2 transport and storage, and others. Left out: ReEDS transmission FOM (replaced by FERC data, step 7), PTC payments, the CO2 incentive, the hydrogen items and the consumption VOM and FOM. DAC CO2 transport and storage cost is shared among states by their positive process CO2. Half of FOM is capitalized (<code>FOM_capitalization_rate</code> = 0.5) and recovered over 20 years as capital (step 6); the other half passes through.`, l: `${L_(546, 570)}; DAC ${L_(615, 670)}; FOM ${L_(694, 695)}, ${L_(730, 741)}`, c: "The omitted list; the 50% capitalized FOM." },
+    { n: "3", s: "Working capital", w: `Working capital = 45/365 × the year's operating costs. It earns the debt and equity returns of step 6, and the equity return carries the income-tax gross-up.`, l: L_(697, 718), c: "The 45 days." },
+    { n: "4", s: "Generation capital", w: `For each technology, zone and solve year: capex = the larger of <code>capex_ivrt</code> and the investment entries of <code>systemcost_techba</code>. It is spread evenly over the years since the previous solve year. Builds before 2010 come from the EIA NEMS unit list, priced at the run's 2010 costs (<code>calculate_historical_capex.py</code>). Each build gets a recovery period from <code>inputs_case/retail_eval_period</code> (SMR: 30 years) and a tax depreciation schedule from <code>retail_depreciation_sch</code> (SMR: 15-year MACRS). <b>Patched copy (item 17):</b> the lookup ignores case, so <code>nuclear-smr</code> matches <code>Nuclear-SMR</code>. Rows still without a period (upgrades and conversions) take 20 years.`, l: `${L_(746, 803)}; periods ${L_(872, 930)}`, c: "That the SMR rows carry 30 years and 15-year MACRS in the patched output; the max of the two capex sources." },
+    { n: "5", s: "Other capital", w: `ReEDS transmission lines and AC/DC converters (30 years) and spur lines (20 years). Existing transmission before 2010: a state cost table (2024 $) spread evenly over the 40 years before 2010, recovered over 30 years. Distribution, administration and intra-zone transmission capital: FERC Form 1 $/MWh × end-use load (step 7), recovered over 20, 20 and 30 years.`, l: `${L_(956, 1040)}; ${L_(1191, 1231)}; ${L_(1233, 1353)}`, c: "The recovery periods in <code>inputs.csv</code>." },
+    { n: "6", s: "Capital recovery, the same for every capital row", w: `For a row with capex K, recovery period N and age a (years since the build):
+      <ul class="vlist">
+      <li>K<sub>adj</sub> = K ÷ cumulative inflation since the build year (the rate base is nominal, while the module works in 2004 $);</li>
+      <li>book depreciation = K<sub>adj</sub> ÷ N, for N years (straight line);</li>
+      <li>net plant = K<sub>adj</sub> × (1 − (a + 1) ÷ N);</li>
+      <li>ADIT = max(0, (cumulative tax depreciation − cumulative book depreciation) × K<sub>adj</sub> × T);</li>
+      <li>rate base = net plant − ADIT;</li>
+      <li>debt interest = rate base × d × i<sub>d</sub>; equity return = rate base × (1 − d) × r<sub>e</sub>;</li>
+      <li>income tax = (equity return + book depreciation − tax depreciation) × (1 ÷ (1 − T) − 1).</li></ul>
+      Financing (<code>capital_financing_assumptions.csv</code>, nominal): from 2019, debt share d = 0.55, return on equity r<sub>e</sub> = 9.6%, debt interest i<sub>d</sub> = 3.9%, tax rate T = 21%. These are a regulated utility's values, not ReEDS's technology financing.`, l: L_(1495, 1624), c: "The formulas; the financing values; that nominal returns apply to the inflation-adjusted base." },
+    { n: "7", s: "Distribution, administration and transmission O&M (FERC)", w: `$/MWh from FERC Form 1 for IOUs, 1993–2019. For each state the module uses the state, region or national aggregate, whichever gave the smallest MBE against EIA-861 retail rates in 2010–2019 (<code>aggregation = best</code>). After 2020 it extends the linear trend of the last 10 years, with the slope fading to zero over 10 years. Opex and capex are × end-use load; transmission O&M is × retail load. FERC transmission capital is net of ReEDS transmission spending in the overlap years. The wildfire injury and damage costs of Pacific Gas &amp; Electric and Southern California Edison in 2018–2019 are taken out of the FERC data and spread over 15 years (<code>special_costs</code>).`, l: `${L_(1042, 1189)}; ${L_(1387, 1461)}; <code>ferc_distadmin.py</code> lines 19–31`, c: "That these inputs are the same in every run, so they move the Δrate only through load." },
+    { n: "8", s: "Flows between states and with Canada", w: `Payments for energy, operating reserves, planning reserves (<code>res_marg_ann</code>) and RPS credits that cross state lines (<code>expenditure_flow</code>, <code>expenditure_flow_rps</code>, <code>expenditure_flow_int</code>). The importing state pays, and the exporting state's requirement falls by the same amount. Flows within a state drop out. For Canada only the US side is kept.`, l: L_(436, 541), c: "That the RPS flow is at the buyer's price (the same term as the RPS trade wedge)." },
+    { n: "9", s: "Tax credits", w: `PTC: the credit per MWh × generation, after the monetization penalty and the phase-out, grossed up for tax; it lowers the requirement. ITC: spread evenly over the recovery period and grossed up by 1 ÷ (1 − T); it lowers the requirement. The government's cost of the credits is not in the rate. The stage-1 runs give SMRs no ITC.`, l: `${L_(1626, 1707)}; ${L_(1709, 1832)}`, c: "Which technologies receive credits in the stage-1 runs." },
+    { n: "10", s: "State bias correction", w: `For each state, a constant c (2022 ¢/kWh) = −MBE of the module's rate against EIA-861 in 2010–2019, at the state's chosen aggregation (<code>inputs/state-meanbiaserror_rate-aggregation.csv</code>). It adds c × retail load to the requirement. In a national Δrate it cancels, except through changes in the states' shares of retail load.`, l: `<code>get_dfplot</code>, ${L_(1849, 1904)}`, c: "That the correction is a fixed per-state constant." },
+    { n: "11", s: "National and division rate", w: `Rate = Σ over states (Σ components + bias correction) ÷ Σ over states retail load. The module writes 2022 ¢/kWh. The District of Columbia is counted with Maryland.`, l: `${L_(1849, 1904)}; ${L_(1906, 1925)}`, c: "Notebook 27 rebuilds the module's national rate from the component file (A21)." }];
+  el.append(table([{ h: "Step", k: "n" }, { h: "What", k: "s" }, { h: "What the module does", k: "w", html: true }, { h: "Where", k: "l", html: true }, { h: "Check", k: "c", html: true }], steps,
+    { cap: `Each step runs for every state and year from 1960 to 2050. Money is in 2004 $ until step 11. The settings are the module's defaults in <code>${RR}/inputs.csv</code>, unedited.` }));
+
+  el.append(h("div", { class: "panel" }, h("h3", {}, "What notebook 27 adds (amendment A21)"), h("ol", {},
+    h("li", { html: `<b>Rebuild.</b> The national rate is rebuilt from <code>retail_rate_components.csv</code> and must equal the module's national file in every year.` }),
+    h("li", { html: `<b>Units.</b> Money in 2025 $ through the ledger's deflator (<code>plotstyle.to2025</code>), not the module's deflator.` }),
+    h("li", { html: `<b>Rates.</b> National and census-division rates: Σ cost over the division's states ÷ Σ retail load over the same states.` }),
+    h("li", { html: `<b>Δrate</b> = run − <code>fbR_none</code>, by year, split exactly into the module's own plot categories. A component's share of the Δrate = its cost ÷ load in the run, minus the same ratio in the baseline.` }),
+    h("li", { html: `<b>Consumers' retail gain</b> = −Δ(revenue requirement), 2025 $B per year, and its PV 2026–2050 at the ledger rates. It stands beside notebook 21's wholesale gain (energy, capacity and RPS payments). The two measure different things, and A21 makes no reconciliation between them.` }))));
+
+  el.append(h("div", { class: "panel" }, h("h3", {}, "Simplifications and open points to weigh"), h("ul", { class: "vlist" },
+    h("li", { html: `<b>One IOU per state.</b> Real states also have public power, cooperatives and retail choice. The module's IOU recovers all capital through the rate base, while ReEDS treats plants as paid by the market.` }),
+    h("li", { html: `<b>Module error found (O33).</b> The repo module drops every capital row whose technology name differs in case from <code>retail_eval_period</code>, all SMR capital included. The patched copy fixes the lookup and the 20-year fill (item 17). The repo module stays unedited.` }),
+    h("li", { html: `<b>O30.</b> For historical supply-curve costs the module divides a bin's cost by its capacity. Through pumped-hydro this reaches the rate at 0.0004 2025 ¢/kWh or less (notebook 27 §6). It is not corrected.` }),
+    h("li", { html: `<b>Before 2024.</b> The run and the baseline differ in transmission and converter capital in some years before 2024 (O31).` }),
+    h("li", { html: `<b>Fixed inputs.</b> The FERC-based costs and the bias correction are the same in every run. They enter a Δrate only through load.` }),
+    h("li", { html: `<b>Financing.</b> The utility's financing (step 6) differs from ReEDS's technology financing, which sets the builds. The module and ReEDS therefore value the same capital differently.` }))));
+
+  el.append(h("p", { class: "note", html: `Record the CA check on <a href="#decisions">Decisions</a>, item 19, and the retail method on item 18 (A21).` }));
+}
+
 /* ---------- 15 decisions ---------- */
 let DB = null, USER = null, ME = { owner: false, id: null, ready: false }, DEC = {}, DBERR = null, DRAFT = {};
 const DECISIONS = () => {
@@ -1755,11 +1895,11 @@ const DECISIONS = () => {
       options: [["unassigned", "Leave it unassigned", "Report it as a named residual, as now."], ["sellers", "Give it to the selling generators", "Matches a spot sale or a sale of RECs alone: the seller receives about the buyer-market price."],
         ["buyers", "Give it back to the buyers' consumers", "As if the REC were bought at the seller's home price; the other bound for a fixed-price contract signed below the market."]] },
     { id: "rps-double", title: "RPS residual, part 2: the double count of REC exports", who: "Ethan", def: "unassigned", raised: true,
-      ctx: `ReEDS takes each REC export out of the selling state's credit supply, and then subtracts the same export again from the RECs that count toward that state's own requirement. An export therefore costs the seller two RECs, and the buyer's price is about twice the seller's. This part of the wedge is a model error: no registry or contract creates it, so nobody keeps it. RUN-3 (item 12) removes it from the model. Until RUN-3 returns, the ledger can only label it or correct it to first order.`,
+      ctx: `ReEDS takes each REC export out of the selling state's credit supply, and then subtracts the same export again from the RECs that count toward that state's own requirement. An export therefore costs the seller two RECs, and the buyer's price is about twice the seller's. This part of the wedge is a model error: no registry or contract creates it, so nobody keeps it. RUN-3 (item 12) removes it from the model. Until RUN-3 returns, the ledger can only label it or correct it to first order. <b>RUN-3 returned on 2026-11-16</b>; item 20 asks how the ledger carries its result.`,
       options: [["rerun", "Replace the RPS numbers with RUN-3 results", "Use the corrected runs for every ledger entry; needs RUN-3."], ["unassigned", "Keep it as a named residual, labelled “model error”", "Report it beside the other residual terms until RUN-3."],
         ["consumers", "Take it out of consumers' RPS payments now", "A first-order correction: it ignores how the model's choices would change without the error."]] },
     { id: "rps-limits", title: "RPS residual, part 3: price differences from trade limits", who: "Ethan, after Prof. Davies", def: "sellers",
-      ctx: `The rest of the wedge comes from limits on interstate trade: eligibility, the transmission limit on bundled RECs, the caps on unbundled and out-of-state RECs, and the ACP export rule. Only this part is a scarcity value: the value of holding one of the few RECs that the buyer's state accepts. Ethan is asking Prof. Davies who keeps it in real markets. A research agent found rules that move REC ownership away from some generators: to the buying utility under old PURPA contracts and solar tariffs such as SMART, to ratepayers under utility contracts, and to holders of firm transmission rights for scarce delivery (<a href="#rps">RPS residual note</a>, section 5c of <code>docs/rps_residual_note.md</code>). <b>Ethan's leaning (2026-11-03): give it to the selling generators.</b> ReEDS does not model utilities or who owns each REC. A region-specific utility adjustment here would need similar adjustments across many other assumptions, and it would contradict the base assumptions of ReEDS. The default below shows this leaning; the decision is recorded only when Ethan records it.`,
+      ctx: `The rest of the wedge comes from limits on interstate trade: eligibility, the transmission limit on bundled RECs, the caps on unbundled and out-of-state RECs, and the ACP export rule. Only this part is a scarcity value: the value of holding one of the few RECs that the buyer's state accepts. Ethan asked Prof. Davies who keeps it in real markets; on 2026-11-09 Prof. Davies affirmed that the selling generators keep it. A research agent found rules that move REC ownership away from some generators: to the buying utility under old PURPA contracts and solar tariffs such as SMART, to ratepayers under utility contracts, and to holders of firm transmission rights for scarce delivery (<a href="#rps">RPS residual note</a>, section 5c of <code>docs/rps_residual_note.md</code>). <b>Ethan's leaning (2026-11-03): give it to the selling generators.</b> ReEDS does not model utilities or who owns each REC. A region-specific utility adjustment here would need similar adjustments across many other assumptions, and it would contradict the base assumptions of ReEDS. The default below shows this leaning; the decision is recorded only when Ethan records it.`,
       options: [["unassigned", "Leave it unassigned", "Report it as a named residual, as now."], ["sellers", "Give it to the selling generators", "The holder and seller of the REC keeps its scarcity value."],
         ["network", "Give it to transmission owners", "Treat it like congestion rent; clearest for bundled RECs."], ["split", "Split it", "Bundled RECs to transmission, unbundled RECs to the seller."]] },
     { id: "d5-variants", title: "Which variants to report (D5)", who: "Ethan, Wesley and coauthors", def: null,
@@ -1813,6 +1953,63 @@ Claude checked the shadow prices and the batch-2 file on 2026-11-04. The screeni
         ["0.386", "0.386: utilities' share of all proceeds to date", "FY2012-13 to August 2026: $23,259.4M of $60,326.8M."],
         ["1.0", "1.0: all power-sector payments return to electricity consumers", "Assumes that the utilities' free allocation covers the power sector's whole obligation. Claude has not sourced that comparison."],
         ["0", "0: all receipts to the state", "Equal to “auctioned” for CA."]] },
+    { id: "lab-manifest", title: "New runs: which Julia package versions the lab machine uses", who: "Ethan", def: null, raised: true,
+      ctx: `ReEDS calls Julia for PRAS, the resource adequacy model that checks each solve year for shortfalls. <code>Manifest.toml</code> fixes the exact version of every Julia package. The fresh lab checkout had none, and no other ReEDS checkout on the lab machine has the same <code>Project.toml</code> (the file that lists the packages and their allowed versions). For the retail pilot you approved <code>Pkg.instantiate()</code> in person, and Julia wrote a new <code>Manifest.toml</code>. The new-runs instructions say that the lab agent asks before using such a file, so the 23 runs wait for this item.
+<ul class="vlist">
+<li><b>The same:</b> Julia 1.12.1, the project hash, the 136 packages, and all four PRAS packages (PRAS 0.8.0, PRASCore 0.8.1, PRASFiles 0.8.0, PRASCapacityCredits 0.8.0).</li>
+<li><b>Different:</b> 38 supporting packages are newer in the lab file, for example Distributions 0.25.134 against 0.25.130, SpecialFunctions 2.9.1 against 2.8.0 and StatsBase 0.34.13 against 0.34.12. Full list: <code>agent_comms/2026-11-05_retail_pilot/results/manifest_diff.csv</code>.</li>
+<li><b>Reference file:</b> paper 1's <code>Manifest.toml</code> from its checkout on your machine. Claude has not confirmed that the archived paper-1 runs were made with this file.</li></ul>
+Source: <code>response_2.md</code>, step B (commit 7167a7e).`,
+      options: [["lab", "Use the lab file as it is", "The runs can start now. PRAS is the same; 38 supporting packages are newer than paper 1's."],
+        ["paper1", "Use paper 1's file", "The lab agent copies reference/Manifest_paper1.toml in as Manifest.toml and runs Pkg.instantiate(). That may download the 38 older package versions, which needs your OK."]] },
+    { id: "retail-capex", title: "Retail rates: the module leaves out the capital of most new builds, SMRs included", who: "Ethan", def: null, raised: true,
+      ctx: `The ReEDS retail-rate module ran on the lab machine for the six stage-1 P50 runs and <code>fbR_none</code>. It turns each generator's capital spending into rate-base charges over an evaluation period (the years over which the capital is recovered). It finds the period by technology name, and the match is exact: the run's tables write <code>nuclear-smr</code> and <code>gas-cc</code>, while the period file writes <code>Nuclear-SMR</code> and <code>Gas-CC</code>. The module then means to give each unmatched row 20 years. Under pandas 3 (the Python table library on the lab machine), that line changes nothing, so rows with no period drop out of the rate. Claude checked this against the lab's results: the matched rows alone reproduce the module's national generation depreciation in every year 1960–2050, in all 7 runs (notebook 27 §6; observation O33).
+<ul class="vlist">
+<li><b>What drops out:</b> all SMR capital (116.7 to 1,258.8 2004 $B across the six targets); new gas-CC, gas-CT and CCS builds; and 1,405.5 of the 1,644.0 2004 $B of historical capital.</li>
+<li><b>Size:</b> in 2050, the omitted depreciation alone, run minus baseline, is +0.105 (eia) to +1.145 (eo) 2025 ¢/kWh with 20-year periods, and +0.069 to +0.773 with the period file's values, matched ignoring case (30 years for SMRs). The module's Δrate is −0.077 to −0.772. Return on rate base and income tax come on top of these sizes.</li>
+<li><b>O30</b> (supply-curve costs divided by a bin's capacity) reaches the rate only through pumped-hydro, at 0.0004 2025 ¢/kWh or less. It needs no choice of its own.</li></ul>
+A rerun of the module takes about 20 s per run on the lab machine, and the runs' <code>inputs_case</code> folders are still there. No retail number goes on this page before this item and amendment A21 are settled. Claude recommends the first option, because the omitted rows include the SMRs that the mandate builds.`,
+      options: [["patch", "Rerun the module from a patched copy", "Claude writes a copy outside the ReEDS code with two changes: the fill is assigned, and names match ignoring case, so every row gets the period file's value (30 years for SMRs). The repo's module stays unedited. The lab reruns the 7 runs."],
+        ["fill20", "Rerun with only the fill fixed", "Names still match exactly, so every unmatched row, SMRs included, gets the module's 20-year default."],
+        ["asis", "Report the module as it runs", "Notebook 27's numbers, with the omission stated."],
+        ["drop", "Leave retail rates out", "Report wholesale payments only."]] },
+    { id: "a21", title: "Protocol amendment A21: how the retail rates are computed and reported", who: "Ethan", def: null, raised: true,
+      ctx: `The protocol (the fixed analysis rules, signed before results are read) had no retail section. Claude drafted amendment A21 for notebook 27. It needs your confirmation before any retail number goes on this page.
+<ul class="vlist">
+<li><b>Source:</b> the ReEDS retail-rate module (<code>postprocessing/retail_rate_module/</code>, with its default <code>inputs.csv</code>). The lab machine runs it for each stage-1 P50 run and for the baseline <code>fbR_none</code>. Each run uses its rebuilt <code>inputs_case</code> folder and its output tables, which Claude dumped from the archived h5 files. Notebook 27 reads only the CSV files that the lab returns.</li>
+<li><b>Patched copy</b> (your choice on the card above): the lab runs a copy of the module outside the ReEDS code, and the repo's module stays unedited. The copy has three changes. The evaluation-period lookup ignores case. The 20-year default for unmatched rows is assigned. Two lines in <code>ferc_distadmin.py</code> that pandas 3 ignores are assigned. The rows that still have no period are upgrade and conversion builds, and they take the module's 20-year default. Notebook 27 §6 keeps the unpatched results as a check of what the repo module leaves out.</li>
+<li><b>Rate:</b> the module's own definition. Rate = (Σ cost components + the module's state bias correction) ÷ retail load. Empty cells count as zero, as in the module. Years are 2010–2050, as the module writes them. Notebook 27 rebuilds this rate from <code>retail_rate_components.csv</code>, and the rebuild must equal the module's national file. Money is in 2025 $ through the ledger's deflator (<code>plotstyle.to2025</code>), not the module's.</li>
+<li><b>Readouts:</b>
+  <ul class="vlist">
+  <li>national and census-division rates, nothing finer (divisions from <code>inputs/zones/state_groups.csv</code>);</li>
+  <li>Δrate = run − <code>fbR_none</code>, by year;</li>
+  <li>the exact split of Δrate into the module's own plot categories (generation capital, fuel, fixed O&amp;M, transmission and so on);</li>
+  <li>the consumers' retail gain, −Δ(total revenue requirement) in 2025 $B per year. It stands beside notebook 21's wholesale gain (energy + capacity + RPS payments, horizon A, reference keys), with no reconciliation between the two;</li>
+  <li>the present value of the retail gain, 2026–2050, at the ledger's discount rates.</li></ul></li>
+<li><b>Open:</b> O30 (the module divides a supply-curve bin's cost by its capacity for historical supply-curve costs) is not corrected. Notebook 27 sizes it at 0.0004 2025 ¢/kWh or less.</li></ul>
+Claude drafted A21 after it had read the pilot's check values (observation O31). Claude then changed item (4) after the stage-1 and patched results (O33, O34). Every rule above follows the module's own definitions, not those values. The full text is A21 in <code>z-ethan/docs/protocol.md</code> on Ethan's machine. The module's method, step by step, is on <a href="#verify">Methods to verify</a>, section 2.`,
+      options: [["confirm", "Confirm A21 as written", "Notebook 27's patched results become the registered retail numbers, and Claude adds them to this page."],
+        ["change", "Confirm with changes", "Write the changes in the note. Claude amends A21 and reruns notebook 27 before anything goes on this page."],
+        ["hold", "Not yet", "Retail results stay off this page."]] },
+    { id: "ca-share-check", title: "H5: hand check of the California share 0.42", who: "Ethan or another human author", def: null, raised: true,
+      ctx: `Item 15 recorded 0.42 with the note “Humans need to do a manual check on how the 0.42 number was calculated.” The <a href="#verify">Methods to verify</a> page, section 1, sets out the calculation, the two CARB documents and four points to check. Record the result here. If the check changes the value, the ledger constant <code>CA_UTILITY_SHARE</code> changes and notebooks 21, 22, 24, 26 and 25 rerun. Neither resident view changes; only the split between electricity consumers and taxpayers under the “actual policy” state allowance value changes.`,
+      options: [["ok", "Checked: 0.42 stands", "The figures and the denominator are right."],
+        ["change", "Checked: use another value (see note)", "Write the value and its source in the note."],
+        ["notyet", "Not checked yet", ""]] },
+    (() => {
+      const R = C.run3, T = C.targets, A = R.actors, V = R.views;
+      const dc = T.map((t, i) => A.fix["electricity consumers"][i] - A.source["electricity consumers"][i]);
+      const pc = T.map((t, i) => dc[i] / A.source["electricity consumers"][i]);
+      const dv1 = T.map((t, i) => V.fix.A.view1[i] - V.source.A.view1[i]);
+      const pr = R.names.map(k => R.other[k].P_R.pct), co = R.names.map(k => R.other[k].co2.pct);
+      const p0 = d3.format(".0%");
+      return { id: "rps-double-run3", title: "RPS residual, part 2 after RUN-3: how the ledger carries the double count", who: "Ethan", def: null, raised: true,
+        ctx: `Item 3 kept the double count as a named residual until RUN-3. RUN-3 returned on 2026-11-16 (notebook 28; <a href="#rps">RPS residual note</a>, section “RUN-3”). The two controls reproduce their source runs: the ledger of a control against its source moves no actor by more than ${d3.format(".3f")(d3.max(Object.values(R.repro.ledger_max)))} 2025 $B. Removing the double count lowers RPS payments by ${d3.format(".0f")(-d3.max(pr))}–${d3.format(".0f")(-d3.min(pr))}% and raises process CO2 by ${d3.format(".1f")(d3.min(co))}–${d3.format(".1f")(d3.max(co))}% (sums 2026–2050). In the stage-1 ledger (horizon A, 2.0%, funding T, lump), the consumers' gain changes by ${fmtS(d3.min(dc))} to ${fmtS(d3.max(dc))} 2025 $B (${p0(d3.min(pc))} to ${p0(d3.max(pc))}), and view 1 by ${fmtS(d3.min(dv1))} to ${fmtS(d3.max(dv1))}. So the error moves entries outside the RPS account, which a named residual does not hold. Only the 6 stage-1 pairs have fix runs; the 308 stage-2 runs do not. The decision on items 2 and 4 (selling generators) applies in either case: the fix runs still have a trade wedge, mostly from sellers whose rule does not bind.`,
+        options: [["fix-stage1", "Use the RUN-3 runs for the stage-1 ledger", "The six P50 pairs come from the fix runs. Stage 2 keeps the source runs, with the stage-1 difference reported beside it."],
+          ["sensitivity", "Keep the source runs; report RUN-3 beside them", "Every ledger number stays as now; a table shows how the fix moves each actor and view."],
+          ["unassigned", "Keep the named residual only", "As now. The residual does not hold the changes outside the RPS account."],
+          ["more-runs", "Also fix the stage-2 runs (new runs)", "308 runs; at 2 runs per about 19 h on the lab machine, about 120 days."]] };
+    })(),
   ];
 };
 async function initCaps() {
