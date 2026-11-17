@@ -176,8 +176,14 @@ def reduce_run_recs(h5path) -> pd.DataFrame:
     =============== ===========================================================================================
 
     Item ``min_ratio|seller_priced`` is the smallest p_dst / p_src over the RECs from priced sellers in each year
-    (a ratio, not money; do not sum it)."""
+    (a ratio, not money; do not sum it).
+
+    Items ``wedge_g|<origin>|<group>|<cendiv>`` split each wedge item by the selling technology's owner group
+    (``aglib.ledger.group``) and the selling state's census division (protocol amendments A23, A16). Over the
+    groups and divisions they sum to ``wedge|<origin>``."""
     import h5py
+    from aglib.ledger import group
+    st_cd = pd.read_csv(STATE_CENDIV).set_index("st")["cendiv"]
 
     name = Path(h5path).name
     with h5py.File(h5path, "r") as f:
@@ -206,6 +212,8 @@ def reduce_run_recs(h5path) -> pd.DataFrame:
     for k, (sel, w) in parts.items():
         d = m[sel]
         out.append(pd.DataFrame({"t": d["t"], "item": f"wedge|{k}", "Value": (d["Value"] * w[sel]).astype(float)}))
+        out.append(pd.DataFrame({"t": d["t"], "item": "wedge_g|" + k + "|" + d["i"].map(group) + "|" + d["st"].map(st_cd),
+                                 "Value": (d["Value"] * w[sel]).astype(float)}))
     for k, sel in (("seller_unbound", unb), ("seller_priced", pri), ("voluntary", vol)):
         out.append(pd.DataFrame({"t": m.loc[sel, "t"], "item": f"Q|{k}", "Value": m.loc[sel, "Value"].astype(float)}))
     out = pd.concat(out, ignore_index=True).groupby(["t", "item"], as_index=False)["Value"].sum()

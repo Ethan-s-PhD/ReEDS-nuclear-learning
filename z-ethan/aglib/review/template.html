@@ -212,7 +212,7 @@ const REF = { target: "eo", horizon: "A", rate: "2.0%", support_form: "lump", fu
 const VIEWKEYS = ["horizon", "support_form", "funding", "allowance_national", "allowance_state", "basis", "health", "mcpf", "phi", "rate"];
 const S = Object.assign({}, REF, { metric: "view2", annualActor: "taxpayers", level: "energy_price_per_MWh", rpsCase: "eo",
   varStage: "1", s2bTarget: "eo", mkSet: "1|reference", mkMeasure: "gen_share", mkSeries: "gen_share", mkGroup: "existing nuclear",
-  cdSet: "1|reference", cdActor: "electricity consumers", cdDiv: "South_Atlantic", cdGas: "CO2" });
+  cdSet: "1|reference", cdActor: "electricity consumers", cdDiv: "South_Atlantic", cdGas: "CO2", rYear: 2050 });
 try { const saved = JSON.parse(localStorage.getItem("agreview.state") || "{}"); for (const k in saved) if (k in S) S[k] = saved[k]; } catch (e) {}
 function saveState() { try { localStorage.setItem("agreview.state", JSON.stringify(S)); } catch (e) {} }
 
@@ -577,11 +577,11 @@ function arrow(x1, y1, x2, y2, label, o = {}) {
 function diagPairs() {
   const rows = [["Stage 1", "6 P50 mandate runs"], ["Stage 2a", "60 runs at other cost samples"], ["Stage 2b", "178 runs in 6 market conditions"],
     ["Stage 2d", "40 credit runs (actual ITC)"], ["Stage 2c", "30 mandate runs under the CO2 cap"]];
-  let s = `<svg viewBox="0 0 860 330" role="img" aria-label="Each policy run set is compared with its baseline: stages 1, 2a, 2b and 2d with fbR_none; stage 2c with the eight cap baselines.">${ARROW}`;
-  rows.forEach((r, i) => { s += box(20, 18 + i * 60, 300, 44, r[0] + ": " + r[1], i === 2 ? "Δ mixes the condition and the programme" : (i === 3 ? "no mandate; ReEDS builds what pays" : ""), { dash: i === 2 }); });
-  s += box(560, 18, 280, 224, "fbR_none", "reference market, no SMR policy", { fill: "var(--accent-soft)" });
+  let s = `<svg viewBox="0 0 860 330" role="img" aria-label="Each policy run set is compared with its baseline: stages 1, 2a and 2d with fbR_none; stage 2b with the no-mandate run of its own market condition; stage 2c with the eight cap baselines.">${ARROW}`;
+  rows.forEach((r, i) => { s += box(20, 18 + i * 60, 300, 44, r[0] + ": " + r[1], i === 2 ? "Δ against its condition's no-mandate run (A22)" : (i === 3 ? "no mandate; ReEDS builds what pays" : ""), { dash: i === 2 }); });
+  s += box(560, 18, 280, 224, "fbR_none", "reference market, no SMR policy; for 2b: nomand_fbR_none_{condition}", { fill: "var(--accent-soft)" });
   s += box(560, 258, 280, 44, "8 cap baselines bx_*_f50_co2cap", "primary bx_aj_p75_f50_co2cap", { fill: "var(--accent-soft)" });
-  [0, 1, 2, 3].forEach(i => { s += arrow(322, 40 + i * 60, 556, 40 + i * 60, i === 0 ? "Δ = run − baseline" : "", { dash: i === 2 }); });
+  [0, 1, 2, 3].forEach(i => { s += arrow(322, 40 + i * 60, 556, 40 + i * 60, i === 0 ? "Δ = run − baseline" : "", {}); });
   s += arrow(322, 280, 556, 280, "Δ against each of the 8", {});
   return s + "</svg>";
 }
@@ -738,6 +738,8 @@ const PAGES = [
   { id: "variants", group: "Results", title: "Variant sensitivity", d: "One key at a time", render: pVariants, needs2: true },
   { id: "markets", group: "Results", title: "Markets and technologies", d: "Mix, transmission, value", render: pMarkets, needsX: "markets" },
   { id: "cendiv", group: "Results", title: "Census divisions", d: "Where gains and losses fall", render: pCendiv, needsX: "cendiv" },
+  { id: "retail", group: "Results", title: "Retail rates", d: "Stage 1, national and by division (A21)", render: pRetail, needsX: "retail" },
+  { id: "run1", group: "Results", title: "RUN-1 to 2055", d: "SMR value and support when building continues (item 21)", render: pRun1, needsX: "run1" },
   { id: "decisions", group: "Decide", title: "Decisions", d: "Open items and what they change", render: pDecisions },
   { id: "rps", group: "Decide", title: "RPS residual note", d: "Background to decision items 2–4", render: pRps },
   { id: "newruns", group: "Decide", title: "New runs: RUN-1 and RUN-3", d: "What each run is for, and why; RUN-2 dropped", render: pNewRuns },
@@ -821,8 +823,8 @@ function pOverview(el) {
         ["Stage-2 ledger", `notebook 24; ${d3.sum(pc, r => r.runs)} runs, ${d3.sum(pc, r => r.pairs)} pairs`, "done", "Done"],
         ["Census-division readouts", "notebook 26; 9 divisions; amendment A16 confirmed", "done", "Done"],
         ["Markets and technologies", "notebook 23; hourly value from notebook 20 §7 (amendment A17)", "done", "Done"],
-        ["Retail rates", `notebook 27 on the patched module, 7 runs; A21 confirmed 2026-11-13 (Decisions, item 18); the results are not on this page yet (<a href="#verify">Methods to verify</a>)`, "wait", "Next"],
-        ["New runs: RUN-1, RUN-3 (no REC double count), stage-2b no-mandate runs, 2 P05 screening runs; RUN-2 dropped", `all 23 returned 2026-11-16 and pass the lab checks; RUN-3 processed (notebook 28, <a href="#rps">RPS residual note</a>); RUN-1, stage 2b and P05 not yet processed`, "wait", "Returned"],
+        ["Retail rates", `notebook 27 on the patched module, 7 runs; A21 confirmed 2026-11-13 (Decisions, item 18); results on <a href="#retail">Retail rates</a>`, "done", "Done"],
+        ["New runs: RUN-1, RUN-3 (no REC double count), stage-2b no-mandate runs, 2 P05 screening runs; RUN-2 dropped", `all 23 returned 2026-11-16 and pass the lab checks; RUN-3 processed (notebook 28, <a href="#rps">RPS residual note</a>); P05 screening: no SMR built, so the other 10 P05 baselines are not run (A19, O36); RUN-1 and the 6 stage-2b condition baselines reduced and checked (O38); stage-2b pairs change at the next rebuild (A22); A11 closed (O37)`, "wait", "Returned"],
       ].map(([a, b, c, d]) => h("div", { class: "status-row" }, h("div", {}, h("div", {}, a), h("div", { class: "sub", html: b })), h("span", { class: "pill " + c }, d))))),
     h("div", { class: "panel" }, h("h2", {}, "Do the accounts close?"),
       h("p", { html: `<b>Energy and capacity markets (C1, C2).</b> What consumers pay equals what generators, storage and the network receive. The largest gap in any run-year is ${pct(cm.c1, 3)} (energy) and ${pct(cm.c2, 3)} (capacity) of gross payments, over stage 1 and all ${d3.sum(pc, r => r.pairs)} stage-2 pairs. No run-year passes the 0.5% flag.` }),
@@ -865,7 +867,7 @@ function pMethodsRuns(el) {
   el.append(h("h2", {}, "Run counts"));
   el.append(table([{ h: "Stage", k: "s" }, { h: "Difference measured", k: "d" }, ...TORDER.map(t => ({ h: t, k: r => r[t], num: true })), { h: "Runs", k: "n", num: true }, { h: "Pairs", k: "p", num: true }],
     [{ s: "1", d: "programme", ...Object.fromEntries(TORDER.map(t => [t, 1])), n: 6, p: 6 },
-      ...["2a", "2b", "2c", "2d"].map(st => ({ s: st, d: { "2a": "programme", "2b": "condition + programme", "2c": "programme, under the cap", "2d": "credit design" }[st],
+      ...["2a", "2b", "2c", "2d"].map(st => ({ s: st, d: { "2a": "programme", "2b": "programme, in the condition", "2c": "programme, under the cap", "2d": "credit design" }[st],
         ...Object.fromEntries(TORDER.map(t => [t, cnt[st]?.[t]?.runs ?? 0])), n: C.pair_totals.find(r => r.stage === st).runs, p: C.pair_totals.find(r => r.stage === st).pairs }))],
     { cap: "Runs per target and stage. A stage-2c run counts once per cap baseline, so 30 runs give 240 pairs. Source: <code>exports/24/ag2_pairs.csv</code>." }));
   el.append(h("h2", {}, "The 19 baselines"));
@@ -1159,11 +1161,11 @@ function pStage2a(el) {
 }
 function pStage2b(el) {
   header(el, "Results", "Stage 2b: market conditions",
-    "Stage 2b repeats the mandate runs in six changed markets. Paper 1 made no baseline in each changed market, so every pair uses the reference baseline <code>fbR_none</code>.");
-  el.append(h("div", { class: "banner", html: "<b>Read with care.</b> A stage-2b difference contains two effects together: the change of the market condition and the SMR programme. The two effects cannot be separated with the runs that exist (Decisions, item 9). The numbers are labelled “condition + programme”." }));
+    "Stage 2b repeats the mandate runs in six changed markets. Each run is compared with the no-mandate run of its own market condition, <code>nomand_fbR_none_{condition}</code> (amendment A22), so each difference measures the programme in that condition.");
+  el.append(h("div", { class: "banner", html: "<b>Changed on 2026-11-16 (amendment A22, item 22).</b> Until then every stage-2b run was compared with <code>fbR_none</code>, so each difference mixed the change of the market condition with the programme. Each run now has the no-mandate run of its own condition as its baseline. Notebook 24 keeps the old pairs (condition + programme) as a second table." }));
   controls(el, [["target", "metric"], ["horizon", "rate", "support_form", "funding", "allowance_state"], ["basis", "health", "mcpf", "phi"]]);
   const mets = METRICS();
-  const cols = ["stage 1 + 2a\n(programme)", ...CONDS.map(c => c + "\n(cond. + prog.)")];
+  const cols = ["stage 1 + 2a\n(programme)", ...CONDS.map(c => c + "\n(programme)")];
   const runsAt = c => c === null ? [...BY["2a"].filter(r => r.target === S.target), S1(S.target)] : BY["2b"].filter(r => r.target === S.target && r.condition === c);
   const vals = mets.map(([m]) => [null, ...CONDS].map(c => median(runsAt(c).map(r => metricV(r, m, S)))));
   const f = fig(el, `Median by market condition — ${S.target}`,
@@ -1171,7 +1173,7 @@ function pStage2b(el) {
   heatmap(f.body, mets.map(m => m[1]), cols, vals, { aria: "Median by condition", tipx: (i, j) => `<br><span class="tk">${runsAt(j === 0 ? null : CONDS[j - 1]).length} runs</span>` });
   const groups = [null, ...CONDS].map(c => ({ label: c === null ? "reference" : c, pts: runsAt(c).map(r => ({ v: metricV(r, S.metric, S), name: runName(r) })) }));
   strip(el, `${metricLabel(S.metric)} by condition — ${S.target}`,
-    `This figure shows <b>${esc(metricLabel(S.metric))}</b> for each run of target ${S.target}. Each row is one market condition. The top row is the reference market (stage 1 and stage 2a runs). Each dot is one run against <code>fbR_none</code>. The black tick is the median. Values are PVs in 2025 $B at ${rateNote(S)}.`, groups);
+    `This figure shows <b>${esc(metricLabel(S.metric))}</b> for each run of target ${S.target}. Each row is one market condition. The top row is the reference market (stage 1 and stage 2a runs). Each dot is one run: the top row against <code>fbR_none</code>, the condition rows against the no-mandate run of their condition (A22). The black tick is the median. Values are PVs in 2025 $B at ${rateNote(S)}.`, groups);
 }
 function pStage2c(el) {
   header(el, "Results", "Stage 2c: under the national CO2 cap",
@@ -1494,7 +1496,7 @@ function run3Section(el) {
       h("li", { html: `<b>The double count is gone.</b> In each run, the smallest buyer/seller price ratio on RECs from sellers with a positive price (2026–2050) is ${f2d(d3.min(N, k => R.min_ratio.source[k]))}–${f2d(d3.max(N, k => R.min_ratio.source[k]))} in the source runs and ${f2d(d3.min(N, k => R.min_ratio.fix[k]))}–${f2d(d3.max(N, k => R.min_ratio.fix[k]))} in the fix runs. A ratio of 2 is the double count's signature; below 1, the buyer's price is under the seller's (EO P50 fix run).` }),
       h("li", { html: `<b>The trade wedge falls by ${f0p(-100 * d3.max(N, tot))}–${f0p(-100 * d3.min(N, tot))}%.</b> The part that the split labels “double count” keeps ${f2d(d3.min(dcf))}–${f2d(d3.max(dcf))} in the fix runs. The split assigns that part by a price rule (the smaller of the buyer–seller price gap and the seller's price), so in the fix runs it is a price gap, not the model error. The wedge from sellers whose rule does not bind also falls, and the trade-limit part rises.` }),
       h("li", { html: `<b>The fix changes more than the RPS account.</b> RPS payments fall, process CO2 rises, and the 2050 build mix moves (tables below). In the stage-1 ledger, the consumers' gain falls in all six pairs; under horizon A, view 1 rises for the four smaller targets and falls for COP28 and EO.` }),
-      h("li", { html: `<b>The RPS account still does not close in the fix runs.</b> Most of the remaining gap is the wedge from sellers whose rule does not bind, which items 2 and 4 give to the selling generators.` }))));
+      h("li", { html: `<b>The RPS account still does not close in the fix runs.</b> Most of the remaining gap is the wedge from sellers whose rule does not bind, which amendment A23 gives to the selling generators. The consumers' change is mostly capacity payments, not RPS payments (O39): the fix moves the capacity payments of <code>fbR_none</code> in 2031–2035, and mandate runs that leave its path in 2031 do not share that move.` }))));
   el.append(table([{ h: "Run", k: "k", f: lab }, { h: "Wedge, source", k: ({ k }) => rs[k].wedge_total, num: true, f: f2d }, { h: "Wedge, fix", k: ({ k }) => rf[k].wedge_total, num: true, f: f2d },
     { h: "Change", k: ({ k }) => 100 * tot(k), num: true, f: pct },
     { h: "Not binding: source → fix", k: ({ k }) => `${f2d(rs[k].wedge_seller_unbound)} → ${f2d(rf[k].wedge_seller_unbound)}`, num: true },
@@ -1531,10 +1533,10 @@ function pRps(el) {
     h("li", { html: `<b>The gap.</b> In the model, electricity buyers pay more for state renewable and clean-energy rules than generators are recorded as receiving. In the no-mandate baseline <code>fbR_none</code>, the gap is ${f2d(d3.min(late))} to ${f2d(d3.max(late))} a year over 2031–2050, and ${f2d(atYr(B0, "gap", 2026))} in 2026.` }),
     h("li", { html: `<b>Its source.</b> The main term comes from credits that one state sells to another. The buying state's credit price is higher than the selling state's price. The model charges the buyer the higher price but credits the seller with the lower price. Nobody in the model's reports receives the difference.` }),
     h("li", { html: `<b>Why the prices differ.</b> In <code>fbR_none</code>, summed over the solve years 2026–2050, ${pct("seller_unbound")} of this difference comes from credits whose selling state has no binding rule of its own, ${pct("double_count")} from a double count of exports in the ReEDS credit equations (a model error), and ${pct("trade_limits")} from limits on trade between states.` }),
-    h("li", { html: `<b>Why it matters for the ledger.</b> The ledger must give every dollar to an actor: consumers, taxpayers, generators, transmission owners or people outside the US. This gap has no actor yet, so it stays in the ledger as a named, unassigned amount (check C3).` }),
+    h("li", { html: `<b>Why it matters for the ledger.</b> The ledger must give every dollar to an actor: consumers, taxpayers, generators, transmission owners or people outside the US. Since amendment A23 (2026-11-16) the ledger gives the parts from sellers whose rule does not bind and from trade limits to the selling generators, by the seller's technology group. The double count and the voluntary part have no actor, so they stay in the ledger as a named, unassigned amount (check C3).` }),
     h("li", { html: `<b>The question for Prof. Davies.</b> In real markets, who keeps the difference between what a buying state's credit is worth and what the same kind of credit is worth in the selling state? The double count is a model error, so the question concerns the rest of the difference.` }),
     h("li", { html: `<b>His answer (2026-11-09, reported by Ethan).</b> Prof. Davies affirmed the ledger's treatment: the selling generators receive the wedge from non-binding sellers and from trade limits (Decisions, items 2 and 4, recorded 2026-11-03). The double count is a model error and stays a named residual until RUN-3 (item 3). The page does not record a separate answer to each question below.` }),
-    h("li", { html: `<b>RUN-3 (returned 2026-11-16).</b> The runs without the double count are in the next section. Removing it lowers RPS payments and the trade wedge, and it also changes the build mix, emissions and the stage-1 ledger outside the RPS account. <a href="#decisions">Decisions</a>, item 20, asks how the ledger carries it.` })))));
+    h("li", { html: `<b>RUN-3 (returned 2026-11-16).</b> The runs without the double count are in the next section. Removing it lowers RPS payments and the trade wedge, and it also changes the build mix, emissions and the stage-1 ledger outside the RPS account. Ethan chose on 2026-11-16 (<a href="#decisions">Decisions</a>, item 20) to keep the archived source runs for every ledger number and to report RUN-3 beside them, for stage 1 only.` })))));
   run3Section(el);
 
   el.append(h("h2", {}, "Background"));
@@ -1557,7 +1559,7 @@ function pRps(el) {
       { r: "SMR mandate, eo P50", ...Object.fromEntries(YR.map(y => [y, f2d(atYr(E, "gap", y))])) },
       { r: "SMR mandate, the other five targets (P50)", ...Object.fromEntries(YR.map(y => [y, rngOf(others.map(t => atYr(R[t], "gap", y)))])) }],
     { cap: "The RPS gap in 2004 $B per year, after the ACP money is taken out. Sources: <code>exports/21/ag_closure_rps_terms.csv</code> and <code>exports/24/ag2_closure.parquet</code>, through notebook 25 §4." }));
-  el.append(h("p", { html: `The level matters for the consumers' payment line. The ledger, however, reports changes, so only the policy run minus the baseline enters it. For target eo the change is ${fmtS(atYr(E, "gap", 2050) - atYr(B0, "gap", 2050))} in 2050. As a PV in 2025 $B at 2.0%, the change is ${rngOf(TORDER.map(t => P[t].A.gap), fmtS)} under horizon A and ${rngOf(TORDER.map(t => P[t].B.gap), fmtS)} under horizon B, depending on the target. The sign differs by target: the mandate raises the gap for some targets and lowers it for others. The largest stage-1 actor entry at the reference variant is ${fmt(big)} 2025 $B, so the change is small. No actor in the ledger receives it.` }));
+  el.append(h("p", { html: `The level matters for the consumers' payment line. The ledger, however, reports changes, so only the policy run minus the baseline enters it. For target eo the change is ${fmtS(atYr(E, "gap", 2050) - atYr(B0, "gap", 2050))} in 2050. As a PV in 2025 $B at 2.0%, the change is ${rngOf(TORDER.map(t => P[t].A.gap), fmtS)} under horizon A and ${rngOf(TORDER.map(t => P[t].B.gap), fmtS)} under horizon B, depending on the target. The sign differs by target: the mandate raises the gap for some targets and lowers it for others. The largest stage-1 actor entry at the reference variant is ${fmt(big)} 2025 $B, so the change is small. Under amendment A23 the selling generators receive the parts from non-binding sellers and trade limits; the rest stays unassigned.` }));
   rpsTermsFig(el);
   rpsOriginFig(el);
   rpsPvFig(el, "Change in the RPS gap and in the trade wedge");
@@ -1655,6 +1657,7 @@ function pRps(el) {
 /* ---------- decision figures (page 15) ---------- */
 const NOFIG = "No figure: this item chooses new runs, a compute route or a data source, so no existing result depends on it yet.";
 const DFIG = {
+  "run1-readouts": card => card.append(h("p", { class: "note", html: `No figure yet: RUN-1 is reduced, but no readout after 2050 is computed before this item is decided. The design and the comparison runs are on <a href="#newruns">New runs</a>.` })),
   "rps-double-run3": card => card.append(h("p", { class: "note", html: `The tables are on the <a href="#rps">RPS residual note</a>, section “RUN-3”.` })),
   "lab-manifest": card => card.append(h("p", { class: "note" }, "No figure: the choice sets the Julia package versions on the lab machine. It changes no ledger entry, input file or ReEDS code.")),
   "ca-share-check": card => card.append(h("p", { class: "note", html: `No figure: the share moves money between electricity consumers and taxpayers only (item 15). The calculation is on <a href="#verify">Methods to verify</a>.` })),
@@ -1696,8 +1699,8 @@ const DFIG = {
     if (!S2) { card.append(h("p", { class: "note" }, "Loading the stage-2 runs for this figure…")); loadS2().then(() => { if (CUR && CUR.id === "decisions") rerender(); }).catch(() => {}); return; }
     const runsAt = (c, t) => c === null ? [...BY["2a"].filter(r => r.target === t), S1(t)] : BY["2b"].filter(r => r.target === t && r.condition === c);
     const rows = [null, ...CONDS];
-    const f = fig(card, `What the label “condition + programme” covers — ${metricLabel(S.metric)}`,
-      `This figure shows the median of <b>${esc(metricLabel(S.metric))}</b> for each target. The first row is the programme effect in the reference market: the median over the stage-1 and stage-2a runs of the target, against <code>fbR_none</code>. The other rows are the stage-2b medians in each market condition, also against <code>fbR_none</code>. Each of these cells contains the change of the market condition and the programme together. Option “Keep the label” reports these cells as they are. Option “Leave stage 2b out” removes rows 2–7. Option “Add no-mandate runs” would give each condition its own baseline, so that each row would measure the programme alone in that condition. Blue cells are gains and red cells are losses. Reference variant; 2025 $B, PV to 2026 (views and environment at ${pairedRate(REF)}, actors at ${REF.rate}).`, select("metric"));
+    const f = fig(card, `The programme in each market condition — ${metricLabel(S.metric)}`,
+      `This figure shows the median of <b>${esc(metricLabel(S.metric))}</b> for each target. The first row is the programme effect in the reference market: the median over the stage-1 and stage-2a runs of the target, against <code>fbR_none</code>. The other rows are the stage-2b medians in each market condition, each against the no-mandate run of its own condition: the option chosen on 2026-11-04 (“Add no-mandate runs”), applied by amendment A22. Each row measures the programme alone in that condition. Blue cells are gains and red cells are losses. Reference variant; 2025 $B, PV to 2026 (views and environment at ${pairedRate(REF)}, actors at ${REF.rate}).`, select("metric"));
     heatmap(f.body, rows.map(c => c === null ? "reference (stages 1 + 2a)" : `${c}: ${CONDLABEL(c)}`), TORDER,
       rows.map(c => TORDER.map(t => median(runsAt(c, t).map(r => metricV(r, S.metric, REF))))),
       { aria: "Median by condition and target", tipx: (i, j) => `<br><span class="tk">${runsAt(rows[i], TORDER[j]).length} runs</span>` });
@@ -1764,9 +1767,9 @@ function pNewRuns(el) {
   f.body.classList.add("diagram"); f.body.innerHTML = diagRuns();
 
   el.append(table([{ h: "Run", k: "r" }, { h: "What changes", k: "w", html: true }, { h: "Runs", k: "n", html: true }, { h: "Built from", k: "b", html: true }, { h: "Status", k: "s", html: true }],
-    [{ r: "RUN-1", w: "The mandate keeps growing from 2050 to 2055 at its 2041–2050 pace.", n: "6 (the P50 sample of each target)", b: "<code>rate_design_hz_{t}_p50_ext</code> (solve years to 2055) with a new mandate file", s: "designed; samples and evidence rule open (item 6)" },
+    [{ r: "RUN-1", w: "The mandate keeps growing from 2050 to 2055 at its 2041–2050 pace.", n: "6 (the P50 sample of each target)", b: "<code>rate_design_hz_{t}_p50_ext</code> (solve years to 2055) with a new mandate file", s: "returned and reduced 2026-11-16; equals its <code>_ext</code> run through 2050 within solver noise (O38); readouts and evidence rule open (item 21)" },
      { r: "RUN-2", w: "Builds pause in a window and then resume, to the same 2050 fleet.", n: "none", b: "—", s: "dropped by Ethan and the coauthors, 2026-11-03" },
-     { r: "RUN-3", w: "<code>GSw_RECExportFix=1</code>: the REC export is no longer counted twice against the seller.", n: "7 fix runs + 2 controls on (5 more controls available)", b: "<code>fbR_none</code> and <code>smr100_{t}_p50</code>; casefile <code>cases_nuclearlearning_ag.csv</code>", s: "code and casefile written and checked; not launched (item 12)" }],
+     { r: "RUN-3", w: "<code>GSw_RECExportFix=1</code>: the REC export is no longer counted twice against the seller.", n: "7 fix runs + 2 controls on (5 more controls available)", b: "<code>fbR_none</code> and <code>smr100_{t}_p50</code>; casefile <code>cases_nuclearlearning_ag.csv</code>", s: "returned 2026-11-16 and processed (notebook 28; item 20)" }],
     { cap: "All three runs use a new casefile and new input files. No existing trajectory file is overwritten. Returned runs enter the AG extract spec, and notebook 20 reduces them as it reduces the archived runs." }));
 
   el.append(h("h2", {}, "RUN-1: the mandate keeps growing after 2050"));
@@ -1795,12 +1798,93 @@ function pNewRuns(el) {
   el.append(h("p", { class: "note", html: `The plan holds one more set of new runs: 12 closed-loop no-mandate baselines at the P05 cost sample, 6 in the reference market and 6 under the national cap. They share the compute route of item 7.` }));
 }
 
+/* ---------- retail rates (notebook 27, amendment A21) ---------- */
+function pRetail(el) {
+  const D = EXTRA.retail, Y = D.years, T = TORDER, cols = T.map((t, i) => `var(--s${i + 1})`);
+  const f3 = d3.format(".3f"), f2_ = d3.format(".2f"), at = (arr, y) => arr[Y.indexOf(y)];
+  const yr = Number(S.rYear), from = Y.indexOf(2026);
+  header(el, "Results", "Retail rates",
+    `This page shows the retail electricity rates that the ReEDS retail-rate module computes for the six P50 mandate runs and the no-mandate baseline <code>fbR_none</code> (amendment A21, confirmed by Ethan on 2026-11-13; <a href="#decisions">Decisions</a>, item 18). The module adds up, for each state, the costs that a regulated utility recovers from its customers (its revenue requirement) and divides them by retail sales. <a href="#verify">Methods to verify</a>, section 2, goes through it step by step. Rates are in 2025 ¢/kWh. Every number comes from notebook 27, run on the patched module (O33, O34), through notebook 25.`);
+  el.append(h("div", { class: "banner", html: `<b>Read these rates beside the wholesale ledger, not in place of it.</b> (1) The module treats each state as one regulated utility, so the capital of every build, the SMRs included, enters that state's rates. The mandate's support has no line in the module, because ReEDS has no cost entry for it. (2) The module recovers capital at utility financing terms (9.6% return on equity, 55% debt), not at the technology financing that ReEDS uses to choose builds. (3) The retail gain and the wholesale gain measure different things, and A21 makes no reconciliation between them. (4) These are the source runs, which carry the REC export double count (item 20).` }));
+
+  const f1 = fig(el, "Change in the national retail rate, mandate run minus baseline",
+    `This figure shows, for each target, the national retail rate of the P50 mandate run minus that of <code>fbR_none</code>, 2026–2050. A positive value means the mandate raises the rate. In the years before 2024 the runs differ by at most 0.058 ¢/kWh (O34). The module's own national rate equals the rebuild from its components to ${d3.format(".0e")(D.check_max)} ¢/kWh in all ${D.check_n} case-years. Source: notebook 27, <code>rr_rates.csv</code>.`);
+  f1.body.append(legend(T.map((t, i) => ({ label: t, color: cols[i], shape: "line" }))));
+  lineChart(f1.body, T.map((t, i) => ({ name: t, color: cols[i], x: Y.slice(from), y: D.delta[t].slice(from) })),
+    { yLabel: "2025 ¢/kWh", tf: f3, aria: "Change in the national retail rate by year" });
+
+  const f2 = fig(el, "National retail rate",
+    `This figure shows the national retail rate of <code>fbR_none</code> (black) and of each P50 mandate run, 2010–2050, as the module writes it. Source: notebook 27, <code>rr_rates.csv</code>.`);
+  f2.body.append(legend([{ label: "fbR_none", color: "var(--ink)", shape: "line" }, ...T.map((t, i) => ({ label: t, color: cols[i], shape: "line" }))]));
+  lineChart(f2.body, [{ name: "fbR_none", color: "var(--ink)", x: Y, y: D.base, w: 2.5 }, ...T.map((t, i) => ({ name: t, color: cols[i], x: Y, y: D.rate[t], w: 1.5 }))],
+    { yLabel: "2025 ¢/kWh", zero: false, tf: f2_, aria: "National retail rate by year" });
+
+  const ys = [2026, 2030, 2035, 2040, 2045, 2050];
+  el.append(table([{ h: "Year", k: "y" }, { h: "fbR_none rate", k: r => at(D.base, r.y), num: true, f: f2_ },
+    ...T.map(t => ({ h: `Δ ${t}`, k: r => at(D.delta[t], r.y), num: true, f: f3, sign: true }))],
+    ys.map(y => ({ y })), { cap: `National retail rate of <code>fbR_none</code> and the change in each P50 mandate run (run − baseline), 2025 ¢/kWh. Source: notebook 27, <code>rr_rates.csv</code>.` }));
+
+  const yrSel = select("rYear", { label: "Year", num: true, opts: () => [2030, 2035, 2040, 2045, 2050].map(y => [y, String(y)]) });
+  el.append(h("div", { class: "controls" }, h("div", { class: "ctrl-row" }, yrSel)));
+  el.append(h("h2", {}, `Where the change comes from, ${yr}`));
+  const tot = t => d3.sum(D.groups, g => at(D.comp[t][g], yr));
+  el.append(table([{ h: "Category", k: "g" }, ...T.map(t => ({ h: t, k: r => r.g === "total" ? tot(t) : at(D.comp[t][r.g], yr), num: true, f: f3, sign: true }))],
+    [...D.groups.filter(g => T.some(t => Math.abs(at(D.comp[t][g], yr)) >= 0.0005)).map(g => ({ g })), { g: "total" }],
+    { cap: `The change in the national rate in ${yr}, split into the module's own cost categories (run − <code>fbR_none</code>, 2025 ¢/kWh). Categories that round to zero in every run are left out; the total is the sum over all categories and equals the change in the rate. Source: notebook 27, <code>rr_delta_components.csv</code>.` }));
+
+  el.append(h("h2", {}, `By census division, ${yr}`));
+  el.append(table([{ h: "Division", k: "d", f: d => d.replace(/_/g, " ") }, { h: "fbR_none rate", k: r => at(D.cd_base[r.d], yr), num: true, f: f2_ },
+    ...T.map(t => ({ h: `Δ ${t}`, k: r => at(D.cd[t][r.d], yr), num: true, f: f3, sign: true }))],
+    D.divisions.map(d => ({ d })), { cap: `Retail rate of <code>fbR_none</code> and the change in each P50 mandate run, by census division, ${yr}, 2025 ¢/kWh. Divisions from <code>inputs/zones/state_groups.csv</code>; nothing finer (A21). Source: notebook 27, <code>rr_delta_cendiv.csv</code>.` }));
+
+  el.append(h("h2", {}, "Consumers' gain: retail beside wholesale"));
+  controls(el, [["rate"]]);
+  const pr = S.rate;
+  el.append(table([{ h: "Target", k: "t" },
+    { h: "Retail gain", k: r => D.pv[r.t][pr]?.retail, num: true, f: fmtS, sign: true },
+    { h: "Wholesale gain", k: r => D.pv[r.t][pr]?.wholesale, num: true, f: fmtS, sign: true }],
+    T.map(t => ({ t })), { cap: `PV to 2026 of the consumers' gain over 2026–2050 at ${pr}, 2025 $B. Retail gain = −Δ(revenue requirement summed over states). Wholesale gain = electricity consumers' energy, capacity and RPS payments from notebook 21 (horizon A, reference keys). The two measure different things: the retail gain charges every build's capital to ratepayers through rate base, and the wholesale gain counts what consumers pay in the markets. A21 makes no reconciliation. Source: notebook 27, <code>rr_pv.csv</code>.` }));
+}
+function pRun1(el) {
+  const D = EXTRA.run1, Y = D.years, T = TORDER, cols = T.map((t, i) => `var(--s${i + 1})`);
+  const at = (arr, y) => arr[Y.indexOf(y)], f1d = d3.format(",.1f"), f0d = d3.format(",.0f");
+  const pc = (a, b) => (a == null || b == null || !b) ? null : 100 * (a / b - 1);
+  const fpc = v => v == null || !isFinite(v) ? "–" : (v > 0 ? "+" : "") + d3.format(".1f")(v) + "%";
+  header(el, "Results", "RUN-1 to 2055",
+    `This page reports RUN-1 as descriptive tables (<a href="#decisions">Decisions</a>, item 21, chosen 2026-11-16). <b>RUN-1</b> (<code>run1_smr100_{t}_p50_grow</code>) keeps each P50 mandate growing to 2055 at its 2041–2050 pace. <b>_ext</b> (paper 1's <code>hz_{t}_p50_ext</code>) runs the same sample to 2055 with the SMR fleet flat after 2050. Through 2050 the two are the same run (they agree within solver noise, O38), so every difference after 2050 comes from whether building continues. The page makes no claim; it reports the value, the required support and their change. Source: notebook 29.`);
+  el.append(h("div", { class: "prose" }, h("ul", {},
+    h("li", { html: `<b>Required support per kW:</b> the mandate's shadow price × <code>pvf_onm</code> (14.7645), paper 1's support. It is zero when no mandate binds, so <code>_ext</code> needs none after 2050.` }),
+    h("li", { html: `<b>Value of new SMRs per kW-yr:</b> energy, capacity and RPS/CES value of the year's new SMR units (<code>valnew</code>), paper 1's measure. It exists only in years with new SMRs, so not in <code>_ext</code> after 2050.` }),
+    h("li", { html: `<b>Fleet revenue per kW-yr:</b> the whole SMR fleet's market revenue (energy + capacity + RPS/CES) per kW. It exists in both runs after 2050.` }),
+    h("li", { html: `<b>System cost</b> falls by 18–50% from 2050 to 2055 in both runs, so only the difference between the runs is meaningful for it.` }))));
+  const Q = [["SMR fleet, GW", f1d], ["required support, 2025 $/kW", f0d], ["value of new SMRs, 2025 $/kW-yr", f1d],
+    ["fleet revenue, 2025 $/kW-yr", f1d], ["energy price, 2025 $/MWh", d3.format(".2f")], ["process CO2, Mt", f0d], ["system cost, 2025 $B", f1d]];
+  Q.forEach(([q, f]) => {
+    const r1 = t => D.data[t]["RUN-1"][q], ex = t => D.data[t]["_ext"][q];
+    el.append(h("h2", {}, q.split(",")[0].replace(/^./, c => c.toUpperCase())));
+    el.append(table([{ h: "Target", k: "t" }, { h: "2050", k: r => at(r1(r.t), 2050), num: true, f },
+      { h: "RUN-1 2053", k: r => at(r1(r.t), 2053), num: true, f }, { h: "RUN-1 2055", k: r => at(r1(r.t), 2055), num: true, f },
+      { h: "_ext 2055", k: r => at(ex(r.t), 2055), num: true, f },
+      { h: "RUN-1 2050→55", k: r => pc(at(r1(r.t), 2055), at(r1(r.t), 2050)), num: true, f: fpc },
+      { h: "_ext 2050→55", k: r => pc(at(ex(r.t), 2055), at(ex(r.t), 2050)), num: true, f: fpc },
+      { h: "RUN-1 − _ext, 2055", k: r => (at(r1(r.t), 2055) == null || at(ex(r.t), 2055) == null) ? null : at(r1(r.t), 2055) - at(ex(r.t), 2055), num: true, f: v => v == null ? "–" : (v > 0 ? "+" : "") + f(v), sign: true }],
+      T.map(t => ({ t })), { cap: `${q}, P50 runs. 2050 is RUN-1's level (equal to <code>_ext</code> within solver noise). A dash means the quantity does not exist in that run and year. Source: notebook 29, <code>run1_readouts.csv</code>.` }));
+  });
+  ["fleet revenue, 2025 $/kW-yr", "required support, 2025 $/kW"].forEach(q => {
+    const f = fig(el, `${q.split(",")[0].replace(/^./, c => c.toUpperCase())}, 2041–2055`,
+      `This figure shows ${q.split(",")[0]} (${q.split(", ")[1]}) for each target: RUN-1 as a solid line, <code>_ext</code> as a dashed line. The lines coincide through 2050. Source: notebook 29.`);
+    f.body.append(legend([...T.map((t, i) => ({ label: t, color: cols[i], shape: "line" })), { label: "solid RUN-1 · dashed _ext", color: "var(--ink-2)", shape: "line" }]));
+    lineChart(f.body, T.flatMap((t, i) => [{ name: `${t} RUN-1`, color: cols[i], x: Y, y: D.data[t]["RUN-1"][q] },
+      { name: `${t} _ext`, color: cols[i], x: Y, y: D.data[t]["_ext"][q], dash: "5 4" }]),
+      { yLabel: q.split(", ")[1], zero: false, tf: f1d, aria: `${q} by year, RUN-1 and _ext` });
+  });
+}
 /* ---------- methods to verify: CA share (H5) and the retail method (A21) ---------- */
 function pVerify(el) {
   const RR = "postprocessing/retail_rate_module";
   const L_ = (a, b) => `<code>retail_rate_calculations.py</code> ${b ? `lines ${a}–${b}` : `line ${a}`}`;
   header(el, "Decide", "Methods to verify: the California share and the retail rates",
-    `This page sets out two methods for a human author to check by hand. Section 1 shows how Claude computed the California share of 0.42 (checkpoint H5; <a href="#decisions">Decisions</a>, items 15 and 19). Section 2 goes through how the ReEDS retail-rate module turns a run into a retail rate, and what notebook 27 adds (amendment A21; Decisions, item 18). The page shows no retail result: results wait for A21. Line numbers refer to <code>${RR}/retail_rate_calculations.py</code> on the <code>paper-AG</code> branch, unless the text names another file.`);
+    `This page sets out two methods for a human author to check by hand. Section 1 shows how Claude computed the California share of 0.42 (checkpoint H5; <a href="#decisions">Decisions</a>, items 15 and 19). Section 2 goes through how the ReEDS retail-rate module turns a run into a retail rate, and what notebook 27 adds (amendment A21; Decisions, item 18). This page shows no retail result; Ethan confirmed A21 on 2026-11-13, and the results are on <a href="#retail">Retail rates</a>. Line numbers refer to <code>${RR}/retail_rate_calculations.py</code> on the <code>paper-AG</code> branch, unless the text names another file.`);
 
   /* ---- 1. California share ---- */
   el.append(h("h2", {}, "1. The California share of allowance receipts: 0.42"));
@@ -1938,7 +2022,7 @@ In the stage-1 runs the DE and NJ cap prices are the highest of the state progra
         ["simple", "Add a simpler per-programme value", "RGGI and CA auctioned; DE and NJ caps free. Ignores CA's utility and industry shares."],
         ["keep", "Keep free and auctioned only", "Report the two bounds, and describe actual policy in the text."]] },
     { id: "p05-baselines", title: "P05 closed-loop baselines: run all 12, screen with 2, or drop", who: "Ethan", def: null,
-      ctx: `<b>What they add.</b> A P05 baseline is a no-mandate run with learning on, no support, and the P05 cost sample of one target. It changes only the 12 P05 pairs (6 in stage 2a, 6 in stage 2c under the cap), out of 518. Today those pairs subtract <code>fbR_none</code> or the cap baseline, which built no SMR. A P05 baseline differs from them only if the model builds SMRs at P05 costs with no support. If it builds none, it reproduces the existing baseline and adds nothing. If it builds some, the P05 pairs today overstate what the mandate adds. The lab machine needs about 2–3 days for all 12 runs (Ethan).
+      ctx: `<b>Screening result (2026-11-16).</b> Neither screening run builds an SMR in any solve year: <code>p05base_eia_p05</code> and <code>p05base_cop28_p05_co2cap</code> have zero <code>nuclear-smr</code> capacity, and their only new large reactors are the exogenous units every run carries. Each also reproduces its existing baseline: system cost, process CO2 and 2050 capacity differ from <code>fbR_none</code> by at most 0.001% and from the cap baselines by at most 0.007% (sums 2026–2050). By the rule fixed in A19 before the runs, the other 10 P05 baselines are not run, and the P05 pairs keep their existing baselines with the stated assumption of no SMR build without support (O36). <br><br><b>What they add.</b> A P05 baseline is a no-mandate run with learning on, no support, and the P05 cost sample of one target. It changes only the 12 P05 pairs (6 in stage 2a, 6 in stage 2c under the cap), out of 518. Today those pairs subtract <code>fbR_none</code> or the cap baseline, which built no SMR. A P05 baseline differs from them only if the model builds SMRs at P05 costs with no support. If it builds none, it reproduces the existing baseline and adds nothing. If it builds some, the P05 pairs today overstate what the mandate adds. The lab machine needs about 2–3 days for all 12 runs (Ethan).
 <ul class="vlist">
 <li><b>Reference market: building without support looks unlikely.</b> In all six P05 mandate runs the mandate's shadow price is positive in every solve year from 2031 to 2050, except one year of eia (<code>results/extracts_ag/smr100/nuclear_cap_price.parquet</code>). So even on the cost path that the mandate's own builds have lowered, the mandated SMRs need support. Paper 1's batch-2 design file lists the largest ITC rate that these samples needed during the build-up window: 45–63% (<code>data/registration/batch2/m50_b2_run_spec.csv</code>). With a flat 50% ITC and no mandate, the P05 samples built 383–429 GW of SMR by 2050 (<code>bx_*_p05_f50</code>), so support of that size starts the build-out.</li>
 <li><b>Under the cap: building without support is possible.</b> In 5 of the 6 P05 cap runs the mandate's shadow price is zero from 2044 on (<code>results/extracts_ag/batch3/nuclear_cap_price.parquet</code>). Once costs have fallen, SMRs compete there without support. A no-mandate run has less domestic learning, so its costs stay higher. But it still has international learning, and its SMRs would face less value deflation.</li>
@@ -1974,7 +2058,7 @@ A rerun of the module takes about 20 s per run on the lab machine, and the runs'
         ["asis", "Report the module as it runs", "Notebook 27's numbers, with the omission stated."],
         ["drop", "Leave retail rates out", "Report wholesale payments only."]] },
     { id: "a21", title: "Protocol amendment A21: how the retail rates are computed and reported", who: "Ethan", def: null, raised: true,
-      ctx: `The protocol (the fixed analysis rules, signed before results are read) had no retail section. Claude drafted amendment A21 for notebook 27. It needs your confirmation before any retail number goes on this page.
+      ctx: `The protocol (the fixed analysis rules, signed before results are read) had no retail section. Claude drafted amendment A21 for notebook 27. It needs your confirmation before any retail number goes on this page. <b>Confirmed 2026-11-13; the results are on <a href="#retail">Retail rates</a>.</b>
 <ul class="vlist">
 <li><b>Source:</b> the ReEDS retail-rate module (<code>postprocessing/retail_rate_module/</code>, with its default <code>inputs.csv</code>). The lab machine runs it for each stage-1 P50 run and for the baseline <code>fbR_none</code>. Each run uses its rebuilt <code>inputs_case</code> folder and its output tables, which Claude dumped from the archived h5 files. Notebook 27 reads only the CSV files that the lab returns.</li>
 <li><b>Patched copy</b> (your choice on the card above): the lab runs a copy of the module outside the ReEDS code, and the repo's module stays unedited. The copy has three changes. The evaluation-period lookup ignores case. The 20-year default for unmatched rows is assigned. Two lines in <code>ferc_distadmin.py</code> that pandas 3 ignores are assigned. The rows that still have no period are upgrade and conversion builds, and they take the module's 20-year default. Notebook 27 §6 keeps the unpatched results as a check of what the repo module leaves out.</li>
@@ -2010,6 +2094,20 @@ Claude drafted A21 after it had read the pilot's check values (observation O31).
           ["unassigned", "Keep the named residual only", "As now. The residual does not hold the changes outside the RPS account."],
           ["more-runs", "Also fix the stage-2 runs (new runs)", "308 runs; at 2 runs per about 19 h on the lab machine, about 120 days."]] };
     })(),
+    { id: "run1-readouts", title: "RUN-1: which readouts it reports and what counts as evidence", who: "Ethan", def: null, raised: true,
+      ctx: `RUN-1 returned on 2026-11-16: the six P50 mandate runs keep building to 2055 at their 2041–2050 pace, and SMR capacity equals the mandate in every solve year (lab check N6). Their comparison runs are paper 1's <code>rate_design_hz_{t}_p50_ext</code>, which run to 2055 with the fleet flat after 2050 (<a href="#newruns">New runs</a>). The design was agreed on 2026-11-04 (item 6), but no readouts and no evidence rule were recorded, and tests come from the human authors. Two points for the note: (1) which quantities RUN-1 reports and what would count as a result; for example the SMR support per MW (shadow price × <code>pvf_onm</code>) and the SMR value per MW in 2053 and 2055 against 2050, RUN-1 against the <code>_ext</code> runs. (2) No no-mandate run reaches 2055, so RUN-1 cannot extend the ledger pairs past 2050; horizon B holds the 2050 values flat to 2080. Say whether RUN-1 should inform horizon B. <b>Done 2026-11-16, whatever is chosen:</b> the 12 runs are reduced. Through 2050 RUN-1 has the same SMR path as its <code>_ext</code> run, and the RUN-1 − <code>_ext</code> pair gives at most 0.18 2025 $B for any actor (solver noise, O38). The Canada-export check of A11 is closed: exports to Canada are zero in every stress slice by model construction, so the capacity part of export payments is zero (O37).`,
+      options: [["rule", "Readouts and evidence rule set (see note)", "Write the readouts, the rule and the horizon-B answer in the note."],
+        ["descriptive", "Descriptive tables only", "Claude reports the readouts above as tables, with no claim, until a rule is set."],
+        ["a11only", "Use RUN-1 only for the Canada-export check", "No RUN-1 readouts beyond A11."]] },
+    { id: "a22-stage2b", title: "Protocol amendment A22: how the stage-2b condition baselines enter", who: "Ethan", def: null, raised: true,
+      ctx: `<b>In short: stage 2b now does what stage 1 does, once per market condition.</b> Stage 1 compares each mandate run with the no-mandate run <code>fbR_none</code>. Stage 2b repeats the mandate runs in six market conditions (low and high gas prices, high demand, low and high renewable costs, limited transmission). Until now each of those runs was compared with the same <code>fbR_none</code>, which has normal conditions, so the difference mixed two things: the effect of the condition itself and the effect of the SMR programme. The six no-mandate runs you asked for on 2026-11-04 (item 9) returned on 2026-11-16, one per condition, and they pass the baseline checks (no SMR, only the planned large reactors, no unserved load; O38). <b>A22 says:</b> (1) each stage-2b mandate run is compared with the no-mandate run of its own condition; this is the main result and measures the programme alone. (2) The old comparison against <code>fbR_none</code> stays as a side table, and the gap between the two is the effect of the condition alone. (3) The page switches to (1) at the next rebuild of notebooks 21–26. <b>Size of the change</b> (EO P50, one run per condition, consumers, 2025 $B): 482 to 771 with the matching baseline, against −1,142 to +1,517 with <code>fbR_none</code>; stage 1 gives 586.`,
+      options: [["confirm", "Confirm A22 as drafted", "Stage 2b reports the programme against each condition's baseline; the fbR_none pair stays beside it."],
+        ["primary-only", "Condition baselines only", "Drop the fbR_none pairs from stage 2b."],
+        ["revise", "Revise (see note)", ""]] },
+    { id: "a23-rps-sellers", title: "Protocol amendment A23: the RPS trade wedge goes to the selling generators", who: "Ethan", def: null, raised: true,
+      ctx: `<b>In short: this puts your answers to items 2 and 4 into the ledger.</b> When one state buys a renewable credit from another, buyers pay their own state's credit price and the seller is credited with its state's lower price; the difference is the trade wedge. You decided on 2026-11-03 that the selling generators receive the part from sellers whose own rule does not bind (item 2) and the part from trade limits (item 4); Prof. Davies affirmed it. <b>A23 says:</b> (1) each credit's wedge goes to the owner group of the technology that sold it (mostly wind + solar, then hydro); credits from Canadian imports go to the foreign sellers. (2) Consumers' RPS payments do not change. (3) The double count (item 3, a model error) and the small voluntary part stay a named, unassigned amount. (4) Item 20: every ledger number keeps the source runs; RUN-3 is reported beside them for stage 1. The change applies to every stage at this rebuild (<a href="#rps">RPS residual note</a>; protocol §11, A23).`,
+      options: [["confirm", "Confirm A23 as drafted", "The selling generators receive those two parts; the rest stays unassigned."],
+        ["revise", "Revise (see note)", ""]] },
   ];
 };
 async function initCaps() {

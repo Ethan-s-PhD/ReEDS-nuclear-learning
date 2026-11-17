@@ -100,6 +100,9 @@ def on_gas_curve(i: str) -> bool:
 CREDIT = re.compile(r"payments_negative|incentive_negative")   # credits: transfers, not resource costs
 ITC = re.compile(r"^inv_itc_payments_negative")
 ACP = "op_acp_compliance_costs"                                 # alternative compliance payments: to states
+# parts of the REC trade wedge that the selling generators receive (amendment A23) -> ledger entry
+RPS_WEDGE_ASSIGNED = {"seller_unbound": "RPS trade wedge: seller's rule not binding",
+                      "trade_limits": "RPS trade wedge: trade limits"}
 
 
 # ---------------------------------------------------------------------------
@@ -287,6 +290,20 @@ def accounts(batch: str, case: str, ext: dict) -> tuple[pd.DataFrame, dict]:
         add(a, "capital costs", "lump", -_by_t(nc[nc["sys_costs"].str.startswith("inv_")], years))
     add("owners: H2 and DAC production", "electricity payments", "flow", -(it("P_H2_E") + it("P_H2_C")))
 
+    # 4.4b the RPS trade wedge (amendment A23; review page items 2 and 4): the parts from sellers whose own rule
+    # does not bind and from trade limits go to the selling generators, by the seller's technology group. The
+    # double count (item 3, a model error) and the voluntary part stay in the RPS residual.
+    recs = _read(batch, "derived_recs")
+    if not recs["item"].astype(str).str.startswith("wedge_g|").any() or case not in set(recs["case"]):
+        raise ValueError(f"{batch}/{case}: no REC wedge by seller group; run notebook 20 §9c")
+    rc = _sel(batch, "derived_recs", case)
+    rps_assigned = pd.Series(0.0, index=years)
+    for g in GROUPS:
+        for origin, label in RPS_WEDGE_ASSIGNED.items():
+            s = _by_t(rc[rc["item"].str.startswith(f"wedge_g|{origin}|{g}|", na=False)], years)   # all divisions
+            add(owner_actor(g), label, "flow", s)
+            rps_assigned = rps_assigned + s
+
     # 4.7 network: congestion rent (includes the hurdle wedge) less system-level rows not in techba
     add("network", "congestion rent: energy", "flow", it("CR_E") + it("CR_E_vsc"))
     add("network", "congestion rent: capacity", "flow", it("CR_C") + it("CR_C_vsc"))
@@ -382,7 +399,7 @@ def accounts(batch: str, case: str, ext: dict) -> tuple[pd.DataFrame, dict]:
             add("emissions", f"{gname} {et}", "flow", _by_t(em[(em["eall"] == gname) & (em["etype"] == et)], years))
 
     memo = dict(years=years, p=p, q_pow=q_pow, q_np=q_np, q_exp=q_exp, g_obj=g_obj, dual=dual, pvf=pvf,
-                new_mw=new_mw, fleet_mw=fleet_mw, der=der,
+                new_mw=new_mw, fleet_mw=fleet_mw, der=der, rps_assigned=rps_assigned,
                 rev=rev.groupby(["rev_cat", "t"])["Value"].sum().unstack(0).reindex(years).fillna(0.0),
                 hurdle=_by_t(_sel(batch, "tran_hurdle_cost_ann", case), years),
                 tax_itc=_by_t(_sel(batch, "tax_expenditure_itc", case), years),
@@ -504,6 +521,10 @@ def market_checks(ma, mb) -> pd.DataFrame:
             "C2_vsc_rent": g("CR_C_vsc").values if hasattr(g("CR_C_vsc"), "values") else 0.0,
             "C2_gross": g("P_C").values,
             "RPS_residual": (g("P_R") - r("rps") - m["acp"]).values,
+            # the part of the residual that the ledger gives to the selling generators (amendment A23); the rest
+            # (double count, voluntary RECs, the requirement and reporting terms) stays unassigned and is C3's RPS term
+            "RPS_assigned": m["rps_assigned"].values,
+            "RPS_unassigned": (g("P_R") - r("rps") - m["acp"] - m["rps_assigned"]).values,
             "RPS_gross": g("P_R").values,
             "RPS_trade_rent": (g("REC_paid") - g("REC_recv")).values if hasattr(g("REC_paid"), "values") else 0.0,
             "RPS_requirement_minus_RECs_paid": (g("P_R") - g("REC_paid") - m["acp"]).values
